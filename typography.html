@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,600,700,900' rel='stylesheet' type='text/css'>
 	<title></title>
 
 	<link rel="stylesheet" href="assets/fabricator/styles/f.css">
@@ -64,42 +64,36 @@
 				</li>
 		
 				<li>
-					<a href="components.html" class="f-menu__heading">Components</a>
+					<a href="form_elements.html" class="f-menu__heading">Form Elements</a>
 					<ul>
 						<li>
-							<a href="components.html#button">Button</a>
+							<a href="form_elements.html#checkboxes">Checkboxes</a>
 						</li>
 						<li>
-							<a href="components.html#checkbox">Checkbox</a>
+							<a href="form_elements.html#radio">Radio</a>
 						</li>
 						<li>
-							<a href="components.html#lists">Lists</a>
+							<a href="form_elements.html#select">Select</a>
 						</li>
 						<li>
-							<a href="components.html#paragraph">Paragraph</a>
+							<a href="form_elements.html#text-input">Text Input</a>
 						</li>
 						<li>
-							<a href="components.html#radio">Radio</a>
-						</li>
-						<li>
-							<a href="components.html#select">Select</a>
-						</li>
-						<li>
-							<a href="components.html#table">Table</a>
-						</li>
-						<li>
-							<a href="components.html#text-input">Text Input</a>
-						</li>
-						<li>
-							<a href="components.html#textarea">Textarea</a>
+							<a href="form_elements.html#textarea">Textarea</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="structures.html" class="f-menu__heading">Structures</a>
+					<a href="typography.html" class="f-menu__heading">Typography</a>
 					<ul>
 						<li>
-							<a href="structures.html#form">Form</a>
+							<a href="typography.html#lists">Lists</a>
+						</li>
+						<li>
+							<a href="typography.html#paragraph">Paragraph</a>
+						</li>
+						<li>
+							<a href="typography.html#typographic_scale">Typographic Scale</a>
 						</li>
 					</ul>
 				</li>
@@ -138,13 +132,74 @@
 
 
 	
-<h1 data-f-toggle="labels">Structures</h1>
+<h1 class="jupiter" data-f-toggle="labels">Typography</h1>
 
 
-<div class="f-item-group" id="form">
+<div class="f-item-group" id="lists">
+
+	<div class="f-item-heading-group">
+		<h2 class="f-item-heading saturn" data-f-toggle="labels">Lists</h2>
+	</div>
+		<div class="f-item-group" id="lists.ordered">
+			<div class="f-item-heading-group" data-f-toggle="labels">
+				<h3 class="f-item-heading neptune">Ordered</h3>
+				<div class="f-item-controls">
+					<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+						<svg>
+							<use xlink:href="#f-icon-code" />
+						</svg>
+					</span>
+				</div>
+			</div><div class="f-item-preview">
+	<ol>
+	<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+	<li>Aliquam tincidunt mauris eu risus.</li>
+	<li>Vestibulum auctor dapibus neque.</li>
+</ol>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;ol&gt;
+	&lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;
+	&lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;
+	&lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
+
+		</div>
+		<div class="f-item-group" id="lists.unordered">
+			<div class="f-item-heading-group" data-f-toggle="labels">
+				<h3 class="f-item-heading neptune">Unordered</h3>
+				<div class="f-item-controls">
+					<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+						<svg>
+							<use xlink:href="#f-icon-code" />
+						</svg>
+					</span>
+				</div>
+			</div><div class="f-item-preview">
+	<ul>
+	<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+	<li>Aliquam tincidunt mauris eu risus.</li>
+	<li>Vestibulum auctor dapibus neque.</li>
+</ul>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;ul&gt;
+	&lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;
+	&lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;
+	&lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+		</div>
+
+</div>
+
+
+<div class="f-item-group" id="paragraph">
 
 	<div class="f-item-heading-group" data-f-toggle="labels">
-		<h2 class="f-item-heading">Form</h2>
+		<h2 class="f-item-heading saturn">Paragraph</h2>
 		<div class="f-item-controls">
 			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
 				<svg>
@@ -153,18 +208,74 @@
 			</span>
 		</div>
 	</div><div class="f-item-preview">
-	<form action="">
-	<div>
-		<label for="textInput">Text input</label>
-		<input type="text" id="textInput" /> </div>
-	<button class="button">Submit</button></form>
+	<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+	nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus.</p>
 </div>
 <div class="f-item-code f-item-hidden" data-f-toggle="code">
-	<pre><code class="language-markup">&lt;form action&#x3D;&quot;&quot;&gt;
-	&lt;div&gt;
-		&lt;label for&#x3D;&quot;textInput&quot;&gt;Text input&lt;/label&gt;
-		&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;textInput&quot; /&gt; &lt;/div&gt;
-	&lt;button class&#x3D;&quot;button&quot;&gt;Submit&lt;/button&gt;&lt;/form&gt;</code></pre>
+	<pre><code class="language-markup">&lt;p&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+	nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus.&lt;/p&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="typographic_scale">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading saturn">Typographic Scale</h2>
+		<div class="f-item-controls">
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div><div class="f-item-preview">
+	<div class="jupiter">
+	Jupiter
+</div>
+<div class="saturn">
+	Saturn
+</div>
+<div class="neptune">
+	Neptune
+</div>
+<div class="venus">
+	Venus
+</div>
+<div class="mars">
+	Mars
+</div>
+<div class="mercury">
+	Mercury
+</div>
+<div class="pluto">
+	Pluto
+</div>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;div class&#x3D;&quot;jupiter&quot;&gt;
+	Jupiter
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;saturn&quot;&gt;
+	Saturn
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;neptune&quot;&gt;
+	Neptune
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;venus&quot;&gt;
+	Venus
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;mars&quot;&gt;
+	Mars
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;mercury&quot;&gt;
+	Mercury
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;pluto&quot;&gt;
+	Pluto
+&lt;/div&gt;</code></pre>
 </div>
 
 
@@ -175,6 +286,7 @@
 
 		</div>
 	<script src="assets/fabricator/scripts/f.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
 
 	<!-- toolkit scripts -->
 	<script src="assets/toolkit/scripts/toolkit.js"></script>
