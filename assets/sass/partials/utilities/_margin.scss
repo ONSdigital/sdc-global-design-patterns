@@ -1,0 +1,23 @@
+$sizes: (
+  no: 0!important,
+  xs: 0.5rem,
+  s: 1rem,
+  m: 2rem,
+  l: 3rem
+);
+
+$margins: (
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+  m: margin
+);
+
+@each $key, $value in $sizes {
+  @each $abbr, $dec in $margins {
+    @include bp-suffix(u-#{$abbr}-#{$key}) {
+      #{$dec}: #{$value};
+    }
+  }
+}

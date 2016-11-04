@@ -1,0 +1,13 @@
+.u-dib {
+  display: inline-block;
+}
+
+.u-db {
+  display: block;
+}
+
+.u-no-js-hide {
+  .no-js & {
+    display: none;
+  }
+}

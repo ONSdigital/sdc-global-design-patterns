@@ -1,0 +1,27 @@
+{
+  "name": "@frctl/demo",
+  "version": "1.0.0",
+  "description": "Fractal demo repository.",
+  "author": "Mark Perkins <mark@clearleft.com> (http://clearleft.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@frctl/fractal": "^1.0.0",
+    "@frctl/handlebars": "^1.0.0",
+    "@frctl/mandelbrot": "^1.0.0",
+    "@frctl/nunjucks": "^1.0.0",
+    "autoprefixer": "^6.5.1",
+    "babel-core": "^6.18.2",
+    "babel-register": "^6.18.0",
+    "faker": "^3.1.0",
+    "gulp-postcss": "^6.2.0",
+    "postcss": "^5.2.5",
+    "postcss-pseudoelements": "^3.0.0",
+    "request-promise": "^2.0.1"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sass-glob": "^1.0.5"
+  }
+}
