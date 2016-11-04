@@ -1,15 +1,13 @@
-'use strict';
+import gulp from 'gulp'
+import sass from 'gulp-sass'
+import sassGlob from 'gulp-sass-glob'
+import del from 'del'
+import postcss from 'gulp-postcss'
+import autoprefixer from 'autoprefixer'
+import pseudoelements from 'postcss-pseudoelements'
 
-const gulp     = require('gulp');
-const sass     = require('gulp-sass');
-const sassGlob = require('gulp-sass-glob');
-const del      = require('del');
-const postcss  = require('gulp-postcss')
-const autoprefixer  = require('autoprefixer')
-const pseudoelements  = require('postcss-pseudoelements')
-
-const fractal  = require('./fractal.js'); // import the Fractal instance configured in the fractal.js file
-const logger = fractal.cli.console;      // make use of Fractal's console object for logging
+import fractal from './fractal.js'
+const logger = fractal.cli.console;
 
 /*
  * An example of a Gulp task that starts a Fractal development server.

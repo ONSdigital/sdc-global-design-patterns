@@ -10,7 +10,7 @@ const fractal = module.exports = require('@frctl/fractal').create();
  * General project configuration.
  */
 
-fractal.set('project.title', 'Leading Design');
+fractal.set('project.title', 'eQ Pattern Library');
 
 /*
  * Configure components.
@@ -80,18 +80,13 @@ fractal.docs.engine(nunj);
 fractal.web.set('static.path', `${__dirname}/public`);
 fractal.web.set('builder.dest', 'dist');
 
- /*
-  * Customise the web interface theme.
-  *
-  * This step is not needed if you want to just use the default theme
-  * out-of-the-box. This example demonstrates some simple theme customisation
-  * but you can also create your own bespoke themes or undertake much more extensive
-  * customisation if required.
-  */
-
 const theme = require('@frctl/mandelbrot')({
-    // skin: 'maroon'
-    nav: ['docs', 'components']
+    skin: 'white',
+    nav: ['docs', 'components'],
+    panels: ["html", "context", "info", "notes"],
+    static: {
+      "mount": "theme",
+    }
 });
 
 fractal.web.theme(theme);
