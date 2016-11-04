@@ -1,9 +1,15 @@
 {
-  "name": "@frctl/demo",
+  "name": "eq-patterns",
   "version": "1.0.0",
-  "description": "Fractal demo repository.",
-  "author": "Mark Perkins <mark@clearleft.com> (http://clearleft.com)",
+  "description": "Pattern library for eQ Survey Runner",
+  "author": "Hamish Taplin <hello@hamishtaplin.com>",
   "license": "MIT",
+  "scripts": {
+    "prestart": "yarn",
+    "build": "yarn prestart && gulp fractal:build",
+    "start": "gulp dev",
+    "deploy": "gulp fractal:build && ./deploy.sh"
+  },
   "dependencies": {
     "@frctl/fractal": "^1.0.0",
     "@frctl/handlebars": "^1.0.0",

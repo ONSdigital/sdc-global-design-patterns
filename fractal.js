@@ -78,7 +78,7 @@ fractal.docs.engine(nunj);
  */
 
 fractal.web.set('static.path', `${__dirname}/public`);
-fractal.web.set('builder.dest', 'build');
+fractal.web.set('builder.dest', 'dist');
 
  /*
   * Customise the web interface theme.

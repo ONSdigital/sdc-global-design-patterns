@@ -1,7 +1,18 @@
-# Fractal Demo
+# eQ Patterns
 
-** !! This demo is currently a work in progress and is using the Fractal 1.0 beta !! **
+https://onsdigital.github.io/eq-survey-runner-patterns/
 
-This is a demo of an example [Fractal](http://github.com/frctl/fractal) project.
+## Prerequisites
 
-This demo site is _not_ intended to be the simplest possible example of how you can use Fractal. Instead the focus is on demonstrating some of the more advanced features that Fractal offers.
+- nodejs
+- Yarn `npm install yarn --global`
+- Gulp `yarn global add gulp-cli`
+
+## Getting started
+
+1. Install dependencies with `yarn`
+2. Run with browsersync `yarn start`
+
+## Deploy
+
+- Deploy to Github Pages with `yarn deploy`
