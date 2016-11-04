@@ -1,0 +1,53 @@
+@mixin btn($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  border: none;
+  padding: 0.75rem 2.5rem;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  display: inline-block;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $color;
+    background-color: darken($bg, 5%);
+  }
+  &:focus {
+    background-color: $color-focus;
+    outline: none;
+  }
+}
+
+.btn {
+  @include btn($color-primary, $color-white);
+}
+
+.btn--secondary {
+  @include btn($color-secondary, $color-white);
+}
+
+.btn--neutral {
+  @include btn($color-dark-grey, $color-white);
+}
+
+.btn--lg {
+  font-weight: $font-weight-semibold;
+  padding: 0.9rem 5rem;
+}
+
+.btn-group {
+  font-size: 0;
+  .btn {
+    display: inline-block;
+    margin-right: 18px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+.btn-group__btn {
+  display: inline-block;
+}
