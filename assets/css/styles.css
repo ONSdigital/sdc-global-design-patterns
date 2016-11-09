@@ -2771,12 +2771,12 @@ li {
   border-color: #fe781f; }
 
 .alert--success {
-  background: #f0f1e9; }
+  background: #e7f3ec; }
   .alert--success .alert__header {
-    background: #677424; }
+    background: #0F8243; }
 
 .alert--simple.alert--success {
-  border-color: #677424; }
+  border-color: #0F8243; }
 
 .alert--neutral {
   background: #e6ecee; }
@@ -2863,7 +2863,7 @@ li {
       padding: 2rem; } }
 
 .btn {
-  background-color: #a8bd3a;
+  background-color: #0F8243;
   color: #fff;
   border: none;
   padding: 0.75rem 2.5rem;
@@ -2876,7 +2876,7 @@ li {
   .btn:hover {
     text-decoration: none;
     color: #fff;
-    background-color: #97a934; }
+    background-color: #0c6b37; }
   .btn:focus {
     background-color: #4263c2;
     outline: none; }
@@ -3488,7 +3488,7 @@ input:checked ~ .label {
       display: block;
       width: 100%;
       height: 8px;
-      background-color: #a8bd3a;
+      background-color: #0F8243;
       position: absolute;
       top: -1.3rem;
       right: 0; } }
@@ -3777,64 +3777,64 @@ input:checked ~ .label {
   background-color: white; }
 
 .u-green {
-  color: #a8bd3a; }
+  color: #0F8243; }
 
 .u-bg-green {
-  background-color: #a8bd3a; }
+  background-color: #0F8243; }
 
 .u-green-10 {
-  color: #b1c44e; }
+  color: #278f56; }
 
 .u-bg-green-10 {
-  background-color: #b1c44e; }
+  background-color: #278f56; }
 
 .u-green-20 {
-  color: #b9ca61; }
+  color: #3f9b69; }
 
 .u-bg-green-20 {
-  background-color: #b9ca61; }
+  background-color: #3f9b69; }
 
 .u-green-30 {
-  color: #c2d175; }
+  color: #57a87b; }
 
 .u-bg-green-30 {
-  background-color: #c2d175; }
+  background-color: #57a87b; }
 
 .u-green-40 {
-  color: #cbd789; }
+  color: #6fb48e; }
 
 .u-bg-green-40 {
-  background-color: #cbd789; }
+  background-color: #6fb48e; }
 
 .u-green-50 {
-  color: #d4de9d; }
+  color: #87c1a1; }
 
 .u-bg-green-50 {
-  background-color: #d4de9d; }
+  background-color: #87c1a1; }
 
 .u-green-60 {
-  color: #dce5b0; }
+  color: #9fcdb4; }
 
 .u-bg-green-60 {
-  background-color: #dce5b0; }
+  background-color: #9fcdb4; }
 
 .u-green-70 {
-  color: #e5ebc4; }
+  color: #b7dac7; }
 
 .u-bg-green-70 {
-  background-color: #e5ebc4; }
+  background-color: #b7dac7; }
 
 .u-green-80 {
-  color: #eef2d8; }
+  color: #cfe6d9; }
 
 .u-bg-green-80 {
-  background-color: #eef2d8; }
+  background-color: #cfe6d9; }
 
 .u-green-90 {
-  color: #f6f8eb; }
+  color: #e7f3ec; }
 
 .u-bg-green-90 {
-  background-color: #f6f8eb; }
+  background-color: #e7f3ec; }
 
 .u-green-100 {
   color: white; }
