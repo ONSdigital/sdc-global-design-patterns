@@ -18,7 +18,31 @@ fractal.set('project.title', 'eQ Pattern Library');
 
 fractal.components.set('path', `${__dirname}/components`);
 fractal.components.set('default.preview', '@preview');
-
+/*
+* Custom status types for components
+*/
+fractal.components.set('statuses', {
+    prototype: {
+        label: "Prototype",
+        description: "Do not implement.",
+        color: "#FF3333"
+    },
+    testing: {
+      label: "Testing",
+      description: "Undergoing user testing",
+      color: "#4990E2"
+    },
+    wip: {
+        label: "WIP",
+        description: "Work in progress. Implement with caution.",
+        color: "#FF9233"
+    },
+    ready: {
+        label: "Ready",
+        description: "Ready to implement.",
+        color: "#29CC29"
+    },
+});
 /*
  * Configure the Handlebars template engine used by components
  *
@@ -83,7 +107,8 @@ fractal.web.set('builder.dest', 'dist');
 const theme = require('@frctl/mandelbrot')({
     skin: 'white',
     nav: ['docs', 'components'],
-    panels: ["html", "context", "info", "notes"],
+    //panels: ["html", "context", "info", "notes"],
+    panels: ["notes", "html", "info", "context"],
     static: {
       "mount": "theme",
     }

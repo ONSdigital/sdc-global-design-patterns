@@ -1,0 +1,23 @@
+{
+	"title": "Label",
+	"default": "label",
+	"variants": [{
+		"name": "label",
+		"label": "Label",
+		"context": {
+			"label_text": "Enter some text",
+			"label_target": "text-input",
+			"label_class": " venus"
+		}
+	},{
+    "name": "description",
+    "label": "Label with description",
+    "status": "wip",
+    "context": {
+      "label_text": "Label with description",
+      "label_target": "label_target",
+      "label_class": "venus",
+      "label_description": "Lorem ipsum sit amet dolor"
+    }
+  }]
+}
