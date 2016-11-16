@@ -12,6 +12,14 @@ Work in progress. Implement with caution.
 Research being undertaken or awaiting iteration from reearch outcomes.
 ### Ready <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label>
 Ready to implement.
+
+## Patterns
+Patterns are collections of Components which assemble to create a pattern.
+## Layouts
+Layouts are collections of Patterns and Components to create a block, group or page.
+## Components
+Components are individual elements at the base of the structure.
+
 ## Proposed documentation pattern
 - __Rationale__<br />
 - __Research__<br />
