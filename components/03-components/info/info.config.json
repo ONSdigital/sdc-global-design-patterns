@@ -1,0 +1,26 @@
+{
+	"title": "Info",
+	"default": "info",
+	"variants": [{
+		"name": "info",
+		"label": "Info",
+		"context": {
+			"info_classes":"",
+      "id": "1234A",
+      "date": "May 2017",
+      "ref": "12346789012B",
+      "phone": "0300 1234 567"
+		}
+	},{
+    "name": "pageheader",
+    "label": "Info for pageheader",
+    "status": "wip",
+    "context": {
+      "info_classes":"page-header__info",
+      "id": "1234A",
+      "date": "May 2017",
+      "ref": "12346789012B",
+      "phone": "0300 1234 567"
+    }
+  }]
+}

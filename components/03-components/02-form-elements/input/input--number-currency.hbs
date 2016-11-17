@@ -1,0 +1,7 @@
+<div class="input-wrap symbol currency">
+  <span class="errortext">This is a verbose description of the error</span>
+  {{>@label}}
+  <input type="text" placeholder="{{placeholder}}" id="{{label_target}}" pattern="\d*" inputmode="numeric" maxlength="6" class="input numericentry">
+  <span class="hint">{{placeholder}}</span>
+</div>
+{{>@guidance--inline}}

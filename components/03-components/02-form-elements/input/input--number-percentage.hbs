@@ -1,0 +1,6 @@
+<div class="input-wrap symbol percent end">
+  {{>@label}}
+    <input type="text" placeholder="{{placeholder}}" id="{{label_target}}" pattern="[-+]?[0-9]*[.,]?[0-9]+" inputmode="numeric" maxlength="6" class="input numericentry">
+    <span class="hint">{{placeholder}}</span>
+  </div>
+{{>@guidance--inline}}
