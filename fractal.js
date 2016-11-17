@@ -107,7 +107,6 @@ fractal.web.set('builder.dest', 'dist');
 const theme = require('@frctl/mandelbrot')({
     skin: 'white',
     nav: ['docs', 'components'],
-    //panels: ["html", "context", "info", "notes"],
     panels: ["notes", "html", "info", "context"],
     static: {
       "mount": "theme",
