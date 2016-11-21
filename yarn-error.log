@@ -2,7 +2,7 @@ Arguments:
   /usr/local/bin/node /usr/local/bin/yarn
 
 PATH: 
-  /Users/benarmstrong/projects/eq-survey-runner-patterns/node_modules/.bin:/Users/benarmstrong/.yarn-config/link/node_modules/.bin:/Users/benarmstrong/projects/eq-survey-runner-patterns/node_modules/.bin:/Users/benarmstrong/.yarn-config/link/node_modules/.bin:/Users/benarmstrong/projects/eq-survey-runner-patterns/bower_components/.bin:/Users/benarmstrong/.yarn-config/link/bower_components/.bin:/usr/local/lib/node_modules/yarn/bin/node-gyp-bin:/Users/benarmstrong/.rvm/gems/ruby-2.3.0/bin:/Users/benarmstrong/.rvm/gems/ruby-2.3.0@global/bin:/Users/benarmstrong/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/benarmstrong/.rvm/bin
+  /Users/benarmstrong/.rvm/gems/ruby-2.3.0/bin:/Users/benarmstrong/.rvm/gems/ruby-2.3.0@global/bin:/Users/benarmstrong/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/benarmstrong/.rvm/bin
 
 Yarn version: 
   0.16.1
@@ -4787,14 +4787,5 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
 Trace: 
-  Error: EACCES: permission denied, open '/Users/benarmstrong/.yarn/.roadrunner.json'
+  Error: EACCES: permission denied, scandir '/Users/benarmstrong/.yarn-cache/npm-tmp-0.0.29/x'
       at Error (native)
-      at Object.fs.openSync (fs.js:549:18)
-      at Object.fs.writeFileSync (fs.js:1156:15)
-      at /usr/local/lib/node_modules/yarn/node_modules/roadrunner/index.js:25:6
-      at /usr/local/lib/node_modules/yarn/node_modules/roadrunner/index.js:12:12
-      at emitOne (events.js:82:20)
-      at process.emit (events.js:169:7)
-      at processEmit [as emit] (/usr/local/lib/node_modules/yarn/node_modules/loud-rejection/node_modules/signal-exit/index.js:140:35)
-      at process.exit (node.js:750:17)
-      at exit (/usr/local/lib/node_modules/yarn/lib-legacy/cli/index.js:380:13)
