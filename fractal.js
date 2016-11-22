@@ -86,16 +86,16 @@ fractal.docs.set('path', `${__dirname}/docs`);
  * See https://github.com/frctl/nunjucks for more details on using Nunjucks with Fractal.
  */
 
-const nunjucksAdapter = require('@frctl/nunjucks');
+// const nunjucksAdapter = require('@frctl/nunjucks');
+//
+// const nunj = nunjucksAdapter({
+//     paths: [require.resolve('@frctl/mandelbrot') + '/../views'],
+//     globals: {
+//         frctl: fractal
+//     }
+// });
 
-const nunj = nunjucksAdapter({
-    paths: [require.resolve('@frctl/mandelbrot') + '/../views'],
-    globals: {
-        frctl: fractal
-    }
-});
-
-fractal.docs.engine(nunj);
+fractal.docs.engine(hbs);
 
 /*
  * Configure the web interface.
