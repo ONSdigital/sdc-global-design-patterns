@@ -75,6 +75,20 @@ fractal.components.engine(hbs);
  */
 
 fractal.docs.set('path', `${__dirname}/docs`);
+fractal.docs.set('default.status', 'wip'); // default is null
+
+fractal.docs.set('statuses', {
+    wip: {
+        label: "WIP",
+        description: "Work in progress.",
+        color: '#ff9233'
+    },
+    ready: {
+        label: "Ready",
+        description: "Documentation complete.",
+        color: "#29cc29"
+    },
+});
 
 /*
  * Configure the template engine used for documentation pages.
