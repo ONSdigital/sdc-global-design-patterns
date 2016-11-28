@@ -69,7 +69,18 @@
 
     
     
-    <h2 id="statuses">Statuses</h2>
+    <h2 id="purpose">Purpose</h2>
+<p>This pattern library is to document and demonstrate the development of design patterns and components that are available as part of eQ.</p>
+<h2 id="taxonomy">Taxonomy</h2>
+<p>The structure of the pattern library is described in the diagram below.
+<a href="/assets/img/patternlib-structure.svg"><img src="/assets/img/patternlib-structure.svg" width="100%" style="border:1px solid #e0e0e0; margin:1rem 0 0 0" /></a></p>
+<h3 id="patterns">Patterns</h3>
+<p>Patterns are collections of Components which assemble to create a pattern.</p>
+<h3 id="layouts">Layouts</h3>
+<p>Layouts are collections of Patterns and Components to create a block, group or page.</p>
+<h3 id="components">Components</h3>
+<p>Components are individual elements at the base of the structure.</p>
+<h2 id="statuses">Statuses</h2>
 <h3 id="prototype-label-class-status-label-style-background-color-ff3333-border-color-ff3333-prototype-label-">Prototype <label class="Status-label" style="background-color: #FF3333; border-color: #FF3333;">Prototype</label></h3>
 <p>Do not implement.</p>
 <h3 id="testing-label-class-status-label-style-background-color-4990e2-border-color-4990e2-testing-label-">Testing <label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Testing</label></h3>
@@ -79,12 +90,6 @@
 <p>Research being undertaken or awaiting iteration from reearch outcomes.</p>
 <h3 id="ready-label-class-status-label-style-background-color-29cc29-border-color-29cc29-ready-label-">Ready <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label></h3>
 <p>Ready to implement.</p>
-<h2 id="patterns">Patterns</h2>
-<p>Patterns are collections of Components which assemble to create a pattern.</p>
-<h2 id="layouts">Layouts</h2>
-<p>Layouts are collections of Patterns and Components to create a block, group or page.</p>
-<h2 id="components">Components</h2>
-<p>Components are individual elements at the base of the structure.</p>
 <h2 id="proposed-documentation-pattern">Proposed documentation pattern</h2>
 <ul>
 <li><strong>Rationale</strong><br /></li>
@@ -93,7 +98,6 @@ Any research undertaken related to this item - documented outcomes</li>
 <li><strong>Usage</strong><br />
 When to (and not to) use this pattern - include preference for use cases for sub items.</li>
 </ul>
-<p>This pattern library uses <a href="http://github.com/frctl/fractal">Fractal</a>.</p>
 
     
 
@@ -133,6 +137,26 @@ When to (and not to) use this pattern - include preference for use cases for sub
         </li>
         
     
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="docs/colours.html" data-pjax>
+                <span>Colours</span>
+                
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="docs/grid.html" data-pjax>
+                <span>Grid</span>
+                
+            </a>
+        </li>
+        
+    
 
     </ul>
 </div>
@@ -161,10 +185,21 @@ When to (and not to) use this pattern - include preference for use cases for sub
             
     
         
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-footer">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Footer</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="components/detail/footer.html" data-pjax>
-                <span>Footer</span>
+            <a class="Tree-entityLink" href="components/detail/footer--default.html" data-pjax>
+                <span>Default</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -187,8 +222,8 @@ When to (and not to) use this pattern - include preference for use cases for sub
         
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="components/detail/header.html" data-pjax>
-                <span>Header</span>
+            <a class="Tree-entityLink" href="components/detail/footer--census.html" data-pjax>
+                <span>Census</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -205,6 +240,75 @@ When to (and not to) use this pattern - include preference for use cases for sub
 
 
             </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-header">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Header</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/header--default.html" data-pjax>
+                <span>Default</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/header--census.html" data-pjax>
+                <span>Census</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
         </li>
         
     
@@ -1265,10 +1369,21 @@ When to (and not to) use this pattern - include preference for use cases for sub
         
     
         
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-logo">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Logo</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="components/detail/logo.html" data-pjax>
-                <span>Logo</span>
+            <a class="Tree-entityLink" href="components/detail/logo--default.html" data-pjax>
+                <span>Default</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -1277,6 +1392,59 @@ When to (and not to) use this pattern - include preference for use cases for sub
 
 
 <span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/logo--census.html" data-pjax>
+                <span>Census</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/nav.html" data-pjax>
+                <span>Nav</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF3333;" title="Prototype"></span>
 
 
 </div>
