@@ -115,7 +115,7 @@ fractal.docs.engine(hbs);
  * Configure the web interface.
  */
 
-fractal.web.set('static.path', `${__dirname}/public`);
+fractal.web.set('static.path', '${__dirname}/public');
 fractal.web.set('builder.dest', 'dist');
 
 const theme = require('@frctl/mandelbrot')({
