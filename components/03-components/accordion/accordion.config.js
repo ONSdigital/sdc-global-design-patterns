@@ -1,4 +1,5 @@
 module.exports = {
   "title": "Accordion",
-  "status": "wip",
+  "status": "deprecated",
+  "notes": "No longer in use."
 }

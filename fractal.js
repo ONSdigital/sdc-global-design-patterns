@@ -18,6 +18,7 @@ fractal.set('project.title', 'eQ Pattern Library');
 
 fractal.components.set('path', `${__dirname}/components`);
 fractal.components.set('default.preview', '@preview');
+fractal.components.set('title', 'Elements'); // default is 'Components'
 /*
 * Custom status types for components
 */
@@ -42,6 +43,11 @@ fractal.components.set('statuses', {
         description: "Ready to implement.",
         color: "#29CC29"
     },
+    deprecated: {
+        label: "Deprecated",
+        description: "No longer in use.",
+        color: "#ccc"
+    }
 });
 /*
  * Configure the Handlebars template engine used by components
