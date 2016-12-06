@@ -24,4 +24,8 @@ The primary font used in eQ is '__Lato__'.
 * Bold: 700
 * Regular: 400
 
-## Usage
+### Line Heights and Tracking
+Line height 1.4rem
+Tracking  0.05rem/10%
+
+Font stack - <span class="eq-font-lato">Lato</span>, <span class="eq-font-helvneue">“Helvetica Neue”</span>, <span class="eq-font-helv">Helvetica</span>, <span class="eq-font-arial">Arial</span>, <span class="eq-font-sans-serif">sans-serif</span>;

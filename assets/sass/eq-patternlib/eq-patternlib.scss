@@ -1,4 +1,62 @@
 //eq-patternlib.scss
+// Vars
+$ons-blue: #003D59;
+$color-census-purple: #6E2585;
+$primary-action: #0F8243;
+$color-warning: #f99c21;
+// Amending width of preview pane in docs
+.Header-title {
+
+}
+.Header-title:before {
+  background-image: url(/assets/img/eq.png);
+  background-repeat: no-repeat;
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-position: 0;
+  background-size: contain;
+  vertical-align: bottom;
+  margin-right: 0.5rem;
+}
+.Prose {
+  max-width: 100%;
+}
+.Prose p {
+  max-width: 44em;
+}
+.Prose tr:nth-child(even) {
+  background-color: transparent;
+}
+.Prose tr {
+  border-bottom: 1px solid #eee;
+}
+.Prose tr:last-of-type {
+  border-bottom: none;
+}
+
+.eq-font-lato {
+  font-family: "Lato";
+  font-size: 1.5rem;
+}
+.eq-font-helvneue {
+  font-family: "Helvetica Neue";
+  font-size: 1.5rem;
+}
+.eq-font-helv {
+  font-family: "Helvetica";
+  font-size: 1.5rem;
+}
+.eq-font-arial {
+  font-family: "Arial";
+  font-size: 1.5rem;
+}
+.eq-sans {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+}
+
 .eq-docs-img {
   float: right;
   &.float-right {
@@ -30,7 +88,7 @@ h3 {
   width: 150px;
   height: 215px;
   border-radius: 3px;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.1);
   margin-bottom: 1rem;
   margin-right: 1rem;
   box-sizing: content-box;
@@ -38,7 +96,14 @@ h3 {
   font-size: 0.8rem;
   overflow: hidden;
 }
-.eq-tile-colour { min-height: 40%; }
+.eq-tile-colour { min-height: 40%; text-align: center;}
+.eq-tile-panel-text {
+  font-size: 24pt;
+  font-weight: 900;
+  font-family: "Lato";
+  padding-top: 1.3rem;
+  display: block;
+}
 .eq-tile-info {
   padding: 0.4rem;
   background-color: #fff;
@@ -49,30 +114,25 @@ h3 {
 .eq-tile-info-table td {
   padding: 0.3rem;
   font-size: 0.7rem;
+  vertical-align: top;
 }
 .ons-blue {
-  background-color: #003d59;
+  background-color: $ons-blue;
 }
 .ons-green {
   background-color: #a8bd3a;
 }
-.error {
-  background-color: #d0021b;
-}
-.error-panel {
-  background-color: #fbecec;
-}
 .warning {
-  background-color: #f99c21;
+  background-color: $color-warning;
 }
 .color-text {
   background-color: $color-text;
 }
-.secondary-text {
+.color-secondary-text {
   background-color: #666;
 }
-.hint-text {
-  background-color: #999;
+.color-hint-text {
+  background-color: #ccc;
 }
 .color-links {
   background-color: $color-links;
@@ -80,29 +140,78 @@ h3 {
 .color-links-hover {
   background-color: #033e58;
 }
-.colour-census-purple {
-  background-color: #6E2585;
+.color-census-purple {
+  background-color: $color-census-purple;
+}
+.color-census-purple-bg {
+  background-color: #FAF4FC;
 }
 .color-primary {
-  background-color: #0F8243;
+  background-color: #078242; //ok
 }
 .color-primary-dark {
   background-color: #677424;
 }
 .color-error {
   background-color: #C50B0B;
+  .eq-tile-panel-text {
+    color: #fff;
+  }
 }
-.color-error-background {
+.color-error-bg {
   background-color: #fbecec;
+  .eq-tile-panel-text {
+    color: $color-text;
+  }
+}
+.color-highlight {
+  background-color: $ons-blue;
+  .eq-tile-panel-text {
+    color: $color-white;
+  }
+}
+.color-highlight-bg {
+  background-color: #f5f6ff;
+  .eq-tile-panel-text {
+    color: $color-text;
+  }
 }
 .color-warning {
-  background-color: #fe781f;
+  background-color: #f99c21;
+  .eq-tile-panel-text {
+    color: $color-text;
+  }
 }
-.color-warning-backrgound {
-  background-color: #fe781f;
+.color-warning-bg {
+  background-color: #fdf6ec;
+  .eq-tile-panel-text {
+    color: $color-text;
+  }
+}
+.color-success {
+  background-color: #0f8243;
+  .eq-tile-panel-text {
+    color: $color-white;
+  }
+}
+.color-success-bg {
+  background-color: #dbfdea;
+  .eq-tile-panel-text {
+    color: $color-text;
+  }
 }
 .color-neutral {
   background-color: #F5F6FF;
+}
+.color-border {
+  background-color: #999;
+}
+.color-background {
+  background-color: #eee;
+}
+.color-primary-bg {
+  background-color: $color-white;
+  border-bottom: 1px solid #eee;
 }
 // eQ Typography samples
 .eq-typography {
