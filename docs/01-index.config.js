@@ -1,4 +1,4 @@
 module.exports = {
   "title": "Overview",
-  "status": "wip",
+  "status": "draft",
 }

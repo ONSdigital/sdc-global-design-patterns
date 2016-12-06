@@ -6,7 +6,6 @@ Text is the primary way that users digest content and accomplish work, so it’s
 The primary font used in eQ is '__Lato__'.
 
 ## Typographic Matrix
-<div class="eq-typography">
 
 |                    | 320                                                | 321-599                                            | 600+ |
 |--------------------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
@@ -18,7 +17,9 @@ The primary font used in eQ is '__Lato__'.
 | __Mercury__ (hint) | <p class="mercury vp320">Lato Bold</p>0.7rem/14pt  | <p class="mercury vp599">Lato Bold</p>0.7rem/14pt  | <p class="mercury vp600">Lato Bold</p>0.7rem/14pt  |
 | __Pluto__ (hint)   | <p class="pluto vp320">Lato Regular</p>0.7rem/14pt | <p class="pluto vp599">Lato Regular</p>0.7rem/14pt | <p class="pluto vp600">Lato Regular</p>0.7rem/14pt |
 
-</div>
+## Typographic Hierarchy
+![Typographic hierarchy]({{path '/assets/img/eq-typographic-hierarchy.svg'}})
+
 ### Font weights
 * Black: 900
 * Bold: 700

@@ -81,13 +81,13 @@ fractal.components.engine(hbs);
  */
 
 fractal.docs.set('path', `${__dirname}/docs`);
-fractal.docs.set('default.status', 'wip'); // default is null
+fractal.docs.set('default.status', 'draft'); // default is null
 
 fractal.docs.set('statuses', {
-    wip: {
-        label: "WIP",
-        description: "Work in progress.",
-        color: '#ff9233'
+    draft: {
+      label: "Draft",
+      description: "Awaiting content",
+      color: '#4990E2'
     },
     ready: {
         label: "Ready",
