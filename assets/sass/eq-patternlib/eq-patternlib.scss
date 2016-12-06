@@ -1,0 +1,189 @@
+//eq-patternlib.scss
+.eq-docs-img {
+  float: right;
+  &.float-right {
+    float: right;
+    margin: 0 0 1rem 1rem;
+  }
+  &.float-left {
+    float: left;
+    margin: 0 1rem 1rem 0;
+  }
+  &.w50pc {
+    width: 50%;
+  }
+}
+h3 {
+  display: block;
+  width: 100%;
+  clear: both;
+}
+.eq-tile-container {
+  display: block;
+  position: relative;
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.eq-tile {
+  width: 150px;
+  height: 215px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  box-sizing: content-box;
+  float: left;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+.eq-tile-colour { min-height: 40%; }
+.eq-tile-info {
+  padding: 0.4rem;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.eq-tile-info-title { font-size: 0.8rem !important; }
+.Prose table.eq-tile-info-table { margin: 1rem 0;}
+.eq-tile-info-table td {
+  padding: 0.3rem;
+  font-size: 0.7rem;
+}
+.ons-blue {
+  background-color: #003d59;
+}
+.ons-green {
+  background-color: #a8bd3a;
+}
+.error {
+  background-color: #d0021b;
+}
+.error-panel {
+  background-color: #fbecec;
+}
+.warning {
+  background-color: #f99c21;
+}
+.color-text {
+  background-color: $color-text;
+}
+.secondary-text {
+  background-color: #666;
+}
+.hint-text {
+  background-color: #999;
+}
+.color-links {
+  background-color: $color-links;
+}
+.color-links-hover {
+  background-color: #033e58;
+}
+.colour-census-purple {
+  background-color: #6E2585;
+}
+.color-primary {
+  background-color: #0F8243;
+}
+.color-primary-dark {
+  background-color: #677424;
+}
+.color-error {
+  background-color: #C50B0B;
+}
+.color-error-background {
+  background-color: #fbecec;
+}
+.color-warning {
+  background-color: #fe781f;
+}
+.color-warning-backrgound {
+  background-color: #fe781f;
+}
+.color-neutral {
+  background-color: #F5F6FF;
+}
+// eQ Typography samples
+.eq-typography {
+  .jupiter {
+    font-family: "Lato";
+    font-weight: 900; // Lato Black is 900 // Bold is 700 // Regular is 400
+    color: $color-text;
+    &.vp320,
+    &.vp599 {
+      font-size: 28pt;
+      line-height: 1.2;
+    }
+    &.vp600 {
+      font-size: 36pt;
+      line-height: 1.2;
+    }
+  } // Jupiter
+  .saturn {
+    font-family: "Lato";
+    font-weight: 700;
+    color: $color-text;
+    &.vp320,
+    &.vp599 {
+      font-size:24pt;
+    }
+    &.vp600 {
+      font-size: 28pt;
+    }
+  } // Saturn
+  .neptune {
+    font-family: "Lato";
+    font-weight: 700;
+    color: $color-text;
+    &.vp320 {
+      font-size: 18pt;
+    }
+    &.vp599 {
+      font-size: 20pt
+    }
+    &.vp600 {
+      font-size: 22pt;
+    }
+  } // Neptune
+  .venus {
+    font-family: "Lato";
+    font-weight: 700;
+    color: $color-text;
+    &.vp320,
+    &.vp599 {
+      font-size: 16pt;
+    }
+    &.vp600 {
+      font-size: 18pt;
+    }
+  }
+  .mars {
+    font-family: "Lato";
+    font-weight: 400;
+    color: $color-text;
+    &.vp320,
+    &.vp599 {
+      font-size: 16pt;
+    }
+    &.vp600 {
+      font-size: 18pt;
+    }
+  } // Mars
+  .mercury {
+    font-family: "Lato";
+    font-weight: 700;
+    color: $color-text;
+    &.vp320,&.vp599,&vp.600 {
+      font-size: 14pt;
+    }
+  } // Mercury
+  .pluto {
+    font-family: "Lato";
+    font-weight: 400;
+    color: $color-text;
+    &.vp320,&.vp599,&vp.600 {
+      font-size: 14pt;
+    }
+  }
+}
