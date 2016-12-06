@@ -39,7 +39,7 @@ gulp.task('fractal:build', function(){
 /* CSS */
 
 gulp.task('css:process', function() {
-  return gulp.src('assets/sass/styles.scss')
+  return gulp.src('assets/sass/*.scss')
     .pipe(sassGlob())
     .pipe(sass())
     .pipe(postcss([

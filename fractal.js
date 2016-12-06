@@ -130,7 +130,11 @@ const theme = require('@frctl/mandelbrot')({
     panels: ["notes", "html", "info", "context"],
     static: {
       "mount": "theme",
-    }
+    },
+    styles: [
+      "default",
+      "/assets/css/eq-patternlib-styles.css" // Used for eQ Pattern Library specific styles e.g. Colour swatches
+    ]
 });
 
 fractal.web.theme(theme);

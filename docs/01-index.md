@@ -6,6 +6,7 @@ title: Overview
 This pattern library is to document and demonstrate the development of design patterns and components that are available as part of eQ.
 
 The eQ pattern library reflects the patterns and components that underpin the eQ product. These patterns, layouts and components provide a unified language and consistent look and feel when working within the eQ ecosystem.
+
 ## eQ Pattern Library Taxonomy
 The structure of the pattern library is described in the diagram below.
 <a href="{{path '/assets/img/patternlib-structure.svg'}}"><img src="{{path '/assets/img/patternlib-structure.svg'}}" width="100%" style="border:1px solid #e0e0e0; margin:1rem 0 0 0" /></a>

@@ -6,14 +6,22 @@ Text is the primary way that users digest content and accomplish work, so it’s
 The primary font used in eQ is '__Lato__'.
 
 ## Typographic Matrix
-|  | 320 | 321-599 | 600+ |
-|--|-----|---------|------|
-| __Jupiter__ (h1) | Lato Black, 2rem/28pt | Lato Black, 2rem/28pt | Lato Black, 2rem/36pt |
-| __Saturn__ (h2) | Lato Bold, 1.5rem/24pt | Lato Bold, 1.5rem/24pt | Lato Bold, 1.5rem/28pt |
-| __Neptune__ (h3) | Lato Bold, 1.2rem/18pt | Lato Bold, 1.2rem/20pt | Lato Bold, 1.2rem/22pt |
-| __Venus__ (label) | Lato Bold, 1rem/16pt | Lato Bold, 1rem/16pt | Lato Bold, 1rem/18pt |
-| __Mars__ (body) | Lato Regular, 1rem/16pt | Lato Regular, 1rem/16pt | Lato Regular, 1rem/18pt |
-| __Mercury__ (hint) | Lato Bold, 0.7rem/14pt | Lato Bold, 0.7rem/14pt | Lato Bold, 0.7rem/14pt |
-| __Pluto__ (hint) | Lato Regular, 0.7rem/14pt | Lato Regular, 0.7rem/14pt | Lato Regular, 0.7rem/14pt |
+<div class="eq-typography">
+
+|                    | 320                                                | 321-599                                            | 600+ |
+|--------------------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
+| __Jupiter__ (h1)   | <p class="jupiter vp320">Lato Black</p> 2rem/28pt  | <p class="jupiter vp599">Lato Black</p>2rem/28pt   | <p class="jupiter vp600">Lato Black</p>2rem/36pt   |
+| __Saturn__ (h2)    | <p class="saturn vp320">Lato Bold</p>1.5rem/24pt   | <p class="saturn vp599">Lato Bold</p>1.5rem/24pt   | <p class="saturn vp600">Lato Bold</p>1.5rem/28pt   |
+| __Neptune__ (h3)   | <p class="neptune vp320">Lato Bold</p>1.2rem/18pt  | <p class="neptune vp599">Lato Bold</p>1.2rem/20pt  | <p class="neptune vp600">Lato Bold</p>1.2rem/22pt  |
+| __Venus__ (label)  | <p class="venus vp320">Lato Bold</p>1rem/16pt      | <p class="venus vp599">Lato Bold</p>1rem/16pt      | <p class="venus vp600">Lato Bold</p>1rem/18pt      |
+| __Mars__ (body)    | <p class="mars vp320">Lato Regular</p>1rem/16pt    | <p class="mars vp599">Lato Regular</p>1rem/16pt    | <p class="mars vp600">Lato Regular</p>1rem/18pt    |
+| __Mercury__ (hint) | <p class="mercury vp320">Lato Bold</p>0.7rem/14pt  | <p class="mercury vp599">Lato Bold</p>0.7rem/14pt  | <p class="mercury vp600">Lato Bold</p>0.7rem/14pt  |
+| __Pluto__ (hint)   | <p class="pluto vp320">Lato Regular</p>0.7rem/14pt | <p class="pluto vp599">Lato Regular</p>0.7rem/14pt | <p class="pluto vp600">Lato Regular</p>0.7rem/14pt |
+
+</div>
+### Font weights
+* Black: 900
+* Bold: 700
+* Regular: 400
 
 ## Usage
