@@ -1,0 +1,220 @@
+{
+  "title": "eQ Colours",
+  "status": "testing",
+  "preview": "@previewcolours",
+  "handle": "eq-colours",
+  "name": "eq-colours",
+  "label": "Colours",
+  "default": "colour-onsblue",
+  "collated": "true",
+  "variants": [{
+      "label":"ONS Blue",
+      "name":"colour-onsblue",
+      "status":"ready",
+      "context": {
+        "colour-title":"ONS Blue",
+        "colour-name": "ons-blue",
+        "colour-hex": "#003C57",
+        "colour-rgb": "0,60,87"
+      }
+    }, {
+        "label":"ONS Green",
+        "name":"colour-onsgreen",
+        "status":"ready",
+        "context": {
+          "colour-title":"ONS Green",
+          "colour-name": "ons-green",
+          "colour-hex": "#A8BD3A",
+          "colour-rgb": "168,189,58"
+        }
+    }, {
+        "label":"Text",
+        "name":"colour-text",
+        "status":"ready",
+        "context": {
+          "colour-title":"Text",
+          "colour-name": "color-text",
+          "colour-hex": "#222222",
+          "colour-rgb": "34,34,34"
+        }
+    }, {
+        "label":"Secondary text",
+        "name":"colour-secondary-text",
+        "status":"ready",
+        "context": {
+          "colour-title":"Secondary text",
+          "colour-name": "color-secondary-text",
+          "colour-hex": "#666666",
+          "colour-rgb": "102,102,102"
+        }
+    }, {
+        "label":"Hint text",
+        "name":"colour-hint-text",
+        "status":"ready",
+        "context": {
+          "colour-title":"Hint text",
+          "colour-name": "color-hint-text",
+          "colour-hex": "#CCCCCC",
+          "colour-rgb": "204,204,204"
+        }
+    }, {
+        "label":"Link",
+        "name":"colour-link",
+        "status":"ready",
+        "context": {
+          "colour-title":"Link",
+          "colour-name": "color-links",
+          "colour-hex": "#4361AA",
+          "colour-rgb": "67,97,170"
+        }
+    }, {
+      "label":"Link (hover)",
+      "name":"colour-link-hover",
+      "status":"ready",
+      "context": {
+        "colour-title":"Link (hover)",
+        "colour-name":"color-links-hover",
+        "colour-hex":"#033E58",
+        "colour-rgb":"3,62,88"
+      }
+    }, {
+      "label":"Primary",
+      "name":"colour-primary",
+      "status":"ready",
+      "context": {
+        "colour-title":"Primary",
+        "colour-name":"color-primary",
+        "colour-hex":"#0F8243",
+        "colour-rgb":"15,130,67"
+      }
+    }, {
+      "label":"Error",
+      "name":"colour-error",
+      "status":"ready",
+      "context": {
+        "colour-title":"Error",
+        "colour-name":"color-error",
+        "colour-hex":"#D0121E",
+        "colour-rgb":"208,18,30",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Error (background)",
+      "name":"colour-error-bg",
+      "status":"ready",
+      "context": {
+        "colour-title":"Error (background)",
+        "colour-name":"color-error-bg",
+        "colour-hex":"#FBECEC",
+        "colour-rgb":"251,236,236",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Highlight",
+      "name":"color-highlight",
+      "status":"ready",
+      "context": {
+        "colour-title":"Highlight",
+        "colour-name":"color-highlight",
+        "colour-hex":"#003C57",
+        "colour-rgb":"0,60,87",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Highlight (background)",
+      "name":"color-highlight-bg",
+      "status":"ready",
+      "context": {
+        "colour-title":"Highlight (background)",
+        "colour-name":"color-highlight-bg",
+        "colour-hex":"#F5F6FF",
+        "colour-rgb":"245,246,255",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Warning",
+      "name":"colour-warning",
+      "status":"ready",
+      "context": {
+        "colour-title":"Warning",
+        "colour-name":"color-warning",
+        "colour-hex":"#F99C21",
+        "colour-rgb":"249,156,33",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Warning (background)",
+      "name":"colour-warning-bg",
+      "status":"ready",
+      "context": {
+        "colour-title":"Warning (background)",
+        "colour-name":"color-warning-bg",
+        "colour-hex":"#FDF6EC",
+        "colour-rgb":"253,246,236",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Success",
+      "name":"colour-success",
+      "status":"ready",
+      "context": {
+        "colour-title":"Success",
+        "colour-name":"color-success",
+        "colour-hex":"#0F8243",
+        "colour-rgb":"15,130,67",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Success (background)",
+      "name":"colour-success-bg",
+      "status":"ready",
+      "context": {
+        "colour-title":"Success (background)",
+        "colour-name":"color-success-bg",
+        "colour-hex":"#DBFDEA",
+        "colour-rgb":"219,253,234",
+        "panel-text":"A"
+      }
+    }, {
+      "label":"Census Purple",
+      "name":"color-census-purple",
+      "status":"ready",
+      "context": {
+        "colour-title":"Census Purple",
+        "colour-name":"color-census-purple",
+        "colour-hex":"#6E2585",
+        "colour-rgb":"110,37,133"
+      }
+    }, {
+      "label":"Primary background",
+      "name":"color-primary-bg",
+      "status":"ready",
+      "context": {
+        "colour-title":"Primary background",
+        "colour-name":"color-primary-bg",
+        "colour-hex":"#FFFFFF",
+        "colour-rgb":"255,255,255"
+      }
+    }, {
+      "label":"Borders",
+      "name":"color-border",
+      "status":"ready",
+      "context": {
+        "colour-title":"Borders",
+        "colour-name":"color-border",
+        "colour-hex":"#999999",
+        "colour-rgb":"153,153,153"
+      }
+    }, {
+      "label":"Backgrounds",
+      "name":"color-background",
+      "status":"ready",
+      "context": {
+        "colour-title":"Backgrounds",
+        "colour-name":"color-background",
+        "colour-hex":"#EEEEEE",
+        "colour-rgb":"238,238,238"
+      }
+    }
+  ]
+}

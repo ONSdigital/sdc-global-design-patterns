@@ -1,0 +1,53 @@
+{
+  "title": "Panels",
+  "label": "Panels",
+  "default": "neutral",
+  "collated": "true",
+  "variants": [{
+      "label":"Neutral",
+      "name":"neutral",
+      "status":"ready",
+      "context": {
+        "alerttype":"neutral",
+        "alertheader": "Neutral",
+        "alertbody": "Neutral alert body content goes here."
+      }
+    }, {
+      "label":"Success",
+      "name":"success",
+      "status":"wip",
+      "context": {
+        "alerttype":"success",
+        "alertheader": "Success",
+        "alertbody": "Would be great to call an include here!!"
+      }
+    }, {
+      "label":"Warning",
+      "name":"warn",
+      "status":"ready",
+      "context": {
+        "alerttype":"warn",
+        "alertheader": "Warning",
+        "alertbody": "Warning content would appear here."
+      }
+    }, {
+      "label":"Error",
+      "name":"error",
+      "status":"ready",
+      "context": {
+        "alerttype":"error",
+        "alertheader": "Error",
+        "alertbody": "Error content would appear here."
+      }
+    }, {
+      "label":"Simple",
+      "name":"simple",
+      "status":"ready",
+      "context": {
+        "alerttype":"simple",
+        "alertheader": "Simple",
+        "alertbody": "Simple content would appear here."
+      }
+    }
+  ]
+}
