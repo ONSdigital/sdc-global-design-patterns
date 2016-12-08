@@ -16,7 +16,7 @@ $color-success: $primary-action;
 
 }
 .Header-title:before {
-  background-image: url('/assets/img/eq.png');
+  background-image: url('../img/eq.png');
   background-repeat: no-repeat;
   content: "";
   display: inline-block;
@@ -224,7 +224,7 @@ h3 {
 }
 // eQ Typography samples
 .jupiter {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 900; // Lato Black is 900 // Bold is 700 // Regular is 400
   color: $color-text;
   &.vp320,
@@ -238,7 +238,7 @@ h3 {
   }
 } // Jupiter
 .saturn {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
   &.vp320,
@@ -250,7 +250,7 @@ h3 {
   }
 } // Saturn
 .neptune {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
   &.vp320 {
@@ -264,7 +264,7 @@ h3 {
   }
 } // Neptune
 .venus {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
   &.vp320,
@@ -276,7 +276,7 @@ h3 {
   }
 }
 .mars {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 400;
   color: $color-text;
   &.vp320,
@@ -288,7 +288,7 @@ h3 {
   }
 } // Mars
 .mercury {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
   &.vp320,&.vp599,&vp.600 {
@@ -296,7 +296,7 @@ h3 {
   }
 } // Mercury
 .pluto {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-weight: 400;
   color: $color-text;
   &.vp320,&.vp599,&vp.600 {
