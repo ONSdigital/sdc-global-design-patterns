@@ -7,20 +7,24 @@ The primary font used in eQ is '__Lato__'.
 
 ## Typographic Matrix
 
-|                    | 320                                                | 321-599                                            | 600+ |
-|--------------------|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
-| __Jupiter__ (h1)   | <p class="jupiter vp320">Lato Black</p> 2rem/28pt  | <p class="jupiter vp599">Lato Black</p>2rem/28pt   | <p class="jupiter vp600">Lato Black</p>2rem/36pt   |
-| __Saturn__ (h2)    | <p class="saturn vp320">Lato Bold</p>1.5rem/24pt   | <p class="saturn vp599">Lato Bold</p>1.5rem/24pt   | <p class="saturn vp600">Lato Bold</p>1.5rem/28pt   |
-| __Neptune__ (h3)   | <p class="neptune vp320">Lato Bold</p>1.2rem/18pt  | <p class="neptune vp599">Lato Bold</p>1.2rem/20pt  | <p class="neptune vp600">Lato Bold</p>1.2rem/22pt  |
-| __Venus__ (label)  | <p class="venus vp320">Lato Bold</p>1rem/16pt      | <p class="venus vp599">Lato Bold</p>1rem/16pt      | <p class="venus vp600">Lato Bold</p>1rem/18pt      |
-| __Mars__ (body)    | <p class="mars vp320">Lato Regular</p>1rem/16pt    | <p class="mars vp599">Lato Regular</p>1rem/16pt    | <p class="mars vp600">Lato Regular</p>1rem/18pt    |
-| __Mercury__ (hint) | <p class="mercury vp320">Lato Bold</p>0.7rem/14pt  | <p class="mercury vp599">Lato Bold</p>0.7rem/14pt  | <p class="mercury vp600">Lato Bold</p>0.7rem/14pt  |
-| __Pluto__ (hint)   | <p class="pluto vp320">Lato Regular</p>0.7rem/14pt | <p class="pluto vp599">Lato Regular</p>0.7rem/14pt | <p class="pluto vp600">Lato Regular</p>0.7rem/14pt |
+| 320                                                | 321-599                                            | 600+ |
+|----------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
+| <p class="jupiter vp320">Jupiter</p>Lato Black - 2rem/28pt  | <p class="jupiter vp599">Jupiter</p>Lato Black - 2rem/28pt   | <p class="jupiter vp600">Jupiter</p>Lato Black - 2rem/36pt   |
+| <p class="saturn vp320">Saturn</p>Lato Bold - 1.5rem/24pt   | <p class="saturn vp599">Saturn</p>Lato Bold - 1.5rem/24pt   | <p class="saturn vp600">Saturn</p>Lato Bold - 1.5rem/28pt   |
+| <p class="neptune vp320">Neptune</p>Lato Bold - 1.2rem/18pt  | <p class="neptune vp599">Neptune</p>Lato Bold - 1.2rem/20pt  | <p class="neptune vp600">Neptune</p>Lato Bold - 1.2rem/22pt  |
+| <p class="venus vp320">Venus</p>Lato Bold - 1rem/16pt      | <p class="venus vp599">Venus</p>Lato Bold - 1rem/16pt      | <p class="venus vp600">Venus</p>Lato Bold - 1rem/18pt      |
+| <p class="mars vp320">Mars</p>Lato Regular - 1rem/16pt    | <p class="mars vp599">Mars</p>Lato Regular - 1rem/16pt    | <p class="mars vp600">Mars</p>Lato Regular - 1rem/18pt    |
+| <p class="mercury vp320">Mercury</p>Lato Bold - 0.7rem/14pt  | <p class="mercury vp599">Mercury</p>Lato Bold - 0.7rem/14pt  | <p class="mercury vp600">Mercury</p>Lato Bold - 0.7rem/14pt  |
+| <p class="pluto vp320">Pluto</p>Lato Regular - 0.7rem/14pt | <p class="pluto vp599">Pluto</p>Lato Regular - 0.7rem/14pt | <p class="pluto vp600">Pluto</p>Lato Regular - 0.7rem/14pt |
 
 ## Typographic Hierarchy
 ![Typographic hierarchy]({{path '/assets/img/eq-typographic-hierarchy.svg'}})
 
-### Font weights
+### Typographic weights
+
+<p class="eq-font-lato jupiter">abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+<p class="eq-font-lato saturn">abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+<p class="eq-font-lato mars">abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
 * Black: 900
 * Bold: 700
 * Regular: 400

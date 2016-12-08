@@ -46,9 +46,8 @@ $color-success: $primary-action;
   margin: 1rem 0;
   width: 100%;
 }
-
 .eq-font-lato {
-  font-family: "Lato";
+  font-family: $font-sans;
   font-size: 1.5rem;
   letter-spacing: 0.05rem;
 }
