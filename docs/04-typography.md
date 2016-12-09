@@ -23,9 +23,9 @@ The typographic hierarchy provides a logical visual guide to the structural hier
 
 ### Typographic weights
 
-<p class="eq-font-lato jupiter">Lato Black<br/>abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
-<p class="eq-font-lato saturn">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
-<p class="eq-font-lato mars">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+<p class="eq-font-lato jupiter">Lato Black<br/>abcdefghijklmnopqrstuvwxyz&acirc;&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Acirc;&Wcirc;&Ycirc;<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/</p>
+<p class="eq-font-lato saturn">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz&acirc;&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Acirc;&Wcirc;&Ycirc;<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/</p>
+<p class="eq-font-lato mars">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz&acirc;&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Acirc;&Wcirc;&Ycirc;<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/</p>
 
 * Black: 900
 * Bold: 700
