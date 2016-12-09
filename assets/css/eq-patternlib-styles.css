@@ -1,5 +1,5 @@
 .Header-title:before {
-  background-image: url("/assets/img/eq.png");
+  background-image: url("../img/eq.png");
   background-repeat: no-repeat;
   content: "";
   display: inline-block;
@@ -201,7 +201,7 @@ h3 {
   border-bottom: 1px solid #eee; }
 
 .jupiter {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 900;
   color: #222; }
   .jupiter.vp320, .jupiter.vp599 {
@@ -212,7 +212,7 @@ h3 {
     line-height: 1.2; }
 
 .saturn {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   color: #222; }
   .saturn.vp320, .saturn.vp599 {
@@ -221,7 +221,7 @@ h3 {
     font-size: 28pt; }
 
 .neptune {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   color: #222; }
   .neptune.vp320 {
@@ -232,7 +232,7 @@ h3 {
     font-size: 22pt; }
 
 .venus {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   color: #222; }
   .venus.vp320, .venus.vp599 {
@@ -241,7 +241,7 @@ h3 {
     font-size: 18pt; }
 
 .mars {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   color: #222; }
   .mars.vp320, .mars.vp599 {
@@ -250,14 +250,14 @@ h3 {
     font-size: 18pt; }
 
 .mercury {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   color: #222; }
   .mercury.vp320, .mercury.vp599, .mercuryvp.600 {
     font-size: 14pt; }
 
 .pluto {
-  font-family: "Lato";
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   color: #222; }
   .pluto.vp320, .pluto.vp599, .plutovp.600 {
