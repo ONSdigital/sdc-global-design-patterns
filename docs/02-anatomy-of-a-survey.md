@@ -1,10 +1,14 @@
 ---
 title: Anatomy of a Survey
 ---
+![Anatomy of a survey]({{path '/assets/img/eq-survey-lifecycle.svg'}})
+
 
 ## 1. Survey home
-__(Either RAS or Census home?)__
-## 2.
+
+## 2. Question groups
+
+## 3. Submission
 
 ## Questionnaire
 Is a collection of groups (__sections__) or blocks (__pages__).

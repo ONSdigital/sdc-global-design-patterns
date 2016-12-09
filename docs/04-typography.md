@@ -18,13 +18,15 @@ The primary font used in eQ is '__Lato__'.
 | <p class="pluto vp320">Pluto</p>Lato Regular - 0.7rem/14pt | <p class="pluto vp599">Pluto</p>Lato Regular - 0.7rem/14pt | <p class="pluto vp600">Pluto</p>Lato Regular - 0.7rem/14pt |
 
 ## Typographic Hierarchy
+The typographic hierarchy provides a logical visual guide to the structural hierarchy of a group.
 ![Typographic hierarchy]({{path '/assets/img/eq-typographic-hierarchy.svg'}})
 
 ### Typographic weights
 
-<p class="eq-font-lato jupiter">abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
-<p class="eq-font-lato saturn">abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
-<p class="eq-font-lato mars">abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+<p class="eq-font-lato jupiter">Lato Black<br/>abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+<p class="eq-font-lato saturn">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+<p class="eq-font-lato mars">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Wcirc;&Ycirc;<br/>1234567890()@</p>
+
 * Black: 900
 * Bold: 700
 * Regular: 400

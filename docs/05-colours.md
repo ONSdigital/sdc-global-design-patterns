@@ -27,3 +27,5 @@ These are the brand colours for The Office for National Statistics
 <div class="eq-tile-container">
   {{render '@eq-colours--colour-error'}}{{render '@eq-colours--colour-error-bg'}}{{render '@eq-colours--color-highlight'}}{{render '@eq-colours--color-highlight-bg'}}{{render '@eq-colours--colour-warning'}}{{render '@eq-colours--colour-warning-bg'}}{{render '@eq-colours--colour-success'}}{{render '@eq-colours--colour-success-bg'}}
 </div>
+
+## Research
