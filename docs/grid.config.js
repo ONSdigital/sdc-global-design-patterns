@@ -1,4 +1,4 @@
 module.exports = {
   "title": "eQ Grid",
-  "status": "draft",
+  "status": "ready",
 }
