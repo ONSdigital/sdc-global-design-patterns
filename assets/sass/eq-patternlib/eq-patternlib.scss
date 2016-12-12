@@ -29,7 +29,7 @@ $color-success: $primary-action;
 }
 .Prose {
   max-width: 100%;
-
+  color: $color-text;
   font-variant-numeric: proportional-nums;
   -moz-font-feature-settings: "pnum";
   -webkit-font-feature-settings: "pnum";
@@ -37,6 +37,9 @@ $color-success: $primary-action;
 }
 .Prose p {
   max-width: 44em;
+}
+.Prose h1, .Prose h2, .Prose h3, .Prose h4, .Prose h5, .Prose h6 {
+  color: $color-text;
 }
 .Prose tr:nth-child(even) {
   background-color: transparent;
