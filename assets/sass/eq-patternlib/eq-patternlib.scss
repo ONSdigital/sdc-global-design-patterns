@@ -29,6 +29,11 @@ $color-success: $primary-action;
 }
 .Prose {
   max-width: 100%;
+
+  font-variant-numeric: proportional-nums;
+  -moz-font-feature-settings: "pnum";
+  -webkit-font-feature-settings: "pnum";
+  font-feature-settings: "pnum";
 }
 .Prose p {
   max-width: 44em;
