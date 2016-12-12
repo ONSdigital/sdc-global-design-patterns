@@ -10,7 +10,7 @@ __Ben Armstrong__, User Experience (UX) Designer,<br/>Office for National Statis
 ### Contributors
 
 * __Ben Armstrong__ (<benjamin.armstrong@ons.gov.uk>)
-* __Will Richards__ ([twitter](https://twitter.com/madebymoon))
+* __Will Richards__ ([twitter](https://twitter.com/madebymoon)) / ([GitHub](https://github.com/madebymoon))
 * __Alex Morris__ ([twitter](http://twitter.com/aexmo)) / ([GitHub](https://github.com/alexmorris))
 * __Benn Pearson__ (<benn.pearson@ons.gov.uk>)
 * __Hamish Taplin__ ([twitter](https://twitter.com/hamishtaplin)) / ([GitHub](https://github.com/hamishtaplin))
