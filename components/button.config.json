@@ -4,7 +4,7 @@
   "collated":"true",
   "order": "8",
   "status": "wip",
-  "notes": "The ",
+  "notes": "The button notes go here...",
   "variants": [{
       "label":"Button",
       "name":"button",

@@ -19,6 +19,10 @@ fractal.set('project.title', 'eQ Pattern Library');
 fractal.components.set('path', `${__dirname}/components`);
 fractal.components.set('default.preview', '@preview');
 fractal.components.set('title', 'Elements'); // default is 'Components'
+
+fractal.components.set('default.collator', function(markup, item) {
+    return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}\n<!-- End: @${item.handle} -->\n`
+});
 /*
 * Custom status types for components
 */
