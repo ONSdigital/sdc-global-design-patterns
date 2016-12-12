@@ -19,9 +19,11 @@ fractal.set('project.title', 'eQ Pattern Library');
 fractal.components.set('path', `${__dirname}/components`);
 fractal.components.set('default.preview', '@preview');
 fractal.components.set('title', 'Elements'); // default is 'Components'
-
+/*
+ * Collator function to output the variant label preceding each variant in preview for collated components.
+ */
 fractal.components.set('default.collator', function(markup, item) {
-    return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}\n<!-- End: @${item.handle} -->\n`
+    return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`
 });
 /*
 * Custom status types for components
