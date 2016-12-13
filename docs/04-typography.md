@@ -31,8 +31,8 @@ The typographic hierarchy provides a logical visual guide to the structural hier
 * Bold: 700
 * Regular: 400
 
-### Line Heights and Tracking
+### Line Heights and Letter Spacing
 Line height 1.4rem
-Tracking  0.05rem/10%
+Letter Spacing  0.05rem/10%
 
 Font stack - <span class="eq-font-lato">Lato</span>, <span class="eq-font-helvneue">“Helvetica Neue”</span>, <span class="eq-font-helv">Helvetica</span>, <span class="eq-font-arial">Arial</span>, <span class="eq-font-sans-serif">sans-serif</span>;
