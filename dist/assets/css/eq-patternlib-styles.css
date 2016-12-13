@@ -11,10 +11,17 @@
   margin-right: 0.5rem; }
 
 .Prose {
-  max-width: 100%; }
+  max-width: 100%;
+  color: #222;
+  font-variant-numeric: proportional-nums;
+  -webkit-font-feature-settings: "pnum";
+  font-feature-settings: "pnum"; }
 
 .Prose p {
   max-width: 44em; }
+
+.Prose h1, .Prose h2, .Prose h3, .Prose h4, .Prose h5, .Prose h6 {
+  color: #222; }
 
 .Prose tr:nth-child(even) {
   background-color: transparent; }

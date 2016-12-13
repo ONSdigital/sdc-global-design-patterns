@@ -9,13 +9,13 @@ The primary font used in eQ is '__Lato__'.
 
 | 320                                                | 321-599                                            | 600+ |
 |----------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
-| <p class="jupiter vp320">Jupiter</p>Lato Black - 2rem/28pt  | <p class="jupiter vp599">Jupiter</p>Lato Black - 2rem/28pt   | <p class="jupiter vp600">Jupiter</p>Lato Black - 2rem/36pt   |
-| <p class="saturn vp320">Saturn</p>Lato Bold - 1.5rem/24pt   | <p class="saturn vp599">Saturn</p>Lato Bold - 1.5rem/24pt   | <p class="saturn vp600">Saturn</p>Lato Bold - 1.5rem/28pt   |
-| <p class="neptune vp320">Neptune</p>Lato Bold - 1.2rem/18pt  | <p class="neptune vp599">Neptune</p>Lato Bold - 1.2rem/20pt  | <p class="neptune vp600">Neptune</p>Lato Bold - 1.2rem/22pt  |
-| <p class="venus vp320">Venus</p>Lato Bold - 1rem/16pt      | <p class="venus vp599">Venus</p>Lato Bold - 1rem/16pt      | <p class="venus vp600">Venus</p>Lato Bold - 1rem/18pt      |
-| <p class="mars vp320">Mars</p>Lato Regular - 1rem/16pt    | <p class="mars vp599">Mars</p>Lato Regular - 1rem/16pt    | <p class="mars vp600">Mars</p>Lato Regular - 1rem/18pt    |
-| <p class="mercury vp320">Mercury</p>Lato Bold - 0.7rem/14pt  | <p class="mercury vp599">Mercury</p>Lato Bold - 0.7rem/14pt  | <p class="mercury vp600">Mercury</p>Lato Bold - 0.7rem/14pt  |
-| <p class="pluto vp320">Pluto</p>Lato Regular - 0.7rem/14pt | <p class="pluto vp599">Pluto</p>Lato Regular - 0.7rem/14pt | <p class="pluto vp600">Pluto</p>Lato Regular - 0.7rem/14pt |
+| <p class="jupiter vp320">Jupiter</p>Lato Black - 2rem/28px  | <p class="jupiter vp599">Jupiter</p>Lato Black - 2rem/28px   | <p class="jupiter vp600">Jupiter</p>Lato Black - 2rem/36px   |
+| <p class="saturn vp320">Saturn</p>Lato Bold - 1.5rem/24px   | <p class="saturn vp599">Saturn</p>Lato Bold - 1.5rem/24px   | <p class="saturn vp600">Saturn</p>Lato Bold - 1.5rem/28px   |
+| <p class="neptune vp320">Neptune</p>Lato Bold - 1.2rem/18px  | <p class="neptune vp599">Neptune</p>Lato Bold - 1.2rem/20px  | <p class="neptune vp600">Neptune</p>Lato Bold - 1.2rem/22px  |
+| <p class="venus vp320">Venus</p>Lato Bold - 1rem/16px      | <p class="venus vp599">Venus</p>Lato Bold - 1rem/16px      | <p class="venus vp600">Venus</p>Lato Bold - 1rem/18px      |
+| <p class="mars vp320">Mars</p>Lato Regular - 1rem/16px    | <p class="mars vp599">Mars</p>Lato Regular - 1rem/16px    | <p class="mars vp600">Mars</p>Lato Regular - 1rem/18px    |
+| <p class="mercury vp320">Mercury</p>Lato Bold - 0.7rem/14px  | <p class="mercury vp599">Mercury</p>Lato Bold - 0.7rem/14px  | <p class="mercury vp600">Mercury</p>Lato Bold - 0.7rem/14px  |
+| <p class="pluto vp320">Pluto</p>Lato Regular - 0.7rem/14px | <p class="pluto vp599">Pluto</p>Lato Regular - 0.7rem/14px | <p class="pluto vp600">Pluto</p>Lato Regular - 0.7rem/14px |
 
 ## Typographic Hierarchy
 The typographic hierarchy provides a logical visual guide to the structural hierarchy of a group.
