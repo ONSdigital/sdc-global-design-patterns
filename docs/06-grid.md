@@ -1,6 +1,21 @@
 ---
 title: The eQ Grid
 ---
+The grid used in eQ is responsive which allows the layout to re-align to suit the device being used to view the survey.
+
+### 600 - 1000+ Grid
+Laptop (including tablet in horizontal orientation) and larger resolution devices.
+![Responsive eQ Grid - Laptop and larger]({{path '/assets/img/eq-grid-responsive-large.svg'}})
+### 301 - 600 and <300px Grids
+Tablet (vertical orientation) and mobile devices.
+![Responsive eQ]({{path '/assets/img/eq-grid-responsive-mobile-tablet.svg'}})
+
+The responsive nature of the grid and the underlying codebase ensures that users have the best available experience regardless of their device or orientation.
+
+Respondent home uses 8 columns for the main copy area whilst survey groups use 7 columns for content, 1 column as a gutter, then 4 columns for a navigation.
+
+### Developer guide
+
 A flexible grid based on __12__ columns, each column has a percentage calculated width and the margins (gutters) are fixed for each breakpoint.
 
 The baseline grid is based on multiples of __8px__.
