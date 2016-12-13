@@ -1,15 +1,6 @@
 ---
 title: Anatomy of a Survey
 ---
-![Anatomy of a survey]({{path '/assets/img/eq-survey-thumbnails.svg'}} "1. Survey home, 2. Question groups, 3. Interstitial, 4. Summary, 5. Submission")
-
-#### Key
-1. Survey home
-2. Question groups
-3. Interstitial
-4. Summary
-5. Submission
-
 ## Questionnaire
 Is a collection of groups (__sections__) or blocks (__pages__).
 
