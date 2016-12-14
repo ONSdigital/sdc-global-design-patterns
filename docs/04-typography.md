@@ -5,6 +5,9 @@ Text is the primary way that users digest content and accomplish work, so it’s
 
 The primary font used in eQ is '__Lato__'.
 
+## Font choice
+Lato was selected for its clarity and extensive Unicode support.
+
 ## Typographic Matrix
 
 | 320                                                | 321-599                                            | 600+ |
@@ -23,10 +26,11 @@ The typographic hierarchy provides a logical visual guide to the structural hier
 
 ### Typographic weights
 
-<p class="eq-font-lato jupiter">Lato Black<br/>abcdefghijklmnopqrstuvwxyz&acirc;&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Acirc;&Wcirc;&Ycirc;<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/</p>
-<p class="eq-font-lato saturn">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz&acirc;&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Acirc;&Wcirc;&Ycirc;<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/</p>
-<p class="eq-font-lato mars">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz&acirc;&wcirc;&ycirc;<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ&Acirc;&Wcirc;&Ycirc;<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/</p>
+<p class="eq-font-lato jupiter">Lato Black<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
+<p class="eq-font-lato saturn">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
+<p class="eq-font-lato mars">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
 
+#### Font weights
 * Black: 900
 * Bold: 700
 * Regular: 400
