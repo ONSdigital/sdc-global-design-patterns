@@ -7,7 +7,7 @@ Is a collection of groups (__sections__) or blocks (__pages__).
 ![Survey model]({{path '/assets/img/eq-survey-model.svg'}} "Survey model")
 
 ## Group
-A collection of blocks related to one another
+A collection of blocks (pages) related to one another
 Are used to segment  blocks within a questionnaire
 
 ## Blocks
@@ -16,3 +16,6 @@ A block can contain one or more sections.
 
 ## Question
 A question is made up of question title and response(s).
+
+## Response
+The form input(s)
