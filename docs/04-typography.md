@@ -6,7 +6,7 @@ Text is the primary way that users digest content and accomplish work, so it’s
 The primary font used in eQ is '__Lato__'.
 
 ## Font choice
-Lato was selected for its clarity and extensive Unicode support.
+Lato, with its broad range of weights and extensive unicode support was chosen to provide a good balance between legibility, personality and readability. As the majority of our User Interface (UI) is text based, we use __weight__ and size to denote hierarchy and separation between content. Lato's letterforms also provide a good level of contrast which aid readability on poorer quality displays and for users with visual impairment.
 
 ## Typographic Matrix
 
