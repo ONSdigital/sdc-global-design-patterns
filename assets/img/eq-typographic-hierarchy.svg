@@ -67,19 +67,19 @@
                 <tspan x="0.7086" y="36.5687099">Jupiter (h1)</tspan>
             </text>
             <text id="Lato-Black,-2rem-/-3" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="0.7086" y="59.3516366">Lato Black, 2rem / 36pt</tspan>
+                <tspan x="0.7086" y="59.3516366">Lato Black, 2rem / 36px</tspan>
             </text>
             <text id="Saturn-(h2)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="28" font-weight="normal">
                 <tspan x="0.7086" y="99.3516854">Saturn (h2)</tspan>
             </text>
             <text id="Lato-Bold,-1.5rem-/" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="0.7086" y="120.551637">Lato Bold, 1.5rem / 28pt</tspan>
+                <tspan x="0.7086" y="120.551637">Lato Bold, 1.5rem / 28px</tspan>
             </text>
             <text id="Neptune-(h3)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="22" font-weight="normal">
                 <tspan x="0.7086" y="161.751667">Neptune (h3)</tspan>
             </text>
             <text id="Lato-Bold,-1.5rem-/" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="0.7086" y="181.751637">Lato Bold, 1.5rem / 22pt</tspan>
+                <tspan x="0.7086" y="181.751637">Lato Bold, 1.5rem / 22px</tspan>
             </text>
             <text id="V" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="18" font-weight="normal">
                 <tspan x="0.7086" y="223.751655">V</tspan>
@@ -88,7 +88,7 @@
                 <tspan x="10.8076" y="223.751655">enus (label)</tspan>
             </text>
             <text id="Lato-Bold,-1rem-/-18" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="0.7086" y="242.951637">Lato Bold, 1rem / 18pt</tspan>
+                <tspan x="0.7086" y="242.951637">Lato Bold, 1rem / 18px</tspan>
             </text>
             <text id="Mars-(body)" fill="#1A1918" font-family="Lato-Bold, Lato" font-size="18" font-weight="bold">
                 <tspan x="0.7086" y="284.951655">Mars (body)</tspan>
@@ -99,14 +99,14 @@
             <text id="r" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="63.9266" y="304.151637">r</tspan>
             </text>
-            <text id=",-1rem-/-18pt" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="67.2306" y="304.151637">, 1rem / 18pt</tspan>
+            <text id=",-1rem-/-18px" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
+                <tspan x="67.2306" y="304.151637">, 1rem / 18px</tspan>
             </text>
             <text id="Mercury-(hint)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="14" font-weight="normal">
                 <tspan x="0.7086" y="333.751643">Mercury (hint)</tspan>
             </text>
             <text id="Lato-Bold,-0.7rem-/" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="0.7086" y="352.151637">Lato Bold, 0.7rem / 14pt</tspan>
+                <tspan x="0.7086" y="352.151637">Lato Bold, 0.7rem / 14px</tspan>
             </text>
             <text id="Pluto-(hint)" fill="#1A1918" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold">
                 <tspan x="0.7086" y="381.751643">Pluto (hint)</tspan>
@@ -117,8 +117,8 @@
             <text id="r" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="63.9266" y="400.151637">r</tspan>
             </text>
-            <text id=",-0.7rem-/-14pt" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
-                <tspan x="67.2306" y="400.151637">, 0.7rem / 14pt</tspan>
+            <text id=",-0.7rem-/-14px" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
+                <tspan x="67.2306" y="400.151637">, 0.7rem / 14px</tspan>
             </text>
             <g id="Group-72" transform="translate(415.000000, 13.890000)">
                 <polygon id="Stroke-3" stroke="#BDBEBA" stroke-width="1.082" points="531.0703 66.3325 531.0703 479.3965 0.9773 479.3965 0.9773 66.3325"></polygon>
