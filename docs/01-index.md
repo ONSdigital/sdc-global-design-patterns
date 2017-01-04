@@ -35,7 +35,7 @@ Documentation falls into two status levels:
 | Status | Label |
 |--------|-------|
 | __Draft__</br>The documentation is incomplete or undergoing editorial review. | <label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Draft</label> |
-| __Ready__</br>The documentation is incomplete or undergoing editorial review. | <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label> |
+| __Ready__</br>The documentation is complete. | <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label> |
 
 ## Proposed documentation pattern
 - __Rationale__<br />
