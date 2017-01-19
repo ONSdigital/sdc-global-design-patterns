@@ -30,6 +30,7 @@ $color-success: $primary-action;
 .Prose {
   max-width: 100%;
   color: $color-text;
+  font-family: $font-sans;
   font-variant-numeric: proportional-nums;
   -moz-font-feature-settings: "pnum";
   -webkit-font-feature-settings: "pnum";
@@ -40,6 +41,7 @@ $color-success: $primary-action;
 }
 .Prose h1, .Prose h2, .Prose h3, .Prose h4, .Prose h5, .Prose h6 {
   color: $color-text;
+  font-family: $font-sans;
 }
 .Prose tr:nth-child(even) {
   background-color: transparent;
@@ -54,6 +56,13 @@ $color-success: $primary-action;
   margin: 1rem 0;
   width: 100%;
 }
+.Pen {
+  font-family: $font-sans;
+  .Pen-title {
+    font-family: $font-sans;
+  }
+}
+
 .eq-font-lato {
   font-family: $font-sans;
   font-size: 1.5rem;
