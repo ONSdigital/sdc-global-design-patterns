@@ -11,6 +11,15 @@ module.exports = {
       "label_class": " venus"
     },
   }, {
+    "name": "multiline",
+    "status": "wip",
+    "context": {
+      "label": "Multline",
+      "label_text": "Feedback",
+      "label_target": "input--multiline",
+      "label_class": "input--textarea js-charlimit-input"
+    },
+  }, {
     "name": "checkbox",
     "context": {
       "label": "Checkbox",
