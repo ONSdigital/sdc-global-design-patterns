@@ -13,6 +13,7 @@
 .Prose {
   max-width: 100%;
   color: #222;
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
   font-variant-numeric: proportional-nums;
   -webkit-font-feature-settings: "pnum";
   font-feature-settings: "pnum"; }
@@ -21,7 +22,8 @@
   max-width: 44em; }
 
 .Prose h1, .Prose h2, .Prose h3, .Prose h4, .Prose h5, .Prose h6 {
-  color: #222; }
+  color: #222;
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif; }
 
 .Prose tr:nth-child(even) {
   background-color: transparent; }
@@ -35,6 +37,11 @@
 .Prose img {
   margin: 1rem 0;
   width: 100%; }
+
+.Pen {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif; }
+  .Pen .Pen-title {
+    font-family: "Lato", "Helvetica Neue", Arial, sans-serif; }
 
 .eq-font-lato {
   font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
