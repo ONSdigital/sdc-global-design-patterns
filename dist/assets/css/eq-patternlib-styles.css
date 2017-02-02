@@ -1,3 +1,12 @@
+.Tree-title,
+.Tree-item,
+.Tree-collectionLabel {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; }
+
+.Status-dot {
+  border-width: 0.25rem; }
+
 .Header-title:before {
   background-image: url("../img/eq.png");
   background-repeat: no-repeat;
