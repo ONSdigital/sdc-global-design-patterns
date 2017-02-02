@@ -28,6 +28,7 @@ The status indicators used on the eQ pattern library are shown below.
 | __Testing__</br>Publicly available pattern undergoing testing.|<label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Testing</label> |
 | __Work in progress__</br>Work in progress. Implement with caution.| <label class="Status-label" style="background-color: #FF9233; border-color: #FF9233;">WIP</label> |
 | __Ready__</br>Ready for use.| <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label> |
+| __Deprecated__</br>Removed from use in live products.| <label class="Status-label" style="background-color: #CCCCCC; border-color: #29CC29;">Deprecated</label> |
 
 ### Documentation status
 Documentation falls into two status levels:

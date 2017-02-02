@@ -16,6 +16,7 @@ A block can contain one or more sections.
 
 ## Question
 A question is made up of question title and response(s).
+![Question model]({{path '/assets/img/eq-anatomy-of-question.svg'}} "Question model")
 
 ## Response
 The form input(s)
