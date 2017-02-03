@@ -18,7 +18,7 @@
       "name":"secondary",
       "status":"wip",
       "context": {
-        "btn-class":"btn--secondary",
+        "btn-class":"btn--border btn--secondary",
         "btn-body": "Add a person"
       }
     }, {
