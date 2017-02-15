@@ -1,6 +1,6 @@
 # eQ Patterns
 
-https://onsdigital.github.io/eq-survey-runner-patterns/
+https://onsdigital.github.io/sdc-global-design-patterns/
 
 ## Prerequisites
 
