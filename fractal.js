@@ -1,4 +1,3 @@
-'use strict';
 
 /*
  * Create a new Fractal instance and export it for use elsewhere if required
@@ -10,7 +9,7 @@ const fractal = module.exports = require('@frctl/fractal').create();
  * General project configuration.
  */
 
-fractal.set('project.title', 'eQ Pattern Library');
+fractal.set('project.title', 'SDC Pattern Library');
 
 /*
  * Configure components.
@@ -23,37 +22,37 @@ fractal.components.set('title', 'Elements'); // default is 'Components'
  * Collator function to output the variant label preceding each variant in preview for collated components.
  */
 fractal.components.set('default.collator', function(markup, item) {
-    return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`
+  return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`;
 });
 /*
 * Custom status types for components
 */
 fractal.components.set('statuses', {
-    prototype: {
-        label: "Prototype",
-        description: "Do not implement.",
-        color: "#FF3333"
-    },
-    testing: {
-      label: "Testing",
-      description: "Undergoing user testing",
-      color: "#4990E2"
-    },
-    wip: {
-        label: "WIP",
-        description: "Work in progress. Implement with caution.",
-        color: "#FF9233"
-    },
-    ready: {
-        label: "Ready",
-        description: "Ready to implement.",
-        color: "#29CC29"
-    },
-    deprecated: {
-        label: "Deprecated",
-        description: "No longer in use.",
-        color: "#ccc"
-    }
+  prototype: {
+    label: 'Prototype',
+    description: 'Do not implement.',
+    color: '#FF3333'
+  },
+  testing: {
+    label: 'Testing',
+    description: 'Undergoing user testing',
+    color: '#4990E2'
+  },
+  wip: {
+    label: 'WIP',
+    description: 'Work in progress. Implement with caution.',
+    color: '#FF9233'
+  },
+  ready: {
+    label: 'Ready',
+    description: 'Ready to implement.',
+    color: '#29CC29'
+  },
+  deprecated: {
+    label: 'Deprecated',
+    description: 'No longer in use.',
+    color: '#ccc'
+  }
 });
 /*
  * Configure the Handlebars template engine used by components
@@ -70,14 +69,45 @@ fractal.components.set('statuses', {
 const handlebarsAdapter = require('@frctl/handlebars');
 
 const hbs = handlebarsAdapter({
-    helpers: {
-        uppercase: function(str) {
-            return str.toUpperCase();
-        },
-        lowercase: function(str) {
-            return str.toLowerCase();
+  helpers: {
+    uppercase: function(str) {
+      return str.toUpperCase();
+    },
+    lowercase: function(str) {
+      return str.toLowerCase();
+    },
+    repeat: function(times, opts) {
+      let out = '';
+      let i;
+      let data = {};
+
+      if (times) {
+        for (i = 0; i < times; i += 1) {
+          data.index = i;
+          data.cols = 12 / i;
+          out += opts.fn(this, {
+            data: data
+          });
         }
+      } else {
+        out = opts.inverse(this);
+      }
+
+      return out;
+    },
+    math: function(lvalue, operator, rvalue, options) {
+      lvalue = parseFloat(lvalue);
+      rvalue = parseFloat(rvalue);
+
+      return {
+        '+': lvalue + rvalue,
+        '-': lvalue - rvalue,
+        '*': lvalue * rvalue,
+        '/': lvalue / rvalue,
+        '%': lvalue % rvalue
+      }[operator];
     }
+  }
 });
 
 fractal.components.engine(hbs);
@@ -131,16 +161,20 @@ fractal.web.set('static.path', `${__dirname}/public`);
 fractal.web.set('builder.dest', 'dist');
 
 const theme = require('@frctl/mandelbrot')({
-    skin: 'white',
-    nav: ['docs', 'components'],
-    panels: ["notes", "html", "info", "context"],
-    static: {
-      "mount": "theme",
-    },
-    styles: [
-      "default",
-      "/assets/css/eq-patternlib-styles.css" // Used for eQ Pattern Library specific styles e.g. Colour swatches
-    ]
+  skin: 'white',
+  nav: ['docs', 'components'],
+  panels: ['notes', 'html', 'info', 'context'],
+  static: {
+    'mount': 'theme'
+  },
+  styles: [
+    'default',
+    '/assets/css/patternlib.css' // Used for eQ Pattern Library specific styles e.g. Colour swatches
+  ],
+  scripts: [
+    'default',
+    '/assets/scripts/bundle.js'
+  ]
 });
 
 fractal.web.theme(theme);
