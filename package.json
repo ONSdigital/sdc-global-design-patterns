@@ -7,6 +7,7 @@
   "scripts": {
     "prestart": "yarn",
     "build": "yarn prestart && gulp fractal:build",
+    "compile_assets": "gulp",
     "start": "yarn && gulp dev",
     "deploy": "gulp fractal:build && ./deploy.sh"
   },
