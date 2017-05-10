@@ -1,0 +1,15 @@
+.badge {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.8;
+  border-radius: 3px;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.badge--amber {
+  background-color: $color-amber;
+}

@@ -1,0 +1,13 @@
+.footer {
+  padding: 2rem 0;
+  margin-top: 2rem;
+  background-color: $color-light-grey;
+  color: $color-very-dark-grey;
+}
+
+.footer__link {
+  color: $color-very-dark-grey;
+  &:focus {
+    color: white;
+  }
+}

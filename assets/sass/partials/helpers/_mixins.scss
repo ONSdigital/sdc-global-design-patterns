@@ -72,6 +72,12 @@
   // no-op
 }
 
+@mixin lt-ie10() {
+  .lt-ie10 & {
+    @content;
+  }
+}
+
 @mixin lt-ie9() {
   .lt-ie9 & {
     @content;
@@ -97,5 +103,5 @@
 }
 
 @mixin icon($name) {
-  background: url("#{$static_dir}/icons/icons--#{$name}.svg") no-repeat center;
+  background: url("#{$static}/img/icons/icons--#{$name}.svg") no-repeat center;
 }

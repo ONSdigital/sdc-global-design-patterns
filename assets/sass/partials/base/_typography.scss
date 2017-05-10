@@ -1,3 +1,6 @@
+@include font-face(Lato, "#{$static}/fonts/lato/latolatin-regular-webfont", $weight: 400, $style: null, $exts: eot woff2 woff ttf svg);
+@include font-face(Lato, "#{$static}/fonts/lato/latolatin-bold-webfont", $weight: 600, $style: null, $exts: eot woff2 woff ttf svg);
+
 html {
   font-size: 18px;
   line-height: 1.6;
@@ -31,10 +34,15 @@ code {
 }
 
 ul {
-  margin-bottom: 1.5rem;
+  margin: 0 0 1rem;
   padding-left: 1.5rem;
 }
 
 li {
   margin-bottom: 0.3rem;
+}
+
+em {
+  font-style: normal;
+  font-weight: $font-weight-bold;
 }
