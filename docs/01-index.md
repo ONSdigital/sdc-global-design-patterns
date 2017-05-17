@@ -2,16 +2,21 @@
 title: Overview
 ---
 ## Statuses
-### Prototype <label class="Status-label" style="background-color: #FF3333; border-color: #FF3333;">Prototype</label>
-Do not implement.
-### Testing <label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Testing</label>
-Publicly available pattern undergoing testing.
-### WIP <label class="Status-label" style="background-color: #FF9233; border-color: #FF9233;">WIP</label>
-Work in progress. Implement with caution.
+| Status | Label |
+|--------|-------|
+| __Prototype__</br>Do not implement. This component may be experimental and un-tested.<br />Expect significant change before this item put to use. | <label class="Status-label" style="background-color: #FF3333; border-color: #FF3333;">Prototype</label> |
+| __Testing__</br>Publicly available pattern undergoing testing.|<label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Testing</label> |
+| __Work in progress__</br>Work in progress. Implement with caution.| <label class="Status-label" style="background-color: #FF9233; border-color: #FF9233;">WIP</label> |
+| __Ready__</br>Ready for use.| <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label> |
+| __Deprecated__</br>Removed from use in live products.| <label class="Status-label" style="background-color: #CCCCCC; border-color: #29CC29;">Deprecated</label> |
 
-Research being undertaken or awaiting iteration from reearch outcomes.
-### Ready <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label>
-Ready to implement.
+### Documentation status
+Documentation falls into two status levels:
+
+| Status | Label |
+|--------|-------|
+| __Draft__</br>The documentation is incomplete or undergoing editorial review. | <label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Draft</label> |
+| __Ready__</br>The documentation is complete. | <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label> |
 
 ## Proposed documentation pattern
 - __Rationale__<br />
