@@ -3,3 +3,4 @@ public
 !public/.gitkeep
 .idea
 dist
+yarn-error.log
