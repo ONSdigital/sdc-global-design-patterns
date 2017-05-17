@@ -9,7 +9,7 @@
     "build": "yarn prestart && gulp fractal:build",
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
-    "deploy": "gulp fractal:build && ./deploy.sh"
+    "deploy": "yarn build && gh-pages -d dist"
   },
   "dependencies": {
     "@frctl/fractal": "^1.0.0",
@@ -62,6 +62,7 @@
     "eslint-plugin-babel": "^4.1.0",
     "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-standard": "^2.0.1",
+    "gh-pages": "^1.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-eslint": "^3.0.1",
     "gulp-sass": "^2.2.0",

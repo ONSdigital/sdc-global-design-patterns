@@ -21,4 +21,3 @@ https://onsdigital.github.io/sdc-global-design-patterns/
 ## Deploy
 
 - Deploy to Github Pages with `yarn deploy`
-- Commit the `/dist` files as 'build'.
