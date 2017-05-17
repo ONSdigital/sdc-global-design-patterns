@@ -1,7 +1,7 @@
 module.exports = {
   title: "Panel",
   "collated": true,
-  status:"Ready",
+  status:"ready",
   "variants": [
     {
       "name": "default",
