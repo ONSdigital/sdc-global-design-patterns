@@ -2,6 +2,7 @@ module.exports = {
   "title": "Input",
   "default": "text",
   "collated": false,
+  "status": "ready",
   "variants": [{
     "name": "text",
     "label": "Text",
