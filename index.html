@@ -78,15 +78,56 @@
     
     
     <h2 id="statuses">Statuses</h2>
-<h3 id="prototype-label-class-status-label-style-background-color-ff3333-border-color-ff3333-prototype-label-">Prototype <label class="Status-label" style="background-color: #FF3333; border-color: #FF3333;">Prototype</label></h3>
-<p>Do not implement.</p>
-<h3 id="testing-label-class-status-label-style-background-color-4990e2-border-color-4990e2-testing-label-">Testing <label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Testing</label></h3>
-<p>Publicly available pattern undergoing testing.</p>
-<h3 id="wip-label-class-status-label-style-background-color-ff9233-border-color-ff9233-wip-label-">WIP <label class="Status-label" style="background-color: #FF9233; border-color: #FF9233;">WIP</label></h3>
-<p>Work in progress. Implement with caution.</p>
-<p>Research being undertaken or awaiting iteration from reearch outcomes.</p>
-<h3 id="ready-label-class-status-label-style-background-color-29cc29-border-color-29cc29-ready-label-">Ready <label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label></h3>
-<p>Ready to implement.</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prototype</strong></br>Do not implement. This component may be experimental and un-tested.<br />Expect significant change before this item put to use.</td>
+<td><label class="Status-label" style="background-color: #FF3333; border-color: #FF3333;">Prototype</label></td>
+</tr>
+<tr>
+<td><strong>Testing</strong></br>Publicly available pattern undergoing testing.</td>
+<td><label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Testing</label></td>
+</tr>
+<tr>
+<td><strong>Work in progress</strong></br>Work in progress. Implement with caution.</td>
+<td><label class="Status-label" style="background-color: #FF9233; border-color: #FF9233;">WIP</label></td>
+</tr>
+<tr>
+<td><strong>Ready</strong></br>Ready for use.</td>
+<td><label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label></td>
+</tr>
+<tr>
+<td><strong>Deprecated</strong></br>Removed from use in live products.</td>
+<td><label class="Status-label" style="background-color: #CCCCCC; border-color: #29CC29;">Deprecated</label></td>
+</tr>
+</tbody>
+</table>
+<h3 id="documentation-status">Documentation status</h3>
+<p>Documentation falls into two status levels:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Draft</strong></br>The documentation is incomplete or undergoing editorial review.</td>
+<td><label class="Status-label" style="background-color: #4990E2; border-color: #4990E2;">Draft</label></td>
+</tr>
+<tr>
+<td><strong>Ready</strong></br>The documentation is complete.</td>
+<td><label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label></td>
+</tr>
+</tbody>
+</table>
 <h2 id="proposed-documentation-pattern">Proposed documentation pattern</h2>
 <ul>
 <li><strong>Rationale</strong><br /></li>
@@ -784,7 +825,7 @@ When to (and not to) use this pattern - include preference for use cases for sub
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+<span class="Status-dot" style="border-color: #ccc;" title="Deprecated"></span>
 
 
 </div>
@@ -895,6 +936,30 @@ When to (and not to) use this pattern - include preference for use cases for sub
         
         
         <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/breadcrumb.html" data-pjax>
+                <span>Breadcrumb</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF3333;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="components/detail/button.html" data-pjax>
                 <span>Button</span>
                 
@@ -929,6 +994,30 @@ When to (and not to) use this pattern - include preference for use cases for sub
 
 
 <span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/summary.html" data-pjax>
+                <span>Summary</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
 
 
 </div>

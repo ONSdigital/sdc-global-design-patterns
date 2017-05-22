@@ -1,0 +1,21 @@
+.breadcrumb {
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+.breadcrumb__items {
+
+}
+.breadcrumb__item {
+  display: inline-block;
+}
+.breadcrumb__item--current {
+  color: $color-dark-grey;
+}
+.breadcrumb__link {
+
+}
+.breadcrumb__chevron {
+
+}

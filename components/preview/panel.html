@@ -10,11 +10,11 @@
     <script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../../assets/css/styles.css">
 
-    <title>panel | SDC Pattern Library</title>
+    <title>Panel | SDC Pattern Library</title>
 </head>
 <body>
 <div style="padding:1rem">
-  <h3>Default</h3>
+  <h3>Information (default)</h3>
 <!-- Start: @panel--default -->
 <div class="panel panel--info">
   <div class="panel__header">
@@ -25,49 +25,6 @@
   </div>
 </div>
 <!-- End: @panel--default -->
-<br/>
-<h3>Error</h3>
-<!-- Start: @panel--error -->
-<div class="panel panel--error">
-  <div class="panel__header">
-    <div class="venus">Error</div>
-  </div>
-  <div class="panel__body">
-    <div>This is wrong, fix it before continuing.</div>
-  </div>
-</div>
-<!-- End: @panel--error -->
-<br/>
-<h3>Simple</h3>
-<!-- Start: @panel--simple -->
-<div class="panel panel--simple panel--info">
-  <div class="panel__body">
-    <h2 class="venus">Simple info panel</h2>
-    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</p>
-  </div>
-</div>
-<br>
-<div class="panel panel--simple panel--success">
-  <div class="panel__body">
-    <h2 class="venus">Simple success panel</h2>
-    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
-  </div>
-</div>
-<br>
-<div class="panel panel--simple panel--warn">
-  <div class="panel__body">
-    <h2 class="venus">Simple warning panel</h2>
-    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
-  </div>
-</div>
-<br>
-<div class="panel panel--simple panel--error">
-  <div class="panel__body">
-    <h2 class="venus">Simple error panel</h2>
-    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
-  </div>
-</div>
-<!-- End: @panel--simple -->
 <br/>
 <h3>Success</h3>
 <!-- Start: @panel--success -->
@@ -81,7 +38,7 @@
 </div>
 <!-- End: @panel--success -->
 <br/>
-<h3>Warn</h3>
+<h3>Warning</h3>
 <!-- Start: @panel--warn -->
 <div class="panel panel--warn">
   <div class="panel__header">
@@ -93,8 +50,69 @@
 </div>
 <!-- End: @panel--warn -->
 <br/>
+<h3>Error</h3>
+<!-- Start: @panel--error -->
+<div class="panel panel--error">
+  <div class="panel__header">
+    <div class="venus">Error</div>
+  </div>
+  <div class="panel__body">
+    <div>This is wrong, fix it before continuing.</div>
+  </div>
 </div>
-
+<!-- End: @panel--error -->
+<br/>
+<h3>Inline information (default)</h3>
+<!-- Start: @panel--simple-info -->
+<div class="panel panel--simple panel--info">
+  <div class="panel__body">
+    <h2 class="venus">Simple info panel - separate</h2>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</p>
+  </div>
+</div>
+<!-- End: @panel--simple-info -->
+<br/>
+<h3>Inline success</h3>
+<!-- Start: @panel--simple-success -->
+<div class="panel panel--simple panel--success">
+  <div class="panel__body">
+    <h2 class="venus">Simple success panel</h2>
+    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
+  </div>
+</div>
+<!-- End: @panel--simple-success -->
+<br/>
+<h3>Inline warning</h3>
+<!-- Start: @panel--simple-warn -->
+<div class="panel panel--simple panel--warn">
+  <div class="panel__body">
+    <h2 class="venus">Simple warning panel</h2>
+    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
+  </div>
+</div>
+<!-- End: @panel--simple-warn -->
+<br/>
+<h3>Inline error information</h3>
+<!-- Start: @panel--simple-error -->
+<div class="panel panel--simple panel--error">
+  <div class="panel__body">
+    <h2 class="venus">Simple error panel</h2>
+    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
+  </div>
+</div>
+<!-- End: @panel--simple-error -->
+<br/>
+<h3>Spacious variant (all simple)</h3>
+<!-- Start: @panel--spacious -->
+<div class="panel panel--simple panel--info panel--spacious">
+  <div class="panel__body">
+    <h2 class="venus">Simple info panel - spacious</h2>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</p>
+  </div>
+</div>
+<!-- End: @panel--spacious -->
+<br/>
+</div>
 </body>
 </html>
 
