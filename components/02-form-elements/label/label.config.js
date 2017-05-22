@@ -1,6 +1,6 @@
 module.exports = {
   "title": "Label",
-  "status": "",
+  "status": "ready",
   "context": {
     "label": "Textfield",
     "label_text": "Enter some text",
