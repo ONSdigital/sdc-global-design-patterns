@@ -36,6 +36,7 @@
     left: 1px;
     top: 1px;
     z-index: 4;
+    text-decoration: none;
     @include fixed {
       left: 0;
       width: 2.5rem;
@@ -49,7 +50,8 @@
   }
 }
 
-.input-type--percentage {
+.input-type--percentage,
+.input-type--unit {
   .input-type__input {
     padding-left: 0.5rem;
     @include fixed {
