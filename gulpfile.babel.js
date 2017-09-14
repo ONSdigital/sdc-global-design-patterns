@@ -57,7 +57,12 @@ gulp.task('fractal:build', function() {
 gulp.task('css:process', function() {
   return gulp.src('assets/sass/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(plumber())
+    .pipe(plumber({
+        errorHandler: function (err) {
+            console.log(err);
+            this.emit('end');
+        }
+    }))
     .pipe(sassGlob())
     .pipe(sass({
       errLogToConsole: true,
@@ -92,13 +97,29 @@ gulp.task('css:clean', function() {
   return del(['public/assets/css']);
 });
 
-gulp.task('css:watch', function() {
+gulp.task('css:watch', function(done) {
   gulp.watch([
-    'assets/sass/**/*.scss'
+    'assets/sass/**/*.scss',
+    'components/**/*.scss',
   ], gulp.series('css'));
+  done();
 });
 
 gulp.task('css', gulp.series('css:clean', 'css:process'));
+
+gulp.task('clean:dist', () => {
+  del.sync([
+    paths.output
+  ], { force: true })
+})
+
+// Remove pre-existing content from text folders
+gulp.task('clean:test', () => {
+  del.sync([
+    paths.test.coverage,
+    paths.test.results
+  ], { force: true })
+})
 
 /* Scripts */
 
@@ -181,8 +202,9 @@ gulp.task('fonts:clean', function(done) {
 
 gulp.task('fonts', gulp.series('fonts:clean', 'fonts:copy'));
 
-gulp.task('fonts:watch', function() {
+gulp.task('fonts:watch', function(done) {
   gulp.watch('assets/fonts/**/*', gulp.parallel('fonts'));
+  done();
 });
 
 /* Images */
@@ -198,11 +220,13 @@ gulp.task('images:clean', function(done) {
 
 gulp.task('images', gulp.series('images:clean', 'images:copy'));
 
-gulp.task('images:watch', function() {
+gulp.task('images:watch', function(done) {
   gulp.watch('assets/img/**/*', gulp.parallel('images'));
+  done();
 });
 
 gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images'));
 gulp.task('watch', gulp.parallel('css:watch', 'scripts:watch', 'fonts:watch', 'images:watch'));
+gulp.task('clean', gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean'));
+gulp.task('dev', gulp.series('default', 'fractal:start', 'watch',));
 
-gulp.task('dev', gulp.series('default', 'fractal:start', 'watch'));
