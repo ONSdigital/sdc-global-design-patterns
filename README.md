@@ -4,6 +4,7 @@ https://onsdigital.github.io/sdc-global-design-patterns/
 
 ## Prerequisites
 
+- get familiar with Fractal http://fractal.build/guide
 - nodejs
 - Yarn `npm install yarn --global`
 - Gulp `yarn global add gulp-cli`
