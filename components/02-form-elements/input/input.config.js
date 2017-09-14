@@ -35,5 +35,12 @@ module.exports = {
       "label_text": "Select",
       "label_for": "select"
     },
+  }, {
+    "name": "percentage",
+    "status": "ready",
+    "context": {
+      "label": "Percentage",
+      "label_text": "%"
+    },
   }]
 }
