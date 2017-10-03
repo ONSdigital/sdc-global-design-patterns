@@ -18,14 +18,8 @@ module.exports = {
       "label": "Start survey"
     },
   }, {
-    "name": "Secondary",
-    "context": {
-      "btn-classes": "btn--secondary",
-      "label": "Filter results"
-    },
-  }, {
-    "name": "bordered",
-    "label": "Bordered (Secondary)",
+    "name": "secondary",
+    "label": "Secondary - bordered",
     "context": {
       "btn-classes": "btn--secondary btn--border",
       "label": "Add a person"
