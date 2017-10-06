@@ -4,3 +4,5 @@ public
 .idea
 dist
 yarn-error.log
+
+secrets.yml
