@@ -1,0 +1,64 @@
+resources:
+- name: sdc-global-design-patterns
+  type: git
+  source:
+    uri: https://github.com/ONSdigital/sdc-global-design-patterns.git
+    branch: master
+
+jobs:
+- name: Deploy
+  max_in_flight: 2
+  plan:
+  - get: sdc-global-design-patterns
+    trigger: true
+
+  - task: Build
+    config:
+      platform: linux
+
+      image_resource:
+        type: docker-image
+        source:
+          repository: node
+
+      inputs:
+      - name: sdc-global-design-patterns
+
+      outputs:
+      - name: public
+
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          cd sdc-global-design-patterns
+          yarn
+          yarn compile_assets
+
+          design_patterns_tag=$(git rev-parse --short HEAD)
+          mkdir ../public/$design_patterns_tag
+          cp -R public/assets/* ../public/$design_patterns_tag
+
+  - task: Deploy to S3
+    params:
+      AWS_ACCESS_KEY_ID: {{aws_access_key}}
+      AWS_SECRET_ACCESS_KEY: {{aws_secret_key}}
+      AWS_DEFAULT_REGION: eu-west-1
+    config:
+      platform: linux
+
+      image_resource:
+        type: docker-image
+        source:
+          repository: mesosphere/aws-cli
+
+      inputs:
+      - name: public
+
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          aws s3 sync --acl public-read public s3://((s3_bucket_name))/sdc/
