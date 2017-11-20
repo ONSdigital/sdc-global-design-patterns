@@ -19,24 +19,10 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 });
 
-
-
-var _global$2 = Object.freeze({
-	default: _global,
-	__moduleExports: _global
-});
-
 var hasOwnProperty = {}.hasOwnProperty;
 var _has = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-
-
-
-var _has$2 = Object.freeze({
-	default: _has,
-	__moduleExports: _has
-});
 
 var _fails = function(exec){
   try {
@@ -46,24 +32,9 @@ var _fails = function(exec){
   }
 };
 
-
-
-var _fails$2 = Object.freeze({
-	default: _fails,
-	__moduleExports: _fails
-});
-
-var require$$1 = ( _fails$2 && _fails ) || _fails$2;
-
-var _descriptors = !require$$1(function(){
+// Thank's IE8 for his funny defineProperty
+var _descriptors = !_fails(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-});
-
-
-
-var _descriptors$2 = Object.freeze({
-	default: _descriptors,
-	__moduleExports: _descriptors
 });
 
 var _core = createCommonjsModule(function (module) {
@@ -71,73 +42,29 @@ var core = module.exports = {version: '2.4.0'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 });
 
-var _core_1 = _core.version;
-
-
-var _core$2 = Object.freeze({
-	default: _core,
-	__moduleExports: _core,
-	version: _core_1
-});
-
 var _isObject = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
-
-
-var _isObject$2 = Object.freeze({
-	default: _isObject,
-	__moduleExports: _isObject
-});
-
-var require$$7 = ( _isObject$2 && _isObject ) || _isObject$2;
-
-var isObject = require$$7;
+var isObject = _isObject;
 var _anObject = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
 
-
-
-var _anObject$2 = Object.freeze({
-	default: _anObject,
-	__moduleExports: _anObject
-});
-
-var require$$2 = ( _global$2 && _global ) || _global$2;
-
-var isObject$1 = require$$7;
-var document$1 = require$$2.document;
+var isObject$1 = _isObject;
+var document$1 = _global.document;
 var is = isObject$1(document$1) && isObject$1(document$1.createElement);
 var _domCreate = function(it){
   return is ? document$1.createElement(it) : {};
 };
 
-
-
-var _domCreate$2 = Object.freeze({
-	default: _domCreate,
-	__moduleExports: _domCreate
+var _ie8DomDefine = !_descriptors && !_fails(function(){
+  return Object.defineProperty(_domCreate('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
-var require$$5 = ( _descriptors$2 && _descriptors ) || _descriptors$2;
-
-var require$$3 = ( _domCreate$2 && _domCreate ) || _domCreate$2;
-
-var _ie8DomDefine = !require$$5 && !require$$1(function(){
-  return Object.defineProperty(require$$3('div'), 'a', {get: function(){ return 7; }}).a != 7;
-});
-
-
-
-var _ie8DomDefine$2 = Object.freeze({
-	default: _ie8DomDefine,
-	__moduleExports: _ie8DomDefine
-});
-
-var isObject$2 = require$$7;
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject$2 = _isObject;
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 var _toPrimitive = function(it, S){
@@ -149,25 +76,12 @@ var _toPrimitive = function(it, S){
   throw TypeError("Can't convert object to primitive value");
 };
 
-
-
-var _toPrimitive$2 = Object.freeze({
-	default: _toPrimitive,
-	__moduleExports: _toPrimitive
-});
-
-var require$$6 = ( _anObject$2 && _anObject ) || _anObject$2;
-
-var require$$5$1 = ( _ie8DomDefine$2 && _ie8DomDefine ) || _ie8DomDefine$2;
-
-var require$$2$1 = ( _toPrimitive$2 && _toPrimitive ) || _toPrimitive$2;
-
-var anObject$1       = require$$6;
-var IE8_DOM_DEFINE = require$$5$1;
-var toPrimitive$1    = require$$2$1;
+var anObject$1       = _anObject;
+var IE8_DOM_DEFINE = _ie8DomDefine;
+var toPrimitive$1    = _toPrimitive;
 var dP$2             = Object.defineProperty;
 
-var f$1 = require$$5 ? Object.defineProperty : function defineProperty(O, P, Attributes){
+var f$1 = _descriptors ? Object.defineProperty : function defineProperty(O, P, Attributes){
   anObject$1(O);
   P = toPrimitive$1(P, true);
   anObject$1(Attributes);
@@ -183,14 +97,6 @@ var _objectDp = {
 	f: f$1
 };
 
-
-
-var _objectDp$2 = Object.freeze({
-	default: _objectDp,
-	__moduleExports: _objectDp,
-	f: f$1
-});
-
 var _propertyDesc = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -200,32 +106,14 @@ var _propertyDesc = function(bitmap, value){
   };
 };
 
-
-
-var _propertyDesc$2 = Object.freeze({
-	default: _propertyDesc,
-	__moduleExports: _propertyDesc
-});
-
-var require$$3$1 = ( _objectDp$2 && _objectDp ) || _objectDp$2;
-
-var require$$5$2 = ( _propertyDesc$2 && _propertyDesc ) || _propertyDesc$2;
-
-var dP$1         = require$$3$1;
-var createDesc$1 = require$$5$2;
-var _hide = require$$5 ? function(object, key, value){
+var dP$1         = _objectDp;
+var createDesc$1 = _propertyDesc;
+var _hide = _descriptors ? function(object, key, value){
   return dP$1.f(object, key, createDesc$1(1, value));
 } : function(object, key, value){
   object[key] = value;
   return object;
 };
-
-
-
-var _hide$2 = Object.freeze({
-	default: _hide,
-	__moduleExports: _hide
-});
 
 var id = 0;
 var px = Math.random();
@@ -233,31 +121,16 @@ var _uid = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
 
-
-
-var _uid$2 = Object.freeze({
-	default: _uid,
-	__moduleExports: _uid
-});
-
-var require$$3$2 = ( _hide$2 && _hide ) || _hide$2;
-
-var require$$3$3 = ( _has$2 && _has ) || _has$2;
-
-var require$$26 = ( _uid$2 && _uid ) || _uid$2;
-
-var require$$1$1 = ( _core$2 && _core ) || _core$2;
-
 var _redefine = createCommonjsModule(function (module) {
-var global    = require$$2
-  , hide      = require$$3$2
-  , has       = require$$3$3
-  , SRC       = require$$26('src')
+var global    = _global
+  , hide      = _hide
+  , has       = _has
+  , SRC       = _uid('src')
   , TO_STRING = 'toString'
   , $toString = Function[TO_STRING]
   , TPL       = ('' + $toString).split(TO_STRING);
 
-require$$1$1.inspectSource = function(it){
+_core.inspectSource = function(it){
   return $toString.call(it);
 };
 
@@ -283,28 +156,13 @@ require$$1$1.inspectSource = function(it){
 });
 });
 
-
-
-var _redefine$2 = Object.freeze({
-	default: _redefine,
-	__moduleExports: _redefine
-});
-
 var _aFunction = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
 
-
-
-var _aFunction$2 = Object.freeze({
-	default: _aFunction,
-	__moduleExports: _aFunction
-});
-
-var require$$2$2 = ( _aFunction$2 && _aFunction ) || _aFunction$2;
-
-var aFunction = require$$2$2;
+// optional / simple context binding
+var aFunction = _aFunction;
 var _ctx = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -324,22 +182,11 @@ var _ctx = function(fn, that, length){
   };
 };
 
-
-
-var _ctx$2 = Object.freeze({
-	default: _ctx,
-	__moduleExports: _ctx
-});
-
-var require$$1$2 = ( _redefine$2 && _redefine ) || _redefine$2;
-
-var require$$7$1 = ( _ctx$2 && _ctx ) || _ctx$2;
-
-var global$2    = require$$2;
-var core      = require$$1$1;
-var hide      = require$$3$2;
-var redefine$1  = require$$1$2;
-var ctx       = require$$7$1;
+var global$2    = _global;
+var core      = _core;
+var hide      = _hide;
+var redefine$1  = _redefine;
+var ctx       = _ctx;
 var PROTOTYPE$1 = 'prototype';
 
 var $export$1 = function(type, name, source){
@@ -379,23 +226,16 @@ $export$1.U = 64;  // safe
 $export$1.R = 128; // real proto method for `library` 
 var _export = $export$1;
 
-
-
-var _export$2 = Object.freeze({
-	default: _export,
-	__moduleExports: _export
-});
-
 var _meta = createCommonjsModule(function (module) {
-var META     = require$$26('meta')
-  , isObject = require$$7
-  , has      = require$$3$3
-  , setDesc  = require$$3$1.f
+var META     = _uid('meta')
+  , isObject = _isObject
+  , has      = _has
+  , setDesc  = _objectDp.f
   , id       = 0;
 var isExtensible = Object.isExtensible || function(){
   return true;
 };
-var FREEZE = !require$$1(function(){
+var FREEZE = !_fails(function(){
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function(it){
@@ -442,43 +282,17 @@ var meta = module.exports = {
 };
 });
 
-var _meta_1 = _meta.KEY;
-var _meta_2 = _meta.NEED;
-var _meta_3 = _meta.fastKey;
-var _meta_4 = _meta.getWeak;
-var _meta_5 = _meta.onFreeze;
-
-
-var _meta$2 = Object.freeze({
-	default: _meta,
-	__moduleExports: _meta,
-	KEY: _meta_1,
-	NEED: _meta_2,
-	fastKey: _meta_3,
-	getWeak: _meta_4,
-	onFreeze: _meta_5
-});
-
-var global$3 = require$$2;
+var global$3 = _global;
 var SHARED = '__core-js_shared__';
 var store  = global$3[SHARED] || (global$3[SHARED] = {});
 var _shared = function(key){
   return store[key] || (store[key] = {});
 };
 
-
-
-var _shared$2 = Object.freeze({
-	default: _shared,
-	__moduleExports: _shared
-});
-
-var require$$2$3 = ( _shared$2 && _shared ) || _shared$2;
-
 var _wks = createCommonjsModule(function (module) {
-var store      = require$$2$3('wks')
-  , uid        = require$$26
-  , Symbol     = require$$2.Symbol
+var store      = _shared('wks')
+  , uid        = _uid
+  , Symbol     = _global.Symbol
   , USE_SYMBOL = typeof Symbol == 'function';
 
 var $exports = module.exports = function(name){
@@ -489,73 +303,31 @@ var $exports = module.exports = function(name){
 $exports.store = store;
 });
 
-
-
-var _wks$2 = Object.freeze({
-	default: _wks,
-	__moduleExports: _wks
-});
-
-var require$$5$3 = ( _wks$2 && _wks ) || _wks$2;
-
-var def = require$$3$1.f;
-var has$1 = require$$3$3;
-var TAG = require$$5$3('toStringTag');
+var def = _objectDp.f;
+var has$1 = _has;
+var TAG = _wks('toStringTag');
 
 var _setToStringTag = function(it, tag, stat){
   if(it && !has$1(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 };
 
-
-
-var _setToStringTag$2 = Object.freeze({
-	default: _setToStringTag,
-	__moduleExports: _setToStringTag
-});
-
-var f$2 = require$$5$3;
+var f$2 = _wks;
 
 var _wksExt = {
 	f: f$2
 };
 
-
-
-var _wksExt$2 = Object.freeze({
-	default: _wksExt,
-	__moduleExports: _wksExt,
-	f: f$2
-});
-
 var _library = false;
 
-
-
-var _library$2 = Object.freeze({
-	default: _library,
-	__moduleExports: _library
-});
-
-var require$$0 = ( _library$2 && _library ) || _library$2;
-
-var require$$3$4 = ( _wksExt$2 && _wksExt ) || _wksExt$2;
-
-var global$4         = require$$2;
-var core$1           = require$$1$1;
-var LIBRARY        = require$$0;
-var wksExt$1         = require$$3$4;
-var defineProperty = require$$3$1.f;
+var global$4         = _global;
+var core$1           = _core;
+var LIBRARY        = _library;
+var wksExt$1         = _wksExt;
+var defineProperty = _objectDp.f;
 var _wksDefine = function(name){
   var $Symbol = core$1.Symbol || (core$1.Symbol = LIBRARY ? {} : global$4.Symbol || {});
   if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt$1.f(name)});
 };
-
-
-
-var _wksDefine$2 = Object.freeze({
-	default: _wksDefine,
-	__moduleExports: _wksDefine
-});
 
 var toString = {}.toString;
 
@@ -563,26 +335,11 @@ var _cof = function(it){
   return toString.call(it).slice(8, -1);
 };
 
-
-
-var _cof$2 = Object.freeze({
-	default: _cof,
-	__moduleExports: _cof
-});
-
-var require$$3$5 = ( _cof$2 && _cof ) || _cof$2;
-
-var cof = require$$3$5;
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = _cof;
 var _iobject = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-
-
-
-var _iobject$2 = Object.freeze({
-	default: _iobject,
-	__moduleExports: _iobject
-});
 
 // 7.2.1 RequireObjectCoercible(argument)
 var _defined = function(it){
@@ -590,29 +347,12 @@ var _defined = function(it){
   return it;
 };
 
-
-
-var _defined$2 = Object.freeze({
-	default: _defined,
-	__moduleExports: _defined
-});
-
-var require$$2$4 = ( _iobject$2 && _iobject ) || _iobject$2;
-
-var require$$1$3 = ( _defined$2 && _defined ) || _defined$2;
-
-var IObject = require$$2$4;
-var defined = require$$1$3;
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = _iobject;
+var defined = _defined;
 var _toIobject = function(it){
   return IObject(defined(it));
 };
-
-
-
-var _toIobject$2 = Object.freeze({
-	default: _toIobject,
-	__moduleExports: _toIobject
-});
 
 // 7.1.4 ToInteger
 var ceil  = Math.ceil;
@@ -621,29 +361,14 @@ var _toInteger = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
 
-
-
-var _toInteger$2 = Object.freeze({
-	default: _toInteger,
-	__moduleExports: _toInteger
-});
-
-var require$$12 = ( _toInteger$2 && _toInteger ) || _toInteger$2;
-
-var toInteger = require$$12;
+// 7.1.15 ToLength
+var toInteger = _toInteger;
 var min       = Math.min;
 var _toLength = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
-
-
-var _toLength$2 = Object.freeze({
-	default: _toLength,
-	__moduleExports: _toLength
-});
-
-var toInteger$1 = require$$12;
+var toInteger$1 = _toInteger;
 var max       = Math.max;
 var min$1       = Math.min;
 var _toIndex = function(index, length){
@@ -651,22 +376,11 @@ var _toIndex = function(index, length){
   return index < 0 ? max(index + length, 0) : min$1(index, length);
 };
 
-
-
-var _toIndex$2 = Object.freeze({
-	default: _toIndex,
-	__moduleExports: _toIndex
-});
-
-var require$$1$4 = ( _toIobject$2 && _toIobject ) || _toIobject$2;
-
-var require$$2$5 = ( _toLength$2 && _toLength ) || _toLength$2;
-
-var require$$14 = ( _toIndex$2 && _toIndex ) || _toIndex$2;
-
-var toIObject$3 = require$$1$4;
-var toLength  = require$$2$5;
-var toIndex   = require$$14;
+// false -> Array#indexOf
+// true  -> Array#includes
+var toIObject$3 = _toIobject;
+var toLength  = _toLength;
+var toIndex   = _toIndex;
 var _arrayIncludes = function(IS_INCLUDES){
   return function($this, el, fromIndex){
     var O      = toIObject$3($this)
@@ -684,34 +398,16 @@ var _arrayIncludes = function(IS_INCLUDES){
   };
 };
 
-
-
-var _arrayIncludes$2 = Object.freeze({
-	default: _arrayIncludes,
-	__moduleExports: _arrayIncludes
-});
-
-var shared$1 = require$$2$3('keys');
-var uid$1    = require$$26;
+var shared$1 = _shared('keys');
+var uid$1    = _uid;
 var _sharedKey = function(key){
   return shared$1[key] || (shared$1[key] = uid$1(key));
 };
 
-
-
-var _sharedKey$2 = Object.freeze({
-	default: _sharedKey,
-	__moduleExports: _sharedKey
-});
-
-var require$$1$5 = ( _arrayIncludes$2 && _arrayIncludes ) || _arrayIncludes$2;
-
-var require$$2$6 = ( _sharedKey$2 && _sharedKey ) || _sharedKey$2;
-
-var has$2          = require$$3$3;
-var toIObject$2    = require$$1$4;
-var arrayIndexOf = require$$1$5(false);
-var IE_PROTO     = require$$2$6('IE_PROTO');
+var has$2          = _has;
+var toIObject$2    = _toIobject;
+var arrayIndexOf = _arrayIncludes(false);
+var IE_PROTO     = _sharedKey('IE_PROTO');
 
 var _objectKeysInternal = function(object, names){
   var O      = toIObject$2(object)
@@ -726,47 +422,21 @@ var _objectKeysInternal = function(object, names){
   return result;
 };
 
-
-
-var _objectKeysInternal$2 = Object.freeze({
-	default: _objectKeysInternal,
-	__moduleExports: _objectKeysInternal
-});
-
 // IE 8- don't enum bug keys
 var _enumBugKeys = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
 
-
-
-var _enumBugKeys$2 = Object.freeze({
-	default: _enumBugKeys,
-	__moduleExports: _enumBugKeys
-});
-
-var require$$0$1 = ( _objectKeysInternal$2 && _objectKeysInternal ) || _objectKeysInternal$2;
-
-var require$$1$6 = ( _enumBugKeys$2 && _enumBugKeys ) || _enumBugKeys$2;
-
-var $keys$1       = require$$0$1;
-var enumBugKeys = require$$1$6;
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys$1       = _objectKeysInternal;
+var enumBugKeys = _enumBugKeys;
 
 var _objectKeys = Object.keys || function keys(O){
   return $keys$1(O, enumBugKeys);
 };
 
-
-
-var _objectKeys$2 = Object.freeze({
-	default: _objectKeys,
-	__moduleExports: _objectKeys
-});
-
-var require$$0$2 = ( _objectKeys$2 && _objectKeys ) || _objectKeys$2;
-
-var getKeys   = require$$0$2;
-var toIObject$1 = require$$1$4;
+var getKeys   = _objectKeys;
+var toIObject$1 = _toIobject;
 var _keyof = function(object, el){
   var O      = toIObject$1(object)
     , keys   = getKeys(O)
@@ -776,26 +446,11 @@ var _keyof = function(object, el){
   while(length > index)if(O[key = keys[index++]] === el)return key;
 };
 
-
-
-var _keyof$2 = Object.freeze({
-	default: _keyof,
-	__moduleExports: _keyof
-});
-
 var f$3 = Object.getOwnPropertySymbols;
 
 var _objectGops = {
 	f: f$3
 };
-
-
-
-var _objectGops$2 = Object.freeze({
-	default: _objectGops,
-	__moduleExports: _objectGops,
-	f: f$3
-});
 
 var f$4 = {}.propertyIsEnumerable;
 
@@ -803,21 +458,10 @@ var _objectPie = {
 	f: f$4
 };
 
-
-
-var _objectPie$2 = Object.freeze({
-	default: _objectPie,
-	__moduleExports: _objectPie,
-	f: f$4
-});
-
-var require$$1$7 = ( _objectGops$2 && _objectGops ) || _objectGops$2;
-
-var require$$2$7 = ( _objectPie$2 && _objectPie ) || _objectPie$2;
-
-var getKeys$1 = require$$0$2;
-var gOPS    = require$$1$7;
-var pIE     = require$$2$7;
+// all enumerable object keys, includes symbols
+var getKeys$1 = _objectKeys;
+var gOPS    = _objectGops;
+var pIE     = _objectPie;
 var _enumKeys = function(it){
   var result     = getKeys$1(it)
     , getSymbols = gOPS.f;
@@ -830,30 +474,17 @@ var _enumKeys = function(it){
   } return result;
 };
 
-
-
-var _enumKeys$2 = Object.freeze({
-	default: _enumKeys,
-	__moduleExports: _enumKeys
-});
-
-var cof$1 = require$$3$5;
+// 7.2.2 IsArray(argument)
+var cof$1 = _cof;
 var _isArray = Array.isArray || function isArray(arg){
   return cof$1(arg) == 'Array';
 };
 
+var dP$3       = _objectDp;
+var anObject$3 = _anObject;
+var getKeys$2  = _objectKeys;
 
-
-var _isArray$2 = Object.freeze({
-	default: _isArray,
-	__moduleExports: _isArray
-});
-
-var dP$3       = require$$3$1;
-var anObject$3 = require$$6;
-var getKeys$2  = require$$0$2;
-
-var _objectDps = require$$5 ? Object.defineProperties : function defineProperties(O, Properties){
+var _objectDps = _descriptors ? Object.defineProperties : function defineProperties(O, Properties){
   anObject$3(O);
   var keys   = getKeys$2(Properties)
     , length = keys.length
@@ -863,43 +494,26 @@ var _objectDps = require$$5 ? Object.defineProperties : function definePropertie
   return O;
 };
 
+var _html = _global.document && document.documentElement;
 
-
-var _objectDps$2 = Object.freeze({
-	default: _objectDps,
-	__moduleExports: _objectDps
-});
-
-var _html = require$$2.document && document.documentElement;
-
-
-
-var _html$2 = Object.freeze({
-	default: _html,
-	__moduleExports: _html
-});
-
-var require$$2$8 = ( _objectDps$2 && _objectDps ) || _objectDps$2;
-
-var require$$2$9 = ( _html$2 && _html ) || _html$2;
-
-var anObject$2    = require$$6;
-var dPs         = require$$2$8;
-var enumBugKeys$1 = require$$1$6;
-var IE_PROTO$1    = require$$2$6('IE_PROTO');
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+var anObject$2    = _anObject;
+var dPs         = _objectDps;
+var enumBugKeys$1 = _enumBugKeys;
+var IE_PROTO$1    = _sharedKey('IE_PROTO');
 var Empty       = function(){ /* empty */ };
 var PROTOTYPE$2   = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function(){
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = require$$3('iframe')
+  var iframe = _domCreate('iframe')
     , i      = enumBugKeys$1.length
     , lt     = '<'
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
-  require$$2$9.appendChild(iframe);
+  _html.appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -924,15 +538,9 @@ var _objectCreate = Object.create || function create(O, Properties){
   return Properties === undefined ? result : dPs(result, Properties);
 };
 
-
-
-var _objectCreate$2 = Object.freeze({
-	default: _objectCreate,
-	__moduleExports: _objectCreate
-});
-
-var $keys$2      = require$$0$1;
-var hiddenKeys = require$$1$6.concat('length', 'prototype');
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var $keys$2      = _objectKeysInternal;
+var hiddenKeys = _enumBugKeys.concat('length', 'prototype');
 
 var f$6 = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
   return $keys$2(O, hiddenKeys);
@@ -942,18 +550,9 @@ var _objectGopn = {
 	f: f$6
 };
 
-
-
-var _objectGopn$2 = Object.freeze({
-	default: _objectGopn,
-	__moduleExports: _objectGopn,
-	f: f$6
-});
-
-var require$$0$3 = ( _objectGopn$2 && _objectGopn ) || _objectGopn$2;
-
-var toIObject$4 = require$$1$4;
-var gOPN$1      = require$$0$3.f;
+// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
+var toIObject$4 = _toIobject;
+var gOPN$1      = _objectGopn.f;
 var toString$1  = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -975,23 +574,15 @@ var _objectGopnExt = {
 	f: f$5
 };
 
-
-
-var _objectGopnExt$2 = Object.freeze({
-	default: _objectGopnExt,
-	__moduleExports: _objectGopnExt,
-	f: f$5
-});
-
-var pIE$1            = require$$2$7;
-var createDesc$2     = require$$5$2;
-var toIObject$5      = require$$1$4;
-var toPrimitive$2    = require$$2$1;
-var has$3            = require$$3$3;
-var IE8_DOM_DEFINE$1 = require$$5$1;
+var pIE$1            = _objectPie;
+var createDesc$2     = _propertyDesc;
+var toIObject$5      = _toIobject;
+var toPrimitive$2    = _toPrimitive;
+var has$3            = _has;
+var IE8_DOM_DEFINE$1 = _ie8DomDefine;
 var gOPD$1           = Object.getOwnPropertyDescriptor;
 
-var f$7 = require$$5 ? gOPD$1 : function getOwnPropertyDescriptor(O, P){
+var f$7 = _descriptors ? gOPD$1 : function getOwnPropertyDescriptor(O, P){
   O = toIObject$5(O);
   P = toPrimitive$2(P, true);
   if(IE8_DOM_DEFINE$1)try {
@@ -1004,59 +595,32 @@ var _objectGopd = {
 	f: f$7
 };
 
-
-
-var _objectGopd$2 = Object.freeze({
-	default: _objectGopd,
-	__moduleExports: _objectGopd,
-	f: f$7
-});
-
-var require$$0$4 = ( _export$2 && _export ) || _export$2;
-
-var require$$1$8 = ( _meta$2 && _meta ) || _meta$2;
-
-var require$$13 = ( _setToStringTag$2 && _setToStringTag ) || _setToStringTag$2;
-
-var require$$0$5 = ( _wksDefine$2 && _wksDefine ) || _wksDefine$2;
-
-var require$$13$1 = ( _keyof$2 && _keyof ) || _keyof$2;
-
-var require$$14$1 = ( _enumKeys$2 && _enumKeys ) || _enumKeys$2;
-
-var require$$1$9 = ( _isArray$2 && _isArray ) || _isArray$2;
-
-var require$$1$10 = ( _objectCreate$2 && _objectCreate ) || _objectCreate$2;
-
-var require$$1$11 = ( _objectGopnExt$2 && _objectGopnExt ) || _objectGopnExt$2;
-
-var require$$4 = ( _objectGopd$2 && _objectGopd ) || _objectGopd$2;
-
-var global$1         = require$$2;
-var has            = require$$3$3;
-var DESCRIPTORS    = require$$5;
-var $export        = require$$0$4;
-var redefine       = require$$1$2;
-var META           = require$$1$8.KEY;
-var $fails         = require$$1;
-var shared         = require$$2$3;
-var setToStringTag = require$$13;
-var uid            = require$$26;
-var wks            = require$$5$3;
-var wksExt         = require$$3$4;
-var wksDefine      = require$$0$5;
-var keyOf          = require$$13$1;
-var enumKeys       = require$$14$1;
-var isArray        = require$$1$9;
-var anObject       = require$$6;
-var toIObject      = require$$1$4;
-var toPrimitive    = require$$2$1;
-var createDesc     = require$$5$2;
-var _create        = require$$1$10;
-var gOPNExt        = require$$1$11;
-var $GOPD          = require$$4;
-var $DP            = require$$3$1;
-var $keys          = require$$0$2;
+// ECMAScript 6 symbols shim
+var global$1         = _global;
+var has            = _has;
+var DESCRIPTORS    = _descriptors;
+var $export        = _export;
+var redefine       = _redefine;
+var META           = _meta.KEY;
+var $fails         = _fails;
+var shared         = _shared;
+var setToStringTag = _setToStringTag;
+var uid            = _uid;
+var wks            = _wks;
+var wksExt         = _wksExt;
+var wksDefine      = _wksDefine;
+var keyOf          = _keyof;
+var enumKeys       = _enumKeys;
+var isArray        = _isArray;
+var anObject       = _anObject;
+var toIObject      = _toIobject;
+var toPrimitive    = _toPrimitive;
+var createDesc     = _propertyDesc;
+var _create        = _objectCreate;
+var gOPNExt        = _objectGopnExt;
+var $GOPD          = _objectGopd;
+var $DP            = _objectDp;
+var $keys          = _objectKeys;
 var gOPD           = $GOPD.f;
 var dP             = $DP.f;
 var gOPN           = gOPNExt.f;
@@ -1179,11 +743,11 @@ if(!USE_NATIVE){
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f   = $defineProperty;
-  require$$0$3.f = gOPNExt.f = $getOwnPropertyNames;
-  require$$2$7.f  = $propertyIsEnumerable;
-  require$$1$7.f = $getOwnPropertySymbols;
+  _objectGopn.f = gOPNExt.f = $getOwnPropertyNames;
+  _objectPie.f  = $propertyIsEnumerable;
+  _objectGops.f = $getOwnPropertySymbols;
 
-  if(DESCRIPTORS && !require$$0){
+  if(DESCRIPTORS && !_library){
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -1258,7 +822,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || require$$3$2($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || _hide($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -1266,21 +830,22 @@ setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global$1.JSON, 'JSON', true);
 
-var $export$2 = require$$0$4;
+var $export$2 = _export;
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export$2($export$2.S, 'Object', {create: require$$1$10});
+$export$2($export$2.S, 'Object', {create: _objectCreate});
 
-var $export$3 = require$$0$4;
+var $export$3 = _export;
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export$3($export$3.S + $export$3.F * !require$$5, 'Object', {defineProperty: require$$3$1.f});
+$export$3($export$3.S + $export$3.F * !_descriptors, 'Object', {defineProperty: _objectDp.f});
 
-var $export$4 = require$$0$4;
+var $export$4 = _export;
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export$4($export$4.S + $export$4.F * !require$$5, 'Object', {defineProperties: require$$2$8});
+$export$4($export$4.S + $export$4.F * !_descriptors, 'Object', {defineProperties: _objectDps});
 
-var $export$5 = require$$0$4;
-var core$2    = require$$1$1;
-var fails   = require$$1;
+// most Object methods by ES6 should accept primitives
+var $export$5 = _export;
+var core$2    = _core;
+var fails   = _fails;
 var _objectSap = function(KEY, exec){
   var fn  = (core$2.Object || {})[KEY] || Object[KEY]
     , exp = {};
@@ -1288,41 +853,26 @@ var _objectSap = function(KEY, exec){
   $export$5($export$5.S + $export$5.F * fails(function(){ fn(1); }), 'Object', exp);
 };
 
+// 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
+var toIObject$6                 = _toIobject;
+var $getOwnPropertyDescriptor$1 = _objectGopd.f;
 
-
-var _objectSap$2 = Object.freeze({
-	default: _objectSap,
-	__moduleExports: _objectSap
-});
-
-var require$$1$12 = ( _objectSap$2 && _objectSap ) || _objectSap$2;
-
-var toIObject$6                 = require$$1$4;
-var $getOwnPropertyDescriptor$1 = require$$4.f;
-
-require$$1$12('getOwnPropertyDescriptor', function(){
+_objectSap('getOwnPropertyDescriptor', function(){
   return function getOwnPropertyDescriptor(it, key){
     return $getOwnPropertyDescriptor$1(toIObject$6(it), key);
   };
 });
 
-var defined$1 = require$$1$3;
+// 7.1.13 ToObject(argument)
+var defined$1 = _defined;
 var _toObject = function(it){
   return Object(defined$1(it));
 };
 
-
-
-var _toObject$2 = Object.freeze({
-	default: _toObject,
-	__moduleExports: _toObject
-});
-
-var require$$1$13 = ( _toObject$2 && _toObject ) || _toObject$2;
-
-var has$4         = require$$3$3;
-var toObject$1    = require$$1$13;
-var IE_PROTO$2    = require$$2$6('IE_PROTO');
+// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
+var has$4         = _has;
+var toObject$1    = _toObject;
+var IE_PROTO$2    = _sharedKey('IE_PROTO');
 var ObjectProto$1 = Object.prototype;
 
 var _objectGpo = Object.getPrototypeOf || function(O){
@@ -1333,97 +883,98 @@ var _objectGpo = Object.getPrototypeOf || function(O){
   } return O instanceof Object ? ObjectProto$1 : null;
 };
 
+// 19.1.2.9 Object.getPrototypeOf(O)
+var toObject        = _toObject;
+var $getPrototypeOf = _objectGpo;
 
-
-var _objectGpo$2 = Object.freeze({
-	default: _objectGpo,
-	__moduleExports: _objectGpo
-});
-
-var require$$2$10 = ( _objectGpo$2 && _objectGpo ) || _objectGpo$2;
-
-var toObject        = require$$1$13;
-var $getPrototypeOf = require$$2$10;
-
-require$$1$12('getPrototypeOf', function(){
+_objectSap('getPrototypeOf', function(){
   return function getPrototypeOf(it){
     return $getPrototypeOf(toObject(it));
   };
 });
 
-var toObject$2 = require$$1$13;
-var $keys$3    = require$$0$2;
+// 19.1.2.14 Object.keys(O)
+var toObject$2 = _toObject;
+var $keys$3    = _objectKeys;
 
-require$$1$12('keys', function(){
+_objectSap('keys', function(){
   return function keys(it){
     return $keys$3(toObject$2(it));
   };
 });
 
-require$$1$12('getOwnPropertyNames', function(){
-  return require$$1$11.f;
+// 19.1.2.7 Object.getOwnPropertyNames(O)
+_objectSap('getOwnPropertyNames', function(){
+  return _objectGopnExt.f;
 });
 
-var isObject$3 = require$$7;
-var meta     = require$$1$8.onFreeze;
+// 19.1.2.5 Object.freeze(O)
+var isObject$3 = _isObject;
+var meta     = _meta.onFreeze;
 
-require$$1$12('freeze', function($freeze){
+_objectSap('freeze', function($freeze){
   return function freeze(it){
     return $freeze && isObject$3(it) ? $freeze(meta(it)) : it;
   };
 });
 
-var isObject$4 = require$$7;
-var meta$1     = require$$1$8.onFreeze;
+// 19.1.2.17 Object.seal(O)
+var isObject$4 = _isObject;
+var meta$1     = _meta.onFreeze;
 
-require$$1$12('seal', function($seal){
+_objectSap('seal', function($seal){
   return function seal(it){
     return $seal && isObject$4(it) ? $seal(meta$1(it)) : it;
   };
 });
 
-var isObject$5 = require$$7;
-var meta$2     = require$$1$8.onFreeze;
+// 19.1.2.15 Object.preventExtensions(O)
+var isObject$5 = _isObject;
+var meta$2     = _meta.onFreeze;
 
-require$$1$12('preventExtensions', function($preventExtensions){
+_objectSap('preventExtensions', function($preventExtensions){
   return function preventExtensions(it){
     return $preventExtensions && isObject$5(it) ? $preventExtensions(meta$2(it)) : it;
   };
 });
 
-var isObject$6 = require$$7;
+// 19.1.2.12 Object.isFrozen(O)
+var isObject$6 = _isObject;
 
-require$$1$12('isFrozen', function($isFrozen){
+_objectSap('isFrozen', function($isFrozen){
   return function isFrozen(it){
     return isObject$6(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
 
-var isObject$7 = require$$7;
+// 19.1.2.13 Object.isSealed(O)
+var isObject$7 = _isObject;
 
-require$$1$12('isSealed', function($isSealed){
+_objectSap('isSealed', function($isSealed){
   return function isSealed(it){
     return isObject$7(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
 
-var isObject$8 = require$$7;
+// 19.1.2.11 Object.isExtensible(O)
+var isObject$8 = _isObject;
 
-require$$1$12('isExtensible', function($isExtensible){
+_objectSap('isExtensible', function($isExtensible){
   return function isExtensible(it){
     return isObject$8(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
 
-var getKeys$3  = require$$0$2;
-var gOPS$1     = require$$1$7;
-var pIE$2      = require$$2$7;
-var toObject$3 = require$$1$13;
-var IObject$1  = require$$2$4;
+// 19.1.2.1 Object.assign(target, source, ...)
+var getKeys$3  = _objectKeys;
+var gOPS$1     = _objectGops;
+var pIE$2      = _objectPie;
+var toObject$3 = _toObject;
+var IObject$1  = _iobject;
 var $assign  = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-var _objectAssign = !$assign || require$$1(function(){
+var _objectAssign = !$assign || _fails(function(){
   var A = {}
     , B = {}
     , S = Symbol()
@@ -1447,38 +998,24 @@ var _objectAssign = !$assign || require$$1(function(){
   } return T;
 } : $assign;
 
+// 19.1.3.1 Object.assign(target, source)
+var $export$6 = _export;
 
-
-var _objectAssign$2 = Object.freeze({
-	default: _objectAssign,
-	__moduleExports: _objectAssign
-});
-
-var require$$3$6 = ( _objectAssign$2 && _objectAssign ) || _objectAssign$2;
-
-var $export$6 = require$$0$4;
-
-$export$6($export$6.S + $export$6.F, 'Object', {assign: require$$3$6});
+$export$6($export$6.S + $export$6.F, 'Object', {assign: _objectAssign});
 
 // 7.2.9 SameValue(x, y)
 var _sameValue = Object.is || function is(x, y){
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
 
+// 19.1.3.10 Object.is(value1, value2)
+var $export$7 = _export;
+$export$7($export$7.S, 'Object', {is: _sameValue});
 
-
-var _sameValue$2 = Object.freeze({
-	default: _sameValue,
-	__moduleExports: _sameValue
-});
-
-var require$$17 = ( _sameValue$2 && _sameValue ) || _sameValue$2;
-
-var $export$7 = require$$0$4;
-$export$7($export$7.S, 'Object', {is: require$$17});
-
-var isObject$9 = require$$7;
-var anObject$4 = require$$6;
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var isObject$9 = _isObject;
+var anObject$4 = _anObject;
 var check = function(O, proto){
   anObject$4(O);
   if(!isObject$9(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
@@ -1487,7 +1024,7 @@ var _setProto = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
     function(test, buggy, set){
       try {
-        set = require$$7$1(Function.call, require$$4.f(Object.prototype, '__proto__').set, 2);
+        set = _ctx(Function.call, _objectGopd.f(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
       } catch(e){ buggy = true; }
@@ -1501,20 +1038,13 @@ var _setProto = {
   check: check
 };
 
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export$8 = _export;
+$export$8($export$8.S, 'Object', {setPrototypeOf: _setProto.set});
 
-
-var _setProto$2 = Object.freeze({
-	default: _setProto,
-	__moduleExports: _setProto
-});
-
-var require$$1$14 = ( _setProto$2 && _setProto ) || _setProto$2;
-
-var $export$8 = require$$0$4;
-$export$8($export$8.S, 'Object', {setPrototypeOf: require$$1$14.set});
-
-var cof$2 = require$$3$5;
-var TAG$1 = require$$5$3('toStringTag');
+// getting tag from 19.1.3.6 Object.prototype.toString()
+var cof$2 = _cof;
+var TAG$1 = _wks('toStringTag');
 var ARG = cof$2(function(){ return arguments; }()) == 'Arguments';
 
 // fallback for IE11 Script Access Denied error
@@ -1535,20 +1065,12 @@ var _classof = function(it){
     : (B = cof$2(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
 
-
-
-var _classof$2 = Object.freeze({
-	default: _classof,
-	__moduleExports: _classof
-});
-
-var require$$0$6 = ( _classof$2 && _classof ) || _classof$2;
-
-var classof = require$$0$6;
+// 19.1.3.6 Object.prototype.toString()
+var classof = _classof;
 var test    = {};
-test[require$$5$3('toStringTag')] = 'z';
+test[_wks('toStringTag')] = 'z';
 if(test + '' != '[object z]'){
-  require$$1$2(Object.prototype, 'toString', function toString(){
+  _redefine(Object.prototype, 'toString', function toString(){
     return '[object ' + classof(this) + ']';
   }, true);
 }
@@ -1570,18 +1092,9 @@ var _invoke = function(fn, args, that){
   } return              fn.apply(that, args);
 };
 
-
-
-var _invoke$2 = Object.freeze({
-	default: _invoke,
-	__moduleExports: _invoke
-});
-
-var require$$1$15 = ( _invoke$2 && _invoke ) || _invoke$2;
-
-var aFunction$1  = require$$2$2;
-var isObject$10   = require$$7;
-var invoke     = require$$1$15;
+var aFunction$1  = _aFunction;
+var isObject$10   = _isObject;
+var invoke     = _invoke;
 var arraySlice = [].slice;
 var factories  = {};
 
@@ -1603,22 +1116,14 @@ var _bind = Function.bind || function bind(that /*, args... */){
   return bound;
 };
 
+// 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
+var $export$9 = _export;
 
+$export$9($export$9.P, 'Function', {bind: _bind});
 
-var _bind$2 = Object.freeze({
-	default: _bind,
-	__moduleExports: _bind
-});
-
-var require$$6$1 = ( _bind$2 && _bind ) || _bind$2;
-
-var $export$9 = require$$0$4;
-
-$export$9($export$9.P, 'Function', {bind: require$$6$1});
-
-var dP$4         = require$$3$1.f;
-var createDesc$3 = require$$5$2;
-var has$5        = require$$3$3;
+var dP$4         = _objectDp.f;
+var createDesc$3 = _propertyDesc;
+var has$5        = _has;
 var FProto     = Function.prototype;
 var nameRE     = /^\s*function ([^ (]*)/;
 var NAME       = 'name';
@@ -1628,7 +1133,7 @@ var isExtensible = Object.isExtensible || function(){
 };
 
 // 19.2.4.2 name
-NAME in FProto || require$$5 && dP$4(FProto, NAME, {
+NAME in FProto || _descriptors && dP$4(FProto, NAME, {
   configurable: true,
   get: function(){
     try {
@@ -1642,12 +1147,12 @@ NAME in FProto || require$$5 && dP$4(FProto, NAME, {
   }
 });
 
-var isObject$11       = require$$7;
-var getPrototypeOf = require$$2$10;
-var HAS_INSTANCE   = require$$5$3('hasInstance');
+var isObject$11       = _isObject;
+var getPrototypeOf = _objectGpo;
+var HAS_INSTANCE   = _wks('hasInstance');
 var FunctionProto  = Function.prototype;
 // 19.2.3.6 Function.prototype[@@hasInstance](V)
-if(!(HAS_INSTANCE in FunctionProto))require$$3$1.f(FunctionProto, HAS_INSTANCE, {value: function(O){
+if(!(HAS_INSTANCE in FunctionProto))_objectDp.f(FunctionProto, HAS_INSTANCE, {value: function(O){
   if(typeof this != 'function' || !isObject$11(O))return false;
   if(!isObject$11(this.prototype))return O instanceof this;
   // for environment w/o native `@@hasInstance` logic enough `instanceof`, but add this:
@@ -1658,19 +1163,10 @@ if(!(HAS_INSTANCE in FunctionProto))require$$3$1.f(FunctionProto, HAS_INSTANCE, 
 var _stringWs = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
-
-
-var _stringWs$2 = Object.freeze({
-	default: _stringWs,
-	__moduleExports: _stringWs
-});
-
-var require$$2$11 = ( _stringWs$2 && _stringWs ) || _stringWs$2;
-
-var $export$11 = require$$0$4;
-var defined$2 = require$$1$3;
-var fails$1   = require$$1;
-var spaces  = require$$2$11;
+var $export$11 = _export;
+var defined$2 = _defined;
+var fails$1   = _fails;
+var spaces  = _stringWs;
 var space   = '[' + spaces + ']';
 var non     = '\u200b\u0085';
 var ltrim   = RegExp('^' + space + space + '*');
@@ -1698,18 +1194,9 @@ var trim = exporter.trim = function(string, TYPE){
 
 var _stringTrim = exporter;
 
-
-
-var _stringTrim$2 = Object.freeze({
-	default: _stringTrim,
-	__moduleExports: _stringTrim
-});
-
-var require$$0$7 = ( _stringTrim$2 && _stringTrim ) || _stringTrim$2;
-
-var $parseInt$1 = require$$2.parseInt;
-var $trim     = require$$0$7.trim;
-var ws        = require$$2$11;
+var $parseInt$1 = _global.parseInt;
+var $trim     = _stringTrim.trim;
+var ws        = _stringWs;
 var hex       = /^[\-+]?0[xX]/;
 
 var _parseInt = $parseInt$1(ws + '08') !== 8 || $parseInt$1(ws + '0x16') !== 22 ? function parseInt(str, radix){
@@ -1717,45 +1204,27 @@ var _parseInt = $parseInt$1(ws + '08') !== 8 || $parseInt$1(ws + '0x16') !== 22 
   return $parseInt$1(string, (radix >>> 0) || (hex.test(string) ? 16 : 10));
 } : $parseInt$1;
 
-
-
-var _parseInt$2 = Object.freeze({
-	default: _parseInt,
-	__moduleExports: _parseInt
-});
-
-var require$$1$16 = ( _parseInt$2 && _parseInt ) || _parseInt$2;
-
-var $export$10   = require$$0$4;
-var $parseInt = require$$1$16;
+var $export$10   = _export;
+var $parseInt = _parseInt;
 // 18.2.5 parseInt(string, radix)
 $export$10($export$10.G + $export$10.F * (parseInt != $parseInt), {parseInt: $parseInt});
 
-var $parseFloat$1 = require$$2.parseFloat;
-var $trim$1       = require$$0$7.trim;
+var $parseFloat$1 = _global.parseFloat;
+var $trim$1       = _stringTrim.trim;
 
-var _parseFloat = 1 / $parseFloat$1(require$$2$11 + '-0') !== -Infinity ? function parseFloat(str){
+var _parseFloat = 1 / $parseFloat$1(_stringWs + '-0') !== -Infinity ? function parseFloat(str){
   var string = $trim$1(String(str), 3)
     , result = $parseFloat$1(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
 } : $parseFloat$1;
 
-
-
-var _parseFloat$2 = Object.freeze({
-	default: _parseFloat,
-	__moduleExports: _parseFloat
-});
-
-var require$$1$17 = ( _parseFloat$2 && _parseFloat ) || _parseFloat$2;
-
-var $export$12     = require$$0$4;
-var $parseFloat = require$$1$17;
+var $export$12     = _export;
+var $parseFloat = _parseFloat;
 // 18.2.4 parseFloat(string)
 $export$12($export$12.G + $export$12.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
 
-var isObject$12       = require$$7;
-var setPrototypeOf = require$$1$14.set;
+var isObject$12       = _isObject;
+var setPrototypeOf = _setProto.set;
 var _inheritIfRequired = function(that, target, C){
   var P, S = target.constructor;
   if(S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject$12(P) && setPrototypeOf){
@@ -1763,30 +1232,21 @@ var _inheritIfRequired = function(that, target, C){
   } return that;
 };
 
-
-
-var _inheritIfRequired$2 = Object.freeze({
-	default: _inheritIfRequired,
-	__moduleExports: _inheritIfRequired
-});
-
-var require$$11 = ( _inheritIfRequired$2 && _inheritIfRequired ) || _inheritIfRequired$2;
-
-var global$5            = require$$2;
-var has$6               = require$$3$3;
-var cof$3               = require$$3$5;
-var inheritIfRequired = require$$11;
-var toPrimitive$3       = require$$2$1;
-var fails$2             = require$$1;
-var gOPN$2              = require$$0$3.f;
-var gOPD$2              = require$$4.f;
-var dP$5                = require$$3$1.f;
-var $trim$2             = require$$0$7.trim;
+var global$5            = _global;
+var has$6               = _has;
+var cof$3               = _cof;
+var inheritIfRequired = _inheritIfRequired;
+var toPrimitive$3       = _toPrimitive;
+var fails$2             = _fails;
+var gOPN$2              = _objectGopn.f;
+var gOPD$2              = _objectGopd.f;
+var dP$5                = _objectDp.f;
+var $trim$2             = _stringTrim.trim;
 var NUMBER            = 'Number';
 var $Number           = global$5[NUMBER];
 var Base              = $Number;
 var proto             = $Number.prototype;
-var BROKEN_COF        = cof$3(require$$1$10(proto)) == NUMBER;
+var BROKEN_COF        = cof$3(_objectCreate(proto)) == NUMBER;
 var TRIM              = 'trim' in String.prototype;
 
 // 7.1.3 ToNumber(argument)
@@ -1824,7 +1284,7 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
       && (BROKEN_COF ? fails$2(function(){ proto.valueOf.call(that); }) : cof$3(that) != NUMBER)
         ? inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
   };
-  for(var keys = require$$5 ? gOPN$2(Base) : (
+  for(var keys = _descriptors ? gOPN$2(Base) : (
     // ES3:
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES6 (in case, if modules with ES6 Number statics required before):
@@ -1837,24 +1297,17 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   }
   $Number.prototype = proto;
   proto.constructor = $Number;
-  require$$1$2(global$5, NUMBER, $Number);
+  _redefine(global$5, NUMBER, $Number);
 }
 
-var cof$4 = require$$3$5;
+var cof$4 = _cof;
 var _aNumberValue = function(it, msg){
   if(typeof it != 'number' && cof$4(it) != 'Number')throw TypeError(msg);
   return +it;
 };
 
-
-
-var _aNumberValue$2 = Object.freeze({
-	default: _aNumberValue,
-	__moduleExports: _aNumberValue
-});
-
-var toInteger$3 = require$$12;
-var defined$3   = require$$1$3;
+var toInteger$3 = _toInteger;
+var defined$3   = _defined;
 
 var _stringRepeat = function repeat(count){
   var str = String(defined$3(this))
@@ -1865,21 +1318,10 @@ var _stringRepeat = function repeat(count){
   return res;
 };
 
-
-
-var _stringRepeat$2 = Object.freeze({
-	default: _stringRepeat,
-	__moduleExports: _stringRepeat
-});
-
-var require$$2$12 = ( _aNumberValue$2 && _aNumberValue ) || _aNumberValue$2;
-
-var require$$1$18 = ( _stringRepeat$2 && _stringRepeat ) || _stringRepeat$2;
-
-var $export$13      = require$$0$4;
-var toInteger$2    = require$$12;
-var aNumberValue = require$$2$12;
-var repeat       = require$$1$18;
+var $export$13      = _export;
+var toInteger$2    = _toInteger;
+var aNumberValue = _aNumberValue;
+var repeat       = _stringRepeat;
 var $toFixed     = 1..toFixed;
 var floor$1        = Math.floor;
 var data         = [0, 0, 0, 0, 0, 0];
@@ -1935,7 +1377,7 @@ $export$13($export$13.P + $export$13.F * (!!$toFixed && (
   0.9.toFixed(0) !== '1' ||
   1.255.toFixed(2) !== '1.25' ||
   1000000000000000128..toFixed(0) !== '1000000000000000128'
-) || !require$$1(function(){
+) || !_fails(function(){
   // V8 ~ Android 4.3-
   $toFixed.call({});
 })), 'Number', {
@@ -1989,9 +1431,9 @@ $export$13($export$13.P + $export$13.F * (!!$toFixed && (
   }
 });
 
-var $export$14      = require$$0$4;
-var $fails$1       = require$$1;
-var aNumberValue$1 = require$$2$12;
+var $export$14      = _export;
+var $fails$1       = _fails;
+var aNumberValue$1 = _aNumberValue;
 var $toPrecision = 1..toPrecision;
 
 $export$14($export$14.P + $export$14.F * ($fails$1(function(){
@@ -2007,12 +1449,14 @@ $export$14($export$14.P + $export$14.F * ($fails$1(function(){
   }
 });
 
-var $export$15 = require$$0$4;
+// 20.1.2.1 Number.EPSILON
+var $export$15 = _export;
 
 $export$15($export$15.S, 'Number', {EPSILON: Math.pow(2, -52)});
 
-var $export$16   = require$$0$4;
-var _isFinite = require$$2.isFinite;
+// 20.1.2.2 Number.isFinite(number)
+var $export$16   = _export;
+var _isFinite = _global.isFinite;
 
 $export$16($export$16.S, 'Number', {
   isFinite: function isFinite(it){
@@ -2020,26 +1464,20 @@ $export$16($export$16.S, 'Number', {
   }
 });
 
-var isObject$13 = require$$7;
+// 20.1.2.3 Number.isInteger(number)
+var isObject$13 = _isObject;
 var floor$2    = Math.floor;
 var _isInteger = function isInteger(it){
   return !isObject$13(it) && isFinite(it) && floor$2(it) === it;
 };
 
+// 20.1.2.3 Number.isInteger(number)
+var $export$17 = _export;
 
+$export$17($export$17.S, 'Number', {isInteger: _isInteger});
 
-var _isInteger$2 = Object.freeze({
-	default: _isInteger,
-	__moduleExports: _isInteger
-});
-
-var require$$1$19 = ( _isInteger$2 && _isInteger ) || _isInteger$2;
-
-var $export$17 = require$$0$4;
-
-$export$17($export$17.S, 'Number', {isInteger: require$$1$19});
-
-var $export$18 = require$$0$4;
+// 20.1.2.4 Number.isNaN(number)
+var $export$18 = _export;
 
 $export$18($export$18.S, 'Number', {
   isNaN: function isNaN(number){
@@ -2047,8 +1485,9 @@ $export$18($export$18.S, 'Number', {
   }
 });
 
-var $export$19   = require$$0$4;
-var isInteger = require$$1$19;
+// 20.1.2.5 Number.isSafeInteger(number)
+var $export$19   = _export;
+var isInteger = _isInteger;
 var abs       = Math.abs;
 
 $export$19($export$19.S, 'Number', {
@@ -2057,21 +1496,23 @@ $export$19($export$19.S, 'Number', {
   }
 });
 
-var $export$20 = require$$0$4;
+// 20.1.2.6 Number.MAX_SAFE_INTEGER
+var $export$20 = _export;
 
 $export$20($export$20.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
 
-var $export$21 = require$$0$4;
+// 20.1.2.10 Number.MIN_SAFE_INTEGER
+var $export$21 = _export;
 
 $export$21($export$21.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
 
-var $export$22     = require$$0$4;
-var $parseFloat$2 = require$$1$17;
+var $export$22     = _export;
+var $parseFloat$2 = _parseFloat;
 // 20.1.2.12 Number.parseFloat(string)
 $export$22($export$22.S + $export$22.F * (Number.parseFloat != $parseFloat$2), 'Number', {parseFloat: $parseFloat$2});
 
-var $export$23   = require$$0$4;
-var $parseInt$2 = require$$1$16;
+var $export$23   = _export;
+var $parseInt$2 = _parseInt;
 // 20.1.2.13 Number.parseInt(string, radix)
 $export$23($export$23.S + $export$23.F * (Number.parseInt != $parseInt$2), 'Number', {parseInt: $parseInt$2});
 
@@ -2080,17 +1521,9 @@ var _mathLog1p = Math.log1p || function log1p(x){
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
 
-
-
-var _mathLog1p$2 = Object.freeze({
-	default: _mathLog1p,
-	__moduleExports: _mathLog1p
-});
-
-var require$$1$20 = ( _mathLog1p$2 && _mathLog1p ) || _mathLog1p$2;
-
-var $export$24 = require$$0$4;
-var log1p   = require$$1$20;
+// 20.2.2.3 Math.acosh(x)
+var $export$24 = _export;
+var log1p   = _mathLog1p;
 var sqrt    = Math.sqrt;
 var $acosh  = Math.acosh;
 
@@ -2107,7 +1540,8 @@ $export$24($export$24.S + $export$24.F * !($acosh
   }
 });
 
-var $export$25 = require$$0$4;
+// 20.2.2.5 Math.asinh(x)
+var $export$25 = _export;
 var $asinh  = Math.asinh;
 
 function asinh(x){
@@ -2117,7 +1551,8 @@ function asinh(x){
 // Tor Browser bug: Math.asinh(0) -> -0 
 $export$25($export$25.S + $export$25.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
 
-var $export$26 = require$$0$4;
+// 20.2.2.7 Math.atanh(x)
+var $export$26 = _export;
 var $atanh  = Math.atanh;
 
 // Tor Browser bug: Math.atanh(-0) -> 0 
@@ -2132,17 +1567,9 @@ var _mathSign = Math.sign || function sign(x){
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
 
-
-
-var _mathSign$2 = Object.freeze({
-	default: _mathSign,
-	__moduleExports: _mathSign
-});
-
-var require$$1$21 = ( _mathSign$2 && _mathSign ) || _mathSign$2;
-
-var $export$27 = require$$0$4;
-var sign    = require$$1$21;
+// 20.2.2.9 Math.cbrt(x)
+var $export$27 = _export;
+var sign    = _mathSign;
 
 $export$27($export$27.S, 'Math', {
   cbrt: function cbrt(x){
@@ -2150,7 +1577,8 @@ $export$27($export$27.S, 'Math', {
   }
 });
 
-var $export$28 = require$$0$4;
+// 20.2.2.11 Math.clz32(x)
+var $export$28 = _export;
 
 $export$28($export$28.S, 'Math', {
   clz32: function clz32(x){
@@ -2158,7 +1586,8 @@ $export$28($export$28.S, 'Math', {
   }
 });
 
-var $export$29 = require$$0$4;
+// 20.2.2.12 Math.cosh(x)
+var $export$29 = _export;
 var exp     = Math.exp;
 
 $export$29($export$29.S, 'Math', {
@@ -2178,22 +1607,15 @@ var _mathExpm1 = (!$expm1$1
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 } : $expm1$1;
 
-
-
-var _mathExpm1$2 = Object.freeze({
-	default: _mathExpm1,
-	__moduleExports: _mathExpm1
-});
-
-var require$$1$22 = ( _mathExpm1$2 && _mathExpm1 ) || _mathExpm1$2;
-
-var $export$30 = require$$0$4;
-var $expm1  = require$$1$22;
+// 20.2.2.14 Math.expm1(x)
+var $export$30 = _export;
+var $expm1  = _mathExpm1;
 
 $export$30($export$30.S + $export$30.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
 
-var $export$31   = require$$0$4;
-var sign$1      = require$$1$21;
+// 20.2.2.16 Math.fround(x)
+var $export$31   = _export;
+var sign$1      = _mathSign;
 var pow$1       = Math.pow;
 var EPSILON   = pow$1(2, -52);
 var EPSILON32 = pow$1(2, -23);
@@ -2218,7 +1640,8 @@ $export$31($export$31.S, 'Math', {
   }
 });
 
-var $export$32 = require$$0$4;
+// 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
+var $export$32 = _export;
 var abs$1     = Math.abs;
 
 $export$32($export$32.S, 'Math', {
@@ -2243,11 +1666,12 @@ $export$32($export$32.S, 'Math', {
   }
 });
 
-var $export$33 = require$$0$4;
+// 20.2.2.18 Math.imul(x, y)
+var $export$33 = _export;
 var $imul   = Math.imul;
 
 // some WebKit versions fails with big numbers, some has wrong arity
-$export$33($export$33.S + $export$33.F * require$$1(function(){
+$export$33($export$33.S + $export$33.F * _fails(function(){
   return $imul(0xffffffff, 5) != -5 || $imul.length != 2;
 }), 'Math', {
   imul: function imul(x, y){
@@ -2260,7 +1684,8 @@ $export$33($export$33.S + $export$33.F * require$$1(function(){
   }
 });
 
-var $export$34 = require$$0$4;
+// 20.2.2.21 Math.log10(x)
+var $export$34 = _export;
 
 $export$34($export$34.S, 'Math', {
   log10: function log10(x){
@@ -2268,11 +1693,13 @@ $export$34($export$34.S, 'Math', {
   }
 });
 
-var $export$35 = require$$0$4;
+// 20.2.2.20 Math.log1p(x)
+var $export$35 = _export;
 
-$export$35($export$35.S, 'Math', {log1p: require$$1$20});
+$export$35($export$35.S, 'Math', {log1p: _mathLog1p});
 
-var $export$36 = require$$0$4;
+// 20.2.2.22 Math.log2(x)
+var $export$36 = _export;
 
 $export$36($export$36.S, 'Math', {
   log2: function log2(x){
@@ -2280,16 +1707,18 @@ $export$36($export$36.S, 'Math', {
   }
 });
 
-var $export$37 = require$$0$4;
+// 20.2.2.28 Math.sign(x)
+var $export$37 = _export;
 
-$export$37($export$37.S, 'Math', {sign: require$$1$21});
+$export$37($export$37.S, 'Math', {sign: _mathSign});
 
-var $export$38 = require$$0$4;
-var expm1   = require$$1$22;
+// 20.2.2.30 Math.sinh(x)
+var $export$38 = _export;
+var expm1   = _mathExpm1;
 var exp$1     = Math.exp;
 
 // V8 near Chromium 38 has a problem with very small numbers
-$export$38($export$38.S + $export$38.F * require$$1(function(){
+$export$38($export$38.S + $export$38.F * _fails(function(){
   return !Math.sinh(-2e-17) != -2e-17;
 }), 'Math', {
   sinh: function sinh(x){
@@ -2299,8 +1728,9 @@ $export$38($export$38.S + $export$38.F * require$$1(function(){
   }
 });
 
-var $export$39 = require$$0$4;
-var expm1$1   = require$$1$22;
+// 20.2.2.33 Math.tanh(x)
+var $export$39 = _export;
+var expm1$1   = _mathExpm1;
 var exp$2     = Math.exp;
 
 $export$39($export$39.S, 'Math', {
@@ -2311,7 +1741,8 @@ $export$39($export$39.S, 'Math', {
   }
 });
 
-var $export$40 = require$$0$4;
+// 20.2.2.34 Math.trunc(x)
+var $export$40 = _export;
 
 $export$40($export$40.S, 'Math', {
   trunc: function trunc(it){
@@ -2319,8 +1750,8 @@ $export$40($export$40.S, 'Math', {
   }
 });
 
-var $export$41        = require$$0$4;
-var toIndex$1        = require$$14;
+var $export$41        = _export;
+var toIndex$1        = _toIndex;
 var fromCharCode   = String.fromCharCode;
 var $fromCodePoint = String.fromCodePoint;
 
@@ -2343,9 +1774,9 @@ $export$41($export$41.S + $export$41.F * (!!$fromCodePoint && $fromCodePoint.len
   }
 });
 
-var $export$42   = require$$0$4;
-var toIObject$7 = require$$1$4;
-var toLength$1  = require$$2$5;
+var $export$42   = _export;
+var toIObject$7 = _toIobject;
+var toLength$1  = _toLength;
 
 $export$42($export$42.S, 'String', {
   // 21.1.2.4 String.raw(callSite, ...substitutions)
@@ -2362,14 +1793,15 @@ $export$42($export$42.S, 'String', {
   }
 });
 
-require$$0$7('trim', function($trim){
+// 21.1.3.25 String.prototype.trim()
+_stringTrim('trim', function($trim){
   return function trim(){
     return $trim(this, 3);
   };
 });
 
-var toInteger$4 = require$$12;
-var defined$4   = require$$1$3;
+var toInteger$4 = _toInteger;
+var defined$4   = _defined;
 // true  -> String#at
 // false -> String#codePointAt
 var _stringAt = function(TO_STRING){
@@ -2386,56 +1818,31 @@ var _stringAt = function(TO_STRING){
   };
 };
 
-
-
-var _stringAt$2 = Object.freeze({
-	default: _stringAt,
-	__moduleExports: _stringAt
-});
-
 var _iterators = {};
 
-
-
-var _iterators$2 = Object.freeze({
-	default: _iterators,
-	__moduleExports: _iterators
-});
-
-var create         = require$$1$10;
-var descriptor     = require$$5$2;
-var setToStringTag$2 = require$$13;
+var create         = _objectCreate;
+var descriptor     = _propertyDesc;
+var setToStringTag$2 = _setToStringTag;
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-require$$3$2(IteratorPrototype, require$$5$3('iterator'), function(){ return this; });
+_hide(IteratorPrototype, _wks('iterator'), function(){ return this; });
 
 var _iterCreate = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
   setToStringTag$2(Constructor, NAME + ' Iterator');
 };
 
-
-
-var _iterCreate$2 = Object.freeze({
-	default: _iterCreate,
-	__moduleExports: _iterCreate
-});
-
-var require$$4$1 = ( _iterators$2 && _iterators ) || _iterators$2;
-
-var require$$5$4 = ( _iterCreate$2 && _iterCreate ) || _iterCreate$2;
-
-var LIBRARY$1        = require$$0;
-var $export$43        = require$$0$4;
-var redefine$2       = require$$1$2;
-var hide$1           = require$$3$2;
-var has$7            = require$$3$3;
-var Iterators      = require$$4$1;
-var $iterCreate    = require$$5$4;
-var setToStringTag$1 = require$$13;
-var getPrototypeOf$1 = require$$2$10;
-var ITERATOR       = require$$5$3('iterator');
+var LIBRARY$1        = _library;
+var $export$43        = _export;
+var redefine$2       = _redefine;
+var hide$1           = _hide;
+var has$7            = _has;
+var Iterators      = _iterators;
+var $iterCreate    = _iterCreate;
+var setToStringTag$1 = _setToStringTag;
+var getPrototypeOf$1 = _objectGpo;
+var ITERATOR       = _wks('iterator');
 var BUGGY          = !([].keys && 'next' in [].keys());
 var FF_ITERATOR    = '@@iterator';
 var KEYS           = 'keys';
@@ -2496,21 +1903,10 @@ var _iterDefine = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   return methods;
 };
 
-
-
-var _iterDefine$2 = Object.freeze({
-	default: _iterDefine,
-	__moduleExports: _iterDefine
-});
-
-var require$$1$23 = ( _stringAt$2 && _stringAt ) || _stringAt$2;
-
-var require$$7$2 = ( _iterDefine$2 && _iterDefine ) || _iterDefine$2;
-
-var $at  = require$$1$23(true);
+var $at  = _stringAt(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-require$$7$2(String, 'String', function(iterated){
+_iterDefine(String, 'String', function(iterated){
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -2524,8 +1920,8 @@ require$$7$2(String, 'String', function(iterated){
   return {value: point, done: false};
 });
 
-var $export$44 = require$$0$4;
-var $at$1     = require$$1$23(false);
+var $export$44 = _export;
+var $at$1     = _stringAt(false);
 $export$44($export$44.P, 'String', {
   // 21.1.3.3 String.prototype.codePointAt(pos)
   codePointAt: function codePointAt(pos){
@@ -2533,39 +1929,25 @@ $export$44($export$44.P, 'String', {
   }
 });
 
-var isObject$14 = require$$7;
-var cof$5      = require$$3$5;
-var MATCH    = require$$5$3('match');
+// 7.2.8 IsRegExp(argument)
+var isObject$14 = _isObject;
+var cof$5      = _cof;
+var MATCH    = _wks('match');
 var _isRegexp = function(it){
   var isRegExp;
   return isObject$14(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof$5(it) == 'RegExp');
 };
 
-
-
-var _isRegexp$2 = Object.freeze({
-	default: _isRegexp,
-	__moduleExports: _isRegexp
-});
-
-var require$$3$7 = ( _isRegexp$2 && _isRegexp ) || _isRegexp$2;
-
-var isRegExp = require$$3$7;
-var defined$5  = require$$1$3;
+// helper for String#{startsWith, endsWith, includes}
+var isRegExp = _isRegexp;
+var defined$5  = _defined;
 
 var _stringContext = function(that, searchString, NAME){
   if(isRegExp(searchString))throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined$5(that));
 };
 
-
-
-var _stringContext$2 = Object.freeze({
-	default: _stringContext,
-	__moduleExports: _stringContext
-});
-
-var MATCH$1 = require$$5$3('match');
+var MATCH$1 = _wks('match');
 var _failsIsRegexp = function(KEY){
   var re = /./;
   try {
@@ -2578,24 +1960,13 @@ var _failsIsRegexp = function(KEY){
   } return true;
 };
 
-
-
-var _failsIsRegexp$2 = Object.freeze({
-	default: _failsIsRegexp,
-	__moduleExports: _failsIsRegexp
-});
-
-var require$$2$13 = ( _stringContext$2 && _stringContext ) || _stringContext$2;
-
-var require$$3$8 = ( _failsIsRegexp$2 && _failsIsRegexp ) || _failsIsRegexp$2;
-
-var $export$45   = require$$0$4;
-var toLength$2  = require$$2$5;
-var context   = require$$2$13;
+var $export$45   = _export;
+var toLength$2  = _toLength;
+var context   = _stringContext;
 var ENDS_WITH = 'endsWith';
 var $endsWith = ''[ENDS_WITH];
 
-$export$45($export$45.P + $export$45.F * require$$3$8(ENDS_WITH), 'String', {
+$export$45($export$45.P + $export$45.F * _failsIsRegexp(ENDS_WITH), 'String', {
   endsWith: function endsWith(searchString /*, endPosition = @length */){
     var that = context(this, searchString, ENDS_WITH)
       , endPosition = arguments.length > 1 ? arguments[1] : undefined
@@ -2608,31 +1979,31 @@ $export$45($export$45.P + $export$45.F * require$$3$8(ENDS_WITH), 'String', {
   }
 });
 
-var $export$46  = require$$0$4;
-var context$1  = require$$2$13;
+var $export$46  = _export;
+var context$1  = _stringContext;
 var INCLUDES = 'includes';
 
-$export$46($export$46.P + $export$46.F * require$$3$8(INCLUDES), 'String', {
+$export$46($export$46.P + $export$46.F * _failsIsRegexp(INCLUDES), 'String', {
   includes: function includes(searchString /*, position = 0 */){
     return !!~context$1(this, searchString, INCLUDES)
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-var $export$47 = require$$0$4;
+var $export$47 = _export;
 
 $export$47($export$47.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
-  repeat: require$$1$18
+  repeat: _stringRepeat
 });
 
-var $export$48     = require$$0$4;
-var toLength$3    = require$$2$5;
-var context$2     = require$$2$13;
+var $export$48     = _export;
+var toLength$3    = _toLength;
+var context$2     = _stringContext;
 var STARTS_WITH = 'startsWith';
 var $startsWith = ''[STARTS_WITH];
 
-$export$48($export$48.P + $export$48.F * require$$3$8(STARTS_WITH), 'String', {
+$export$48($export$48.P + $export$48.F * _failsIsRegexp(STARTS_WITH), 'String', {
   startsWith: function startsWith(searchString /*, position = 0 */){
     var that   = context$2(this, searchString, STARTS_WITH)
       , index  = toLength$3(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length))
@@ -2643,9 +2014,9 @@ $export$48($export$48.P + $export$48.F * require$$3$8(STARTS_WITH), 'String', {
   }
 });
 
-var $export$49 = require$$0$4;
-var fails$3   = require$$1;
-var defined$6 = require$$1$3;
+var $export$49 = _export;
+var fails$3   = _fails;
+var defined$6 = _defined;
 var quot    = /"/g;
 // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
 var createHTML = function(string, tag, attribute, value) {
@@ -2663,102 +2034,107 @@ var _stringHtml = function(NAME, exec){
   }), 'String', O);
 };
 
-
-
-var _stringHtml$2 = Object.freeze({
-	default: _stringHtml,
-	__moduleExports: _stringHtml
-});
-
-var require$$0$8 = ( _stringHtml$2 && _stringHtml ) || _stringHtml$2;
-
-require$$0$8('anchor', function(createHTML){
+// B.2.3.2 String.prototype.anchor(name)
+_stringHtml('anchor', function(createHTML){
   return function anchor(name){
     return createHTML(this, 'a', 'name', name);
   }
 });
 
-require$$0$8('big', function(createHTML){
+// B.2.3.3 String.prototype.big()
+_stringHtml('big', function(createHTML){
   return function big(){
     return createHTML(this, 'big', '', '');
   }
 });
 
-require$$0$8('blink', function(createHTML){
+// B.2.3.4 String.prototype.blink()
+_stringHtml('blink', function(createHTML){
   return function blink(){
     return createHTML(this, 'blink', '', '');
   }
 });
 
-require$$0$8('bold', function(createHTML){
+// B.2.3.5 String.prototype.bold()
+_stringHtml('bold', function(createHTML){
   return function bold(){
     return createHTML(this, 'b', '', '');
   }
 });
 
-require$$0$8('fixed', function(createHTML){
+// B.2.3.6 String.prototype.fixed()
+_stringHtml('fixed', function(createHTML){
   return function fixed(){
     return createHTML(this, 'tt', '', '');
   }
 });
 
-require$$0$8('fontcolor', function(createHTML){
+// B.2.3.7 String.prototype.fontcolor(color)
+_stringHtml('fontcolor', function(createHTML){
   return function fontcolor(color){
     return createHTML(this, 'font', 'color', color);
   }
 });
 
-require$$0$8('fontsize', function(createHTML){
+// B.2.3.8 String.prototype.fontsize(size)
+_stringHtml('fontsize', function(createHTML){
   return function fontsize(size){
     return createHTML(this, 'font', 'size', size);
   }
 });
 
-require$$0$8('italics', function(createHTML){
+// B.2.3.9 String.prototype.italics()
+_stringHtml('italics', function(createHTML){
   return function italics(){
     return createHTML(this, 'i', '', '');
   }
 });
 
-require$$0$8('link', function(createHTML){
+// B.2.3.10 String.prototype.link(url)
+_stringHtml('link', function(createHTML){
   return function link(url){
     return createHTML(this, 'a', 'href', url);
   }
 });
 
-require$$0$8('small', function(createHTML){
+// B.2.3.11 String.prototype.small()
+_stringHtml('small', function(createHTML){
   return function small(){
     return createHTML(this, 'small', '', '');
   }
 });
 
-require$$0$8('strike', function(createHTML){
+// B.2.3.12 String.prototype.strike()
+_stringHtml('strike', function(createHTML){
   return function strike(){
     return createHTML(this, 'strike', '', '');
   }
 });
 
-require$$0$8('sub', function(createHTML){
+// B.2.3.13 String.prototype.sub()
+_stringHtml('sub', function(createHTML){
   return function sub(){
     return createHTML(this, 'sub', '', '');
   }
 });
 
-require$$0$8('sup', function(createHTML){
+// B.2.3.14 String.prototype.sup()
+_stringHtml('sup', function(createHTML){
   return function sup(){
     return createHTML(this, 'sup', '', '');
   }
 });
 
-var $export$50 = require$$0$4;
+// 20.3.3.1 / 15.9.4.4 Date.now()
+var $export$50 = _export;
 
 $export$50($export$50.S, 'Date', {now: function(){ return new Date().getTime(); }});
 
-var $export$51     = require$$0$4;
-var toObject$4    = require$$1$13;
-var toPrimitive$4 = require$$2$1;
+var $export$51     = _export;
+var toObject$4    = _toObject;
+var toPrimitive$4 = _toPrimitive;
 
-$export$51($export$51.P + $export$51.F * require$$1(function(){
+$export$51($export$51.P + $export$51.F * _fails(function(){
   return new Date(NaN).toJSON() !== null || Date.prototype.toJSON.call({toISOString: function(){ return 1; }}) !== 1;
 }), 'Date', {
   toJSON: function toJSON(key){
@@ -2768,8 +2144,9 @@ $export$51($export$51.P + $export$51.F * require$$1(function(){
   }
 });
 
-var $export$52 = require$$0$4;
-var fails$4   = require$$1;
+// 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
+var $export$52 = _export;
+var fails$4   = _fails;
 var getTime = Date.prototype.getTime;
 
 var lz = function(num){
@@ -2801,14 +2178,14 @@ var TO_STRING    = 'toString';
 var $toString    = DateProto[TO_STRING];
 var getTime$1      = DateProto.getTime;
 if(new Date(NaN) + '' != INVALID_DATE){
-  require$$1$2(DateProto, TO_STRING, function toString(){
+  _redefine(DateProto, TO_STRING, function toString(){
     var value = getTime$1.call(this);
     return value === value ? $toString.call(this) : INVALID_DATE;
   });
 }
 
-var anObject$5    = require$$6;
-var toPrimitive$5 = require$$2$1;
+var anObject$5    = _anObject;
+var toPrimitive$5 = _toPrimitive;
 var NUMBER$1      = 'number';
 
 var _dateToPrimitive = function(hint){
@@ -2816,25 +2193,18 @@ var _dateToPrimitive = function(hint){
   return toPrimitive$5(anObject$5(this), hint != NUMBER$1);
 };
 
-
-
-var _dateToPrimitive$2 = Object.freeze({
-	default: _dateToPrimitive,
-	__moduleExports: _dateToPrimitive
-});
-
-var require$$2$14 = ( _dateToPrimitive$2 && _dateToPrimitive ) || _dateToPrimitive$2;
-
-var TO_PRIMITIVE$1 = require$$5$3('toPrimitive');
+var TO_PRIMITIVE$1 = _wks('toPrimitive');
 var proto$1        = Date.prototype;
 
-if(!(TO_PRIMITIVE$1 in proto$1))require$$3$2(proto$1, TO_PRIMITIVE$1, require$$2$14);
+if(!(TO_PRIMITIVE$1 in proto$1))_hide(proto$1, TO_PRIMITIVE$1, _dateToPrimitive);
 
-var $export$53 = require$$0$4;
+// 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
+var $export$53 = _export;
 
-$export$53($export$53.S, 'Array', {isArray: require$$1$9});
+$export$53($export$53.S, 'Array', {isArray: _isArray});
 
-var anObject$6 = require$$6;
+// call something on iterator step with safe closing on error
+var anObject$6 = _anObject;
 var _iterCall = function(iterator, fn, value, entries){
   try {
     return entries ? fn(anObject$6(value)[0], value[1]) : fn(value);
@@ -2846,60 +2216,33 @@ var _iterCall = function(iterator, fn, value, entries){
   }
 };
 
-
-
-var _iterCall$2 = Object.freeze({
-	default: _iterCall,
-	__moduleExports: _iterCall
-});
-
-var Iterators$1  = require$$4$1;
-var ITERATOR$1   = require$$5$3('iterator');
+// check on default Array iterator
+var Iterators$1  = _iterators;
+var ITERATOR$1   = _wks('iterator');
 var ArrayProto = Array.prototype;
 
 var _isArrayIter = function(it){
   return it !== undefined && (Iterators$1.Array === it || ArrayProto[ITERATOR$1] === it);
 };
 
-
-
-var _isArrayIter$2 = Object.freeze({
-	default: _isArrayIter,
-	__moduleExports: _isArrayIter
-});
-
-var $defineProperty$1 = require$$3$1;
-var createDesc$4      = require$$5$2;
+var $defineProperty$1 = _objectDp;
+var createDesc$4      = _propertyDesc;
 
 var _createProperty = function(object, index, value){
   if(index in object)$defineProperty$1.f(object, index, createDesc$4(0, value));
   else object[index] = value;
 };
 
-
-
-var _createProperty$2 = Object.freeze({
-	default: _createProperty,
-	__moduleExports: _createProperty
-});
-
-var classof$1   = require$$0$6;
-var ITERATOR$2  = require$$5$3('iterator');
-var Iterators$2 = require$$4$1;
-var core_getIteratorMethod = require$$1$1.getIteratorMethod = function(it){
+var classof$1   = _classof;
+var ITERATOR$2  = _wks('iterator');
+var Iterators$2 = _iterators;
+var core_getIteratorMethod = _core.getIteratorMethod = function(it){
   if(it != undefined)return it[ITERATOR$2]
     || it['@@iterator']
     || Iterators$2[classof$1(it)];
 };
 
-
-
-var core_getIteratorMethod$2 = Object.freeze({
-	default: core_getIteratorMethod,
-	__moduleExports: core_getIteratorMethod
-});
-
-var ITERATOR$3     = require$$5$3('iterator');
+var ITERATOR$3     = _wks('iterator');
 var SAFE_CLOSING = false;
 
 try {
@@ -2921,33 +2264,16 @@ var _iterDetect = function(exec, skipClosing){
   return safe;
 };
 
+var ctx$1            = _ctx;
+var $export$54        = _export;
+var toObject$5       = _toObject;
+var call           = _iterCall;
+var isArrayIter    = _isArrayIter;
+var toLength$4       = _toLength;
+var createProperty = _createProperty;
+var getIterFn      = core_getIteratorMethod;
 
-
-var _iterDetect$2 = Object.freeze({
-	default: _iterDetect,
-	__moduleExports: _iterDetect
-});
-
-var require$$1$24 = ( _iterCall$2 && _iterCall ) || _iterCall$2;
-
-var require$$21 = ( _isArrayIter$2 && _isArrayIter ) || _isArrayIter$2;
-
-var require$$4$2 = ( _createProperty$2 && _createProperty ) || _createProperty$2;
-
-var require$$25 = ( core_getIteratorMethod$2 && core_getIteratorMethod ) || core_getIteratorMethod$2;
-
-var require$$33 = ( _iterDetect$2 && _iterDetect ) || _iterDetect$2;
-
-var ctx$1            = require$$7$1;
-var $export$54        = require$$0$4;
-var toObject$5       = require$$1$13;
-var call           = require$$1$24;
-var isArrayIter    = require$$21;
-var toLength$4       = require$$2$5;
-var createProperty = require$$4$2;
-var getIterFn      = require$$25;
-
-$export$54($export$54.S + $export$54.F * !require$$33(function(iter){ Array.from(iter); }), 'Array', {
+$export$54($export$54.S + $export$54.F * !_iterDetect(function(iter){ Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
     var O       = toObject$5(arrayLike)
@@ -2975,11 +2301,11 @@ $export$54($export$54.S + $export$54.F * !require$$33(function(iter){ Array.from
   }
 });
 
-var $export$55        = require$$0$4;
-var createProperty$1 = require$$4$2;
+var $export$55        = _export;
+var createProperty$1 = _createProperty;
 
 // WebKit Array.of isn't generic
-$export$55($export$55.S + $export$55.F * require$$1(function(){
+$export$55($export$55.S + $export$55.F * _fails(function(){
   function F(){}
   return !(Array.of.call(F) instanceof F);
 }), 'Array', {
@@ -2994,7 +2320,7 @@ $export$55($export$55.S + $export$55.F * require$$1(function(){
   }
 });
 
-var fails$5 = require$$1;
+var fails$5 = _fails;
 
 var _strictMethod = function(method, arg){
   return !!method && fails$5(function(){
@@ -3002,35 +2328,27 @@ var _strictMethod = function(method, arg){
   });
 };
 
-
-
-var _strictMethod$2 = Object.freeze({
-	default: _strictMethod,
-	__moduleExports: _strictMethod
-});
-
-var require$$4$3 = ( _strictMethod$2 && _strictMethod ) || _strictMethod$2;
-
-var $export$56   = require$$0$4;
-var toIObject$8 = require$$1$4;
+// 22.1.3.13 Array.prototype.join(separator)
+var $export$56   = _export;
+var toIObject$8 = _toIobject;
 var arrayJoin = [].join;
 
 // fallback for not array-like strings
-$export$56($export$56.P + $export$56.F * (require$$2$4 != Object || !require$$4$3(arrayJoin)), 'Array', {
+$export$56($export$56.P + $export$56.F * (_iobject != Object || !_strictMethod(arrayJoin)), 'Array', {
   join: function join(separator){
     return arrayJoin.call(toIObject$8(this), separator === undefined ? ',' : separator);
   }
 });
 
-var $export$57    = require$$0$4;
-var html       = require$$2$9;
-var cof$6        = require$$3$5;
-var toIndex$2    = require$$14;
-var toLength$5   = require$$2$5;
+var $export$57    = _export;
+var html       = _html;
+var cof$6        = _cof;
+var toIndex$2    = _toIndex;
+var toLength$5   = _toLength;
 var arraySlice$1 = [].slice;
 
 // fallback for not array-like ES3 strings and DOM objects
-$export$57($export$57.P + $export$57.F * require$$1(function(){
+$export$57($export$57.P + $export$57.F * _fails(function(){
   if(html)arraySlice$1.call(html);
 }), 'Array', {
   slice: function slice(begin, end){
@@ -3050,10 +2368,10 @@ $export$57($export$57.P + $export$57.F * require$$1(function(){
   }
 });
 
-var $export$58   = require$$0$4;
-var aFunction$2 = require$$2$2;
-var toObject$6  = require$$1$13;
-var fails$6     = require$$1;
+var $export$58   = _export;
+var aFunction$2 = _aFunction;
+var toObject$6  = _toObject;
+var fails$6     = _fails;
 var $sort     = [].sort;
 var test$1      = [1, 2, 3];
 
@@ -3064,7 +2382,7 @@ $export$58($export$58.P + $export$58.F * (fails$6(function(){
   // V8 bug
   test$1.sort(null);
   // Old WebKit
-}) || !require$$4$3($sort)), 'Array', {
+}) || !_strictMethod($sort)), 'Array', {
   // 22.1.3.25 Array.prototype.sort(comparefn)
   sort: function sort(comparefn){
     return comparefn === undefined
@@ -3073,9 +2391,9 @@ $export$58($export$58.P + $export$58.F * (fails$6(function(){
   }
 });
 
-var isObject$15 = require$$7;
-var isArray$1  = require$$1$9;
-var SPECIES  = require$$5$3('species');
+var isObject$15 = _isObject;
+var isArray$1  = _isArray;
+var SPECIES  = _wks('species');
 
 var _arraySpeciesConstructor = function(original){
   var C;
@@ -3090,35 +2408,25 @@ var _arraySpeciesConstructor = function(original){
   } return C === undefined ? Array : C;
 };
 
-
-
-var _arraySpeciesConstructor$2 = Object.freeze({
-	default: _arraySpeciesConstructor,
-	__moduleExports: _arraySpeciesConstructor
-});
-
-var require$$0$9 = ( _arraySpeciesConstructor$2 && _arraySpeciesConstructor ) || _arraySpeciesConstructor$2;
-
-var speciesConstructor = require$$0$9;
+// 9.4.2.3 ArraySpeciesCreate(originalArray, length)
+var speciesConstructor = _arraySpeciesConstructor;
 
 var _arraySpeciesCreate = function(original, length){
   return new (speciesConstructor(original))(length);
 };
 
-
-
-var _arraySpeciesCreate$2 = Object.freeze({
-	default: _arraySpeciesCreate,
-	__moduleExports: _arraySpeciesCreate
-});
-
-var require$$4$4 = ( _arraySpeciesCreate$2 && _arraySpeciesCreate ) || _arraySpeciesCreate$2;
-
-var ctx$2      = require$$7$1;
-var IObject$2  = require$$2$4;
-var toObject$7 = require$$1$13;
-var toLength$6 = require$$2$5;
-var asc      = require$$4$4;
+// 0 -> Array#forEach
+// 1 -> Array#map
+// 2 -> Array#filter
+// 3 -> Array#some
+// 4 -> Array#every
+// 5 -> Array#find
+// 6 -> Array#findIndex
+var ctx$2      = _ctx;
+var IObject$2  = _iobject;
+var toObject$7 = _toObject;
+var toLength$6 = _toLength;
+var asc      = _arraySpeciesCreate;
 var _arrayMethods = function(TYPE, $create){
   var IS_MAP        = TYPE == 1
     , IS_FILTER     = TYPE == 2
@@ -3152,18 +2460,9 @@ var _arrayMethods = function(TYPE, $create){
   };
 };
 
-
-
-var _arrayMethods$2 = Object.freeze({
-	default: _arrayMethods,
-	__moduleExports: _arrayMethods
-});
-
-var require$$28 = ( _arrayMethods$2 && _arrayMethods ) || _arrayMethods$2;
-
-var $export$59  = require$$0$4;
-var $forEach = require$$28(0);
-var STRICT   = require$$4$3([].forEach, true);
+var $export$59  = _export;
+var $forEach = _arrayMethods(0);
+var STRICT   = _strictMethod([].forEach, true);
 
 $export$59($export$59.P + $export$59.F * !STRICT, 'Array', {
   // 22.1.3.10 / 15.4.4.18 Array.prototype.forEach(callbackfn [, thisArg])
@@ -3172,50 +2471,50 @@ $export$59($export$59.P + $export$59.F * !STRICT, 'Array', {
   }
 });
 
-var $export$60 = require$$0$4;
-var $map    = require$$28(1);
+var $export$60 = _export;
+var $map    = _arrayMethods(1);
 
-$export$60($export$60.P + $export$60.F * !require$$4$3([].map, true), 'Array', {
+$export$60($export$60.P + $export$60.F * !_strictMethod([].map, true), 'Array', {
   // 22.1.3.15 / 15.4.4.19 Array.prototype.map(callbackfn [, thisArg])
   map: function map(callbackfn /* , thisArg */){
     return $map(this, callbackfn, arguments[1]);
   }
 });
 
-var $export$61 = require$$0$4;
-var $filter = require$$28(2);
+var $export$61 = _export;
+var $filter = _arrayMethods(2);
 
-$export$61($export$61.P + $export$61.F * !require$$4$3([].filter, true), 'Array', {
+$export$61($export$61.P + $export$61.F * !_strictMethod([].filter, true), 'Array', {
   // 22.1.3.7 / 15.4.4.20 Array.prototype.filter(callbackfn [, thisArg])
   filter: function filter(callbackfn /* , thisArg */){
     return $filter(this, callbackfn, arguments[1]);
   }
 });
 
-var $export$62 = require$$0$4;
-var $some   = require$$28(3);
+var $export$62 = _export;
+var $some   = _arrayMethods(3);
 
-$export$62($export$62.P + $export$62.F * !require$$4$3([].some, true), 'Array', {
+$export$62($export$62.P + $export$62.F * !_strictMethod([].some, true), 'Array', {
   // 22.1.3.23 / 15.4.4.17 Array.prototype.some(callbackfn [, thisArg])
   some: function some(callbackfn /* , thisArg */){
     return $some(this, callbackfn, arguments[1]);
   }
 });
 
-var $export$63 = require$$0$4;
-var $every  = require$$28(4);
+var $export$63 = _export;
+var $every  = _arrayMethods(4);
 
-$export$63($export$63.P + $export$63.F * !require$$4$3([].every, true), 'Array', {
+$export$63($export$63.P + $export$63.F * !_strictMethod([].every, true), 'Array', {
   // 22.1.3.5 / 15.4.4.16 Array.prototype.every(callbackfn [, thisArg])
   every: function every(callbackfn /* , thisArg */){
     return $every(this, callbackfn, arguments[1]);
   }
 });
 
-var aFunction$3 = require$$2$2;
-var toObject$8  = require$$1$13;
-var IObject$3   = require$$2$4;
-var toLength$7  = require$$2$5;
+var aFunction$3 = _aFunction;
+var toObject$8  = _toObject;
+var IObject$3   = _iobject;
+var toLength$7  = _toLength;
 
 var _arrayReduce = function(that, callbackfn, aLen, memo, isRight){
   aFunction$3(callbackfn);
@@ -3241,41 +2540,32 @@ var _arrayReduce = function(that, callbackfn, aLen, memo, isRight){
   return memo;
 };
 
+var $export$64 = _export;
+var $reduce = _arrayReduce;
 
-
-var _arrayReduce$2 = Object.freeze({
-	default: _arrayReduce,
-	__moduleExports: _arrayReduce
-});
-
-var require$$1$25 = ( _arrayReduce$2 && _arrayReduce ) || _arrayReduce$2;
-
-var $export$64 = require$$0$4;
-var $reduce = require$$1$25;
-
-$export$64($export$64.P + $export$64.F * !require$$4$3([].reduce, true), 'Array', {
+$export$64($export$64.P + $export$64.F * !_strictMethod([].reduce, true), 'Array', {
   // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
   reduce: function reduce(callbackfn /* , initialValue */){
     return $reduce(this, callbackfn, arguments.length, arguments[1], false);
   }
 });
 
-var $export$65 = require$$0$4;
-var $reduce$1 = require$$1$25;
+var $export$65 = _export;
+var $reduce$1 = _arrayReduce;
 
-$export$65($export$65.P + $export$65.F * !require$$4$3([].reduceRight, true), 'Array', {
+$export$65($export$65.P + $export$65.F * !_strictMethod([].reduceRight, true), 'Array', {
   // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
   reduceRight: function reduceRight(callbackfn /* , initialValue */){
     return $reduce$1(this, callbackfn, arguments.length, arguments[1], true);
   }
 });
 
-var $export$66       = require$$0$4;
-var $indexOf      = require$$1$5(false);
+var $export$66       = _export;
+var $indexOf      = _arrayIncludes(false);
 var $native       = [].indexOf;
 var NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
-$export$66($export$66.P + $export$66.F * (NEGATIVE_ZERO || !require$$4$3($native)), 'Array', {
+$export$66($export$66.P + $export$66.F * (NEGATIVE_ZERO || !_strictMethod($native)), 'Array', {
   // 22.1.3.11 / 15.4.4.14 Array.prototype.indexOf(searchElement [, fromIndex])
   indexOf: function indexOf(searchElement /*, fromIndex = 0 */){
     return NEGATIVE_ZERO
@@ -3285,14 +2575,14 @@ $export$66($export$66.P + $export$66.F * (NEGATIVE_ZERO || !require$$4$3($native
   }
 });
 
-var $export$67       = require$$0$4;
-var toIObject$9     = require$$1$4;
-var toInteger$5     = require$$12;
-var toLength$8      = require$$2$5;
+var $export$67       = _export;
+var toIObject$9     = _toIobject;
+var toInteger$5     = _toInteger;
+var toLength$8      = _toLength;
 var $native$1       = [].lastIndexOf;
 var NEGATIVE_ZERO$1 = !!$native$1 && 1 / [1].lastIndexOf(1, -0) < 0;
 
-$export$67($export$67.P + $export$67.F * (NEGATIVE_ZERO$1 || !require$$4$3($native$1)), 'Array', {
+$export$67($export$67.P + $export$67.F * (NEGATIVE_ZERO$1 || !_strictMethod($native$1)), 'Array', {
   // 22.1.3.14 / 15.4.4.15 Array.prototype.lastIndexOf(searchElement [, fromIndex])
   lastIndexOf: function lastIndexOf(searchElement /*, fromIndex = @[*-1] */){
     // convert -0 to +0
@@ -3307,9 +2597,9 @@ $export$67($export$67.P + $export$67.F * (NEGATIVE_ZERO$1 || !require$$4$3($nati
   }
 });
 
-var toObject$9 = require$$1$13;
-var toIndex$3  = require$$14;
-var toLength$9 = require$$2$5;
+var toObject$9 = _toObject;
+var toIndex$3  = _toIndex;
+var toLength$9 = _toLength;
 
 var _arrayCopyWithin = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0, end = @length*/){
   var O     = toObject$9(this)
@@ -3332,40 +2622,24 @@ var _arrayCopyWithin = [].copyWithin || function copyWithin(target/*= 0*/, start
   } return O;
 };
 
-
-
-var _arrayCopyWithin$2 = Object.freeze({
-	default: _arrayCopyWithin,
-	__moduleExports: _arrayCopyWithin
-});
-
-var UNSCOPABLES = require$$5$3('unscopables');
+// 22.1.3.31 Array.prototype[@@unscopables]
+var UNSCOPABLES = _wks('unscopables');
 var ArrayProto$1  = Array.prototype;
-if(ArrayProto$1[UNSCOPABLES] == undefined)require$$3$2(ArrayProto$1, UNSCOPABLES, {});
+if(ArrayProto$1[UNSCOPABLES] == undefined)_hide(ArrayProto$1, UNSCOPABLES, {});
 var _addToUnscopables = function(key){
   ArrayProto$1[UNSCOPABLES][key] = true;
 };
 
+// 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
+var $export$68 = _export;
 
+$export$68($export$68.P, 'Array', {copyWithin: _arrayCopyWithin});
 
-var _addToUnscopables$2 = Object.freeze({
-	default: _addToUnscopables,
-	__moduleExports: _addToUnscopables
-});
+_addToUnscopables('copyWithin');
 
-var require$$36 = ( _arrayCopyWithin$2 && _arrayCopyWithin ) || _arrayCopyWithin$2;
-
-var require$$2$15 = ( _addToUnscopables$2 && _addToUnscopables ) || _addToUnscopables$2;
-
-var $export$68 = require$$0$4;
-
-$export$68($export$68.P, 'Array', {copyWithin: require$$36});
-
-require$$2$15('copyWithin');
-
-var toObject$10 = require$$1$13;
-var toIndex$4  = require$$14;
-var toLength$10 = require$$2$5;
+var toObject$10 = _toObject;
+var toIndex$4  = _toIndex;
+var toLength$10 = _toLength;
 var _arrayFill = function fill(value /*, start = 0, end = @length */){
   var O      = toObject$10(this)
     , length = toLength$10(O.length)
@@ -3377,23 +2651,16 @@ var _arrayFill = function fill(value /*, start = 0, end = @length */){
   return O;
 };
 
+// 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
+var $export$69 = _export;
 
+$export$69($export$69.P, 'Array', {fill: _arrayFill});
 
-var _arrayFill$2 = Object.freeze({
-	default: _arrayFill,
-	__moduleExports: _arrayFill
-});
+_addToUnscopables('fill');
 
-var require$$35 = ( _arrayFill$2 && _arrayFill ) || _arrayFill$2;
-
-var $export$69 = require$$0$4;
-
-$export$69($export$69.P, 'Array', {fill: require$$35});
-
-require$$2$15('fill');
-
-var $export$70 = require$$0$4;
-var $find   = require$$28(5);
+// 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
+var $export$70 = _export;
+var $find   = _arrayMethods(5);
 var KEY     = 'find';
 var forced  = true;
 // Shouldn't skip holes
@@ -3403,10 +2670,11 @@ $export$70($export$70.P + $export$70.F * forced, 'Array', {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-require$$2$15(KEY);
+_addToUnscopables(KEY);
 
-var $export$71 = require$$0$4;
-var $find$1   = require$$28(6);
+// 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
+var $export$71 = _export;
+var $find$1   = _arrayMethods(6);
 var KEY$1     = 'findIndex';
 var forced$1  = true;
 // Shouldn't skip holes
@@ -3416,12 +2684,12 @@ $export$71($export$71.P + $export$71.F * forced$1, 'Array', {
     return $find$1(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-require$$2$15(KEY$1);
+_addToUnscopables(KEY$1);
 
-var global$6      = require$$2;
-var dP$6          = require$$3$1;
-var DESCRIPTORS$1 = require$$5;
-var SPECIES$1     = require$$5$3('species');
+var global$6      = _global;
+var dP$6          = _objectDp;
+var DESCRIPTORS$1 = _descriptors;
+var SPECIES$1     = _wks('species');
 
 var _setSpecies = function(KEY){
   var C = global$6[KEY];
@@ -3431,40 +2699,22 @@ var _setSpecies = function(KEY){
   });
 };
 
-
-
-var _setSpecies$2 = Object.freeze({
-	default: _setSpecies,
-	__moduleExports: _setSpecies
-});
-
-var require$$11$1 = ( _setSpecies$2 && _setSpecies ) || _setSpecies$2;
-
-require$$11$1('Array');
+_setSpecies('Array');
 
 var _iterStep = function(done, value){
   return {value: value, done: !!done};
 };
 
-
-
-var _iterStep$2 = Object.freeze({
-	default: _iterStep,
-	__moduleExports: _iterStep
-});
-
-var require$$8 = ( _iterStep$2 && _iterStep ) || _iterStep$2;
-
-var addToUnscopables = require$$2$15;
-var step             = require$$8;
-var Iterators$3        = require$$4$1;
-var toIObject$10        = require$$1$4;
+var addToUnscopables = _addToUnscopables;
+var step             = _iterStep;
+var Iterators$3        = _iterators;
+var toIObject$10        = _toIobject;
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-var es6_array_iterator = require$$7$2(Array, 'Array', function(iterated, kind){
+var es6_array_iterator = _iterDefine(Array, 'Array', function(iterated, kind){
   this._t = toIObject$10(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -3489,14 +2739,8 @@ addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
 
-
-
-var es6_array_iterator$2 = Object.freeze({
-	default: es6_array_iterator,
-	__moduleExports: es6_array_iterator
-});
-
-var anObject$7 = require$$6;
+// 21.2.5.3 get RegExp.prototype.flags
+var anObject$7 = _anObject;
 var _flags = function(){
   var that   = anObject$7(this)
     , result = '';
@@ -3508,21 +2752,12 @@ var _flags = function(){
   return result;
 };
 
-
-
-var _flags$2 = Object.freeze({
-	default: _flags,
-	__moduleExports: _flags
-});
-
-var require$$4$5 = ( _flags$2 && _flags ) || _flags$2;
-
-var global$7            = require$$2;
-var inheritIfRequired$1 = require$$11;
-var dP$7                = require$$3$1.f;
-var gOPN$3              = require$$0$3.f;
-var isRegExp$1          = require$$3$7;
-var $flags            = require$$4$5;
+var global$7            = _global;
+var inheritIfRequired$1 = _inheritIfRequired;
+var dP$7                = _objectDp.f;
+var gOPN$3              = _objectGopn.f;
+var isRegExp$1          = _isRegexp;
+var $flags            = _flags;
 var $RegExp           = global$7.RegExp;
 var Base$1              = $RegExp;
 var proto$2             = $RegExp.prototype;
@@ -3530,8 +2765,8 @@ var re1               = /a/g;
 var re2               = /a/g;
 var CORRECT_NEW       = new $RegExp(re1) !== re1;
 
-if(require$$5 && (!CORRECT_NEW || require$$1(function(){
-  re2[require$$5$3('match')] = false;
+if(_descriptors && (!CORRECT_NEW || _fails(function(){
+  re2[_wks('match')] = false;
   // RegExp constructor can alter flags and IsRegExp works correct with @@match
   return $RegExp(re1) != re1 || $RegExp(re2) == re2 || $RegExp(re1, 'i') != '/a/i';
 }))){
@@ -3555,28 +2790,29 @@ if(require$$5 && (!CORRECT_NEW || require$$1(function(){
   for(var keys$1 = gOPN$3(Base$1), i$1 = 0; keys$1.length > i$1; )proxy(keys$1[i$1++]);
   proto$2.constructor = $RegExp;
   $RegExp.prototype = proto$2;
-  require$$1$2(global$7, 'RegExp', $RegExp);
+  _redefine(global$7, 'RegExp', $RegExp);
 }
 
-require$$11$1('RegExp');
+_setSpecies('RegExp');
 
-if(require$$5 && /./g.flags != 'g')require$$3$1.f(RegExp.prototype, 'flags', {
+// 21.2.5.3 get RegExp.prototype.flags()
+if(_descriptors && /./g.flags != 'g')_objectDp.f(RegExp.prototype, 'flags', {
   configurable: true,
-  get: require$$4$5
+  get: _flags
 });
 
-var anObject$8    = require$$6;
-var $flags$1      = require$$4$5;
-var DESCRIPTORS$2 = require$$5;
+var anObject$8    = _anObject;
+var $flags$1      = _flags;
+var DESCRIPTORS$2 = _descriptors;
 var TO_STRING$1   = 'toString';
 var $toString$1   = /./[TO_STRING$1];
 
 var define$1 = function(fn){
-  require$$1$2(RegExp.prototype, TO_STRING$1, fn, true);
+  _redefine(RegExp.prototype, TO_STRING$1, fn, true);
 };
 
 // 21.2.5.14 RegExp.prototype.toString()
-if(require$$1(function(){ return $toString$1.call({source: 'a', flags: 'b'}) != '/a/b'; })){
+if(_fails(function(){ return $toString$1.call({source: 'a', flags: 'b'}) != '/a/b'; })){
   define$1(function toString(){
     var R = anObject$8(this);
     return '/'.concat(R.source, '/',
@@ -3589,11 +2825,11 @@ if(require$$1(function(){ return $toString$1.call({source: 'a', flags: 'b'}) != 
   });
 }
 
-var hide$2     = require$$3$2;
-var redefine$3 = require$$1$2;
-var fails$7    = require$$1;
-var defined$7  = require$$1$3;
-var wks$1      = require$$5$3;
+var hide$2     = _hide;
+var redefine$3 = _redefine;
+var fails$7    = _fails;
+var defined$7  = _defined;
+var wks$1      = _wks;
 
 var _fixReWks = function(KEY, length, exec){
   var SYMBOL   = wks$1(KEY)
@@ -3617,16 +2853,8 @@ var _fixReWks = function(KEY, length, exec){
   }
 };
 
-
-
-var _fixReWks$2 = Object.freeze({
-	default: _fixReWks,
-	__moduleExports: _fixReWks
-});
-
-var require$$0$10 = ( _fixReWks$2 && _fixReWks ) || _fixReWks$2;
-
-require$$0$10('match', 1, function(defined, MATCH, $match){
+// @@match logic
+_fixReWks('match', 1, function(defined, MATCH, $match){
   // 21.1.3.11 String.prototype.match(regexp)
   return [function match(regexp){
     'use strict';
@@ -3636,7 +2864,8 @@ require$$0$10('match', 1, function(defined, MATCH, $match){
   }, $match];
 });
 
-require$$0$10('replace', 2, function(defined, REPLACE, $replace){
+// @@replace logic
+_fixReWks('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
   return [function replace(searchValue, replaceValue){
     'use strict';
@@ -3648,7 +2877,8 @@ require$$0$10('replace', 2, function(defined, REPLACE, $replace){
   }, $replace];
 });
 
-require$$0$10('search', 1, function(defined, SEARCH, $search){
+// @@search logic
+_fixReWks('search', 1, function(defined, SEARCH, $search){
   // 21.1.3.15 String.prototype.search(regexp)
   return [function search(regexp){
     'use strict';
@@ -3658,9 +2888,10 @@ require$$0$10('search', 1, function(defined, SEARCH, $search){
   }, $search];
 });
 
-require$$0$10('split', 2, function(defined, SPLIT, $split){
+// @@split logic
+_fixReWks('split', 2, function(defined, SPLIT, $split){
   'use strict';
-  var isRegExp   = require$$3$7
+  var isRegExp   = _isRegexp
     , _split     = $split
     , $push      = [].push
     , $SPLIT     = 'split'
@@ -3734,20 +2965,13 @@ var _anInstance = function(it, Constructor, name, forbiddenField){
   } return it;
 };
 
-
-
-var _anInstance$2 = Object.freeze({
-	default: _anInstance,
-	__moduleExports: _anInstance
-});
-
 var _forOf = createCommonjsModule(function (module) {
-var ctx         = require$$7$1
-  , call        = require$$1$24
-  , isArrayIter = require$$21
-  , anObject    = require$$6
-  , toLength    = require$$2$5
-  , getIterFn   = require$$25
+var ctx         = _ctx
+  , call        = _iterCall
+  , isArrayIter = _isArrayIter
+  , anObject    = _anObject
+  , toLength    = _toLength
+  , getIterFn   = core_getIteratorMethod
   , BREAK       = {}
   , RETURN      = {};
 var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
@@ -3769,33 +2993,20 @@ exports.BREAK  = BREAK;
 exports.RETURN = RETURN;
 });
 
-
-
-var _forOf$2 = Object.freeze({
-	default: _forOf,
-	__moduleExports: _forOf
-});
-
-var anObject$9  = require$$6;
-var aFunction$5 = require$$2$2;
-var SPECIES$2   = require$$5$3('species');
+// 7.3.20 SpeciesConstructor(O, defaultConstructor)
+var anObject$9  = _anObject;
+var aFunction$5 = _aFunction;
+var SPECIES$2   = _wks('species');
 var _speciesConstructor = function(O, D){
   var C = anObject$9(O).constructor, S;
   return C === undefined || (S = anObject$9(C)[SPECIES$2]) == undefined ? D : aFunction$5(S);
 };
 
-
-
-var _speciesConstructor$2 = Object.freeze({
-	default: _speciesConstructor,
-	__moduleExports: _speciesConstructor
-});
-
-var ctx$4                = require$$7$1;
-var invoke$1             = require$$1$15;
-var html$1               = require$$2$9;
-var cel                = require$$3;
-var global$9             = require$$2;
+var ctx$4                = _ctx;
+var invoke$1             = _invoke;
+var html$1               = _html;
+var cel                = _domCreate;
+var global$9             = _global;
 var process$2            = global$9.process;
 var setTask            = global$9.setImmediate;
 var clearTask          = global$9.clearImmediate;
@@ -3832,7 +3043,7 @@ if(!setTask || !clearTask){
     delete queue[id];
   };
   // Node.js 0.8-
-  if(require$$3$5(process$2) == 'process'){
+  if(_cof(process$2) == 'process'){
     defer = function(id){
       process$2.nextTick(ctx$4(run, id, 1));
     };
@@ -3869,21 +3080,12 @@ var _task = {
   clear: clearTask
 };
 
-
-
-var _task$2 = Object.freeze({
-	default: _task,
-	__moduleExports: _task
-});
-
-var require$$1$26 = ( _task$2 && _task ) || _task$2;
-
-var global$10    = require$$2;
-var macrotask = require$$1$26.set;
+var global$10    = _global;
+var macrotask = _task.set;
 var Observer  = global$10.MutationObserver || global$10.WebKitMutationObserver;
 var process$3   = global$10.process;
 var Promise$1   = global$10.Promise;
-var isNode$1    = require$$3$5(process$3) == 'process';
+var isNode$1    = _cof(process$3) == 'process';
 
 var _microtask = function(){
   var head, last, notify;
@@ -3947,48 +3149,24 @@ var _microtask = function(){
   };
 };
 
-
-
-var _microtask$2 = Object.freeze({
-	default: _microtask,
-	__moduleExports: _microtask
-});
-
-var redefine$4 = require$$1$2;
+var redefine$4 = _redefine;
 var _redefineAll = function(target, src, safe){
   for(var key in src)redefine$4(target, key, src[key], safe);
   return target;
 };
 
-
-
-var _redefineAll$2 = Object.freeze({
-	default: _redefineAll,
-	__moduleExports: _redefineAll
-});
-
-var require$$7$3 = ( _anInstance$2 && _anInstance ) || _anInstance$2;
-
-var require$$10 = ( _forOf$2 && _forOf ) || _forOf$2;
-
-var require$$30 = ( _speciesConstructor$2 && _speciesConstructor ) || _speciesConstructor$2;
-
-var require$$3$9 = ( _microtask$2 && _microtask ) || _microtask$2;
-
-var require$$8$1 = ( _redefineAll$2 && _redefineAll ) || _redefineAll$2;
-
-var LIBRARY$2            = require$$0;
-var global$8             = require$$2;
-var ctx$3                = require$$7$1;
-var classof$2            = require$$0$6;
-var $export$72            = require$$0$4;
-var isObject$16           = require$$7;
-var aFunction$4          = require$$2$2;
-var anInstance         = require$$7$3;
-var forOf              = require$$10;
-var speciesConstructor$1 = require$$30;
-var task               = require$$1$26.set;
-var microtask          = require$$3$9();
+var LIBRARY$2            = _library;
+var global$8             = _global;
+var ctx$3                = _ctx;
+var classof$2            = _classof;
+var $export$72            = _export;
+var isObject$16           = _isObject;
+var aFunction$4          = _aFunction;
+var anInstance         = _anInstance;
+var forOf              = _forOf;
+var speciesConstructor$1 = _speciesConstructor;
+var task               = _task.set;
+var microtask          = _microtask();
 var PROMISE            = 'Promise';
 var TypeError$1          = global$8.TypeError;
 var process$1            = global$8.process;
@@ -4004,7 +3182,7 @@ var USE_NATIVE$1 = !!function(){
   try {
     // correct subclassing with @@species support
     var promise     = $Promise.resolve(1)
-      , FakePromise = (promise.constructor = {})[require$$5$3('species')] = function(exec){ exec(empty, empty); };
+      , FakePromise = (promise.constructor = {})[_wks('species')] = function(exec){ exec(empty, empty); };
     // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
     return (isNode || typeof PromiseRejectionEvent == 'function') && promise.then(empty) instanceof FakePromise;
   } catch(e){ /* empty */ }
@@ -4182,7 +3360,7 @@ if(!USE_NATIVE$1){
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = require$$8$1($Promise.prototype, {
+  Internal.prototype = _redefineAll($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected){
       var reaction    = newPromiseCapability(speciesConstructor$1(this, $Promise));
@@ -4208,9 +3386,9 @@ if(!USE_NATIVE$1){
 }
 
 $export$72($export$72.G + $export$72.W + $export$72.F * !USE_NATIVE$1, {Promise: $Promise});
-require$$13($Promise, PROMISE);
-require$$11$1(PROMISE);
-Wrapper = require$$1$1[PROMISE];
+_setToStringTag($Promise, PROMISE);
+_setSpecies(PROMISE);
+Wrapper = _core[PROMISE];
 
 // statics
 $export$72($export$72.S + $export$72.F * !USE_NATIVE$1, PROMISE, {
@@ -4233,7 +3411,7 @@ $export$72($export$72.S + $export$72.F * (LIBRARY$2 || !USE_NATIVE$1), PROMISE, 
     return capability.promise;
   }
 });
-$export$72($export$72.S + $export$72.F * !(USE_NATIVE$1 && require$$33(function(iter){
+$export$72($export$72.S + $export$72.F * !(USE_NATIVE$1 && _iterDetect(function(iter){
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -4278,18 +3456,18 @@ $export$72($export$72.S + $export$72.F * !(USE_NATIVE$1 && require$$33(function(
   }
 });
 
-var dP$8          = require$$3$1.f;
-var create$1      = require$$1$10;
-var redefineAll = require$$8$1;
-var ctx$5         = require$$7$1;
-var anInstance$1  = require$$7$3;
-var defined$8     = require$$1$3;
-var forOf$1       = require$$10;
-var $iterDefine = require$$7$2;
-var step$1        = require$$8;
-var setSpecies  = require$$11$1;
-var DESCRIPTORS$3 = require$$5;
-var fastKey     = require$$1$8.fastKey;
+var dP$8          = _objectDp.f;
+var create$1      = _objectCreate;
+var redefineAll = _redefineAll;
+var ctx$5         = _ctx;
+var anInstance$1  = _anInstance;
+var defined$8     = _defined;
+var forOf$1       = _forOf;
+var $iterDefine = _iterDefine;
+var step$1        = _iterStep;
+var setSpecies  = _setSpecies;
+var DESCRIPTORS$3 = _descriptors;
+var fastKey     = _meta.fastKey;
 var SIZE        = DESCRIPTORS$3 ? '_s' : 'size';
 
 var getEntry = function(that, key){
@@ -4420,25 +3598,18 @@ var _collectionStrong = {
   }
 };
 
-
-
-var _collectionStrong$2 = Object.freeze({
-	default: _collectionStrong,
-	__moduleExports: _collectionStrong
-});
-
-var global$11            = require$$2;
-var $export$73           = require$$0$4;
-var redefine$5          = require$$1$2;
-var redefineAll$1       = require$$8$1;
-var meta$3              = require$$1$8;
-var forOf$2             = require$$10;
-var anInstance$2        = require$$7$3;
-var isObject$17          = require$$7;
-var fails$8             = require$$1;
-var $iterDetect       = require$$33;
-var setToStringTag$3    = require$$13;
-var inheritIfRequired$2 = require$$11;
+var global$11            = _global;
+var $export$73           = _export;
+var redefine$5          = _redefine;
+var redefineAll$1       = _redefineAll;
+var meta$3              = _meta;
+var forOf$2             = _forOf;
+var anInstance$2        = _anInstance;
+var isObject$17          = _isObject;
+var fails$8             = _fails;
+var $iterDetect       = _iterDetect;
+var setToStringTag$3    = _setToStringTag;
+var inheritIfRequired$2 = _inheritIfRequired;
 
 var _collection = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
   var Base  = global$11[NAME]
@@ -4512,21 +3683,10 @@ var _collection = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
   return C;
 };
 
-
-
-var _collection$2 = Object.freeze({
-	default: _collection,
-	__moduleExports: _collection
-});
-
-var require$$0$11 = ( _collectionStrong$2 && _collectionStrong ) || _collectionStrong$2;
-
-var require$$1$27 = ( _collection$2 && _collection ) || _collection$2;
-
-var strong = require$$0$11;
+var strong = _collectionStrong;
 
 // 23.1 Map Objects
-var es6_map = require$$1$27('Map', function(get){
+var es6_map = _collection('Map', function(get){
   return function Map(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -4540,17 +3700,10 @@ var es6_map = require$$1$27('Map', function(get){
   }
 }, strong, true);
 
-
-
-var es6_map$2 = Object.freeze({
-	default: es6_map,
-	__moduleExports: es6_map
-});
-
-var strong$1 = require$$0$11;
+var strong$1 = _collectionStrong;
 
 // 23.2 Set Objects
-var es6_set = require$$1$27('Set', function(get){
+var es6_set = _collection('Set', function(get){
   return function Set(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.2.3.1 Set.prototype.add(value)
@@ -4559,21 +3712,14 @@ var es6_set = require$$1$27('Set', function(get){
   }
 }, strong$1);
 
-
-
-var es6_set$2 = Object.freeze({
-	default: es6_set,
-	__moduleExports: es6_set
-});
-
-var redefineAll$2       = require$$8$1;
-var getWeak           = require$$1$8.getWeak;
-var anObject$10          = require$$6;
-var isObject$18          = require$$7;
-var anInstance$3        = require$$7$3;
-var forOf$3             = require$$10;
-var createArrayMethod = require$$28;
-var $has              = require$$3$3;
+var redefineAll$2       = _redefineAll;
+var getWeak           = _meta.getWeak;
+var anObject$10          = _anObject;
+var isObject$18          = _isObject;
+var anInstance$3        = _anInstance;
+var forOf$3             = _forOf;
+var createArrayMethod = _arrayMethods;
+var $has              = _has;
 var arrayFind         = createArrayMethod(5);
 var arrayFindIndex    = createArrayMethod(6);
 var id$1                = 0;
@@ -4649,23 +3795,14 @@ var _collectionWeak = {
   ufstore: uncaughtFrozenStore
 };
 
-
-
-var _collectionWeak$2 = Object.freeze({
-	default: _collectionWeak,
-	__moduleExports: _collectionWeak
-});
-
-var require$$0$12 = ( _collectionWeak$2 && _collectionWeak ) || _collectionWeak$2;
-
 var es6_weakMap = createCommonjsModule(function (module) {
 'use strict';
-var each         = require$$28(0)
-  , redefine     = require$$1$2
-  , meta         = require$$1$8
-  , assign       = require$$3$6
-  , weak         = require$$0$12
-  , isObject     = require$$7
+var each         = _arrayMethods(0)
+  , redefine     = _redefine
+  , meta         = _meta
+  , assign       = _objectAssign
+  , weak         = _collectionWeak
+  , isObject     = _isObject
   , getWeak      = meta.getWeak
   , isExtensible = Object.isExtensible
   , uncaughtFrozenStore = weak.ufstore
@@ -4694,7 +3831,7 @@ var methods = {
 };
 
 // 23.3 WeakMap Objects
-var $WeakMap = module.exports = require$$1$27('WeakMap', wrapper, methods, weak, true, true);
+var $WeakMap = module.exports = _collection('WeakMap', wrapper, methods, weak, true, true);
 
 // IE11 WeakMap frozen keys fix
 if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
@@ -4717,17 +3854,10 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
 }
 });
 
-
-
-var es6_weakMap$2 = Object.freeze({
-	default: es6_weakMap,
-	__moduleExports: es6_weakMap
-});
-
-var weak = require$$0$12;
+var weak = _collectionWeak;
 
 // 23.4 WeakSet Objects
-require$$1$27('WeakSet', function(get){
+_collection('WeakSet', function(get){
   return function WeakSet(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.4.3.1 WeakSet.prototype.add(value)
@@ -4736,9 +3866,9 @@ require$$1$27('WeakSet', function(get){
   }
 }, weak, false, true);
 
-var global$12 = require$$2;
-var hide$3   = require$$3$2;
-var uid$2    = require$$26;
+var global$12 = _global;
+var hide$3   = _hide;
+var uid$2    = _uid;
 var TYPED  = uid$2('typed_array');
 var VIEW$1   = uid$2('view');
 var ABV    = !!(global$12.ArrayBuffer && global$12.DataView);
@@ -4765,31 +3895,22 @@ var _typed = {
   VIEW:   VIEW$1
 };
 
-
-
-var _typed$2 = Object.freeze({
-	default: _typed,
-	__moduleExports: _typed
-});
-
-var require$$5$5 = ( _typed$2 && _typed ) || _typed$2;
-
 var _typedBuffer = createCommonjsModule(function (module, exports) {
 'use strict';
-var global         = require$$2
-  , DESCRIPTORS    = require$$5
-  , LIBRARY        = require$$0
-  , $typed         = require$$5$5
-  , hide           = require$$3$2
-  , redefineAll    = require$$8$1
-  , fails          = require$$1
-  , anInstance     = require$$7$3
-  , toInteger      = require$$12
-  , toLength       = require$$2$5
-  , gOPN           = require$$0$3.f
-  , dP             = require$$3$1.f
-  , arrayFill      = require$$35
-  , setToStringTag = require$$13
+var global         = _global
+  , DESCRIPTORS    = _descriptors
+  , LIBRARY        = _library
+  , $typed         = _typed
+  , hide           = _hide
+  , redefineAll    = _redefineAll
+  , fails          = _fails
+  , anInstance     = _anInstance
+  , toInteger      = _toInteger
+  , toLength       = _toLength
+  , gOPN           = _objectGopn.f
+  , dP             = _objectDp.f
+  , arrayFill      = _arrayFill
+  , setToStringTag = _setToStringTag
   , ARRAY_BUFFER   = 'ArrayBuffer'
   , DATA_VIEW      = 'DataView'
   , PROTOTYPE      = 'prototype'
@@ -5050,24 +4171,15 @@ exports[ARRAY_BUFFER] = $ArrayBuffer;
 exports[DATA_VIEW] = $DataView;
 });
 
-
-
-var _typedBuffer$2 = Object.freeze({
-	default: _typedBuffer,
-	__moduleExports: _typedBuffer
-});
-
-var require$$6$2 = ( _typedBuffer$2 && _typedBuffer ) || _typedBuffer$2;
-
-var $export$74      = require$$0$4;
-var $typed       = require$$5$5;
-var buffer       = require$$6$2;
-var anObject$11     = require$$6;
-var toIndex$5      = require$$14;
-var toLength$11     = require$$2$5;
-var isObject$19     = require$$7;
-var ArrayBuffer  = require$$2.ArrayBuffer;
-var speciesConstructor$2 = require$$30;
+var $export$74      = _export;
+var $typed       = _typed;
+var buffer       = _typedBuffer;
+var anObject$11     = _anObject;
+var toIndex$5      = _toIndex;
+var toLength$11     = _toLength;
+var isObject$19     = _isObject;
+var ArrayBuffer  = _global.ArrayBuffer;
+var speciesConstructor$2 = _speciesConstructor;
 var $ArrayBuffer = buffer.ArrayBuffer;
 var $DataView    = buffer.DataView;
 var $isView      = $typed.ABV && ArrayBuffer.isView;
@@ -5084,7 +4196,7 @@ $export$74($export$74.S + $export$74.F * !$typed.CONSTR, ARRAY_BUFFER, {
   }
 });
 
-$export$74($export$74.P + $export$74.U + $export$74.F * require$$1(function(){
+$export$74($export$74.P + $export$74.U + $export$74.F * _fails(function(){
   return !new $ArrayBuffer(2).slice(1, undefined).byteLength;
 }), ARRAY_BUFFER, {
   // 24.1.4.3 ArrayBuffer.prototype.slice(start, end)
@@ -5103,56 +4215,54 @@ $export$74($export$74.P + $export$74.U + $export$74.F * require$$1(function(){
   }
 });
 
-require$$11$1(ARRAY_BUFFER);
+_setSpecies(ARRAY_BUFFER);
 
-var $export$75 = require$$0$4;
-$export$75($export$75.G + $export$75.W + $export$75.F * !require$$5$5.ABV, {
-  DataView: require$$6$2.DataView
+var $export$75 = _export;
+$export$75($export$75.G + $export$75.W + $export$75.F * !_typed.ABV, {
+  DataView: _typedBuffer.DataView
 });
-
-var require$$0$13 = ( es6_array_iterator$2 && es6_array_iterator ) || es6_array_iterator$2;
 
 var _typedArray = createCommonjsModule(function (module) {
 'use strict';
-if(require$$5){
-  var LIBRARY             = require$$0
-    , global              = require$$2
-    , fails               = require$$1
-    , $export             = require$$0$4
-    , $typed              = require$$5$5
-    , $buffer             = require$$6$2
-    , ctx                 = require$$7$1
-    , anInstance          = require$$7$3
-    , propertyDesc        = require$$5$2
-    , hide                = require$$3$2
-    , redefineAll         = require$$8$1
-    , toInteger           = require$$12
-    , toLength            = require$$2$5
-    , toIndex             = require$$14
-    , toPrimitive         = require$$2$1
-    , has                 = require$$3$3
-    , same                = require$$17
-    , classof             = require$$0$6
-    , isObject            = require$$7
-    , toObject            = require$$1$13
-    , isArrayIter         = require$$21
-    , create              = require$$1$10
-    , getPrototypeOf      = require$$2$10
-    , gOPN                = require$$0$3.f
-    , getIterFn           = require$$25
-    , uid                 = require$$26
-    , wks                 = require$$5$3
-    , createArrayMethod   = require$$28
-    , createArrayIncludes = require$$1$5
-    , speciesConstructor  = require$$30
-    , ArrayIterators      = require$$0$13
-    , Iterators           = require$$4$1
-    , $iterDetect         = require$$33
-    , setSpecies          = require$$11$1
-    , arrayFill           = require$$35
-    , arrayCopyWithin     = require$$36
-    , $DP                 = require$$3$1
-    , $GOPD               = require$$4
+if(_descriptors){
+  var LIBRARY             = _library
+    , global              = _global
+    , fails               = _fails
+    , $export             = _export
+    , $typed              = _typed
+    , $buffer             = _typedBuffer
+    , ctx                 = _ctx
+    , anInstance          = _anInstance
+    , propertyDesc        = _propertyDesc
+    , hide                = _hide
+    , redefineAll         = _redefineAll
+    , toInteger           = _toInteger
+    , toLength            = _toLength
+    , toIndex             = _toIndex
+    , toPrimitive         = _toPrimitive
+    , has                 = _has
+    , same                = _sameValue
+    , classof             = _classof
+    , isObject            = _isObject
+    , toObject            = _toObject
+    , isArrayIter         = _isArrayIter
+    , create              = _objectCreate
+    , getPrototypeOf      = _objectGpo
+    , gOPN                = _objectGopn.f
+    , getIterFn           = core_getIteratorMethod
+    , uid                 = _uid
+    , wks                 = _wks
+    , createArrayMethod   = _arrayMethods
+    , createArrayIncludes = _arrayIncludes
+    , speciesConstructor  = _speciesConstructor
+    , ArrayIterators      = es6_array_iterator
+    , Iterators           = _iterators
+    , $iterDetect         = _iterDetect
+    , setSpecies          = _setSpecies
+    , arrayFill           = _arrayFill
+    , arrayCopyWithin     = _arrayCopyWithin
+    , $DP                 = _objectDp
+    , $GOPD               = _objectGopd
     , dP                  = $DP.f
     , gOPD                = $GOPD.f
     , RangeError          = global.RangeError
@@ -5594,76 +4704,68 @@ if(require$$5){
 } else module.exports = function(){ /* empty */ };
 });
 
-
-
-var _typedArray$2 = Object.freeze({
-	default: _typedArray,
-	__moduleExports: _typedArray
-});
-
-var require$$0$14 = ( _typedArray$2 && _typedArray ) || _typedArray$2;
-
-require$$0$14('Int8', 1, function(init){
+_typedArray('Int8', 1, function(init){
   return function Int8Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Uint8', 1, function(init){
+_typedArray('Uint8', 1, function(init){
   return function Uint8Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Uint8', 1, function(init){
+_typedArray('Uint8', 1, function(init){
   return function Uint8ClampedArray(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 }, true);
 
-require$$0$14('Int16', 2, function(init){
+_typedArray('Int16', 2, function(init){
   return function Int16Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Uint16', 2, function(init){
+_typedArray('Uint16', 2, function(init){
   return function Uint16Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Int32', 4, function(init){
+_typedArray('Int32', 4, function(init){
   return function Int32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Uint32', 4, function(init){
+_typedArray('Uint32', 4, function(init){
   return function Uint32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Float32', 4, function(init){
+_typedArray('Float32', 4, function(init){
   return function Float32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-require$$0$14('Float64', 8, function(init){
+_typedArray('Float64', 8, function(init){
   return function Float64Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
 
-var $export$76   = require$$0$4;
-var aFunction$6 = require$$2$2;
-var anObject$12  = require$$6;
-var rApply    = (require$$2.Reflect || {}).apply;
+// 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
+var $export$76   = _export;
+var aFunction$6 = _aFunction;
+var anObject$12  = _anObject;
+var rApply    = (_global.Reflect || {}).apply;
 var fApply    = Function.apply;
 // MS Edge argumentsList argument is optional
-$export$76($export$76.S + $export$76.F * !require$$1(function(){
+$export$76($export$76.S + $export$76.F * !_fails(function(){
   rApply(function(){});
 }), 'Reflect', {
   apply: function apply(target, thisArgument, argumentsList){
@@ -5673,14 +4775,15 @@ $export$76($export$76.S + $export$76.F * !require$$1(function(){
   }
 });
 
-var $export$77    = require$$0$4;
-var create$2     = require$$1$10;
-var aFunction$7  = require$$2$2;
-var anObject$13   = require$$6;
-var isObject$20   = require$$7;
-var fails$9      = require$$1;
-var bind       = require$$6$1;
-var rConstruct = (require$$2.Reflect || {}).construct;
+// 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
+var $export$77    = _export;
+var create$2     = _objectCreate;
+var aFunction$7  = _aFunction;
+var anObject$13   = _anObject;
+var isObject$20   = _isObject;
+var fails$9      = _fails;
+var bind       = _bind;
+var rConstruct = (_global.Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
@@ -5720,13 +4823,14 @@ $export$77($export$77.S + $export$77.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect'
   }
 });
 
-var dP$9          = require$$3$1;
-var $export$78     = require$$0$4;
-var anObject$14    = require$$6;
-var toPrimitive$6 = require$$2$1;
+// 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
+var dP$9          = _objectDp;
+var $export$78     = _export;
+var anObject$14    = _anObject;
+var toPrimitive$6 = _toPrimitive;
 
 // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
-$export$78($export$78.S + $export$78.F * require$$1(function(){
+$export$78($export$78.S + $export$78.F * _fails(function(){
   Reflect.defineProperty(dP$9.f({}, 1, {value: 1}), 1, {value: 2});
 }), 'Reflect', {
   defineProperty: function defineProperty(target, propertyKey, attributes){
@@ -5742,9 +4846,10 @@ $export$78($export$78.S + $export$78.F * require$$1(function(){
   }
 });
 
-var $export$79  = require$$0$4;
-var gOPD$3     = require$$4.f;
-var anObject$15 = require$$6;
+// 26.1.4 Reflect.deleteProperty(target, propertyKey)
+var $export$79  = _export;
+var gOPD$3     = _objectGopd.f;
+var anObject$15 = _anObject;
 
 $export$79($export$79.S, 'Reflect', {
   deleteProperty: function deleteProperty(target, propertyKey){
@@ -5753,8 +4858,9 @@ $export$79($export$79.S, 'Reflect', {
   }
 });
 
-var $export$80  = require$$0$4;
-var anObject$16 = require$$6;
+// 26.1.5 Reflect.enumerate(target)
+var $export$80  = _export;
+var anObject$16 = _anObject;
 var Enumerate = function(iterated){
   this._t = anObject$16(iterated); // target
   this._i = 0;                  // next index
@@ -5762,7 +4868,7 @@ var Enumerate = function(iterated){
     , key;
   for(key in iterated)keys.push(key);
 };
-require$$5$4(Enumerate, 'Object', function(){
+_iterCreate(Enumerate, 'Object', function(){
   var that = this
     , keys = that._k
     , key;
@@ -5778,12 +4884,13 @@ $export$80($export$80.S, 'Reflect', {
   }
 });
 
-var gOPD$4           = require$$4;
-var getPrototypeOf$2 = require$$2$10;
-var has$8            = require$$3$3;
-var $export$81        = require$$0$4;
-var isObject$21       = require$$7;
-var anObject$17       = require$$6;
+// 26.1.6 Reflect.get(target, propertyKey [, receiver])
+var gOPD$4           = _objectGopd;
+var getPrototypeOf$2 = _objectGpo;
+var has$8            = _has;
+var $export$81        = _export;
+var isObject$21       = _isObject;
+var anObject$17       = _anObject;
 
 function get(target, propertyKey/*, receiver*/){
   var receiver = arguments.length < 3 ? target : arguments[2]
@@ -5799,9 +4906,10 @@ function get(target, propertyKey/*, receiver*/){
 
 $export$81($export$81.S, 'Reflect', {get: get});
 
-var gOPD$5     = require$$4;
-var $export$82  = require$$0$4;
-var anObject$18 = require$$6;
+// 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
+var gOPD$5     = _objectGopd;
+var $export$82  = _export;
+var anObject$18 = _anObject;
 
 $export$82($export$82.S, 'Reflect', {
   getOwnPropertyDescriptor: function getOwnPropertyDescriptor(target, propertyKey){
@@ -5809,9 +4917,10 @@ $export$82($export$82.S, 'Reflect', {
   }
 });
 
-var $export$83  = require$$0$4;
-var getProto = require$$2$10;
-var anObject$19 = require$$6;
+// 26.1.8 Reflect.getPrototypeOf(target)
+var $export$83  = _export;
+var getProto = _objectGpo;
+var anObject$19 = _anObject;
 
 $export$83($export$83.S, 'Reflect', {
   getPrototypeOf: function getPrototypeOf(target){
@@ -5819,7 +4928,8 @@ $export$83($export$83.S, 'Reflect', {
   }
 });
 
-var $export$84 = require$$0$4;
+// 26.1.9 Reflect.has(target, propertyKey)
+var $export$84 = _export;
 
 $export$84($export$84.S, 'Reflect', {
   has: function has(target, propertyKey){
@@ -5827,8 +4937,9 @@ $export$84($export$84.S, 'Reflect', {
   }
 });
 
-var $export$85       = require$$0$4;
-var anObject$20      = require$$6;
+// 26.1.10 Reflect.isExtensible(target)
+var $export$85       = _export;
+var anObject$20      = _anObject;
 var $isExtensible = Object.isExtensible;
 
 $export$85($export$85.S, 'Reflect', {
@@ -5838,31 +4949,25 @@ $export$85($export$85.S, 'Reflect', {
   }
 });
 
-var gOPN$4     = require$$0$3;
-var gOPS$2     = require$$1$7;
-var anObject$21 = require$$6;
-var Reflect$1  = require$$2.Reflect;
+// all object keys, includes non-enumerable and symbols
+var gOPN$4     = _objectGopn;
+var gOPS$2     = _objectGops;
+var anObject$21 = _anObject;
+var Reflect$1  = _global.Reflect;
 var _ownKeys = Reflect$1 && Reflect$1.ownKeys || function ownKeys(it){
   var keys       = gOPN$4.f(anObject$21(it))
     , getSymbols = gOPS$2.f;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
 
+// 26.1.11 Reflect.ownKeys(target)
+var $export$86 = _export;
 
+$export$86($export$86.S, 'Reflect', {ownKeys: _ownKeys});
 
-var _ownKeys$2 = Object.freeze({
-	default: _ownKeys,
-	__moduleExports: _ownKeys
-});
-
-var require$$1$28 = ( _ownKeys$2 && _ownKeys ) || _ownKeys$2;
-
-var $export$86 = require$$0$4;
-
-$export$86($export$86.S, 'Reflect', {ownKeys: require$$1$28});
-
-var $export$87            = require$$0$4;
-var anObject$22           = require$$6;
+// 26.1.12 Reflect.preventExtensions(target)
+var $export$87            = _export;
+var anObject$22           = _anObject;
 var $preventExtensions = Object.preventExtensions;
 
 $export$87($export$87.S, 'Reflect', {
@@ -5877,14 +4982,15 @@ $export$87($export$87.S, 'Reflect', {
   }
 });
 
-var dP$10             = require$$3$1;
-var gOPD$6           = require$$4;
-var getPrototypeOf$3 = require$$2$10;
-var has$9            = require$$3$3;
-var $export$88        = require$$0$4;
-var createDesc$5     = require$$5$2;
-var anObject$23       = require$$6;
-var isObject$22       = require$$7;
+// 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
+var dP$10             = _objectDp;
+var gOPD$6           = _objectGopd;
+var getPrototypeOf$3 = _objectGpo;
+var has$9            = _has;
+var $export$88        = _export;
+var createDesc$5     = _propertyDesc;
+var anObject$23       = _anObject;
+var isObject$22       = _isObject;
 
 function set(target, propertyKey, V/*, receiver*/){
   var receiver = arguments.length < 4 ? target : arguments[3]
@@ -5908,8 +5014,9 @@ function set(target, propertyKey, V/*, receiver*/){
 
 $export$88($export$88.S, 'Reflect', {set: set});
 
-var $export$89  = require$$0$4;
-var setProto = require$$1$14;
+// 26.1.14 Reflect.setPrototypeOf(target, proto)
+var $export$89  = _export;
+var setProto = _setProto;
 
 if(setProto)$export$89($export$89.S, 'Reflect', {
   setPrototypeOf: function setPrototypeOf(target, proto){
@@ -5923,8 +5030,9 @@ if(setProto)$export$89($export$89.S, 'Reflect', {
   }
 });
 
-var $export$90   = require$$0$4;
-var $includes = require$$1$5(true);
+// https://github.com/tc39/Array.prototype.includes
+var $export$90   = _export;
+var $includes = _arrayIncludes(true);
 
 $export$90($export$90.P, 'Array', {
   includes: function includes(el /*, fromIndex = 0 */){
@@ -5932,10 +5040,11 @@ $export$90($export$90.P, 'Array', {
   }
 });
 
-require$$2$15('includes');
+_addToUnscopables('includes');
 
-var $export$91 = require$$0$4;
-var $at$2     = require$$1$23(true);
+// https://github.com/mathiasbynens/String.prototype.at
+var $export$91 = _export;
+var $at$2     = _stringAt(true);
 
 $export$91($export$91.P, 'String', {
   at: function at(pos){
@@ -5943,9 +5052,10 @@ $export$91($export$91.P, 'String', {
   }
 });
 
-var toLength$12 = require$$2$5;
-var repeat$1   = require$$1$18;
-var defined$9  = require$$1$3;
+// https://github.com/tc39/proposal-string-pad-start-end
+var toLength$12 = _toLength;
+var repeat$1   = _stringRepeat;
+var defined$9  = _defined;
 
 var _stringPad = function(that, maxLength, fillString, left){
   var S            = String(defined$9(that))
@@ -5959,17 +5069,9 @@ var _stringPad = function(that, maxLength, fillString, left){
   return left ? stringFiller + S : S + stringFiller;
 };
 
-
-
-var _stringPad$2 = Object.freeze({
-	default: _stringPad,
-	__moduleExports: _stringPad
-});
-
-var require$$1$29 = ( _stringPad$2 && _stringPad ) || _stringPad$2;
-
-var $export$92 = require$$0$4;
-var $pad    = require$$1$29;
+// https://github.com/tc39/proposal-string-pad-start-end
+var $export$92 = _export;
+var $pad    = _stringPad;
 
 $export$92($export$92.P, 'String', {
   padStart: function padStart(maxLength /*, fillString = ' ' */){
@@ -5977,8 +5079,9 @@ $export$92($export$92.P, 'String', {
   }
 });
 
-var $export$93 = require$$0$4;
-var $pad$1    = require$$1$29;
+// https://github.com/tc39/proposal-string-pad-start-end
+var $export$93 = _export;
+var $pad$1    = _stringPad;
 
 $export$93($export$93.P, 'String', {
   padEnd: function padEnd(maxLength /*, fillString = ' ' */){
@@ -5986,23 +5089,26 @@ $export$93($export$93.P, 'String', {
   }
 });
 
-require$$0$7('trimLeft', function($trim){
+// https://github.com/sebmarkbage/ecmascript-string-left-right-trim
+_stringTrim('trimLeft', function($trim){
   return function trimLeft(){
     return $trim(this, 1);
   };
 }, 'trimStart');
 
-require$$0$7('trimRight', function($trim){
+// https://github.com/sebmarkbage/ecmascript-string-left-right-trim
+_stringTrim('trimRight', function($trim){
   return function trimRight(){
     return $trim(this, 2);
   };
 }, 'trimEnd');
 
-var $export$94     = require$$0$4;
-var defined$10     = require$$1$3;
-var toLength$13    = require$$2$5;
-var isRegExp$2    = require$$3$7;
-var getFlags    = require$$4$5;
+// https://tc39.github.io/String.prototype.matchAll/
+var $export$94     = _export;
+var defined$10     = _defined;
+var toLength$13    = _toLength;
+var isRegExp$2    = _isRegexp;
+var getFlags    = _flags;
 var RegExpProto = RegExp.prototype;
 
 var $RegExpStringIterator = function(regexp, string){
@@ -6010,7 +5116,7 @@ var $RegExpStringIterator = function(regexp, string){
   this._s = string;
 };
 
-require$$5$4($RegExpStringIterator, 'RegExp String', function next(){
+_iterCreate($RegExpStringIterator, 'RegExp String', function next(){
   var match = this._r.exec(this._s);
   return {value: match, done: match === null};
 });
@@ -6027,15 +5133,16 @@ $export$94($export$94.P, 'String', {
   }
 });
 
-require$$0$5('asyncIterator');
+_wksDefine('asyncIterator');
 
-require$$0$5('observable');
+_wksDefine('observable');
 
-var $export$95        = require$$0$4;
-var ownKeys        = require$$1$28;
-var toIObject$11      = require$$1$4;
-var gOPD$7           = require$$4;
-var createProperty$2 = require$$4$2;
+// https://github.com/tc39/proposal-object-getownpropertydescriptors
+var $export$95        = _export;
+var ownKeys        = _ownKeys;
+var toIObject$11      = _toIobject;
+var gOPD$7           = _objectGopd;
+var createProperty$2 = _createProperty;
 
 $export$95($export$95.S, 'Object', {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object){
@@ -6050,9 +5157,9 @@ $export$95($export$95.S, 'Object', {
   }
 });
 
-var getKeys$4   = require$$0$2;
-var toIObject$12 = require$$1$4;
-var isEnum$1    = require$$2$7.f;
+var getKeys$4   = _objectKeys;
+var toIObject$12 = _toIobject;
+var isEnum$1    = _objectPie.f;
 var _objectToArray = function(isEntries){
   return function(it){
     var O      = toIObject$12(it)
@@ -6067,17 +5174,9 @@ var _objectToArray = function(isEntries){
   };
 };
 
-
-
-var _objectToArray$2 = Object.freeze({
-	default: _objectToArray,
-	__moduleExports: _objectToArray
-});
-
-var require$$1$30 = ( _objectToArray$2 && _objectToArray ) || _objectToArray$2;
-
-var $export$96 = require$$0$4;
-var $values = require$$1$30(false);
+// https://github.com/tc39/proposal-object-values-entries
+var $export$96 = _export;
+var $values = _objectToArray(false);
 
 $export$96($export$96.S, 'Object', {
   values: function values(it){
@@ -6085,8 +5184,9 @@ $export$96($export$96.S, 'Object', {
   }
 });
 
-var $export$97  = require$$0$4;
-var $entries = require$$1$30(true);
+// https://github.com/tc39/proposal-object-values-entries
+var $export$97  = _export;
+var $entries = _objectToArray(true);
 
 $export$97($export$97.S, 'Object', {
   entries: function entries(it){
@@ -6094,54 +5194,46 @@ $export$97($export$97.S, 'Object', {
   }
 });
 
-var _objectForcedPam = require$$0|| !require$$1(function(){
+// Forced replacement prototype accessors methods
+var _objectForcedPam = _library|| !_fails(function(){
   var K = Math.random();
   // In FF throws only define methods
   __defineSetter__.call(null, K, function(){ /* empty */});
-  delete require$$2[K];
+  delete _global[K];
 });
 
-
-
-var _objectForcedPam$2 = Object.freeze({
-	default: _objectForcedPam,
-	__moduleExports: _objectForcedPam
-});
-
-var require$$6$3 = ( _objectForcedPam$2 && _objectForcedPam ) || _objectForcedPam$2;
-
-var $export$98         = require$$0$4;
-var toObject$11        = require$$1$13;
-var aFunction$8       = require$$2$2;
-var $defineProperty$2 = require$$3$1;
+var $export$98         = _export;
+var toObject$11        = _toObject;
+var aFunction$8       = _aFunction;
+var $defineProperty$2 = _objectDp;
 
 // B.2.2.2 Object.prototype.__defineGetter__(P, getter)
-require$$5 && $export$98($export$98.P + require$$6$3, 'Object', {
+_descriptors && $export$98($export$98.P + _objectForcedPam, 'Object', {
   __defineGetter__: function __defineGetter__(P, getter){
     $defineProperty$2.f(toObject$11(this), P, {get: aFunction$8(getter), enumerable: true, configurable: true});
   }
 });
 
-var $export$99         = require$$0$4;
-var toObject$12        = require$$1$13;
-var aFunction$9       = require$$2$2;
-var $defineProperty$3 = require$$3$1;
+var $export$99         = _export;
+var toObject$12        = _toObject;
+var aFunction$9       = _aFunction;
+var $defineProperty$3 = _objectDp;
 
 // B.2.2.3 Object.prototype.__defineSetter__(P, setter)
-require$$5 && $export$99($export$99.P + require$$6$3, 'Object', {
+_descriptors && $export$99($export$99.P + _objectForcedPam, 'Object', {
   __defineSetter__: function __defineSetter__(P, setter){
     $defineProperty$3.f(toObject$12(this), P, {set: aFunction$9(setter), enumerable: true, configurable: true});
   }
 });
 
-var $export$100                  = require$$0$4;
-var toObject$13                 = require$$1$13;
-var toPrimitive$7              = require$$2$1;
-var getPrototypeOf$4           = require$$2$10;
-var getOwnPropertyDescriptor = require$$4.f;
+var $export$100                  = _export;
+var toObject$13                 = _toObject;
+var toPrimitive$7              = _toPrimitive;
+var getPrototypeOf$4           = _objectGpo;
+var getOwnPropertyDescriptor = _objectGopd.f;
 
 // B.2.2.4 Object.prototype.__lookupGetter__(P)
-require$$5 && $export$100($export$100.P + require$$6$3, 'Object', {
+_descriptors && $export$100($export$100.P + _objectForcedPam, 'Object', {
   __lookupGetter__: function __lookupGetter__(P){
     var O = toObject$13(this)
       , K = toPrimitive$7(P, true)
@@ -6152,14 +5244,14 @@ require$$5 && $export$100($export$100.P + require$$6$3, 'Object', {
   }
 });
 
-var $export$101                  = require$$0$4;
-var toObject$14                 = require$$1$13;
-var toPrimitive$8              = require$$2$1;
-var getPrototypeOf$5           = require$$2$10;
-var getOwnPropertyDescriptor$1 = require$$4.f;
+var $export$101                  = _export;
+var toObject$14                 = _toObject;
+var toPrimitive$8              = _toPrimitive;
+var getPrototypeOf$5           = _objectGpo;
+var getOwnPropertyDescriptor$1 = _objectGopd.f;
 
 // B.2.2.5 Object.prototype.__lookupSetter__(P)
-require$$5 && $export$101($export$101.P + require$$6$3, 'Object', {
+_descriptors && $export$101($export$101.P + _objectForcedPam, 'Object', {
   __lookupSetter__: function __lookupSetter__(P){
     var O = toObject$14(this)
       , K = toPrimitive$8(P, true)
@@ -6170,7 +5262,7 @@ require$$5 && $export$101($export$101.P + require$$6$3, 'Object', {
   }
 });
 
-var forOf$4 = require$$10;
+var forOf$4 = _forOf;
 
 var _arrayFromIterable = function(iter, ITERATOR){
   var result = [];
@@ -6178,17 +5270,9 @@ var _arrayFromIterable = function(iter, ITERATOR){
   return result;
 };
 
-
-
-var _arrayFromIterable$2 = Object.freeze({
-	default: _arrayFromIterable,
-	__moduleExports: _arrayFromIterable
-});
-
-var require$$1$31 = ( _arrayFromIterable$2 && _arrayFromIterable ) || _arrayFromIterable$2;
-
-var classof$3 = require$$0$6;
-var from    = require$$1$31;
+// https://github.com/DavidBruant/Map-Set.prototype.toJSON
+var classof$3 = _classof;
+var from    = _arrayFromIterable;
 var _collectionToJson = function(NAME){
   return function toJSON(){
     if(classof$3(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
@@ -6196,29 +5280,24 @@ var _collectionToJson = function(NAME){
   };
 };
 
+// https://github.com/DavidBruant/Map-Set.prototype.toJSON
+var $export$102  = _export;
 
+$export$102($export$102.P + $export$102.R, 'Map', {toJSON: _collectionToJson('Map')});
 
-var _collectionToJson$2 = Object.freeze({
-	default: _collectionToJson,
-	__moduleExports: _collectionToJson
-});
+// https://github.com/DavidBruant/Map-Set.prototype.toJSON
+var $export$103  = _export;
 
-var require$$1$32 = ( _collectionToJson$2 && _collectionToJson ) || _collectionToJson$2;
+$export$103($export$103.P + $export$103.R, 'Set', {toJSON: _collectionToJson('Set')});
 
-var $export$102  = require$$0$4;
+// https://github.com/ljharb/proposal-global
+var $export$104 = _export;
 
-$export$102($export$102.P + $export$102.R, 'Map', {toJSON: require$$1$32('Map')});
+$export$104($export$104.S, 'System', {global: _global});
 
-var $export$103  = require$$0$4;
-
-$export$103($export$103.P + $export$103.R, 'Set', {toJSON: require$$1$32('Set')});
-
-var $export$104 = require$$0$4;
-
-$export$104($export$104.S, 'System', {global: require$$2});
-
-var $export$105 = require$$0$4;
-var cof$7     = require$$3$5;
+// https://github.com/ljharb/proposal-is-error
+var $export$105 = _export;
+var cof$7     = _cof;
 
 $export$105($export$105.S, 'Error', {
   isError: function isError(it){
@@ -6226,7 +5305,8 @@ $export$105($export$105.S, 'Error', {
   }
 });
 
-var $export$106 = require$$0$4;
+// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
+var $export$106 = _export;
 
 $export$106($export$106.S, 'Math', {
   iaddh: function iaddh(x0, x1, y0, y1){
@@ -6237,7 +5317,8 @@ $export$106($export$106.S, 'Math', {
   }
 });
 
-var $export$107 = require$$0$4;
+// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
+var $export$107 = _export;
 
 $export$107($export$107.S, 'Math', {
   isubh: function isubh(x0, x1, y0, y1){
@@ -6248,7 +5329,8 @@ $export$107($export$107.S, 'Math', {
   }
 });
 
-var $export$108 = require$$0$4;
+// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
+var $export$108 = _export;
 
 $export$108($export$108.S, 'Math', {
   imulh: function imulh(u, v){
@@ -6264,7 +5346,8 @@ $export$108($export$108.S, 'Math', {
   }
 });
 
-var $export$109 = require$$0$4;
+// https://gist.github.com/BrendanEich/4294d5c212a6d2254703
+var $export$109 = _export;
 
 $export$109($export$109.S, 'Math', {
   umulh: function umulh(u, v){
@@ -6280,14 +5363,10 @@ $export$109($export$109.S, 'Math', {
   }
 });
 
-var require$$0$15 = ( es6_map$2 && es6_map ) || es6_map$2;
-
-var require$$3$10 = ( es6_weakMap$2 && es6_weakMap ) || es6_weakMap$2;
-
-var Map     = require$$0$15;
-var $export$110 = require$$0$4;
-var shared$2  = require$$2$3('metadata');
-var store$1   = shared$2.store || (shared$2.store = new (require$$3$10));
+var Map     = es6_map;
+var $export$110 = _export;
+var shared$2  = _shared('metadata');
+var store$1   = shared$2.store || (shared$2.store = new (es6_weakMap));
 
 var getOrCreateMetadataMap = function(target, targetKey, create){
   var targetMetadata = store$1.get(target);
@@ -6336,17 +5415,8 @@ var _metadata = {
   exp: exp$3
 };
 
-
-
-var _metadata$2 = Object.freeze({
-	default: _metadata,
-	__moduleExports: _metadata
-});
-
-var require$$0$16 = ( _metadata$2 && _metadata ) || _metadata$2;
-
-var metadata                  = require$$0$16;
-var anObject$24                  = require$$6;
+var metadata                  = _metadata;
+var anObject$24                  = _anObject;
 var toMetaKey                 = metadata.key;
 var ordinaryDefineOwnMetadata = metadata.set;
 
@@ -6354,8 +5424,8 @@ metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue
   ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject$24(target), toMetaKey(targetKey));
 }});
 
-var metadata$1               = require$$0$16;
-var anObject$25               = require$$6;
+var metadata$1               = _metadata;
+var anObject$25               = _anObject;
 var toMetaKey$2              = metadata$1.key;
 var getOrCreateMetadataMap$1 = metadata$1.map;
 var store$2                  = metadata$1.store;
@@ -6370,9 +5440,9 @@ metadata$1.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, 
   return !!targetMetadata.size || store$2['delete'](target);
 }});
 
-var metadata$2               = require$$0$16;
-var anObject$26               = require$$6;
-var getPrototypeOf$6         = require$$2$10;
+var metadata$2               = _metadata;
+var anObject$26               = _anObject;
+var getPrototypeOf$6         = _objectGpo;
 var ordinaryHasOwnMetadata$1 = metadata$2.has;
 var ordinaryGetOwnMetadata$1 = metadata$2.get;
 var toMetaKey$3              = metadata$2.key;
@@ -6388,13 +5458,11 @@ metadata$2.exp({getMetadata: function getMetadata(metadataKey, target /*, target
   return ordinaryGetMetadata(metadataKey, anObject$26(target), arguments.length < 3 ? undefined : toMetaKey$3(arguments[2]));
 }});
 
-var require$$0$17 = ( es6_set$2 && es6_set ) || es6_set$2;
-
-var Set                     = require$$0$17;
-var from$1                    = require$$1$31;
-var metadata$3                = require$$0$16;
-var anObject$27                = require$$6;
-var getPrototypeOf$7          = require$$2$10;
+var Set                     = es6_set;
+var from$1                    = _arrayFromIterable;
+var metadata$3                = _metadata;
+var anObject$27                = _anObject;
+var getPrototypeOf$7          = _objectGpo;
 var ordinaryOwnMetadataKeys$1 = metadata$3.keys;
 var toMetaKey$4               = metadata$3.key;
 
@@ -6410,8 +5478,8 @@ metadata$3.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey *
   return ordinaryMetadataKeys(anObject$27(target), arguments.length < 2 ? undefined : toMetaKey$4(arguments[1]));
 }});
 
-var metadata$4               = require$$0$16;
-var anObject$28               = require$$6;
+var metadata$4               = _metadata;
+var anObject$28               = _anObject;
 var ordinaryGetOwnMetadata$2 = metadata$4.get;
 var toMetaKey$5              = metadata$4.key;
 
@@ -6420,8 +5488,8 @@ metadata$4.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, 
     , arguments.length < 3 ? undefined : toMetaKey$5(arguments[2]));
 }});
 
-var metadata$5                = require$$0$16;
-var anObject$29                = require$$6;
+var metadata$5                = _metadata;
+var anObject$29                = _anObject;
 var ordinaryOwnMetadataKeys$2 = metadata$5.keys;
 var toMetaKey$6               = metadata$5.key;
 
@@ -6429,9 +5497,9 @@ metadata$5.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targe
   return ordinaryOwnMetadataKeys$2(anObject$29(target), arguments.length < 2 ? undefined : toMetaKey$6(arguments[1]));
 }});
 
-var metadata$6               = require$$0$16;
-var anObject$30               = require$$6;
-var getPrototypeOf$8         = require$$2$10;
+var metadata$6               = _metadata;
+var anObject$30               = _anObject;
+var getPrototypeOf$8         = _objectGpo;
 var ordinaryHasOwnMetadata$2 = metadata$6.has;
 var toMetaKey$7              = metadata$6.key;
 
@@ -6446,8 +5514,8 @@ metadata$6.exp({hasMetadata: function hasMetadata(metadataKey, target /*, target
   return ordinaryHasMetadata(metadataKey, anObject$30(target), arguments.length < 3 ? undefined : toMetaKey$7(arguments[2]));
 }});
 
-var metadata$7               = require$$0$16;
-var anObject$31               = require$$6;
+var metadata$7               = _metadata;
+var anObject$31               = _anObject;
 var ordinaryHasOwnMetadata$3 = metadata$7.has;
 var toMetaKey$8              = metadata$7.key;
 
@@ -6456,9 +5524,9 @@ metadata$7.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, 
     , arguments.length < 3 ? undefined : toMetaKey$8(arguments[2]));
 }});
 
-var metadata$8                  = require$$0$16;
-var anObject$32                  = require$$6;
-var aFunction$10                 = require$$2$2;
+var metadata$8                  = _metadata;
+var anObject$32                  = _anObject;
+var aFunction$10                 = _aFunction;
 var toMetaKey$9                 = metadata$8.key;
 var ordinaryDefineOwnMetadata$2 = metadata$8.set;
 
@@ -6472,10 +5540,11 @@ metadata$8.exp({metadata: function metadata(metadataKey, metadataValue){
   };
 }});
 
-var $export$111   = require$$0$4;
-var microtask$1 = require$$3$9();
-var process$4   = require$$2.process;
-var isNode$2    = require$$3$5(process$4) == 'process';
+// https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
+var $export$111   = _export;
+var microtask$1 = _microtask();
+var process$4   = _global.process;
+var isNode$2    = _cof(process$4) == 'process';
 
 $export$111($export$111.G, {
   asap: function asap(fn){
@@ -6484,17 +5553,18 @@ $export$111($export$111.G, {
   }
 });
 
-var $export$112     = require$$0$4;
-var global$13      = require$$2;
-var core$3        = require$$1$1;
-var microtask$2   = require$$3$9();
-var OBSERVABLE  = require$$5$3('observable');
-var aFunction$11   = require$$2$2;
-var anObject$33    = require$$6;
-var anInstance$4  = require$$7$3;
-var redefineAll$3 = require$$8$1;
-var hide$4        = require$$3$2;
-var forOf$5       = require$$10;
+// https://github.com/zenparsing/es-observable
+var $export$112     = _export;
+var global$13      = _global;
+var core$3        = _core;
+var microtask$2   = _microtask();
+var OBSERVABLE  = _wks('observable');
+var aFunction$11   = _aFunction;
+var anObject$33    = _anObject;
+var anInstance$4  = _anInstance;
+var redefineAll$3 = _redefineAll;
+var hide$4        = _hide;
+var forOf$5       = _forOf;
 var RETURN      = forOf$5.RETURN;
 
 var getMethod = function(fn){
@@ -6680,22 +5750,13 @@ hide$4($Observable.prototype, OBSERVABLE, function(){ return this; });
 
 $export$112($export$112.G, {Observable: $Observable});
 
-require$$11$1('Observable');
+_setSpecies('Observable');
 
-var _path = require$$2;
+var _path = _global;
 
-
-
-var _path$2 = Object.freeze({
-	default: _path,
-	__moduleExports: _path
-});
-
-var require$$0$18 = ( _path$2 && _path ) || _path$2;
-
-var path      = require$$0$18;
-var invoke$3    = require$$1$15;
-var aFunction$12 = require$$2$2;
+var path      = _path;
+var invoke$3    = _invoke;
+var aFunction$12 = _aFunction;
 var _partial = function(/* ...pargs */){
   var fn     = aFunction$12(this)
     , length = arguments.length
@@ -6716,19 +5777,11 @@ var _partial = function(/* ...pargs */){
   };
 };
 
-
-
-var _partial$2 = Object.freeze({
-	default: _partial,
-	__moduleExports: _partial
-});
-
-var require$$3$11 = ( _partial$2 && _partial ) || _partial$2;
-
-var global$14     = require$$2;
-var $export$113    = require$$0$4;
-var invoke$2     = require$$1$15;
-var partial    = require$$3$11;
+// ie9- setTimeout & setInterval additional parameters fix
+var global$14     = _global;
+var $export$113    = _export;
+var invoke$2     = _invoke;
+var partial    = _partial;
 var navigator  = global$14.navigator;
 var MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
 var wrap$1 = function(set){
@@ -6745,19 +5798,19 @@ $export$113($export$113.G + $export$113.B + $export$113.F * MSIE, {
   setInterval: wrap$1(global$14.setInterval)
 });
 
-var $export$114 = require$$0$4;
-var $task   = require$$1$26;
+var $export$114 = _export;
+var $task   = _task;
 $export$114($export$114.G + $export$114.B, {
   setImmediate:   $task.set,
   clearImmediate: $task.clear
 });
 
-var $iterators    = require$$0$13;
-var redefine$6      = require$$1$2;
-var global$15        = require$$2;
-var hide$5          = require$$3$2;
-var Iterators$4     = require$$4$1;
-var wks$2           = require$$5$3;
+var $iterators    = es6_array_iterator;
+var redefine$6      = _redefine;
+var global$15        = _global;
+var hide$5          = _hide;
+var Iterators$4     = _iterators;
+var wks$2           = _wks;
 var ITERATOR$4      = wks$2('iterator');
 var TO_STRING_TAG = wks$2('toStringTag');
 var ArrayValues   = Iterators$4.Array;
@@ -7455,17 +6508,9 @@ var _replacer = function(regExp, replace){
   };
 };
 
-
-
-var _replacer$2 = Object.freeze({
-	default: _replacer,
-	__moduleExports: _replacer
-});
-
-var require$$1$33 = ( _replacer$2 && _replacer ) || _replacer$2;
-
-var $export$115 = require$$0$4;
-var $re     = require$$1$33(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+// https://github.com/benjamingr/RexExp.escape
+var $export$115 = _export;
+var $re     = _replacer(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export$115($export$115.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
@@ -7513,13 +6558,6 @@ function arrayEach$1(array, iteratee) {
 
 var _arrayEach = arrayEach$1;
 
-
-
-var _arrayEach$2 = Object.freeze({
-	default: _arrayEach,
-	__moduleExports: _arrayEach
-});
-
 /**
  * Creates a base function for methods like `_.forIn` and `_.forOwn`.
  *
@@ -7546,16 +6584,7 @@ function createBaseFor$1(fromRight) {
 
 var _createBaseFor = createBaseFor$1;
 
-
-
-var _createBaseFor$2 = Object.freeze({
-	default: _createBaseFor,
-	__moduleExports: _createBaseFor
-});
-
-var require$$0$19 = ( _createBaseFor$2 && _createBaseFor ) || _createBaseFor$2;
-
-var createBaseFor = require$$0$19;
+var createBaseFor = _createBaseFor;
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -7571,13 +6600,6 @@ var createBaseFor = require$$0$19;
 var baseFor$1 = createBaseFor();
 
 var _baseFor = baseFor$1;
-
-
-
-var _baseFor$2 = Object.freeze({
-	default: _baseFor,
-	__moduleExports: _baseFor
-});
 
 /**
  * The base implementation of `_.times` without support for iteratee shorthands
@@ -7600,27 +6622,12 @@ function baseTimes$1(n, iteratee) {
 
 var _baseTimes = baseTimes$1;
 
-
-
-var _baseTimes$2 = Object.freeze({
-	default: _baseTimes,
-	__moduleExports: _baseTimes
-});
-
+/** Detect free variable `global` from Node.js. */
 var freeGlobal$1 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
 
 var _freeGlobal = freeGlobal$1;
 
-
-
-var _freeGlobal$2 = Object.freeze({
-	default: _freeGlobal,
-	__moduleExports: _freeGlobal
-});
-
-var require$$0$20 = ( _freeGlobal$2 && _freeGlobal ) || _freeGlobal$2;
-
-var freeGlobal = require$$0$20;
+var freeGlobal = _freeGlobal;
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -7630,32 +6637,14 @@ var root$1 = freeGlobal || freeSelf || Function('return this')();
 
 var _root = root$1;
 
-
-
-var _root$2 = Object.freeze({
-	default: _root,
-	__moduleExports: _root
-});
-
-var require$$0$21 = ( _root$2 && _root ) || _root$2;
-
-var root = require$$0$21;
+var root = _root;
 
 /** Built-in value references. */
 var Symbol$2 = root.Symbol;
 
 var _Symbol = Symbol$2;
 
-
-
-var _Symbol$2 = Object.freeze({
-	default: _Symbol,
-	__moduleExports: _Symbol
-});
-
-var require$$0$22 = ( _Symbol$2 && _Symbol ) || _Symbol$2;
-
-var Symbol$3 = require$$0$22;
+var Symbol$3 = _Symbol;
 
 /** Used for built-in method references. */
 var objectProto$2 = Object.prototype;
@@ -7702,13 +6691,6 @@ function getRawTag$1(value) {
 
 var _getRawTag = getRawTag$1;
 
-
-
-var _getRawTag$2 = Object.freeze({
-	default: _getRawTag,
-	__moduleExports: _getRawTag
-});
-
 /** Used for built-in method references. */
 var objectProto$3 = Object.prototype;
 
@@ -7732,20 +6714,9 @@ function objectToString$1(value) {
 
 var _objectToString = objectToString$1;
 
-
-
-var _objectToString$2 = Object.freeze({
-	default: _objectToString,
-	__moduleExports: _objectToString
-});
-
-var require$$1$34 = ( _getRawTag$2 && _getRawTag ) || _getRawTag$2;
-
-var require$$2$16 = ( _objectToString$2 && _objectToString ) || _objectToString$2;
-
-var Symbol$1 = require$$0$22;
-var getRawTag = require$$1$34;
-var objectToString = require$$2$16;
+var Symbol$1 = _Symbol;
+var getRawTag = _getRawTag;
+var objectToString = _objectToString;
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]';
@@ -7771,13 +6742,6 @@ function baseGetTag$1(value) {
 }
 
 var _baseGetTag = baseGetTag$1;
-
-
-
-var _baseGetTag$2 = Object.freeze({
-	default: _baseGetTag,
-	__moduleExports: _baseGetTag
-});
 
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -7809,19 +6773,8 @@ function isObjectLike$2(value) {
 
 var isObjectLike_1 = isObjectLike$2;
 
-
-
-var isObjectLike$3 = Object.freeze({
-	default: isObjectLike_1,
-	__moduleExports: isObjectLike_1
-});
-
-var require$$0$23 = ( _baseGetTag$2 && _baseGetTag ) || _baseGetTag$2;
-
-var require$$2$17 = ( isObjectLike$3 && isObjectLike_1 ) || isObjectLike$3;
-
-var baseGetTag = require$$0$23;
-var isObjectLike$1 = require$$2$17;
+var baseGetTag = _baseGetTag;
+var isObjectLike$1 = isObjectLike_1;
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -7839,17 +6792,8 @@ function baseIsArguments$1(value) {
 
 var _baseIsArguments = baseIsArguments$1;
 
-
-
-var _baseIsArguments$2 = Object.freeze({
-	default: _baseIsArguments,
-	__moduleExports: _baseIsArguments
-});
-
-var require$$0$24 = ( _baseIsArguments$2 && _baseIsArguments ) || _baseIsArguments$2;
-
-var baseIsArguments = require$$0$24;
-var isObjectLike = require$$2$17;
+var baseIsArguments = _baseIsArguments;
+var isObjectLike = isObjectLike_1;
 
 /** Used for built-in method references. */
 var objectProto$1 = Object.prototype;
@@ -7885,13 +6829,6 @@ var isArguments$1 = baseIsArguments(function() { return arguments; }()) ? baseIs
 
 var isArguments_1 = isArguments$1;
 
-
-
-var isArguments$2 = Object.freeze({
-	default: isArguments_1,
-	__moduleExports: isArguments_1
-});
-
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -7919,13 +6856,6 @@ var isArray$4 = Array.isArray;
 
 var isArray_1 = isArray$4;
 
-
-
-var isArray$5 = Object.freeze({
-	default: isArray_1,
-	__moduleExports: isArray_1
-});
-
 /**
  * This method returns `false`.
  *
@@ -7945,18 +6875,9 @@ function stubFalse() {
 
 var stubFalse_1 = stubFalse;
 
-
-
-var stubFalse$1 = Object.freeze({
-	default: stubFalse_1,
-	__moduleExports: stubFalse_1
-});
-
-var require$$1$35 = ( stubFalse$1 && stubFalse_1 ) || stubFalse$1;
-
 var isBuffer_1 = createCommonjsModule(function (module, exports) {
-var root = require$$0$21,
-    stubFalse = require$$1$35;
+var root = _root,
+    stubFalse = stubFalse_1;
 
 /** Detect free variable `exports`. */
 var freeExports = 'object' == 'object' && exports && !exports.nodeType && exports;
@@ -7995,13 +6916,6 @@ var isBuffer = nativeIsBuffer || stubFalse;
 module.exports = isBuffer;
 });
 
-
-
-var isBuffer$1 = Object.freeze({
-	default: isBuffer_1,
-	__moduleExports: isBuffer_1
-});
-
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -8024,13 +6938,6 @@ function isIndex$1(value, length) {
 }
 
 var _isIndex = isIndex$1;
-
-
-
-var _isIndex$2 = Object.freeze({
-	default: _isIndex,
-	__moduleExports: _isIndex
-});
 
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER$1 = 9007199254740991;
@@ -8068,18 +6975,9 @@ function isLength$1(value) {
 
 var isLength_1 = isLength$1;
 
-
-
-var isLength$2 = Object.freeze({
-	default: isLength_1,
-	__moduleExports: isLength_1
-});
-
-var require$$1$36 = ( isLength$2 && isLength_1 ) || isLength$2;
-
-var baseGetTag$2 = require$$0$23;
-var isLength = require$$1$36;
-var isObjectLike$4 = require$$2$17;
+var baseGetTag$2 = _baseGetTag;
+var isLength = isLength_1;
+var isObjectLike$3 = isObjectLike_1;
 
 /** `Object#toString` result references. */
 var argsTag$1 = '[object Arguments]';
@@ -8132,18 +7030,11 @@ typedArrayTags[weakMapTag] = false;
  * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
  */
 function baseIsTypedArray$1(value) {
-  return isObjectLike$4(value) &&
+  return isObjectLike$3(value) &&
     isLength(value.length) && !!typedArrayTags[baseGetTag$2(value)];
 }
 
 var _baseIsTypedArray = baseIsTypedArray$1;
-
-
-
-var _baseIsTypedArray$2 = Object.freeze({
-	default: _baseIsTypedArray,
-	__moduleExports: _baseIsTypedArray
-});
 
 /**
  * The base implementation of `_.unary` without support for storing metadata.
@@ -8160,15 +7051,8 @@ function baseUnary$1(func) {
 
 var _baseUnary = baseUnary$1;
 
-
-
-var _baseUnary$2 = Object.freeze({
-	default: _baseUnary,
-	__moduleExports: _baseUnary
-});
-
 var _nodeUtil = createCommonjsModule(function (module, exports) {
-var freeGlobal = require$$0$20;
+var freeGlobal = _freeGlobal;
 
 /** Detect free variable `exports`. */
 var freeExports = 'object' == 'object' && exports && !exports.nodeType && exports;
@@ -8192,22 +7076,9 @@ var nodeUtil = (function() {
 module.exports = nodeUtil;
 });
 
-
-
-var _nodeUtil$2 = Object.freeze({
-	default: _nodeUtil,
-	__moduleExports: _nodeUtil
-});
-
-var require$$0$25 = ( _baseIsTypedArray$2 && _baseIsTypedArray ) || _baseIsTypedArray$2;
-
-var require$$1$37 = ( _baseUnary$2 && _baseUnary ) || _baseUnary$2;
-
-var require$$2$18 = ( _nodeUtil$2 && _nodeUtil ) || _nodeUtil$2;
-
-var baseIsTypedArray = require$$0$25;
-var baseUnary = require$$1$37;
-var nodeUtil = require$$2$18;
+var baseIsTypedArray = _baseIsTypedArray;
+var baseUnary = _baseUnary;
+var nodeUtil = _nodeUtil;
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -8233,31 +7104,12 @@ var isTypedArray$1 = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsType
 
 var isTypedArray_1 = isTypedArray$1;
 
-
-
-var isTypedArray$2 = Object.freeze({
-	default: isTypedArray_1,
-	__moduleExports: isTypedArray_1
-});
-
-var require$$0$26 = ( _baseTimes$2 && _baseTimes ) || _baseTimes$2;
-
-var require$$1$38 = ( isArguments$2 && isArguments_1 ) || isArguments$2;
-
-var require$$2$19 = ( isArray$5 && isArray_1 ) || isArray$5;
-
-var require$$3$12 = ( isBuffer$1 && isBuffer_1 ) || isBuffer$1;
-
-var require$$4$6 = ( _isIndex$2 && _isIndex ) || _isIndex$2;
-
-var require$$5$6 = ( isTypedArray$2 && isTypedArray_1 ) || isTypedArray$2;
-
-var baseTimes = require$$0$26;
-var isArguments = require$$1$38;
-var isArray$3 = require$$2$19;
-var isBuffer = require$$3$12;
-var isIndex = require$$4$6;
-var isTypedArray = require$$5$6;
+var baseTimes = _baseTimes;
+var isArguments = isArguments_1;
+var isArray$3 = isArray_1;
+var isBuffer = isBuffer_1;
+var isIndex = _isIndex;
+var isTypedArray = isTypedArray_1;
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -8302,13 +7154,6 @@ function arrayLikeKeys$1(value, inherited) {
 
 var _arrayLikeKeys = arrayLikeKeys$1;
 
-
-
-var _arrayLikeKeys$2 = Object.freeze({
-	default: _arrayLikeKeys,
-	__moduleExports: _arrayLikeKeys
-});
-
 /** Used for built-in method references. */
 var objectProto$5 = Object.prototype;
 
@@ -8328,13 +7173,6 @@ function isPrototype$1(value) {
 
 var _isPrototype = isPrototype$1;
 
-
-
-var _isPrototype$2 = Object.freeze({
-	default: _isPrototype,
-	__moduleExports: _isPrototype
-});
-
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
  *
@@ -8351,35 +7189,15 @@ function overArg$1(func, transform) {
 
 var _overArg = overArg$1;
 
-
-
-var _overArg$2 = Object.freeze({
-	default: _overArg,
-	__moduleExports: _overArg
-});
-
-var require$$0$27 = ( _overArg$2 && _overArg ) || _overArg$2;
-
-var overArg = require$$0$27;
+var overArg = _overArg;
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys$1 = overArg(Object.keys, Object);
 
 var _nativeKeys = nativeKeys$1;
 
-
-
-var _nativeKeys$2 = Object.freeze({
-	default: _nativeKeys,
-	__moduleExports: _nativeKeys
-});
-
-var require$$0$28 = ( _isPrototype$2 && _isPrototype ) || _isPrototype$2;
-
-var require$$1$39 = ( _nativeKeys$2 && _nativeKeys ) || _nativeKeys$2;
-
-var isPrototype = require$$0$28;
-var nativeKeys = require$$1$39;
+var isPrototype = _isPrototype;
+var nativeKeys = _nativeKeys;
 
 /** Used for built-in method references. */
 var objectProto$4 = Object.prototype;
@@ -8408,13 +7226,6 @@ function baseKeys$1(object) {
 }
 
 var _baseKeys = baseKeys$1;
-
-
-
-var _baseKeys$2 = Object.freeze({
-	default: _baseKeys,
-	__moduleExports: _baseKeys
-});
 
 /**
  * Checks if `value` is the
@@ -8448,17 +7259,8 @@ function isObject$24(value) {
 
 var isObject_1 = isObject$24;
 
-
-
-var isObject$25 = Object.freeze({
-	default: isObject_1,
-	__moduleExports: isObject_1
-});
-
-var require$$1$40 = ( isObject$25 && isObject_1 ) || isObject$25;
-
-var baseGetTag$3 = require$$0$23;
-var isObject$23 = require$$1$40;
+var baseGetTag$3 = _baseGetTag;
+var isObject$23 = isObject_1;
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]';
@@ -8495,17 +7297,8 @@ function isFunction$1(value) {
 
 var isFunction_1 = isFunction$1;
 
-
-
-var isFunction$2 = Object.freeze({
-	default: isFunction_1,
-	__moduleExports: isFunction_1
-});
-
-var require$$0$29 = ( isFunction$2 && isFunction_1 ) || isFunction$2;
-
-var isFunction = require$$0$29;
-var isLength$3 = require$$1$36;
+var isFunction = isFunction_1;
+var isLength$2 = isLength_1;
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -8533,27 +7326,14 @@ var isLength$3 = require$$1$36;
  * // => false
  */
 function isArrayLike$1(value) {
-  return value != null && isLength$3(value.length) && !isFunction(value);
+  return value != null && isLength$2(value.length) && !isFunction(value);
 }
 
 var isArrayLike_1 = isArrayLike$1;
 
-
-
-var isArrayLike$2 = Object.freeze({
-	default: isArrayLike_1,
-	__moduleExports: isArrayLike_1
-});
-
-var require$$0$30 = ( _arrayLikeKeys$2 && _arrayLikeKeys ) || _arrayLikeKeys$2;
-
-var require$$1$41 = ( _baseKeys$2 && _baseKeys ) || _baseKeys$2;
-
-var require$$0$31 = ( isArrayLike$2 && isArrayLike_1 ) || isArrayLike$2;
-
-var arrayLikeKeys = require$$0$30;
-var baseKeys = require$$1$41;
-var isArrayLike = require$$0$31;
+var arrayLikeKeys = _arrayLikeKeys;
+var baseKeys = _baseKeys;
+var isArrayLike = isArrayLike_1;
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -8589,19 +7369,8 @@ function keys$3(object) {
 
 var keys_1 = keys$3;
 
-
-
-var keys$4 = Object.freeze({
-	default: keys_1,
-	__moduleExports: keys_1
-});
-
-var require$$0$32 = ( _baseFor$2 && _baseFor ) || _baseFor$2;
-
-var require$$1$42 = ( keys$4 && keys_1 ) || keys$4;
-
-var baseFor = require$$0$32;
-var keys$2 = require$$1$42;
+var baseFor = _baseFor;
+var keys$2 = keys_1;
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -8617,14 +7386,7 @@ function baseForOwn$1(object, iteratee) {
 
 var _baseForOwn = baseForOwn$1;
 
-
-
-var _baseForOwn$2 = Object.freeze({
-	default: _baseForOwn,
-	__moduleExports: _baseForOwn
-});
-
-var isArrayLike$3 = require$$0$31;
+var isArrayLike$2 = isArrayLike_1;
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -8639,7 +7401,7 @@ function createBaseEach$1(eachFunc, fromRight) {
     if (collection == null) {
       return collection;
     }
-    if (!isArrayLike$3(collection)) {
+    if (!isArrayLike$2(collection)) {
       return eachFunc(collection, iteratee);
     }
     var length = collection.length,
@@ -8657,19 +7419,8 @@ function createBaseEach$1(eachFunc, fromRight) {
 
 var _createBaseEach = createBaseEach$1;
 
-
-
-var _createBaseEach$2 = Object.freeze({
-	default: _createBaseEach,
-	__moduleExports: _createBaseEach
-});
-
-var require$$0$33 = ( _baseForOwn$2 && _baseForOwn ) || _baseForOwn$2;
-
-var require$$1$43 = ( _createBaseEach$2 && _createBaseEach ) || _createBaseEach$2;
-
-var baseForOwn = require$$0$33;
-var createBaseEach = require$$1$43;
+var baseForOwn = _baseForOwn;
+var createBaseEach = _createBaseEach;
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -8682,13 +7433,6 @@ var createBaseEach = require$$1$43;
 var baseEach$1 = createBaseEach(baseForOwn);
 
 var _baseEach = baseEach$1;
-
-
-
-var _baseEach$2 = Object.freeze({
-	default: _baseEach,
-	__moduleExports: _baseEach
-});
 
 /**
  * This method returns the first argument it receives.
@@ -8712,16 +7456,7 @@ function identity$1(value) {
 
 var identity_1 = identity$1;
 
-
-
-var identity$2 = Object.freeze({
-	default: identity_1,
-	__moduleExports: identity_1
-});
-
-var require$$0$34 = ( identity$2 && identity_1 ) || identity$2;
-
-var identity = require$$0$34;
+var identity = identity_1;
 
 /**
  * Casts `value` to `identity` if it's not a function.
@@ -8736,23 +7471,10 @@ function castFunction$1(value) {
 
 var _castFunction = castFunction$1;
 
-
-
-var _castFunction$2 = Object.freeze({
-	default: _castFunction,
-	__moduleExports: _castFunction
-});
-
-var require$$0$35 = ( _arrayEach$2 && _arrayEach ) || _arrayEach$2;
-
-var require$$1$44 = ( _baseEach$2 && _baseEach ) || _baseEach$2;
-
-var require$$2$20 = ( _castFunction$2 && _castFunction ) || _castFunction$2;
-
-var arrayEach = require$$0$35;
-var baseEach = require$$1$44;
-var castFunction = require$$2$20;
-var isArray$2 = require$$2$19;
+var arrayEach = _arrayEach;
+var baseEach = _baseEach;
+var castFunction = _castFunction;
+var isArray$2 = isArray_1;
 
 /**
  * Iterates over elements of `collection` and invokes `iteratee` for each element.
