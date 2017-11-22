@@ -17,6 +17,7 @@ import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
+import svgSprite from 'gulp-svg-sprites';
 
 import rollupBabel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
@@ -225,8 +226,35 @@ gulp.task('images:watch', function(done) {
   done();
 });
 
+gulp.task('images:svg:icon-sprite-map', function (done) {
+    return gulp.src('assets/img/icons/*.svg')
+        .pipe(svgSprite(/*{
+            afterTransform: function ooo(data, config) {
+                let transformedSvg = data.svg.map(function (item) {
+                    return {
+                        ...item,
+                        fill: '#0000cc',
+                        positionX: '-1000',
+                        data: item.data.replace('<svg', '<svg fill="#0000cc"')
+                    }
+                });
+
+                data.svg = transformedSvg;
+
+                /!**
+                 * Call after data is returned;
+                 *!/
+                setTimeout(function () {
+                    done();
+                }, 0);
+
+                return data;
+            }
+        }*/))
+        .pipe(gulp.dest('public/assets'));
+});
+
 gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images'));
 gulp.task('watch', gulp.parallel('css:watch', 'scripts:watch', 'fonts:watch', 'images:watch'));
 gulp.task('clean', gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean'));
 gulp.task('dev', gulp.series('default', 'fractal:start', 'watch',));
-

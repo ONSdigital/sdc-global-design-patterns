@@ -169,7 +169,8 @@ const theme = require('@frctl/mandelbrot')({
   },
   styles: [
     'default',
-    '/assets/css/patternlib.css' // Used for eQ Pattern Library specific styles e.g. Colour swatches
+    '/assets/css/patternlib.css', // Used for eQ Pattern Library specific styles e.g. Colour swatches
+    '/assets/css/sprite.css' // generated from gulp plugin
   ],
   scripts: [
     'default',

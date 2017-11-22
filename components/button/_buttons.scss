@@ -51,6 +51,22 @@
   @include btn($color-secondary, $color-white);
 }
 
+.btn--tertiary {
+  @include btn($color-white, $color-tertiary, $color-tertiary-dark);
+  padding : .3rem;
+  background-color : $color-white;
+  font-weight : 600;
+
+  &:hover {
+    background-color: $color-white;
+  }
+
+  &:focus {
+    color : $color-white;
+    background-color: $color-tertiary;
+  }
+}
+
 .btn--neutral {
   @include btn($color-dark-grey, $color-white);
 }
