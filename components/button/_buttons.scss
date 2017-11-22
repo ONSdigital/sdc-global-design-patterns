@@ -51,6 +51,14 @@
       vertical-align : top;
       display : inline-block;
   }
+
+  &:hover > .icon.icon--print-link:before {
+    background-position: 0em -2.4em;
+  }
+
+  &:focus > .icon.icon--print-link:before {
+    background-position: 0em 0em;
+  }
 }
 
 .btn--secondary {
