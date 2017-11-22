@@ -45,6 +45,12 @@
 
 .btn {
   @include btn($color-primary, $color-white);
+
+  > .icon {
+      margin-top : -2px;
+      vertical-align : top;
+      display : inline-block;
+  }
 }
 
 .btn--secondary {
