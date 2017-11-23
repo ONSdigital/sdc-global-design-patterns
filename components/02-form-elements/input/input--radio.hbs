@@ -1,6 +1,17 @@
-<div class="field field--radio field--multiplechoice">
-  <div class="field__item js-focusable-box">
-    <input class="input input--radio js-focusable" type="radio" id="radio">
-    {{>@label}}
+<div class="answer answer--radio" id="container-radio-mandatory-answer">
+  <div class="answer__fields js-fields">
+
+    <div class="field field--radio field--multiplechoice">
+      <fieldset>
+        <legend class="field__legend mars ">{{legend}}</legend>
+          {{#each options}}
+          <div class="field__item js-focusable-box">
+            <input class="input input--radio js-focusable" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
+            {{>@label}}
+          </div>
+          {{/each}}
+      </fieldset>
+    </div>
+
   </div>
 </div>

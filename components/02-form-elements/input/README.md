@@ -1,20 +1,35 @@
-### Rationale
-Inputs are used where users enter answers to surveys
+## Rationale
+Inputs are used wherever users enter answers to surveys.
 
-### Variants
-Input variants can be added to input.config.js.
+## Variants
 
-### Status
-Default status is 'ready' but can be overridden for each variant.
+### Text
 
-### Collated
-Collated is set to 'false' so each input has its own handlebars file.
+#### Units and Currency
+Additional specialist variants of the standard text input are the [unit](unit), [currency](currency) and [percentage](input--percentage)
 
-### Context
+### Checkbox
+
+### Radio
+
+### Select
+These should **never** be used for short lists of items that could be better served by using radio options.
+
+GDS advise against using dropdown select boxes as they have poor accessibility and can be cumbersome to use on a mobile device.
+
+They hide the choices and can confuse users as they may not understand what they’re being asked before they see the answers by interacting with the element.
+
+Where large lists are involved, some users may be unaware that they can scroll through the entire list to find the appropriate answer.
+
+Because the expanded list cannot be styled, this may cause usability issues where the dropdown itself may be difficult to read for users with visual impairments.
+
+_(Note: Input variants can be added via input.config.js.)_
+
+## Context
 Context vary for each input but label is used for human readable aspect and
 'label_text' is input content.
 
-### Scope
+## Scope
 Global
 
 ### Dependencies

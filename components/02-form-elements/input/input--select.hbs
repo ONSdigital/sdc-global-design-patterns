@@ -1,9 +1,8 @@
 <div class="field field--select">
   {{> @label}}
   <select class="input input--select" id="select" name="select">
-    <option selected disabled>Select an option</option>
-  	<option>Option 1</option>
-  	<option>Option 2</option>
-  	<option>Option 3</option>
+    {{#each options}}
+      <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}>{{option_text}}</option>
+    {{/each}}
   </select>
 </div>
