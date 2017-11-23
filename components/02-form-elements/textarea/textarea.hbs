@@ -1,0 +1,3 @@
+{{> @label label_text="Please provide some feedback" label_for="textarea-answer" label_description="Label description for textarea"}}
+<textarea cols="60" rows="8" class="input input--textarea js-charlimit-input" id="textarea-answer" name="textarea-answer" maxlength="{{charlimit}}" aria-describedby="description-question guidance-answer-trigger" data-maxlength="{{charlimit}}"></textarea>
+<div data-qa="textarea-with-limit" class="input__limit u-mt-xs mercury" id="answer-remaining">Characters remaining: <span>{{charlimit}}</span></div>
