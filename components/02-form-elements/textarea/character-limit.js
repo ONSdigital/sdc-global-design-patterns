@@ -6,6 +6,7 @@ const inputClassLimitExceeded = 'input--limit-reached'
 const remainingClassLimitExceeded = 'input__limit--reached'
 const classCharactersRemaining = 'input__limit'
 const classLimitedInput = 'js-charlimit-input'
+const charactersRemainingSuffix = " characters remaining"
 
 domready(() => {
   const remainingCharElements = document.querySelectorAll(`.${classCharactersRemaining}`)
@@ -36,7 +37,7 @@ domready(() => {
     const remainingCharElement = findRemainingCharElement(element.id)
 
     if (remainingCharElement) {
-      remainingCharElement.firstElementChild.innerText = count
+      remainingCharElement.firstElementChild.innerText = count + charactersRemainingSuffix
       highlightWhenLimitReached(remainingCharElement, remainingClassLimitExceeded, count)
       highlightWhenLimitReached(element, inputClassLimitExceeded, count)
 
