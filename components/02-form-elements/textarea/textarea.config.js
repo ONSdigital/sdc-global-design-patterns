@@ -4,6 +4,7 @@ module.exports = {
   "name": "textarea",
   "status": "wip",
   "context": {
-    "charlimit" : "140"
+    "charlimit" : "40",
+    "textarea_id" : "textarea-answer"
   }
 }

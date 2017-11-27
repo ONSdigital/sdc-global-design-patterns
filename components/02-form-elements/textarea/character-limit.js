@@ -1,6 +1,6 @@
 import 'ie9-oninput-polyfill'
-import domready from './domready'
-import {trackEvent} from './analytics'
+import domready from '../../../assets/js/domready'
+import {trackEvent} from '../../../assets/js/analytics'
 
 const inputClassLimitExceeded = 'input--limit-reached'
 const remainingClassLimitExceeded = 'input__limit--reached'
