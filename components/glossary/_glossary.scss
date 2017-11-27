@@ -1,0 +1,14 @@
+.glossary__link {
+  &:after {
+    content: '';
+    top: 0;
+    right: 0;
+    background: transparent url('#{$static}/img/icons/icons--external-link.svg') no-repeat 50%;
+    background-size: 1rem;
+    padding: 0.5rem;
+    display: inline;
+    white-space: nowrap;
+    line-height: 0;
+    vertical-align: super;
+  }
+}
