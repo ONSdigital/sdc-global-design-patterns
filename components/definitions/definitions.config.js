@@ -3,7 +3,7 @@ module.exports = {
   status: 'wip',
   context: {
     definitioncontent:
-      'Do you connect an <a href="#definition__accumulator" title="Definition of accumulator" class="definition__anchor">accumulator</a> to your <a href="#definition__photovoltaic" title="Definition of photovoltaic system" class="definition__anchor">photovoltaic system</a> to store surplus energy?',
+      'Do you connect an <a href="#definition__accumulator" title="Definition of accumulator" class="definition__anchor" data-dialog-call="I really do not like you pressing that">accumulator</a> to your <a href="#definition__photovoltaic" title="Definition of photovoltaic system" class="definition__anchor" data-dialog-call="Yo">photovoltaic system</a> to store surplus energy?',
     definitions: [
       {
         id: 'definition__accumulator',
