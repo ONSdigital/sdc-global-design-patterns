@@ -1,12 +1,58 @@
-.definition__link {
+.definition {
+  // display: none;
+  border-top: 1px solid $color-borders;
+  margin-top: 3em;
+  .no-js & {
+    display: block;
+  }
+}
+
+.definition__list {
+  margin: 0;
+  padding: 1.5em 0 1em 0em;
+  position: relative;
+}
+
+.definition__title {
+  display: inline-block;
+}
+
+.definition__backtotop {
+  $size: 1.5rem;
+  background: url('#{$static}/img/icons/icons--definition-arrow.svg') no-repeat
+    center center;
+  background-size: auto;
+  text-align: center;
+  width: $size;
+  height: $size;
+  display: inline-block;
+  text-indent: -999999px;
+  overflow: hidden;
+  vertical-align: top;
+  @include mq(1100px) {
+    position: absolute;
+    top: 1.5em;
+    left: -2em;
+  }
+}
+
+.definition__description {
+  margin: 0;
+}
+
+.definition__anchor {
+  text-decoration-style: dashed;
+  &:hover {
+    text-decoration-style: dashed;
+  }
   &:after {
     content: '';
     top: 0;
     right: 0;
-    background: transparent url('#{$static}/img/icons/icons--external-link.svg')
-      no-repeat 50%;
-    background-size: 1rem;
-    padding: 0.5rem;
+    background: transparent
+      url('#{$static}/img/icons/icons--definition-anchor.svg') no-repeat 50%;
+    background-size: auto;
+    padding: 0.5em;
     display: inline;
     white-space: nowrap;
     line-height: 0;

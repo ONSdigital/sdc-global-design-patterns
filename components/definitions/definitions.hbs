@@ -1,1 +1,19 @@
-<h1 class="saturn">{{{definitioncontent}}}</h1>
+<div class="{{nav-wrapper-classes}}">
+  <h1 class="saturn">{{{definitioncontent}}}</h1>
+
+  <div class="definition">
+    {{#each definitions}}
+      <dl class="definition__list">
+        {{#if title}}
+          <def id='{{id}}'>
+            <a href="#main" class="definition__backtotop">Back to top</a>
+            <dt class="definition__title venus"><strong class="u-mb-s u-d-b">{{title}}</strong></dt>
+          </def>
+        {{/if}}
+        {{#if description}}
+          <dd class="definition__description mars" >{{description}}</dd>
+        {{/if}}
+      </dl>
+    {{/each}}
+  </div>
+</div>
