@@ -29,28 +29,73 @@ domready(() => {
       // build the dialog markup
       dialog.insertAdjacentHTML(
         'beforeend',
-        '<div><div role="document" tabindex="0"><button role="button">' +
+        '<div><div id="document" role="document" tabindex="0"><button id="button" role="button">' +
           closeText +
           '</button></div></div>'
       );
 
+      // make last button in dialog the close button
+      let btnClose = document.getElementById('button');
+      btnClose.focus();
+
       // Insert the message held in the trigger's [data-dialog-msg] attribute
       let dataDialogCall = anchor.getAttribute('data-dialog-call');
-      dialog.insertAdjacentHTML('afterbegin', dataDialogCall);
+      btnClose.insertAdjacentHTML(
+        'beforebegin',
+        '<p id="d-message">' + dataDialogCall + '</p>'
+      );
 
       // hide and make unfocusable all other elements
       let elements = document.querySelectorAll('.page > *:not(dialog)');
       for (let element of elements) {
         element.setAttribute('class', 'mod-hidden');
       }
+
+      // Define content to refocus dialog if user tries to leave it
+      let content = document.getElementById('document');
+
+      // Close Dialog
+      let closeDialog = function() {
+        document.getElementById('d-message').remove();
+        for (let element of elements) {
+          element.removeAttribute('class', 'mod-hidden');
+        }
+        // Set focus back to element that triggered dialog
+        document.getElementById(trigger).focus();
+
+        // If we manufactured the ID, remove it
+        if (document.getElementById(trigger).getAttribute('id') === 'trigger') {
+          document.getElementById(trigger).setAttribute('id', null);
+        }
+
+        // remove dialog attributes and empty dialog
+        // dialog.removeAttr('open role aria-describedby tabindex');
+        //
+        // dialog.empty();
+        //
+        // $(dialog).off('keypress.escape');
+      };
+
+      // run closeDialog() on click of close button
+      btnClose.onclick = function(e) {
+        closeDialog();
+      };
+
+      // also run closeDialog() on ESC
+      document.onkeydown = function(e) {
+        e = e || window.event;
+        if (e.keyCode === 27) {
+          closeDialog();
+        }
+      };
+
+      // Refocus dialog if user tries to leave it
+      document.onkeydown = function(e) {
+        if ((e.keyCode || e.which) === 9) {
+          content.focus();
+          e.preventDefault();
+        }
+      };
     };
   }
 });
-
-// var article = document.getElementById('electriccars');
-//
-// article.dataset.columns // "3"
-// article.dataset.indexNumber // "12314"
-// article.dataset.parent // "cars"
-
-// $('[data-dialog-call]').on('click', function () {
