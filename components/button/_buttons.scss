@@ -52,12 +52,54 @@
       display : inline-block;
   }
 
-  &:hover > .icon.icon--print-link:before {
-    background-position: 0em -2.4em;
+  > .icon.icon--print-link {
+    position : relative;
+    width: 2.4em;
+    height: 2.4em;
+    content: ' ';
+    vertical-align: middle;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url("#{$static}/img/icons/icon--print-link.svg");
+
+    &::after,
+    &::before {
+      transition : opacity .3s ease-out;
+    }
+
+    &::before {
+      background-image: url("#{$static}/img/icons/icon--print-hover.svg");
+      background-position: 0 0;
+      background-size : auto;
+      opacity : 0;
+    }
+
+    &::after {
+      position : absolute;
+      left : 0;
+      width: 2.4em;
+      height: 2.4em;
+      content: ' ';
+      vertical-align: middle;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-image: url("#{$static}/img/icons/icon--print-focus.svg");
+      background-position: 0 0;
+      background-size : auto;
+      opacity : 0;
+    }
   }
 
-  &:focus > .icon.icon--print-link:before {
-    background-position: 0em 0em;
+  &:hover > .icon.icon--print-link {
+    &::before {
+      opacity : 1;
+    }
+  }
+
+  &:focus > .icon.icon--print-link {
+    &::after {
+      opacity : 1;
+    }
   }
 }
 
