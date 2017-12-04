@@ -6,7 +6,6 @@ domready(() => {
   for (let anchor of anchors) {
     anchor.onclick = function(e) {
       e.preventDefault();
-
       // define the dialog element
       let dialog = document.getElementById('dialog');
 
@@ -69,9 +68,14 @@ domready(() => {
         }
 
         // remove dialog attributes and empty dialog
-        // dialog.removeAttr('open role aria-describedby tabindex');
-        //
-        // dialog.empty();
+        dialog.removeAttribute('open');
+        dialog.removeAttribute('role');
+        dialog.removeAttribute('aria-describedby');
+        dialog.removeAttribute('tabindex');
+        while (dialog.firstChild) {
+          dialog.removeChild(dialog.firstChild);
+        }
+
         //
         // $(dialog).off('keypress.escape');
       };
@@ -82,7 +86,7 @@ domready(() => {
       };
 
       // also run closeDialog() on ESC
-      document.onkeydown = function(e) {
+      dialog.onkeydown = function(e) {
         e = e || window.event;
         if (e.keyCode === 27) {
           closeDialog();
@@ -90,7 +94,7 @@ domready(() => {
       };
 
       // Refocus dialog if user tries to leave it
-      document.onkeydown = function(e) {
+      btnClose.onkeydown = function(e) {
         if ((e.keyCode || e.which) === 9) {
           content.focus();
           e.preventDefault();
