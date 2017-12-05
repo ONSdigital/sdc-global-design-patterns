@@ -2,16 +2,23 @@ import domready from '../../assets/js/domready';
 
 domready(() => {
   const anchors = document.querySelectorAll('.definition__anchor');
-
   for (let anchor of anchors) {
-    anchor.onclick = function(e) {
+    // Replace <a> tag with <button> tag.
+    anchor.outerHTML = anchor.outerHTML
+      .replace(/<a/g, '<button')
+      .replace(/<\/a>/g, '</button>');
+  }
+  const buttons = document.querySelectorAll('.definition__anchor');
+  for (let button of buttons) {
+    button.onclick = function(e) {
+      console.log(button);
       e.preventDefault();
       // define the dialog element
       let dialog = document.getElementById('dialog');
 
       // record the trigger element
-      let trigger = anchor.getAttribute('id')
-        ? anchor.getAttribute('id')
+      let trigger = button.getAttribute('id')
+        ? button.getAttribute('id')
         : 'trigger';
 
       // open dialog and add roles
@@ -21,8 +28,8 @@ domready(() => {
       dialog.setAttribute('aria-labelledby', 'd-message');
 
       // retrieve custom close button wording, if any
-      let closeText = anchor.getAttribute('data-dialog-response')
-        ? anchor.getAttribute('data-dialog-response')
+      let closeText = button.getAttribute('data-dialog-response')
+        ? button.getAttribute('data-dialog-response')
         : 'close';
 
       // build the dialog markup
@@ -38,7 +45,7 @@ domready(() => {
       btnClose.focus();
 
       // Insert the message held in the trigger's [data-dialog-msg] attribute
-      let dataDialogCall = anchor.getAttribute('data-dialog-call');
+      let dataDialogCall = button.getAttribute('data-dialog-call');
       btnClose.insertAdjacentHTML(
         'beforebegin',
         '<p id="d-message">' + dataDialogCall + '</p>'
