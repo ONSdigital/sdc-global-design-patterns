@@ -35,9 +35,21 @@ domready(() => {
       // build the dialog markup
       dialog.insertAdjacentHTML(
         'beforeend',
-        '<div><div id="document" role="document" tabindex="0"><button id="button" role="button">' +
-          closeText +
-          '</button></div></div>'
+        '<div class="dialog__wrapper">' +
+          '<div class="container">' +
+            '<div class="grid grid--reverse">' +
+              '<div class="grid__col col-4@m">' +
+                '<div class="dialog__document" id="document" role="document" tabindex="0">' +
+                  '<button class="dialog__button" id="button" role="button">' +
+                    closeText +
+                  '</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="grid__col col-7@m pull-1@m">' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
       );
 
       // make last button in dialog the close button
@@ -48,7 +60,7 @@ domready(() => {
       let dataDialogCall = button.getAttribute('data-dialog-call');
       btnClose.insertAdjacentHTML(
         'beforebegin',
-        '<p id="d-message">' + dataDialogCall + '</p>'
+        '<p class="dialog__description" id="d-message">' + dataDialogCall + '</p>'
       );
 
       // hide and make unfocusable all other elements

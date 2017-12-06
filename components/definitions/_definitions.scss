@@ -1,5 +1,5 @@
 .mod-hidden {
-  display: none;
+
 }
 
 .definition {
@@ -47,8 +47,7 @@
 
 .definition__anchor {
   border: 0;
-  // text-decoration: underline;
-  // text-decoration-style: dashed;
+  text-decoration: none;
   color: $color-links;
   font-weight: inherit;
   padding: 0;
@@ -58,9 +57,15 @@
   margin-right: 1em;
 
   &:hover {
-    text-decoration-style: dashed;
+    text-decoration: none;
     color: $color-links-hover;
     border-color: $color-links-hover;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: $color-links;
+    outline: none;
   }
 
   &::after {
@@ -76,5 +81,84 @@
     vertical-align: super;
     margin-left: 0;
     margin-right: -1em;
+  }
+}
+
+.dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border: 0;
+  padding: 0;
+  transform: translateX(0);
+  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out, opacity 0.2s ease-out;
+  opacity: 1;
+  background: transparent;
+}
+
+dialog:not([open]) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  transform: translateX(2rem);
+  opacity: 0;
+}
+
+.dialog__wrapper {
+  margin: 2em;
+  position: relative;
+}
+
+.dialog__document {
+  border: 1px solid #ccc;
+  padding: 2em 0 0;
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.dialog__title {
+
+}
+
+.dialog__description {
+  padding: 1em;
+  border-top: 1px solid #ccc;
+  margin: 0;
+  background-color: #fcfee1;
+}
+
+.dialog__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background-color: transparent;
+  padding: 0 0 0 1em;
+  color: $color-links;
+  border-radius: 0;
+  &::after {
+    content: "";
+    mask: url(#{$static}/img/icons/icons--close.svg) no-repeat 50%;
+    top: 0;
+    right: 0;
+    background-color: $color-links;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &:focus {
+    color: #fff;
+    background-color: $color-links;
+    outline: none;
+    &::after {
+      background-color: #fff;
+    }
   }
 }
