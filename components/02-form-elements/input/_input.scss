@@ -145,8 +145,13 @@
   }
 }
 
-.no-js .input__limit {
-  display: none;
+.no-js {
+  .input__limit {
+    display: none;
+  }
+  .showHidePassword {
+    display: none;
+  }
 }
 
 .input__limit--reached {
