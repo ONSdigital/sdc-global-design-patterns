@@ -1,2 +1,2 @@
 {{>@label label_for="file" label_text="Upload a file" label_description="File types accepted are .xls and .xlsx" label_id="upload"}}
-<input type="file" accept=".xls,.xlsx" id="file" name="file" class="input input--type input--type__upload" aria-describedby="upload" />
+<input type="file" accept="{{upload_accepts}}" id="file" name="file" class="input input--upload" aria-describedby="upload" />

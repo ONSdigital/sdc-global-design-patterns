@@ -1,5 +1,4 @@
-
-.input--type__upload {
+.input--upload {
   border: 2px solid $color-borders;
   border-radius: $input-radius;
   padding: 0;
@@ -24,16 +23,12 @@
       cursor: pointer;
     }
   }
-}
 
-@media only screen and (min-width: 650px) and (max-width: 767px){
-  .input--type__upload {
+  @include mq(m) {
     width: 80%;
   }
-}
-
-@media only screen and (min-width: 800px){
-  .input--type__upload {
+  @include mq(l) {
     width: 70%;
   }
+
 }
