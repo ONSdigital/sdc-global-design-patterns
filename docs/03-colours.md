@@ -28,4 +28,9 @@ These are the brand colours for The Office for National Statistics
   {{render '@eq-colours--colour-error'}}{{render '@eq-colours--colour-error-bg'}}{{render '@eq-colours--color-highlight'}}{{render '@eq-colours--color-highlight-bg'}}{{render '@eq-colours--colour-warning'}}{{render '@eq-colours--colour-warning-bg'}}{{render '@eq-colours--colour-success'}}{{render '@eq-colours--colour-success-bg'}}
 </div>
 
+#### Secondary palette
+<div class="eq-tile-container">
+  {{render '@eq-colours--color-slate'}}{{render '@eq-colours--color-blue-astral'}}{{render '@eq-colours--color-teal'}}{{render '@eq-colours--color-census-purple'}}
+</div>
+
 ## Research

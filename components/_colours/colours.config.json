@@ -215,6 +215,42 @@
         "colour-hex":"#EEEEEE",
         "colour-rgb":"238,238,238"
       }
+    }, {
+      "label":"Slate",
+      "name":"color-slate",
+      "status":"ready",
+      "context": {
+        "colour-title":"Slate",
+        "colour-name":"color-slate",
+        "colour-hex":"#5F7682",
+        "colour-rgb":"xx,xx,xx",
+        "panel-text":"A",
+        "panel-text-white": true
+      }
+    }, {
+      "label":"Teal",
+      "name":"color-teal",
+      "status":"ready",
+      "context": {
+        "colour-title":"Teal",
+        "colour-name":"color-teal",
+        "colour-hex":"#008080",
+        "colour-rgb":"xx,xx,xx",
+        "panel-text":"A",
+        "panel-text-white": true
+      }
+    }, {
+      "label":"Blue",
+      "name":"color-blue-astral",
+      "status":"ready",
+      "context": {
+        "colour-title":"Blue (astral)",
+        "colour-name":"color-blue-astral",
+        "colour-hex":"#3B7A9E",
+        "colour-rgb":"xx,xx,xx",
+        "panel-text":"A",
+        "panel-text-white": true
+      }
     }
   ]
 }
