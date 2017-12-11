@@ -73,7 +73,7 @@
 
 <div class="Status Status--tag">
 
-<label class="Status-label" style="background-color: #FF9233; border-color: #FF9233;">WIP</label>
+<label class="Status-label" style="background-color: #29CC29; border-color: #29CC29;">Ready</label>
 
 </div>
 
@@ -187,7 +187,30 @@
     <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-8572d394166f03d2e241aba02d6eb676-panel-notes">
     <div class="Prose Prose--condensed">
         
-        <p class="Browser-isEmptyNote">There are no notes for this item.</p>
+        <h3 id="rationale">Rationale</h3>
+<p>Buttons are used to direct the user to perform a specific interaction. The copy used on the button should be clear, concise and direct.</p>
+<h2 id="variants">Variants</h2>
+<h4 id="primary">Primary</h4>
+<p>The primary button is used for the primary action for the user’s context.</p>
+<h4 id="large">Large</h4>
+<p>The large button is used for the primary service level action for the user.</p>
+<h4 id="secondary-bordered">Secondary - bordered</h4>
+<p>Secondary buttons should be used for supplementary actions which users can take. Secondary buttons cannot exist without a primary button in the same context.</p>
+<h4 id="link">Link</h4>
+<p>The link button is used for tertiary actions which act as either navigation (for example ‘Previous’ in a service process) or as an action which is to take the user from the current context.</p>
+<h4 id="disabled">Disabled</h4>
+<p>The disabled state is used when other actions must be completed before this action can be made.</p>
+<h3 id="research">Research</h3>
+<h3 id="usage">Usage</h3>
+<p>The primary, large button is used throughout the eQ survey process as it is the primary action for the user to proceed. The copy used would be “Start survey” then “Save” on each answer submission.</p>
+<h4 id="scope">Scope</h4>
+<p>Global</p>
+<h4 id="dependencies">Dependencies</h4>
+<ul>
+<li><code>/components/_buttons.scss</code></li>
+<li><code>vars/_colours.sccs</code></li>
+</ul>
+
         
     </div>
 </div>
@@ -197,7 +220,7 @@
     <code class="Code Code--lang-html">
         
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn--primary"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre>
         
     </code>
 </div>
@@ -214,16 +237,18 @@
         
         
         <li class="Meta-item">
-            <strong class="Meta-key">Variants <em class="Meta-count">(4)</em>:</strong>
+            <strong class="Meta-key">Variants <em class="Meta-count">(5)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
             
                 <a href=""><span>primary</span></a>, 
             
+                <a href="button--primary-lg.html"><span>primary-lg</span></a>, 
+            
                 <a href="button--secondary.html"><span>secondary</span></a>, 
             
-                <a href="button--neutral.html"><span>neutral</span></a>, 
+                <a href="button--link.html"><span>link</span></a>, 
             
-                <a href="button--border.html"><span>border</span></a>
+                <a href="button--neutral.html"><span>neutral</span></a>
             
             </span>
         </li>
@@ -247,7 +272,7 @@
         </li>
         <li class="Meta-item">
             <strong class="Meta-key">Filesystem Path:</strong>
-            <span class="Meta-value">components/button/01-button.hbs</span>
+            <span class="Meta-value">components/button/button.hbs</span>
         </li>
         
         
@@ -258,8 +283,11 @@
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-8572d394166f03d2e241aba02d6eb676-panel-context">
     
     
-    <code class="Code Code--lang-js">
-        <pre><span class="hljs-comment">/* No context defined for this component. */</span></pre>
+    <code class="Code Code--lang-json">
+        <pre>{
+  <span class="hljs-attr">"btn-classes"</span>: <span class="hljs-string">"btn--primary"</span>,
+  <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Submit"</span>
+}</pre>
     </code>
     
 </div>
@@ -730,6 +758,30 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="textarea.html" data-pjax>
+                <span>Textarea</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="unit.html" data-pjax>
                 <span>Unit</span>
                 
@@ -1168,7 +1220,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
 
 
 </div>

@@ -5782,8 +5782,8 @@ var global$14     = _global;
 var $export$113    = _export;
 var invoke$2     = _invoke;
 var partial    = _partial;
-var navigator  = global$14.navigator;
-var MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
+var navigator$1  = global$14.navigator;
+var MSIE       = !!navigator$1 && /MSIE .\./.test(navigator$1.userAgent); // <- dirty ie9- check
 var wrap$1 = function(set){
   return MSIE ? function(fn, time /*, ...args */){
     return set(invoke$2(
@@ -7802,6 +7802,184 @@ ready(function () {
     }
   }
 });
+
+(function (d) {
+  if (navigator.userAgent.indexOf('MSIE 9') === -1) return;
+
+  d.addEventListener('selectionchange', function() {
+    var el = d.activeElement;
+
+    if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type === 'text')) {
+      var ev = d.createEvent('CustomEvent');
+      ev.initCustomEvent('input', true, true, {});
+      el.dispatchEvent(ev);
+    }
+  });
+})(document);
+
+var trackEvent = function trackEvent(event, data) {
+  console.log('[Analytics disabled] Event: ' + event); // eslint-disable-line no-console
+  console.log(data); // eslint-disable-line no-console
+};
+
+if (typeof window.ga !== 'undefined') {
+  trackEvent = function trackEvent(evt, data) {
+    window.ga(evt, data);
+  };
+}
+
+var trackElement = function trackElement(el) {
+  return trackEvent('send', {
+    hitType: 'event',
+    eventCategory: el.getAttribute('data-ga-category') || '',
+    eventAction: el.getAttribute('data-ga-action') || '',
+    eventLabel: el.getAttribute('data-ga-label') || ''
+  });
+};
+
+var isVisible = function isVisible(el) {
+  return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+};
+
+function initAnalytics() {
+  var trackVisibleElements = Array.from(document.querySelectorAll('[data-ga=visible]'));
+
+  var interval = window.setInterval(function () {
+    trackVisibleElements = trackVisibleElements.filter(function (element) {
+      return isVisible(element) ? trackElement(element) && false : true;
+    });
+    if (trackVisibleElements.length === 0) {
+      window.clearInterval(interval);
+    }
+  }, 200);
+
+  Array.from(document.querySelectorAll('[data-ga=error]')).map(trackElement);
+
+  document.body.addEventListener('click', function (_ref) {
+    var target = _ref.target;
+
+    if (target.getAttribute('data-ga') === 'click') {
+      trackElement(target);
+    }
+  });
+
+  var afterPrint = function afterPrint() {
+    return trackEvent('send', {
+      hitType: 'event',
+      eventCategory: 'Print Intent',
+      eventAction: 'Print Intent',
+      eventLabel: window.location.pathname.split('/').slice(-3).join('/')
+    });
+  };
+
+  if (window.matchMedia) {
+    var mediaQueryList = window.matchMedia('print');
+    mediaQueryList.addListener(function (mql) {
+      if (!mql.matches) {
+        afterPrint();
+      }
+    });
+  }
+  window.onafterprint = afterPrint;
+}
+
+ready(initAnalytics);
+
+var inputClassLimitExceeded = 'input--limit-reached';
+var remainingClassLimitExceeded = 'input__limit--reached';
+var classCharactersRemaining = 'input__limit';
+var classLimitedInput = 'js-charlimit-input';
+var charactersRemainingSuffix = " characters remaining";
+
+ready(function () {
+  var remainingCharElements = document.querySelectorAll('.' + classCharactersRemaining);
+  var fieldSet = document.querySelector('body');
+
+  var onAnswerChanged = function onAnswerChanged(e) {
+    var element = e.target;
+
+    if (element.type !== 'textarea') return;
+    updateAvailableChars(element);
+  };
+
+  var updateAvailableChars = function updateAvailableChars(element) {
+    // data-maxlength is used to store the original value of maxlength
+    // before we mess with it when newlines are added to the input
+    var limit = element.getAttribute('data-maxlength');
+    var maxLength = limit - countNewlines(element.value);
+    element.setAttribute('maxlength', maxLength);
+
+    var count = maxLength - element.value.length;
+    // If the user pastes something in the count could be
+    // negative (because we're double counting newlines), so...
+    if (count < 0) {
+      element.value = element.value.slice(0, maxLength);
+      count = 0;
+    }
+
+    var remainingCharElement = findRemainingCharElement(element.id);
+
+    if (remainingCharElement) {
+      remainingCharElement.firstElementChild.innerText = count + charactersRemainingSuffix;
+      highlightWhenLimitReached(remainingCharElement, remainingClassLimitExceeded, count);
+      highlightWhenLimitReached(element, inputClassLimitExceeded, count);
+
+      if (count < 1) {
+        trackEvent('send', {
+          hitType: 'event',
+          eventCategory: 'Error',
+          eventAction: 'Textarea limit reached',
+          eventLabel: 'Limit of ' + limit + ' reached/exceeded'
+        });
+      }
+    }
+  };
+
+  var findRemainingCharElement = function findRemainingCharElement(inputId) {
+    // We assume that the character count for an input is
+    // prefixed with the input elements id
+    for (var i = 0; i < remainingCharElements.length; i++) {
+      if (remainingCharElements[i].id.indexOf(inputId) === 0) {
+        return remainingCharElements[i];
+      }
+    }
+
+    return false;
+  };
+
+  var initialise = function initialise() {
+    var limitedInputs = document.querySelectorAll('.' + classLimitedInput);
+
+    for (var i = 0; i < limitedInputs.length; i++) {
+      var input = limitedInputs[i];
+
+      // We change the value of maxlength if there are \n's so store
+      // the original value so that the calculations are correct when
+      // \n's are deleted
+      input.setAttribute('data-maxlength', input.getAttribute('maxlength'));
+      updateAvailableChars(input);
+    }
+  };
+
+  var highlightWhenLimitReached = function highlightWhenLimitReached(element, cssClass, count) {
+    if (count < 1) {
+      element.classList.add(cssClass);
+      return;
+    }
+
+    element.classList.remove(cssClass);
+  };
+
+  var countNewlines = function countNewlines(aString) {
+    return (aString.match(/\n/g) || []).length;
+  };
+
+  // Make sure all the character counts are correct on page load
+  fieldSet.addEventListener('input', onAnswerChanged);
+  initialise();
+});
+
+// Character count component (textarea)
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
