@@ -40,7 +40,7 @@ domready(() => {
             '<div class="grid grid--reverse">' +
               '<div class="grid__col col-4@m">' +
                 '<div class="dialog__document" id="document" role="document" tabindex="0">' +
-                  '<button class="dialog__button" id="button" role="button">' +
+                  '<button class="dialog__button mars" id="button" role="button">' +
                     closeText +
                   '</button>' +
                 '</div>' +
@@ -58,9 +58,11 @@ domready(() => {
 
       // Insert the message held in the trigger's [data-dialog-msg] attribute
       let dataDialogCall = button.getAttribute('data-dialog-call');
+      let dataTitle = button.getAttribute('data-title');
+
       btnClose.insertAdjacentHTML(
         'beforebegin',
-        '<p class="dialog__description" id="d-message">' + dataDialogCall + '</p>'
+        '<div id="d-message" class="dialog__message" ><h3 class="dialog__title venus">' + dataTitle + '</h3><p class="dialog__description mars" >' + dataDialogCall + '</p></div>'
       );
 
       // hide and make unfocusable all other elements

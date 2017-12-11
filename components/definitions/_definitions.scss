@@ -114,17 +114,18 @@ dialog:not([open]) {
 
 .dialog__document {
   border: 1px solid #ccc;
-  padding: 2em 0 0;
+  padding: 2.5em 0 0;
   width: 100%;
   background: #fff;
   position: relative;
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,.2);
 }
 
 .dialog__title {
 
 }
 
-.dialog__description {
+.dialog__message {
   padding: 1em;
   border-top: 1px solid #ccc;
   margin: 0;
@@ -137,21 +138,21 @@ dialog:not([open]) {
   right: 0;
   border: 0;
   background-color: transparent;
-  padding: 0 0 0 1em;
+  padding: 0.6em 2em;
   color: $color-links;
   border-radius: 0;
   &::after {
     content: "";
     mask: url(#{$static}/img/icons/icons--close.svg) no-repeat 50%;
-    top: 0;
-    right: 0;
+    position: absolute;
+    top: 0.35em;
+    right: 0.1em;
     background-color: $color-links;
     background-repeat: no-repeat;
     background-position: 50%;
     width: 2em;
     height: 2em;
     display: inline-block;
-    vertical-align: middle;
   }
   &:focus {
     color: #fff;
