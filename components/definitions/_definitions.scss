@@ -88,6 +88,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  height: 100%;
+  width: 100%;
   display: block;
   border: 0;
   padding: 0;
@@ -141,10 +143,10 @@ dialog:not([open]) {
   &::after {
     content: "";
     mask: url(#{$static}/img/icons/icons--close.svg) no-repeat 50%;
+    background-color: $color-links;
     position: absolute;
     top: 0.3em;
     right: 0.1em;
-    background-color: $color-links;
     background-repeat: no-repeat;
     background-position: 50%;
     width: 2em;

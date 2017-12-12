@@ -1,20 +1,30 @@
 import domready from '../../assets/js/domready';
 
-domready(() => {
-  const anchors = document.querySelectorAll('.definition__anchor');
+export const classAnchor = 'definition__anchor';
+export const classDialog = 'dialog';
+export const classDialogButton = 'dialog__button';
+export const classDialogDocument = 'dialog__document';
+
+export const idDialogMessage = 'd-message';
+
+export const attrResponse = 'data-dialog-response';
+export const attrDataDialogCall = 'data-dialog-call';
+export const attrDataTitle = 'data-title';
+
+export default function definitionDialog() {
+  const anchors = document.getElementsByClassName(classAnchor);
   for (let anchor of anchors) {
     // Replace <a> tag with <button> tag.
     anchor.outerHTML = anchor.outerHTML
       .replace(/<a/g, '<button')
       .replace(/<\/a>/g, '</button>');
   }
-  const buttons = document.querySelectorAll('.definition__anchor');
+  const buttons = document.getElementsByClassName(classAnchor);
   for (let button of buttons) {
     button.onclick = function(e) {
-      console.log(button);
       e.preventDefault();
       // define the dialog element
-      let dialog = document.getElementById('dialog');
+      let dialog = document.getElementsByClassName(classDialog)[0];
 
       // record the trigger element
       let trigger = button.getAttribute('id')
@@ -25,11 +35,11 @@ domready(() => {
       dialog.setAttribute('tabindex', '0');
       dialog.setAttribute('open', 'true');
       dialog.setAttribute('role', 'alertdialog');
-      dialog.setAttribute('aria-labelledby', 'd-message');
+      dialog.setAttribute('aria-labelledby', idDialogMessage);
 
       // retrieve custom close button wording, if any
-      let closeText = button.getAttribute('data-dialog-response')
-        ? button.getAttribute('data-dialog-response')
+      let closeText = button.getAttribute(attrResponse)
+        ? button.getAttribute(attrResponse)
         : 'close';
 
       // build the dialog markup
@@ -40,7 +50,7 @@ domready(() => {
             '<div class="grid grid--reverse">' +
               '<div class="grid__col col-4@m">' +
                 '<div class="dialog__document" id="document" role="document" tabindex="0">' +
-                  '<button class="dialog__button mars" id="button" role="button">' +
+                  '<button class="' + classDialogButton + ' mars" id="button" role="button">' +
                     closeText +
                   '</button>' +
                 '</div>' +
@@ -53,33 +63,25 @@ domready(() => {
       );
 
       // make last button in dialog the close button
-      let btnClose = document.getElementById('button');
+      let btnClose = document.getElementsByClassName(classDialogButton)[0];
       btnClose.focus();
 
       // Insert the message held in the trigger's [data-dialog-msg] attribute
-      let dataDialogCall = button.getAttribute('data-dialog-call');
-      let dataTitle = button.getAttribute('data-title');
+      let dataDialogCall = button.getAttribute(attrDataDialogCall);
+      let dataTitle = button.getAttribute(attrDataTitle);
 
       btnClose.insertAdjacentHTML(
         'beforebegin',
-        '<div id="d-message" class="dialog__message" ><h3 class="dialog__title venus">' + dataTitle + '</h3><p class="dialog__description mars" >' + dataDialogCall + '</p></div>'
+        '<div id="' + idDialogMessage + '" class="dialog__message" ><h3 class="dialog__title venus">' + dataTitle + '</h3><p class="dialog__description mars" >' + dataDialogCall + '</p></div>'
       );
 
-      // hide and make unfocusable all other elements
-      let elements = document.querySelectorAll('.page > *:not(dialog)');
-      for (let element of elements) {
-        element.setAttribute('class', 'mod-hidden');
-      }
-
       // Define content to refocus dialog if user tries to leave it
-      let content = document.getElementById('document');
+      let content = document.getElementsByClassName(classDialogDocument)[0];
 
       // Close Dialog
       let closeDialog = function() {
-        document.getElementById('d-message').remove();
-        for (let element of elements) {
-          element.removeAttribute('class', 'mod-hidden');
-        }
+        document.getElementById(idDialogMessage).remove();
+
         // Set focus back to element that triggered dialog
         document.getElementById(trigger).focus();
 
@@ -96,9 +98,6 @@ domready(() => {
         while (dialog.firstChild) {
           dialog.removeChild(dialog.firstChild);
         }
-
-        //
-        // $(dialog).off('keypress.escape');
       };
 
       // run closeDialog() on click of close button
@@ -123,4 +122,6 @@ domready(() => {
       };
     };
   }
-});
+}
+
+domready(definitionDialog);
