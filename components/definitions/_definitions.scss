@@ -84,8 +84,26 @@
   }
 }
 
+@keyframes fadein {
+  from {
+    transform: translateX(2rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeout {
+  from {
+    transform: translateX(2rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .dialog {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -93,10 +111,9 @@
   display: block;
   border: 0;
   padding: 0;
-  transform: translateX(0);
-  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out, opacity 0.2s ease-out;
   opacity: 1;
-  background: transparent;
+  transition: opacity 0.2s;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 dialog:not([open]) {
@@ -105,7 +122,6 @@ dialog:not([open]) {
   right: 0;
   display: block;
   height: 0;
-  transform: translateX(2rem);
   opacity: 0;
 }
 
@@ -123,6 +139,13 @@ dialog:not([open]) {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.2);
 }
 
+dialog[open] {
+  .dialog__document {
+    animation-name: fadein;
+    animation-duration: 0.2s;
+  }
+}
+
 .dialog__message {
   padding: 1em;
   border-top: 1px solid #ccc;
@@ -135,23 +158,31 @@ dialog:not([open]) {
   top: 0;
   right: 0;
   border: 0;
+  font-weight: $font-weight-bold;
   background-color: transparent;
-  padding: 0.55em 2em 0.55em 1em;
+  padding: 0.25em 2em 0.25em 0.8em;
+  margin: 0.3em;
   color: $color-links;
-  border-radius: 0;
+  border-radius: 3px;
   appearance: none;
   &::after {
     content: "";
     mask: url(#{$static}/img/icons/icons--close.svg) no-repeat 50%;
     background-color: $color-links;
     position: absolute;
-    top: 0.3em;
-    right: 0.1em;
+    top: 0;
+    right: 0;
     background-repeat: no-repeat;
     background-position: 50%;
     width: 2em;
     height: 2em;
     display: inline-block;
+  }
+  &:hover {
+    color: $color-links-hover;
+    &::after {
+      background-color: $color-links-hover;
+    }
   }
   &:focus {
     color: #fff;
