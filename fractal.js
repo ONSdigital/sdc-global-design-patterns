@@ -22,7 +22,7 @@ fractal.components.set('title', 'Elements'); // default is 'Components'
  * Collator function to output the variant label preceding each variant in preview for collated components.
  */
 fractal.components.set('default.collator', function(markup, item) {
-  return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`;
+  return `<h2 class="neptune">${item.label}</h2>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`;
 });
 /*
 * Custom status types for components

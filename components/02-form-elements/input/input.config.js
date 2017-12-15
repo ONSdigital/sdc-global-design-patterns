@@ -33,32 +33,12 @@ module.exports = {
       ]
     },
   }, {
-    "name": "select",
-    "status": "wip",
-    "context": {
-      "label": "Select",
-      "label_text": "Select your favourite cartoon character",
-      "label_for": "select",
-      "label_description": "",
-      "options": [
-        {"option_text":"Select an option", "option_value":"", "selected":"selected", "disabled":"disabled"},
-        {"option_text":"Bart Simpson", "option_value":"bart"},
-        {"option_text":"Homer Simpson", "option_value":"homer"},
-        {"option_text":"Marge Simpson", "option_value":"marge"},
-        {"option_text":"Lisa Simpson", "option_value":"lisa"},
-        {"option_text":"Ned Flanders", "option_value":"ned"},
-        {"option_text":"Bugs Bunny", "option_value":"bugs"},
-        {"option_text":"Charlie Brown", "option_value":"charlie brown"},
-        {"option_text":"Snoopy", "option_value":"snoopy"},
-      ],
-    },
-  }, {
     "name": "percentage",
     "status": "ready",
     "name": "percentage",
     "context": {
       "label": "Percentage",
       "label_text": "%"
-    },
+    }
   }]
 }
