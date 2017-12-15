@@ -1,0 +1,38 @@
+.footer2 {
+  padding: 90px 0;
+  padding: 2rem 0;
+  margin-top: 36px;
+  margin-top: 2rem;
+  background-color: $color-very-dark-grey;
+  color: #e4e8eb;
+
+  ul li {
+    list-style-type: none;
+  }
+  .venus {
+    margin: 2rem 0 1rem;
+  }
+  .dl__data {
+    padding-left: $grid-gutters;
+  }
+}
+
+.footer2_container {
+  width: 1080px;
+  margin: -20px;
+  padding: 0px;
+}
+
+.footer2__link {
+  color: #e4e8eb;
+  &:focus {
+    color: white;
+  }
+  &:hover {
+    color: #e4e8eb;
+  }
+}
+
+.footer2-nav {
+  padding: 0 0 2rem;
+}
