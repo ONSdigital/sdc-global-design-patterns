@@ -16,6 +16,10 @@
 
 .definition__title {
   display: inline-block;
+
+  dfn{
+    font-style: normal;
+  }
 }
 
 .definition__backtotop {
@@ -112,7 +116,7 @@
   border: 0;
   padding: 0;
   opacity: 1;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease-in;
   background: rgba(0, 0, 0, 0.3);
 }
 
