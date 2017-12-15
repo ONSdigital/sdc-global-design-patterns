@@ -1,9 +1,9 @@
-$header-bp: 36em;
+$header2-bp: 36em;
 
-.header {
+.header2 {
   display: block;
   overflow: hidden;
-  padding: 1.284rem 0;
+  padding: 1.4rem 0 1rem;
   &::before {
     content: "";
     display: block;
@@ -13,30 +13,32 @@ $header-bp: 36em;
     position: absolute;
     top: 0;
     left: 0;
+    margin: 0;
   }
-  @include mq($header-bp) {
+  @include mq($header2-bp) {
     display: flex;
     align-items: center;
   }
 }
 
-.header__logo {
+.header2__logo {
   margin-bottom: 1rem;
-  @include mq($header-bp) {
+  @include mq($header2-bp) {
     margin-bottom: 0;
     flex: 1 1 100%;
   }
 }
 
-.header__info {
+.header2__info {
   white-space: nowrap;
   min-height: 3rem;
+  width: 550px;
 
   @include mq($from: xs, $to: m) {
     max-width: 100%;
   }
 
-  @include mq($header-bp) {
+  @include mq($header2-bp) {
     float: right;
     flex: 1 1 auto;
     margin-left: 2rem;
