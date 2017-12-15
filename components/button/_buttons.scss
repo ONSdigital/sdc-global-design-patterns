@@ -43,64 +43,73 @@
   }
 }
 
+@mixin icon-bg-image ($name) {
+  background-image: url("#{$static}/img/icons/icons--#{$name}.svg");
+}
+
+@mixin create-btn-icon-modifier ($defaultIconName, $hoverIconName, $focusIconName, $width) {
+  .btn__icon--#{$defaultIconName} {
+    width: $width;
+    @include icon-bg-image($defaultIconName);
+
+    &::before {
+      @include icon-bg-image($hoverIconName);
+    }
+
+    &::after {
+      @include icon-bg-image($focusIconName);
+    }
+  }
+}
+
 .btn {
   @include btn($color-primary, $color-white);
 
-  > .icon {
-      margin-top : -2px;
-      vertical-align : top;
-      display : inline-block;
-  }
-
-  > .icon.icon--print-link {
-    position : relative;
-    width: 2.4em;
-    height: 2.4em;
-    content: ' ';
+  .btn__icon {
+    position: relative;
     vertical-align: middle;
+    content: ' ';
     display: inline-block;
     background-repeat: no-repeat;
-    background-image: url("#{$static}/img/icons/icon--print-link.svg");
 
     &::after,
     &::before {
-      transition : opacity .3s ease-out;
-    }
-
-    &::before {
-      background-image: url("#{$static}/img/icons/icon--print-hover.svg");
-      background-position: 0 0;
-      background-size : auto;
-      opacity : 0;
-    }
-
-    &::after {
-      position : absolute;
-      left : 0;
-      width: 2.4em;
-      height: 2.4em;
+      width: inherit;
+      height: inherit;
       content: ' ';
-      vertical-align: middle;
-      display: inline-block;
-      background-repeat: no-repeat;
-      background-image: url("#{$static}/img/icons/icon--print-focus.svg");
+      vertical-align: inherit;
+      display: inherit;
+      background-repeat: inherit;
       background-position: 0 0;
-      background-size : auto;
-      opacity : 0;
+      background-size: auto;
+      transition: opacity 0.3s ease-out;
     }
-  }
 
-  &:hover > .icon.icon--print-link {
     &::before {
-      opacity : 1;
+      opacity: 0;
+    }
+
+    &::after {
+      position: absolute;
+      left: 0;
+      opacity: 0;
     }
   }
 
-  &:focus > .icon.icon--print-link {
-    &::after {
-      opacity : 1;
+  &:hover .btn__icon {
+    &::before {
+      opacity: 1;
     }
   }
+
+  &:focus .btn__icon {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  @include create-btn-icon-modifier(print-link, print-hover, print-focus, 1.3em);
+  // ...
 }
 
 .btn--secondary {
@@ -109,17 +118,21 @@
 
 .btn--tertiary {
   @include btn($color-white, $color-tertiary, $color-tertiary-dark);
-  padding : .3rem;
-  background-color : $color-white;
-  font-weight : 600;
+  padding: 0.3rem;
+  background-color: $color-white;
+  font-weight: 600;
 
   &:hover {
     background-color: $color-white;
   }
 
   &:focus {
-    color : $color-white;
+    color: $color-white;
     background-color: $color-tertiary;
+  }
+
+  .btn__icon {
+    height: 1.4em;
   }
 }
 
