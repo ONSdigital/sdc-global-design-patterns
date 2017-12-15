@@ -102,7 +102,7 @@ gulp.task('css:watch', function(done) {
   gulp.watch([
     'assets/sass/**/*.scss',
     'components/**/*.scss',
-  ], gulp.series('css', 'icon-sprite-map'));
+  ], gulp.series('css'));
   done();
 });
 
@@ -222,10 +222,9 @@ gulp.task('images:clean', function(done) {
 gulp.task('images', gulp.series('images:clean', 'images:copy'));
 
 gulp.task('images:watch', function(done) {
-  gulp.watch('assets/img/**/*', gulp.series('images', 'icon-sprite-map'));
+  gulp.watch('assets/img/**/*', gulp.series('images'));
   done();
 });
-
 
 /**
  * Sprite map plugin compiles dependent CSS and SVGs
@@ -258,8 +257,7 @@ gulp.task('icon-sprite-map', function (done) {
         .pipe(gulp.dest('public/assets'));
 });
 
-
-gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images', 'icon-sprite-map'));
+gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images'));
 gulp.task('watch', gulp.parallel('css:watch', 'scripts:watch', 'fonts:watch', 'images:watch'));
 gulp.task('clean', gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean'));
 gulp.task('dev', gulp.series('default', 'fractal:start', 'watch'));

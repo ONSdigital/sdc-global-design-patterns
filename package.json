@@ -9,7 +9,7 @@
     "build": "yarn prestart && gulp fractal:build",
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
-    "deploy": "yarn build && gh-pages -d dist"
+    "deploy": "gulp && yarn build && gh-pages -d dist"
   },
   "dependencies": {
     "@frctl/fractal": "^1.0.0",
@@ -79,6 +79,7 @@
     "stylelint-config-standard": "^16.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.9.0"
+    "watchify": "^3.9.0",
+    "ie9-oninput-polyfill": "^1.1.1"
   }
 }
