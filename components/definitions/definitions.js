@@ -78,50 +78,60 @@ export default function definitionDialog() {
       // Define content to refocus dialog if user tries to leave it
       let content = document.getElementsByClassName(classDialogDocument)[0];
 
-      // Close Dialog
-      let closeDialog = function() {
-        document.getElementById(idDialogMessage).remove();
-
-        // Set focus back to element that triggered dialog
-        document.getElementById(trigger).focus();
-
-        // If we manufactured the ID, remove it
-        if (document.getElementById(trigger).getAttribute('id') === 'trigger') {
-          document.getElementById(trigger).setAttribute('id', null);
-        }
-
-        // remove dialog attributes and empty dialog
-        dialog.removeAttribute('open');
-        dialog.removeAttribute('role');
-        dialog.removeAttribute('aria-describedby');
-        dialog.removeAttribute('tabindex');
-        while (dialog.firstChild) {
-          dialog.removeChild(dialog.firstChild);
-        }
-      };
-
-      // run closeDialog() on click of close button
-      btnClose.onclick = function(e) {
-        closeDialog();
-      };
-
-      // also run closeDialog() on ESC
-      dialog.onkeydown = function(e) {
-        e = e || window.event;
-        if (e.keyCode === 27) {
-          closeDialog();
-        }
-      };
-
-      // Refocus dialog if user tries to leave it
-      btnClose.onkeydown = function(e) {
-        if ((e.keyCode || e.which) === 9) {
-          content.focus();
-          e.preventDefault();
-        }
-      };
+      closeButton(btnClose, closeDialog, trigger, dialog);
+      escapeEvent(dialog, closeDialog, trigger);
+      focusEvent(btnClose, content);
     };
   }
+}
+
+// Close Dialog
+export function closeDialog(trigger, dialog) {
+  document.getElementById(idDialogMessage).remove();
+
+  // Set focus back to element that triggered dialog
+  document.getElementById(trigger).focus();
+
+  // If we manufactured the ID, remove it
+  if (document.getElementById(trigger).getAttribute('id') === 'trigger') {
+    document.getElementById(trigger).setAttribute('id', null);
+  }
+
+  // remove dialog attributes and empty dialog
+  dialog.removeAttribute('open');
+  dialog.removeAttribute('role');
+  dialog.removeAttribute('aria-describedby');
+  dialog.removeAttribute('tabindex');
+  while (dialog.firstChild) {
+    dialog.removeChild(dialog.firstChild);
+  }
+}
+
+// run closeDialog() on click of close button
+export function closeButton(btnClose, closeDialog, trigger, dialog) {
+  btnClose.onclick = function(e) {
+    closeDialog(trigger, dialog);
+  };
+}
+
+// closeDialog() on ESC
+export function escapeEvent(dialog, closeDialog, trigger) {
+  dialog.onkeydown = function(e) {
+    e = e || window.event;
+    if (e.keyCode === 27) {
+      closeDialog(trigger, dialog);
+    }
+  };
+}
+
+// Refocus dialog if user tries to leave it
+export function focusEvent(btnClose, content) {
+  btnClose.onkeydown = function(e) {
+    if ((e.keyCode || e.which) === 9) {
+      content.focus();
+      e.preventDefault();
+    }
+  };
 }
 
 domready(definitionDialog);
