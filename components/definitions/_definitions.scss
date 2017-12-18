@@ -17,7 +17,7 @@
 .definition__title {
   display: inline-block;
 
-  dfn{
+  dfn {
     font-style: normal;
   }
 }
@@ -107,17 +107,17 @@
 }
 
 .dialog {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
   display: block;
   border: 0;
   padding: 0;
   opacity: 1;
   transition: opacity 0.2s ease-in;
-  background: rgba(0, 0, 0, 0.3);
+  max-width: 320px;
+  background: transparent;
 }
 
 dialog:not([open]) {
@@ -130,7 +130,6 @@ dialog:not([open]) {
 }
 
 .dialog__wrapper {
-  margin: 2em;
   position: relative;
 }
 
