@@ -171,6 +171,9 @@ h3 {
   font-size: 0.7rem;
   vertical-align: top;
 }
+.eq-tile-info-table tr td:first-child {
+  color: $color-dark-grey;
+}
 .ons-blue {
   background-color: $ons-blue;
 }
