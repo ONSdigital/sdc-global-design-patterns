@@ -1,20 +1,22 @@
 <div class="eq-tile">
-  <div class="eq-tile-colour {{colour-name}}" style="background-color:{{colour-hex}}"><span class="eq-tile-panel-text" {{#if panel-text-white}}style="color:#fff"{{/if}}>{{panel-text}}</span></div>
+  <div class="eq-tile-colour {{colour-name}}" style="background-color:{{colour-hex}}">
+    <span class="eq-tile-panel-text"{{#if panel-text-white}} style="color:#fff;"{{/if}}>{{panel-text}}</span>
+  </div>
   <div class="eq-tile-info">
     <h1 class="eq-tile-info-title">{{colour-title}}</h1>
     <table class="eq-tile-info-table">
         <tr>
           <td>HTML</td>
           <td>{{colour-hex}}</td>
-        </tr>
+        </tr>{{#if colour-rgb}}
         <tr>
           <td>RGB</td>
           <td>{{colour-rgb}}</td>
-        </tr>
+        </tr>{{/if}}{{#if colour-name}}
         <tr>
           <td>SCSS</td>
           <td>${{colour-name}}</td>
-        </tr>
+        </tr>{{/if}}
       </table>
   </div>
 </div>

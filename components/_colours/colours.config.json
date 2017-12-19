@@ -14,8 +14,8 @@
       "context": {
         "colour-title":"ONS Blue",
         "colour-name": "ons-blue",
-        "colour-hex": "#003C57",
-        "colour-rgb": "0,60,87"
+        "colour-hex": "#033E58",
+        "colour-rgb": "3,62,88"
       }
     }, {
         "label":"ONS Green",
@@ -58,14 +58,14 @@
           "colour-rgb": "204,204,204"
         }
     }, {
-        "label":"Link",
-        "name":"colour-link",
+        "label":"Blue",
+        "name":"colour-blue",
         "status":"ready",
         "context": {
-          "colour-title":"Link",
-          "colour-name": "color-links",
-          "colour-hex": "#4361AA",
-          "colour-rgb": "67,97,170"
+          "colour-title":"Blue",
+          "colour-name": "color-blue",
+          "colour-hex": "#4263C2",
+          "colour-rgb": "66,99,194"
         }
     }, {
       "label":"Link (hover)",
@@ -94,7 +94,7 @@
       "context": {
         "colour-title":"Error",
         "colour-name":"color-error",
-        "colour-hex":"#D0121E",
+        "colour-hex":"#D0021B",
         "colour-rgb":"208,18,30",
         "panel-text":"A"
       }
@@ -110,15 +110,16 @@
         "panel-text":"A"
       }
     }, {
-      "label":"Highlight",
-      "name":"color-highlight",
+      "label":"Secondary",
+      "name":"color-secondary",
       "status":"ready",
       "context": {
-        "colour-title":"Highlight",
-        "colour-name":"color-highlight",
-        "colour-hex":"#003C57",
-        "colour-rgb":"0,60,87",
-        "panel-text":"A"
+        "colour-title":"Secondary",
+        "colour-name":"color-secondary",
+        "colour-hex":"#033E58",
+        "colour-rgb":"3,62,88",
+        "panel-text":"A",
+        "panel-text-white":true
       }
     }, {
       "label":"Highlight (background)",
@@ -126,29 +127,30 @@
       "status":"ready",
       "context": {
         "colour-title":"Highlight (background)",
-        "colour-name":"color-highlight-bg",
-        "colour-hex":"#F5F6FF",
-        "colour-rgb":"245,246,255",
+        "colour-name":"color-light-blue",
+        "colour-hex":"#EFF0F9",
+        "colour-rgb":"239,240,249",
         "panel-text":"A"
       }
     }, {
-      "label":"Warning",
-      "name":"colour-warning",
+      "label":"Amber",
+      "name":"colour-amber",
       "status":"ready",
       "context": {
-        "colour-title":"Warning",
-        "colour-name":"color-warning",
-        "colour-hex":"#F99C21",
-        "colour-rgb":"249,156,33",
-        "panel-text":"A"
+        "colour-title":"Amber",
+        "colour-name":"color-amber",
+        "colour-hex":"#FE781F",
+        "colour-rgb":"254,120,31",
+        "panel-text":"A",
+        "panel-text-white":true
       }
     }, {
-      "label":"Warning (background)",
-      "name":"colour-warning-bg",
+      "label":"Light amber",
+      "name":"colour-light-amber",
       "status":"ready",
       "context": {
-        "colour-title":"Warning (background)",
-        "colour-name":"color-warning-bg",
+        "colour-title":"Light amber",
+        "colour-name":"color-light-amber",
         "colour-hex":"#FDF6EC",
         "colour-rgb":"253,246,236",
         "panel-text":"A"
@@ -170,7 +172,7 @@
       "status":"ready",
       "context": {
         "colour-title":"Success (background)",
-        "colour-name":"color-success-bg",
+        "colour-name":"color-light-green",
         "colour-hex":"#EDF4F0",
         "colour-rgb":"237,244,240",
         "panel-text":"A"
@@ -186,12 +188,12 @@
         "colour-rgb":"110,37,133"
       }
     }, {
-      "label":"Primary background",
-      "name":"color-primary-bg",
+      "label":"White",
+      "name":"color-white",
       "status":"ready",
       "context": {
-        "colour-title":"Primary background",
-        "colour-name":"color-primary-bg",
+        "colour-title":"White",
+        "colour-name":"color-white",
         "colour-hex":"#FFFFFF",
         "colour-rgb":"255,255,255"
       }
@@ -201,19 +203,19 @@
       "status":"ready",
       "context": {
         "colour-title":"Borders",
-        "colour-name":"color-border",
+        "colour-name":"color-dark-grey, $color-border",
         "colour-hex":"#999999",
         "colour-rgb":"153,153,153"
       }
     }, {
       "label":"Backgrounds",
-      "name":"color-background",
+      "name":"color-light-grey",
       "status":"ready",
       "context": {
         "colour-title":"Backgrounds",
-        "colour-name":"color-background",
-        "colour-hex":"#EEEEEE",
-        "colour-rgb":"238,238,238"
+        "colour-name":"color-light-grey",
+        "colour-hex":"#e4e8eb",
+        "colour-rgb":"228,232,235"
       }
     }, {
       "label":"Slate",
@@ -223,7 +225,7 @@
         "colour-title":"Slate",
         "colour-name":"color-slate",
         "colour-hex":"#5F7682",
-        "colour-rgb":"xx,xx,xx",
+        "colour-rgb":"95,118,130",
         "panel-text":"A",
         "panel-text-white": true
       }
@@ -234,8 +236,8 @@
       "context": {
         "colour-title":"Teal",
         "colour-name":"color-teal",
+        "colour-rgb":"0,128,128",
         "colour-hex":"#008080",
-        "colour-rgb":"xx,xx,xx",
         "panel-text":"A",
         "panel-text-white": true
       }
@@ -247,7 +249,7 @@
         "colour-title":"Blue (astral)",
         "colour-name":"color-blue-astral",
         "colour-hex":"#3B7A9E",
-        "colour-rgb":"xx,xx,xx",
+        "colour-rgb":"59,122,158",
         "panel-text":"A",
         "panel-text-white": true
       }
