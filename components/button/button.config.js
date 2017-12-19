@@ -25,18 +25,19 @@ module.exports = {
       "label": "Add a person"
     },
   }, {
-    "name": "link",
-    "label": "Link",
-    "context": {
-      "btn-classes": "btn--link",
-      "label": "Cancel"
-    },
-  }, {
     "name": "neutral",
     "label": "Neutral / Disabled",
     "context": {
       "btn-classes": "btn--neutral",
       "label": "Neutral"
     },
-  }]
+  }, {
+    "name": "link",
+    "label": "Link",
+    "context": {
+      "btn-classes": "btn--link",
+      "label": "Cancel"
+    },
+  }
+]
 }
