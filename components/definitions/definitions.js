@@ -50,13 +50,13 @@ export function buttonClick() {
         closeDialog(buttons, trigger, dialog);
       }
 
-      openDialog(button, dialog, trigger);
+      openDialog(buttons, button, dialog, trigger);
     };
   }
 }
 
 // Open Dialog
-export function openDialog(button, dialog, trigger) {
+export function openDialog(buttons, button, dialog, trigger) {
   // retrieve custom close button wording, if any
   let closeText = button.getAttribute(attrResponse)
     ? button.getAttribute(attrResponse)
@@ -98,14 +98,13 @@ export function openDialog(button, dialog, trigger) {
     '<div id="' + idDialogMessage + '" class="dialog__message" ><h3 class="dialog__title venus">' + dataTitle + '</h3><p class="dialog__description mars" >' + dataDialogCall + '</p></div>'
   );
 
-  closeButton(btnClose, closeDialog, trigger, dialog);
-  escapeEvent(dialog, closeDialog, trigger);
+  closeButton(buttons, btnClose, closeDialog, trigger, dialog);
+  escapeEvent(buttons, dialog, closeDialog, trigger);
   focusEvent(btnClose, content);
 }
 
 // Close Dialog
-export function closeDialog(trigger, dialog) {
-  const buttons = document.getElementsByClassName(classAnchor);
+export function closeDialog(buttons, trigger, dialog) {
   for (let button of buttons) {
     button.removeAttribute('disabled');
   }
@@ -130,18 +129,18 @@ export function closeDialog(trigger, dialog) {
 }
 
 // run closeDialog() on click of anchor button
-export function closeButton(btnClose, closeDialog, trigger, dialog) {
+export function closeButton(buttons, btnClose, closeDialog, trigger, dialog) {
   btnClose.onclick = function(e) {
-    closeDialog(trigger, dialog);
+    closeDialog(buttons, trigger, dialog);
   };
 }
 
 // closeDialog() on ESC
-export function escapeEvent(dialog, closeDialog, trigger) {
+export function escapeEvent(buttons, dialog, closeDialog, trigger) {
   dialog.onkeydown = function(e) {
     e = e || window.event;
     if (e.keyCode === 27) {
-      closeDialog(trigger, dialog);
+      closeDialog(buttons, trigger, dialog);
     }
   };
 }

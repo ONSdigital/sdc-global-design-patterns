@@ -99,42 +99,26 @@
 
 @keyframes fadeout {
   from {
+    opacity: 0;
     transform: translateX(2rem);
   }
   to {
+    opacity: 1;
     transform: translateX(0);
   }
 }
 
 .dialog {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: block;
-  border: 0;
-  padding: 0;
-  opacity: 1;
-  transition: opacity 0.2s ease-in;
-  max-width: 320px;
-  background: transparent;
-}
-
-dialog:not([open]) {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  height: 0;
-  opacity: 0;
-}
-
-.dialog__wrapper {
   position: relative;
+  height: 0;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+  z-index: 3;
 }
 
 .dialog__document {
-  border: 1px solid #ccc;
+  border: 1px solid $color-borders;
   padding: 2.5em 0 0;
   width: 100%;
   background: #fff;
@@ -142,7 +126,9 @@ dialog:not([open]) {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.2);
 }
 
-dialog[open] {
+.dialog[open] {
+  opacity: 1;
+
   .dialog__document {
     animation-name: fadein;
     animation-duration: 0.2s;
@@ -151,7 +137,7 @@ dialog[open] {
 
 .dialog__message {
   padding: 1em;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid $color-borders;
   margin: 0;
   background-color: #fcfee1;
 }
