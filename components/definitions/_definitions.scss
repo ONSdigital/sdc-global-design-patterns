@@ -45,6 +45,9 @@
     top: 1.5em;
     left: -2em;
   }
+  &:focus, &:active {
+    background-color: white;
+  }
 }
 
 .definition__description {

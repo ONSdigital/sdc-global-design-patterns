@@ -2,6 +2,7 @@ import domready from '../../assets/js/domready';
 
 export const classAnchor = 'definition__anchor';
 export const classDialog = 'popup';
+export const classDialogWrapper = 'popup__wrapper';
 export const classDialogButton = 'popup__button';
 export const classDialogDocument = 'popup__document';
 
@@ -12,10 +13,10 @@ export const attrDataDialogCall = 'data-popup-call';
 export const attrDataTitle = 'data-title';
 
 export default function() {
-  return definitionDialog();
+  return bindButtonClickHandlers();
 }
 
-export function definitionDialog() {
+export function bindButtonClickHandlers() {
   anchorsToButton();
   buttonClick();
 }
@@ -39,10 +40,10 @@ export function buttonClick() {
       e.preventDefault();
 
       // define the popup element
-      let popup = document.getElementsByClassName(classDialog)[0];
+      const popup = document.getElementsByClassName(classDialog)[0];
 
       // record the trigger element
-      let trigger = button.getAttribute('id')
+      const trigger = button.getAttribute('id')
         ? button.getAttribute('id')
         : 'trigger';
 
@@ -73,17 +74,17 @@ export function openDialog(buttons, button, popup, trigger) {
   // build the popup markup
   popup.insertAdjacentHTML(
     'beforeend',
-    '<div class="popup__wrapper">' +
-      '<div class="' + classDialogDocument + '" id="document" role="document" tabindex="0">' +
-        '<button class="' + classDialogButton + ' mars" id="button" role="button">' +
-          closeText +
-        '</button>' +
-      '</div>' +
-    '</div>'
+    `<div class="${classDialogWrapper}">
+      <div class="${classDialogDocument}" id="document" role="document" tabindex="0">
+        <button class="${classDialogButton}" mars" id="button" role="button">
+          ${closeText}
+        </button>
+      </div>
+    </div>`
   );
 
   // Define content to refocus popup if user tries to leave it
-  let content = document.getElementsByClassName(classDialogDocument)[0];
+  const content = document.getElementsByClassName(classDialogDocument)[0];
 
   // make last button in popup the close button
   let btnClose = document.getElementsByClassName(classDialogButton)[0];
@@ -95,7 +96,10 @@ export function openDialog(buttons, button, popup, trigger) {
 
   btnClose.insertAdjacentHTML(
     'beforebegin',
-    '<div id="' + idDialogMessage + '" class="popup__message" ><h3 class="popup__title venus">' + dataTitle + '</h3><p class="popup__description mars" >' + dataDialogCall + '</p></div>'
+    `<div id="${idDialogMessage}" class="popup__message" >
+      <h3 class="popup__title venus">${dataTitle}</h3>
+      <p class="popup__description mars" >${dataDialogCall}</p>
+    </div>`
   );
 
   closeButton(buttons, btnClose, closeDialog, trigger, popup);
@@ -155,4 +159,4 @@ export function focusEvent(btnClose, content) {
   };
 }
 
-domready(definitionDialog);
+domready(bindButtonClickHandlers);
