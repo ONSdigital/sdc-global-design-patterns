@@ -2,7 +2,7 @@
   <div class="page__content">
     <div class="page__container container">
       <div class="grid grid--reverse">
-        <div class="grid__col col-4@m">
+        <div class="grid__col col-4@m pull-1@m">
           <div class="popup" id="popup"></div>
         </div>
         <div class="grid__col col-7@m pull-1@m">
@@ -13,12 +13,14 @@
                 <dl class="definition__list">
                   {{#if title}}
                     <dt class="definition__title venus">
-                      <a href="#main" class="definition__backtotop">Back to top</a>
-                      <dfn class="venus" id='{{id}}'>{{title}}</dfn></strong>
+                      <dfn class="venus" id="def-{{id}}">{{title}}</dfn></strong>
                     </dt>
                   {{/if}}
                   {{#if description}}
-                    <dd class="definition__description mars" >{{description}}</dd>
+                    <dd class="definition__description mars" >
+                      {{description}}
+                      <a href="#anchor-{{id}}" class="definition__backtotop">Back to top</a>
+                    </dd>
                   {{/if}}
                 </dl>
               {{/each}}

@@ -16,6 +16,10 @@
 
 .definition__title {
   display: inline-block;
+  padding-left: 1.5em;
+  @include mq(1100px) {
+    padding-left: 0;
+  }
 
   dfn {
     font-style: normal;
@@ -34,8 +38,10 @@
   text-indent: -999999px;
   overflow: hidden;
   vertical-align: top;
+  position: absolute;
+  top: 1.5em;
+  left: -0.25em;
   @include mq(1100px) {
-    position: absolute;
     top: 1.5em;
     left: -2em;
   }
@@ -58,6 +64,8 @@
   appearance: none;
   background-color: transparent;
   position: relative;
+  display: inline-block;
+  text-align: left;
   &:hover {
     text-decoration: none;
     color: $color-links-hover;
