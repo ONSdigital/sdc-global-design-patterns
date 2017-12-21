@@ -45,7 +45,8 @@
     top: 1.5em;
     left: -2em;
   }
-  &:focus, &:active {
+  &:focus,
+  &:active {
     background-color: white;
   }
 }

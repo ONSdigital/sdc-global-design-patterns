@@ -92,7 +92,7 @@ export function openDialog(buttons, button, popup, trigger) {
   const dataTitle = button.getAttribute(attrDataTitle);
 
   btnClose.insertAdjacentHTML(
-    'beforebegin',
+    'afterend',
     `<div id="${idDialogMessage}" class="popup__message" >
       <h3 class="popup__title venus">${dataTitle}</h3>
       <p class="popup__description mars" >${dataDialogCall}</p>
