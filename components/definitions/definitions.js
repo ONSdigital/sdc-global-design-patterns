@@ -23,7 +23,7 @@ export function bindButtonClickHandlers() {
 
 // Replace anchor links with buttons
 export function anchorsToButton() {
-  let anchors = document.getElementsByClassName(classAnchor);
+  const anchors = document.getElementsByClassName(classAnchor);
   for (let anchor of anchors) {
     // Replace <a> tag with <button> tag.
     anchor.outerHTML = anchor.outerHTML
@@ -59,7 +59,7 @@ export function buttonClick() {
 // Open Dialog
 export function openDialog(buttons, button, popup, trigger) {
   // retrieve custom close button wording, if any
-  let closeText = button.getAttribute(attrResponse)
+  const closeText = button.getAttribute(attrResponse)
     ? button.getAttribute(attrResponse)
     : 'close';
 
@@ -68,7 +68,6 @@ export function openDialog(buttons, button, popup, trigger) {
   // open popup and add roles
   popup.setAttribute('tabindex', '0');
   popup.setAttribute('open', 'true');
-  popup.setAttribute('role', 'alertpopup');
   popup.setAttribute('aria-labelledby', idDialogMessage);
 
   // build the popup markup
@@ -83,16 +82,13 @@ export function openDialog(buttons, button, popup, trigger) {
     </div>`
   );
 
-  // Define content to refocus popup if user tries to leave it
-  const content = document.getElementsByClassName(classDialogDocument)[0];
-
   // make last button in popup the close button
-  let btnClose = document.getElementsByClassName(classDialogButton)[0];
+  const btnClose = document.getElementsByClassName(classDialogButton)[0];
   btnClose.focus();
 
   // Insert the message held in the trigger's [data-popup-msg] attribute
-  let dataDialogCall = button.getAttribute(attrDataDialogCall);
-  let dataTitle = button.getAttribute(attrDataTitle);
+  const dataDialogCall = button.getAttribute(attrDataDialogCall);
+  const dataTitle = button.getAttribute(attrDataTitle);
 
   btnClose.insertAdjacentHTML(
     'beforebegin',
@@ -104,7 +100,6 @@ export function openDialog(buttons, button, popup, trigger) {
 
   closeButton(buttons, btnClose, closeDialog, trigger, popup);
   escapeEvent(buttons, popup, closeDialog, trigger);
-  focusEvent(btnClose, content);
 }
 
 // Close Dialog
@@ -124,7 +119,6 @@ export function closeDialog(buttons, trigger, popup) {
 
   // remove popup attributes and empty popup
   popup.removeAttribute('open');
-  popup.removeAttribute('role');
   popup.removeAttribute('aria-describedby');
   popup.removeAttribute('tabindex');
   while (popup.firstChild) {
@@ -145,16 +139,6 @@ export function escapeEvent(buttons, popup, closeDialog, trigger) {
     e = e || window.event;
     if (e.keyCode === 27) {
       closeDialog(buttons, trigger, popup);
-    }
-  };
-}
-
-// Refocus popup if user tries to leave it
-export function focusEvent(btnClose, content) {
-  btnClose.onkeydown = function(e) {
-    if ((e.keyCode || e.which) === 9) {
-      content.focus();
-      e.preventDefault();
     }
   };
 }
