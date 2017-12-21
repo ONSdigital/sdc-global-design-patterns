@@ -67,13 +67,10 @@
   appearance: none;
   &::after {
     content: "";
-    mask: url(#{$static}/img/icons/icons--close.svg) no-repeat 50%;
-    background-color: $color-links;
+    background: transparent url(#{$static}/img/icons/icons--close--blue.svg) no-repeat 50%;
     position: absolute;
-    top: 0;
+    top: -1px;
     right: 0;
-    background-repeat: no-repeat;
-    background-position: 50%;
     width: 2em;
     height: 2em;
     display: inline-block;
@@ -81,7 +78,7 @@
   &:hover {
     color: $color-links-hover;
     &::after {
-      background-color: $color-links-hover;
+      background: transparent url(#{$static}/img/icons/icons--close--dark-blue.svg) no-repeat 50%;
     }
   }
   &:focus {
@@ -89,7 +86,7 @@
     background-color: $color-links;
     outline: none;
     &::after {
-      background-color: #fff;
+      background: transparent url(#{$static}/img/icons/icons--close--white.svg) no-repeat 50%;
     }
   }
 }
