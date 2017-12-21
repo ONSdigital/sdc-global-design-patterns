@@ -201,7 +201,9 @@
         
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-colour color-border"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-panel-text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-colour color-dark-grey, $color-border"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:#999999"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-panel-text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-info"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-info-title"</span>&gt;</span>Borders<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eq-tile-info-table"</span>&gt;</span>
@@ -215,7 +217,7 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>SCSS<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>$color-border<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>$color-dark-grey, $color-border<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -236,7 +238,7 @@
         
         
         <li class="Meta-item">
-            <strong class="Meta-key">Variants <em class="Meta-count">(20)</em>:</strong>
+            <strong class="Meta-key">Variants <em class="Meta-count">(23)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
             
                 <a href="eq-colours--colour-onsblue.html"><span>colour-onsblue</span></a>, 
@@ -249,7 +251,7 @@
             
                 <a href="eq-colours--colour-hint-text.html"><span>colour-hint-text</span></a>, 
             
-                <a href="eq-colours--colour-link.html"><span>colour-link</span></a>, 
+                <a href="eq-colours--colour-blue.html"><span>colour-blue</span></a>, 
             
                 <a href="eq-colours--colour-link-hover.html"><span>colour-link-hover</span></a>, 
             
@@ -259,13 +261,13 @@
             
                 <a href="eq-colours--colour-error-bg.html"><span>colour-error-bg</span></a>, 
             
-                <a href="eq-colours--color-highlight.html"><span>color-highlight</span></a>, 
+                <a href="eq-colours--color-secondary.html"><span>color-secondary</span></a>, 
             
                 <a href="eq-colours--color-highlight-bg.html"><span>color-highlight-bg</span></a>, 
             
-                <a href="eq-colours--colour-warning.html"><span>colour-warning</span></a>, 
+                <a href="eq-colours--colour-amber.html"><span>colour-amber</span></a>, 
             
-                <a href="eq-colours--colour-warning-bg.html"><span>colour-warning-bg</span></a>, 
+                <a href="eq-colours--colour-light-amber.html"><span>colour-light-amber</span></a>, 
             
                 <a href="eq-colours--colour-success.html"><span>colour-success</span></a>, 
             
@@ -273,11 +275,17 @@
             
                 <a href="eq-colours--color-census-purple.html"><span>color-census-purple</span></a>, 
             
-                <a href="eq-colours--color-primary-bg.html"><span>color-primary-bg</span></a>, 
+                <a href="eq-colours--color-white.html"><span>color-white</span></a>, 
             
                 <a href=""><span>color-border</span></a>, 
             
-                <a href="eq-colours--color-background.html"><span>color-background</span></a>
+                <a href="eq-colours--color-light-grey.html"><span>color-light-grey</span></a>, 
+            
+                <a href="eq-colours--color-slate.html"><span>color-slate</span></a>, 
+            
+                <a href="eq-colours--color-teal.html"><span>color-teal</span></a>, 
+            
+                <a href="eq-colours--color-blue-astral.html"><span>color-blue-astral</span></a>
             
             </span>
         </li>
@@ -315,7 +323,7 @@
     <code class="Code Code--lang-json">
         <pre>{
   <span class="hljs-attr">"colour-title"</span>: <span class="hljs-string">"Borders"</span>,
-  <span class="hljs-attr">"colour-name"</span>: <span class="hljs-string">"color-border"</span>,
+  <span class="hljs-attr">"colour-name"</span>: <span class="hljs-string">"color-dark-grey, $color-border"</span>,
   <span class="hljs-attr">"colour-hex"</span>: <span class="hljs-string">"#999999"</span>,
   <span class="hljs-attr">"colour-rgb"</span>: <span class="hljs-string">"153,153,153"</span>
 }</pre>
