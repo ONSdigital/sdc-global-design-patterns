@@ -4,9 +4,9 @@ export const classAnchor = 'definition__anchor';
 export const classDialog = 'popup';
 export const classDialogWrapper = 'popup__wrapper';
 export const classDialogButton = 'popup__button';
-export const classDialogDocument = 'popup__document';
+export const classDialogHeader = 'popup__header';
 
-export const idDialogMessage = 'd-message';
+export const idDialogContent = 'd-message';
 
 export const attrResponse = 'data-popup-response';
 export const attrDataDialogCall = 'data-popup-call';
@@ -66,16 +66,15 @@ export function openDialog(buttons, button, popup, trigger) {
   button.setAttribute('disabled', 'true');
 
   // open popup and add roles
-  popup.setAttribute('tabindex', '0');
   popup.setAttribute('open', 'true');
   popup.setAttribute('role', 'alert');
-  popup.setAttribute('aria-labelledby', idDialogMessage);
+  popup.setAttribute('aria-labelledby', idDialogContent);
 
   // build the popup markup
   popup.insertAdjacentHTML(
     'beforeend',
     `<div class="${classDialogWrapper}">
-      <div class="${classDialogDocument}" id="document" role="document" tabindex="0">
+      <div class="${classDialogHeader}">
         <button class="${classDialogButton}" mars" id="button" role="button">
           ${closeText}
         </button>
@@ -87,13 +86,14 @@ export function openDialog(buttons, button, popup, trigger) {
   const btnClose = document.getElementsByClassName(classDialogButton)[0];
   btnClose.focus();
 
+  const dialogHeader = document.getElementsByClassName(classDialogHeader)[0];
   // Insert the message held in the trigger's [data-popup-msg] attribute
   const dataDialogCall = button.getAttribute(attrDataDialogCall);
   const dataTitle = button.getAttribute(attrDataTitle);
 
-  btnClose.insertAdjacentHTML(
+  dialogHeader.insertAdjacentHTML(
     'afterend',
-    `<div id="${idDialogMessage}" class="popup__message" >
+    `<div class="popup__content" id="${idDialogContent}" role="document" tabindex="0" >
       <h3 class="popup__title venus">${dataTitle}</h3>
       <p class="popup__description mars" >${dataDialogCall}</p>
     </div>`
@@ -108,7 +108,7 @@ export function closeDialog(buttons, trigger, popup) {
   for (let button of buttons) {
     button.removeAttribute('disabled');
   }
-  document.getElementById(idDialogMessage).remove();
+  document.getElementById(idDialogContent).remove();
 
   // Set focus back to element that triggered popup
   document.getElementById(trigger).focus();
@@ -122,7 +122,6 @@ export function closeDialog(buttons, trigger, popup) {
   popup.removeAttribute('open');
   popup.removeAttribute('role');
   popup.removeAttribute('aria-describedby');
-  popup.removeAttribute('tabindex');
   while (popup.firstChild) {
     popup.removeChild(popup.firstChild);
   }
