@@ -68,6 +68,7 @@ export function openDialog(buttons, button, popup, trigger) {
   // open popup and add roles
   popup.setAttribute('tabindex', '0');
   popup.setAttribute('open', 'true');
+  popup.setAttribute('role', 'alert');
   popup.setAttribute('aria-labelledby', idDialogMessage);
 
   // build the popup markup
@@ -119,6 +120,7 @@ export function closeDialog(buttons, trigger, popup) {
 
   // remove popup attributes and empty popup
   popup.removeAttribute('open');
+  popup.removeAttribute('role');
   popup.removeAttribute('aria-describedby');
   popup.removeAttribute('tabindex');
   while (popup.firstChild) {
