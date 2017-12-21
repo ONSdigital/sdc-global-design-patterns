@@ -70,6 +70,7 @@
   position: relative;
   display: inline-block;
   text-align: left;
+  overflow: visible;
   &:hover {
     text-decoration: none;
     color: $color-links-hover;
