@@ -1,9 +1,8 @@
-
 /*
  * Create a new Fractal instance and export it for use elsewhere if required
  */
 
-const fractal = module.exports = require('@frctl/fractal').create();
+const fractal = (module.exports = require('@frctl/fractal').create());
 
 /*
  * General project configuration.
@@ -22,7 +21,9 @@ fractal.components.set('title', 'Elements'); // default is 'Components'
  * Collator function to output the variant label preceding each variant in preview for collated components.
  */
 fractal.components.set('default.collator', function(markup, item) {
-  return `<h3>${item.label}</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`;
+  return `<h3>${
+    item.label
+  }</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`;
 });
 /*
 * Custom status types for components
@@ -120,16 +121,16 @@ fractal.docs.set('path', `${__dirname}/docs`);
 fractal.docs.set('default.status', 'draft'); // default is null
 
 fractal.docs.set('statuses', {
-    draft: {
-      label: "Draft",
-      description: "Awaiting content",
-      color: '#4990E2'
-    },
-    ready: {
-        label: "Ready",
-        description: "Documentation complete.",
-        color: "#29cc29"
-    },
+  draft: {
+    label: 'Draft',
+    description: 'Awaiting content',
+    color: '#4990E2'
+  },
+  ready: {
+    label: 'Ready',
+    description: 'Documentation complete.',
+    color: '#29cc29'
+  }
 });
 
 /*
@@ -165,16 +166,13 @@ const theme = require('@frctl/mandelbrot')({
   nav: ['docs', 'components'],
   panels: ['notes', 'html', 'info', 'context'],
   static: {
-    'mount': 'theme'
+    mount: 'theme'
   },
   styles: [
     'default',
     '/assets/css/patternlib.css' // Used for eQ Pattern Library specific styles e.g. Colour swatches
   ],
-  scripts: [
-    'default',
-    '/assets/scripts/bundle.js'
-  ]
+  scripts: ['/assets/scripts/bundle.js', 'default']
 });
 
 fractal.web.theme(theme);
