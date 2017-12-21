@@ -67,7 +67,7 @@ export function openDialog(buttons, button, popup, trigger) {
 
   // open popup and add roles
   popup.setAttribute('open', 'true');
-  popup.setAttribute('role', 'alert');
+  popup.setAttribute('role', 'dialog');
   popup.setAttribute('aria-labelledby', idDialogContent);
 
   // build the popup markup
