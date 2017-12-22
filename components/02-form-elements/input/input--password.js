@@ -8,11 +8,15 @@ export default function() {
 }
 
 export function bindInputChangeHandlers() {
-  const passwordInputCheckbox = document.getElementById(idPasswordInputCheckbox);
-  const passwordInputText = document.getElementById(idPasswordInputText);
-  passwordInputCheckbox.addEventListener('change', (e) => {
-    passwordInputText.type = passwordInputCheckbox.checked ? 'text' : 'password';
-  });
+  if (document.getElementById(idPasswordInputCheckbox)) {
+    const passwordInputCheckbox = document.getElementById(idPasswordInputCheckbox);
+    console.log(passwordInputCheckbox);
+    const passwordInputText = document.getElementById(idPasswordInputText);
+    console.log(passwordInputText);
+    passwordInputCheckbox.addEventListener('change', () => {
+      passwordInputText.type = passwordInputCheckbox.checked ? 'text' : 'password';
+    });
+  }
 }
 
 domready(bindInputChangeHandlers);
