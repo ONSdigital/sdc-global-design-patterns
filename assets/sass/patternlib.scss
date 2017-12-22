@@ -5,15 +5,15 @@ $responsive: true;
 
 //eq-patternlib.scss
 // Vars
-$ons-blue: #003C57;
+$ons-blue: #033e58;
 $color-census-purple: #6E2585;
 $primary-action: #0F8243;
-$color-warning: #f99c21;
+$color-warning: #fe781f;
 $color-warning-bg: #fdf6ec;
 $color-highlight: $ons-blue;
 $color-highlight-bg: #f5f6ff;
-$color-error: #d0121e;
-$color-links: #4361aa;
+$color-error: #d0021B;
+$color-links: #4263C2;
 $color-success-bg: #EDF4F0;
 $color-success: $primary-action;
 
@@ -148,6 +148,9 @@ h3 {
   font-size: 0.8rem;
   overflow: hidden;
 }
+.eq-tile:hover {
+    box-shadow: 0 0 1px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.4);
+}
 .eq-tile-colour { min-height: 40%; text-align: center;}
 .eq-tile-panel-text {
   font-size: 24pt;
@@ -167,6 +170,9 @@ h3 {
   padding: 0.3rem;
   font-size: 0.7rem;
   vertical-align: top;
+}
+.eq-tile-info-table tr td:first-child {
+  color: $color-dark-grey;
 }
 .ons-blue {
   background-color: $ons-blue;
