@@ -1,8 +1,10 @@
 module.exports = {
-  title: 'Definitions',
+  title: 'Timeout',
+  label: 'Timeout',
+  name: 'timeout',
   status: 'wip',
   context: {
-    survey_title: 'Census 2021',
+    survey_title: 'Survey or Service name',
     width: '40',
     widthDouble: '80'
   }
