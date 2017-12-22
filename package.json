@@ -16,6 +16,7 @@
     "@frctl/handlebars": "^1.0.0",
     "@frctl/mandelbrot": "^1.0.0",
     "@frctl/nunjucks": "^1.0.0",
+    "a11y-dialog": "^4.0.1",
     "autoprefixer": "^6.5.1",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -42,7 +43,8 @@
     "gulp-util": "~3.0.7",
     "postcss": "^5.2.5",
     "postcss-pseudoelements": "^3.0.0",
-    "request-promise": "^2.0.1"
+    "request-promise": "^2.0.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",

@@ -1,7 +1,7 @@
-import domready from './domready'
-import dialog from './dialog'
-import fetch from './fetch'
-import LoaderBtn from './loader-btn'
+import domready from '../../assets/js/domready'
+import dialog from '../../assets/js/dialog'
+import fetch from '../../assets/js/fetch'
+import LoaderBtn from '../../assets/js/loader-btn'
 import { padStart } from 'lodash'
 
 class TimeoutUI {
