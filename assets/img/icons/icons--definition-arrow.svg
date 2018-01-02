@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="17px" viewBox="0 0 16 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>chevron-down</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chevron-down" transform="translate(8.005981, 8.000000) scale(1, -1) translate(-8.005981, -8.000000) translate(0.005981, -1.000000)" fill="#4263C2">
+            <polygon id="Rectangle-1" fill-rule="nonzero" transform="translate(7.991583, 9.108529) rotate(-45.000000) translate(-7.991583, -9.108529) " points="4.15959899 12.9405124 4.15959899 3.52379909 2.40685308 3.52379909 2.40685308 13.8168854 2.40685308 14.6932584 13.5763124 14.6932584 13.5763124 12.9405124"></polygon>
+            <rect id="Rectangle" x="7.15932978" y="0.364848276" width="1.65366721" height="14.3435658"></rect>
+        </g>
+    </g>
+</svg>
