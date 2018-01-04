@@ -12,7 +12,8 @@
   }
   /* Removes inherited bottom margin to make whitespace inside panel equal */
   p:last-of-type,
-  ul:last-of-type {
+  ul:last-of-type,
+  ol:last-of-type {
     margin-bottom: 0;
   }
 }
