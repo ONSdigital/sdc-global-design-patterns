@@ -1,0 +1,92 @@
+
+@keyframes fadein {
+  from {
+    transform: translateX(2rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.popup {
+  position: relative;
+  height: 0;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+  z-index: 4;
+}
+
+.popup__wrapper {
+  border: 1px solid $color-borders;
+  padding: 0;
+  width: 100%;
+  background: #fff;
+  position: relative;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.2);
+  text-align: right;
+}
+
+.popup[open] {
+  opacity: 1;
+
+  .popup__wrapper {
+    animation-name: fadein;
+    animation-duration: 0.2s;
+  }
+}
+
+.popup__content {
+  padding: 1em;
+  border-top: 1px solid $color-borders;
+  margin: 0;
+  background-color: #fcfee1;
+  text-align: left;
+}
+
+.popup__button {
+  position: relative;
+  border: 0;
+  font-weight: $font-weight-bold;
+  background-color: transparent;
+  padding: 0.35em 2em 0.35em 0.8em;
+  margin: 0.5em;
+  color: $color-links;
+  border-radius: 3px;
+  appearance: none;
+  &::after {
+    content: "";
+    background: transparent url(#{$static}/img/icons/icons--close--blue.svg) no-repeat 50%;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+  }
+  &:hover {
+    color: $color-links-hover;
+    &::after {
+      background: transparent url(#{$static}/img/icons/icons--close--dark-blue.svg) no-repeat 50%;
+    }
+  }
+  &:focus {
+    color: #fff;
+    background-color: $color-links;
+    outline: none;
+    &::after {
+      background: transparent url(#{$static}/img/icons/icons--close--white.svg) no-repeat 50%;
+    }
+  }
+}
