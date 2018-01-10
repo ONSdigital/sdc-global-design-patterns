@@ -1,13 +1,46 @@
 .footer {
   padding: 2rem 0;
   margin-top: 2rem;
-  background-color: $color-light-grey;
-  color: $color-very-dark-grey;
+  background-color: $color-very-dark-grey;
+  color: $color-light-grey;
+
+  // ul li { not required as list--bare is available
+  //   list-style-type: none;
+  // }
+  .footer-nav__heading {
+    margin: 2rem 0 1rem;
+  }
+  .dl__data {
+    padding-left: $grid-gutters;
+  }
+
+}
+
+.footer_container {
+  width: 1080px;
+  margin: -20px;
+  padding: 0px;
 }
 
 .footer__link {
-  color: $color-very-dark-grey;
+  color: $color-light-grey;
   &:focus {
-    color: white;
+    color: #fff;
+    outline: 2px dashed #fff;
+    outline-offset: 2px;
+    background: transparent;
   }
+  &:hover {
+    color: $color-light-grey;
+  }
+}
+
+.footer-nav {
+  padding: 0 0 2rem;
+}
+// UKOpenGovernmentLicence logo
+.ogl__img {
+  height: 1.1rem;
+  opacity: 0.75;
+  margin-bottom: 0.2rem;
 }
