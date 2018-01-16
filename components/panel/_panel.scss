@@ -10,12 +10,6 @@
       border-color: $color;
     }
   }
-  /* Removes inherited bottom margin to make whitespace inside panel equal */
-  p:last-of-type,
-  ul:last-of-type,
-  ol:last-of-type {
-    margin-bottom: 0;
-  }
 }
 
 .panel {
@@ -25,6 +19,10 @@
     &:focus {
       color: white;
     }
+  }
+  /* Removes inherited bottom margin to make whitespace inside panel equal */
+   *:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -41,6 +39,10 @@
 
 .panel__body {
   padding: 1rem;
+  /* Removes inherited bottom margin to make whitespace inside panel equal */
+  *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 @include panel_type(error, $color-red, $color-light-red);
