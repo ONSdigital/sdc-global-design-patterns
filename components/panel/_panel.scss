@@ -21,7 +21,7 @@
     }
   }
   /* Removes inherited bottom margin to make whitespace inside panel equal */
-   *:last-child {
+   > *:last-child {
     margin-bottom: 0;
   }
 }
@@ -40,7 +40,7 @@
 .panel__body {
   padding: 1rem;
   /* Removes inherited bottom margin to make whitespace inside panel equal */
-  *:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 }
