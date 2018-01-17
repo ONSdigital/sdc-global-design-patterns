@@ -20,6 +20,10 @@
       color: white;
     }
   }
+  /* Removes inherited bottom margin to make whitespace inside panel equal */
+   > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .panel__header {
@@ -35,6 +39,10 @@
 
 .panel__body {
   padding: 1rem;
+  /* Removes inherited bottom margin to make whitespace inside panel equal */
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 @include panel_type(error, $color-red, $color-light-red);
