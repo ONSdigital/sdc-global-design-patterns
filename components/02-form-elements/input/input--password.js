@@ -10,9 +10,7 @@ export default function() {
 export function bindInputChangeHandlers() {
   if (document.getElementById(idPasswordInputCheckbox)) {
     const passwordInputCheckbox = document.getElementById(idPasswordInputCheckbox);
-    console.log(passwordInputCheckbox);
     const passwordInputText = document.getElementById(idPasswordInputText);
-    console.log(passwordInputText);
     passwordInputCheckbox.addEventListener('change', () => {
       passwordInputText.type = passwordInputCheckbox.checked ? 'text' : 'password';
     });
