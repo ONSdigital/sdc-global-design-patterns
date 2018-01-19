@@ -149,24 +149,8 @@
   .input__limit {
     display: none;
   }
-  .showHidePassword {
-    display: none;
-  }
 }
 
 .input__limit--reached {
   color: $color-red;
-}
-
-.input--checkbox__passwordToggle {
-  left: 0;
-  top: 0.1rem;
-  + label {
-    padding-left: 1.5rem;
-    padding-bottom: 0;
-    padding-top: 0;
-  }
-  &:checked~.label {
-    background: transparent;
-  }
 }
