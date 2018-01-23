@@ -4,7 +4,7 @@ import fetch from '../../assets/js/fetch';
 import LoaderBtn from '../../assets/js/loader-btn';
 // import { padStart } from 'lodash'
 import { objHasInterface } from '../../assets/js/utils';
-import CountdownAnimation, { Countable } from '../countdown-animation/countdown-animation';
+import CountdownAnimation, { Countable } from '../countdown/countdown';
 
 class SessionTimeoutUI {
 
@@ -99,16 +99,15 @@ class SessionTimeoutUI {
 
 domready(() => {
 
-  const promptTime = window.__EQ_SESSION_TIMEOUT_PROMPT__;
+  const promptTime = window.__EQ_SESSION_TIMEOUT_PROMPT__,
+    containerScopeEl = document.querySelector('.js-timeout-container');
 
   /**
-   * If globals aren't set don't proceed
+   * If globals aren't set and we aren't on the correct page don't proceed
    */
-  if (!promptTime || !window.__EQ_SESSION_TIMEOUT__) {
+  if (!promptTime || !window.__EQ_SESSION_TIMEOUT__ || !containerScopeEl) {
     return;
   }
-
-  const containerScopeEl = document.querySelector('.js-timeout-container');
 
   new SessionTimeoutUI({
     scopeEl: containerScopeEl,

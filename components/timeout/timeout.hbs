@@ -8,16 +8,7 @@
       <div class="mars u-mb-s">{{survey_title}}</div>
       <h1 class="saturn dialog__title" id="dialog-title" tabindex="0">Your session is about to expire</h1>
 
-      <div class="time js-timeout">
-
-        <svg class="time__visual" width="{{widthDouble}}px" height="{{widthDouble}}px" viewBox="0 0 {{widthDouble}} {{widthDouble}}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <circle cx="{{width}}" cy="{{width}}" r="{{width}}" stroke="#D3D3D3" stroke-width="6" fill="none"></circle>
-          <circle class="time__circle js-timeout-circle" cx="{{width}}" cy="{{width}}" r="{{width}}" transform="rotate(-90 {{width}} {{width}})" fill="none" stroke="red" stroke-width="6" stroke-linecap="round"></circle>
-        </svg>
-
-        <div class="time__text venus js-timeout-time">0:00</div>
-
-      </div>
+      {{> @countdown width=width widthDouble=widthDouble}}
 
       <form class="" action="/" method="post">
         <button class="btn btn--primary btn--loader js-timeout-continue" type="button" data-loading-msg="Continuing&hellip;">Continue survey</button>
