@@ -3,8 +3,10 @@ import {defer} from 'lodash'
 const loadingClass = 'is-loading'
 
 export default class LoaderBtn {
-  constructor(selector) {
-    this.element = document.querySelector(selector)
+  constructor(selector, scopeEl) {
+    const targetEl = scopeEl || document;
+
+    this.element = targetEl.querySelector(selector)
     if (!this.element) {
       return
     }
