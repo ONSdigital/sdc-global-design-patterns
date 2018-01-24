@@ -21,9 +21,12 @@ fractal.components.set('title', 'Elements'); // default is 'Components'
  * Collator function to output the variant label preceding each variant in preview for collated components.
  */
 fractal.components.set('default.collator', function(markup, item) {
-  return `<h3>${
-    item.label
-  }</h3>\n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n<br/>`;
+  return `<div class="collator-item">
+    <h2 class="collator-title">${
+      item.label
+    }</h2>
+    \n<!-- Start: @${item.handle} -->\n${markup}<!-- End: @${item.handle} -->\n
+  </div>`;
 });
 /*
 * Custom status types for components
@@ -170,7 +173,7 @@ const theme = require('@frctl/mandelbrot')({
   },
   styles: [
     'default',
-    '/assets/css/patternlib.css' // Used for eQ Pattern Library specific styles e.g. Colour swatches
+    '/assets/css/patternlib.css', // Used for eQ Pattern Library specific styles e.g. Colour swatches
   ],
   scripts: ['/assets/scripts/bundle.js', 'default']
 });
