@@ -18,6 +18,8 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 
+import eslint from 'gulp-eslint';
+
 import rollupBabel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
@@ -156,12 +158,12 @@ const bundleScripts = watch => {
         cache: cache,
         entry: './assets/js/components.js',
 
-        onwarn: function ( message ) {
+        onwarn: function(message) {
           if (message.code === 'THIS_IS_UNDEFINED') {
             return;
           }
 
-          console.error( message );
+          console.error(message);
         },
 
         plugins: [
@@ -214,6 +216,15 @@ gulp.task('scripts:bundle', () => bundleScripts(false));
 gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle'));
 
 gulp.task('scripts:watch', () => bundleScripts(true));
+
+gulp.task('scripts:lint', () => {
+  return gulp.src(['./assets/**/*.js', './components/**/*.js'/* '!node_modules/!**' */])
+    .pipe(eslint({
+      fix: true
+    }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 /* Fonts */
 

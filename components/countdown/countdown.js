@@ -1,9 +1,10 @@
 import { padStart } from 'lodash'
+import { getTimeNow } from '../../assets/js/utils';
 
 export const Countable = {
   el: true,
-  reset: true,
-  onTick: true
+  draw: true,
+  reset: true
 }
 
 export default class CountdownAnimation {
@@ -34,14 +35,14 @@ export default class CountdownAnimation {
     return parseInt(new Date().getTime() / 1000)
   }
 
-  onTick () {
+  /*onTick () {
     let countDown = this.timeLimit - (this.getTimeNow() - this.timeStartCountdown)
     if (countDown <= this.timePrompt) {
       this.draw(countDown)
     }
 
     return countDown
-  }
+  }*/
 
   draw (time) {
     const date = new Date(null)

@@ -12,11 +12,11 @@ const dialog = {
 
     a11ydialog = new A11yDialog(dialogEl)
 
-    a11ydialog.on('show', (dialogEl, triggerEl) => {
+    a11ydialog.on('show', (dialogEl) => {
       dialogEl.classList.remove('is-hidden')
     })
 
-    a11ydialog.on('hide', (dialogEl, triggerEl) => {
+    a11ydialog.on('hide', (dialogEl) => {
       dialogEl.classList.add('is-hidden')
     })
   }
