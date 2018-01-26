@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "prestart": "yarn",
-    "build": "yarn prestart && yarn compile_assets && gulp fractal:build",
+    "build": "yarn prestart && yarn compile_assets && gulp scripts:lint && gulp fractal:build",
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
     "deploy": "gulp && yarn build && gh-pages -d dist"

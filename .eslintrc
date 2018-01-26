@@ -17,7 +17,7 @@
   },
   "rules": {
     "no-unused-vars" : [1],
-    "semi" : [0, "always"],
+    "semi" : [0],
     "space-before-function-paren": [2, "never"],
     "no-alert": 0,
     "quotes": [2, "single"],
@@ -28,7 +28,6 @@
     "indent": [2, 2, {"SwitchCase": 1}],
     "space-before-blocks": [2, "always"],
     "no-var": [1],
-    "one-var": [0],
-    "no-new": [0]
+    "one-var": [0]
   }
 }

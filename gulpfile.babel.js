@@ -226,6 +226,11 @@ gulp.task('scripts:lint', () => {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('scripts:lint:watch', function(done) {
+  gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:lint'));
+  done();
+});
+
 /* Fonts */
 
 gulp.task('fonts:copy', function() {
@@ -263,7 +268,7 @@ gulp.task('images:watch', function(done) {
 gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images'));
 gulp.task(
   'watch',
-  gulp.parallel('css:watch', 'scripts:watch', 'fonts:watch', 'images:watch')
+  gulp.parallel('css:watch', 'scripts:lint:watch', 'scripts:watch', 'fonts:watch', 'images:watch')
 );
 gulp.task(
   'clean',

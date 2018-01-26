@@ -5,12 +5,11 @@ export const Countable = {
   el: true,
   draw: true,
   reset: true
-}
+};
 
 export default class CountdownAnimation {
 
-  constructor (scopeEl, timePrompt, timeLimit) {
-
+  constructor(scopeEl, timePrompt, timeLimit) {
     // bail if there's no timeout
     if (!timeLimit || !scopeEl) {
       return;
@@ -22,30 +21,17 @@ export default class CountdownAnimation {
     this.timePrompt = timePrompt;
     this.timeLimit = timeLimit;
 
-    if (!this.circleEl || !this.timeTextEl) return false;
+    if (!this.circleEl || !this.timeTextEl) return false
 
     this.circleElRadius = this.circleEl.getAttribute('r');
     this.strokeWidth = this.circleEl.getAttribute('stroke-width');
-    this.timeStartCountdown = this.getTimeNow();
+    this.timeStartCountdown = getTimeNow();
 
     this.reset();
   }
 
-  getTimeNow () {
-    return parseInt(new Date().getTime() / 1000)
-  }
-
-  /*onTick () {
-    let countDown = this.timeLimit - (this.getTimeNow() - this.timeStartCountdown)
-    if (countDown <= this.timePrompt) {
-      this.draw(countDown)
-    }
-
-    return countDown
-  }*/
-
-  draw (time) {
-    const date = new Date(null)
+  draw(time) {
+    const date = new Date(null);
     date.setSeconds(time)
     const mins = padStart(date.getUTCMinutes(), 2, '0')
     const seconds = padStart(date.getUTCSeconds(), 2, '0')
@@ -64,8 +50,8 @@ export default class CountdownAnimation {
     }
   }
 
-  reset () {
-    this.timeStartCountdown = this.getTimeNow()
+  reset() {
+    this.timeStartCountdown = getTimeNow()
     this.circleEl.style.strokeDasharray = '0, 1000'
     this.circleEl.getBoundingClientRect()
   }

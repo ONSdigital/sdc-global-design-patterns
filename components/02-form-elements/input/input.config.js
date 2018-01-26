@@ -19,8 +19,20 @@ module.exports = {
       "label_for": "checkbox",
       "label_inline": true,
       "options": [
-        {"option_text":"Bacon", "option_value": "bacon", "label_for":"bacon", "label_text":"Bacon", "label_inline":true},
-        {"option_text":"Olives", "option_value": "olives", "label_for":"olives", "label_text":"Olives", "label_inline":true},
+        {
+          "option_text": "Bacon",
+          "option_value": "bacon",
+          "label_for": "bacon",
+          "label_text": "Bacon",
+          "label_inline": true
+        },
+        {
+          "option_text": "Olives",
+          "option_value": "olives",
+          "label_for": "olives",
+          "label_text": "Olives",
+          "label_inline": true
+        },
       ]
     },
   }, {
@@ -30,16 +42,27 @@ module.exports = {
       "label_text": "Bacon",
       "label_for": "radio",
       "label_inline": true,
-      "legend":"Select your favourite topping",
+      "legend": "Select your favourite topping",
       "options": [
-        {"option_text":"Bacon", "option_value": "bacon", "label_for":"bacon", "label_text":"Bacon", "label_inline":true},
-        {"option_text":"Olives", "option_value": "olives", "label_for":"olives", "label_text":"Olives", "label_inline":true},
+        {
+          "option_text": "Bacon",
+          "option_value": "bacon",
+          "label_for": "bacon",
+          "label_text": "Bacon",
+          "label_inline": true
+        },
+        {
+          "option_text": "Olives",
+          "option_value": "olives",
+          "label_for": "olives",
+          "label_text": "Olives",
+          "label_inline": true
+        },
       ]
     },
   }, {
     "name": "percentage",
     "status": "ready",
-    "name": "percentage",
     "context": {
       "label": "Percentage",
       "label_text": "%"
