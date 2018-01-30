@@ -5,7 +5,7 @@
   font-weight: 700;
   &::before {
     $size: 2rem;
-    content: ' ';
+    content: " ";
     display: inline-block;
     vertical-align: middle;
     background: $color-white url('#{$static}/img/icons/icons--lock.svg') no-repeat center center;
