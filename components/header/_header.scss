@@ -3,7 +3,7 @@ $header-bp: 36em;
 .header {
   display: block;
   overflow: hidden;
-  padding: 1.284rem 0;
+  padding: 1.4rem 0 1rem;
   &::before {
     content: "";
     display: block;
@@ -13,6 +13,7 @@ $header-bp: 36em;
     position: absolute;
     top: 0;
     left: 0;
+    margin: 0;
   }
   @include mq($header-bp) {
     display: flex;
@@ -31,6 +32,7 @@ $header-bp: 36em;
 .header__info {
   white-space: nowrap;
   min-height: 3rem;
+  width: 550px;
 
   @include mq($from: xs, $to: m) {
     max-width: 100%;
