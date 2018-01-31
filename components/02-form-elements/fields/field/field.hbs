@@ -1,1 +1,25 @@
-{{> @input label_text="Your name" label_for="text-input"}}
+{{#if options}}
+  <div class="field field--checkbox field--multiplechoice">
+    <fieldset>
+        {{#if legend}}
+          <legend class="field__legend mars">{{legend}}</legend>
+        {{/if}}
+        {{#if select_all}}
+          <div class="field__label mars" id="select-all">Select all that apply</div>
+        {{/if}}
+        {{#each options}}
+        <div class="field__item js-focusable-box">
+          <input class="input input--{{type}} js-focusable" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="{{type}}" aria-describedby="select-all">
+          {{>@label}}
+        </div>
+        {{/each}}
+    </fieldset>
+  </div>
+{{else}}
+  {{> @input label_text="Your name" label_for="text-input"}}
+{{/if}}
+
+
+
+
+

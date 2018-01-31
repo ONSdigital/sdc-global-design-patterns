@@ -155,6 +155,15 @@ const bundleScripts = watch => {
       config: {
         cache: cache,
         entry: './assets/js/components.js',
+
+        onwarn: function ( message ) {
+          if (message.code === 'THIS_IS_UNDEFINED') {
+            return;
+          }
+
+          console.error( message );
+        },
+
         plugins: [
           commonjs({
             include: 'node_modules/**',
