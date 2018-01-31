@@ -8,7 +8,7 @@ $header-bp: 36em;
     content: "";
     display: block;
     width: 100%;
-    height: 8px;
+    height: 0.45rem;
     background-color: $color-secondary;
     position: absolute;
     top: 0;
@@ -49,10 +49,10 @@ $header-bp: 36em;
       content: "";
       display: block;
       width: 100%;
-      height: 8px;
+      height: 0.45rem;
       background-color: #a8bd3a;
       position: absolute;
-      top: -1.3rem;
+      top: -1.4rem;
       right: 0;
     }
   }
