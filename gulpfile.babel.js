@@ -19,6 +19,7 @@ import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 
 import eslint from 'gulp-eslint';
+import gulpStylelint from 'gulp-stylelint';
 
 import rollupBabel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
@@ -118,6 +119,8 @@ gulp.task('css:clean', function() {
   return del(['public/assets/css']);
 });
 
+gulp.task('css', gulp.series('css:clean', 'css:process'));
+
 gulp.task('css:watch', function(done) {
   gulp.watch(
     ['assets/sass/**/*.scss', 'components/**/*.scss'],
@@ -125,8 +128,6 @@ gulp.task('css:watch', function(done) {
   );
   done();
 });
-
-gulp.task('css', gulp.series('css:clean', 'css:process'));
 
 gulp.task('clean:dist', () => {
   del.sync([paths.output], { force: true });
@@ -143,7 +144,7 @@ gulp.task('scripts:clean', function() {
   return del(['public/assets/scripts']);
 });
 
-const bundleScripts = watch => {
+const bundleScripts = watch => { console.log(watch);
   let cache;
   const bundler = browserify({
     entries: ['./assets/js/polyfills.js', './assets/js/components.js'],
@@ -217,19 +218,56 @@ gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle'));
 
 gulp.task('scripts:watch', () => bundleScripts(true));
 
-gulp.task('scripts:lint', () => {
-  return gulp.src(['./assets/**/*.js', './components/**/*.js'/* '!node_modules/!**' */])
+function scriptsLint (watch) {
+  let task = gulp.src(['./assets/**/*.js', './components/**/*.js'])
     .pipe(eslint({
       fix: true
     }))
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
+    .pipe(eslint.format());
+
+  if (!watch) {
+    task.pipe(eslint.failAfterError());
+  }
+
+  return task;
+}
+
+gulp.task('scripts:lint', scriptsLint.bind(false));
+
+gulp.task('scripts:lint:watch-setup', scriptsLint.bind(true));
 
 gulp.task('scripts:lint:watch', function(done) {
-  gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:lint'));
+  gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:lint:watch-setup'));
   done();
 });
+
+function styleLint (watch, done) {
+  return gulp.src(['./assets/sass/**/*.scss'])
+    .pipe(
+      gulpStylelint({
+        failAfterError: !watch,
+        reporters: [{ formatter: 'string', console: true }]
+      }).on('error', error => {
+        gutil.log('linting failed');
+        gutil.log(error);
+        if (!watch) {
+          console.log('exiting', watch);
+          process.exit(1);
+        }
+        done();
+      })
+    );
+}
+
+gulp.task('styles:lint', styleLint.bind(false));
+
+gulp.task('styles:lint:watch-setup', styleLint.bind(true));
+
+gulp.task('styles:lint:watch', function(done) {
+  gulp.watch(['./assets/**/*.scss'], gulp.parallel('styles:lint:watch-setup'));
+  done();
+});
+
 
 /* Fonts */
 
@@ -265,13 +303,21 @@ gulp.task('images:watch', function(done) {
   done();
 });
 
-gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images'));
+gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images'));
 gulp.task(
   'watch',
-  gulp.parallel('css:watch', 'scripts:lint:watch', 'scripts:watch', 'fonts:watch', 'images:watch')
+  gulp.parallel(
+    'styles:lint:watch-setup',
+    'styles:lint:watch',
+    'css:watch',
+    'scripts:lint:watch-setup',
+    'scripts:lint:watch',
+    'scripts:watch',
+    'fonts:watch',
+    'images:watch')
 );
 gulp.task(
   'clean',
   gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean')
 );
-gulp.task('dev', gulp.series('default', 'fractal:start', 'watch'));
+gulp.task('dev', gulp.series('watch', 'fractal:start'));
