@@ -144,7 +144,7 @@ gulp.task('scripts:clean', function() {
   return del(['public/assets/scripts']);
 });
 
-const bundleScripts = watch => { console.log(watch);
+const bundleScripts = watch => {
   let cache;
   const bundler = browserify({
     entries: ['./assets/js/polyfills.js', './assets/js/components.js'],
