@@ -7,3 +7,7 @@ export function objHasInterface (obj, interfaceObj) {
 
   return isIt;
 }
+
+export function getTimeNow () {
+  return parseInt(new Date().getTime() / 1000);
+}
