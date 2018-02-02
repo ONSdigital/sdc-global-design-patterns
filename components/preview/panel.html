@@ -8,19 +8,34 @@
 <!--[if gt IE 9]><!--> <html lang="en-gb" dir="ltr" class="no-js"> <!--<![endif]-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="../../assets/img/eq.png">
+  <link rel="icon" type="image/png" href="../../assets/img/eq.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>Panel | SDC Pattern Library</title>
 
-  <link rel="stylesheet" href="../../assets/css/styles.css">
-    <title>Panel | SDC Pattern Library</title>
+  <!--[if gt IE 8]><!-->
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js','has-js')</script>
+  <!--<![endif]-->
 
-    <!--[if gt IE 8]><!-->
-      <script>document.documentElement.className = document.documentElement.className.replace('no-js','has-js')</script>
-    <!--<![endif]-->
+  <script>
+    window.__EQ_SESSION_TIMEOUT__ = 18;
+    window.__EQ_SESSION_TIMEOUT_PROMPT__ = 12;
+  </script>
+
+  <style>
+    .collator-item {
+      margin-bottom: 2rem;
+    }
+    .collator-title {
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
 
-<div style="padding:1rem; height:100%">
-  <h3>Information (default)</h3>
+<div style="padding:1rem; height:100%; max-width: 30em">
+  <div class="collator-item">
+    <h2 class="collator-title">Information (default)</h2>
+    
 <!-- Start: @panel--default -->
 <div class="panel panel--info">
   <div class="panel__header">
@@ -31,8 +46,11 @@
   </div>
 </div>
 <!-- End: @panel--default -->
-<br/>
-<h3>Success</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Success</h2>
+    
 <!-- Start: @panel--success -->
 <div class="panel panel--success">
   <div class="panel__header">
@@ -43,8 +61,11 @@
   </div>
 </div>
 <!-- End: @panel--success -->
-<br/>
-<h3>Warning</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Warning</h2>
+    
 <!-- Start: @panel--warn -->
 <div class="panel panel--warn">
   <div class="panel__header">
@@ -55,30 +76,44 @@
   </div>
 </div>
 <!-- End: @panel--warn -->
-<br/>
-<h3>Error</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Error</h2>
+    
 <!-- Start: @panel--error -->
 <div class="panel panel--error">
   <div class="panel__header">
     <div class="venus">Error</div>
   </div>
   <div class="panel__body">
-    <div>This is wrong, fix it before continuing.</div>
+    <p class="mars">This is wrong, fix it before continuing.</p>
   </div>
 </div>
 <!-- End: @panel--error -->
-<br/>
-<h3>Inline information (default)</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Inline information (default)</h2>
+    
 <!-- Start: @panel--simple-info -->
 <div class="panel panel--simple panel--info">
   <div class="panel__body">
-    <h2 class="venus">Simple info panel - separate</h2>
-    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</p>
+    <strong class="u-mb-s u-d-b">Simple info panel - separate</strong>
+    <p class="mars">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <ul>
+  <li class="list__item">VAT</li>
+  <li class="list__item">Internet sales</li>
+</ul>
+
   </div>
 </div>
 <!-- End: @panel--simple-info -->
-<br/>
-<h3>Inline success</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Inline success</h2>
+    
 <!-- Start: @panel--simple-success -->
 <div class="panel panel--simple panel--success">
   <div class="panel__body">
@@ -87,8 +122,11 @@
   </div>
 </div>
 <!-- End: @panel--simple-success -->
-<br/>
-<h3>Inline warning</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Inline warning</h2>
+    
 <!-- Start: @panel--simple-warn -->
 <div class="panel panel--simple panel--warn">
   <div class="panel__body">
@@ -97,18 +135,24 @@
   </div>
 </div>
 <!-- End: @panel--simple-warn -->
-<br/>
-<h3>Inline error information</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Inline error information</h2>
+    
 <!-- Start: @panel--simple-error -->
 <div class="panel panel--simple panel--error">
   <div class="panel__body">
     <h2 class="venus">Simple error panel</h2>
-    <div>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</div>
+    <p class="mars">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum.</p>
   </div>
 </div>
 <!-- End: @panel--simple-error -->
-<br/>
-<h3>Spacious variant (all simple)</h3>
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Spacious variant (all simple)</h2>
+    
 <!-- Start: @panel--spacious -->
 <div class="panel panel--simple panel--info panel--spacious">
   <div class="panel__body">
@@ -117,7 +161,8 @@
   </div>
 </div>
 <!-- End: @panel--spacious -->
-<br/>
+
+  </div>
 </div>
 <script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
 </body>

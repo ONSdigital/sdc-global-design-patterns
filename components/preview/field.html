@@ -8,23 +8,101 @@
 <!--[if gt IE 9]><!--> <html lang="en-gb" dir="ltr" class="no-js"> <!--<![endif]-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="../../assets/img/eq.png">
+  <link rel="icon" type="image/png" href="../../assets/img/eq.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>Field | SDC Pattern Library</title>
 
-  <link rel="stylesheet" href="../../assets/css/styles.css">
-    <title>Field: Default | SDC Pattern Library</title>
+  <!--[if gt IE 8]><!-->
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js','has-js')</script>
+  <!--<![endif]-->
 
-    <!--[if gt IE 8]><!-->
-      <script>document.documentElement.className = document.documentElement.className.replace('no-js','has-js')</script>
-    <!--<![endif]-->
+  <script>
+    window.__EQ_SESSION_TIMEOUT__ = 18;
+    window.__EQ_SESSION_TIMEOUT_PROMPT__ = 12;
+  </script>
+
+  <style>
+    .collator-item {
+      margin-bottom: 2rem;
+    }
+    .collator-title {
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
 
-<div style="padding:1rem; height:100%">
+<div style="padding:1rem; height:100%; max-width: 30em">
+  <div class="collator-item">
+    <h2 class="collator-title">Basic Field</h2>
+    
+<!-- Start: @field--basic-field -->
   <div class="field">
-  <label class="label" for="text-input" >Your name</label>
-  <input class="input input--text" type="text" id="text-input" />
-</div>
+    <label class="label " for="text-input" >Your name</label>
+    <input class="input input--text" type="text" id="text-input" />
+  </div>
 
+
+
+
+
+<!-- End: @field--basic-field -->
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Checkboxes</h2>
+    
+<!-- Start: @field--checkboxes -->
+  <div class="field field--checkbox field--multiplechoice">
+    <fieldset>
+          <div class="field__label mars" id="select-all">Select all that apply</div>
+        <div class="field__item js-focusable-box">
+          <input class="input input--checkbox js-focusable" name="checkbox-answer" value="bacon" id="bacon" type="checkbox" aria-describedby="select-all">
+          <label class="label label--inline venus " for="bacon" >Bacon</label>
+        </div>
+        <div class="field__item js-focusable-box">
+          <input class="input input--checkbox js-focusable" name="checkbox-answer" value="olives" id="olives" type="checkbox" aria-describedby="select-all">
+          <label class="label label--inline venus " for="olives" >Olives</label>
+        </div>
+    </fieldset>
+  </div>
+
+
+
+
+
+<!-- End: @field--checkboxes -->
+
+  </div>
+<div class="collator-item">
+    <h2 class="collator-title">Legend</h2>
+    
+<!-- Start: @field--legend -->
+  <div class="field field--checkbox field--multiplechoice">
+    <fieldset>
+          <legend class="field__legend mars">Select your favourite pizza topping</legend>
+        <div class="field__item js-focusable-box">
+          <input class="input input--radio js-focusable" name="checkbox-answer" value="Cheese" id="Cheese" type="radio" aria-describedby="select-all">
+          <label class="label label--inline venus " for="Cheese" >Cheese</label>
+        </div>
+        <div class="field__item js-focusable-box">
+          <input class="input input--radio js-focusable" name="checkbox-answer" value="Tomato" id="Tomato" type="radio" aria-describedby="select-all">
+          <label class="label label--inline venus " for="Tomato" >Tomato</label>
+        </div>
+        <div class="field__item js-focusable-box">
+          <input class="input input--radio js-focusable" name="checkbox-answer" value="Pepperoni" id="Pepperoni" type="radio" aria-describedby="select-all">
+          <label class="label label--inline venus " for="Pepperoni" >Pepperoni</label>
+        </div>
+    </fieldset>
+  </div>
+
+
+
+
+
+<!-- End: @field--legend -->
+
+  </div>
 </div>
 <script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
 </body>

@@ -1,0 +1,70 @@
+
+
+<!doctype html>
+<!--[if lt IE 7]>      <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en-gb" dir="ltr" class="no-js"> <!--<![endif]-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../../assets/img/eq.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>Timeout: Default | SDC Pattern Library</title>
+
+  <!--[if gt IE 8]><!-->
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js','has-js')</script>
+  <!--<![endif]-->
+
+  <script>
+    window.__EQ_SESSION_TIMEOUT__ = 18;
+    window.__EQ_SESSION_TIMEOUT_PROMPT__ = 12;
+  </script>
+
+  <style>
+    .collator-item {
+      margin-bottom: 2rem;
+    }
+    .collator-title {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+<div style="padding:1rem; height:100%; max-width: 30em">
+  <div class="dialog js-dialog js-timeout-container" id="dialog" aria-hidden="true" >
+<!-- <div class="dialog js-dialog" id="dialog" aria-hidden="true" {helpers.track('visible', 'Timeout', 'Timeout window visible')}> -->
+  <div class="dialog__overlay" tabindex="-1"></div>
+
+  <div class="dialog__body" role="dialog" aria-labelledby="dialog-title">
+    <div role="document">
+
+      <div class="mars u-mb-s">Survey or Service name</div>
+      <h1 class="saturn dialog__title" id="dialog-title" tabindex="0">Your session is about to expire</h1>
+
+      <div class="time js-timeout">
+      
+        <svg class="time__visual" width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <circle cx="40" cy="40" r="40" stroke="#D3D3D3" stroke-width="6" fill="none"></circle>
+          <circle class="time__circle js-timeout-circle" cx="40" cy="40" r="40" transform="rotate(-90 40 40)" fill="none" stroke="red" stroke-width="6" stroke-linecap="round"></circle>
+        </svg>
+      
+        <div class="time__text venus js-timeout-time">0:00</div>
+      
+      </div>
+
+      <form class="" action="/" method="post">
+        <button class="btn btn--primary btn--loader js-timeout-continue" type="button" data-loading-msg="Continuing&hellip;">Continue survey</button>
+        <br/>
+        <button class="btn btn--secondary btn--border js-timeout-save" type="submit">Save and sign out</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
+</body>
+</html>
+

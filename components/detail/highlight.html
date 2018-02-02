@@ -188,11 +188,15 @@
     <div class="Prose Prose--condensed">
         
         <h3 id="rationale">Rationale</h3>
-<p>Highlights are used to draw information to the attention of the user.</p>
+<p>Highlights are visual emphasis used to draw information to the attention of the user.</p>
 <h3 id="research">Research</h3>
 <h3 id="usage">Usage</h3>
 <p>Highlight is used in eQ to draw the attention of the user to a particular value or phrase which is central to the understanding of the sentence. It is used to highlight a section of a sentence or phrase which a user may otherwise miss.</p>
-<p>Highlight is also used to indicate a calculated or piped value which was entered previously and is being displayed in a new context. </p>
+<p>Highlight is also used to indicate a calculated or piped value which was entered previously and is being displayed in a new context.</p>
+<h4 id="note">Note</h4>
+<blockquote>
+<p>It should be noted that highlight should be applied to an <code>&lt;em&gt;</code> element. If it is applied to another element which does not carry semantic emphasis (for example <code>&lt;span&gt;</code>) it will fail in its intent as it no longer provides emphasis to all users.</p>
+</blockquote>
 <h4 id="scope">Scope</h4>
 <p>Global</p>
 <h4 id="dependencies">Dependencies</h4>
@@ -210,10 +214,10 @@
     <code class="Code Code--lang-html">
         
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mars"</span>&gt;</span>This is some <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>important<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"neptune"</span>&gt;</span>What was the value of the business’s total sales of <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>food<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>?<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"neptune"</span>&gt;</span>What was the value of the business’s total sales of <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>alcohol, tobacco and confectionary<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>?<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"neptune"</span>&gt;</span>Of the <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>423<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> employees how many were part-time?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></pre>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mars"</span>&gt;</span>This is some <span class="hljs-tag">&lt;<span class="hljs-name">em</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>important<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"neptune"</span>&gt;</span>What was the value of the business’s total sales of <span class="hljs-tag">&lt;<span class="hljs-name">em</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>food<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>?<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"neptune"</span>&gt;</span>What was the value of the business’s total sales of <span class="hljs-tag">&lt;<span class="hljs-name">em</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>alcohol, tobacco and confectionary<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>?<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"neptune"</span>&gt;</span>Of the <span class="hljs-tag">&lt;<span class="hljs-name">em</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"highlight"</span>&gt;</span>423<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> employees how many were part-time?<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></pre>
         
     </code>
 </div>
@@ -261,10 +265,10 @@
     
     <code class="Code Code--lang-json">
         <pre>{
-  <span class="hljs-attr">"highlightcontent"</span>: <span class="hljs-string">"This is some &lt;span class=\"highlight\"&gt;important&lt;/span&gt; content."</span>,
-  <span class="hljs-attr">"highlightcontent-heading"</span>: <span class="hljs-string">"What was the value of the business’s total sales of &lt;span class=\"highlight\"&gt;food&lt;/span&gt;?"</span>,
-  <span class="hljs-attr">"highlightcontent-heading2"</span>: <span class="hljs-string">"What was the value of the business’s total sales of &lt;span class=\"highlight\"&gt;alcohol, tobacco and confectionary&lt;/span&gt;?"</span>,
-  <span class="hljs-attr">"highlightcontent-total"</span>: <span class="hljs-string">"Of the &lt;span class=\"highlight\"&gt;423&lt;/span&gt; employees how many were part-time?"</span>
+  <span class="hljs-attr">"highlightcontent"</span>: <span class="hljs-string">"This is some &lt;em class=\"highlight\"&gt;important&lt;/em&gt; content."</span>,
+  <span class="hljs-attr">"highlightcontent-heading"</span>: <span class="hljs-string">"What was the value of the business’s total sales of &lt;em class=\"highlight\"&gt;food&lt;/em&gt;?"</span>,
+  <span class="hljs-attr">"highlightcontent-heading2"</span>: <span class="hljs-string">"What was the value of the business’s total sales of &lt;em class=\"highlight\"&gt;alcohol, tobacco and confectionary&lt;/em&gt;?"</span>,
+  <span class="hljs-attr">"highlightcontent-total"</span>: <span class="hljs-string">"Of the &lt;em class=\"highlight\"&gt;423&lt;/em&gt; employees how many were part-time?"</span>
 }</pre>
     </code>
     
@@ -669,6 +673,30 @@
 
 
 <span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="input--password.html" data-pjax>
+                <span>Password</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
 
 
 </div>
@@ -1359,6 +1387,30 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="table.html" data-pjax>
                 <span>Table</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="timeout.html" data-pjax>
+                <span>Timeout</span>
                 
 
 <div class="Status Status--unlabelled">
