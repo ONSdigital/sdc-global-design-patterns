@@ -145,8 +145,10 @@
   }
 }
 
-.no-js .input__limit {
-  display: none;
+.no-js {
+  .input__limit {
+    display: none;
+  }
 }
 
 .input__limit--reached {
