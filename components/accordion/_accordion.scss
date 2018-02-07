@@ -80,9 +80,10 @@
 
 .accordion__body {
   overflow: hidden;
-  border-left: 2px solid $color-borders;
+  // border-left: 2px solid $color-borders;
   padding-left: 2.5rem;
-  margin-left: 15px;
+  // margin-left: 15px;
+  margin-left: 2px;
   opacity: 0;
   max-height: 0;
   transition: all 0;
