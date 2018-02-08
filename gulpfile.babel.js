@@ -309,6 +309,7 @@ gulp.task(
   gulp.parallel(
     'styles:lint:watch-setup',
     'styles:lint:watch',
+    'css',
     'css:watch',
     'scripts:lint:watch-setup',
     'scripts:lint:watch',
