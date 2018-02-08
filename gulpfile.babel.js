@@ -314,7 +314,9 @@ gulp.task(
     'scripts:lint:watch-setup',
     'scripts:lint:watch',
     'scripts:watch',
+    'fonts',
     'fonts:watch',
+    'images',
     'images:watch')
 );
 gulp.task(
