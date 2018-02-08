@@ -15,17 +15,23 @@ These are the brand colours for The Office for National Statistics
 
 ### Service Colours
 <div class="eq-tile-container">
-  {{render '@eq-colours--colour-primary'}}{{render '@eq-colours--colour-text'}}{{render '@eq-colours--colour-secondary-text'}}{{render '@eq-colours--colour-hint-text'}}{{render '@eq-colours--colour-link'}}
+  {{render '@eq-colours--colour-primary'}}{{render '@eq-colours--colour-text'}}{{render '@eq-colours--colour-secondary-text'}}{{render '@eq-colours--colour-hint-text'}}{{render '@eq-colours--colour-blue'}}
 </div>
 
 ### Background elements
 <div class="eq-tile-container">
-  {{render '@eq-colours--color-primary-bg'}}{{render '@eq-colours--color-border'}}{{render '@eq-colours--color-background'}}
+  {{render '@eq-colours--color-white'}}{{render '@eq-colours--color-border'}}{{render '@eq-colours--color-light-grey'}}
 </div>
 
-#### Panels
+### Panels
 <div class="eq-tile-container">
-  {{render '@eq-colours--colour-error'}}{{render '@eq-colours--colour-error-bg'}}{{render '@eq-colours--color-highlight'}}{{render '@eq-colours--color-highlight-bg'}}{{render '@eq-colours--colour-warning'}}{{render '@eq-colours--colour-warning-bg'}}{{render '@eq-colours--colour-success'}}{{render '@eq-colours--colour-success-bg'}}
+  {{render '@eq-colours--colour-success'}}{{render '@eq-colours--colour-success-bg'}}{{render '@eq-colours--color-secondary'}}{{render '@eq-colours--color-highlight-bg'}}{{render '@eq-colours--colour-error'}}{{render '@eq-colours--colour-error-bg'}}{{render '@eq-colours--colour-amber'}}{{render '@eq-colours--colour-light-amber'}}
+</div>
+
+### Secondary palette
+The secondary colours are supplementary to the primary palette.
+<div class="eq-tile-container">
+  {{render '@eq-colours--color-slate'}}{{render '@eq-colours--color-blue-astral'}}{{render '@eq-colours--color-teal'}}{{render '@eq-colours--color-census-purple'}}
 </div>
 
 ## Research

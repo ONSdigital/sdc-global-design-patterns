@@ -1,6 +1,6 @@
 <div class="field field--select">
-  {{> @label}}
-  <select class="input input--select" id="select" name="select">
+  {{> @label }}
+  <select class="input input--select{{#if select_classes}}{{select_classes}}{{/if}}" id="{{label_for}}" name="select">
     {{#each options}}
       <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}>{{option_text}}</option>
     {{/each}}

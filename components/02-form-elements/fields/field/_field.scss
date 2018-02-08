@@ -2,6 +2,16 @@
   background: none;
 }
 
+.field__legend {
+  font-size: 1rem;
+  font-weight: $font-weight-bold;
+  margin-bottom: 0.5rem;
+}
+
+.field__label {
+  margin-bottom: 0.5rem;
+}
+
 .field__item {
   margin: 0 0.5rem 0.5rem 0;
   position: relative;
@@ -158,5 +168,19 @@ input:checked ~ .field__other {
 
   .input {
     width: 100%;
+  }
+}
+
+.field--toggle {
+  position: relative;
+  margin-bottom: 0.5em;
+  .field__input {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  .field__label {
+    padding: 0 0 0 1.7em;
   }
 }

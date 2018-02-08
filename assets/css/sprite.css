@@ -1,0 +1,146 @@
+.icon {
+    font-size: 10px;
+}
+
+.icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("../svg/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 100em 597.7em;
+}
+
+.no-svg .icon:before {
+    background-image: url("../svg/sprite.png");
+}
+
+
+
+  .icon.devices-01:before {
+      background-position: 0em 0em;
+      width: 23.2em;
+      height: 8.6em;
+  }
+
+
+
+
+  .icon.eq-anatomy-of-question:before {
+      background-position: 0em -8.6em;
+      width: 74.6em;
+      height: 46em;
+  }
+
+
+
+
+  .icon.eq-grid-300-and-301-600px:before {
+      background-position: 0em -54.6em;
+      width: 98.4em;
+      height: 46.025999999999996em;
+  }
+
+
+
+
+  .icon.eq-grid-300px:before {
+      background-position: 0em -100.7em;
+      width: 29.6em;
+      height: 26.493000000000002em;
+  }
+
+
+
+
+  .icon.eq-grid-301-600px:before {
+      background-position: 0em -127.2em;
+      width: 59.6em;
+      height: 36.132999999999996em;
+  }
+
+
+
+
+  .icon.eq-grid-600-1000px:before {
+      background-position: 0em -163.4em;
+      width: 98.4em;
+      height: 46.025999999999996em;
+  }
+
+
+
+
+  .icon.eq-grid-responsive-large:before {
+      background-position: 0em -209.5em;
+      width: 100em;
+      height: 95.29051566961368em;
+  }
+
+
+
+
+  .icon.eq-grid-responsive-mobile-tablet:before {
+      background-position: 0em -304.8em;
+      width: 100em;
+      height: 90.90439987615673em;
+  }
+
+
+
+
+  .icon.eq-survey-model:before {
+      background-position: 0em -395.8em;
+      width: 37.6em;
+      height: 28.8em;
+  }
+
+
+
+
+  .icon.eq-survey-thumbnails:before {
+      background-position: 0em -424.6em;
+      width: 36.319em;
+      height: 29.744999999999997em;
+  }
+
+
+
+
+  .icon.eq-typographic-hierarchy:before {
+      background-position: 0em -454.4em;
+      width: 94.7em;
+      height: 48.6em;
+  }
+
+
+
+
+  .icon.logo:before {
+      background-position: 0em -503em;
+      width: 23.7em;
+      height: 4.7em;
+  }
+
+
+
+
+  .icon.ons-logo:before {
+      background-position: 0em -507.7em;
+      width: 59.529999999999994em;
+      height: 11.629999999999999em;
+  }
+
+
+
+
+  .icon.patternlib-structure:before {
+      background-position: 0em -519.4em;
+      width: 100em;
+      height: 78.22822822822823em;
+  }
+
+
+
+
+
