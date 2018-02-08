@@ -43,12 +43,97 @@
   }
 }
 
+@mixin icon-bg-image ($name) {
+  background-image: url("#{$static}/img/icons/icons--#{$name}.svg");
+}
+
+@mixin create-btn-icon-modifier ($defaultIconName, $hoverIconName, $focusIconName, $width) {
+  .btn__icon--#{$defaultIconName} {
+    width: $width;
+    @include icon-bg-image($defaultIconName);
+
+    &::before {
+      @include icon-bg-image($hoverIconName);
+    }
+
+    &::after {
+      @include icon-bg-image($focusIconName);
+    }
+  }
+}
+
 .btn {
   @include btn($color-primary, $color-white);
+
+  .btn__icon {
+    position: relative;
+    vertical-align: middle;
+    content: " ";
+    display: inline-block;
+    background-repeat: no-repeat;
+
+    &::after,
+    &::before {
+      width: inherit;
+      height: inherit;
+      content: " ";
+      vertical-align: inherit;
+      display: inherit;
+      background-repeat: inherit;
+      background-position: 0 0;
+      background-size: auto;
+      transition: opacity 0.3s ease-out;
+    }
+
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+    }
+  }
+
+  &:hover .btn__icon {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:focus .btn__icon {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  @include create-btn-icon-modifier(print-link, print-hover, print-focus, 1.3em);
+  // ...
 }
 
 .btn--secondary {
   @include btn($color-secondary, $color-white);
+}
+
+.btn--tertiary {
+  @include btn($color-white, $color-tertiary, $color-tertiary-dark);
+  padding: 0.3rem;
+  background-color: $color-white;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $color-white;
+  }
+
+  &:focus {
+    color: $color-white;
+    background-color: $color-tertiary;
+  }
+
+  .btn__icon {
+    height: 1.4em;
+  }
 }
 
 .btn--neutral {
@@ -82,7 +167,7 @@
     bottom: 0;
     left: 0;
     margin: auto;
-    background-image: url('/s/img/loader.svg');
+    background-image: url("../img/loader.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1.5rem;
@@ -154,14 +239,14 @@
     opacity: 1;
     bottom: 3px;
     right: 2px;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIyOTAgNTEgMTYgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQogICAgPGcgaWQ9Ikdyb3VwLTIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MC4wMDAwMDAsIDUxLjAwMDAwMCkiPg0KICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIGZpbGw9IiM0QTRBNEEiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyLjA5NTIzODEiPjwvcmVjdD4NCiAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0yIiBmaWxsPSIjNEE0QTRBIiB4PSIwIiB5PSI1LjIzODA5NTI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMi4wOTUyMzgxIj48L3JlY3Q+DQogICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMiIgZmlsbD0iIzRBNEE0QSIgeD0iMCIgeT0iMTAuNDc2MTkwNSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIuMDk1MjM4MSI+PC9yZWN0Pg0KICAgIDwvZz4NCjwvc3ZnPg');
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIyOTAgNTEgMTYgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQogICAgPGcgaWQ9Ikdyb3VwLTIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MC4wMDAwMDAsIDUxLjAwMDAwMCkiPg0KICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIGZpbGw9IiM0QTRBNEEiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyLjA5NTIzODEiPjwvcmVjdD4NCiAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0yIiBmaWxsPSIjNEE0QTRBIiB4PSIwIiB5PSI1LjIzODA5NTI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMi4wOTUyMzgxIj48L3JlY3Q+DQogICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMiIgZmlsbD0iIzRBNEE0QSIgeD0iMCIgeT0iMTAuNDc2MTkwNSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIuMDk1MjM4MSI+PC9yZWN0Pg0KICAgIDwvZz4NCjwvc3ZnPg");
     background-size: auto;
   }
 
   &::after {
     opacity: 0;
     transform: scaleY(0);
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNXB4IiB2aWV3Qm94PSIyOTAgNDUgMjQgMjUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQogICAgPGcgaWQ9Ikdyb3VwLTIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MC4wMDAwMDAsIDQ1LjAwMDAwMCkiPg0KICAgICAgICA8ZyBpZD0iR3JvdXAtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMDAwMDAwLCAxMi41MDAwMDApIHJvdGF0ZSgtMzE1LjAwMDAwMCkgdHJhbnNsYXRlKC0xMi4wMDAwMDAsIC0xMi41MDAwMDApIHRyYW5zbGF0ZSg0LjAwMDAwMCwgNC4wMDAwMDApIiBmaWxsPSIjNEE0QTRBIj4NCiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMiIgeD0iMCIgeT0iNyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIuMDk1MjM4MSI+PC9yZWN0Pg0KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4LjAwMDAwMCwgOC4wNDc2MTkpIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTguMDAwMDAwLCAtOC4wNDc2MTkpICIgeD0iMCIgeT0iNyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIuMDk1MjM4MSI+PC9yZWN0Pg0KICAgICAgICA8L2c+DQogICAgPC9nPg0KPC9zdmc+');
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNXB4IiB2aWV3Qm94PSIyOTAgNDUgMjQgMjUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQogICAgPGcgaWQ9Ikdyb3VwLTIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MC4wMDAwMDAsIDQ1LjAwMDAwMCkiPg0KICAgICAgICA8ZyBpZD0iR3JvdXAtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMDAwMDAwLCAxMi41MDAwMDApIHJvdGF0ZSgtMzE1LjAwMDAwMCkgdHJhbnNsYXRlKC0xMi4wMDAwMDAsIC0xMi41MDAwMDApIHRyYW5zbGF0ZSg0LjAwMDAwMCwgNC4wMDAwMDApIiBmaWxsPSIjNEE0QTRBIj4NCiAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUtMiIgeD0iMCIgeT0iNyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIuMDk1MjM4MSI+PC9yZWN0Pg0KICAgICAgICAgICAgPHJlY3QgaWQ9IlJlY3RhbmdsZS0yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4LjAwMDAwMCwgOC4wNDc2MTkpIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTguMDAwMDAwLCAtOC4wNDc2MTkpICIgeD0iMCIgeT0iNyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIuMDk1MjM4MSI+PC9yZWN0Pg0KICAgICAgICA8L2c+DQogICAgPC9nPg0KPC9zdmc+");
     background-size: auto;
     right: 2px;
     bottom: 2px;

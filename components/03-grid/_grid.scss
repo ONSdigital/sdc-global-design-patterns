@@ -49,6 +49,15 @@
   }
 }
 
+.grid--stagger-align {
+  .grid__col:nth-of-type(1n) {
+    text-align: right;
+  }
+  .grid__col:nth-of-type(2n) {
+    text-align: left;
+  }
+}
+
 .grid--tight {
   margin-left: -$grid-gutters/2;
   .grid__col {
@@ -72,7 +81,6 @@
 }
 
 .grid--flex {
-  flex-wrap: wrap;
   flex-flow: row wrap;
   display: flex;
   .grid__col {
@@ -150,8 +158,8 @@
   left: 0;
 }
 
-#bp-helper {
-  font-family: 'Consolas', 'Lucida Grande', sans-serif;
+.bp-helper {
+  font-family: "Consolas", "Lucida Grande", sans-serif;
   font-size: 0.8rem;
   position: fixed;
   bottom: 0;

@@ -18,6 +18,9 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 
+import eslint from 'gulp-eslint';
+import gulpStylelint from 'gulp-stylelint';
+
 import rollupBabel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
@@ -35,7 +38,9 @@ gulp.task('fractal:start', function() {
   });
   server.on('error', err => logger.error(err.message));
   return server.start().then(() => {
-    logger.success(`Fractal server is now running at ${server.urls.sync.local}`);
+    logger.success(
+      `Fractal server is now running at ${server.urls.sync.local}`
+    );
   });
 });
 
@@ -45,7 +50,9 @@ gulp.task('fractal:start', function() {
 
 gulp.task('fractal:build', function() {
   const builder = fractal.web.builder();
-  builder.on('progress', (completed, total) => logger.update(`Exported ${completed} of ${total} items`, 'info'));
+  builder.on('progress', (completed, total) =>
+    logger.update(`Exported ${completed} of ${total} items`, 'info')
+  );
   builder.on('error', err => logger.error(err.message));
   return builder.build().then(() => {
     logger.success('Fractal build completed!');
@@ -55,71 +62,81 @@ gulp.task('fractal:build', function() {
 /* CSS */
 
 gulp.task('css:process', function() {
-  return gulp.src('assets/sass/*.scss')
-    .pipe(sourcemaps.init())
-    .pipe(plumber({
-        errorHandler: function (err) {
+  return (gulp
+      .src('assets/sass/*.scss')
+      .pipe(sourcemaps.init())
+      .pipe(
+        plumber({
+          errorHandler: function(err) {
             console.log(err);
             this.emit('end');
-        }
-    }))
-    .pipe(sassGlob())
-    .pipe(sass({
-      errLogToConsole: true,
-      outputStyle: 'expanded',
-      sourceComments: false,
-      onSuccess: function(msg) {
-        gutil.log('Done', gutil.colors.cyan(msg));
-      }
-    }))
-    .pipe(postcss([
-      autoprefixer({
-        browsers: ['last 2 versions', 'Explorer >= 8', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
-      }),
-      pixrem({ replace: false }),
-      inlineblock(),
-      pseudoelements()
-      // reporter({ clearMessages: true })
-    ]))
-    .on('error', err => console.log(err.message))
-    // .pipe(sourcemaps.write('.'))
-    // .pipe(gulp.dest('public/assets/css'))
-    // .pipe(rename, { suffix: '.min' })
-    .pipe(cssnano({
-      calc: false,
-      discardComments: { removeAll: true }
-    }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('public/assets/css'));
+          }
+        })
+      )
+      .pipe(sassGlob())
+      .pipe(
+        sass({
+          errLogToConsole: true,
+          outputStyle: 'expanded',
+          sourceComments: false,
+          onSuccess: function(msg) {
+            gutil.log('Done', gutil.colors.cyan(msg));
+          }
+        })
+      )
+      .pipe(
+        postcss([
+          autoprefixer({
+            browsers: [
+              'last 2 versions',
+              'Explorer >= 8',
+              'Android >= 4.1',
+              'Safari >= 7',
+              'iOS >= 7'
+            ]
+          }),
+          pixrem({ replace: false }),
+          inlineblock(),
+          pseudoelements()
+          // reporter({ clearMessages: true })
+        ])
+      )
+      .on('error', err => console.log(err.message))
+      // .pipe(sourcemaps.write('.'))
+      // .pipe(gulp.dest('public/assets/css'))
+      // .pipe(rename, { suffix: '.min' })
+      .pipe(
+        cssnano({
+          calc: false,
+          discardComments: { removeAll: true }
+        })
+      )
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('public/assets/css')));
 });
 
 gulp.task('css:clean', function() {
   return del(['public/assets/css']);
 });
 
+gulp.task('css', gulp.series('css:clean', 'css:process'));
+
 gulp.task('css:watch', function(done) {
-  gulp.watch([
-    'assets/sass/**/*.scss',
-    'components/**/*.scss',
-  ], gulp.series('css'));
+  gulp.watch(
+    ['assets/sass/**/*.scss', 'components/**/*.scss'],
+    gulp.series('css')
+  );
   done();
 });
 
-gulp.task('css', gulp.series('css:clean', 'css:process'));
-
 gulp.task('clean:dist', () => {
-  del.sync([
-    paths.output
-  ], { force: true })
-})
+  del.sync([paths.output], { force: true });
+});
 
 // Remove pre-existing content from text folders
 gulp.task('clean:test', () => {
-  del.sync([
-    paths.test.coverage,
-    paths.test.results
-  ], { force: true })
-})
+  del.sync([paths.test.coverage, paths.test.results], { force: true });
+});
 
 /* Scripts */
 
@@ -130,51 +147,63 @@ gulp.task('scripts:clean', function() {
 const bundleScripts = watch => {
   let cache;
   const bundler = browserify({
-    entries: ['./assets/js/components.js'],
+    entries: ['./assets/js/polyfills.js', './assets/js/components.js'],
     debug: true,
-    plugin: [(watch ? watchify : null)]
+    plugin: [watch ? watchify : null]
   })
-  .on('update', () => bundle())
-  .on('log', gutil.log)
-  .on('error', gutil.log)
-  .transform('rollupify', {
-    config: {
-      cache: cache,
-      entry: './assets/js/components.js',
-      plugins: [
-        commonjs({
-          include: 'node_modules/**',
-          namedExports: {
-            'node_modules/events/events.js': Object.keys(require('events'))
+    .on('update', () => bundle())
+    .on('log', gutil.log)
+    .on('error', gutil.log)
+    .transform('rollupify', {
+      config: {
+        cache: cache,
+        entry: './assets/js/components.js',
+
+        onwarn: function(message) {
+          if (message.code === 'THIS_IS_UNDEFINED') {
+            return;
           }
-        }),
-        nodeResolve({
-          jsnext: true,
-          main: true,
-          preferBuiltins: false
-        }),
-        rollupBabel({
-          plugins: ['lodash'],
-          presets: ['es2015-rollup', 'stage-2'],
-          babelrc: false,
-          exclude: 'node_modules/**'
-        })
-      ]
-    }
-  });
+
+          console.error(message);
+        },
+
+        plugins: [
+          commonjs({
+            include: 'node_modules/**',
+            namedExports: {
+              'node_modules/events/events.js': Object.keys(require('events'))
+            }
+          }),
+          nodeResolve({
+            jsnext: true,
+            main: true,
+            preferBuiltins: false
+          }),
+          rollupBabel({
+            plugins: ['lodash'],
+            presets: ['es2015-rollup', 'stage-2'],
+            babelrc: false,
+            exclude: 'node_modules/**'
+          })
+        ]
+      }
+    });
   const bundle = () => {
-    return bundler.bundle()
+    return bundler
+      .bundle()
       .on('error', function(err) {
         gutil.log(err.message);
         this.emit('end');
       })
       .pipe(source('bundle.js'))
       .pipe(buffer())
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(gulp.dest('public/assets/scripts'))
-      .pipe(rename({
-        suffix: '.min'
-      }))
+      .pipe(
+        rename({
+          suffix: '.min'
+        })
+      )
       .pipe(uglify())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('public/assets/scripts'));
@@ -189,11 +218,61 @@ gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle'));
 
 gulp.task('scripts:watch', () => bundleScripts(true));
 
+function scriptsLint (watch) {
+  let task = gulp.src(['./assets/**/*.js', './components/**/*.js'])
+    .pipe(eslint({
+      fix: true
+    }))
+    .pipe(eslint.format());
+
+  if (!watch) {
+    task.pipe(eslint.failAfterError());
+  }
+
+  return task;
+}
+
+gulp.task('scripts:lint', scriptsLint.bind(false));
+
+gulp.task('scripts:lint:watch-setup', scriptsLint.bind(true));
+
+gulp.task('scripts:lint:watch', function(done) {
+  gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:lint:watch-setup'));
+  done();
+});
+
+function styleLint (watch, done) {
+  return gulp.src(['./assets/sass/**/*.scss'])
+    .pipe(
+      gulpStylelint({
+        failAfterError: !watch,
+        reporters: [{ formatter: 'string', console: true }]
+      }).on('error', error => {
+        gutil.log('linting failed');
+        gutil.log(error);
+        if (!watch) {
+          console.log('exiting', watch);
+          process.exit(1);
+        }
+        done();
+      })
+    );
+}
+
+gulp.task('styles:lint', styleLint.bind(false));
+
+gulp.task('styles:lint:watch-setup', styleLint.bind(true));
+
+gulp.task('styles:lint:watch', function(done) {
+  gulp.watch(['./assets/**/*.scss'], gulp.parallel('styles:lint:watch-setup'));
+  done();
+});
+
+
 /* Fonts */
 
 gulp.task('fonts:copy', function() {
-  return gulp.src('assets/fonts/**/*')
-    .pipe(gulp.dest('public/assets/fonts'));
+  return gulp.src('assets/fonts/**/*').pipe(gulp.dest('public/assets/fonts'));
 });
 
 gulp.task('fonts:clean', function(done) {
@@ -210,8 +289,7 @@ gulp.task('fonts:watch', function(done) {
 /* Images */
 
 gulp.task('images:copy', function() {
-  return gulp.src('assets/img/**/*')
-    .pipe(gulp.dest('public/assets/img'));
+  return gulp.src('assets/img/**/*').pipe(gulp.dest('public/assets/img'));
 });
 
 gulp.task('images:clean', function(done) {
@@ -225,8 +303,21 @@ gulp.task('images:watch', function(done) {
   done();
 });
 
-gulp.task('default', gulp.parallel('css', 'scripts', 'fonts', 'images'));
-gulp.task('watch', gulp.parallel('css:watch', 'scripts:watch', 'fonts:watch', 'images:watch'));
-gulp.task('clean', gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean'));
-gulp.task('dev', gulp.series('default', 'fractal:start', 'watch',));
-
+gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images'));
+gulp.task(
+  'watch',
+  gulp.parallel(
+    'styles:lint:watch-setup',
+    'styles:lint:watch',
+    'css:watch',
+    'scripts:lint:watch-setup',
+    'scripts:lint:watch',
+    'scripts:watch',
+    'fonts:watch',
+    'images:watch')
+);
+gulp.task(
+  'clean',
+  gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean')
+);
+gulp.task('dev', gulp.series('watch', 'fractal:start'));
