@@ -15,5 +15,5 @@ Currently in use in eQ
 Global
 
 #### Dependencies
-* `/components/_footer2.scss`
-* `vars/_colours.sccs`
+* `/components/_footer.scss`
+* `vars/_colours.scss`
