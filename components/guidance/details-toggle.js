@@ -1,5 +1,5 @@
 import {forEach} from 'lodash';
-import domready from './domready';
+import domready from '../../assets/js/domready';
 
 export const classDetails = 'js-details';
 export const classTrigger = 'js-details-trigger';
