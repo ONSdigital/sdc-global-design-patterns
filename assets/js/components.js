@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 
-import './accordion';
 import './focus-styles';
 import './dialog';
 // Character count component (textarea)
