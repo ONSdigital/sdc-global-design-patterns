@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 
-import './details-toggle';
 import './focus-styles';
 import './dialog';
 // Character count component (textarea)
@@ -9,3 +8,4 @@ import '../../components/definitions/definitions.js';
 import '../../components/02-form-elements/input/input--password';
 import '../../components/timeout/timeout.js';
 import '../../components/accordion/accordion.js';
+import '../../components/guidance/details-toggle.js';
