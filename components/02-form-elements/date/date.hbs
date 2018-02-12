@@ -1,84 +1,34 @@
-<h2 class="collator-title">Date Range</h2>
-
 <div class="answer answer--date">
   <div class="answer__fields js-fields">
     <fieldset class="fieldgroup fieldgroup--date" data-qa="widget-date">
-      <legend class="fieldgroup__title venus">Period from</legend>
+      {{#if legend}}
+      <legend class="fieldgroup__title venus">{{legend}}</legend>
+      {{/if}}
 
       <div class="fieldgroup__fields">
         <div class="field field--input field--day">
-          <label class="label mercury" for="date-range-from-day" id="label-date-range-from-day"
-                 data-qa="label-day">Day</label>
-          <input id="date-range-from-day" placeholder="DD" name="date-range-from-day" value=""
+          <label class="label mercury"
+                 data-qa="label-day">{{dayLabel}}</label>
+          <input placeholder="DD" value=""
                  data-qa="input-StringField" class="input input--StringField ">
         </div>
 
         <div class="field field--select field--month">
           <label class="label mercury" for="date-range-from-month" id="label-date-range-from-month"
-                 data-qa="label-month">Month</label>
+                 data-qa="label-month">{{monthLabel}}</label>
           <select class="input input--select" id="date-range-from-month" name="date-range-from-month">
-            <option value="" disabled="disabled" selected="selected">Select month</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
+            {{#each months}}
+              <option value="{{value}}"
+                {{#if disabled}}disabled="disabled"{{/if}}
+                {{#if selected}}selected="selected"{{/if}}>{{label}}</option>
+            {{/each}}
           </select>
         </div>
 
         <div class="field field--input field--year">
-          <label class="label mercury" for="date-range-from-year" id="label-date-range-from-year" data-qa="label-year">Year</label>
-          <input id="date-range-from-year" placeholder="YYYY" name="date-range-from-year" value=""
-                 data-qa="input-StringField" class="input input--StringField ">
-        </div>
-      </div>
-    </fieldset>
-  </div>
-</div>
-
-<div class="answer answer--date" id="container-date-range-to">
-  <div class="answer__fields js-fields">
-    <fieldset class="fieldgroup fieldgroup--date" data-qa="widget-date">
-      <legend class="fieldgroup__title venus">Period to</legend>
-
-      <div class="fieldgroup__fields">
-        <div class="field field--input field--day">
-          <label class="label mercury" for="date-range-to-day" id="label-date-range-to-day"
-                 data-qa="label-day">Day</label>
-          <input id="date-range-to-day" placeholder="DD" name="date-range-to-day" value="" data-qa="input-StringField"
-                 class="input input--StringField ">
-        </div>
-
-        <div class="field field--select field--month">
-          <label class="label mercury" for="date-range-to-month" id="label-date-range-to-month" data-qa="label-month">Month</label>
-          <select class="input input--select" id="date-range-to-month" name="date-range-to-month">
-            <option value="" disabled="disabled" selected="selected">Select month</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-        </div>
-
-        <div class="field field--input field--year">
-          <label class="label mercury" for="date-range-to-year" id="label-date-range-to-year"
-                 data-qa="label-year">Year</label>
-          <input id="date-range-to-year" placeholder="YYYY" name="date-range-to-year" value=""
+          <label class="label mercury"
+                 data-qa="label-year">{{yearLabel}}</label>
+          <input placeholder="YYYY" value=""
                  data-qa="input-StringField" class="input input--StringField ">
         </div>
       </div>
