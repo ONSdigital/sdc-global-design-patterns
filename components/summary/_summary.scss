@@ -26,8 +26,7 @@
   }
   @include mq(s) {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: space-around;
   }
 }
@@ -87,11 +86,14 @@
 .summary__answer-text {
   align-items: center;
   flex: 1 1 auto;
-  word-break: break-all;
   font-weight: $font-weight-bold;
   p:last-of-type {
     margin-bottom: 0;
   }
+}
+
+.summary__answer-break {
+  word-break: break-all;
 }
 
 .summary__edit {

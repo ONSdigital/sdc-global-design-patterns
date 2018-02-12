@@ -2,7 +2,6 @@
   // vertical-align: middle;
   padding-right: 1.2em;
   position: relative;
-
   &::after {
     position: absolute;
     top: 0;
@@ -12,7 +11,6 @@
     content: " ";
     background: url("#{$static}/img/icons/icons--external-link.svg") no-repeat center center;
     background-size: 1.9em;
-    background-color: transparent !important;
     width: 1em;
     height: 1em;
     display: inline-block;
