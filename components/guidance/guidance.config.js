@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Guidance',
   default: 'guidance',
-  status: 'wip',
+  status: 'ready',
   collated: true,
   variants: [{
     name: "guidance",
