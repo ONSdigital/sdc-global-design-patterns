@@ -2,7 +2,7 @@ module.exports = {
   title: 'Timeout',
   label: 'Timeout',
   name: 'timeout',
-  status: 'wip',
+  status: 'ready',
   context: {
     survey_title: 'Survey or Service name',
     width: '40',

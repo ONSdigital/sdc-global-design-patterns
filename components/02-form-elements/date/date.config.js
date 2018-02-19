@@ -3,7 +3,7 @@ module.exports = {
   label: 'Date',
   name: 'date',
   collated: true,
-  status: 'wip',
+  status: 'ready',
   context: {
     dayLabel: 'Day',
     monthLabel: 'Month',

@@ -1,5 +1,5 @@
 module.exports = {
   title: 'Accordion',
-  status: 'deprecated',
+  status: 'ready',
   collated: true
 };
