@@ -45,7 +45,7 @@
       }
     }
     @include lt-ie9() {
-      background: url("/s/img/check-green.png") no-repeat 0.5rem center;
+      background: url("#{$static}/img/check-green.png") no-repeat 0.5rem center;
       background-size: 17px 13px;
     }
   }
