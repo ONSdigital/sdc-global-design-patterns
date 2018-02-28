@@ -286,6 +286,7 @@ gulp.task('fonts:watch', function(done) {
   done();
 });
 
+
 /* Images */
 
 gulp.task('images:copy', function() {
@@ -303,7 +304,26 @@ gulp.task('images:watch', function(done) {
   done();
 });
 
-gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images'));
+
+/* Favicons */
+
+gulp.task('favicons:copy', function() {
+  return gulp.src('assets/favicons/**/*').pipe(gulp.dest('public/assets/favicons'));
+});
+
+gulp.task('favicons:clean', function (done) {
+  return del(['public/assets/favicons'], done);
+});
+
+gulp.task('favicons', gulp.series('favicons:clean', 'favicons:copy'));
+
+gulp.task('favicons:watch', function(done) {
+  gulp.watch('assets/favicons/**/*', gulp.parallel('favicons'));
+  done();
+});
+
+
+gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images', 'favicons'));
 gulp.task(
   'watch',
   gulp.parallel(
@@ -317,10 +337,12 @@ gulp.task(
     'fonts',
     'fonts:watch',
     'images',
-    'images:watch')
+    'images:watch',
+    'favicons',
+    'favicons:watch')
 );
 gulp.task(
   'clean',
-  gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean')
+  gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean', 'favicons:clean')
 );
 gulp.task('dev', gulp.series('watch', 'fractal:start'));
