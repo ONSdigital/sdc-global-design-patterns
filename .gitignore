@@ -4,5 +4,6 @@ public
 .idea
 dist
 yarn-error.log
+coverage
 
 secrets.yml

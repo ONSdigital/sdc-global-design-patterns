@@ -17,6 +17,7 @@ import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
+import { unitTests } from './gulp/tests'
 
 import eslint from 'gulp-eslint';
 import gulpStylelint from 'gulp-stylelint';
@@ -27,6 +28,12 @@ import commonjs from 'rollup-plugin-commonjs';
 
 import fractal from './fractal.js';
 const logger = fractal.cli.console;
+
+let paths = {
+  test: {
+    karmaConf: 'tests/karma/karma.conf.js'
+  }
+};
 
 /*
  * An example of a Gulp task that starts a Fractal development server.
@@ -240,6 +247,18 @@ gulp.task('scripts:lint:watch', function(done) {
   gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:lint:watch-setup'));
   done();
 });
+
+gulp.task('scripts:test:unit', function(done) {
+  unitTests(done, false, paths);
+});
+
+gulp.task('scripts:test:unit:watch', done => {
+  unitTests(done, true, paths)
+})
+
+gulp.task('scripts:test', gulp.parallel(
+  'scripts:test:unit'
+));
 
 function styleLint (watch, done) {
   return gulp.src(['./assets/sass/**/*.scss'])
