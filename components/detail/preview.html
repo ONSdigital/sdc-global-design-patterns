@@ -205,32 +205,40 @@
 <span class="hljs-comment">&lt;!--[if gt IE 9]&gt;&lt;!--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en-gb"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js"</span>&gt;</span>
 <span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0, shrink-to-fit=no"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../assets/img/eq.png"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../assets/css/styles.css"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span> | SDC Pattern Library<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 
-<span class="hljs-comment">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-built_in">document</span>.documentElement.className = <span class="hljs-built_in">document</span>.documentElement.className.replace(<span class="hljs-string">'no-js'</span>, <span class="hljs-string">'has-js'</span>)
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0, shrink-to-fit=no"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../assets/img/eq.png"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span> | SDC Pattern Library<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-built_in">window</span>.__EQ_SESSION_TIMEOUT__ = <span class="hljs-number">18</span>;
-    <span class="hljs-built_in">window</span>.__EQ_SESSION_TIMEOUT_PROMPT__ = <span class="hljs-number">12</span>;
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--[if (gt IE 9) | (IEMobile)]&gt;&lt;!--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../assets/css/responsive.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
+    <span class="hljs-comment">&lt;!--[if (lte IE 9) &amp; (!IEMobile)]&gt;
+  &lt;link href="../../assets/css/fixed.css" rel="stylesheet"&gt;
+  &lt;![endif]--&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-    <span class="hljs-selector-class">.collator-item</span> {
-        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2rem</span>;
-    }
-    
-    <span class="hljs-selector-class">.collator-title</span> {
-        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2rem</span>;
-    }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">document</span>.documentElement.className = <span class="hljs-built_in">document</span>.documentElement.className.replace(<span class="hljs-string">'no-js'</span>, <span class="hljs-string">'has-js'</span>)
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">window</span>.__EQ_SESSION_TIMEOUT__ = <span class="hljs-number">18</span>;
+        <span class="hljs-built_in">window</span>.__EQ_SESSION_TIMEOUT_PROMPT__ = <span class="hljs-number">12</span>;
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.collator-item</span> {
+            <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2rem</span>;
+        }
+        
+        <span class="hljs-selector-class">.collator-title</span> {
+            <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2rem</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
