@@ -57,16 +57,16 @@ class SessionTimeoutUI {
         this.continueRetryCount = this.continueRetryLimit;
         this.animation.reset();
       }).catch(() => {
-      // if error retry 5 times
-      if (this.continueRetryCount-- > 0) {
-        window.setTimeout(() => {
-          this.handleContinue(e);
-        }, 1000);
-      } else {
-        this.continueBtn.reset();
-        this.continueRetryCount = this.continueRetryLimit;
-      }
-    });
+        // if error retry 5 times
+        if (this.continueRetryCount-- > 0) {
+          window.setTimeout(() => {
+            this.handleContinue(e);
+          }, 1000);
+        } else {
+          this.continueBtn.reset();
+          this.continueRetryCount = this.continueRetryLimit;
+        }
+      });
   }
 
   static onTick () {
@@ -99,7 +99,8 @@ domready(() => {
     timeLimit = window.__EQ_SESSION_TIMEOUT__,
     containerScopeEl = document.querySelector('.js-timeout-container');
 
-  let timeoutInterval;
+  let timeoutInterval,
+    instance = null;
 
   /**
    * If globals aren't set and DOM isn't configured don't proceed
@@ -126,15 +127,20 @@ domready(() => {
     }
 
     if (countDown < promptTime) {
-      SessionTimeoutUI.create({
-        scopeEl: containerScopeEl,
-        countDown: countDown,
-        animation: new CountdownAnimation(
-          containerScopeEl.querySelector('.js-timeout'),
-          promptTime,
-          timeLimit
-        )
-      });
+      if (!instance) {
+        instance = SessionTimeoutUI.create({
+          scopeEl: containerScopeEl,
+          countDown: countDown,
+          animation: new CountdownAnimation(
+            containerScopeEl.querySelector('.js-timeout'),
+            promptTime,
+            timeLimit
+          )
+        });
+      }
+      else {
+        instance.animation.draw(countDown);
+      }
     }
   }, 1000);
 });
