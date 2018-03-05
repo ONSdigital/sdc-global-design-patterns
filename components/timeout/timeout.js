@@ -17,7 +17,8 @@ class SessionTimeoutUI {
     scopeEl,
     continueRetryLimit = 5,
     animation,
-    handleSave
+    handleSave,
+    continueSuccessCallback
   }) {
 
     if (!objHasInterface(animation, Countable)) {
@@ -30,6 +31,7 @@ class SessionTimeoutUI {
     this.continueRetryCount = this.continueRetryLimit = continueRetryLimit;
 
     this.animation = animation;
+    this.continueSuccessCallback = continueSuccessCallback;
 
     // intercept and override ESC key closing dialog
     document.addEventListener('keydown', (e) => {
@@ -56,6 +58,8 @@ class SessionTimeoutUI {
         this.continueBtn.reset();
         this.continueRetryCount = this.continueRetryLimit;
         this.animation.reset();
+        SessionTimeoutUI.reset();
+        this.continueSuccessCallback();
       }).catch(() => {
         // if error retry 5 times
         if (this.continueRetryCount-- > 0) {
@@ -67,6 +71,10 @@ class SessionTimeoutUI {
           this.continueRetryCount = this.continueRetryLimit;
         }
       });
+  }
+
+  static reset () {
+    SessionTimeoutUI.timeStartCountdown = getTimeNow();
   }
 
   static onTick () {
@@ -84,7 +92,8 @@ class SessionTimeoutUI {
 
         document.querySelector('.js-btn-save').click();
         return false;
-      }
+      },
+      continueSuccessCallback: opts.continueSuccessCallback
     });
 
     instance.animation.draw(opts.countDown || 0);
@@ -135,7 +144,10 @@ domready(() => {
             containerScopeEl.querySelector('.js-timeout'),
             promptTime,
             timeLimit
-          )
+          ),
+          continueSuccessCallback: () => {
+            instance = null;
+          }
         });
       }
       else {
