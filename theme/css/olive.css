@@ -662,27 +662,28 @@ h6 {
     font-weight: normal; }
 
 .AssetList-link {
+  text-decoration: none;
+  width: 100%;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding: 7px 0;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  padding: 0.5rem 0;
-  text-decoration: none; }
+          align-items: center; }
   .AssetList-link:hover .AssetList-path {
-    color: rgba(83, 83, 99, 0.75); }
+    color: rgba(83, 83, 99, 0.8); }
   .AssetList-link:hover .AssetList-icon svg {
     fill: #999; }
 
 .AssetList-icon {
-  -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem; }
+  -webkit-margin-end: 8px;
+     -moz-margin-end: 8px;
+          margin-inline-end: 8px; }
   [dir="ltr"] .AssetList-icon {
-    margin-right: 0.5rem; }
+    margin-right: 8px; }
   [dir="rtl"] .AssetList-icon {
-    margin-left: 0.5rem; }
+    margin-left: 8px; }
   .AssetList-icon svg {
     fill: #ccc; }
 
@@ -1221,14 +1222,14 @@ h6 {
   bottom: 0;
   left: 0;
   position: absolute;
+  width: 100%;
+  height: 100%;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  height: 100%; }
+          flex-direction: column; }
 
 .Browser-controls {
   display: -webkit-flex;
@@ -1266,23 +1267,56 @@ h6 {
   -webkit-flex: auto;
       -ms-flex: auto;
           flex: auto;
-  white-space: nowrap; }
+  white-space: nowrap;
+  max-width: 8rem; }
   .Browser-tab a {
-    font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+    font: normal 0.8125rem/1.53846 "Open Sans", Helvetica, Arial, sans-serif;
+    display: block;
     width: 100%;
-    padding: 0.75rem 0.75rem 0.875rem;
-    border-bottom: 0.125rem solid transparent;
-    text-align: center; }
+    text-align: center;
+    padding: 0.625rem 0.75rem;
+    border-bottom: 2px solid transparent;
+    border-top: 1px solid transparent; }
     .Browser-tab a:link, .Browser-tab a:visited, .Browser-tab a:hover, .Browser-tab a:active {
       color: #535363;
       text-decoration: none; }
     .Browser-tab a:hover {
-      border-bottom-color: #ccc; }
+      border-bottom: 2px solid #ccc; }
+      .Browser-tab a:hover svg {
+        opacity: 0.9; }
+  .Browser-tab svg {
+    -webkit-margin-end: 0.125rem;
+       -moz-margin-end: 0.125rem;
+            margin-inline-end: 0.125rem;
+    pointer-events: none;
+    opacity: 0.6;
+    position: relative;
+    top: 2px; }
+    [dir="ltr"] .Browser-tab svg {
+      margin-right: 0.125rem; }
+    [dir="rtl"] .Browser-tab svg {
+      margin-left: 0.125rem; }
   .Browser-tab.is-active a {
-    border-bottom-color: #054;
-    font-weight: bolder; }
+    border-bottom: 2px solid #054; }
+  .Browser-tab.is-active svg {
+    opacity: 0.9; }
   .Browser-tab.is-disabled a {
     opacity: 0.5; }
+
+.Browser-tab--view svg {
+  top: 1px; }
+
+.Browser-tab--context svg {
+  top: 0px; }
+
+.Browser-tab--assets svg {
+  top: 1px; }
+
+.Browser-tab--info svg {
+  top: 1px; }
 
 .Browser-panel {
   -webkit-flex: 1 1 auto;
@@ -1306,6 +1340,12 @@ h6 {
     -webkit-flex-basis: 100%;
         -ms-flex-preferred-size: 100%;
             flex-basis: 100%; }
+
+.Browser-notes {
+  padding-top: 20px; }
+
+.Browser-resources {
+  padding: 0; }
 
 .Browser-isEmptyNote {
   font-style: italic;
@@ -1340,12 +1380,7 @@ h6 {
   border-bottom: 1px solid rgba(83, 83, 99, 0.25);
   padding-bottom: 0.5rem; }
   .Document-header .Status {
-    -webkit-margin-start: auto;
-            margin-inline-start: auto; }
-    [dir="ltr"] .Document-header .Status {
-      margin-left: auto; }
-    [dir="rtl"] .Document-header .Status {
-      margin-right: auto; }
+    margin-left: auto; }
 
 .Document-title {
   font: bold 1.75rem/1.14286 "Open Sans", Helvetica, Arial, sans-serif;
@@ -1355,23 +1390,22 @@ h6 {
 .Error-stack {
   margin-top: 1.5rem; }
   .Error-stack pre {
-    font: normal 0.875rem/1.71429 Hack, Consolas, Monaco, "Andale Mono", monospace;
-    color: rgba(83, 83, 99, 0.75); }
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(83, 83, 99, 0.8); }
 
 .Error--render {
-  background-color: rgba(187, 0, 0, 0.05);
-  border: 1px solid rgba(187, 0, 0, 0.25);
-  padding: 0.75rem; }
+  padding: 18px 20px 20px 20px;
+  border: 1px solid rgba(193, 0, 0, 0.3);
+  background-color: rgba(193, 0, 0, 0.05); }
   .Error--render .Error-title {
-    font: normal 0.75rem/1.66667 "Open Sans", Helvetica, Arial, sans-serif;
-    letter-spacing: 0.075em;
-    text-transform: uppercase;
-    color: #b00; }
+    color: #C10000;
+    font-size: 1.0rem;
+    margin-bottom: 0.4rem; }
   .Error--render .Error-message {
-    font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif; }
-  .Error--render .Error-stack pre,
-  .Error--render .Error-stack code {
-    background-color: #fff !important; }
+    color: #444; }
+    .Error--render .Error-message p:last-child {
+      margin-bottom: 0; }
 
 .FileBrowser {
   position: static;
@@ -1379,65 +1413,60 @@ h6 {
       -ms-flex-preferred-size: 100%;
           flex-basis: 100%; }
 
+.FileBrowser-select-label {
+  display: block;
+  width: auto;
+  font-weight: bold;
+  margin-bottom: 5px; }
+
 .FileBrowser-selectWrapper {
-  margin: -0.75rem -0.75rem 0.75rem -0.75rem;
-  padding: 0.5rem 0.75rem;
-  background-color: rgba(83, 83, 99, 0.05); }
+  padding: 15px;
+  border-bottom: 1px solid rgba(106, 106, 127, 0.25);
+  background-color: #f1f1f1; }
   .FileBrowser-selectWrapper .select2-container {
-    font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif;
-    -webkit-margin-start: -0.25rem;
-            margin-inline-start: -0.25rem;
-    margin-bottom: -1px;
-    min-width: 15em; }
-    [dir="ltr"] .FileBrowser-selectWrapper .select2-container {
-      margin-left: -0.25rem; }
-    [dir="rtl"] .FileBrowser-selectWrapper .select2-container {
-      margin-right: -0.25rem; }
+    min-width: 200px;
+    font-size: 14px; }
   .FileBrowser-selectWrapper select:focus,
   .FileBrowser-selectWrapper select:active {
     outline: none; }
 
-.FileBrowser-select-label {
-  font: normal 0.75rem/1.66667 "Open Sans", Helvetica, Arial, sans-serif;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-  display: block;
-  width: auto;
-  padding: 0.25rem 0;
-  font-weight: bold; }
+span.select2-selection.select2-selection--single {
+  outline: none; }
 
-.select2-selection.select2-selection--single {
-  border-color: rgba(83, 83, 99, 0.25); }
-  .select2-container--focus .select2-selection.select2-selection--single {
-    outline: none;
-    border-color: #054; }
+.select2-container--focus {
+  outline: none; }
 
 .select2-results__option {
-  font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif;
-  min-width: 15em; }
-  .select2-results__option[aria-selected=true] {
-    background-color: rgba(83, 83, 99, 0.1) !important; }
+  min-width: 200px;
+  font-size: 14px; }
 
-.select2-results__option--highlighted[aria-selected] {
+.select2-results__option--highlighted {
   background-color: #276 !important;
   color: #efd !important; }
 
 .FileBrowser-item {
-  display: none; }
+  display: none;
+  padding: 0 0.75rem 0.75rem 0.75rem; }
   .FileBrowser-item.is-active {
     display: block; }
 
 @media (min-width: 37.5em) {
   .Frame.is-closed .FileBrowser-select-label {
+    font-size: 15px;
     position: relative;
-    width: 10rem;
-    display: inline-block; } }
+    top: 2px;
+    width: 194px;
+    display: inline-block;
+    margin-bottom: 0; } }
 
 @media (min-width: 50em) {
   .Frame:not(.is-closed) .FileBrowser-select-label {
+    font-size: 15px;
     position: relative;
-    width: 10rem;
-    display: inline-block; } }
+    top: 2px;
+    width: 194px;
+    display: inline-block;
+    margin-bottom: 0; } }
 
 .Frame {
   display: -webkit-flex;
@@ -1487,6 +1516,7 @@ h6 {
   @media (max-width: 31.24em) {
     .Frame-body {
       -webkit-margin-end: 240px;
+         -moz-margin-end: 240px;
               margin-inline-end: 240px;
       -webkit-transform: translate3d(-240px, 0, 0);
               transform: translate3d(-240px, 0, 0);
@@ -1513,6 +1543,7 @@ h6 {
 
 .Frame-panel--sidebar {
   -webkit-border-end: 1px solid rgba(83, 83, 99, 0.25);
+     -moz-border-end: 1px solid rgba(83, 83, 99, 0.25);
           border-inline-end: 1px solid rgba(83, 83, 99, 0.25);
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
@@ -1547,6 +1578,7 @@ h6 {
 .Frame-handle {
   transition: all 0.15s ease-out;
   -webkit-margin-end: -0.625rem;
+     -moz-margin-end: -0.625rem;
           margin-inline-end: -0.625rem;
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
@@ -1599,6 +1631,7 @@ h6 {
 
 .Header-button {
   -webkit-border-end: 1px solid rgba(238, 255, 221, 0.25);
+     -moz-border-end: 1px solid rgba(238, 255, 221, 0.25);
           border-inline-end: 1px solid rgba(238, 255, 221, 0.25);
   display: block;
   border: 0;
@@ -1637,82 +1670,46 @@ h6 {
   text-decoration: none; }
 
 .Meta-item {
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-  padding-bottom: 1rem; }
-  .Meta-item:not(:last-child) {
-    border-bottom: 1px solid rgba(83, 83, 99, 0.15); }
+  padding: 14px 0;
+  overflow: hidden; }
+  .Meta-item + .Meta-item {
+    border-top: 1px solid rgba(106, 106, 127, 0.25); }
 
 .Meta-key {
-  font: normal 0.75rem/1.66667 "Open Sans", Helvetica, Arial, sans-serif;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-  display: block;
-  padding-right: 0.5rem;
-  padding-bottom: 0.25rem;
-  color: rgba(83, 83, 99, 0.75); }
+  margin-bottom: 10px;
+  display: block; }
 
 .Meta-value {
-  font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif;
   display: block;
-  min-width: 10rem;
-  padding-bottom: 0.25rem; }
-  .Meta-value a {
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  .Meta-value a svg {
-    width: 1rem;
-    height: 1rem;
-    margin-left: 5px; }
+  min-width: 200px;
+  white-space: nowrap; }
   .Meta-value a:hover span {
     text-decoration: underline; }
-  .Meta-value li:not(:last-child) {
-    margin-bottom: 0.25em; }
+  .Meta-value li {
+    margin-bottom: 5px; }
+    .Meta-value li:last-child {
+      margin-bottom: 0; }
 
 .Meta-count {
   font-style: normal;
-  font-weight: normal;
-  opacity: 0.75; }
+  opacity: 0.5;
+  font-size: 0.9em; }
 
 @media (min-width: 37.5em) {
   .Frame.is-closed .Meta-item {
-    -webkit-padding-start: 10rem;
-            padding-inline-start: 10rem; }
-    [dir="ltr"] .Frame.is-closed .Meta-item {
-      padding-left: 10rem; }
-    [dir="rtl"] .Frame.is-closed .Meta-item {
-      padding-right: 10rem; }
+    padding-left: 200px; }
   .Frame.is-closed .Meta-key {
-    -webkit-margin-start: -10rem;
-            margin-inline-start: -10rem;
-    width: 10rem;
-    float: left; }
-    [dir="ltr"] .Frame.is-closed .Meta-key {
-      margin-left: -10rem; }
-    [dir="rtl"] .Frame.is-closed .Meta-key {
-      margin-right: -10rem; } }
+    width: 180px;
+    float: left;
+    margin-left: -200px; } }
 
 @media (min-width: 50em) {
   .Frame:not(.is-closed) .Meta-item {
-    -webkit-padding-start: 10rem;
-            padding-inline-start: 10rem; }
-    [dir="ltr"] .Frame:not(.is-closed) .Meta-item {
-      padding-left: 10rem; }
-    [dir="rtl"] .Frame:not(.is-closed) .Meta-item {
-      padding-right: 10rem; }
+    padding-left: 200px; }
   .Frame:not(.is-closed) .Meta-key {
-    -webkit-margin-start: -10rem;
-            margin-inline-start: -10rem;
-    width: 10rem;
-    float: left; }
-    [dir="ltr"] .Frame:not(.is-closed) .Meta-key {
-      margin-left: -10rem; }
-    [dir="rtl"] .Frame:not(.is-closed) .Meta-key {
-      margin-right: -10rem; } }
+    width: 180px;
+    float: left;
+    margin-left: -200px; } }
 
 .Navigation {
   display: inline-block;
@@ -1760,8 +1757,10 @@ h6 {
           align-items: center; }
   .Pen-header .Status {
     -webkit-margin-start: auto;
+       -moz-margin-start: auto;
             margin-inline-start: auto;
     -webkit-padding-start: 0.5rem;
+       -moz-padding-start: 0.5rem;
             padding-inline-start: 0.5rem; }
     [dir="ltr"] .Pen-header .Status {
       margin-left: auto; }
@@ -1800,11 +1799,17 @@ h6 {
   text-decoration: none; }
 
 .Pen-previewLink svg {
-  fill: #054;
-  opacity: 0.75; }
+  -webkit-margin-start: 5px;
+     -moz-margin-start: 5px;
+          margin-inline-start: 5px;
+  fill: #054; }
+  [dir="ltr"] .Pen-previewLink svg {
+    margin-left: 5px; }
+  [dir="rtl"] .Pen-previewLink svg {
+    margin-right: 5px; }
 
 .Pen-previewLink:hover svg {
-  opacity: 1; }
+  fill: #000907; }
 
 .Pen-preview {
   -webkit-flex: 0 0 auto;
@@ -1890,7 +1895,8 @@ h6 {
   width: calc(100% + 0.625rem);
   min-width: 200px;
   max-width: calc(100% + 0.625rem);
-  background-color: transparent; }
+  background-color: transparent;
+  max-width: 100%; }
   [dir="ltr"] .Preview-wrapper {
     left: 0; }
   [dir="rtl"] .Preview-wrapper {
@@ -1918,7 +1924,7 @@ h6 {
       min-width: 100%;
       border: 0; } }
   .Preview-resizer .Error {
-    margin: 0.75rem; }
+    margin: 20px; }
 
 .Preview-iframe {
   top: 0;
@@ -1943,6 +1949,7 @@ h6 {
 
 .Preview-handle {
   -webkit-border-start: 1px solid rgba(83, 83, 99, 0.25);
+     -moz-border-start: 1px solid rgba(83, 83, 99, 0.25);
           border-inline-start: 1px solid rgba(83, 83, 99, 0.25);
   transition: all 0.15s ease-out;
   offset-inline-end: 0;
@@ -1983,11 +1990,12 @@ h6 {
   max-width: 44em;
   font-feature-settings: "liga", "dlig", "kern", "onum";
   hanging-punctuation: first; }
-  .Prose > *:not(:last-child) {
+  .Prose > * {
     margin-bottom: 0.75em; }
   .Prose ul,
   .Prose ol {
     -webkit-padding-start: 1.25em;
+       -moz-padding-start: 1.25em;
             padding-inline-start: 1.25em; }
     [dir="ltr"] .Prose ul, [dir="ltr"]
     .Prose ol {
@@ -2030,8 +2038,10 @@ h6 {
     font-feature-settings: "c2sc"; }
   .Prose blockquote {
     -webkit-border-start: solid rgba(83, 83, 99, 0.25);
+       -moz-border-start: solid rgba(83, 83, 99, 0.25);
             border-inline-start: solid rgba(83, 83, 99, 0.25);
     -webkit-padding-start: 1em;
+       -moz-padding-start: 1em;
             padding-inline-start: 1em;
     opacity: 0.75; }
     [dir="ltr"] .Prose blockquote {
@@ -2045,8 +2055,6 @@ h6 {
   .Prose code,
   .Prose code pre {
     background-color: rgba(83, 83, 99, 0.075); }
-  .Prose img {
-    max-width: 100%; }
   .Prose p code,
   .Prose li code {
     padding: 0.125rem; }
@@ -2061,7 +2069,7 @@ h6 {
     font-size: 0.875rem;
     font-feature-settings: "lnum" 1, "tnum" 1; }
   .Prose caption {
-    font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif;
+    font: normal 0.8125rem/1.53846 "Open Sans", Helvetica, Arial, sans-serif;
     padding: 0 0.5rem;
     font-style: italic;
     text-align: start;
@@ -2122,6 +2130,7 @@ h6 {
 
 .Status-dot + .Status-dot {
   -webkit-margin-start: 3px;
+     -moz-margin-start: 3px;
           margin-inline-start: 3px; }
   [dir="ltr"] .Status-dot + .Status-dot {
     margin-left: 3px; }
@@ -2129,7 +2138,7 @@ h6 {
     margin-right: 3px; }
 
 .Status-label {
-  font: normal 0.75rem/1.66667 "Open Sans", Helvetica, Arial, sans-serif;
+  font: bold 0.6875rem/1.81818 "Open Sans", Helvetica, Arial, sans-serif;
   letter-spacing: 0.075em;
   text-transform: uppercase;
   display: inline-block;
@@ -2140,6 +2149,7 @@ h6 {
 
 .Status-label + .Status-label {
   -webkit-margin-start: 0.25rem;
+     -moz-margin-start: 0.25rem;
           margin-inline-start: 0.25rem; }
   [dir="ltr"] .Status-label + .Status-label {
     margin-left: 0.25rem; }
@@ -2148,6 +2158,7 @@ h6 {
 
 .Status--labelled .Status-label {
   -webkit-margin-end: 0.75rem;
+     -moz-margin-end: 0.75rem;
           margin-inline-end: 0.75rem; }
   [dir="ltr"] .Status--labelled .Status-label {
     margin-right: 0.75rem; }
@@ -2158,10 +2169,11 @@ h6 {
   white-space: nowrap; }
 
 .Tree-title {
-  font: normal 0.75rem/1.66667 "Open Sans", Helvetica, Arial, sans-serif;
+  font: bold 0.6875rem/1.81818 "Open Sans", Helvetica, Arial, sans-serif;
   letter-spacing: 0.075em;
   text-transform: uppercase;
   -webkit-padding-start: 1rem;
+     -moz-padding-start: 1rem;
           padding-inline-start: 1rem;
   margin-bottom: 0.5rem;
   color: rgba(83, 83, 99, 0.75); }
@@ -2180,7 +2192,7 @@ h6 {
     background-image: url("../img/icon-navigation-closed-rtl.svg"); }
 
 .Tree-collectionLabel {
-  font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif;
+  font: normal 0.8125rem/1.53846 "Open Sans", Helvetica, Arial, sans-serif;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   cursor: pointer;
@@ -2195,8 +2207,10 @@ h6 {
     background-color: rgba(83, 83, 99, 0.05); }
   .Tree-collectionLabel span {
     -webkit-padding-start: 0.75rem;
+       -moz-padding-start: 0.75rem;
             padding-inline-start: 0.75rem;
     -webkit-margin-start: -1.75rem;
+       -moz-margin-start: -1.75rem;
             margin-inline-start: -1.75rem;
     display: block;
     position: relative; }
@@ -2213,12 +2227,12 @@ h6 {
     display: inline-block;
     position: absolute;
     top: 0.25rem;
-    width: 0.75rem;
-    height: 0.75rem;
     background-image: url("../img/icon-navigation-opened.svg");
     background-size: 0.5rem;
     background-repeat: no-repeat;
     background-position: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
     opacity: 0.5;
     content: ""; }
     [dir="ltr"] .Tree-collectionLabel span::before {
@@ -2227,7 +2241,7 @@ h6 {
       right: 0; }
 
 .Tree-item {
-  font: normal 0.875rem/1.71429 "Open Sans", Helvetica, Arial, sans-serif; }
+  font: normal 0.8125rem/1.53846 "Open Sans", Helvetica, Arial, sans-serif; }
 
 .Tree-entityLink {
   display: -webkit-flex;
@@ -2245,6 +2259,7 @@ h6 {
     background-color: rgba(83, 83, 99, 0.075); }
   .Tree-entityLink .Status {
     -webkit-margin-start: 0.25rem;
+       -moz-margin-start: 0.25rem;
             margin-inline-start: 0.25rem; }
     [dir="ltr"] .Tree-entityLink .Status {
       margin-left: 0.25rem; }
@@ -2254,6 +2269,7 @@ h6 {
 .Tree-depth-1 .Tree-collectionLabel,
 .Tree-depth-1 .Tree-entityLink {
   -webkit-padding-start: 1rem;
+     -moz-padding-start: 1rem;
           padding-inline-start: 1rem; }
   [dir="ltr"] .Tree-depth-1 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-1 .Tree-entityLink {
@@ -2265,6 +2281,7 @@ h6 {
 .Tree-depth-2 .Tree-collectionLabel,
 .Tree-depth-2 .Tree-entityLink {
   -webkit-padding-start: 2rem;
+     -moz-padding-start: 2rem;
           padding-inline-start: 2rem; }
   [dir="ltr"] .Tree-depth-2 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-2 .Tree-entityLink {
@@ -2276,6 +2293,7 @@ h6 {
 .Tree-depth-3 .Tree-collectionLabel,
 .Tree-depth-3 .Tree-entityLink {
   -webkit-padding-start: 3rem;
+     -moz-padding-start: 3rem;
           padding-inline-start: 3rem; }
   [dir="ltr"] .Tree-depth-3 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-3 .Tree-entityLink {
@@ -2287,6 +2305,7 @@ h6 {
 .Tree-depth-4 .Tree-collectionLabel,
 .Tree-depth-4 .Tree-entityLink {
   -webkit-padding-start: 4rem;
+     -moz-padding-start: 4rem;
           padding-inline-start: 4rem; }
   [dir="ltr"] .Tree-depth-4 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-4 .Tree-entityLink {
@@ -2298,6 +2317,7 @@ h6 {
 .Tree-depth-5 .Tree-collectionLabel,
 .Tree-depth-5 .Tree-entityLink {
   -webkit-padding-start: 5rem;
+     -moz-padding-start: 5rem;
           padding-inline-start: 5rem; }
   [dir="ltr"] .Tree-depth-5 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-5 .Tree-entityLink {
@@ -2309,6 +2329,7 @@ h6 {
 .Tree-depth-6 .Tree-collectionLabel,
 .Tree-depth-6 .Tree-entityLink {
   -webkit-padding-start: 6rem;
+     -moz-padding-start: 6rem;
           padding-inline-start: 6rem; }
   [dir="ltr"] .Tree-depth-6 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-6 .Tree-entityLink {
@@ -2320,6 +2341,7 @@ h6 {
 .Tree-depth-7 .Tree-collectionLabel,
 .Tree-depth-7 .Tree-entityLink {
   -webkit-padding-start: 7rem;
+     -moz-padding-start: 7rem;
           padding-inline-start: 7rem; }
   [dir="ltr"] .Tree-depth-7 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-7 .Tree-entityLink {
@@ -2331,6 +2353,7 @@ h6 {
 .Tree-depth-8 .Tree-collectionLabel,
 .Tree-depth-8 .Tree-entityLink {
   -webkit-padding-start: 8rem;
+     -moz-padding-start: 8rem;
           padding-inline-start: 8rem; }
   [dir="ltr"] .Tree-depth-8 .Tree-collectionLabel, [dir="ltr"]
   .Tree-depth-8 .Tree-entityLink {
