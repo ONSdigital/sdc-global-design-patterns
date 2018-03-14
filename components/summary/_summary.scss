@@ -18,20 +18,21 @@
   border-bottom: 1px solid $color-borders;
   border-bottom: none;
   margin: 0 0 1rem;
-  border-radius: 0px;
-  @include mq(s) {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-  }
+  border-radius: 0;
 }
 
-.summary__question,
 .summary__answer {
-  margin: 0;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  overflow: hidden;
   width: 100%;
-  border: none;
-  text-align: left;
+  margin: 0;
+  border-bottom: 1px solid $color-borders;
+  flex-flow: row wrap;
+  @include mq(s) {
+    flex-flow: row no-wrap;
+  }
   @include fixed {
     display: inline-block;
     vertical-align: middle;
@@ -42,13 +43,11 @@
 }
 
 .summary__question {
-  width: 42%;
-  display: flex;
-  padding: 0.6rem 0.5rem 0.6rem 0;
-  // fixes IE10 wrapping problem
-  div {
-    width: 100%;
-    margin: 0;
+  width: 100%;
+  padding: 1rem 0 0;
+  @include mq(s) {
+    width: 42%;
+    padding: 1rem 0.5rem 1rem 0;
   }
 }
 
@@ -56,28 +55,17 @@
   background-color: transparent;
 }
 
-.summary__answer {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow: hidden;
-  width: 100%;
-  border-bottom: 1px solid $color-borders;
-}
-
-.summary__answer-text,
-.summary__edit {
-  padding: 0.6rem 0.5rem;
-}
-
 .summary__answer-text {
   align-items: center;
   flex: 1 1 auto;
   font-weight: $font-weight-bold;
   width: 42%;
+  padding: 1rem 0.5rem 1rem 0;
   p:last-of-type {
     margin-bottom: 0;
+  }
+  @include mq(s) {
+    padding: 1rem 0.5rem 1rem 0.5rem;
   }
 }
 
@@ -86,8 +74,8 @@
 }
 
 .summary__edit {
-  padding: .6rem .5rem;
-  text-align: center;
+  padding: 1rem 0 1rem 0.5rem;
+  text-align: right;
   display: flex;
   // flex-basis: fit-content;
   // flex-shrink: 0;
