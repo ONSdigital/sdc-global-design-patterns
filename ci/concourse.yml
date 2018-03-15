@@ -5,9 +5,15 @@ resources:
     uri: https://github.com/ONSdigital/sdc-global-design-patterns.git
     branch: master
 
+- name: sdc-global-design-patterns-release
+  type: github-release
+  source:
+    owner: ONSdigital
+    repository: sdc-global-design-patterns
+
+
 jobs:
 - name: Deploy
-  max_in_flight: 2
   plan:
   - get: sdc-global-design-patterns
     trigger: true
@@ -62,3 +68,41 @@ jobs:
         - -exc
         - |
           aws s3 sync --acl public-read public s3://((s3_bucket_name))/sdc/
+
+- name: Release
+  plan:
+  - get: sdc-global-design-patterns-release
+    trigger: true
+  - task: Release to S3
+    params:
+      AWS_ACCESS_KEY_ID: {{aws_access_key}}
+      AWS_SECRET_ACCESS_KEY: {{aws_secret_key}}
+      AWS_DEFAULT_REGION: eu-west-1
+    config:
+      platform: linux
+
+      image_resource:
+        type: docker-image
+        source:
+          repository: mesosphere/aws-cli
+
+      inputs:
+      - name: sdc-global-design-patterns-release
+
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+
+          apk add --update --quiet curl
+
+          design_patterns_release=v$(cat sdc-global-design-patterns-release/version)
+
+          design_patterns_commit=$(curl -s https://api.github.com/repos/ONSdigital/sdc-global-design-patterns/git/refs/tags/$design_patterns_release | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w 'sha'| cut -d":" -f2| sed -e 's/^ *//g' -e 's/ *$//g' | cut -c 1-7)
+
+          echo $design_patterns_commit
+
+          [ ${#design_patterns_commit} -ne 7 ] && exit
+
+          aws s3 cp s3://((s3_bucket_name))/sdc/$design_patterns_commit/ s3://((s3_bucket_name))/sdc/$design_patterns_release/ --recursive --acl public-read
