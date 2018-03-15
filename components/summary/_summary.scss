@@ -15,7 +15,6 @@
 .summary__items {
   text-align: left;
   border-top: 1px solid $color-borders;
-  border-bottom: 1px solid $color-borders;
   border-bottom: none;
   margin: 0 0 1rem;
   border-radius: 0;
@@ -65,7 +64,7 @@
     margin-bottom: 0;
   }
   @include mq(s) {
-    padding: 1rem 0.5rem 1rem 0.5rem;
+    padding: 1rem 0.5rem;
   }
 }
 
@@ -77,8 +76,6 @@
   padding: 1rem 0 1rem 0.5rem;
   text-align: right;
   display: flex;
-  // flex-basis: fit-content;
-  // flex-shrink: 0;
   @include fixed {
     position: absolute;
     right: 0;
