@@ -15,6 +15,10 @@ module.exports = {
     {
       "name": "group",
       "label": "Grouped"
+    },
+    {
+      "name": "multiple",
+      "label": "Multiple"
     }
   ]
 }

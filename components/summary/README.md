@@ -6,6 +6,9 @@ A summary can comprise multiple summary components of either variant.
 #### Single
 The __single__ summary component displays a singular data element.
 
+#### Multiple
+The __multiple__ summary component displays a multiple data element.
+
 #### Grouped
 The __grouped__ summary displays contiguous data.
 
