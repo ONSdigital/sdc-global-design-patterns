@@ -14,14 +14,14 @@
 
 .summary__items {
   text-align: left;
-  border-top: 1px solid $color-grey;
+  border-top: 1px solid $color-dark-grey;
   border-bottom: none;
   margin: 0 0 1rem;
   border-radius: 0;
 }
 
 .summary__items--multiple {
-  border-bottom: 1px solid $color-grey;
+  border-bottom: 1px solid $color-dark-grey;
   padding-bottom: 0.5rem;
 }
 
@@ -29,10 +29,9 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  overflow: hidden;
   width: 100%;
   margin: 0;
-  border-bottom: 1px solid $color-grey;
+  border-bottom: 1px solid $color-dark-grey;
   flex-flow: row wrap;
   @include mq(s) {
     flex-flow: row no-wrap;
@@ -67,7 +66,7 @@
 .summary__question--sub {
   background-color: transparent;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0;
 }
 
 .summary__answer-text {
@@ -99,7 +98,6 @@
 .summary__edit {
   padding: 1rem 0 1rem 0.5rem;
   text-align: right;
-  display: flex;
   @include fixed {
     position: absolute;
     right: 0;
