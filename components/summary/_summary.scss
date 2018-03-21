@@ -2,86 +2,26 @@
   display: block;
 }
 
-.summary__title {
-  margin-bottom: 1rem;
-  font-weight: $font-weight-bold;
-}
-
 .summary__block {
-  margin: 0;
-  padding: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $color-dark-grey;
 }
 
-.summary__items {
-  text-align: left;
+.summary__item {
   border-top: 1px solid $color-dark-grey;
-  border-bottom: none;
-  margin: 0 0 1rem;
-  border-radius: 0;
-}
-
-.summary__items--multiple {
-  border-bottom: 1px solid $color-dark-grey;
-  padding-bottom: 0.5rem;
-}
-
-.summary__answer {
-  display: flex;
   position: relative;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0;
-  border-bottom: 1px solid $color-dark-grey;
-  flex-flow: row wrap;
-  @include mq(s) {
-    flex-flow: row no-wrap;
-  }
-  @include fixed {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  @include lt-ie8 {
-    min-height: 3rem;
-  }
-}
-
-.summary__answer--multiple {
-  border-bottom: none;
 }
 
 .summary__question {
-  width: 100%;
   padding: 1rem 0 0;
-  @include mq(s) {
-    width: 42%;
+  @include mq(m) {
     padding: 1rem 0.5rem 1rem 0;
   }
 }
 
-.summary__question--multiple {
-  width: 100%;
-  padding-bottom: 0.5rem;
-}
-
-.summary__question--sub {
-  background-color: transparent;
-  padding-top: 0.5rem;
-  padding-bottom: 0;
-  @include mq(s) {
-    padding-bottom: 0.5rem;
-  }
-}
-
-.summary__answer-text {
-  align-items: center;
-  flex: 1 1 auto;
-  font-weight: $font-weight-bold;
-  width: 42%;
+.summary__answer {
   padding: 1rem 0.5rem 1rem 0;
-  p:last-of-type {
-    margin-bottom: 0;
-  }
-  @include mq(s) {
+  @include mq(m) {
     padding: 1rem 0.5rem;
   }
   @include lt-ie10 {
@@ -89,31 +29,29 @@
   }
 }
 
-.summary__answer-text--sub {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.summary__answer-break {
-  word-break: break-all;
-}
-
-.summary__edit {
+.summary__link {
   padding: 1rem 0 1rem 0.5rem;
   text-align: right;
-  @include fixed {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
 }
 
-.summary__edit--sub {
-  padding-top: 0.5rem;
+.summary__item--multiple {
   padding-bottom: 0.5rem;
-}
-
-.summary__edit-link {
-  display: block;
+  .summary__question {
+    padding-bottom: 0.5rem;
+  }
+  .summary__label {
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+    @include mq(m) {
+      padding-bottom: 0.5rem;
+    }
+  }
+  .summary__answer {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .summary__link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 }
