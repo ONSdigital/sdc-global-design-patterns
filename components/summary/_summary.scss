@@ -32,6 +32,13 @@
 .summary__link {
   padding: 1rem 0 1rem 0.5rem;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  @include lt-ie8 {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 .summary__item--multiple {
