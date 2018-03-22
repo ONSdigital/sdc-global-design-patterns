@@ -24,18 +24,20 @@ export function detailsToggle() {
 }
 
 export function applyDetailsToggle(elDetails) {
-  const elTrigger = elDetails.getElementsByClassName(classTrigger)[0];
+  const elTriggers = elDetails.getElementsByClassName(classTrigger);
   const elBody = elDetails.getElementsByClassName(classBody)[0];
   const elLabel = elDetails.getElementsByClassName(classLabel)[0];
   let toggled = false;
 
-  elTrigger.addEventListener('click', (e) => {
-    e.preventDefault();
-    toggled = toggle(toggled, elDetails, elTrigger, elBody, elLabel);
-    return false;
+  forEach(elTriggers, (elTrigger) => {
+    elTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggled = toggle(toggled, elDetails, elTrigger, elBody, elLabel);
+      return false;
+    });
   });
 
-  return {elDetails, elTrigger, elBody};
+  return {elDetails, elTriggers, elBody};
 }
 
 export function open(elDetails, elBody, elLabel, elTrigger) {

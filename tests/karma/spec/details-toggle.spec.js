@@ -1,10 +1,11 @@
+import {forEach} from 'lodash';
 import {
   applyDetailsToggle,
   classTrigger,
   classDetails,
   classBody,
   classExpandedState
-} from 'guidance/details-toggle';
+} from 'details-toggle';
 
 const strTemplate = `<div class="guidance ${classDetails}" data-show-label="Show further guidance" data-hide-label="Hide further guidance">
   <a class="guidance__link ${classTrigger} js-details-label" href="#guidance-response" id="guidance-response-link" aria-controls="guidance-response-main" aria-expanded="false">
@@ -15,7 +16,7 @@ const strTemplate = `<div class="guidance ${classDetails}" data-show-label="Show
   </div>
 </div>`;
 
-let elDetails, elTrigger, elBody;
+let elDetails, elTriggers, elBody;
 
 describe('Details Toggle', () => {
   before('Add template to DOM', () => {
@@ -24,7 +25,7 @@ describe('Details Toggle', () => {
     elDetails = wrapper.firstChild;
     document.body.appendChild(elDetails);
     let el = applyDetailsToggle(elDetails);
-    ({elTrigger, elBody} = el);
+    ({elTriggers, elBody} = el);
   });
 
   it('DOM should contain the template', () => {
@@ -32,9 +33,9 @@ describe('Details Toggle', () => {
   });
 
   it(`Should toggle class '.${classExpandedState}' when clicked`, () => {
-    elTrigger.click();
+    elTriggers[0].click();
     expect(elDetails.classList.contains(classExpandedState)).to.equal(true);
-    elTrigger.click();
+    elTriggers[0].click();
     expect(elDetails.classList.contains(classExpandedState)).to.equal(false);
   });
 });

@@ -1,0 +1,28 @@
+.definition {
+  $block: &;
+
+  #{$block}__link {
+    @extend %js-details-trigger;
+
+    @at-root {
+      .is-expanded#{&} {
+        @extend %js-details-trigger--is-expanded;
+      }
+    }
+  }
+
+  #{$block}__main {
+    @extend %js-details-body;
+
+    @at-root {
+      .no-js#{&},
+      .is-expanded#{&} {
+        @extend %js-details-body--is-expanded;
+      }
+    }
+  }
+
+  #{$block}__content {
+    padding-top: .5rem;
+  }
+}

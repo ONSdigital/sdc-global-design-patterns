@@ -3,6 +3,7 @@
 }
 
 .guidance__link {
+  @extend %js-details-trigger;
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
@@ -12,35 +13,9 @@
     display: inline-block;
     vertical-align: middle;
   }
-  &::before {
-    $size: 1rem;
-
-    transition: transform 300ms ease-in-out;
-    margin-right: 0.3rem;
-    speak: none;
-    content: "";
-    background: url("#{$static}/img/icons/icons--guidance.svg") no-repeat center center;
-    background-size: auto;
-    text-align: center;
-    width: $size;
-    height: $size;
-    position: relative;
-    left: -0.1rem;
-    vertical-align: middle;
-    display: inline-block;
-  }
-
-  &:focus {
-    outline: none;
-    &::before {
-      background: url("#{$static}/img/icons/icons--guidance-white.svg") no-repeat center center;
-    }
-  }
 
   .is-expanded & {
-    &::before {
-      transform: rotate(90deg);
-    }
+    @extend %js-details-trigger--is-expanded;
   }
 
   .no-js & {
@@ -49,19 +24,13 @@
 }
 
 .guidance__main {
-  overflow: hidden;
-  width: 100%;
+  @extend %js-details-body;
   border-radius: 3px;
-  opacity: 0;
-  transition: all 0;
-  max-height: 0;
   margin-left: 0.5rem;
+
   .no-js &,
   .is-expanded & {
-    max-height: 10000em;
-    height: auto;
-    opacity: 1;
-    transition: opacity 300ms ease-out, max-height 300ms ease-out;
+    @extend %js-details-body--is-expanded;
   }
 }
 
@@ -74,5 +43,4 @@
   border-left: 2px solid $color-borders;
   padding-left: 1rem;
   margin-left: 1px;
-
 }

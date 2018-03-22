@@ -264,3 +264,22 @@
     }
   }
 }
+
+.btn--toggle {
+  padding: .3rem .5rem;
+  color : $color-tertiary;
+  border: 1px solid $color-tertiary;
+  background-color: $color-lighter-grey;
+  transition: none;
+
+  &:hover {
+    color: $color-tertiary;
+    background-color: $color-lighter-grey;
+  }
+
+  &:active,
+  &:focus {
+    color: $color-white;
+    background-color: $color-tertiary;
+  }
+}

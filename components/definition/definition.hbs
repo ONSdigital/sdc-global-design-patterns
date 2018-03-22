@@ -1,0 +1,16 @@
+<div class="definition js-details"
+  data-hide-label="{{definitionText}}"
+  data-show-label="{{definitionText}}">
+
+  <a href="#definition"
+     class="definition__link js-details-trigger js-details-label mars"
+     aria-controls="definition"
+     aria-expanded="false">{{definitionText}}</a>
+
+  <div id="definition" class="definition__main js-details-body">
+    <div class="definition__content mars">
+      {{{definitionContent}}}
+    </div>
+    {{> @button btn-classes='btn--toggle js-details-trigger' label=definitiionHideText}}
+  </div>
+</div>
