@@ -127,26 +127,30 @@
   }
 }
 
-@for $column from 1 through $grid-cols {
-  $width: percentage($column / $grid-cols);
+@each $breakpoint, $size in $grid-bp {
+  @for $column from 1 through $grid-cols {
+    $width: percentage($column / $grid-cols);
 
-  @include bp-suffix("col-#{$column}", false) {
-    width: $width;
-    width: calc(100% / #{$grid-cols / $column});
-    .grid--flex & {
-      flex: 0 0 $width;
-      max-width: $width;
+    @include mq($breakpoint) {
+      .col-#{$column}\@#{$breakpoint} {
+        width: $width;
+        width: calc(100% / #{$grid-cols / $column});
+        .grid--flex & {
+          flex: 0 0 $width;
+          max-width: $width;
+        }
+      }
+
+      .push-#{$column}\@#{$breakpoint} {
+        position: relative;
+        left: $width;
+      }
+
+      .pull-#{$column}\@#{$breakpoint} {
+        position: relative;
+        left: 0 - $width;
+      }
     }
-  }
-
-  @include bp-suffix("push-#{$column}", false) {
-    position: relative;
-    left: $width;
-  }
-
-  @include bp-suffix("pull-#{$column}", false) {
-    position: relative;
-    left: 0 - $width;
   }
 }
 
