@@ -74,4 +74,12 @@
       border-right: 1px solid $color-borders;
     }
   }
+
+  .input-type__type--duration {
+    width: 3.5rem;
+    @include mq(s) {
+      left: auto;
+      right: 1px;
+    }
+  }
 }
