@@ -25,4 +25,12 @@
   #{$block}__content {
     padding-top: .5rem;
   }
+
+  @at-root {
+    :not(.is-expanded)#{&} {
+      #{$block}__content-close-trigger {
+        display: none;
+      }
+    }
+  }
 }

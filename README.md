@@ -1,6 +1,7 @@
 # eQ Patterns
 
 https://onsdigital.github.io/sdc-global-design-patterns/
+https://sdc-global-design-patterns.netlify.com/
 
 ## Prerequisites
 
@@ -21,7 +22,7 @@ https://onsdigital.github.io/sdc-global-design-patterns/
 
 ## Deploy
 
-- Deploy to [Github Pages](https://onsdigital.github.io/sdc-global-design-patterns/) with `yarn deploy`
+- Deploy to [Github Pages](https://sdc-global-design-patterns.netlify.com/) with `yarn deploy`
 
 ## CDN
 
