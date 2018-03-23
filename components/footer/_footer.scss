@@ -34,3 +34,16 @@
     }
   }
 }
+.footer--eq {
+  .list--bare {
+    .footer__link {
+      float: left;
+      margin-right: 1.5rem;
+    }
+  }
+  .footer__license {
+      margin-top: 1.5rem;
+      border-top: 1px solid $color-borders;
+      padding-top: 1.5rem;
+  }
+}

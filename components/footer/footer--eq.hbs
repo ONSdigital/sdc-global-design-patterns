@@ -1,0 +1,22 @@
+<footer class="footer footer--eq" role="contentinfo">
+    <div class="container">
+        <div class="grid">
+            <div class="grid__col col-12@m">
+                <ul class="list list--bare">
+                  {{#each links}}
+                  <li>
+                      <a href="{{link_url}}" class="footer__link" target="_blank">{{link_text}}</a>
+                  </li>
+                  {{/each}}
+                </ul>
+            </div>
+            <div class="grid__col col-12@m">
+              <div class="footer__license">
+                <img alt="" class="footer__ogl-img" src="{{path '/assets/img/UKOpenGovernmentLicence.svg'}}"> All content is available under the
+                <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" class="footer__link">Open Government
+                Licence v3.0</a>, except where otherwise stated
+              </div>
+            </div>
+        </div>
+    </div>
+</footer>
