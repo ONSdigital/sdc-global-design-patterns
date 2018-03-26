@@ -10,27 +10,23 @@
 .summary__item {
   border-top: 1px solid $color-dark-grey;
   position: relative;
+  padding: 1rem 0;
+}
+
+.summary__item--error {
+  background-color: $color-light-red;
+  padding: 1rem;
+  border-left: 8px solid $color-red;
 }
 
 .summary__question {
-  padding: 1rem 0 0;
+  padding-bottom: 1rem;
   @include mq(m) {
-    padding: 1rem 0.5rem 1rem 0;
-  }
-}
-
-.summary__answer {
-  padding: 1rem 0.5rem 1rem 0;
-  @include mq(m) {
-    padding: 1rem 0.5rem;
-  }
-  @include lt-ie10 {
-    padding-left: 0;
+    padding-bottom: 0;
   }
 }
 
 .summary__link {
-  padding: 1rem 0 1rem 0.5rem;
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -39,6 +35,10 @@
     top: 0;
     right: 0;
   }
+}
+
+.summary__error-text {
+  color: $color-red;
 }
 
 .summary__item--multiple {
