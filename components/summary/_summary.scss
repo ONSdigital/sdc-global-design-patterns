@@ -9,14 +9,26 @@
 
 .summary__item {
   border-top: 1px solid $color-dark-grey;
+  border-radius: 0;
   position: relative;
   padding: 1rem 0;
+  display: block;
+  box-sizing: border-box;
 }
 
 .summary__item--error {
   background-color: $color-light-red;
-  padding: 1rem;
-  border-left: 8px solid $color-red;
+  position: relative;
+  padding: 1rem 1rem 1rem 1.4rem;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background-color: $color-red;
+  }
 }
 
 .summary__question {
@@ -30,11 +42,6 @@
   text-align: right;
   display: flex;
   justify-content: flex-end;
-  @include lt-ie8 {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
 }
 
 .summary__error-text {
