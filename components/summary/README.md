@@ -13,7 +13,7 @@ The __multiple__ summary component displays a multiple data element.
 The __grouped__ summary displays contiguous data.
 
 ### Variants
-The `.summary__edit` may be removed for data which is non-editable. For example, values calculated from previous inputs.
+The `.summary__link` may be removed for data which is non-editable. For example, values calculated from previous inputs.
 
 ### Research
 Research will be required for additional variants.
