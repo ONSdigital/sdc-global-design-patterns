@@ -134,7 +134,9 @@
     @include mq($breakpoint) {
       .col-#{$column}\@#{$breakpoint} {
         width: $width;
-        width: calc(100% / #{$grid-cols / $column});
+        width: -webkit-calc(100% / #{$grid-cols / $column});
+        width: -moz-calc(100% / #{$grid-cols / $column});
+        width: -o-calc(100% / #{$grid-cols / $column});
         .grid--flex & {
           flex: 0 0 $width;
           max-width: $width;
