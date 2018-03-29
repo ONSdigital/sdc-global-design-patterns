@@ -192,10 +192,12 @@
 <p>A summary can comprise multiple summary components of either variant.</p>
 <h4 id="single">Single</h4>
 <p>The <strong>single</strong> summary component displays a singular data element.</p>
+<h4 id="multiple">Multiple</h4>
+<p>The <strong>multiple</strong> summary component displays a multiple data element.</p>
 <h4 id="grouped">Grouped</h4>
 <p>The <strong>grouped</strong> summary displays contiguous data.</p>
 <h3 id="variants">Variants</h3>
-<p>The <code>.summary__edit</code> may be removed for data which is non-editable. For example, values calculated from previous inputs.</p>
+<p>The <code>.summary__link</code> may be removed for data which is non-editable. For example, values calculated from previous inputs.</p>
 <h3 id="research">Research</h3>
 <p>Research will be required for additional variants.</p>
 <h3 id="usage">Usage</h3>
@@ -216,22 +218,24 @@
         
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__title saturn"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>Summary - Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- Summary --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__title neptune"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>Summary - Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__block"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__items"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__question"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>
-                What are the dates of the sales period you are reporting for?
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__answer"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__answer-text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>01 January 2015 to 02 February 2017<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__edit"</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#edit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__edit-link"</span>&gt;</span>Edit <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"u-vh"</span>&gt;</span>your answer<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid__col col-12@xs col-5@m"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__question mars"</span>&gt;</span>What are the dates of the sales period you are reporting for?<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid__col col-8@xs col-5@m"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__answer venus"</span>&gt;</span>01 January 2015 to 02 February 2017<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid__col col-4@xs col-2@m"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"summary__link mars"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#edit"</span>&gt;</span>Change <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"u-vh"</span>&gt;</span>your answer for: What are the dates of the sales period you are reporting for?. The current value is: 01 January 2015 to 02 February 2017<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- /Summary --&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
         
     </code>
@@ -249,14 +253,18 @@
         
         
         <li class="Meta-item">
-            <strong class="Meta-key">Variants <em class="Meta-count">(3)</em>:</strong>
+            <strong class="Meta-key">Variants <em class="Meta-count">(5)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
             
                 <a href=""><span>default</span></a>, 
             
                 <a href="summary--no-edit.html"><span>no-edit</span></a>, 
             
-                <a href="summary--group.html"><span>group</span></a>
+                <a href="summary--group.html"><span>group</span></a>, 
+            
+                <a href="summary--multiple.html"><span>multiple</span></a>, 
+            
+                <a href="summary--errors.html"><span>errors</span></a>
             
             </span>
         </li>

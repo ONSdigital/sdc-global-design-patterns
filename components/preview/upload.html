@@ -38,9 +38,13 @@
   </style>
 </head>
 <body>
-
-<div style="padding:1rem; height:100%; max-width: 30em">
-  <label class="label venus "
+<div style="padding-top:1rem" >
+  <div class="page__container container">
+    <div class="grid grid--reverse">
+      <div class="grid__col col-4@m">
+      </div>
+      <div class="grid__col col-7@m pull-1@m">
+        <label class="label venus "
   for="file"
   id="upload">
     Upload a file
@@ -49,6 +53,9 @@
 </label>
 <input type="file" accept=".xls,.xlsx,.pdf" id="file" name="file" class="input input--upload" aria-describedby="upload" />
 
+      </div>
+    </div>
+  </div>
 </div>
 <script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
 </body>
