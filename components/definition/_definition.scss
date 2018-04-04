@@ -1,36 +1,41 @@
 .definition {
-  $block: &;
-
-  #{$block}__link {
+  .definition__link {
     @extend %js-details-trigger;
-
-    @at-root {
-      .is-expanded#{&} {
-        @extend %js-details-trigger--is-expanded;
-      }
-    }
+    padding: 0.2rem 0.5rem 0.2rem 0.2rem;
+    font-weight: 600;
+    text-decoration: none;
   }
 
-  #{$block}__main {
+  .definition__main {
     @extend %js-details-body;
+  }
 
-    @at-root {
-      .no-js#{&},
-      .is-expanded#{&} {
-        @extend %js-details-body--is-expanded;
-      }
+  .definition__content {
+    padding-top: 0.5rem;
+  }
+
+  /**
+   * Modifiers
+   */
+  &:not(.is-expanded) {
+    /**
+     * Hide extra close button when not expanded to stop it being focusable
+     */
+    .definition__content-close-trigger {
+      display: none;
     }
   }
 
-  #{$block}__content {
-    padding-top: .5rem;
+  &.is-expanded {
+    .definition__link {
+      @extend %js-details-trigger--is-expanded;
+    }
   }
 
-  @at-root {
-    :not(.is-expanded)#{&} {
-      #{$block}__content-close-trigger {
-        display: none;
-      }
+  .no-js &,
+  &.is-expanded {
+    .definition__main {
+      @extend %js-details-body--is-expanded;
     }
   }
 }

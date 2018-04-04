@@ -273,13 +273,15 @@
   transition: none;
 
   &:hover {
-    color: $color-tertiary;
+    color: $color-links-hover;
     background-color: $color-lighter-grey;
+    border-color: $color-links-hover;
   }
 
   &:active,
   &:focus {
     color: $color-white;
     background-color: $color-tertiary;
+    border-color: $color-tertiary;
   }
 }

@@ -3,7 +3,7 @@
   data-show-label="{{definitionText}}">
 
   <a href="#definition"
-     class="definition__link js-details-trigger js-details-label mars"
+     class="definition__link mars js-details-trigger js-details-label u-no-js-hide"
      aria-controls="definition"
      aria-expanded="false">{{definitionText}}</a>
 
@@ -11,6 +11,6 @@
     <div class="definition__content mars">
       {{{definitionContent}}}
     </div>
-    {{> @button btn-classes='btn--toggle definition__content-close-trigger js-details-trigger' label=definitiionHideText}}
+    {{> @button btn-classes='btn--toggle definition__content-close-trigger js-details-trigger u-no-js-hide' label=definitiionHideText}}
   </div>
 </div>
