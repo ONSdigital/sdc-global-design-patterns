@@ -4,13 +4,13 @@
     <div class="field__label venus">Select all that apply:</div>
       {{#each options}}
       <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-checkboxes" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
         {{>@label}}
       </div>
       {{/each}}
       <div class="field__label u-mt-s venus" aria-hidden="true">Or</div>
       <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-checkboxes" name="heating-type" value="none" id="none" type="checkbox">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="none" id="none" type="checkbox">
         <label class="label label--inline venus " for="none">
             <span class="u-vh">Or,</span> No central heating<span class="u-vh">. Selecting this will uncheck all other checkboxes</span>
         </label>
