@@ -18,8 +18,14 @@
     display: inline-block;
   }
 
-  &:focus {
+  &:hover {
     outline: none;
+    &::before {
+      background: url("#{$static}/img/icons/icons--guidance-darkblue.svg") no-repeat center center;
+    }
+  }
+
+  &:focus {
     &::before {
       background: url("#{$static}/img/icons/icons--guidance-white.svg") no-repeat center center;
     }
