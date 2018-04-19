@@ -1,0 +1,23 @@
+<div class="definition js-details"
+  data-hide-label="{{definitionText}}"
+  data-show-label="{{definitionText}}">
+
+  <a href="#definition"
+     class="definition__link mars js-details-trigger js-details-label u-no-js-hide"
+     aria-controls="definition"
+     aria-expanded="false"
+     data-js-accordion-event-label="{{definitionText}}"
+     data-ga-label="definition-pattern-library"
+     data-ga-action="Definition click"
+     data-ga="click"
+     data-ga-category="Help">{{definitionText}}</a>
+
+  <h3 class="venus u-no-js-show u-mb-no">{{definitionText}}</h3>
+
+  <div id="definition" class="definition__main js-details-body">
+    <div class="definition__content mars">
+      {{{definitionContent}}}
+    </div>
+    {{> @button btn-classes='btn--toggle definition__content-close-trigger js-details-trigger u-no-js-hide' label=definitiionHideText}}
+  </div>
+</div>
