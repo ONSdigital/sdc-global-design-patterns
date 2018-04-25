@@ -2,6 +2,10 @@
 _pagination.scss
 */
 .pagination {
+  width: 100%;
+}
+.pagination__items {
+  padding: 0;
 }
 .pagination__item {
   width: 2rem;
@@ -17,19 +21,20 @@ _pagination.scss
 .pagination__item_current {
   background-color: $color-secondary;
   color: $color-white;
-  // & .pagination__link {
-  //   color: $color-white;
-  //   text-decoration: none;
-  // }
-  cursor: default;
-}
-.pagination__item-next {
-  width: auto;
-  & .pagination__link {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  &:hover {
+    background-color: $color-secondary;
   }
+  & .pagination__link {
+    color: $color-white;
+    text-decoration: none;
+    &:hover {
+      background-color: $color-secondary;
+      cursor: default;
+    }
+  }
+
 }
+.pagination__item-next,
 .pagination__item-previous {
   width: auto;
   & .pagination__link {
