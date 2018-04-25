@@ -21,6 +21,10 @@ _pagination.scss
 .pagination__item_current {
   background-color: $color-secondary;
   color: $color-white;
+  /* Should these be made a mixin? */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  /* End ? */
   &:hover {
     background-color: $color-secondary;
   }
@@ -51,6 +55,12 @@ _pagination.scss
   display: inline-block;
   &:hover {
     background-color: $color-light-grey;
+  }
+  &:focus {
+    outline-offset: -3px;
+    &:hover{
+      background-color: $color-links;
+    }
   }
 }
 .pagination__position {
