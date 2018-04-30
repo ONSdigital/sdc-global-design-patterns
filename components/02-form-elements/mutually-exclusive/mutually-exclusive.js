@@ -11,22 +11,22 @@ export default function mutuallyExclusiveCheckboxes() {
   for (let exclusiveCheckboxGroupElement of exclusiveCheckboxGroupElements) {
     exclusiveCheckboxGroupElement.onclick = function() {
       exclusiveCheckboxAlert[0].innerHTML = '';
-      if (exclusiveCheckboxElement[0].checked === true) {
-        exclusiveCheckboxElement[0].checked = false;
-        exclusiveCheckboxElement[0].parentElement.classList.remove('is-checked');
-        exclusiveCheckboxAlert[0].append(exclusiveCheckboxElement[0].getAttribute('value') + ' deselected. ');
-      }
+      checkboxToggle(exclusiveCheckboxElement[0], exclusiveCheckboxAlert[0]);
     }
   }
   exclusiveCheckboxElement[0].onclick = function() {
     exclusiveCheckboxAlert[0].innerHTML = '';
     for (let exclusiveCheckboxGroupElement of exclusiveCheckboxGroupElements) {
-      if (exclusiveCheckboxGroupElement.checked === true) {
-        exclusiveCheckboxGroupElement.checked = false;
-        exclusiveCheckboxGroupElement.parentElement.classList.remove('is-checked');
-        exclusiveCheckboxAlert[0].append(exclusiveCheckboxGroupElement.getAttribute('value') + ' deselected. ');
-      }
+      checkboxToggle(exclusiveCheckboxGroupElement, exclusiveCheckboxAlert[0]);
     }
+  }
+}
+
+const checkboxToggle = function(checkboxElement, checkboxAlertElement) {
+  if (checkboxElement.checked === true) {
+    checkboxElement.checked = false;
+    checkboxElement.parentElement.classList.remove('is-checked');
+    checkboxAlertElement.append(checkboxElement.getAttribute('value') + ' deselected. ');
   }
 }
 
