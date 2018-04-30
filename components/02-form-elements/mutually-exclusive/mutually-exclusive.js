@@ -26,7 +26,7 @@ const checkboxToggle = function(checkboxElement, checkboxAlertElement) {
   if (checkboxElement.checked === true) {
     checkboxElement.checked = false;
     checkboxElement.parentElement.classList.remove('is-checked');
-    checkboxAlertElement.append(checkboxElement.getAttribute('value') + ' deselected. ');
+    checkboxAlertElement.append(checkboxElement.getAttribute('value') + ' ' + checkboxAlertElement.dataset.adjective + '. ');
   }
 }
 
