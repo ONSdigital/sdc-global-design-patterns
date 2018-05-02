@@ -1,4 +1,4 @@
-import domready from '/assets/js/domready';
+import domready from '../../../assets/js/domready';
 
 const checkboxWrapperClass = 'field--exclusive'
 const checkboxGroupClass = 'js-exclusive-checkbox-group';
@@ -9,8 +9,8 @@ export default function mutuallyExclusiveCheckboxes() {
   const checkboxWrapperElements = document.getElementsByClassName(checkboxWrapperClass);
   for (let checkboxWrapperElement of checkboxWrapperElements) {
     const checkboxGroupElements = checkboxWrapperElement.getElementsByClassName(checkboxGroupClass);
-    const checkboxElement = checkboxWrapperElement.getElementsByClassName(checkboxClass);
-    const voiceOverAlertElement = checkboxWrapperElement.getElementsByClassName(voiceOverAlertClass);
+    const checkboxElement = checkboxWrapperElement.getElementsByClassName(checkboxClass)[0];
+    const voiceOverAlertElement = checkboxWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
     for (let checkboxGroupElement of checkboxGroupElements) {
       checkboxGroupElement.addEventListener('change', function() {
         voiceOverAlertElement.innerHTML = '';
