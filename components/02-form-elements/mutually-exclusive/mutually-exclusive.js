@@ -1,36 +1,36 @@
-import domready from '../../../assets/js/domready';
+import domready from 'assets/js/domready';
 
-const exclusiveCheckboxWrapperClass = 'field--exclusive'
-const exclusiveCheckboxGroupClass = 'js-exclusive-checkbox-group';
-const exclusiveCheckboxClass = 'js-exclusive-checkbox';
-const exclusiveCheckboxAlertClass = 'js-exclusive-checkbox-alert';
+const checkboxWrapperClass = 'field--exclusive'
+const checkboxGroupClass = 'js-exclusive-checkbox-group';
+const checkboxClass = 'js-exclusive-checkbox';
+const spanAlertClass = 'js-exclusive-checkbox-alert';
 
 export default function mutuallyExclusiveCheckboxes() {
-  const exclusiveCheckboxWrapperElements = document.getElementsByClassName(exclusiveCheckboxWrapperClass);
-  for (let exclusiveCheckboxWrapperElement of exclusiveCheckboxWrapperElements) {
-    let exclusiveCheckboxGroupElements = exclusiveCheckboxWrapperElement.getElementsByClassName(exclusiveCheckboxGroupClass);
-    let exclusiveCheckboxElement = exclusiveCheckboxWrapperElement.getElementsByClassName(exclusiveCheckboxClass);
-    let exclusiveCheckboxAlert = exclusiveCheckboxWrapperElement.getElementsByClassName(exclusiveCheckboxAlertClass);
-    for (let exclusiveCheckboxGroupElement of exclusiveCheckboxGroupElements) {
-      exclusiveCheckboxGroupElement.onclick = function() {
-        exclusiveCheckboxAlert[0].innerHTML = '';
-        checkboxToggle(exclusiveCheckboxElement[0], exclusiveCheckboxAlert[0]);
-      }
+  const checkboxWrapperElements = document.getElementsByClassName(checkboxWrapperClass);
+  for (let checkboxWrapperElement of checkboxWrapperElements) {
+    const checkboxGroupElements = checkboxWrapperElement.getElementsByClassName(checkboxGroupClass);
+    const checkboxElement = checkboxWrapperElement.getElementsByClassName(checkboxClass);
+    const spanAlert = checkboxWrapperElement.getElementsByClassName(spanAlertClass);
+    for (let checkboxGroupElement of checkboxGroupElements) {
+      checkboxGroupElement.addEventListener('change', function() {
+        spanAlert[0].innerHTML = '';
+        checkboxToggle(checkboxElement[0], spanAlert[0]);
+      });
     }
-    exclusiveCheckboxElement[0].onclick = function() {
-      exclusiveCheckboxAlert[0].innerHTML = '';
-      for (let exclusiveCheckboxGroupElement of exclusiveCheckboxGroupElements) {
-        checkboxToggle(exclusiveCheckboxGroupElement, exclusiveCheckboxAlert[0]);
+    checkboxElement[0].addEventListener('change', function() {
+      spanAlert[0].innerHTML = '';
+      for (let checkboxGroupElement of checkboxGroupElements) {
+        checkboxToggle(checkboxGroupElement, spanAlert[0]);
       }
-    }
+    });
   }
 }
 
-const checkboxToggle = function(checkboxElement, checkboxAlertElement) {
-  if (checkboxElement.checked === true) {
-    checkboxElement.checked = false;
-    checkboxElement.parentElement.classList.remove('is-checked');
-    checkboxAlertElement.append(checkboxElement.getAttribute('value') + ' ' + checkboxAlertElement.getAttribute('data-adjective') + '. ');
+const checkboxToggle = function(checkboxEl, spanAlertEl) {
+  if (checkboxEl.checked === true) {
+    checkboxEl.checked = false;
+    checkboxEl.parentElement.classList.remove('is-checked');
+    spanAlertEl.append(checkboxEl.getAttribute('value') + ' ' + spanAlertEl.getAttribute('data-adjective') + '. ');
   }
 }
 
