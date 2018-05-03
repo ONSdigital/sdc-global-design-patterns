@@ -10,3 +10,4 @@ import '../../components/02-form-elements/input/input--password';
 import '../../components/timeout/timeout.js';
 import '../../components/accordion/accordion.js';
 import '../../components/04-navigation/nav.js';
+import '../../components/02-form-elements/mutually-exclusive/mutually-exclusive.js';

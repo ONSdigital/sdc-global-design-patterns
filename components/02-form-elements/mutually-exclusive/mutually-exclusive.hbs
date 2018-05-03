@@ -1,0 +1,20 @@
+<div class="field field--checkbox field--multiplechoice field--exclusive">
+  <fieldset>
+    <legend class="field__legend mars u-vh">What type of central heating do you have?</legend>
+    <div class="field__label venus">Select all that apply:</div>
+      {{#each options}}
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+        {{>@label}}
+      </div>
+      {{/each}}
+      <div class="field__label u-mt-s venus" aria-hidden="true">Or</div>
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="no central heating" id="none" type="checkbox">
+        <label class="label label--inline venus " for="none">
+            <span class="u-vh">Or,</span> No central heating<span class="u-vh">. Selecting this will uncheck all other checkboxes</span>
+        </label>
+        <span class="js-exclusive-checkbox-alert u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
+      </div>
+  </fieldset>
+</div>
