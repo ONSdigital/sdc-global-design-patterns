@@ -1,5 +1,5 @@
 module.exports = {
   title: "Pagination",
-  label: "pagination",
+  label: "Pagination",
   status: "prototype"
 }

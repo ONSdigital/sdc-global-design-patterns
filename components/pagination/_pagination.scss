@@ -46,6 +46,10 @@ _pagination.scss
     padding-right: 0.5rem;
   }
 }
+.pagination__item-previous {
+  margin-left: -0.5rem;
+}
+
 .pagination__item-gap {
   cursor: default;
 }
