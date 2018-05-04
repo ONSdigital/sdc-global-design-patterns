@@ -10,7 +10,9 @@
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
     "test": "gulp scripts:test",
-    "deploy": "gulp && yarn build && gh-pages -d dist"
+    "deploy": "gulp && yarn build && gh-pages -d dist",
+    "reference": "gulp backstop_reference --config fractal --reference",
+    "diff": "gulp backstop_reference --config fractal --test"
   },
   "dependencies": {
     "@frctl/fractal": "^1.0.0",
@@ -18,6 +20,7 @@
     "@frctl/mandelbrot": "^1.0.0",
     "@frctl/nunjucks": "^1.0.0",
     "a11y-dialog": "^4.0.1",
+    "async-limiter": "^1.0.0",
     "autoprefixer": "^6.5.1",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -45,7 +48,8 @@
     "postcss": "^5.2.5",
     "postcss-pseudoelements": "^3.0.0",
     "request-promise": "^2.0.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "y18n": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -55,6 +59,7 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-1": "^6.24.1",
     "babelify": "^7.3.0",
+    "backstopjs": "^3.2.15",
     "browserify": "^14.1.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
@@ -91,6 +96,7 @@
     "postcss-inline-block": "^1.0.0",
     "postcss-reporter": "^3.0.0",
     "prettier": "^1.10.2",
+    "require-glob": "^3.2.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",

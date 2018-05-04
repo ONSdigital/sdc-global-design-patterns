@@ -2,7 +2,7 @@ module.exports = {
   "title": "Button",
   "default": "primary",
   "collated": true,
-  "status": "ready",
+  "status": "test",
   "variants": [{
     "name": "primary",
     "label": "Primary",

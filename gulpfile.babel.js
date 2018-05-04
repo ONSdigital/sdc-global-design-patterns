@@ -18,6 +18,7 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 import { unitTests } from './gulp/tests'
+import test from './gulp/backstop'
 
 import eslint from 'gulp-eslint';
 import gulpStylelint from 'gulp-stylelint';
@@ -365,3 +366,8 @@ gulp.task(
   gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean', 'favicons:clean')
 );
 gulp.task('dev', gulp.series('watch', 'fractal:start'));
+
+gulp.task('backstop_reference', function (done) { 
+  test();
+  done(); 
+});

@@ -56,6 +56,11 @@ fractal.components.set('statuses', {
     label: 'Deprecated',
     description: 'No longer in use.',
     color: '#ccc'
+  },
+  test: {
+    label: 'Test',
+    description: 'Regression test',
+    color: '#ccc'
   }
 });
 /*
