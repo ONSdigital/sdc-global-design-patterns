@@ -12,29 +12,32 @@ $pagingationSize: 2.5rem;
 .pagination__item {
   width: $pagingationSize;
   height: $pagingationSize;
-  line-height: $pagingationSize;
+  line-height: 2.3rem;
   text-align: center;
   float: left;
   margin-right: 0.25rem;
-  border-radius: 3px;
-  overflow: hidden;
+  box-sizing: border-box;
+
 }
 .pagination__item_active {
 
 }
 .pagination__item_current {
-  background-color: $color-secondary;
-  color: $color-white;
-  /* Should these be made a mixin? */
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  /* End ? */
-  &:hover {
-    background-color: $color-secondary;
-  }
   & .pagination__link {
+    background-color: $color-secondary;
     color: $color-white;
     text-decoration: none;
+    /* Should these be made a mixin? */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    /* End ? */
+
+    border-radius: 3px;
+    border-width: 0.16667rem;
+    border-style: solid;
+    border-color: $color-secondary;
+    overflow: hidden;
+
     &:hover {
       background-color: $color-secondary;
       cursor: default;
@@ -61,13 +64,20 @@ $pagingationSize: 2.5rem;
   width: 100%;
   height: 100%;
   display: inline-block;
+  border-radius: 3px;
+  border: 3px solid transparent;
   &:hover {
     background-color: $color-light-grey;
+    transition: background-color 200ms ease-in, border-color 200ms ease-in, color 100ms ease-in;
   }
   &:focus {
-    outline-offset: -3px;
+    outline: 3px solid $color-amber;
+    outline-offset: 3px;
+    transition: background-color 200ms ease-in, color 100ms ease-in;
     &:hover{
       background-color: $color-links;
+      border-color: $color-links;
+      transition: background-color 200ms ease-in, border-color 200ms ease-in, color 100ms ease-in;
     }
   }
 }
