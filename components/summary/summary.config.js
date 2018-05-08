@@ -19,6 +19,10 @@ module.exports = {
     {
       "name": "multiple",
       "label": "Multiple"
+    },
+    {
+      "name": "errors",
+      "label": "Validation across multiple pages"
     }
   ]
 }
