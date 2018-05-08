@@ -1,19 +1,23 @@
 /*
 _pagination.scss
 */
+$pagingationSize: 2.5rem;
 .pagination {
   width: 100%;
+  clear: both;
 }
 .pagination__items {
   padding: 0;
 }
 .pagination__item {
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
+  width: $pagingationSize;
+  height: $pagingationSize;
+  line-height: $pagingationSize;
   text-align: center;
   float: left;
   margin-right: 0.25rem;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .pagination__item_active {
 
