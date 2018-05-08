@@ -23,9 +23,9 @@
     color: $color-light-grey;
 
     &:focus {
-      color: #fff;
-      outline: 2px dashed #fff;
-      outline-offset: 2px;
+      color: $color-white;
+      outline: 3px solid $color-white;
+      outline-offset: 3px;
       background: transparent;
     }
 
