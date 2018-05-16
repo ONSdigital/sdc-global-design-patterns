@@ -1,10 +1,12 @@
 module.exports = {
-  "status": "prototype",
-  "collated": true,
+  "status": "wip",
+  "collated": false,
+  "label": "Breadcrumb",
+  "name":"breadcrumb",
   context : {
     "items":[
     {
-      "item": "Root",
+      "item": "Home",
     },
     {
       "item": "Item one"
@@ -12,6 +14,6 @@ module.exports = {
     {
       "item": "Another thing"
     }],
-    "current": "Current item"
+    "current": "Current page"
   }
 }

@@ -2,20 +2,25 @@
   font-size: 0.7rem;
   display: flex;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1rem 0;
 }
 .breadcrumb__items {
-
+  margin: 0;
+  padding: 0;
 }
 .breadcrumb__item {
   display: inline-block;
+  &:after {
+    content: ">"; /* Divider between breadcrumb items */
+    margin: 0 0.3rem;
+  }
 }
 .breadcrumb__item--current {
-  color: $color-dark-grey;
+  color: $color-very-dark-grey;
+  &:after {
+    content: ""; /* Remove the chevron divider on the current item */
+  }
 }
 .breadcrumb__link {
-
-}
-.breadcrumb__chevron {
-
+  text-decoration: none;
 }

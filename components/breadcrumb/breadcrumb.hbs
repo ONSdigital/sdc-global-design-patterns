@@ -1,11 +1,10 @@
-<nav class="breadcrumb">
-  <ul class="breadcrumb__items">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb__items">
 {{#each items}}
   <li class="breadcrumb__item">
     <a href="#{{item}}" class="breadcrumb__link">{{item}}</a>
-    <span class="breadcrumb__chevron">&nbsp;&gt;&nbsp;</span>
   </li>
 {{/each}}
-  <li class="breadcrumb__item breadcrumb__item--current">{{current}}</li>
-</ul>
+  <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">{{current}}</li>
+</ol>
 </nav>
