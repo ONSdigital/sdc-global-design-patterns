@@ -1,5 +1,4 @@
 .breadcrumb {
-  font-size: 0.7rem;
   display: flex;
   align-items: center;
   padding: 1rem 0;
@@ -11,14 +10,20 @@
 .breadcrumb__item {
   display: inline-block;
   &:after {
-    content: ">"; /* Divider between breadcrumb items */
-    margin: 0 0.3rem;
+    content: " ";
+    @include icon("chevron-breadcrumb");
+    background-color: $color-white;
+    background-position: bottom;
+    width: 0.5rem;
+    height: 0.7rem;
+    margin: 0 0.3333rem;
+    display: inline-flex;
   }
 }
 .breadcrumb__item--current {
   color: $color-very-dark-grey;
   &:after {
-    content: ""; /* Remove the chevron divider on the current item */
+    display: none;
   }
 }
 .breadcrumb__link {
