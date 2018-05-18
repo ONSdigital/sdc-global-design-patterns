@@ -13,6 +13,9 @@ module.exports = {
     },
     {
       "item": "Another thing"
+    },
+    {
+      "item": "The other thing"
     }],
     "current": "Current page"
   }
