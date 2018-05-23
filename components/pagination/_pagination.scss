@@ -79,5 +79,30 @@ $pagingationSize: 2.5rem;
 }
 .pagination__position {
   padding: 0.5rem 0;
+  // @include mq(xs, s) {
+  //   text-align: center;
+  // }
+}
+@include mq(xs,s) {
+  .pagination__item {
+    display: none; // remove list of page numbers on mobile device
+  }
+  .pagination__item-next,
+  .pagination__item-previous {
+    visibility: visible;
+    display: block;
+  }
+  .pagination__position {
+    &.u-hidden {
+      visibility: visible !important;
+      display: block !important;
+    }
+  }
+  .pagination__item-next {
+    margin-left: -0.666rem; // when on first page next link needs positioning in place of previous
+  }
+  .pagination__item-previous ~ .pagination__item-next { // resolves spacing between previous and next links when page list hidden
+    margin-left: 0.25rem;
+  }
 }
 /*END*/
