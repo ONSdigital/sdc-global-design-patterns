@@ -13,6 +13,12 @@ When the number of pages exceeds the maximum display limit, ellipsis (&hellip;) 
 
 If the pagination component sits inline with other content on the page, then the pagination should be **left** aligned.
 
+#### Breakpoints
+
+At the smallest breakpoint the list of page links are hidden. Only the Next and Previous links are displayed to the user below the page indicator.
+
+For the pagination variant without range indicator, when above the smallest breakpoint the page indicator is hidden.
+
 ### Research
 
 ### Usage
@@ -38,9 +44,6 @@ Stings for translation of component to support additional languages (Note: langu
 > - Ewch i’r dudalen flaenorol (Tudalen {n})
 > - Nesaf
 > - Blaenorol
-
-#### Scope
-IUI
 
 #### Dependencies
 * `/components/_pagination.scss`
