@@ -1,21 +1,36 @@
 .breadcrumb {
-  font-size: 0.7rem;
   display: flex;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1rem 0;
 }
 .breadcrumb__items {
-
+  margin: 0;
+  padding: 0;
 }
 .breadcrumb__item {
   display: inline-block;
+  margin-bottom: 0;
+  white-space: nowrap; /* stop items from wrapping, break on chevron only */
+  &:after {
+    content: " ";
+    @include icon("chevron-breadcrumb");
+    background-color: $color-white;
+    background-position: bottom;
+    width: 0.5rem;
+    height: 0.7rem;
+    margin: 0 0.5rem;
+    display: inline-flex;
+  }
+  @include mq(xs,s) {
+    margin-bottom: 0.5rem;
+  }
 }
 .breadcrumb__item--current {
-  color: $color-dark-grey;
+  color: $color-very-dark-grey;
+  &:after {
+    display: none;
+  }
 }
 .breadcrumb__link {
-
-}
-.breadcrumb__chevron {
-
+  text-decoration: none;
 }
