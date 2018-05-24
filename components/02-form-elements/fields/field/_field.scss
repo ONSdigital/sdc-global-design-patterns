@@ -178,14 +178,12 @@ input:checked ~ .field__other {
 .fieldgroup--duration {
   @extend %abstract-fieldgroup-inline;
 
-  .fieldgroup__hours,
-  .fieldgroup__mins,
-  .fieldgroup__secs {
+  .field {
     position: relative;
     margin: 0 0.5rem 0 0;
     flex: 1 1 0;
     clear: right;
-
+    max-width: 8.5rem;
     @include mq(s) {
       margin-right: 1rem;
     }

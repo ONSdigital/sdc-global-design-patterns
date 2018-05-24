@@ -75,12 +75,15 @@
     }
   }
 
-  .input-type__type--duration {
-    width: auto;
-    padding: .6rem;
+  .input-type__type--time,
+  .input-type__type--period {
+    width: 3.5rem;
     @include mq(s) {
       left: auto;
       right: 1px;
     }
+  }
+  .input-type__type--period {
+    width: 4.3rem;
   }
 }
