@@ -76,7 +76,8 @@
   }
 
   .input-type__type--duration {
-    width: 3.5rem;
+    width: auto;
+    padding: .6rem;
     @include mq(s) {
       left: auto;
       right: 1px;
