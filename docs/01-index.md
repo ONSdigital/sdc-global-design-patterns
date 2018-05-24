@@ -24,3 +24,24 @@ Documentation falls into two status levels:
 Any research undertaken related to this item - documented outcomes
 - __Usage__<br />
 When to (and not to) use this pattern - include preference for use cases for sub items.
+
+## Development principles
+We use progressive enhancement to provide the best possible chance of working for the majority of users.
+
+## Browser support
+At a minimum we test in, and support, the browsers in the following table as [defined by GDS](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices/#browsers-to-test-in):
+
+| Operating system | Browser | Support |
+|------------------|---------|---------|
+| **Windows**      |Internet Explorer 8-10 | functional |
+|  | Internet Explorer 11 | compliant |
+|  | Edge (latest versions) | functional |
+|  | Google Chrome (latest versions) | compliant |
+|  | Mozilla Firefox (latest versions) | compliant |
+| **macOS** | Safari 9+ | compliant |
+|  | Google Chrome (latest versions) | compliant |
+|  | Mozilla Firefox (latest versions) | compliant |
+| **iOS** | Safari for iOS 9.3+ | compliant |
+|  | Google Chrome (latest versions) | compliant |
+| **Android** | Google Chrome (latest versions) | compliant |
+|  | Samsung Internet (latest versions) | compliant |
