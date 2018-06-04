@@ -63,17 +63,17 @@ $pagingationSize: 2.5rem;
   border: 3px solid transparent;
   &:hover {
     background-color: $color-light-grey;
-    transition: background-color 200ms ease-in, border-color 100ms ease-in, color 100ms ease-in;
+    transition: background-color 200ms ease-in, border-color 200ms ease-in, color 200ms ease-in;
   }
   &:focus,
   &:active {
     outline: 3px solid $color-amber;
     outline-offset: 3px;
-    transition: background-color 200ms ease-in, color 100ms ease-in;
+    transition: background-color 200ms ease-in, color 200ms ease-in;
     &:hover{
       background-color: $color-links;
       border-color: $color-links;
-      transition: background-color 200ms ease-in, border-color 200ms ease-in, color 100ms ease-in;
+      transition: background-color 200ms ease-in, border-color 200ms ease-in, color 200ms ease-in;
     }
   }
 }
