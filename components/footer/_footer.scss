@@ -34,20 +34,18 @@
     }
   }
 }
-.footer--eq {
+.footer__link--inline {
+  float: left;
+  margin-right: 1.5rem;
+}
+.footer__license {
     .footer__link {
-      float: left;
-      margin-right: 1.5rem;
+      float: none;
+      margin-right: 0;
     }
-    .footer__license {
-        .footer__link {
-          float: none;
-          margin-right: 0;
-        }
-    }
-  .footer__license--border {
-      margin-top: 1.5rem;
-      border-top: 1px solid $color-borders;
-      padding-top: 1.5rem;
-    }
+}
+.footer__license--border {
+  margin-top: 1.5rem;
+  border-top: 1px solid $color-borders;
+  padding-top: 1.5rem;
 }
