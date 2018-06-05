@@ -17,7 +17,10 @@ import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
-import { unitTests } from './gulp/tests'
+import { unitTests } from './gulp/tests';
+import fs from 'fs';
+import * as through2 from 'through2';
+import vinyl from 'vinyl';
 
 import eslint from 'gulp-eslint';
 import gulpStylelint from 'gulp-stylelint';
@@ -153,7 +156,112 @@ gulp.task('scripts:clean', function() {
 
 const bundleScripts = watch => {
   let cache;
-  const bundler = browserify({
+
+  var bundler = function() {
+    var b = browserify()
+      .transform('rollupify', {
+        config: {
+          onwarn: function(message) {
+            if (message.code === 'THIS_IS_UNDEFINED') {
+              return;
+            }
+
+            console.error(message);
+          },
+
+          plugins: [
+            nodeResolve({
+              jsnext: true,
+              main: true,
+              preferBuiltins: false
+            }),
+            commonjs({
+              include: 'node_modules/**',
+              namedExports: {
+                'node_modules/events/events.js': Object.keys(require('events'))
+              }
+            }),
+            rollupBabel({
+              plugins: ['lodash'],
+              presets: ['es2015-rollup', 'stage-2'],
+              babelrc: false,
+              exclude: 'node_modules/!**'
+            })
+          ]
+        },
+      }),
+      stream = through2.obj(function(file, enc, next) {
+        // add each file to the bundle
+        b.add(file.path);
+        next();
+      }, function(next) {
+
+        b.bundle(function(err, src) {
+          if(err) {
+            throw err;
+          }
+
+          // create a new vinyl file with bundle contents
+          // and push it to the stream
+          stream.push(new vinyl({
+            path: 'bundle.js', // this path is relative to dest path
+            contents: src
+          }));
+          next();
+        });
+      });
+    return stream;
+  };
+
+  return gulp.src(['./assets/js/polyfills.js', './assets/js/components.js'])
+    .pipe(bundler())
+    .pipe(gulp.dest('./public/assets/scripts'));
+
+
+  /*return browserify(['./assets/js/polyfills.js', './assets/js/components.js'])
+    .transform('rollupify', {
+      config: {
+        onwarn: function(message) {
+          if (message.code === 'THIS_IS_UNDEFINED') {
+            return;
+          }
+
+          console.error(message);
+        },
+
+        plugins: [
+          nodeResolve({
+            jsnext: true,
+            main: true,
+            preferBuiltins: false
+          }),
+          commonjs({
+            include: 'node_modules/!**',
+            namedExports: {
+              'node_modules/events/events.js': Object.keys(require('events'))
+            }
+          }),
+          rollupBabel({
+            plugins: ['lodash'],
+            presets: ['es2015-rollup', 'stage-2'],
+            babelrc: false,
+            exclude: 'node_modules/!**'
+          })
+        ]
+      },
+    })
+    .bundle();*/
+    //.pipe(source('bundle.js'))
+    //.pipe(gulp.dest('./public/assets/scripts'));
+
+  /**
+   * Works after bundle()
+   */
+  //.pipe(fs.createWriteStream('./public/assets/scripts/bundle.js'));
+
+
+
+  /*const bundler = browserify({
     entries: ['./assets/js/polyfills.js', './assets/js/components.js'],
     debug: true,
     plugin: [watch ? watchify : null]
@@ -164,7 +272,7 @@ const bundleScripts = watch => {
     .transform('rollupify', {
       config: {
         cache: cache,
-        entry: './assets/js/components.js',
+        entry: ['./assets/js/polyfills.js', './assets/js/components.js'],
 
         onwarn: function(message) {
           if (message.code === 'THIS_IS_UNDEFINED') {
@@ -176,7 +284,7 @@ const bundleScripts = watch => {
 
         plugins: [
           commonjs({
-            include: 'node_modules/**',
+            include: 'node_modules/!**',
             namedExports: {
               'node_modules/events/events.js': Object.keys(require('events'))
             }
@@ -190,7 +298,7 @@ const bundleScripts = watch => {
             plugins: ['lodash'],
             presets: ['es2015-rollup', 'stage-2'],
             babelrc: false,
-            exclude: 'node_modules/**'
+            exclude: 'node_modules/!**'
           })
         ]
       }
@@ -214,7 +322,7 @@ const bundleScripts = watch => {
       .pipe(uglify())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('public/assets/scripts'));
-  };
+  };*/
 
   return bundle();
 };
