@@ -57,7 +57,7 @@ input:checked ~ .field__other {
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    transition: background-color 200ms ease-in, color 200ms ease-in, box-shadow 200ms ease-in, border-color 200ms ease-in;
+    transition: background-color 200ms ease-in, color 200ms ease-in, border-color 200ms ease-in;
     &:hover {
       border-color: $color-links-hover;
       box-shadow: none;
@@ -72,15 +72,9 @@ input:checked ~ .field__other {
         box-shadow: 0 0 0 1px $color-text;
       }
     }
-    &.has-focus {
-      color: $color-text;
-      border-color: $color-focus;
-      background-color: #f5f6ff;
-      box-shadow: 0 0 0 1px $color-focus;
-      &:hover {
-        border-color: $color-focus;
-        box-shadow: 0 0 0 1px $color-focus;
-      }
+    &.has-focus, &.has-focus.is-checked {
+      border-color: $color-links-hover;
+      box-shadow: 0 0 0 3px $color-focus-outline;
     }
   }
 
@@ -198,6 +192,9 @@ input:checked ~ .field__other {
     bottom: 0;
     left: 0;
     margin: auto;
+    &:focus {
+      box-shadow: 0 0 0 3px $color-focus-outline;
+    }
   }
   .field__label {
     padding: 0 0 0 1.7em;

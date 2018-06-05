@@ -33,9 +33,9 @@ a {
     color: $color-links-hover;
   }
   &:focus {
-    color: white;
-    background-color: $color-focus;
-    outline: 3px solid $color-focus;
+    outline: 3px solid $color-focus-outline;
+    outline-offset: 3px;
+    color: $color-links-hover;
   }
 }
 

@@ -3,6 +3,7 @@
   "default": "nav--section",
   "status": "wip",
   "label":"Navigation",
+  "preview": "@preview__menu",
   "variants": [{
     "label":"Nav Section",
     "name":"nav--section",

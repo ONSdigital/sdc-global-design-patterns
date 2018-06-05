@@ -1,10 +1,11 @@
-<div class="{{nav-wrapper-classes}}" id="section-nav">
+
+<nav class="{{nav-wrapper-classes}}" id="section-nav" aria-labelledby="menu-btn" role="menu">
   <h2 class="nav__title venus">{{nav-title}}</h2>
   <ul class="{{nav-inner-classes}}">
     {{#each nav-items}}
       <li class="nav__item pluto {{item_class}}">
-        <a class="nav__link" href="{{item_url}}">{{item}}</a>
+        <a class="nav__link" href="{{item_url}}" role="menuitem">{{item}}</a>
       </li>
     {{/each}}
   </ul>
-</div>
+</nav>

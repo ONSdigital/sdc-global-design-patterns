@@ -7,9 +7,6 @@
 
 input:checked ~ .label {
   background: $color-lighter-grey;
-  .has-focus & {
-    background-color: transparent;
-  }
 }
 
 .label__description {

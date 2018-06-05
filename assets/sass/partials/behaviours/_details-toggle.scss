@@ -3,16 +3,16 @@
     $size: 1rem;
 
     transition: transform 300ms ease-in-out;
-    margin-right: 0.3rem;
+    margin-right: 0.5rem;
     speak: none;
     content: "";
     background: url("#{$static}/img/icons/icons--guidance.svg") no-repeat center center;
     background-size: auto;
     text-align: center;
-    width: $size;
+    width: 0.7rem;
     height: $size;
     position: relative;
-    left: -0.1rem;
+    left: 0.1rem;
     top: -0.05rem;
     vertical-align: middle;
     display: inline-block;
@@ -27,7 +27,7 @@
 
   &:focus {
     &::before {
-      background: url("#{$static}/img/icons/icons--guidance-white.svg") no-repeat center center;
+      background: url("#{$static}/img/icons/icons--guidance-darkblue.svg") no-repeat center center;
     }
   }
 }
@@ -39,11 +39,18 @@
 }
 
 %js-details-body {
-  overflow: hidden;
   width: 100%;
   opacity: 0;
   transition: all 0;
   max-height: 0;
+  &::before,
+  &::after {
+    content: " ";
+    display: table; 
+  }
+  &::after {
+    clear: both;
+  }
 }
 
 %js-details-body--is-expanded {

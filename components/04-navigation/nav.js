@@ -1,6 +1,7 @@
 import domready from '../../assets/js/domready';
 import {delay} from 'lodash'
 
+const attrExpanded = 'aria-expanded'
 const classOpen = 'has-nav-open'
 
 domready(() => {
@@ -40,6 +41,7 @@ domready(() => {
     document.body.removeEventListener('touchend', close)
 
     btn.innerHTML = openLabel
+    btn.setAttribute(attrExpanded, 'false')
     if (e && e.target === btn) {
       e.preventDefault()
     }
@@ -50,6 +52,7 @@ domready(() => {
     e.preventDefault()
     document.body.classList.add(classOpen)
     btn.removeEventListener('click', open)
+    btn.setAttribute(attrExpanded, 'true')
     btn.innerHTML = closeLabel
     delay(addCloseListeners, 10)
   }

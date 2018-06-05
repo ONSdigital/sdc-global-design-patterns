@@ -1,6 +1,5 @@
 .accordion {
   display: block;
-  overflow: hidden;
 }
 
 .accordion__title {
@@ -36,6 +35,10 @@
     background: #f8f8f8;
   }
 
+  &:focus {
+    outline: 0;
+  }
+
   &.is-expanded {
     &::before {
       transform: rotate(90deg);
@@ -50,8 +53,9 @@
     text-decoration: underline;
   }
 
-  &:focus {
-    outline: none;
+  span:focus {
+    outline-offset: 3px;
+    outline: 3px solid $color-focus-outline;
   }
 }
 

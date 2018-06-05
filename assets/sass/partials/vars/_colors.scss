@@ -3,6 +3,7 @@ $color-black: #222;
 $color-grey: #ccc;
 $color-dark-grey: #999;
 $color-very-dark-grey: #595959;
+$color-mid-grey: #eeeeee;
 $color-light-grey: #e4e8eb;
 $color-lighter-grey: #f5f5f5;
 
@@ -30,6 +31,7 @@ $color-text-light: $color-very-dark-grey;
 $color-links: $color-blue;
 $color-links-hover: $color-secondary;
 $color-focus: $color-blue;
+$color-focus-outline: $color-amber;
 $color-borders: $color-dark-grey;
 $color-placeholder: lighten($color-text-light, 40%);
 $color-emphasis: #dce5b0;

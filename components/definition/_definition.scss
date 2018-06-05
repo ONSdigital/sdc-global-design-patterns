@@ -6,8 +6,9 @@
     font-weight: 600;
     text-decoration: none;
 
-    &:focus:hover {
-      background-color: #033e58;
+    &:focus {
+      outline-offset: 3px;
+      outline: 3px solid $color-focus-outline;  
     }
   }
 

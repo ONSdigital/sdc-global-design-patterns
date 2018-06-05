@@ -16,9 +16,6 @@
   border-radius: 0;
   a {
     color: $color-secondary;
-    &:focus {
-      color: white;
-    }
   }
   /* Removes inherited bottom margin to make whitespace inside panel equal */
    > *:last-child {
