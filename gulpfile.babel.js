@@ -18,7 +18,6 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 import { unitTests } from './gulp/tests';
-import fs from 'fs';
 import * as through2 from 'through2';
 import vinyl from 'vinyl';
 
@@ -195,7 +194,6 @@ const bundleScripts = watch => {
         b.add(file.path);
         next();
       }, function(next) {
-
         b.bundle(function(err, src) {
           if(err) {
             throw err;
@@ -331,7 +329,11 @@ gulp.task('scripts:bundle', () => bundleScripts(false));
 
 gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle'));
 
-gulp.task('scripts:watch', () => bundleScripts(true));
+/*gulp.task('scripts:watch', () => bundleScripts(true));*/
+gulp.task('scripts:watch', (done) => {
+  gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:bundle'));
+  done();
+});
 
 function scriptsLint (watch) {
   let task = gulp.src(['./assets/**/*.js', './components/**/*.js'])
