@@ -13,6 +13,12 @@
     margin-top: 2rem;
   }
 
+  .footer__license--border {
+    margin-top: 1.5rem;
+    border-top: 1px solid $color-borders;
+    padding-top: 1.5rem;
+  }
+
   .footer__ogl-img {
     height: 1.1rem;
     opacity: .75;
@@ -23,9 +29,9 @@
     color: $color-light-grey;
 
     &:focus {
-      color: #fff;
-      outline: 2px dashed #fff;
-      outline-offset: 2px;
+      color: $color-white;
+      outline: 3px solid $color-white;
+      outline-offset: 3px;
       background: transparent;
     }
 
@@ -33,4 +39,9 @@
       color: $color-light-grey;
     }
   }
+  .footer__link--inline {
+    float: left;
+    margin-right: 1.5rem;
+  }
+
 }
