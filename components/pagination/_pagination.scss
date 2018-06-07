@@ -3,7 +3,7 @@ _pagination.scss
 */
 $pagingationSize: 2.5rem;
 .pagination {
-  width: 100%;
+  // width: 100%;
   clear: both;
 }
 .pagination__items {
@@ -14,12 +14,12 @@ $pagingationSize: 2.5rem;
   height: $pagingationSize;
   line-height: 2.3rem;
   text-align: center;
-  float: left;
+  display: inline-block;
   margin-right: 0.25rem;
   box-sizing: border-box;
 
 }
-.pagination__item_current {
+.pagination__item--current {
   & .pagination__link {
     background-color: $color-secondary;
     color: $color-white;
@@ -31,7 +31,6 @@ $pagingationSize: 2.5rem;
 
     border-radius: 3px;
     border: 0.16667rem solid $color-secondary;
-    overflow: hidden;
 
     &:hover {
       background-color: $color-secondary;
@@ -40,27 +39,26 @@ $pagingationSize: 2.5rem;
   }
 
 }
-.pagination__item-next,
-.pagination__item-previous {
+.pagination__item--next,
+.pagination__item--previous {
   width: auto;
   & .pagination__link {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
-.pagination__item-previous {
+.pagination__item--previous {
   margin-left: -0.666rem;
 }
 
-.pagination__item-gap {
+.pagination__item--gap {
   cursor: default;
 }
 .pagination__link {
   width: 100%;
   height: 100%;
-  display: inline-block;
+  display: block;
   border-radius: 3px;
-  border: 3px solid transparent;
   &:hover {
     background-color: $color-light-grey;
     transition: background-color 200ms ease-in, border-color 200ms ease-in, color 200ms ease-in;
@@ -87,8 +85,8 @@ $pagingationSize: 2.5rem;
   .pagination__item {
     display: none; // remove list of page numbers on mobile device
   }
-  .pagination__item-next,
-  .pagination__item-previous {
+  .pagination__item--next,
+  .pagination__item--previous {
     visibility: visible;
     display: block;
   }
@@ -98,10 +96,10 @@ $pagingationSize: 2.5rem;
       display: block !important;
     }
   }
-  .pagination__item-next {
+  .pagination__item--next {
     margin-left: -0.666rem; // when on first page next link needs positioning in place of previous
   }
-  .pagination__item-previous ~ .pagination__item-next { // resolves spacing between previous and next links when page list hidden
+  .pagination__item--previous ~ .pagination__item--next { // resolves spacing between previous and next links when page list hidden
     margin-left: 0.25rem;
   }
 }
