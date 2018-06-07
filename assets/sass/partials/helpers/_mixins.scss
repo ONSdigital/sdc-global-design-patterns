@@ -130,3 +130,11 @@
     padding-left: $px;
   }
 }
+
+// =============================================================================
+// Sets antialiasing - used for light text on dark background
+// =============================================================================
+@mixin font-smoothing() {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
