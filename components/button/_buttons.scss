@@ -158,3 +158,9 @@
     display: none;
   }
 }
+
+.btn--wa {
+  @include mq(xs) {
+    width: auto;
+  }
+}
