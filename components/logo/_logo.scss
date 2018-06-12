@@ -4,9 +4,9 @@
   @include lt-ie9() {
     float: left;
     display: block;
-    width: 220px;
-    height: 44px;
-    background: url("#{$static}/img/logo.png") no-repeat 0 0;
+    width: 275px;
+    height: 24px;
+    background: url("#{$static}/img/ons-logo-white.png") no-repeat 0 0;
     img {
       display: none;
     }
