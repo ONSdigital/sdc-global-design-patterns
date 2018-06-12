@@ -130,3 +130,15 @@
     padding-left: $px;
   }
 }
+
+// =============================================================================
+// Truncate text
+// truncate-sl (single line)
+// =============================================================================
+
+@mixin truncate-sl($width) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: $width;
+}
