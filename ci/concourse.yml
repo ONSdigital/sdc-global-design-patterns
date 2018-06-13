@@ -11,6 +11,10 @@ resources:
     owner: ONSdigital
     repository: sdc-global-design-patterns
 
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: {{slack_webhook_url}}
 
 jobs:
 - name: Deploy
@@ -46,6 +50,15 @@ jobs:
           design_patterns_tag=$(git rev-parse --short HEAD)
           mkdir ../public/$design_patterns_tag
           cp -R public/assets/* ../public/$design_patterns_tag
+    on_failure:
+      put: slack-alert
+      params:
+        channel: '#eq-runner #sdx-team #ras-ops'
+        attachments:
+          - pretext: Design Pattern Build Failed
+            color: danger
+            title: Concourse Build $BUILD_ID
+            title_link: http://concourse.dev.eq.ons.digital/builds/$BUILD_ID
 
   - task: Deploy to S3
     params:
@@ -69,6 +82,15 @@ jobs:
         - -exc
         - |
           aws s3 sync --acl public-read public s3://((s3_bucket_name))/sdc/
+    on_failure:
+      put: slack-alert
+      params:
+        channel: '#eq-runner #sdx-team #ras-ops'
+        attachments:
+          - pretext: Design Pattern Deploy Failed
+            color: danger
+            title: Concourse Build $BUILD_ID
+            title_link: http://concourse.dev.eq.ons.digital/builds/$BUILD_ID
 
 - name: Release
   plan:
@@ -107,3 +129,12 @@ jobs:
           [ ${#design_patterns_commit} -ne 7 ] && exit
 
           aws s3 cp s3://((s3_bucket_name))/sdc/$design_patterns_commit/ s3://((s3_bucket_name))/sdc/$design_patterns_release/ --recursive --acl public-read
+    on_failure:
+      put: slack-alert
+      params:
+        channel: '#eq-runner #sdx-team #ras-ops'
+        attachments:
+          - pretext: Design Pattern Release Deploy Failed
+            color: danger
+            title: Concourse Build $BUILD_ID
+            title_link: http://concourse.dev.eq.ons.digital/builds/$BUILD_ID
