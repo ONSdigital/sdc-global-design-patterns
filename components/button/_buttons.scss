@@ -154,7 +154,70 @@
 .btn--menu {
   @extend .btn--secondary;
   @extend .btn--small;
-  @include mq(m) {
+  @include mq(s) {
+    display: none;
+  }
+}
+
+.btn--burger {
+  position: relative;
+  overflow: hidden;
+  margin: 3px 0 0;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  text-indent: -9999px;
+  background: transparent;
+  border: transparent;
+  border-radius: 0;
+  &:focus, &:hover {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  span {
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 0px;
+    right: 0px;
+    height: 3px;
+    background-color: $color-white;
+    &::before, &::after{
+      position: absolute;
+      display: block;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-white;
+      content: "";
+      transition-duration: 0.3s,0.3s;
+      transition-delay: 0.3s,0;
+    }
+    &::before {
+      transition-property: top,transform;
+      top: -8px;
+    }
+    &::after {
+      transition-property: bottom,transform;
+      bottom: -8px;
+    }
+  }
+  &.active {
+    span {
+      background-color: transparent;
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  @include mq(s) {
     display: none;
   }
 }
