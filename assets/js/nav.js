@@ -1,5 +1,6 @@
 const attrExpanded = 'aria-expanded'
 const hideClass = 'nav--hide-mob'
+
 let navVisible = false
 
 export default class Nav {
@@ -11,7 +12,7 @@ export default class Nav {
     toggleNav() {
         navVisible ? this.navClose() : this.navOpen()
     }
-    
+
     navOpen() {
         this.btn.setAttribute(attrExpanded, 'true')
         this.nav.classList.remove(hideClass)
@@ -20,8 +21,8 @@ export default class Nav {
 
     navClose() {
         this.btn.setAttribute(attrExpanded, 'false')
-        this.nav.classList.add(hideClass)
+        this.nav.classList.add(hideClass) 
         navVisible = false
-    }
 
+    }
 }

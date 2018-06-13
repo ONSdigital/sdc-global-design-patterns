@@ -22,9 +22,6 @@
 
   &__nav {
     background: $color-header-main;
-    @include mq(xs,m) {
-      background: darken($color-header-main, 5%);
-    }
   }
 
   &__title {
