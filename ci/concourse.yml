@@ -26,7 +26,7 @@ jobs:
         type: docker-image
         source:
           repository: node
-          tag: 8.11.2
+          tag: 10.2.1
 
       inputs:
       - name: sdc-global-design-patterns
