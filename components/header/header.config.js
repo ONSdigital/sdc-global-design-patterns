@@ -27,7 +27,8 @@ module.exports = {
     "main":[
       {
         "text": "Surveys",
-        "link": "#1"
+        "link": "#1",
+        "classes": "nav__item--active"
       },
       {
         "text": "Messages",

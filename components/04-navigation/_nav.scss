@@ -69,6 +69,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    transition: opacity 300ms ease;
     @include mq(xs,s) {
       padding: 0 0 .5rem 0;
     }
@@ -88,29 +89,53 @@
     @include mq(m) {
       margin: 0 0 0 1rem;
     }
-    @include mq(xs,m) {
+    @include mq(xs,s) {
       display: block;
       text-align: left;
       padding: .5rem .5rem .5rem 0;
       margin: 0;
     }
+    &--secondary {
+      .nav__link {
+        font-size: 1rem;
+      }
+    }
   }
+
   .nav__link {
     display: inline-block;
     margin: 0;
     text-align: center;
     @include mq(xs,s) {
       font-size: 1.2rem;
-      &--secondary {
-        font-size: 1rem;
-      }
+      display: block;
+      text-align: left;
     }
   }
 }
 
-.has-js .nav--hide-mob {
-  @include mq(xs,m) {
+.nav--main {
+  @include mq(s) {
+  .nav__item {
+    padding: 0 0 .3rem;
+    margin: 0 0 0 1rem;
+    &--active {
+      border-bottom: 4px solid $color-white;
+      font-weight: bold;
+    }
+  }
+  .nav__link {
+    text-decoration: none;
+  }
+}
+}
+
+.has-js .nav--h-m { // h-m - hide mobile
+  @include mq(xs,s) {
     max-height: 0;
+    .nav__list {
+      opacity: 0;
+    }
   }
 }
 
