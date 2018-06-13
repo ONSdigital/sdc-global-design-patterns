@@ -4,22 +4,52 @@
             <div class="grid grid--gutterless">
                 <div class="grid__col col-7@xs col-5@m">
                     <div class="logo">
-                        <a href="#1"><img src="{{path '/assets/img/ons-logo-white.svg'}}" alt="Office for National Statistics logo" class="logo__img header__logo"></a>
+                        <a href="#1"><img src="../../assets/img/ons-logo-white.svg" alt="Office for National Statistics logo" class="logo__img header__logo"></a>
                     </div>
                 </div>
+                <div class="grid__col col-5@xs col-7@m">
+                    <nav class="nav nav--horizontal nav--light u-d-no--@xs@m u-fr">
+                        <ul class="nav__list">
+                            {{#each services}}
+                            <li class="nav__item"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </nav>
+                </div>  
             </div>
-        </div>  
+        </div>
     </div>
     <div class="header__main">
         <div class="container">
             <div class="grid grid--gutterless grid--align-mid u-cf">
-                <div class="grid__col {{#if button}}col-6@s col-8@m{{/if}}">
+                <div class="grid__col {{#if button}}col-10@xs col-8@m{{/if}}">
                     <h1 class="header__title">{{title}}</h1>
                     {{#if description}}
                     <p class="header__desc">{{description}}</p>
                     {{/if}}
                 </div>
+                <button class="btn btn--menu btn--wa js-nav-btn u-fr" type="button" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle main navigation" aria-haspopup="true">X</button>
+                {{#if button}}
+                    <div class="u-fr u-d-no--@xs@m">
+                        {{> @button btn-classes='btn--ghost' label=button}}
+                    </div>
+                {{/if}}
             </div>
+        </div>
+    </div>
+    <div class="header__nav">
+        <div class="container">
+            <nav class="nav nav--horizontal nav--light nav--hide-mob js-main-nav" role="navigation" id="main-nav">
+                <ul class="nav__list">
+                    {{#each main}}
+                    <li class="nav__item"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                    {{/each}}
+                    {{#each services}}
+                    <li class="nav__item u-d-no--@m@xxl"><a href="{{link}}" class="nav__link nav__link--secondary">{{text}}</a></li>
+                    {{/each}}
+                    <li class="nav__item u-d-no--@m@xxl">{{> @button btn-classes='btn--ghost' label=button}}</li>
+                </ul>
+            </nav>
         </div>
     </div>
 </header>

@@ -1,29 +1,39 @@
 module.exports = {
   "title": "Header",
   "status": "ready",
-  "default": "standard",
+  "default": "header",
   "collated": true,
   "preview": "@preview__page", /* As it is a layout level element use page preview */
   "variants": [{
-    "name": "standard",
-    "label": "Header - standard",
+    "name": "header",
+    "label": "Header",
     "context": {
-      "title": "Standard title header"
-    },
-  },{
-    "name": "hero",
-    "label": "Header - hero",
-    "context": {
-      "title": "Hero title header",
-      "classes": "header--hero",
-      "description": "This is the description or tagline"
-    },
-  },{
-    "name": "thin",
-    "label": "Header - thin",
-    "context": {
-      "title": "Thin title header",
-      "classes": "header--thin",
-    },
+      "title": "ONS Business Surveys",
+      "button": "Save and complete later",
+      "services":[
+        {
+          "text": "Help",
+          "link": "#1"
+        },
+        {
+          "text": "Account",
+          "link": "#1"
+        },
+        {
+          "text": "Sign out",
+          "link": "#2"
+        }
+    ],
+    "main":[
+      {
+        "text": "Surveys",
+        "link": "#1"
+      },
+      {
+        "text": "Messages",
+        "link": "#1"
+      }
+    ],
+  },
   }]
 }
