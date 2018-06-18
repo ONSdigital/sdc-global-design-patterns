@@ -31,7 +31,7 @@
                     {{/if}}
                 </div>
                 {{#if nav}}  
-                {{> @button--burger btn-classes='u-fr u-d-no--@s@xxl'}}
+                {{> @button--burger btn-classes='u-fr u-d-no--@s'}}
                 {{/if}}
                 {{#if button}}
                 <div class="u-fr u-d-no--@xs@s">
@@ -50,10 +50,10 @@
                     <li class="nav__item {{classes}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link">{{text}}</a></li>
                     {{/each}}
                     {{#each services}}
-                    <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no--@s@xxl" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                    <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no--@s" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
                     {{/each}}
                     {{#if button}}
-                    <li class="nav__item u-d-no--@s@xxl" role="menuitem">{{> @button btn-classes='btn--ghost' label=button}}</li>
+                    <li class="nav__item u-d-no--@s" role="menuitem">{{> @button btn-classes='btn--ghost' label=button}}</li>
                     {{/if}}
                 </ul>
             </nav>
