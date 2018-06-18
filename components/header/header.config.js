@@ -8,33 +8,7 @@ module.exports = {
     "name": "header",
     "label": "Header",
     "context": {
-      "title": "ONS Business Surveys",
-      "button": "Save and complete later",
-      "services":[
-        {
-          "text": "Help",
-          "link": "#1"
-        },
-        {
-          "text": "Account",
-          "link": "#1"
-        },
-        {
-          "text": "Sign out",
-          "link": "#2"
-        }
-    ],
-    "main":[
-      {
-        "text": "Surveys",
-        "link": "#1",
-        "classes": "nav__item--active"
-      },
-      {
-        "text": "Messages",
-        "link": "#1"
-      }
-    ],
-  },
+      "title": "ONS Business Surveys"
+    },
   }]
 }

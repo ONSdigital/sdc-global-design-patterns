@@ -216,9 +216,10 @@
       }
     }
   }
-  @include mq(s) {
-    display: none;
-  }
+}
+
+.no-js .btn--burger {
+  display: none;
 }
 
 .btn--wa {

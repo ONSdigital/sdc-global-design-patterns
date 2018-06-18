@@ -65,15 +65,17 @@
   margin: 0;
   max-height: 50rem;
   transition: max-height 300ms ease-in-out;
+
   .nav__list {
     list-style: none;
     margin: 0;
     padding: 0;
     transition: opacity 300ms ease;
     @include mq(xs,s) {
-      padding: 0 0 .5rem 0;
+      padding: 0 0 1rem 0;
     }
   }
+
   .nav__item {
     font-size: 1rem;
     display: inline-block;
@@ -82,9 +84,6 @@
     text-align: center;
     &:first-child {
       margin-left: 0;
-      @include mq(xs,m) {
-        padding-top: 0;
-      }
     }
     @include mq(m) {
       margin: 0 0 0 1rem;
@@ -92,13 +91,12 @@
     @include mq(xs,s) {
       display: block;
       text-align: left;
-      padding: .5rem .5rem .5rem 0;
+      padding: .5rem .5rem 0 0;
       margin: 0;
     }
-    &--secondary {
-      .nav__link {
-        font-size: 1rem;
-      }
+    + .nav__item--secondary {
+      border-top: 1px solid lighten($color-header-main, 15%);
+      margin: .5rem 0 0;
     }
   }
 
@@ -112,22 +110,27 @@
       text-align: left;
     }
   }
+
+  .nav__item--active {
+    .nav__link {
+      font-weight: bold;
+    }
+  }
 }
 
 .nav--main {
   @include mq(s) {
-  .nav__item {
-    padding: 0 0 .3rem;
-    margin: 0 0 0 1rem;
-    &--active {
-      border-bottom: 4px solid $color-white;
-      font-weight: bold;
+    .nav__item {
+      padding: 0 0 .3rem;
+      margin: 0 0 0 1rem;
+      &--active {
+        border-bottom: 4px solid $color-white;
+      }
+    }
+    .nav__link {
+      text-decoration: none;
     }
   }
-  .nav__link {
-    text-decoration: none;
-  }
-}
 }
 
 .has-js .nav--h-m { // h-m - hide mobile
@@ -142,8 +145,15 @@
 .nav--light {
   .nav__link {
     color: $color-white;
-    &:hover {
+    &:hover, &:focus {
       color: #c2ecff;
+    }
+  }
+  .nav__item--active {
+    .nav__link {
+      &:hover, &:focus {
+        color: $color-white;
+      }
     }
   }
 }
