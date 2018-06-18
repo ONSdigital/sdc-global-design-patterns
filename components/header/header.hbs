@@ -7,49 +7,57 @@
                         <a href="#1"><img src="../../assets/img/ons-logo-white.svg" alt="Office for National Statistics logo" class="logo__img header__logo"></a>
                     </div>
                 </div>
+                {{#if services}}
                 <div class="grid__col col-6@s">
-                    <nav class="nav nav--horizontal nav--light u-d-no--@xs@s u-fr" aria-label="Site services menu" >
-                        <ul class="nav__list" role="menubar">
+                    <nav class="nav nav--horizontal nav--light u-d-no--@xs@s u-fr" aria-label="Site services menu">
+                        <ul class="nav__list" role="menubar" aria-label="Site services menu">
                             {{#each services}}
-                                <li class="nav__item" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                            <li class="nav__item" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
                             {{/each}}
                         </ul>
                     </nav>
                 </div>  
+                {{/if}}
             </div>
         </div>
     </div>
     <div class="header__main">
         <div class="container">
             <div class="grid grid--gutterless grid--align-mid u-cf">
-                <div class="grid__col {{#if button}}col-10@xs col-6@s{{/if}}">
+                <div class="grid__col {{#if nav}}col-10@xs col-6@s col-8@m{{/if}}">
                     <h1 class="header__title">{{title}}</h1>
                     {{#if description}}
                     <p class="header__desc">{{description}}</p>
                     {{/if}}
                 </div>
-                <button class="btn btn--burger js-nav-btn u-fr" type="button" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle main navigation" aria-haspopup="true"><span>Main Menu</span></button>
+                {{#if nav}}  
+                {{> @button--burger btn-classes='u-fr u-d-no--@s@xxl'}}
+                {{/if}}
                 {{#if button}}
-                    <div class="u-fr u-d-no--@xs@s">
-                        {{> @button btn-classes='btn--ghost' label=button}}
-                    </div>
+                <div class="u-fr u-d-no--@xs@s">
+                    {{> @button btn-classes='btn--ghost' label=button}}
+                </div>
                 {{/if}}
             </div>
         </div>
     </div>
+    {{#if nav}}  
     <div class="header__nav">
         <div class="container">
             <nav class="nav nav--horizontal nav--light nav--main nav--h-m js-main-nav" aria-label="Main menu" id="main-nav">
-                <ul class="nav__list" aria-label="Main menu" role="menubar">
+                <ul class="nav__list" aria-label="Navigation menu" role="menubar">
                     {{#each main}}
-                    <li class="nav__item {{classes}}" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                    <li class="nav__item {{classes}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link">{{text}}</a></li>
                     {{/each}}
                     {{#each services}}
-                    <li class="nav__item nav__item--secondary u-d-no--@s@xxl" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                    <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no--@s@xxl" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
                     {{/each}}
+                    {{#if button}}
                     <li class="nav__item u-d-no--@s@xxl" role="menuitem">{{> @button btn-classes='btn--ghost' label=button}}</li>
+                    {{/if}}
                 </ul>
             </nav>
         </div>
     </div>
+    {{/if}}
 </header>

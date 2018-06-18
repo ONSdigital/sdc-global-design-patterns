@@ -65,6 +65,13 @@ module.exports = {
       "btn-classes": "u-d-b",
       "label": "Menu"
     },
+  },{
+    "name": "burger",
+    "label": "Burger",
+    "context": {
+      "label": "Main menu",
+      "bar": true
+    },
   }
 ]
 }
