@@ -116,6 +116,21 @@
       font-weight: bold;
     }
   }
+
+  @include lt-ie10 {
+    .nav__list {
+      padding: 0;
+    }
+
+    .nav__item {
+      display: inline-block;
+      padding-top: 0;
+    }
+
+    .nav__link {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .nav--main {
@@ -133,11 +148,21 @@
   }
 }
 
-.has-js .nav--h-m { // h-m - hide mobile
-  @include mq(xs,s) {
-    max-height: 0;
-    .nav__list {
-      opacity: 0;
+.has-js {
+  .nav--h-m { // h-m - hide mobile
+    @include mq(xs,s) {
+      max-height: 0;
+      .nav__list {
+        opacity: 0;
+      }
+    }
+    @at-root {
+      .lt-ie10 .nav--h-m {
+        max-height: 40px!important;
+        .nav__list {
+          opacity: 1;
+        }
+      }
     }
   }
 }

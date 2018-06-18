@@ -1,6 +1,9 @@
 .logo {
   display: inline-block;
-
+  &__img {
+    width: 275px;
+    height: auto;
+  }
   @include lt-ie9() {
     float: left;
     display: block;
