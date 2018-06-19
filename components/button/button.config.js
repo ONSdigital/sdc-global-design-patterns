@@ -66,8 +66,8 @@ module.exports = {
       "label": "Menu"
     },
   },{
-    "name": "burger",
-    "label": "Burger",
+    "name": "mobile",
+    "label": "Mobile",
     "context": {
       "label": "Main menu",
       "bar": true
