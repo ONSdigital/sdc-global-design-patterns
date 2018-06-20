@@ -13,6 +13,10 @@
 
   &__logo {
     height: 1.333rem;
+    &--print {
+      display: none;
+      width: 275px;
+    }
   }
 
   &__main {
