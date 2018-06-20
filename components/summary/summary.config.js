@@ -21,6 +21,10 @@ module.exports = {
       "label": "Multiple"
     },
     {
+      "name": "multiple-textarea",
+      "label": "Multiple textarea"
+    },
+    {
       "name": "errors",
       "label": "Validation across multiple pages"
     }
