@@ -70,8 +70,9 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    transition: opacity 300ms ease;
-    @include mq(xs,s) {
+    max-height: 50rem;
+    transition: max-height 300ms ease-in-out;
+      @include mq(xs,s) {
       padding: 0 0 1rem 0;
     }
   }
@@ -153,7 +154,8 @@
     @include mq(xs,s) {
       max-height: 0;
       .nav__list {
-        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
       }
     }
     @at-root {
