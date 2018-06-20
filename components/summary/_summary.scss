@@ -50,6 +50,12 @@
   justify-content: flex-end;
 }
 
+.summary__link--textarea {
+  @include mq(m) {
+    padding-top: 0.5rem;
+  }
+}
+
 .summary__error-text {
   color: $color-red;
 }
@@ -75,6 +81,11 @@
     padding-bottom: 0.5rem;
   }
   .summary__answer--textarea {
+    @include mq(m) {
+      padding-top: 0;
+    }
+  }
+  .summary__link--textarea {
     @include mq(m) {
       padding-top: 0;
     }
