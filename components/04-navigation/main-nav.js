@@ -21,7 +21,7 @@ export default class Nav {
     }
 
     checkState() {
-        if (!navVisible) {
+        if (!navVisible && window.innerWidth < 500) {
             forEach(this.links, link => { link.setAttribute(tabIndex, '-1') })
             forEach(this.btns, btn => { btn.setAttribute(tabIndex, '-1') })
         }
