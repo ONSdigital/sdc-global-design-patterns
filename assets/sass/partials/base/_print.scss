@@ -4,14 +4,6 @@
   display: none;
 }
 
-.print__hidden {
-  margin-bottom: 1rem;
-
-  h2 {
-    margin-bottom: 0;
-  }
-}
-
 @media print {
   .print__hidden {
     display: none !important;
@@ -36,9 +28,24 @@
 
   .header {
     background-color: transparent !important;
-
-    &::before {
-      display: none !important;
+    &__main {
+      padding-bottom: 0 !important;
+    }
+    h1, p, a {
+      color: $color-black !important;
+    }
+    li {
+      display: block !important;
+      text-align: left !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+    a {
+      &:after {
+        content:" (" attr(href) ") ";
+        font-size: 0.8em;
+        font-weight: normal;
+      }
     }
   }
 
@@ -148,18 +155,6 @@
   }
 
   .guidance__link {
-    display: none !important;
-  }
-
-  .btn--link {
-    display: none !important;
-  }
-
-  .btn--primary {
-    display: none !important;
-  }
-
-  .header__btn {
     display: none !important;
   }
 
