@@ -3,8 +3,9 @@ There is currently a single footer variant available throughout SDC.
 
 Additional planned variants include:
 
-- eQ footer: which will use a reduced set of links as it is within a transaction funnel.
-- Internal: which will tailor content and styles to the ‘IUI’.
+- **Transactional**: which will use a reduced set of links as it is within a transaction funnel.
+- **Internal service**: which will tailor content to the internal users.
+- **Powered by ONS**: the 'transactional' and 'full' footer are also available for badged services where ONS is providing services to external organisations.
 
 ### Research
 
