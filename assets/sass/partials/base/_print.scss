@@ -28,6 +28,9 @@
 
   .header {
     background-color: transparent !important;
+    &__top {
+      background-color: transparent !important;
+    }
     &__main {
       padding-bottom: 0 !important;
     }
@@ -51,6 +54,7 @@
 
   .header__logo--print {
     display: block !important;
+    width: 12rem;
   }
 
   .header__info {
