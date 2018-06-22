@@ -40,7 +40,7 @@
       margin: 0 !important;
       border: none !important;
     }
-    a {
+    &__nav a {
       &:after {
         content:" (" attr(href) ") ";
         font-size: 0.8em;
@@ -49,8 +49,8 @@
     }
   }
 
-  .header__logo {
-    display: inline-block !important;
+  .header__logo--print {
+    display: block !important;
   }
 
   .header__info {
