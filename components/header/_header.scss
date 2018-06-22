@@ -17,6 +17,9 @@
 
   &__logo {
     height: 1.333rem;
+    &--print {
+      display: none;
+    }
   }
 
   &__main {

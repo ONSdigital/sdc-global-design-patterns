@@ -47,7 +47,7 @@
     {{#if nav}}  
     <div class="header__nav">
         <div class="container">
-            <nav class="nav nav--horizontal nav--light nav--main nav--h-m js-main-nav" {{#if main}}aria-label="Main menu" {{#else}}{{/if}} id="main-nav">
+            <nav class="nav nav--horizontal nav--light nav--main nav--h-m js-main-nav" aria-label="Main menu" id="main-nav">
                 <ul class="nav__list" aria-label="Navigation menu" role="menubar">
                     {{#each main}}
                     <li class="nav__item {{classes}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link">{{text}}</a></li>
