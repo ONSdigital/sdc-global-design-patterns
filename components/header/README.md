@@ -13,6 +13,8 @@ The hero header allows for text to be added below the title. This should be used
 The thin header should be used for internal facing services which have a less of a brand requirement and pages which contain many types of complex content.
 
 #### Note
+In use, the logo should be linked to the contextual root of the service if a link is appropriate. For example in SDC the logo would link to https://surveys.ons.gov.uk for respondents.
+
 Additional elements can be added to the header such as buttons, services links and main navigation. References will be added here to those components when they become available.
 
 #### Scope

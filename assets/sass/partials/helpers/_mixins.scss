@@ -132,13 +132,10 @@
 }
 
 // =============================================================================
-// Truncate text
-// truncate-sl (single line)
+// Sets antialiasing - used for light text on dark background
 // =============================================================================
 
-@mixin truncate-sl($width) {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: $width;
+@mixin font-smoothing() {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }

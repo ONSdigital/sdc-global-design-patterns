@@ -9,26 +9,27 @@
     width: 100%;
     padding: .7rem 0;
     background: $color-secondary;
+    &--border {
+      border-bottom: 3px solid $color-secondary;
+      padding: .7rem 0 .534rem;
+    }
   }
 
   &__logo {
     height: 1.333rem;
-    &--print {
-      display: none;
-      width: 275px;
-    }
   }
 
   &__main {
     padding: 1.1rem 0;
     background: $color-header-main;
+    &--border {
+      border-bottom: 3px solid $color-header-main;
+      padding: 1.1rem 0 .934rem;
+    }
   }
 
   &__nav {
     background: $color-header-main;
-    @include mq(xs,s) {
-      background: darken($color-header-main, 5%);
-    }
   }
 
   &__title {
@@ -61,7 +62,7 @@
         padding: .8rem 0;
       }    
       &__logo {
-        height: 1.056rem;
+        width: 200px;
       }
     }
   }
