@@ -10,7 +10,7 @@
   @each $breakpointMax, $size in $grid-bp {
     @include mq($breakpointMin,$breakpointMax) {
       .u-d-no--\@#{$breakpointMin}\@#{$breakpointMax} {
-        display:none!important;
+        display: none !important;
       }
     }
   }
