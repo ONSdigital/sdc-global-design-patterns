@@ -327,7 +327,19 @@ const bundleScripts = watch => {
 
 gulp.task('scripts:bundle', () => bundleScripts(false));
 
-gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle'));
+/* UGLIFY of bundled scripts
+    - run this after all scripts are bundled to produce a minified version
+*/
+gulp.task('scripts:uglify', function(done) {
+  gulp.src('public/assets/scripts/bundle.js')
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('public/assets/scripts'))
+    done();
+});
+/* END UGLIFY of bundled scripts */
+
+gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle', 'scripts:uglify'));
 
 /*gulp.task('scripts:watch', () => bundleScripts(true));*/
 gulp.task('scripts:watch', (done) => {
