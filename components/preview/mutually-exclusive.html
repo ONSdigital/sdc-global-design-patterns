@@ -1,0 +1,101 @@
+
+
+<!doctype html>
+<!--[if lt IE 7]>      <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html lang="en-gb" dir="ltr" class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en-gb" dir="ltr" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="../../assets/img/eq.png" />
+  <title>Mutually Exclusive: Default | SDC Pattern Library</title>
+
+  <!--[if (gt IE 9) | (IEMobile)]><!-->
+  <link href="../../assets/css/responsive.css" rel="stylesheet">
+  <!--<![endif]-->
+  <!--[if (lte IE 9) & (!IEMobile)]>
+  <link href="../../assets/css/fixed.css" rel="stylesheet">
+  <![endif]-->
+
+  <!--[if gt IE 8]><!-->
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js','has-js')</script>
+  <!--<![endif]-->
+
+  <script>
+    window.__EQ_SESSION_TIMEOUT__ = 18;
+    window.__EQ_SESSION_TIMEOUT_PROMPT__ = 12;
+  </script>
+
+  <style>
+    .collator-item {
+      margin-bottom: 2rem;
+    }
+    .collator-title {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+<div style="padding-top:1rem" >
+  <div class="page__container container">
+    <div class="grid grid--reverse">
+      <div class="grid__col col-4@m">
+      </div>
+      <div class="grid__col col-7@m pull-1@m">
+        <div class="field field--checkbox field--multiplechoice field--exclusive">
+  <fieldset>
+    <legend class="field__legend mars u-vh">What type of central heating do you have?</legend>
+    <div class="field__label venus">Select all that apply:</div>
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="gas" id="gas" type="checkbox">
+        <label class="label label--inline venus "
+          for="gas"
+          >
+            Gas
+        </label>
+      </div>
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="electric" id="electric" type="checkbox">
+        <label class="label label--inline venus "
+          for="electric"
+          >
+            Electric
+        </label>
+      </div>
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="solid-fuel" id="solid-fuel" type="checkbox">
+        <label class="label label--inline venus "
+          for="solid-fuel"
+          >
+            Solid fuel
+        </label>
+      </div>
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="other" id="other" type="checkbox">
+        <label class="label label--inline venus "
+          for="other"
+          >
+            Other
+        </label>
+      </div>
+      <div class="field__label u-mt-s venus" aria-hidden="true">Or</div>
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="no central heating" id="none" type="checkbox">
+        <label class="label label--inline venus " for="none">
+            <span class="u-vh">Or,</span> No central heating<span class="u-vh">. Selecting this will uncheck all other checkboxes</span>
+        </label>
+        <span class="js-exclusive-checkbox-alert u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
+      </div>
+  </fieldset>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
+</body>
+</html>
+

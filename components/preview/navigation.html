@@ -38,33 +38,40 @@
   </style>
 </head>
 <body>
-<div style="padding-top:1rem" >
-  <div class="page__container container">
-    <div class="grid grid--reverse">
-      <div class="grid__col col-4@m">
-      </div>
-      <div class="grid__col col-7@m pull-1@m">
-        <div class="nav nav--sections nav--vertical js-nav page__nav" id="section-nav">
+<div style="padding-top:1rem">
+    <div class="grid">
+        <div class="grid__col pull-1@xs">
+            <div class="page__menubtn">
+                <button class="btn btn--menu js-menu-btn " data-close-label="Hide sections" type="button" id="menu-btn" aria-expanded="false" aria-controls="section-nav" aria-label="Toggle section menu" aria-haspopup="true">View sections</button>            </div>
+        </div>
+    </div>
+    <div class="page__container container">
+        <div class="grid grid--reverse">
+            <div class="grid__col col-4@m">
+            </div>
+            <div class="grid__col col-7@m pull-1@m">
+                
+<nav class="nav nav--sections nav--vertical js-nav page__nav" id="section-nav" aria-labelledby="menu-btn" role="menu">
   <h2 class="nav__title venus">Nav Section</h2>
   <ul class="nav__list js-nav-list">
       <li class="nav__item pluto nav__item--completed">
-        <a class="nav__link" href="#item1">Completed nav item</a>
+        <a class="nav__link" href="#item1" role="menuitem">Completed nav item</a>
       </li>
       <li class="nav__item pluto nav__item--current">
-        <a class="nav__link" href="#item2">Second item in an unordered list</a>
+        <a class="nav__link" href="#item2" role="menuitem">Second item in an unordered list</a>
       </li>
       <li class="nav__item pluto ">
-        <a class="nav__link" href="#item3">Consectetur adipiscing elit curabitur a elit vehicula, finibus arcu ut</a>
+        <a class="nav__link" href="#item3" role="menuitem">Consectetur adipiscing elit curabitur a elit vehicula, finibus arcu ut</a>
       </li>
       <li class="nav__item pluto ">
-        <a class="nav__link" href="#item4">Lorem ipsum dolor sit amet</a>
+        <a class="nav__link" href="#item4" role="menuitem">Lorem ipsum dolor sit amet</a>
       </li>
   </ul>
-</div>
+</nav>
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <script src="../../assets/scripts/bundle.js" charset="utf-8"></script>
 </body>

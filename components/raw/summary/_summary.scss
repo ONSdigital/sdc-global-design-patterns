@@ -3,7 +3,7 @@
 }
 
 .summary__block {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-bottom: 1px solid $color-dark-grey;
 }
 
@@ -32,9 +32,15 @@
 }
 
 .summary__question {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   @include mq(m) {
     padding-bottom: 0;
+  }
+}
+
+.summary__answer--textarea {
+  @include mq(m) {
+    padding-top: 0.5rem;
   }
 }
 
@@ -42,6 +48,12 @@
   text-align: right;
   display: flex;
   justify-content: flex-end;
+}
+
+.summary__link--textarea {
+  @include mq(m) {
+    padding-top: 0.5rem;
+  }
 }
 
 .summary__error-text {
@@ -67,5 +79,15 @@
   .summary__link {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+  }
+  .summary__answer--textarea {
+    @include mq(m) {
+      padding-top: 0;
+    }
+  }
+  .summary__link--textarea {
+    @include mq(m) {
+      padding-top: 0;
+    }
   }
 }

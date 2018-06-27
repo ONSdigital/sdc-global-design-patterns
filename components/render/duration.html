@@ -5,7 +5,7 @@
   <legend id="duration-label" class="fieldgroup__title venus">Time</legend>
 
   <div class="fieldgroup__fields">
-    <div class="field fieldgroup__hours">
+    <div class="field">
       <div class="input-type input-type--unit">
         <input data-qa="input-number"
                id="Time1"
@@ -14,11 +14,11 @@
                value=""
                pattern="[0-9]*"
                aria-labelledby="duration-label Time-type1" />
-        <abbr title="Hours" class="input-type__type input-type__type--duration" id="Time-type1">Hours</abbr>
+        <abbr title="Hours" class="input-type__type input-type__type--time" id="Time-type1">Hours</abbr>
       </div>
     </div>
 
-    <div class="field fieldgroup__mins">
+    <div class="field">
       <div class="input-type input-type--unit">
         <input data-qa="input-number"
                id="Time2"
@@ -27,11 +27,11 @@
                value=""
                pattern="[0-9]*"
                aria-labelledby="duration-label Time-type2" />
-        <abbr title="Minutes" class="input-type__type input-type__type--duration" id="Time-type2">Mins</abbr>
+        <abbr title="Minutes" class="input-type__type input-type__type--time" id="Time-type2">Mins</abbr>
       </div>
     </div>
 
-    <div class="field fieldgroup__secs">
+    <div class="field">
       <div class="input-type input-type--unit">
         <input data-qa="input-number"
                id="Time3"
@@ -40,7 +40,53 @@
                value=""
                pattern="[0-9]*"
                aria-labelledby="duration-label Time-type3" />
-        <abbr title="Seconds" class="input-type__type input-type__type--duration" id="Time-type3">Secs</abbr>
+        <abbr title="Seconds" class="input-type__type input-type__type--time" id="Time-type3">Secs</abbr>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="fieldgroup fieldgroup--duration u-mt-l">
+
+  <legend id="duration-label" class="fieldgroup__title venus">Period</legend>
+
+  <div class="fieldgroup__fields">
+    <div class="field">
+      <div class="input-type input-type--unit">
+        <input data-qa="input-number"
+               id="Period4"
+               class="input input--number input--with-unit input--block"
+               name="Period4"
+               value=""
+               pattern="[0-9]*"
+               aria-labelledby="duration-label Period-type4" />
+        <abbr title="Days" class="input-type__type input-type__type--period" id="Period-type4">Days</abbr>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="input-type input-type--unit">
+        <input data-qa="input-number"
+               id="Period5"
+               class="input input--number input--with-unit input--block"
+               name="Period5"
+               value=""
+               pattern="[0-9]*"
+               aria-labelledby="duration-label Period-type5" />
+        <abbr title="Months" class="input-type__type input-type__type--period" id="Period-type5">Months</abbr>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="input-type input-type--unit">
+        <input data-qa="input-number"
+               id="Period6"
+               class="input input--number input--with-unit input--block"
+               name="Period6"
+               value=""
+               pattern="[0-9]*"
+               aria-labelledby="duration-label Period-type6" />
+        <abbr title="Years" class="input-type__type input-type__type--period" id="Period-type6">Years</abbr>
       </div>
     </div>
   </div>
