@@ -1,0 +1,46 @@
+.definition {
+  .definition__link {
+    @extend %js-details-trigger;
+    outline: none;
+    padding: 0.2rem 0.5rem 0.2rem 0.2rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:focus:hover {
+      background-color: #033e58;
+    }
+  }
+
+  .definition__main {
+    @extend %js-details-body;
+  }
+
+  .definition__content {
+    padding-top: 0.5rem;
+  }
+
+  /**
+   * Modifiers
+   */
+  &:not(.is-expanded) {
+    /**
+     * Hide extra close button when not expanded to stop it being focusable
+     */
+    .definition__content-close-trigger {
+      display: none;
+    }
+  }
+
+  &.is-expanded {
+    .definition__link {
+      @extend %js-details-trigger--is-expanded;
+    }
+  }
+
+  .no-js &,
+  &.is-expanded {
+    .definition__main {
+      @extend %js-details-body--is-expanded;
+    }
+  }
+}

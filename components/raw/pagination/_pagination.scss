@@ -1,0 +1,98 @@
+/*
+_pagination.scss
+*/
+$pagingationSize: 2.5rem;
+.pagination {
+  clear: both;
+}
+.pagination__items {
+  padding: 0;
+}
+.pagination__item {
+  width: $pagingationSize;
+  height: $pagingationSize;
+  line-height: 2.3rem;
+  text-align: center;
+  display: inline-block;
+  margin-right: 0.25rem;
+  box-sizing: border-box;
+
+}
+.pagination__item--current {
+  & .pagination__link {
+    background-color: $color-secondary;
+    color: $color-white;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 0.16667rem solid $color-secondary;
+    @include font-smoothing(); // As color is light on dark
+
+    &:hover {
+      background-color: $color-secondary;
+      cursor: default;
+    }
+  }
+
+}
+.pagination__item--next,
+.pagination__item--previous {
+  width: auto;
+  & .pagination__link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+.pagination__item--previous {
+  margin-left: -0.666rem;
+}
+
+.pagination__item--gap {
+  cursor: default;
+}
+.pagination__link {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 3px;
+  &:hover {
+    background-color: $color-light-grey;
+    transition: background-color 200ms ease-in, border-color 200ms ease-in, color 200ms ease-in;
+  }
+  &:focus,
+  &:active {
+    outline: 3px solid $color-amber;
+    outline-offset: 3px;
+    transition: background-color 200ms ease-in, color 200ms ease-in;
+    &:hover{
+      background-color: $color-links;
+      border-color: $color-links;
+      transition: background-color 200ms ease-in, border-color 200ms ease-in, color 200ms ease-in;
+    }
+  }
+}
+.pagination__position {
+  padding: 0.5rem 0;
+}
+@include mq(xs,s) {
+  .pagination__item {
+    display: none; // remove list of page numbers on mobile device
+  }
+  .pagination__item--next,
+  .pagination__item--previous {
+    visibility: visible;
+    display: inline-block;
+  }
+  .pagination__position {
+    &.u-hidden {
+      visibility: visible !important;
+      display: block !important;
+    }
+  }
+  .pagination__item--next {
+    margin-left: -0.666rem; // when on first page next link needs positioning in place of previous
+  }
+  .pagination__item--previous ~ .pagination__item--next { // resolves spacing between previous and next links when page list hidden
+    margin-left: 0.25rem;
+  }
+}
+/*END*/
