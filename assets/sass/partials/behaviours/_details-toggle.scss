@@ -43,11 +43,10 @@
   opacity: 0;
   transition: all 0;
   max-height: 0;
-  overflow: hidden;
   &::before,
   &::after {
     content: " ";
-    display: table; 
+    display: table;
   }
   &::after {
     clear: both;
