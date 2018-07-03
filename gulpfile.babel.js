@@ -213,116 +213,20 @@ const bundleScripts = watch => {
 
   return gulp.src(['./assets/js/polyfills.js', './assets/js/components.js'])
     .pipe(bundler())
-    .pipe(gulp.dest('./public/assets/scripts'));
-
-
-  /*return browserify(['./assets/js/polyfills.js', './assets/js/components.js'])
-    .transform('rollupify', {
-      config: {
-        onwarn: function(message) {
-          if (message.code === 'THIS_IS_UNDEFINED') {
-            return;
-          }
-
-          console.error(message);
-        },
-
-        plugins: [
-          nodeResolve({
-            jsnext: true,
-            main: true,
-            preferBuiltins: false
-          }),
-          commonjs({
-            include: 'node_modules/!**',
-            namedExports: {
-              'node_modules/events/events.js': Object.keys(require('events'))
-            }
-          }),
-          rollupBabel({
-            plugins: ['lodash'],
-            presets: ['es2015-rollup', 'stage-2'],
-            babelrc: false,
-            exclude: 'node_modules/!**'
-          })
-        ]
-      },
+    .on('error', function(err) {
+      gutil.log(err.message);
+      this.emit('end');
     })
-    .bundle();*/
-    //.pipe(source('bundle.js'))
-    //.pipe(gulp.dest('./public/assets/scripts'));
-
-  /**
-   * Works after bundle()
-   */
-  //.pipe(fs.createWriteStream('./public/assets/scripts/bundle.js'));
-
-
-
-  /*const bundler = browserify({
-    entries: ['./assets/js/polyfills.js', './assets/js/components.js'],
-    debug: true,
-    plugin: [watch ? watchify : null]
-  })
-    .on('update', () => bundle())
-    .on('log', gutil.log)
-    .on('error', gutil.log)
-    .transform('rollupify', {
-      config: {
-        cache: cache,
-        entry: ['./assets/js/polyfills.js', './assets/js/components.js'],
-
-        onwarn: function(message) {
-          if (message.code === 'THIS_IS_UNDEFINED') {
-            return;
-          }
-
-          console.error(message);
-        },
-
-        plugins: [
-          commonjs({
-            include: 'node_modules/!**',
-            namedExports: {
-              'node_modules/events/events.js': Object.keys(require('events'))
-            }
-          }),
-          nodeResolve({
-            jsnext: true,
-            main: true,
-            preferBuiltins: false
-          }),
-          rollupBabel({
-            plugins: ['lodash'],
-            presets: ['es2015-rollup', 'stage-2'],
-            babelrc: false,
-            exclude: 'node_modules/!**'
-          })
-        ]
-      }
-    });
-  const bundle = () => {
-    return bundler
-      .bundle()
-      .on('error', function(err) {
-        gutil.log(err.message);
-        this.emit('end');
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(gulp.dest('./public/assets/scripts'))
+    .pipe(
+      rename({
+        suffix: '.min'
       })
-      .pipe(source('bundle.js'))
-      .pipe(buffer())
-      .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe(gulp.dest('public/assets/scripts'))
-      .pipe(
-        rename({
-          suffix: '.min'
-        })
-      )
-      .pipe(uglify())
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('public/assets/scripts'));
-  };*/
-
-  return bundle();
+    )
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('public/assets/scripts'));
 };
 
 gulp.task('scripts:bundle', () => bundleScripts(false));
