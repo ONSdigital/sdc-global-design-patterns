@@ -217,15 +217,6 @@ const bundleScripts = watch => {
       gutil.log(err.message);
       this.emit('end');
     })
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(gulp.dest('./public/assets/scripts'))
-    .pipe(
-      rename({
-        suffix: '.min'
-      })
-    )
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/scripts'));
 };
 
@@ -235,17 +226,25 @@ gulp.task('scripts:bundle', () => bundleScripts(false));
     - run this after all scripts are bundled to produce a minified version
 */
 gulp.task('scripts:uglify', function(done) {
-  gulp.src('public/assets/scripts/bundle.js')
+  return bundleScripts(false)
+    .on('error', function(err) {
+      gutil.log(err.message);
+      this.emit('end');
+    })
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(
+      rename({
+        suffix: '.min'
+      })
+    )
     .pipe(uglify())
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('public/assets/scripts'))
-    done();
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./public/assets/scripts'));
 });
 /* END UGLIFY of bundled scripts */
 
-gulp.task('scripts', gulp.series('scripts:clean', 'scripts:bundle', 'scripts:uglify'));
+gulp.task('scripts', gulp.series('scripts:clean', 'scripts:uglify'));
 
-/*gulp.task('scripts:watch', () => bundleScripts(true));*/
 gulp.task('scripts:watch', (done) => {
   gulp.watch(['./assets/**/*.js', './components/**/*.js'], gulp.parallel('scripts:bundle'));
   done();
