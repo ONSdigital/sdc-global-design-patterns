@@ -10,7 +10,9 @@
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
     "test": "gulp scripts:test",
-    "deploy": "gulp && yarn build && gh-pages -d dist"
+    "deploy": "gulp && yarn build && gh-pages -d dist",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@frctl/fractal": "^1.0.0",
@@ -46,7 +48,8 @@
     "postcss-pseudoelements": "^5.0.0",
     "request-promise": "^2.0.1",
     "through2": "^2.0.3",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "snyk": "^1.88.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -103,5 +106,6 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
-  }
+  },
+  "snyk": true
 }
