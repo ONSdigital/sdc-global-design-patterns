@@ -8,7 +8,7 @@
 
     &:focus {
       outline-offset: 3px;
-      outline: 3px solid $color-focus-outline;  
+      outline: 3px solid $color-focus-outline;
     }
   }
 
@@ -27,7 +27,8 @@
     /**
      * Hide extra close button when not expanded to stop it being focusable
      */
-    .definition__content-close-trigger {
+    .definition__content-close-trigger,
+    .definition__content {
       display: none;
     }
   }
