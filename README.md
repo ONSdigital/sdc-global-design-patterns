@@ -7,6 +7,7 @@ https://sdc-global-design-patterns.netlify.com/
 
 - get familiar with Fractal http://fractal.build/guide
 - nodejs
+- Set up a new environment for this project with [nodeenv](https://github.com/ekalinin/nodeenv)
 - Yarn `npm install yarn --global`
 - Gulp `yarn global add gulp-cli`
 
