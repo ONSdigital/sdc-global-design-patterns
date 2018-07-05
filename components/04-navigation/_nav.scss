@@ -63,15 +63,11 @@
 .nav--horizontal {
   font-size: 0;
   margin: 0;
-  max-height: 50rem;
-  transition: max-height 300ms ease-in-out;
 
   .nav__list {
     list-style: none;
     margin: 0;
     padding: 0;
-    max-height: 50rem;
-    transition: max-height 300ms ease-in-out;
       @include mq(xs,s) {
       padding: 0 0 1rem 0;
     }
@@ -152,18 +148,11 @@
 .has-js {
   .nav--h-m { // h-m - hide mobile
     @include mq(xs,s) {
-      max-height: 0;
-      .nav__list {
-        max-height: 0;
-        overflow: hidden;
-      }
+      display: none;
     }
     @at-root {
       .lt-ie10 .nav--h-m {
-        max-height: 40px!important;
-        .nav__list {
-          opacity: 1;
-        }
+        display: block;
       }
     }
   }
