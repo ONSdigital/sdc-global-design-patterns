@@ -53,6 +53,7 @@ $pagingationSize: 2.5rem;
   height: 100%;
   display: block;
   border-radius: 3px;
+  border: 0.16667rem solid transparent;
   &:hover {
     background-color: $color-light-grey;
     transition: background-color 200ms ease-in, border-color 200ms ease-in, color 200ms ease-in;
