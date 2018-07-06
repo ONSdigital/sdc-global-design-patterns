@@ -156,7 +156,7 @@
     @include mq(xs,s) {
       margin: 0;
     }
-    &--current {
+    &--current, &:first-child {
       border-bottom: 4px solid $color-secondary;
       padding-left: .667rem;
     }
