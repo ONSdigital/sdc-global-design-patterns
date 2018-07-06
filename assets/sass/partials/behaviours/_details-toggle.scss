@@ -19,7 +19,6 @@
   }
 
   &:hover {
-    outline: none;
     &::before {
       background: url("#{$static}/img/icons/icons--guidance-darkblue.svg") no-repeat center center;
     }
