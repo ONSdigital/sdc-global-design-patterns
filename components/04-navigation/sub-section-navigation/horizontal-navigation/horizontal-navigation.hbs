@@ -1,0 +1,11 @@
+<nav class="{{nav-wrapper-classes}}" role="menu">
+  <div class="container">
+    <ul class="{{nav-inner-classes}}" aria-label="Section navigation menu">
+      {{#each nav-items}}
+        <li class="nav__item pluto {{item_class}}">
+          <a class="nav__link" href="{{item_url}}" role="menuitem">{{item}}</a>
+        </li>
+      {{/each}}
+    </ul>
+    </div>
+</nav>

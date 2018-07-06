@@ -1,12 +1,12 @@
 module.exports = {
-  "title": "Section navigation",
-  "default": "section",
+  "title": "vertical navigation",
+  "default": "vertical",
   "status": "wip",
   "preview": "@preview__menu",
   "collated": false,
   "variants": [{
-    "label":"Section navigation",
-    "name":"section",
+    "label":"Vertical navigation",
+    "name":"vertical",
     "context": {
         "label":"Nav Section (vertical)",
         "nav-title": "Nav Section",

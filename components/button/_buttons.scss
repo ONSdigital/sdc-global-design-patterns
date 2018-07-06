@@ -154,7 +154,7 @@
 .btn--menu {
   @extend .btn--secondary;
   @extend .btn--small;
-  @include mq(s) {
+  @include mq(m) {
     display: none;
   }
 }

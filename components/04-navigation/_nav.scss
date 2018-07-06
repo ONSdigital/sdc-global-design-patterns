@@ -68,9 +68,6 @@
     list-style: none;
     margin: 0;
     padding: 0;
-      @include mq(xs,s) {
-      padding: 0 0 1rem 0;
-    }
   }
 
   .nav__item {
@@ -85,12 +82,6 @@
     @include mq(m) {
       margin: 0 0 0 1rem;
     }
-    @include mq(xs,s) {
-      display: block;
-      text-align: left;
-      padding: .5rem .5rem 0 0;
-      margin: 0;
-    }
     + .nav__item--secondary {
       border-top: 1px solid lighten($color-header-main, 15%);
       margin: .5rem 0 0;
@@ -101,11 +92,6 @@
     display: inline-block;
     margin: 0;
     text-align: center;
-    @include mq(xs,s) {
-      font-size: 1.2rem;
-      display: block;
-      text-align: left;
-    }
   }
 
   .nav__item--active {
@@ -131,16 +117,48 @@
 }
 
 .nav--main {
-  @include mq(s) {
-    .nav__item {
+  .nav__list {
+    @include mq(xs,s) {
+      padding: 0 0 1rem 0;
+    }
+  }
+  .nav__item {
+    @include mq(xs,s) {
+      display: block;
+      text-align: left;
+      padding: .5rem .5rem 0 0;
+      margin: 0;
+    }
+    @include mq(s) {
       padding: 0 0 .3rem;
       margin: 0 0 0 1rem;
       &--active {
         border-bottom: 4px solid $color-white;
       }
     }
-    .nav__link {
-      text-decoration: none;
+  }
+  .nav__link {
+    @include mq(xs,s) {
+      font-size: 1.2rem;
+      display: block;
+      text-align: left;
+    }
+  }
+}
+
+.nav--sub {
+  border-bottom: 1px solid $color-grey;
+  .nav__item {
+    padding: 0 .667rem .3rem;
+    &:first-child {
+      padding-left: 0;
+    }
+    @include mq(xs,s) {
+      margin: 0;
+    }
+    &--current {
+      border-bottom: 4px solid $color-secondary;
+      padding-left: .667rem;
     }
   }
 }
@@ -161,6 +179,7 @@
 .nav--light {
   .nav__link {
     color: $color-white;
+    text-decoration: none;
     &:hover, &:focus {
       color: #c2ecff;
     }
@@ -177,13 +196,10 @@
 .nav--dark {
   .nav__link {
     color: $color-text;
-    text-decoration: underline;
-    &:hover {
+    text-decoration: none;
+    font-weight: bold;
+    &:hover, &:focus {
       color: $color-links;
-      text-decoration: underline;
-    }
-    &:focus {
-      color: white;
     }
   }
 }
