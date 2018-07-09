@@ -37,6 +37,20 @@ module.exports = {
       ]
     }
   }, {
+    'name': 'radio-other',
+    'label': 'Radio (other)',
+    'status': 'ready',
+    'context': {
+      'label_text': 'Bacon',
+      'label_for': 'radio',
+      'label_inline': true,
+      'legend': 'Select your favourite topping',
+      'options': [
+        {'option_text': 'Bacon', 'option_value': 'bacon', 'label_for': 'bacon', 'label_text': 'Bacon', 'label_inline': true},
+        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true}
+      ]
+    }
+  }, {
     'name': 'percentage',
     'status': 'ready',
     'context': {
