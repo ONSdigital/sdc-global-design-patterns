@@ -29,11 +29,11 @@ domready(() => {
   }
   function setFocused(e) {
     e.target.closest(`.${focusableBoxClass}`).classList.add(focusClass);
-    nestedField != focusChildOnly(e);
+    nestedField ? focusChildOnly(e) : '';
   }
   function unsetFocused(e) {
     e.target.closest(`.${focusableBoxClass}`).classList.remove(focusClass);
-    nestedField != focusChildOnly(e);
+    nestedField ? focusChildOnly(e) : '';
   }
   function setChanged(e) {
     e.target.closest(`.${focusableBoxClass}`).classList.toggle(checkedClass);
