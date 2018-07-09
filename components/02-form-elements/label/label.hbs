@@ -1,9 +1,5 @@
 <label class="label{{#if label_inline}} label--inline{{/if}} venus {{label_class}}"
   {{#if label_for}}for="{{label_for}}"{{/if}}
-  {{#if label_id}}id="{{label_id}}"{{/if}}>
-    {{label_text}}
-    {{#if label_description}}
-    <br/>
-    <span class="label__description pluto">{{label_description}}</span>
-    {{/if}}
-</label>
+  {{#if label_id}}id="{{label_id}}"{{/if}}>{{label_text}}{{#if label_description}}
+  <br/><span class="label__description pluto">{{label_description}}</span>
+  {{/if}}</label>
