@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "vertical navigation",
+  "title": "Vertical navigation",
   "default": "vertical",
   "status": "wip",
   "preview": "@preview__menu",
