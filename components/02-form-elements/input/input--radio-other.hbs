@@ -1,0 +1,21 @@
+<div class="field field--radio field--multiplechoice">
+  <fieldset>
+    <legend class="field__legend mars ">{{legend}}</legend>
+      {{#each options}}
+      <div class="field__item js-focusable-box">
+        <input class="input input--radio js-focusable" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
+        {{>@label}}
+      </div>
+      {{/each}}
+      <div class="field__item js-focusable-box">
+      <input id="radio-mandatory-answer-1" name="radio-answer" value="Other" data-qa="has-other-option" type="radio" class="input input--radio js-focusable ">
+      <label id="label-radio-mandatory-answer-1" class="label label--inline venus" for="radio-mandatory-answer-1">Other<br>
+        <span class="label__description label__inner pluto">An answer is required.</span>
+      </label>
+      <div class="field__other">
+        <label class="label mercury" for="other-answer-mandatory">Please specify other</label>
+        <input id="other-answer-mandatory" name="other-answer-mandatory" data-qa="other-option" type="text" class="input js-focusable">
+      </div>
+    </div>
+  </fieldset>
+</div>

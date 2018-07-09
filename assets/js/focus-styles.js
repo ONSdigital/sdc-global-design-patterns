@@ -4,6 +4,7 @@ const focusableClass = 'js-focusable';
 const focusableBoxClass = 'js-focusable-box';
 const focusClass = 'has-focus';
 const checkedClass = 'is-checked';
+const hasChildFocus = 'has-child-focus';
 
 const getNextSiblings = function(e, filter) {
   let siblings = [];
@@ -18,6 +19,7 @@ const getPreviousSiblings = function(e, filter) {
 };
 
 domready(() => {
+  const nestedField = document.getElementsByClassName('field__other')[0];
   // apply classes to existing elements on page load
   const checkedElements = Array.from(document.getElementsByClassName(focusableClass));
   for (let checkedElement of checkedElements) {
@@ -27,9 +29,11 @@ domready(() => {
   }
   function setFocused(e) {
     e.target.closest(`.${focusableBoxClass}`).classList.add(focusClass);
+    nestedField ? focusChildOnly(e) : '';
   }
   function unsetFocused(e) {
     e.target.closest(`.${focusableBoxClass}`).classList.remove(focusClass);
+    nestedField ? focusChildOnly(e) : '';
   }
   function setChanged(e) {
     e.target.closest(`.${focusableBoxClass}`).classList.toggle(checkedClass);
@@ -47,6 +51,14 @@ domready(() => {
           prevSib.classList.remove(checkedClass);
         }
       }
+    }
+  }
+  function focusChildOnly(e) {
+    const focusChild = nestedField.getElementsByTagName('input')[0];
+    if (e.target === focusChild) {
+      e.target.closest(`.${focusableBoxClass}`).classList.add(hasChildFocus);
+    } else {
+      focusChild.closest(`.${focusableBoxClass}`).classList.remove(hasChildFocus);
     }
   }
   for (let checkedElement of checkedElements) {
