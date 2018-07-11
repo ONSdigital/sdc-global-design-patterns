@@ -1,0 +1,21 @@
+<div class="field field--checkbox field--multiplechoice">
+  <fieldset>
+    <legend class="field__legend mars">Select all that apply</legend>
+      {{#each options}}
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+        {{>@label}}
+      </div>
+      {{/each}}
+      <div class="field__item js-focusable-box">
+        <input id="checkbox-mandatory-answer-1" name="checkbox-answer" value="Other" data-qa="has-other-option" type="checkbox" class="input input--checkbox js-focusable ">
+        <label id="label-checkbox-mandatory-answer-1" class="label label--inline venus" for="checkbox-mandatory-answer-1">Other<br>
+          <span class="label__description label__inner pluto">An answer is required.</span>
+        </label>
+        <div class="field__other">
+          <label class="label mercury" for="other-answer-mandatory">Please specify other</label>
+          <input id="other-answer-mandatory" name="other-answer-mandatory" data-qa="other-option" type="text" class="input js-focusable">
+        </div>
+      </div>
+    </fieldset>
+</div>
