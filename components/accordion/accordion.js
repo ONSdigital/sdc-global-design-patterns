@@ -8,7 +8,6 @@ export const classAccordionContent = 'js-accordion-content'
 export const classAccordionTitle = 'js-accordion-title'
 export const classAccordionBody = 'js-accordion-body'
 export const classExpanded = 'is-expanded'
-export const classPreview = 'js-accordion-preview'
 export const classClose = 'js-accordion-close'
 export const classAccordionOpenAll = 'js-accordion-open-all'
 export const classAccordionCloseAll = 'js-accordion-close-all'
@@ -74,9 +73,6 @@ class Accordion {
 
       // No-JS envs don't need a close prompt
       this.show(element.getElementsByClassName(classClose)[0])
-    } else {
-      // No-JS envs don't need a preview prompt
-      this.show(element.getElementsByClassName(classPreview)[0])
     }
 
     element.addEventListener('click', e => {
@@ -152,7 +148,6 @@ class Accordion {
     titleEl.setAttribute(attrExpanded, true)
     titleEl.setAttribute(attrSelected, true)
 
-    this.hide(titleEl.getElementsByClassName(classPreview)[0])
     this.show(titleEl.getElementsByClassName(classClose)[0])
 
     bodyEl.classList.add(classExpanded)
@@ -170,7 +165,6 @@ class Accordion {
     titleEl.setAttribute(attrExpanded, false)
     titleEl.setAttribute(attrSelected, false)
 
-    this.show(titleEl.getElementsByClassName(classPreview)[0])
     this.hide(titleEl.getElementsByClassName(classClose)[0])
 
     bodyEl.classList.remove(classExpanded)

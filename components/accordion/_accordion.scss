@@ -8,6 +8,7 @@
   padding: 1em 0;
   border: none;
   border-top: 1px solid $color-borders;
+  color: $color-links;
   display: block;
   appearance: none;
   width: 100%;
@@ -17,7 +18,6 @@
   &::before {
     $size: 2rem;
     transition: transform 300ms ease-in-out;
-    margin-right: 0.3rem;
     speak: none;
     content: "";
     background: url("#{$static}/img/icons/icons--accordion.svg") no-repeat center center;
@@ -32,7 +32,12 @@
   }
 
   &:hover {
-    background: #f8f8f8;
+    & > span {
+      color: $color-links-hover;
+    }
+    &::before {
+      filter: brightness(0.5);
+    }
   }
 
   &:focus {
@@ -70,8 +75,7 @@
 }
 
 .accordion__controls {
-  text-align: right;
-  margin: 1rem 0.25rem;
+  margin: 1rem 0 0;
 }
 
 .accordion__control {
@@ -80,6 +84,7 @@
   background: none;
   text-decoration: underline;
   cursor: pointer;
+  margin: 0;
 }
 
 .accordion__body {
