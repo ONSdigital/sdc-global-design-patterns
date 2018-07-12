@@ -13,6 +13,7 @@
   width: 100%;
   text-align: left;
   line-height: 1;
+  
   .has-js & {
     cursor: pointer;
     color: $color-links;
@@ -24,6 +25,12 @@
         filter: brightness(0.5);
       }
     }
+  }
+  &-text {
+    float: left;
+    margin-top: 0.3rem;
+    max-width: 75%;
+    line-height: 1.3rem;
   }
   &::before {
     $size: 2rem;
@@ -39,6 +46,7 @@
     top: -1px;
     vertical-align: middle;
     display: inline-block;
+    float: left;
     .no-js & {
       display: none;
     }
