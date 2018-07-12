@@ -2,15 +2,14 @@
 #### To provide the user with a with a way of selecting multiple items or a single opposing value.
 
 
-
 #### Implementation
 
 #### Accessibility
 **Voiceover**
 
-Content passed to `.js-exclusive-checkbox-alert` is used to communicate change to the user when the opposing value has been selected. This is necessary to comply with xxx WCAG 2.1 xxx (where an action in one area of a page is not allowed to cause an unexpected reaction elsewhere in the fieldset) ADD DETAIL TO THE DAC report ID for this item here.
+The ‘Or’ between the groups of options is removed with the addition of `aria-hidden`; producing a single list of options to be heard. The ‘Or’ is instead inserted into the label of the opposing option. This second ‘Or’ is visually hidden within the option but available for aria playback. It is paired with a visually hidden ‘Selecting this will uncheck all other checkboxes’ to provide sufficient context to the user surrounding the use of this option.
 
-The 'Or' between the main list of options and the opposing value uses `aria-hidden` to hide this from aria playback. This is done to avoid repetition of 'Or' as it is also in the opposing value label which is more relevant in the context of the aria playback when the user is navigating the checkboxes.
+Content passed to `.js-exclusive-checkbox-alert` is used to communicate change to the user when the opposing value has been selected. This is necessary as selecting the opposing value deselects values previously selected by the user and the deselection must be announced.
 
 This makes the playback as follows:
 
@@ -18,7 +17,7 @@ This makes the playback as follows:
 > - Other
 > - Or, No central heating. Selecting this will uncheck all other checkboxes
 
-When the user checks 'No central heating' the audio playback is:
+When the user checks ‘No central heating’ the audio playback is:
 
 > - Or, No central heating. Selecting this will uncheck all other checkboxes, unchecked, Tick box
 
