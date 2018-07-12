@@ -20,7 +20,7 @@ Radio buttons allow for a mutually exclusive selection to be made from a range o
 The addition of an '[Other option](input--radio-other)' is available. This variant is used where supplemental information is required from the user to describe the nature of their answer. This additional input is restricted to a single line text [input](input) with a descriptive [label](label).
 
 ## Context
-Context vary for each input but label is used for human readable aspect and `label_text` is input content.
+
 
 ## Scope
 Global

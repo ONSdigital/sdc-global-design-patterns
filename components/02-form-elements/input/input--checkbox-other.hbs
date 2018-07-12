@@ -6,11 +6,11 @@
       {{>@label}}
     </div>{{/each}}
     <div class="field__item js-focusable-box">
-      <input value="Other" name="checkbox-answer-other" type="checkbox" data-qa="has-other-option" id="checkbox-answer-other" class="input input--checkbox js-focusable">
+      <input class="input input--checkbox js-focusable" name="checkbox-answer-other" value="Other" id="checkbox-answer-other" type="checkbox" data-qa="has-other-option">
       {{>@label label_for="checkbox-answer-other" label_text="Other" label_id="label-checkbox-answer-other" label_description="Choose any other topping" }}
       <div class="field__other">
         {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="mercury" }}
-        <input name="other-answer" type="text" data-qa="other-option" id="other-answer" class="input js-focusable">
+        <input class="input input--text js-focusable" name="other-answer" id="other-answer" type="text" data-qa="other-option">
       </div>
     </div>
   </fieldset>
