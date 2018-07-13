@@ -1,17 +1,21 @@
 <div class="field field--checkbox field--multiplechoice">
   <fieldset>
-    <legend class="field__legend mars">{{checkbox_legend}}</legend>
-{{#each options}}<div class="field__item js-focusable-box">
-      <input class="input input--checkbox js-focusable" name="{{label_for}}" value="{{option_value}}" id="{{label_for}}" type="checkbox">
-      {{>@label}}
-    </div>{{/each}}
-    <div class="field__item js-focusable-box">
-      <input class="input input--checkbox js-focusable" name="checkbox-answer-other" value="Other" id="checkbox-answer-other" type="checkbox" data-qa="has-other-option">
-      {{>@label label_for="checkbox-answer-other" label_text="Other" label_id="label-checkbox-answer-other" label_description="Choose any other topping" }}
-      <div class="field__other">
-        {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="mercury" }}
-        <input class="input input--text js-focusable" name="other-answer" id="other-answer" type="text" data-qa="other-option">
+    <legend class="field__legend mars">{{legend}}</legend>
+      {{#each options}}
+      <div class="field__item js-focusable-box">
+        <input class="input input--checkbox js-focusable" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+        {{>@label}}
       </div>
-    </div>
-  </fieldset>
+      {{/each}}
+      <div class="field__item js-focusable-box">
+        <input id="checkbox-mandatory-answer-1" name="checkbox-answer" value="Other" data-qa="has-other-option" type="checkbox" class="input input--checkbox js-focusable ">
+        <label id="label-checkbox-mandatory-answer-1" class="label label--inline venus" for="checkbox-mandatory-answer-1">Other<br>
+          <span class="label__description label__inner pluto">An answer is required.</span>
+        </label>
+        <div class="field__other">
+          {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="mercury" }}
+          <input id="other-answer" name="other-answer-mandatory" data-qa="other-option" type="text" class="input js-focusable">
+        </div>
+      </div>
+    </fieldset>
 </div>
