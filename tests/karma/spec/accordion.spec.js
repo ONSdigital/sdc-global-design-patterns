@@ -5,7 +5,6 @@ import accordion, {
   classToggle,
   classAccordionToggleAll,
   classAccordionTitle,
-  classExpanded,
   classHidden,
 } from 'accordion/accordion';
 
