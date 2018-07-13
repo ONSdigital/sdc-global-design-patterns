@@ -1,30 +1,73 @@
-$header-bp: 36em;
-
+// Block
 .header {
   display: block;
-  overflow: hidden;
-  padding: 1.4rem 0 1rem;
-  &::before {
-    content: "";
-    display: block;
+  position: relative;
+  margin: 0 0 2rem;
+
+  // Elements
+  &__top {
     width: 100%;
-    height: 0.45rem;
-    background-color: $color-secondary;
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding: .7rem 0;
+    background: $color-secondary;
+    &--border {
+      border-bottom: 3px solid $color-secondary;
+      padding: .7rem 0 .534rem;
+    }
+  }
+
+  &__logo {
+    height: 1.333rem;
+    &--print {
+      display: none;
+    }
+  }
+
+  &__main {
+    padding: 1.1rem 0;
+    background: $color-header-main;
+    &--border {
+      border-bottom: 3px solid $color-header-main;
+      padding: 1.1rem 0 .934rem;
+    }
+  }
+
+  &__nav {
+    background: $color-header-main;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 1.556rem;
     margin: 0;
   }
-  @include mq($header-bp) {
-    display: flex;
-    align-items: center;
-  }
-}
 
-.header__logo {
-  margin-bottom: 1rem;
-  @include mq($header-bp) {
-    margin-bottom: 0;
-    flex: 1 1 100%;
+  &__desc {
+    color: $color-white;
+    margin: 0;
   }
+
+  // Modifier - Hero variant
+  &--hero {
+    .header {
+      &__title {
+        font-size: 2rem;
+      }    
+    }
+  }
+
+  // Modifier - Thin variant
+  &--thin {
+    .header {
+      &__top {
+        padding: .5rem 0;
+      }
+      &__main {
+        padding: .8rem 0;
+      }    
+      &__logo {
+        width: 200px;
+      }
+    }
+  }
+
 }
