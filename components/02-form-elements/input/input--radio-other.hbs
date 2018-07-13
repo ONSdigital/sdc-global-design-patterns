@@ -1,20 +1,16 @@
 <div class="field field--radio field--multiplechoice">
   <fieldset>
     <legend class="field__legend mars ">{{legend}}</legend>
-      {{#each options}}
-      <div class="field__item js-focusable-box">
-        <input class="input input--radio js-focusable" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
-        {{>@label}}
-      </div>
-      {{/each}}
-      <div class="field__item js-focusable-box">
-      <input id="radio-mandatory-answer-1" name="radio-answer" value="Other" data-qa="has-other-option" type="radio" class="input input--radio js-focusable ">
-      <label id="label-radio-mandatory-answer-1" class="label label--inline venus" for="radio-mandatory-answer-1">Other<br>
-        <span class="label__description label__inner pluto">An answer is required.</span>
-      </label>
+{{#each options}}<div class="field__item js-focusable-box">
+      <input class="input input--radio js-focusable" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
+      {{>@label}}
+    </div>{{/each}}
+    <div class="field__item js-focusable-box">
+      <input class="input input--radio js-focusable" name="radio-answer" value="Other" id="radio-answer-other" type="radio" data-qa="has-other-option">
+      {{>@label label_for="radio-answer-other" label_text="Other" label_id="label-radio-answer-other" label_description="Any other topping." }}
       <div class="field__other">
-        <label class="label mercury" for="other-answer-mandatory">Please specify other</label>
-        <input id="other-answer-mandatory" name="other-answer-mandatory" data-qa="other-option" type="text" class="input js-focusable">
+        {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="mercury" }}
+        <input  class="input input__text js-focusable" id="other-answer" name="other-answer" type="text" data-qa="other-option">
       </div>
     </div>
   </fieldset>

@@ -18,9 +18,24 @@ module.exports = {
       "label_text": "Bacon",
       "label_for": "checkbox",
       "label_inline": true,
+      'checkbox_legend':'Select all that apply',
       "options": [
         {"option_text":"Bacon", "option_value": "bacon", "label_for":"bacon", "label_text":"Bacon", "label_inline":true},
         {"option_text":"Olives", "option_value": "olives", "label_for":"olives", "label_text":"Olives", "label_inline":true},
+      ]
+    },
+  }, {
+    'name': 'checkbox-other',
+    'label': 'Checkbox (other)',
+    'status': 'ready',
+    'context': {
+      'label_text': 'Bacon',
+      'label_for': 'checkbox',
+      'label_inline': true,
+      'checkbox_legend':'Select all that apply',
+      'options': [
+        {'option_text':'Bacon', 'option_value': 'bacon', 'label_for':'bacon', 'label_text':'Bacon', 'label_inline':true},
+        {'option_text':'Olives', 'option_value': 'olives', 'label_for':'olives', 'label_text':'Olives', 'label_inline':true},
       ]
     },
   }, {
@@ -59,7 +74,7 @@ module.exports = {
     }
   }, {
     'name': 'password',
-    'status': 'wip',
+    'status': 'ready',
     'context': {
       'label': 'Password',
       'label_text': 'Enter password'
