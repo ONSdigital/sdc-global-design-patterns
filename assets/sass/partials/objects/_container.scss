@@ -12,6 +12,10 @@
   @include mq(s) {
     padding: 0 $grid-gutters;
   }
+
+  &--1280 {
+    max-width: $grid-max-1280;
+  }
 }
 
 .grid--align-bottom {
