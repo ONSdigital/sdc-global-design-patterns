@@ -1,6 +1,7 @@
 # eQ Patterns
 
-https://onsdigital.github.io/sdc-global-design-patterns/
+The published output of the pattern library is available here:
+
 https://sdc-global-design-patterns.netlify.com/
 
 ## Prerequisites
@@ -37,5 +38,3 @@ https://sdc-global-design-patterns.netlify.com/
   Create a GitHib release with a Semantic version number.
   When a new release is created that release version will then be available on the CDN
   e.g. `https://cdn.ons.gov.uk/sdc/[short hash]/css/styles.css` will be available at `https://cdn.ons.gov.uk/sdc/[release version]/css/styles.css`
-
-
