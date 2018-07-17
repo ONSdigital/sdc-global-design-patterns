@@ -4,7 +4,7 @@
 
 .accordion__title {
   background: none;
-  cursor: pointer;
+  margin: 0;
   padding: 1em 0;
   border: none;
   border-top: 1px solid $color-borders;
@@ -13,26 +13,43 @@
   width: 100%;
   text-align: left;
   line-height: 1;
-
+  
+  .has-js & {
+    cursor: pointer;
+    color: $color-links;
+    &:hover {
+      & > span {
+        color: $color-links-hover;
+      }
+      &::before {
+        filter: brightness(0.5);
+      }
+    }
+  }
+  &-text {
+    float: left;
+    margin-top: 0.3rem;
+    max-width: 73%;
+    line-height: 1.3rem;
+  }
   &::before {
     $size: 2rem;
     transition: transform 300ms ease-in-out;
-    margin-right: 0.3rem;
     speak: none;
     content: "";
     background: url("#{$static}/img/icons/icons--accordion.svg") no-repeat center center;
-    text-align: center;
+    text-align: left;
     width: $size;
     height: $size;
     position: relative;
-    left: -0.1rem;
+    left: -.4rem;
     top: -1px;
     vertical-align: middle;
     display: inline-block;
-  }
-
-  &:hover {
-    background: #f8f8f8;
+    float: left;
+    .no-js & {
+      display: none;
+    }
   }
 
   &:focus {
@@ -47,10 +64,9 @@
 
   &-right {
     float: right;
-    line-height: 1.8;
-    display: none;
-    margin-right: 0.25rem;
-    text-decoration: underline;
+    .no-js & {
+      display: none!important;
+    }
   }
 
   span:focus {
@@ -70,8 +86,10 @@
 }
 
 .accordion__controls {
-  text-align: right;
-  margin: 1rem 0.25rem;
+  margin: 1rem 0;    
+  .no-js & {
+    display: none;
+  }
 }
 
 .accordion__control {
@@ -80,14 +98,11 @@
   background: none;
   text-decoration: underline;
   cursor: pointer;
+  margin: 0;
 }
 
 .accordion__body {
   overflow: hidden;
-  // border-left: 2px solid $color-borders;
-  padding-left: 2.5rem;
-  // margin-left: 15px;
-  margin-left: 2px;
   opacity: 0;
   max-height: 0;
   transition: all 0;

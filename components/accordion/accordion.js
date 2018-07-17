@@ -8,11 +8,8 @@ export const classAccordionContent = 'js-accordion-content'
 export const classAccordionTitle = 'js-accordion-title'
 export const classAccordionBody = 'js-accordion-body'
 export const classExpanded = 'is-expanded'
-export const classPreview = 'js-accordion-preview'
-export const classClose = 'js-accordion-close'
-export const classAccordionOpenAll = 'js-accordion-open-all'
-export const classAccordionCloseAll = 'js-accordion-close-all'
-export const classHidden = 'u-hidden'
+export const classToggle = 'js-accordion-toggle'
+export const classAccordionToggleAll = 'js-accordion-toggle-all'
 
 export const attrHidden = 'aria-hidden'
 export const attrExpanded = 'aria-expanded'
@@ -28,8 +25,8 @@ class Accordion {
 
   registerDom(rootEl) {
     rootEl.classList.add(classHasJs)
-
     const content = rootEl.getElementsByClassName(classAccordionContent)[0]
+
     content.setAttribute('role', 'tablist')
     content.setAttribute(attrMultiselectable, 'true')
 
@@ -43,17 +40,10 @@ class Accordion {
       (el, index) => { this.registerBody(el, index) }
     )
 
-    this.openAllTriggers = forEach(
-      rootEl.getElementsByClassName(classAccordionOpenAll),
-      el => { this.registerOpenAll(el) }
+    this.toggleAllTrigger = forEach(
+      rootEl.getElementsByClassName(classAccordionToggleAll),
+      el => { this.registerToggleAll(el) }
     )
-
-    this.closeAllTriggers = forEach(
-      rootEl.getElementsByClassName(classAccordionCloseAll),
-      el => { this.registerCloseAll(el) }
-    )
-
-    this.updateOpenCloseTriggerDisplay()
   }
 
   registerTitle(element, index) {
@@ -71,12 +61,6 @@ class Accordion {
     if (element.classList.contains(classExpanded)) {
       element.setAttribute(attrExpanded, 'true')
       this.openItems += 1
-
-      // No-JS envs don't need a close prompt
-      this.show(element.getElementsByClassName(classClose)[0])
-    } else {
-      // No-JS envs don't need a preview prompt
-      this.show(element.getElementsByClassName(classPreview)[0])
     }
 
     element.addEventListener('click', e => {
@@ -97,39 +81,30 @@ class Accordion {
     element.setAttribute(attrHidden, 'true')
   }
 
-  registerOpenAll(openAllEl) {
-    openAllEl.addEventListener('click', e => {
+  registerToggleAll(toggleAllEl) {
+    toggleAllEl.addEventListener('click', e => {
       e.preventDefault()
-
-      forEach(this.titles, el => { this.open(el) })
-
-      this.updateOpenCloseTriggerDisplay()
-    })
-  }
-
-  registerCloseAll(closeAllEl) {
-    closeAllEl.addEventListener('click', e => {
-      e.preventDefault()
-
-      forEach(this.titles, el => { this.close(el) })
-
+      if (toggleAllEl.getAttribute('data-open') === 'false'){
+        forEach(this.titles, el => { this.open(el) })
+        toggleAllEl.setAttribute('data-open', true)
+      } else {
+        forEach(this.titles, el => { this.close(el) })
+        toggleAllEl.setAttribute('data-open', false)
+      }
       this.updateOpenCloseTriggerDisplay()
     })
   }
 
   updateOpenCloseTriggerDisplay() {
     if (this.openItems / this.titles.length < 1) {
-      forEach(this.closeAllTriggers, trigger => this.hide(trigger))
-      forEach(this.openAllTriggers, trigger => this.show(trigger))
+      forEach(this.toggleAllTrigger, trigger => this.hide(trigger))
     } else {
-      forEach(this.openAllTriggers, trigger => this.hide(trigger))
-      forEach(this.closeAllTriggers, trigger => this.show(trigger))
+      forEach(this.toggleAllTrigger, trigger => this.show(trigger))
     }
   }
-
+  
   toggle(element) {
     let action = ''
-
     if (element.getAttribute(attrExpanded) === 'true') {
       this.close(element)
       action = 'Close question'
@@ -144,25 +119,28 @@ class Accordion {
   }
 
   open(titleEl) {
+    const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
+    const closeLabel = toggleBtn.getAttribute('data-close-label')
+
     if (titleEl.getAttribute(attrExpanded) === 'true') return
 
     const bodyEl = titleEl.nextElementSibling
-
     titleEl.classList.add(classExpanded)
     titleEl.setAttribute(attrExpanded, true)
     titleEl.setAttribute(attrSelected, true)
 
-    this.hide(titleEl.getElementsByClassName(classPreview)[0])
-    this.show(titleEl.getElementsByClassName(classClose)[0])
-
     bodyEl.classList.add(classExpanded)
     bodyEl.setAttribute(attrHidden, false)
+    
+    toggleBtn.innerHTML = closeLabel
 
     this.openItems += 1
   }
 
   close(titleEl) {
     if (titleEl.getAttribute(attrExpanded) === 'false') return
+    const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
+    const openLabel = toggleBtn.getAttribute('data-open-label')
 
     const bodyEl = titleEl.nextElementSibling
 
@@ -170,21 +148,26 @@ class Accordion {
     titleEl.setAttribute(attrExpanded, false)
     titleEl.setAttribute(attrSelected, false)
 
-    this.show(titleEl.getElementsByClassName(classPreview)[0])
-    this.hide(titleEl.getElementsByClassName(classClose)[0])
-
     bodyEl.classList.remove(classExpanded)
     bodyEl.setAttribute(attrHidden, true)
+
+    toggleBtn.innerHTML = openLabel
 
     this.openItems -= 1
   }
 
   hide(element) {
-    element.classList.add(classHidden)
+    const openAllLabel = element.getAttribute('data-open-all-label')
+    element.innerHTML = openAllLabel
+    element.setAttribute('data-open', false)
+    element.setAttribute('data-ga-action', 'Close all')
   }
 
   show(element) {
-    element.classList.remove(classHidden)
+    const closeAllLabel = element.getAttribute('data-close-all-label')
+    element.innerHTML = closeAllLabel
+    element.setAttribute('data-open', true)
+    element.setAttribute('data-ga-action', 'Show all')
   }
 
   publishEvent(action, label) {

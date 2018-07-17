@@ -2,37 +2,35 @@ import accordion, {
   classAccordion,
   classAccordionContent,
   classAccordionBody,
-  classAccordionCloseAll,
-  classAccordionOpenAll,
+  classToggle,
+  classAccordionToggleAll,
   classAccordionTitle,
-  classClose,
-  classExpanded,
   classHidden,
-  classPreview
 } from 'accordion/accordion';
 
 const strTemplate = `
 <div class="${classAccordion}">
   <div class="accordion__controls">
-    <button class="${classAccordionOpenAll} ${classHidden}" aria-hidden="true">Open all</button>
-    <button class="${classAccordionCloseAll} ${classHidden}" aria-hidden="true">Close all</button>
+    <button class="${classAccordionToggleAll} btn btn--secondary btn--small accordion__control u-wa--@xs" data-ga="click" data-ga-category="Preview Survey" data-ga-action="Show all" data-close-all-label="Hide all" data-open-all-label="Show all" data-open="false" aria-hidden="true">Show all</button>
   </div>
-  <dl class="${classAccordionContent}">
+  <div class="${classAccordionContent}">
 
-    <dt class="${classAccordionTitle}" data-js-accordion-event-label="First Item">
-      <span>First Item</span><span class="${classPreview}">Preview</span><span class="${classClose}">Close</span>
-    </dt>
-    <dd class="${classAccordionBody}">
+    <h3 class="${classAccordionTitle}" data-js-accordion-event-label="First Item">
+      <span class="accordion__title-text">First Item</span>
+      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
+    </h3>
+    <div class="${classAccordionBody}">
       First item content
-    </dd>
+    </div>
 
-    <dt class="${classAccordionTitle}" data-js-accordion-event-label="Second Item">
-      <spanSecond Item</span><span class="${classPreview}">Preview</span><span class="${classClose}">Close</span>
-    </dt>
+    <h3 class="${classAccordionTitle}" data-js-accordion-event-label="Second Item">
+      <span class="accordion__title-text">Second Item</span>
+      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
+    </h3>
     <dd class="${classAccordionBody}">
       Second item content
     </dd>
-  </dl>
+  </div>
 </div>
 `;
 
@@ -163,34 +161,16 @@ describe('Accordion;', function() {
     });
   });
 
-  describe('When open all is clicked,', () => {
-    before("Click open all", function() {
-      this.openAlls = document.getElementsByClassName(classAccordionOpenAll);
+  describe('When toggle all is clicked all items are open,', () => {
+    before("Click toggle all", function() {
+      this.openAlls = document.getElementsByClassName(classAccordionToggleAll);
       this.openAlls[0].click();
     });
 
-    it('all Open all buttons should have the hidden class', function() {
+    it('All toggle all buttons data-open attribute should be true', function() {
       for (let i=0; i < this.openAlls.length; i++) {
-        expect(this.openAlls[i].classList.contains(classHidden)).to.be.true;
+        expect(this.openAlls[i].getAttribute('data-open')).to.equal('true');
       }
-    });
-
-    it('all Open all buttons should have an aria-hidden attribute set to true', () => {
-      testAttributeValueEquals(classAccordionOpenAll, 'aria-hidden', 'true');
-    });
-
-    it('all Close all buttons should not have the hidden class', () => {
-      const closeAlls = document.getElementsByClassName(classAccordionCloseAll);
-
-      for (let i=0; i < closeAlls.length; i++) {
-        expect(closeAlls[i].classList.contains(classHidden)).to.be.false;
-      }
-    });
-
-    it('all Close all buttons should still have an aria-hidden attribute set to true', () => {
-      // Assumption here is that close all (and open all) aren't particularly
-      // useful to screen reader users
-      testAttributeValueEquals(classAccordionCloseAll, 'aria-hidden', 'true');
     });
 
     it('All titles should have an aria-expanded attribute set to true', function() {
@@ -219,21 +199,9 @@ describe('Accordion;', function() {
         this.titles[0].click();
       });
 
-      it('all Open all buttons should not have the hidden class', function() {
+      it('All toggle all buttons data-open attribute should be false', function() {
         for (let i=0; i < this.openAlls.length; i++) {
-          expect(this.openAlls[i].classList.contains(classHidden)).to.be.false;
-        }
-      });
-
-      it('all Open all buttons should have an aria-hidden attribute set to true', function() {
-        testAttributeValueEquals(classAccordionOpenAll, 'aria-hidden', 'true');
-      });
-
-      it('all Close all buttons should have the hidden class', function() {
-        const closeAlls = document.getElementsByClassName(classAccordionCloseAll);
-
-        for (let i=0; i < closeAlls.length; i++) {
-          expect(closeAlls[i].classList.contains(classHidden)).to.be.true;
+          expect(this.openAlls[i].getAttribute('data-open')).to.equal('false');
         }
       });
     });
