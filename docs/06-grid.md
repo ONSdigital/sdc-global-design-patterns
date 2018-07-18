@@ -16,7 +16,9 @@ Respondent home uses 8 columns for the main copy area whilst survey groups use 7
 
 ### Developer guide
 
-A flexible grid based on __12__ columns, each column has a percentage calculated width and the margins (gutters) are fixed for each breakpoint.
+Wrapping the grid in a `<div class="container">` element will give you a maximum width of `1034px`. Adding a modifier class of `container--wide` to the wrapping element will increase the maximum width to `1280px`.
+
+A flexible grid based on __12__ columns, each column has a percentage calculated width and the margins (gutters) are fixed for each breakpoint. 
 
 The baseline grid is based on multiples of __8px__.
 
