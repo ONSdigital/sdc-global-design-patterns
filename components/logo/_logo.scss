@@ -1,15 +1,15 @@
 .logo {
   display: inline-block;
   &__img {
-    width: 275px;
+    width: 272px;
     height: auto;
   }
   @include lt-ie9() {
     float: left;
     display: block;
-    width: 275px;
+    width: 272px;
     height: 24px;
-    background: url("#{$static}/img/ons-logo-white.png") no-repeat 0 0;
+    background: url("#{$static}/img/ons-logo-pos.png") no-repeat 0 0;
     img {
       display: none;
     }

@@ -8,10 +8,12 @@
   &__top {
     width: 100%;
     padding: .7rem 0;
-    background: $color-secondary;
-    &--border {
-      border-bottom: 3px solid $color-secondary;
-      padding: .7rem 0 .534rem;
+    background: $color-white;
+  }
+
+  &--internal {
+    .header__top {
+      background: $color-secondary;
     }
   }
 
@@ -26,8 +28,9 @@
     padding: 1.1rem 0;
     background: $color-header-main;
     &--border {
+      border-top: 3px solid $color-header-main;
       border-bottom: 3px solid $color-header-main;
-      padding: 1.1rem 0 .934rem;
+      padding: .934rem 0;
     }
   }
 

@@ -70,6 +70,36 @@ module.exports = {
           }
         ]
       }
+    },{
+      "label":"Combination internal",
+      "name":"combination-internal",
+      "context": {
+        "internal": true,
+        "classes": "header--internal",
+        "button": "Save and sign out",
+        "services":[
+          {
+            "text": "My account",
+            "link": "#1"
+          },
+          {
+            "text": "Help",
+            "link": "#1"
+          }
+        ],
+        "main":[
+          {
+            "text": "Surveys",
+            "link": "#1",
+            "classes": "nav__item--active",
+            "aria-current": true
+          },
+          {
+            "text": "Messages",
+            "link": "#1"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,9 +1,7 @@
 import domready from '../../assets/js/domready'
-import {forEach} from 'lodash'
 
 const attrExpanded = 'aria-expanded'
 const attrHidden = 'aria-hidden'
-const tabIndex = 'tabindex'
 const hideClass = 'nav--h-m'
 const activeClass = 'active'
 

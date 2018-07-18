@@ -120,6 +120,8 @@
   .nav__list {
     @include mq(xs,s) {
       padding: 0 0 1rem 0;
+      opacity: 1;
+      transition: opacity 300ms ease-in-out;
     }
   }
   .nav__item {
@@ -167,6 +169,9 @@
   .nav--h-m { // h-m - hide mobile
     @include mq(xs,s) {
       display: none;
+      .nav__list {
+        opacity: 0;
+      }
     }
     @at-root {
       .lt-ie10 .nav--h-m {

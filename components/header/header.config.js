@@ -6,24 +6,33 @@ module.exports = {
   "preview": "@preview__page", /* As it is a layout level element use page preview */
   "variants": [{
     "name": "standard",
-    "label": "Header - standard",
+    "label": "Header - standard external",
     "context": {
       "title": "Standard title header",
     },
   },{
-    "name": "hero",
+    "name": "standard-internal",
+    "label": "Header - standard internal",
+    "context": {
+      "title": "Internal title header",
+      "classes": "header--internal",
+      "internal": true
+    },
+  },{
+    "name": "hero-internal",
     "label": "Header - hero",
     "context": {
       "title": "Hero title header",
       "classes": "header--hero",
-      "description": "This is the description or tagline"
+      "description": "This is the description or tagline",
     },
   },{
-    "name": "thin",
-    "label": "Header - thin",
+    "name": "thin-internal",
+    "label": "Header - internal thin",
     "context": {
       "title": "Thin title header",
-      "classes": "header--thin",
+      "classes": "header--thin header--internal",
+      "internal": true
     },
   }]
 }
