@@ -42,6 +42,11 @@
     color: $color-white;
     font-size: 1.556rem;
     margin: 0;
+    &--nav-adj {
+      @include mq(s) {
+        padding-top: .2rem;
+      }
+    }
   }
 
   &__desc {
