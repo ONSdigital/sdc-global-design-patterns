@@ -174,7 +174,7 @@
     background-color: transparent;
     border-color: transparent;
   }
-  span {
+  &__label {
     -webkit-transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
     display: block;
@@ -205,7 +205,7 @@
     }
   }
   &.active {
-    span {
+    .btn--mobile__label {
       background-color: transparent;
       &::before {
         top: 0;
