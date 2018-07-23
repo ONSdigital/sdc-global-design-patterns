@@ -1,7 +1,7 @@
 module.exports = {
   title: "Summary",
   collated: true, // Pulls all variants into one summary
-  status: "wip",
+  status: "ready",
   tags: ['eQ'],
   "variants": [
     {

@@ -1,6 +1,6 @@
 module.exports = {
   title: "Pagination",
   label: "Pagination",
-  status: "prototype",
+  status: "ready",
   preview: "@preview__page"
 }

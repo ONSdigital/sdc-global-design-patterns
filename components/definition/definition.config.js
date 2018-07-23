@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Definition',
-  status: 'wip',
+  status: 'ready',
   context: {
     definitiionHideText: 'Hide this',
     definitionText: 'What is a photovoltaic system?',
