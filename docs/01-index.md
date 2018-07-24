@@ -3,7 +3,7 @@ title: Overview
 ---
 
 ## Development principles
-We use progressive enhancement to provide the best possible chance of working for the majority of users.
+We use progressive enhancement to provide the best possible chance of working for most users.
 
 >This is because the only part of a page that you can rely on to work is the HTML. If the HTML fails there’s no web page, so you should consider the rest optional.
 
@@ -19,13 +19,13 @@ Before contributing to the pattern library please review the [backlog of items](
 Ensure that the new pattern or variant is necessary - could an existing one be used instead?
 
 If you can show a user need for the new pattern:
- - add a request for a new pattern to the backlog/issue list/email <benjamin.armstrong@ons.gov.uk>
+ - add a request for a new pattern to the backlog/issue list and email <benjamin.armstrong@ons.gov.uk>
  - produce a refined Sketch file and, or prototype code necessary to validate the work.
  - once you have a prototype that has been user tested and iterated:
   - you can create a local branch of the pattern library repository and produce a production ready version for review, include a clear rationale, documentation and
 
 ### Authoring CSS
-Each component is authored as a self-contained set of code. At the minimum this will comprise a SCSS and template file.
+Each component is authored as a self-contained set of code. At the minimum, this will comprise a SCSS and template file.
 
 SCSS should be written using BEM (Block, Element, Modifier) methodology. This helps to avoid conflicts between different components.
 
@@ -42,7 +42,7 @@ The pattern should be tested with [assistive technology](https://www.gov.uk/serv
 Before the pattern can be accepted into the pattern library it is likely that it will need to be audited by [DAC](http://digitalaccessibilitycentre.org/) or another A11y audit organisation.
 
 ## Sketch
-A [Sketch](http://www.sketchapp.com) library file is maintained in parallel with the codebase of the pattern library and is available to download [here](https://drive.google.com/file/d/0B7T2bOHcgJHUdFpyNzNmSDNYWWs/view?usp=sharing).
+A [Sketch](http://www.sketchapp.com) library file ([info](https://sketchapp.com/docs/libraries/)) is maintained in parallel with the codebase of the pattern library and is available to [download here](https://drive.google.com/file/d/0B7T2bOHcgJHUdFpyNzNmSDNYWWs/view?usp=sharing).
 
 Each component is created as a symbol or symbol set for use in designing interfaces.
 
