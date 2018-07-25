@@ -14,7 +14,8 @@ module.exports = {
           {
             "item": "Section 1",
             "item_url": "#item1",
-            "item_class": "nav__item--current"
+            "item_class": "nav__item--current",
+            "current": true
           },
           {
             "item": "Section 2",
