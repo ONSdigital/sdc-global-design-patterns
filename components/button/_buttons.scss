@@ -28,62 +28,9 @@
   }
 }
 
-@mixin icon-bg-image ($name) {
-  background-image: url("#{$static}/img/icons/icons--#{$name}.svg");
-}
-
-@mixin create-btn-icon-modifier ($defaultIconName, $hoverIconName, $focusIconName, $width) {
-  .btn__icon--#{$defaultIconName} {
-    width: $width;
-    @include icon-bg-image($focusIconName);
-
-    &::before {
-      @include icon-bg-image($hoverIconName);
-    }
-
-    &::after {
-      @include icon-bg-image($focusIconName);
-    }
-  }
-}
-
 .btn {
   @include btn($color-primary, $color-white);
 
-  .btn__icon {
-    position: relative;
-    vertical-align: middle;
-    content: " ";
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: 100%;
-
-    &::after,
-    &::before {
-      width: inherit;
-      height: inherit;
-      content: " ";
-      vertical-align: inherit;
-      display: inherit;
-      background-repeat: inherit;
-      background-position: 0 0;
-      background-size: 100%;
-      transition: opacity 0.3s ease-out;
-    }
-
-    &::before {
-      opacity: 0;
-    }
-
-    &::after {
-      position: absolute;
-      left: 0;
-      opacity: 0;
-    }
-  }
-
-  @include create-btn-icon-modifier(print-link, print-hover, print-focus, 1em);
-  // ...
 }
 
 .btn--secondary {

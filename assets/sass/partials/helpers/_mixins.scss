@@ -117,8 +117,92 @@
   }
 }
 
-@mixin icon($name) {
-  background: url("#{$static}/img/icons/icons--#{$name}.svg") no-repeat center;
+// =============================================================================
+// Create icon
+// =============================================================================
+
+@mixin icon ($name) {
+  background-image: url("#{$static}/img/icons/icons--#{$name}.svg");
+  background-repeat: no-repeat;
+}
+
+@mixin create-icon ($iconName, $className: null, $hoverIconName: null, $focusIconName: null, $width: 1.3rem, $top: 2px, $position: left, $btn: false) {
+  $name: $iconName;
+
+  @if ($className != null) {
+    $name: $className;
+  }
+
+  .icon--#{$name} {
+    position: relative;
+    @if ($position == "right") {
+      @if ($btn == true) {
+        padding-right: $width * 1.8;
+      }
+      @else {
+        padding-right: $width + 0.4rem;
+      }
+    }
+    @else {
+      @if ($btn == true) {
+        padding-left: $width * 1.8;
+      }
+      @else {
+        padding-left: $width + 0.4rem;
+      }
+    }
+
+    @include ie8() {
+      padding: auto;
+    }
+
+    &::before {
+      @include icon($iconName);
+
+      content: "";
+      display: inline-block;
+      height: $width;
+      width: $width;
+      position: absolute;
+      top: $top;
+      left: 0;
+      background-size: $width;
+      background-repeat: no-repeat;
+      transition: background-image 0.2s ease-out, background-color 0.2s ease-out, border 200ms ease-in, transform 300ms ease-in-out;
+      background-position: 0 0;
+
+      @include ie8() {
+        display: none;
+      }
+
+      @if ($btn == true) {
+        top: 0.7rem;
+        left: $width - 0.5rem;
+      }
+
+      @if ($position == "right") {
+        left: auto;
+        right: $width - 0.7rem;
+      }
+    }
+
+    @if ($hoverIconName) {
+      &:hover,
+      &:focus {
+        &::before {
+          @include icon($hoverIconName);
+        }
+      }
+    }
+
+    @if ($focusIconName) {
+      &:focus {
+        &::before {
+          @include icon($focusIconName);
+        }
+      }
+    }
+  }
 }
 
 // =============================================================================
