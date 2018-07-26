@@ -2,8 +2,7 @@
   padding: 2rem 0;
   padding-bottom : 4rem;
   margin-top: 2rem;
-  background-color: $color-very-dark-grey;
-  color: $color-light-grey;
+  background-color: $color-mid-grey;
 
   .footer__heading {
     margin-top: 2rem;
@@ -12,25 +11,21 @@
   .footer__license {
     margin-top: 2rem;
   }
+  .footer__license--border {
+    border-top: 1px solid $color-borders;
+    padding: 2rem 0 0 0;
+  }
 
   .footer__ogl-img {
-    height: 1.1rem;
+    height: 1.85rem;
     opacity: .75;
     margin-bottom: .2rem;
+    margin-right: 0.5rem;
   }
 
-  .footer__link {
-    color: $color-light-grey;
-
-    &:focus {
-      color: #fff;
-      outline: 2px dashed #fff;
-      outline-offset: 2px;
-      background: transparent;
-    }
-
-    &:hover {
-      color: $color-light-grey;
-    }
+  .footer__link--inline {
+    float: left;
+    margin-right: 2rem;
   }
+
 }
