@@ -91,3 +91,30 @@
     }
   }
 }
+
+.summary {
+  &__total {
+    @include mq(m) {
+      text-align: right;
+    }
+  }
+
+  &__answer {
+    &--total {
+      @include mq(m) {
+        text-align: right;
+      }
+    }
+  }
+
+  &__total-label {
+    font-weight: normal;
+  }
+
+  &__item {
+    &--total {
+      border-top-width: 2px;
+      border-bottom: 1px solid $color-dark-grey;
+    }
+  }
+}

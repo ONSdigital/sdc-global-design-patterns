@@ -27,6 +27,10 @@ module.exports = {
     {
       "name": "errors",
       "label": "Validation across multiple pages"
+    },
+    {
+      "name": "total",
+      "label": "Summary total"
     }
   ]
 }
