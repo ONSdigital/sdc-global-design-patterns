@@ -1,4 +1,4 @@
 module.exports = {
-  "status": "wip",
-  "collated": true
+  'status': 'wip',
+  'collated': true
 }
