@@ -1,8 +1,66 @@
-<div class="container">
-  <header class="header">
-      <div class="logo header__logo">
-          <img src="https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.svg" alt="Office for National Statistics" class="logo__img">
-      </div>
-  </header>
-</div>
-{{>@bar bar_title="eQ Title bar"}}
+<header class="header {{classes}}">
+    <div class="header__top" role="banner">
+        <div class="container">
+            <div class="grid grid--gutterless">
+                <div class="grid__col col-6@s">
+                    <div class="logo">
+                        <img src="{{path '/assets/img/ons-logo-black-en.svg'}}" alt="Office for National Statistics logo" class="logo__img header__logo--print">
+                        <a href="#1">
+                            <img src="{{path '/assets/img/ons-logo-{{#if internal}}white{{else}}pos{{/if}}.svg'}}" alt="Office for National Statistics logo" class="logo__img header__logo print__hidden">
+                        </a>
+                    </div>
+                </div>
+                {{#if services}}
+                <div class="grid__col col-6@s">
+                    <nav class="nav nav--horizontal {{#if internal}}nav--light{{/if}} u-d-no--@xs@s u-fr" aria-label="Site services menu">
+                        <ul class="nav__list" role="menubar" aria-label="Site services menu">
+                            {{#each services}}
+                            <li class="nav__item" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </nav>
+                </div>  
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="header__main {{#if nav}}header__main--border{{/if}}">
+        <div class="container">
+            <div class="grid grid--gutterless grid--align-mid u-cf">
+                <div class="grid__col {{#if button}}col-10@xs col-6@s col-8@m{{/if}}">
+                    <h1 class="header__title {{#if button}}header__title--nav-adj{{/if}}">{{title}}</h1>
+                    {{#if description}}
+                    <p class="header__desc">{{description}}</p>
+                    {{/if}}
+                </div>
+                {{#if nav}}  
+                {{> @button--mobile btn-classes='u-fr u-d-no--@s'}}
+                {{/if}}
+                {{#if button}}
+                <div class="u-fr u-d-no--@xs@s">
+                    {{> @button btn-classes='btn--ghost print__hidden' label=button}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{#if nav}}  
+    <div class="header__nav">
+        <div class="container">
+            <nav class="nav nav--horizontal nav--light nav--main nav--h-m js-main-nav" aria-label="Main menu" {{#unless main}}aria-hidden="true"{{/unless}} id="main-nav">
+                <ul class="nav__list" aria-label="Navigation menu" role="menubar">
+                    {{#each main}}
+                    <li class="nav__item {{classes}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                    {{/each}}
+                    {{#each services}}
+                    <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no--@s" role="menuitem"><a href="{{link}}" class="nav__link print__hidden">{{text}}</a></li>
+                    {{/each}}
+                    {{#if button}}
+                    <li class="nav__item u-d-no--@s" role="menuitem">{{> @button btn-classes='btn--ghost print__hidden' label=button}}</li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {{/if}}
+</header>

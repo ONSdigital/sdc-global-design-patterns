@@ -1,13 +1,12 @@
-{
-  "title": "Navigation",
-  "default": "nav--section",
+module.exports = {
+  "title": "Vertical navigation",
+  "default": "vertical",
   "status": "wip",
-  "label":"Navigation",
   "preview": "@preview__menu",
+  "collated": false,
   "variants": [{
-    "label":"Nav Section",
-    "name":"nav--section",
-    "status":"wip",
+    "label":"Vertical navigation",
+    "name":"vertical",
     "context": {
         "label":"Nav Section (vertical)",
         "nav-title": "Nav Section",
@@ -35,6 +34,6 @@
           }
         ]
       }
-  }
+    }
   ]
 }
