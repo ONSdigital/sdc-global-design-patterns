@@ -1,36 +1,3 @@
-%js-details-trigger {
-  &::before {
-    $size: 1rem;
-
-    transition: transform 300ms ease-in-out;
-    margin-right: 0.5rem;
-    speak: none;
-    content: "";
-    background: url("#{$static}/img/icons/icons--guidance.svg") no-repeat center center;
-    background-size: auto;
-    text-align: center;
-    width: 0.7rem;
-    height: $size;
-    position: relative;
-    left: 0.1rem;
-    top: -0.05rem;
-    vertical-align: middle;
-    display: inline-block;
-  }
-
-  &:hover {
-    &::before {
-      background: url("#{$static}/img/icons/icons--guidance-darkblue.svg") no-repeat center center;
-    }
-  }
-
-  &:focus {
-    &::before {
-      background: url("#{$static}/img/icons/icons--guidance-darkblue.svg") no-repeat center center;
-    }
-  }
-}
-
 %js-details-trigger--is-expanded {
   &::before {
     transform: rotate(90deg);

@@ -1,8 +1,6 @@
 .definition {
   .definition__link {
-    @extend %js-details-trigger;
     outline: none;
-    padding: 0.2rem 0.5rem 0.2rem 0.2rem;
     font-weight: 600;
     text-decoration: none;
 

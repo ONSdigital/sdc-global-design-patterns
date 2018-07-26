@@ -35,8 +35,8 @@
 .input--select {
   appearance: none;
   padding: $input-padding 2rem $input-padding 0.5rem;
-  background: $color-white url("#{$static}/img/icons/icons--chevron-down.svg") no-repeat center right 6px;
-  background-size: 1.5rem;
+  background: $color-white url("#{$static}/img/icons/icons--chevron-down.svg") no-repeat center right 10px;
+  background-size: 1rem;
   line-height: 1.25rem;
 
   &::-ms-expand {
@@ -107,7 +107,7 @@
   transition: background-size 50ms ease-out;
 
   &:checked {
-    background-size: 20px;
+    background-size: 15px;
     box-shadow: none;
   }
 

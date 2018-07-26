@@ -21,9 +21,6 @@
       & > span {
         color: $color-links-hover;
       }
-      &::before {
-        filter: brightness(0.5);
-      }
     }
   }
   &-text {
@@ -31,25 +28,6 @@
     margin-top: 0.3rem;
     max-width: 73%;
     line-height: 1.3rem;
-  }
-  &::before {
-    $size: 2rem;
-    transition: transform 300ms ease-in-out;
-    speak: none;
-    content: "";
-    background: url("#{$static}/img/icons/icons--accordion.svg") no-repeat center center;
-    text-align: left;
-    width: $size;
-    height: $size;
-    position: relative;
-    left: -.4rem;
-    top: -1px;
-    vertical-align: middle;
-    display: inline-block;
-    float: left;
-    .no-js & {
-      display: none;
-    }
   }
 
   &:focus {
