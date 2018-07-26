@@ -11,6 +11,10 @@
   .footer__license {
     margin-top: 2rem;
   }
+  .footer__license--border {
+    border-top: 1px solid $color-borders;
+    padding: 2rem 0 0 0;
+  }
 
   .footer__ogl-img {
     height: 1.85rem;
