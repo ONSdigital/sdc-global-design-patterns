@@ -1,22 +1,22 @@
 module.exports = {
-  "status": "wip",
-  "collated": false,
-  "label": "Breadcrumb",
-  "name":"breadcrumb",
+  'status': 'ready',
+  'collated': false,
+  'label': 'Breadcrumb',
+  'name':'breadcrumb',
   context : {
-    "items":[
+    'items':[
     {
-      "item": "Home",
+      'item': 'Home',
     },
     {
-      "item": "Item one"
+      'item': 'Item one'
     },
     {
-      "item": "Another thing"
+      'item': 'Another thing'
     },
     {
-      "item": "The other thing"
+      'item': 'The other thing'
     }],
-    "current": "Current page"
+    'current': 'Current page'
   }
 }

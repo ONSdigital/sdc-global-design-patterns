@@ -1,7 +1,7 @@
 module.exports = {
   'title': 'Duration',
   'collated': false,
-  'status': 'wip',
+  'status': 'ready',
   'context': {
     'label_time': 'Time',
     'unit1': 'Hours',

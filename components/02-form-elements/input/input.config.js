@@ -13,15 +13,15 @@ module.exports = {
       'label_inline': false
     }
   }, {
-    "name": "checkbox",
-    "context": {
-      "label_text": "Bacon",
-      "label_for": "checkbox",
-      "label_inline": true,
+    'name': 'checkbox',
+    'context': {
+      'label_text': 'Bacon',
+      'label_for': 'checkbox',
+      'label_inline': true,
       'checkbox_legend':'Select all that apply',
-      "options": [
-        {"option_text":"Bacon", "option_value": "bacon", "label_for":"bacon", "label_text":"Bacon", "label_inline":true},
-        {"option_text":"Olives", "option_value": "olives", "label_for":"olives", "label_text":"Olives", "label_inline":true},
+      'options': [
+        {'option_text':'Bacon', 'option_value': 'bacon', 'label_for':'bacon', 'label_text':'Bacon', 'label_inline':true},
+        {'option_text':'Olives', 'option_value': 'olives', 'label_for':'olives', 'label_text':'Olives', 'label_inline':true},
       ]
     },
   }, {
