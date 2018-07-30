@@ -40,20 +40,26 @@
   <div class="page">
     <div class="page__content">
       {{{ yield }}}
-      {{> @header}}
+      {{> @header-navigation button="Save and sign out"}}
         <div class="page__container container">
-          <main role="main" id="main" class="page__main">
           <div class="grid grid--reverse">
             <div class="grid__col col-4@m">
-              {{> @navigation }}
+              {{render '@vertical-navigation' }}
             </div>
             <div class="grid__col col-7@m pull-1@m">
-              <div class="u-mt-l">
-              {{> @paragraph}}
+              <main role="main" id="main" class="page__main">
+              <div class="group u-mb-l">
+                <div class="question">
+                  <h1 class="question__title saturn">What was the percentage increase in total turnover?</h1>
+                    {{> @label label_text="Percentage increase in turnover" label_description="Enter a value to one decimal place"}}
+                    {{render '@input--percentage'}}
+                </div>
             </div>
+          {{> @button label="Save and continue"}}
+          </main>
             </div>
           </div>
-        </main>
+
         </div>
 
   </div>
