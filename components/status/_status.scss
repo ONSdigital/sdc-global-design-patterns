@@ -1,0 +1,35 @@
+/* Status */
+@mixin status($status-color) {
+  background-color: $status-color;
+  border: 3px solid $status-color;
+}
+.status {
+  font-size: 1rem;
+  line-height: 1.4;
+  &::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 0.391rem;
+    margin-bottom: -0.15rem; /* Visual alignment adjustment */
+  }
+}
+&.status--success:before {
+  @include status(#a8bd3a); /* ONS logo green */
+}
+&.status--warning:before {
+  @include status($color-amber);
+}
+&.status--error:before {
+  @include status($color-errors);
+}
+&.status--dead:before {
+  @include status($color-dark-grey);
+}
+&.status--info:before {
+  @include status($color-blue);
+}
+/* /Status */
