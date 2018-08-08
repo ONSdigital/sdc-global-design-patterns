@@ -3,6 +3,8 @@
   display: block;
   position: relative;
   margin: 0 0 2rem;
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale;
 
   // Elements
   &__top {
