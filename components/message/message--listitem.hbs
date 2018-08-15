@@ -1,0 +1,16 @@
+<li class="message__list--item">
+  <div class="message">
+    <h3 class="message__subject message__subject--unread"><a href="#" class="venus">{{message_subject}}</a><span class="status--info u-ml-xs pluto">(New)</span></h3>
+    <div class="metadata metadata--message">
+      <dl class="metadata__list u-mb-s">
+        <dt class="metadata__term u-vh">From:</dt>
+        {{#if message_internal}}<dd class="metadata__value venus">ONS Business Surveys Team</dd>{{else}}
+        <dd class="metadata__value venus">Jacky Turner</dd>{{/if}}
+        <dt class="metadata__term u-vh">Sent:</dt>
+        <dd class="metadata__value metadata__value--datetime pluto">{{message_datetime}}</dd>
+      </dl>
+    </div>
+    <div class="message__body">{{{message_body}}}</div>
+    <div class="message__list--item-link"><a href="#">Read full message</a></div>
+  </div>
+</li>
