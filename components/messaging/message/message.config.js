@@ -1,7 +1,7 @@
 module.exports = {
   'title': 'Message',
   'default': 'internal',
-  'collated': true,
+  'collated': false,
   'status': 'wip',
   'variants': [{
     'name': 'internal',
@@ -27,18 +27,8 @@ module.exports = {
       'message_variant': 'external',
       'message_body': '<p>Hi Dave<br>Thanks for your message. Yes, the figures are right - we had a big expansion last year when we bought The Widgets Group and moved staff to Skipton.'+
                       '<br><br>Thanks, Jacky</p>',
-      'message_subject': 'BRES 2016 survey response query',
-      'message_datetime': 'Fri 30 Jun 2017 at 11:47'
-    },
-  },{
-    'name': 'listitem',
-    'label': 'List item',
-    'context': {
-      'message_internal': true,
-      'message_variant': 'listitem',
-      'message_body': 'Hi Jacky. Thanks for that information. Your figures have allowed us to create more accurate&hellip;',
-      'message_subject': 'BRES 2016 survey response query',
-      'message_datetime': 'Tue 4 Jul 2017 at 7:47'
+      'message_subject': 'RE: BRES 2016 survey response query',
+      'message_datetime': 'Fri 30 Jun 2017 at 14:21'
     },
   }],
 }

@@ -3,19 +3,21 @@
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid $color-borders;
+
+  &--internal {
+
+  }
+  &--external {
+
+  }
 }
 .message__body {
 
 }
 .message__subject {
-  margin: 0;
+
   &--unread {
 
-  }
-}
-.message__list {
-  &--item {
-    list-style: none;
   }
 }
 /* /_message */
