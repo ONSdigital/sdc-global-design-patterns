@@ -1,6 +1,8 @@
+<!-- Conversation.hbs -->
 <section class="conversation" role="region" aria-label="Conversation: {{{conversation_subject}}}">
   <h1 class="saturn conversation__subject"><span class="u-vh">Subject: </span>{{{conversation_subject}}}</h1>
   {{render '@message--internal'}}
   {{render '@message--external'}}
-  {{> @message--internal message_internal=true message_datetime='Tue 4 Jul 2017 at 9:34' message_body='Hi Jacky<br>Thanks for that information. Your figures have allowed us to create more accurate statistics.<br>David Cleere<br>BRES Survey Team'}}
+  {{> @message--internal message_internal='true' message_datetime='Tue 4 Jul 2017 at 9:34' message_body='Hi Jacky<br>Thanks for that information. Your figures have allowed us to create more accurate statistics.<br>David Cleere<br>BRES Survey Team'}}
 </section>
+<!-- /Conversation.hbs -->
