@@ -49,7 +49,7 @@ const detailsToggleModule = {
   close(elDetails, elBody, elLabel, elTrigger) {
     elDetails.classList.remove(classExpandedState);
     elLabel.innerHTML = elDetails.getAttribute(attrShowLbl);
-    elTrigger.setAttribute(attrAriaExpanaded, false);
+    detailsToggleModule.elTriggers[0].setAttribute(attrAriaExpanaded, false);
     elBody.setAttribute(attrAriaHidden, true);
 
     /**
