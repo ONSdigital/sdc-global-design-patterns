@@ -1,5 +1,11 @@
 <div class="answer__fields js-fields">
   {{> @label label_text="Please provide some feedback" label_for="textarea-answer" label_description="For example describe any difficulties you experienced in the use of this service"}}
-  <textarea class="input input--textarea js-charlimit-input" cols="60" rows="8" id="{{textarea_id}}" name="{{textarea_id}}" maxlength="{{charlimit}}" aria-describedby="description-question guidance-answer-trigger textarea-answer-remaining" data-maxlength="{{charlimit}}"></textarea>
-  <div class="input__limit u-mt-xs mercury" data-qa="textarea-with-limit" id="{{textarea_id}}-remaining" aria-live="polite">You have <span>{{charlimit}}</span>.</div>
+  <textarea class="input input--textarea{{#if charlimit}} js-charlimit-input{{/if}}" cols="60"
+            rows="8" id="{{textarea_id}}" name="{{textarea_id}}"
+            {{#if charlimit}}maxlength="{{charlimit}}"{{/if}}
+            aria-describedby="description-question
+            guidance-answer-trigger{{#if charlimit}} {{textarea_id}}-remaining{{/if}}"
+            {{#if charlimit}}data-maxlength="{{charlimit}}"{{/if}}
+            data-char-limit-ref="{{textarea_id}}-remaining"></textarea>
+  {{#if charlimit}}<div class="input__limit u-mt-xs mercury" data-qa="textarea-with-limit" id="{{textarea_id}}-remaining" aria-live="polite">You have <span>{{charlimit}}</span>.</div>{{/if}}
 </div>
