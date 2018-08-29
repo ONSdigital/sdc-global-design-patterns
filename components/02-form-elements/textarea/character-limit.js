@@ -1,10 +1,10 @@
 import 'ie9-oninput-polyfill'
 import domready from '../../../assets/js/domready'
 import {trackEvent} from '../../../assets/js/analytics'
+import {forEach} from 'lodash'
 
 const inputClassLimitExceeded = 'input--limit-reached'
 const remainingClassLimitExceeded = 'input__limit--reached'
-// const classCharactersRemaining = 'input__limit'
 const classLimitedInput = 'js-charlimit-input'
 const attrCharLimitRef = 'data-char-limit-ref'
 const charactersRemainingSuffix = " characters remaining"
@@ -46,9 +46,9 @@ domready(() => {
   }
 
   const initialise = () => {
-    const limitedInputs = document.querySelectorAll(`.${classLimitedInput}`)
+    const limitedInputs = Array.from(document.querySelectorAll(`.${classLimitedInput}`))
 
-    limitedInputs.forEach((input) => {
+    forEach(limitedInputs, (input) => {
       const charLimitEl = document.querySelector(`#${input.getAttribute(attrCharLimitRef)}`)
 
       input.setAttribute('data-maxlength', input.getAttribute('maxlength'))
