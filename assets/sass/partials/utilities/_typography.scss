@@ -28,6 +28,10 @@ $sizes: (
   text-transform: uppercase;
 }
 
+.u-td-no, .u-td-no:hover {
+  text-decoration: none;
+}
+
 .u-lighter {
   color: $color-text-light;
 }

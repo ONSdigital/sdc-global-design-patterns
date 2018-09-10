@@ -1,15 +1,5 @@
 .definition {
-  .definition__link {
-    outline: none;
-    font-weight: 600;
-    text-decoration: none;
-
-    &:focus {
-      outline-offset: 3px;
-      outline: 3px solid $color-focus-outline;
-    }
-  }
-
+  
   .definition__main {
     @extend %js-details-body;
   }
@@ -41,6 +31,15 @@
   &.is-expanded {
     .definition__main {
       @extend %js-details-body--is-expanded;
+    }
+  }
+
+  .no-js & {
+    .definition__link--no-js {
+      padding-left: 0;
+      &::before {
+        background: none;
+      }
     }
   }
 }

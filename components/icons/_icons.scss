@@ -4,7 +4,7 @@
 @include create-icon($iconName:person, $width:1rem, $top:4px); // Example for the pattern library
 
 @include create-icon($iconName:external-link, $hoverIconName:external-link-hover, $width:.9rem, $top: 3px, $position:right); // Used in eq-runner to handle external link
-@include create-icon($className:details, $iconName:chevron-right-blue, $hoverIconName:chevron-right-blue-hover, $width:1.1rem); // Used for definition and guidance components
+@include create-icon($className:accordion-simple, $iconName:chevron-right-blue, $hoverIconName:chevron-right-blue-hover, $width:1.1rem); // Used for a single/simple accordion
 @include create-icon($className:accordion, $iconName:chevron-right-blue, $hoverIconName:chevron-right-blue-hover, $width:1.2rem, $top: 33%); // Used with the accordion component
 @include create-icon($className:breadcrumb, $iconName:chevron-right, $width:0.65rem, $position:right, $top:37%); // Used with the breadcrumb component
 @include create-icon($iconName:lock, $top:1px); // Used with text stating data portection

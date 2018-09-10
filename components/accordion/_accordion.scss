@@ -13,16 +13,25 @@
   width: 100%;
   text-align: left;
   line-height: 1;
-  
   .has-js & {
+    text-decoration: none;
     cursor: pointer;
     color: $color-links;
     &:hover {
+      text-decoration: none;
       & > span {
         color: $color-links-hover;
       }
     }
   }
+
+  .no-js & {
+    padding-left: 0;
+    &::before,  &:hover::before {
+      background: none;
+    }
+  }  
+
   &-text {
     float: left;
     margin-top: 0.3rem;
@@ -47,9 +56,19 @@
     }
   }
 
-  span:focus {
-    outline-offset: 3px;
-    outline: 3px solid $color-focus-outline;
+  .accordion--simple & {
+    border: none;
+    display: inline;
+    padding-top: 0;
+    padding-bottom: 0;
+    &:focus {
+      outline-offset: 3px;
+      outline: 3px solid $color-focus-outline;
+      color: $color-links-hover;
+    } 
+    &-text {
+      float: none;
+    }
   }
 }
 

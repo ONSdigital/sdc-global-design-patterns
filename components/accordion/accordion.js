@@ -4,12 +4,15 @@ import {trackEvent} from '../../assets/js/analytics';
 
 export const classHasJs = 'has-js'
 export const classAccordion = 'js-accordion'
+export const classAccordionSimple = 'js-accordion-simple'
 export const classAccordionContent = 'js-accordion-content'
 export const classAccordionTitle = 'js-accordion-title'
+export const classAccordionTitleLink = 'js-accordion-title-link'
 export const classAccordionBody = 'js-accordion-body'
 export const classExpanded = 'is-expanded'
 export const classToggle = 'js-accordion-toggle'
 export const classAccordionToggleAll = 'js-accordion-toggle-all'
+export const classClose = 'js-accordion-close'
 
 export const attrHidden = 'aria-hidden'
 export const attrExpanded = 'aria-expanded'
@@ -21,6 +24,7 @@ class Accordion {
   constructor(trackEvent) {
     this.trackEvent = trackEvent
     this.openItems = 0
+    this.toggleBtns = true
   }
 
   registerDom(rootEl) {
@@ -35,6 +39,10 @@ class Accordion {
       (el, index) => { this.registerTitle(el, index) }
     )
 
+    this.titleLinks = forEach(
+      rootEl.getElementsByClassName(classAccordionTitleLink),
+    )
+
     this.bodys = forEach(
       rootEl.getElementsByClassName(classAccordionBody),
       (el, index) => { this.registerBody(el, index) }
@@ -44,6 +52,17 @@ class Accordion {
       rootEl.getElementsByClassName(classAccordionToggleAll),
       el => { this.registerToggleAll(el) }
     )
+
+    this.closeTrigger = forEach(
+      rootEl.getElementsByClassName(classClose),
+      el => { this.registerClose(el) }
+    )
+
+    if (rootEl.classList.contains(classAccordionSimple)) {
+      this.toggleBtns = false
+      forEach(this.titles, el => { el.setAttribute('tabindex', '0') })
+      forEach(this.titleLinks, el => { el.setAttribute('tabindex', '-1') })
+    }
   }
 
   registerTitle(element, index) {
@@ -53,10 +72,6 @@ class Accordion {
     element.setAttribute(attrControls, 'accordion-body-' + index)
     element.setAttribute(attrExpanded, 'false')
     element.setAttribute(attrSelected, 'false')
-
-    // Content of this container is keyboard navigable so
-    // ensure that the this container isn't
-    element.setAttribute('tabindex', '-1')
 
     if (element.classList.contains(classExpanded)) {
       element.setAttribute(attrExpanded, 'true')
@@ -91,7 +106,16 @@ class Accordion {
         forEach(this.titles, el => { this.close(el) })
         toggleAllEl.setAttribute('data-open', false)
       }
-      this.updateOpenCloseTriggerDisplay()
+
+      if (this.toggleBtns) {
+        this.updateOpenCloseTriggerDisplay()
+      }
+    })
+  }
+
+  registerClose(element) {
+    element.addEventListener('click', e => {
+      this.close(this.titles[0])
     })
   }
 
@@ -112,17 +136,19 @@ class Accordion {
       this.open(element)
       action = 'Open question'
     }
-
-    this.updateOpenCloseTriggerDisplay()
-
+      this.updateOpenCloseTriggerDisplay()
+    
     this.publishEvent(action, element.getAttribute('data-js-accordion-event-label'))
   }
 
   open(titleEl) {
-    const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
-    const closeLabel = toggleBtn.getAttribute('data-close-label')
-
     if (titleEl.getAttribute(attrExpanded) === 'true') return
+    
+    if (this.toggleBtns) {
+      const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
+      const closeLabel = toggleBtn.getAttribute('data-close-label')
+      toggleBtn.innerHTML = closeLabel
+    }
 
     const bodyEl = titleEl.nextElementSibling
     titleEl.classList.add(classExpanded)
@@ -132,15 +158,18 @@ class Accordion {
     bodyEl.classList.add(classExpanded)
     bodyEl.setAttribute(attrHidden, false)
     
-    toggleBtn.innerHTML = closeLabel
 
     this.openItems += 1
   }
 
   close(titleEl) {
     if (titleEl.getAttribute(attrExpanded) === 'false') return
-    const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
-    const openLabel = toggleBtn.getAttribute('data-open-label')
+
+    if (this.toggleBtns) {
+      const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
+      const openLabel = toggleBtn.getAttribute('data-open-label')
+      toggleBtn.innerHTML = openLabel
+    }
 
     const bodyEl = titleEl.nextElementSibling
 
@@ -151,7 +180,7 @@ class Accordion {
     bodyEl.classList.remove(classExpanded)
     bodyEl.setAttribute(attrHidden, true)
 
-    toggleBtn.innerHTML = openLabel
+    
 
     this.openItems -= 1
   }
