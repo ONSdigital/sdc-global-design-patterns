@@ -30,6 +30,9 @@
     &::before,  &:hover::before {
       background: none;
     }
+    &--link + .accordion__body {
+      display: none;
+    }
   }  
 
   &-text {
@@ -66,9 +69,6 @@
       outline: 3px solid $color-focus-outline;
       color: $color-links-hover;
     } 
-    &-text {
-      float: none;
-    }
   }
 }
 
