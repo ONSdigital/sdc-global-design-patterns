@@ -50,7 +50,7 @@ domready(() => {
 
     forEach(limitedInputs, (input) => {
       const charLimitEl = document.querySelector(`#${input.getAttribute(attrCharLimitRef)}`)
-
+      console.log(input)
       input.setAttribute('data-maxlength', input.getAttribute('maxlength'))
       updateAvailableChars(input, charLimitEl)
       input.addEventListener('input', () => updateAvailableChars(input, charLimitEl))
