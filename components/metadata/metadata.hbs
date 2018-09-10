@@ -1,33 +1,18 @@
-<dl class="metadata grid" aria-label="Message metadata">
-  <dt class="metadata__term grid__col col-3@m venus">Survey:</dt>
-  <dd class="metadata__value grid__col col-9@m">Bricks &amp; Blocks</dd>
-  <dt class="metadata__term grid__col col-3@m venus" aria-label="Reporting Unit Reference">RU Ref:</dt>
-  <dd class="metadata__value grid__col col-9@m">49900000118</dd>
-  <dt class="metadata__term grid__col col-3@m venus">Business:</dt>
-  <dd class="metadata__value grid__col col-9@m">Bolts &amp; Ratchets Ltd.</dd>
-  <dt class="metadata__term grid__col col-3@m venus">Trading as:</dt>
-  <dd class="metadata__value grid__col col-9@m">Bolts &amp; Ratchets</dd>
-  <dt class="metadata__term grid__col col-3@m venus">To:</dt>
-  <div class="grid__col col-9@m">
-    <dd class="metadata__value">Jacky Turner</dd>
-    <dd class="metadata__value">Ben Armstrong</dd>
+<dl class="metadata metadata__list grid grid--gutterless"{{#if metadata_label}} aria-label="{{metadata_label}}"{{/if}}>
+{{#if metadata_items}}
+  {{#each metadata_items}}
+  <dt class="metadata__term grid__col col-{{metadata_item_col}}@m venus">{{metadata_item}}</dt>
+  {{#if metadata_value}}
+    {{#each metadata_value}}
+  <dd class="metadata__value grid__col col-{{../metadata_value_col}}@m">{{{this}}}</dd>
+  	{{/each}}
+  {{else}}
+  <div class="grid__col col-{{metadata_value_col}}@m">
+    {{#each metadata_values}}
+  <dd class="metadata__value">{{{this}}}</dd>
+    {{/each}}
   </div>
-</dl>
-
-<dl class="metadata grid">
-    <dt class="metadata__term venus grid__col col-3@m">Members:</dt>
-    <div class="grid__col col-9@m">
-      <dd class="metadata__value">Brian May</dd>
-      <dd class="metadata__value">Freddie Mercury</dd>
-      <dd class="metadata__value">John Deacon</dd>
-      <dd class="metadata__value">Roger Taylor</dd>
-    </div>
-  <dt class="metadata__term venus grid__col col-3@m">Record labels:</dt>
-  <div class="grid__col col-9@m">
-    <dd class="metadata__value">EMI</dd>
-    <dd class="metadata__value">Parlophone</dd>
-    <dd class="metadata__value">Capitol</dd>
-    <dd class="metadata__value">Hollywood</dd>
-    <dd class="metadata__value">Island</dd>
-  </div>
+  {{/if}}
+  {{/each}}
+{{/if}}
 </dl>
