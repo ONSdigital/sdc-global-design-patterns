@@ -16,7 +16,7 @@ module.exports = {
     'label':'No character limit applied',
     'name':'no-maxchar',
     'context': {
-      'textarea_id' : 'textarea-answer-nomax',
+      'textarea_id' : 'textarea-answer-nomax'
     }
   }]
 }
