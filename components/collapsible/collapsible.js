@@ -7,7 +7,6 @@ export const classCollapsible = 'js-collapsible'
 export const classCollapsibleSimple = 'js-collapsible-simple'
 export const classCollapsibleContent = 'js-collapsible-content'
 export const classCollapsibleTitle = 'js-collapsible-title'
-export const classCollapsibleTitleLink = 'js-collapsible-title-link'
 export const classCollapsibleBody = 'js-collapsible-body'
 export const classExpanded = 'is-expanded'
 export const classToggle = 'js-collapsible-toggle'
@@ -37,10 +36,6 @@ class Collapsible {
       (el, index) => { this.registerTitle(el, index) }
     )
 
-    this.titleLinks = forEach(
-      rootEl.getElementsByClassName(classCollapsibleTitleLink),
-    )
-
     this.bodys = forEach(
       rootEl.getElementsByClassName(classCollapsibleBody),
       (el, index) => { this.registerBody(el, index) }
@@ -58,7 +53,6 @@ class Collapsible {
 
     if (!this.multi) {
       forEach(this.titles, el => { el.setAttribute('tabindex', '0') })
-      forEach(this.titleLinks, el => { el.setAttribute('tabindex', '-1') })
     } else {
       content.setAttribute(attrMultiselectable, 'true')
       content.setAttribute('role', 'tablist')
