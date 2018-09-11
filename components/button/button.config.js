@@ -65,6 +65,12 @@ module.exports = {
       'btn-classes': 'u-d-b',
       'label': 'Menu'
     },
+  },{
+    'name': 'mobile',
+    'label': 'Mobile menu',
+    'context': {
+      'bg': true
+    },
   }
 ]
 }

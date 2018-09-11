@@ -1,8 +1,8 @@
-.accordion {
+.collapsible {
   display: block;
 }
 
-.accordion__title {
+.collapsible__title {
   background: none;
   margin: 0;
   padding: 1em 0;
@@ -30,7 +30,7 @@
     &::before,  &:hover::before {
       background: none;
     }
-    &--link + .accordion__body {
+    &--link + .collapsible__body {
       display: none;
     }
   }  
@@ -59,7 +59,7 @@
     }
   }
 
-  .accordion--simple & {
+  .collapsible--simple & {
     border: none;
     display: inline;
     padding-top: 0;
@@ -72,24 +72,20 @@
   }
 }
 
-.accordion__introduction {
+.collapsible__introduction {
   p:last-child {
     margin-bottom: 0;
   }
 }
 
-@include bp-suffix(accordion-unhide) {
-  display: inline-block;
-}
-
-.accordion__controls {
+.collapsible__controls {
   margin: 1rem 0;    
   .no-js & {
     display: none;
   }
 }
 
-.accordion__control {
+.collapsible__control {
   color: #222;
   border: none;
   background: none;
@@ -98,7 +94,7 @@
   margin: 0;
 }
 
-.accordion__body {
+.collapsible__body {
   opacity: 0;
   max-height: 0;
   transition: all 0;

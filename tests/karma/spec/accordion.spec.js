@@ -17,7 +17,7 @@ const strTemplate = `
 
     <h3 class="${classAccordionTitle}" data-js-accordion-event-label="First Item">
       <span class="accordion__title-text">First Item</span>
-      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
+      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right  u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
     </h3>
     <div class="${classAccordionBody}">
       First item content
@@ -25,7 +25,7 @@ const strTemplate = `
 
     <h3 class="${classAccordionTitle}" data-js-accordion-event-label="Second Item">
       <span class="accordion__title-text">Second Item</span>
-      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
+      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right  u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
     </h3>
     <dd class="${classAccordionBody}">
       Second item content

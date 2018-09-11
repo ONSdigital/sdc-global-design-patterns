@@ -1,9 +1,9 @@
 <!-- Accordion -->
 <div id="feedback-thanks" class="js-form-confirmation u-hidden venus">Thanks for your feedback.</div>
-<div class="accordion accordion--simple js-accordion js-accordion-simple">
-    <div class="js-accordion-content">
-        <a class="accordion__title accordion__title--link js-accordion-title icon--accordion-simple venus" data-js-accordion-event-label="Is there anything wrong with this page?" tabindex="-1" href="/feedback">Is there anything wrong with this page?</a>
-        <div class="accordion__body mars js-accordion-body">
+<div class="collapsible collapsible--simple js-collapsible js-collapsible-simple">
+    <div class="js-collapsible-content">
+        <a class="collapsible__title collapsible__title--link js-collapsible-title icon--collapsible-simple venus" data-js-collapsible-event-label="Is there anything wrong with this page?" tabindex="-1" href="/feedback">Is there anything wrong with this page?</a>
+        <div class="collapsible__body mars js-collapsible-body">
             <form id="feedback-form" method="POST" class="js-form-submitter">
                 <div class="group u-mb-m u-mt-m">
                     <div class="u-mb-s">
@@ -26,9 +26,9 @@
                         <input type="text" class="input js-feedback-email" name="email" id="feedback-email" value=""/>
                     </div>
                 </div>
-                <button class="btn u-mb-s js-form-submit js-accordion-close u-mr-xs" type="submit" name="action[send_feedback]" data-qa="btn-feedback-submit" data-ga="click" data-ga-category="Feedback" data-ga-action="Send" data-endpoint="#"> Send feedback</button>
+                <button class="btn u-mb-s js-form-submit js-collapsible-close u-mr-xs" type="submit" name="action[send_feedback]" data-qa="btn-feedback-submit" data-ga="click" data-ga-category="Feedback" data-ga-action="Send" data-endpoint="#"> Send feedback</button>
             </form>
-            {{> @button btn-classes='btn--secondary btn--small js-accordion-close u-no-js-hide' data-qa="a-feedback-close" label="I don't want to provide feedback"}}
+            {{> @button btn-classes='btn--secondary btn--small js-collapsible-close u-no-js-hide' data-qa="a-feedback-close" label="I don't want to provide feedback"}}
         </div>
     </div>
 </div>

@@ -3,16 +3,16 @@ import domready from '../../assets/js/domready';
 import {trackEvent} from '../../assets/js/analytics';
 
 export const classHasJs = 'has-js'
-export const classAccordion = 'js-accordion'
-export const classAccordionSimple = 'js-accordion-simple'
-export const classAccordionContent = 'js-accordion-content'
-export const classAccordionTitle = 'js-accordion-title'
-export const classAccordionTitleLink = 'js-accordion-title-link'
-export const classAccordionBody = 'js-accordion-body'
+export const classCollapsible = 'js-collapsible'
+export const classCollapsibleSimple = 'js-collapsible-simple'
+export const classCollapsibleContent = 'js-collapsible-content'
+export const classCollapsibleTitle = 'js-collapsible-title'
+export const classCollapsibleTitleLink = 'js-collapsible-title-link'
+export const classCollapsibleBody = 'js-collapsible-body'
 export const classExpanded = 'is-expanded'
-export const classToggle = 'js-accordion-toggle'
-export const classAccordionToggleAll = 'js-accordion-toggle-all'
-export const classClose = 'js-accordion-close'
+export const classToggle = 'js-collapsible-toggle'
+export const classCollapsibleToggleAll = 'js-collapsible-toggle-all'
+export const classClose = 'js-collapsible-close'
 
 export const attrHidden = 'aria-hidden'
 export const attrExpanded = 'aria-expanded'
@@ -20,36 +20,34 @@ export const attrMultiselectable = 'aria-multiselectable'
 export const attrControls = 'aria-controls'
 export const attrSelected = 'aria-selected'
 
-class Accordion {
+class Collapsible {
   constructor(trackEvent) {
     this.trackEvent = trackEvent
     this.openItems = 0
-    this.toggleBtns = true
   }
 
   registerDom(rootEl) {
     rootEl.classList.add(classHasJs)
-    const content = rootEl.getElementsByClassName(classAccordionContent)[0]
+    const content = rootEl.getElementsByClassName(classCollapsibleContent)[0]
 
-    content.setAttribute('role', 'tablist')
-    content.setAttribute(attrMultiselectable, 'true')
-
+    rootEl.classList.contains(classCollapsibleSimple) ? this.multi = false : this.multi = true
+    
     this.titles = forEach(
-      rootEl.getElementsByClassName(classAccordionTitle),
+      rootEl.getElementsByClassName(classCollapsibleTitle),
       (el, index) => { this.registerTitle(el, index) }
     )
 
     this.titleLinks = forEach(
-      rootEl.getElementsByClassName(classAccordionTitleLink),
+      rootEl.getElementsByClassName(classCollapsibleTitleLink),
     )
 
     this.bodys = forEach(
-      rootEl.getElementsByClassName(classAccordionBody),
+      rootEl.getElementsByClassName(classCollapsibleBody),
       (el, index) => { this.registerBody(el, index) }
     )
 
     this.toggleAllTrigger = forEach(
-      rootEl.getElementsByClassName(classAccordionToggleAll),
+      rootEl.getElementsByClassName(classCollapsibleToggleAll),
       el => { this.registerToggleAll(el) }
     )
 
@@ -58,24 +56,29 @@ class Accordion {
       el => { this.registerClose(el) }
     )
 
-    if (rootEl.classList.contains(classAccordionSimple)) {
-      this.toggleBtns = false
+    if (!this.multi) {
       forEach(this.titles, el => { el.setAttribute('tabindex', '0') })
       forEach(this.titleLinks, el => { el.setAttribute('tabindex', '-1') })
+    } else {
+      content.setAttribute(attrMultiselectable, 'true')
+      content.setAttribute('role', 'tablist')
     }
   }
 
   registerTitle(element, index) {
     // Better screen reader interaction
-    element.setAttribute('id', 'accordion-title-' + index)
-    element.setAttribute('role', 'tab')
-    element.setAttribute(attrControls, 'accordion-body-' + index)
+    element.setAttribute('id', 'collapsible-title-' + index)
+    element.setAttribute(attrControls, 'collapsible-body-' + index)
     element.setAttribute(attrExpanded, 'false')
     element.setAttribute(attrSelected, 'false')
 
     if (element.classList.contains(classExpanded)) {
       element.setAttribute(attrExpanded, 'true')
       this.openItems += 1
+    }
+
+    if (this.multi) {
+      element.setAttribute('role', 'tab')
     }
 
     element.addEventListener('click', e => {
@@ -90,10 +93,13 @@ class Accordion {
 
   registerBody(element, index) {
     // Better screen reader interaction
-    element.setAttribute('id', 'accordion-body-' + index)
-    element.setAttribute('role', 'tabpanel')
-    element.setAttribute('aria-labelledby', 'accordion-title-' + index)
+    element.setAttribute('id', 'collapsible-body-' + index)
+    element.setAttribute('aria-labelledby', 'collapsible-title-' + index)
     element.setAttribute(attrHidden, 'true')
+
+    if (this.multi) {
+      element.setAttribute('role', 'tabpanel')
+    }
   }
 
   registerToggleAll(toggleAllEl) {
@@ -107,7 +113,7 @@ class Accordion {
         toggleAllEl.setAttribute('data-open', false)
       }
 
-      if (this.toggleBtns) {
+      if (this.multi) {
         this.updateOpenCloseTriggerDisplay()
       }
     })
@@ -138,13 +144,13 @@ class Accordion {
     }
       this.updateOpenCloseTriggerDisplay()
     
-    this.publishEvent(action, element.getAttribute('data-js-accordion-event-label'))
+    this.publishEvent(action, element.getAttribute('data-js-collapsible-event-label'))
   }
 
   open(titleEl) {
     if (titleEl.getAttribute(attrExpanded) === 'true') return
     
-    if (this.toggleBtns) {
+    if (this.multi) {
       const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
       const closeLabel = toggleBtn.getAttribute('data-close-label')
       toggleBtn.innerHTML = closeLabel
@@ -158,14 +164,13 @@ class Accordion {
     bodyEl.classList.add(classExpanded)
     bodyEl.setAttribute(attrHidden, false)
     
-
     this.openItems += 1
   }
 
   close(titleEl) {
     if (titleEl.getAttribute(attrExpanded) === 'false') return
 
-    if (this.toggleBtns) {
+    if (this.multi) {
       const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
       const openLabel = toggleBtn.getAttribute('data-open-label')
       toggleBtn.innerHTML = openLabel
@@ -179,8 +184,6 @@ class Accordion {
 
     bodyEl.classList.remove(classExpanded)
     bodyEl.setAttribute(attrHidden, true)
-
-    
 
     this.openItems -= 1
   }
@@ -224,10 +227,10 @@ class Accordion {
   }
 }
 
-export default function accordion(eventTracker = trackEvent) {
-  const elAccordion = document.getElementsByClassName(classAccordion)
+export default function collapsible(eventTracker = trackEvent) {
+  const elCollapsible = document.getElementsByClassName(classCollapsible)
 
-  forEach(elAccordion, element => new Accordion(eventTracker).registerDom(element))
+  forEach(elCollapsible, element => new Collapsible(eventTracker).registerDom(element))
 }
 
-domready(accordion)
+domready(collapsible)
