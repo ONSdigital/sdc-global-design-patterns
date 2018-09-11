@@ -61,7 +61,8 @@
 
   .collapsible--simple & {
     border: none;
-    display: inline;
+    display: inline-block;
+    width: auto;
     padding-top: 0;
     padding-bottom: 0;
     &:focus {
