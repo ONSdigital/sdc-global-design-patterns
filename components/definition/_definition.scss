@@ -21,13 +21,16 @@
   /**
    * Modifiers
    */
-  &:not(.is-expanded) {
-    /**
-     * Hide extra close button when not expanded to stop it being focusable
-     */
-    .definition__content-close-trigger,
-    .definition__content {
-      display: none;
+
+    &:not(.is-expanded) {
+      /**
+      * Hide extra close button when not expanded to stop it being focusable
+      */
+      .has-js & {
+      .definition__content-close-trigger,
+      .definition__content {
+        display: none;
+      }
     }
   }
 
