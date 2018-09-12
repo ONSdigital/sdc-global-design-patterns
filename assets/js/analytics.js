@@ -1,8 +1,8 @@
 import domready from './domready'
 
 export let trackEvent = (event, data) => {
-  console.log(`[Analytics disabled] Event: ${event}`) // eslint-disable-line no-console
-  console.log(data) // eslint-disable-line no-console
+  console.info(`[Analytics disabled] Event: ${event}`) // eslint-disable-line no-console
+  console.info(data) // eslint-disable-line no-console
 }
 
 if (typeof window.ga !== 'undefined') {

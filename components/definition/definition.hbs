@@ -1,9 +1,9 @@
-<div class="collapsible collapsible--simple js-collapsible js-collapsible-simple">
+<div class="collapsible collapsible--simple js-collapsible js-collapsible-simple" data-js-collapsible-event-category="Definition">
     <div class="js-collapsible-content">
       <h3 class="collapsible__title js-collapsible-title icon--collapsible-simple venus" data-js-collapsible-event-label="{{definitionText}}">{{definitionText}}</h3>
       <div class="collapsible__body js-collapsible-body">
           {{{definitionContent}}}
-          {{> @button btn-classes='btn--secondary btn--small js-collapsible-close u-no-js-hide' data-qa="a-definition-close" label="Hide this"}}
+          <button class="btn--secondary btn--small js-collapsible-close u-no-js-hide" data-js-collapsible-event-label="{{definitionText}}">Hide this</button>
       </div>
   </div>
 </div>

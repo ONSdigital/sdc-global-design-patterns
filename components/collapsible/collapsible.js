@@ -28,12 +28,13 @@ class Collapsible {
   registerDom(rootEl) {
     rootEl.classList.add(classHasJs)
     const content = rootEl.getElementsByClassName(classCollapsibleContent)[0]
+    const category =  rootEl.getAttribute('data-js-collapsible-event-category')
 
     rootEl.classList.contains(classCollapsibleSimple) ? this.multi = false : this.multi = true
     
     this.titles = forEach(
       rootEl.getElementsByClassName(classCollapsibleTitle),
-      (el, index) => { this.registerTitle(el, index) }
+      (el, index) => { this.registerTitle(el, index, category) }
     )
 
     this.bodys = forEach(
@@ -43,12 +44,12 @@ class Collapsible {
 
     this.toggleAllTrigger = forEach(
       rootEl.getElementsByClassName(classCollapsibleToggleAll),
-      el => { this.registerToggleAll(el) }
+      el => { this.registerToggleAll(el, category) }
     )
 
     this.closeTrigger = forEach(
       rootEl.getElementsByClassName(classClose),
-      el => { this.registerClose(el) }
+      el => { this.registerClose(el, category) }
     )
 
     if (!this.multi) {
@@ -59,7 +60,7 @@ class Collapsible {
     }
   }
 
-  registerTitle(element, index) {
+  registerTitle(element, index, category) {
     // Better screen reader interaction
     element.setAttribute('id', 'collapsible-title-' + index)
     element.setAttribute(attrControls, 'collapsible-body-' + index)
@@ -77,7 +78,7 @@ class Collapsible {
 
     element.addEventListener('click', e => {
       e.preventDefault()
-      this.toggle(element)
+      this.toggle(element, category)
     })
 
     element.addEventListener('keydown', e => {
@@ -96,7 +97,7 @@ class Collapsible {
     }
   }
 
-  registerToggleAll(toggleAllEl) {
+  registerToggleAll(toggleAllEl, category) {
     toggleAllEl.addEventListener('click', e => {
       e.preventDefault()
       if (toggleAllEl.getAttribute('data-open') === 'false'){
@@ -106,39 +107,40 @@ class Collapsible {
         forEach(this.titles, el => { this.close(el) })
         toggleAllEl.setAttribute('data-open', false)
       }
-
       if (this.multi) {
-        this.updateOpenCloseTriggerDisplay()
+        this.updateOpenCloseTriggerDisplay(category)
       }
     })
   }
 
-  registerClose(element) {
+  registerClose(element, category) {
     element.addEventListener('click', e => {
       this.close(this.titles[0])
+      this.publishEvent('Close', element.getAttribute('data-js-collapsible-event-label'), category)
     })
   }
 
-  updateOpenCloseTriggerDisplay() {
+  updateOpenCloseTriggerDisplay(category) {
     if (this.openItems / this.titles.length < 1) {
-      forEach(this.toggleAllTrigger, trigger => this.hide(trigger))
+      forEach(this.toggleAllTrigger, trigger => this.hide(trigger, category))
     } else {
-      forEach(this.toggleAllTrigger, trigger => this.show(trigger))
+      forEach(this.toggleAllTrigger, trigger => this.show(trigger, category))
     }
   }
   
-  toggle(element) {
+  toggle(element, category) {
     let action = ''
     if (element.getAttribute(attrExpanded) === 'true') {
       this.close(element)
-      action = 'Close question'
+      action = 'Close'
     } else {
       this.open(element)
-      action = 'Open question'
+      action = 'Open'
     }
-      this.updateOpenCloseTriggerDisplay()
     
-    this.publishEvent(action, element.getAttribute('data-js-collapsible-event-label'))
+    this.updateOpenCloseTriggerDisplay()
+    
+    this.publishEvent(action, element.getAttribute('data-js-collapsible-event-label'), category)
   }
 
   open(titleEl) {
@@ -182,24 +184,26 @@ class Collapsible {
     this.openItems -= 1
   }
 
-  hide(element) {
+  hide(element, category) {
     const openAllLabel = element.getAttribute('data-open-all-label')
     element.innerHTML = openAllLabel
     element.setAttribute('data-open', false)
-    element.setAttribute('data-ga-action', 'Close all')
+    element.setAttribute('data-js-collapsible-event-label', 'Close all')
+    this.publishEvent('Toggle close all', element.getAttribute('data-js-collapsible-event-label'), category)
   }
 
-  show(element) {
+  show(element, category) {
     const closeAllLabel = element.getAttribute('data-close-all-label')
     element.innerHTML = closeAllLabel
     element.setAttribute('data-open', true)
-    element.setAttribute('data-ga-action', 'Show all')
+    element.setAttribute('data-js-collapsible-event-label', 'Show all')
+    this.publishEvent('Toggle open all', element.getAttribute('data-js-collapsible-event-label'), category)
   }
 
-  publishEvent(action, label) {
+  publishEvent(action, label, category) {
     this.trackEvent('send', {
       hitType: 'event',
-      eventCategory: 'Preview Survey',
+      eventCategory: category,
       eventAction: action,
       eventLabel: label
     })
