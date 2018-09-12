@@ -1,6 +1,6 @@
 ### Overview
 
-Conversations are assembled from a logical series of [message]({{path 'message'}}) items.
+Conversations are assembled from a logical series of [message](message--internal) items.
 
 The subject of the first message from this series determines the conversation subject.
 
