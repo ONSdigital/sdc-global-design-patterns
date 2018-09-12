@@ -36,6 +36,8 @@ module.exports = {
       'metadata_values': ['Jacky Turner','Louise Goodland'],
       'metadata_value_col': '9',
     }],
+    'metadata_term_class' :'venus',
+    'metadatagrid' : true
   }
 },{
   'name': 'message',
@@ -53,7 +55,7 @@ module.exports = {
     'metadata_value_class': 'metadata__value--datetime pluto',
   }],
   'metadata_label': 'Message metadata',
-  'metadata_label_hidden': true
+  'metadata_term_class' :'u-vh',
 }
 },]
 }
