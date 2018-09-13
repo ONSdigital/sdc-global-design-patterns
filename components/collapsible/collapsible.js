@@ -1,6 +1,5 @@
 import {forEach} from 'lodash'
 import domready from '../../assets/js/domready';
-import {trackEvent} from '../../assets/js/analytics';
 
 export const classHasJs = 'has-js'
 export const classCollapsible = 'js-collapsible'
@@ -19,22 +18,25 @@ export const attrMultiselectable = 'aria-multiselectable'
 export const attrControls = 'aria-controls'
 export const attrSelected = 'aria-selected'
 
+export const ga = 'data-ga'
+export const gaCategory = 'data-ga-category'
+export const gaAction = 'data-ga-action'
+export const gaLabel = 'data-ga-label'
+
 class Collapsible {
-  constructor(trackEvent) {
-    this.trackEvent = trackEvent
+  constructor() {
     this.openItems = 0
   }
 
   registerDom(rootEl) {
     rootEl.classList.add(classHasJs)
     const content = rootEl.getElementsByClassName(classCollapsibleContent)[0]
-    const category =  rootEl.getAttribute('data-js-collapsible-event-category')
 
     rootEl.classList.contains(classCollapsibleSimple) ? this.multi = false : this.multi = true
     
     this.titles = forEach(
       rootEl.getElementsByClassName(classCollapsibleTitle),
-      (el, index) => { this.registerTitle(el, index, category) }
+      (el, index) => { this.registerTitle(el, index) }
     )
 
     this.bodys = forEach(
@@ -44,12 +46,12 @@ class Collapsible {
 
     this.toggleAllTrigger = forEach(
       rootEl.getElementsByClassName(classCollapsibleToggleAll),
-      el => { this.registerToggleAll(el, category) }
+      el => { this.registerToggleAll(el) }
     )
 
     this.closeTrigger = forEach(
       rootEl.getElementsByClassName(classClose),
-      el => { this.registerClose(el, category) }
+      el => { this.registerClose(el) }
     )
 
     if (!this.multi) {
@@ -60,12 +62,16 @@ class Collapsible {
     }
   }
 
-  registerTitle(element, index, category) {
+  registerTitle(element, index) {
     // Better screen reader interaction
     element.setAttribute('id', 'collapsible-title-' + index)
     element.setAttribute(attrControls, 'collapsible-body-' + index)
     element.setAttribute(attrExpanded, 'false')
     element.setAttribute(attrSelected, 'false')
+
+    const category = element.getAttribute(gaCategory)
+    const action = element.getAttribute(gaAction)
+    const label = element.getAttribute(gaLabel)
 
     if (element.classList.contains(classExpanded)) {
       element.setAttribute(attrExpanded, 'true')
@@ -74,11 +80,16 @@ class Collapsible {
 
     if (this.multi) {
       element.setAttribute('role', 'tab')
+      // Add the title GA attributes to the child span
+      element.firstElementChild.setAttribute(ga,'click')
+      element.firstElementChild.setAttribute(gaCategory,category)
+      element.firstElementChild.setAttribute(gaAction,action)
+      element.firstElementChild.setAttribute(gaLabel,label)
     }
 
     element.addEventListener('click', e => {
       e.preventDefault()
-      this.toggle(element, category)
+      this.toggle(element)
     })
 
     element.addEventListener('keydown', e => {
@@ -97,59 +108,56 @@ class Collapsible {
     }
   }
 
-  registerToggleAll(toggleAllEl, category) {
+  registerToggleAll(toggleAllEl) {
     toggleAllEl.addEventListener('click', e => {
       e.preventDefault()
-      if (toggleAllEl.getAttribute('data-open') === 'false'){
+      if (toggleAllEl.getAttribute(attrHidden) === 'true'){
         forEach(this.titles, el => { this.open(el) })
-        toggleAllEl.setAttribute('data-open', true)
+        toggleAllEl.setAttribute(attrHidden, 'false')
       } else {
         forEach(this.titles, el => { this.close(el) })
-        toggleAllEl.setAttribute('data-open', false)
+        toggleAllEl.setAttribute(attrHidden, 'true')
       }
       if (this.multi) {
-        this.updateOpenCloseTriggerDisplay(category)
+        this.updateOpenCloseTriggerDisplay()
       }
     })
   }
 
-  registerClose(element, category) {
+  registerClose(element) {
     element.addEventListener('click', e => {
       this.close(this.titles[0])
-      this.publishEvent('Close', element.getAttribute('data-js-collapsible-event-label'), category)
     })
   }
 
-  updateOpenCloseTriggerDisplay(category) {
+  updateOpenCloseTriggerDisplay() {
     if (this.openItems / this.titles.length < 1) {
-      forEach(this.toggleAllTrigger, trigger => this.hide(trigger, category))
+      forEach(this.toggleAllTrigger, trigger => this.hide(trigger))
     } else {
-      forEach(this.toggleAllTrigger, trigger => this.show(trigger, category))
+      forEach(this.toggleAllTrigger, trigger => this.show(trigger))
     }
   }
   
-  toggle(element, category) {
-    let action = ''
+  toggle(element) {
     if (element.getAttribute(attrExpanded) === 'true') {
       this.close(element)
-      action = 'Close'
     } else {
       this.open(element)
-      action = 'Open'
     }
     
     this.updateOpenCloseTriggerDisplay()
-    
-    this.publishEvent(action, element.getAttribute('data-js-collapsible-event-label'), category)
   }
 
   open(titleEl) {
     if (titleEl.getAttribute(attrExpanded) === 'true') return
-    
+    let action = 'Open panel'
+    titleEl.setAttribute(gaAction, action)
+
     if (this.multi) {
       const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
       const closeLabel = toggleBtn.getAttribute('data-close-label')
       toggleBtn.innerHTML = closeLabel
+      toggleBtn.setAttribute(gaAction, action)
     }
 
     const bodyEl = titleEl.nextElementSibling
@@ -165,11 +173,15 @@ class Collapsible {
 
   close(titleEl) {
     if (titleEl.getAttribute(attrExpanded) === 'false') return
+    let action = 'Close panel'
+    titleEl.setAttribute(gaAction, action)
 
     if (this.multi) {
       const toggleBtn = titleEl.getElementsByClassName(classToggle)[0]
       const openLabel = toggleBtn.getAttribute('data-open-label')
+
       toggleBtn.innerHTML = openLabel
+      toggleBtn.setAttribute(gaAction, action)
     }
 
     const bodyEl = titleEl.nextElementSibling
@@ -184,29 +196,16 @@ class Collapsible {
     this.openItems -= 1
   }
 
-  hide(element, category) {
+  hide(element) {
     const openAllLabel = element.getAttribute('data-open-all-label')
     element.innerHTML = openAllLabel
-    element.setAttribute('data-open', false)
-    element.setAttribute('data-js-collapsible-event-label', 'Close all')
-    this.publishEvent('Toggle close all', element.getAttribute('data-js-collapsible-event-label'), category)
+    element.setAttribute('data-ga-label', 'Close all')
   }
 
-  show(element, category) {
+  show(element) {
     const closeAllLabel = element.getAttribute('data-close-all-label')
     element.innerHTML = closeAllLabel
-    element.setAttribute('data-open', true)
-    element.setAttribute('data-js-collapsible-event-label', 'Show all')
-    this.publishEvent('Toggle open all', element.getAttribute('data-js-collapsible-event-label'), category)
-  }
-
-  publishEvent(action, label, category) {
-    this.trackEvent('send', {
-      hitType: 'event',
-      eventCategory: category,
-      eventAction: action,
-      eventLabel: label
-    })
+    element.setAttribute('data-ga-label', 'Open all')
   }
 
   keyboardInteraction(elem, e) {
@@ -225,10 +224,10 @@ class Collapsible {
   }
 }
 
-export default function collapsible(eventTracker = trackEvent) {
+export default function collapsible() {
   const elCollapsible = document.getElementsByClassName(classCollapsible)
 
-  forEach(elCollapsible, element => new Collapsible(eventTracker).registerDom(element))
+  forEach(elCollapsible, element => new Collapsible().registerDom(element))
 }
 
 domready(collapsible)
