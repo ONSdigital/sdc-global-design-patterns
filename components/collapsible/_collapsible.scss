@@ -13,12 +13,15 @@
   width: 100%;
   text-align: left;
   line-height: 1;
+  overflow: hidden;
   .has-js & {
     text-decoration: none;
     cursor: pointer;
     color: $color-links;
+    transition: color 300ms ease-in-out;
     &:hover {
       text-decoration: none;
+      color: $color-links-hover;
       & > span {
         color: $color-links-hover;
       }
@@ -47,13 +50,14 @@
   }
 
   &.is-expanded {
-    &::before {
+    &::before, &::after {
       transform: rotate(90deg);
     }
   }
 
   &-right {
     float: right;
+    margin-right: 6px;
     .no-js & {
       display: none!important;
     }
