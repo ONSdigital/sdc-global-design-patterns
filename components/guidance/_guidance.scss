@@ -1,0 +1,51 @@
+.guidance {
+  margin: 0.7rem 0 0 -0.1rem;
+}
+
+.guidance__link {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-decoration: underline;
+  padding: 0.2rem 0.5rem 0.2rem 0.2rem;
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .is-expanded & {
+    @extend %js-details-trigger--is-expanded;
+  }
+
+  .no-js & {
+    display: none;
+  }
+}
+
+.guidance__main {
+  @extend %js-details-body;
+  border-radius: 3px;
+  margin-left: 0.5rem;
+
+  .no-js &,
+  .is-expanded & {
+    @extend %js-details-body--is-expanded;
+  }
+}
+
+.guidance__content {
+  padding: 0;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin-top: 1rem;
+  border-left: 2px solid $color-borders;
+  padding-left: 1rem;
+  margin-left: 1px;
+}
+
+.has-js .guidance:not(.is-expanded) {
+  .guidance__content {
+    display: none;
+  }
+}
