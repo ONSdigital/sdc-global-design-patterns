@@ -1,4 +1,4 @@
 module.exports = {
   'title': 'Inline feedback',
-  'status': 'wip'
+  'status': 'ready'
 }

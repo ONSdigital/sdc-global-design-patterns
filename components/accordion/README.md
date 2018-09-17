@@ -21,14 +21,17 @@ The `collapsible__content` element is given:
 
 Each `collapsible__title` element is given:
 * `role="tab"` - Indicates the element serves as a tab control. Provides a title for its associated `tabpanel`.
-* `aria-controls="NAME"` - Refers to the `tabpanel` element associated with the tab.
-* `aria-expanded="true/false"` - Indicates the state of the associated `tabpanel`.
+* `aria-controls="NAME"` - Refers to the `collapsible__body` element associated with the `collapsible__title`.
+* `aria-expanded="true/false"` - Indicates the state of the associated `collapsible__body`.
 * `aria-selected="true/false"` - Indicates if the current `tab` is selected.
  
 Each `collapsible__body` element is given:
 * `aria-labelledby="TITLE_ID"` - Indicates the associated title with the current content.
 * `aria-hidden="true/false"` - If `false` a screenreader will not read out the content.
 * `role="tabpanel"` - Indicates that the element is a content panel with associates `tab`.
+
+### Progressive enhancement
+When javascript is disabled the component will show all content and remove all visual cues that provide affordance that the component is clickable. The presentation is consistent with standard content blocks of headings and paragraphs. Use an appropriate heading tag (`h2`, `h3` etc) for the `accordion__title` to provide the correct scemantic hierarchy to the document with the rest of the page. 
 
 #### Components
 * `/components/_collapsible.scss`

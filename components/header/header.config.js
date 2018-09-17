@@ -1,6 +1,6 @@
 module.exports = {
   "title": "Header",
-  "status": "wip",
+  "status": "ready",
   "default": "standard",
   "collated": true,
   "preview": "@preview__page", /* As it is a layout level element use page preview */
