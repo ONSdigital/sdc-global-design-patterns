@@ -4,7 +4,7 @@ module.exports = {
   'status': 'ready',
   'variants': [{
     'name': 'checkboxes',
-    'label': 'Mutually exclusive - checkboxes',
+    'label': 'Checkboxes',
     'context': {
       'fieldset_legend': 'What type of central heating do you have?',
       'field_label': 'Select all that apply:',
@@ -22,7 +22,7 @@ module.exports = {
     }
   },{
     'name': 'date',
-    'label': 'Mutually exclusive - date',
+    'label': 'Date',
     'context': {
       'title': 'When did you leave your last job?',
       'fieldset_legend': 'When did you leave your last job?',
