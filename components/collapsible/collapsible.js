@@ -126,6 +126,7 @@ class Collapsible {
 
   registerClose(element) {
     element.addEventListener('click', e => {
+      e.preventDefault()
       this.close(this.titles[0])
     })
   }
