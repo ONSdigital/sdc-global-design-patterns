@@ -8,8 +8,7 @@ module.exports = {
     "label":"Save",
     "name":"save",
     "context": {
-      "button": "Save and sign out",
-      "no_bg" : true
+      "button": "Save and sign out"
     }
   },{
     "label":"Main",
@@ -48,7 +47,6 @@ module.exports = {
       "name":"combination",
       "context": {
         "button": "Save and sign out",
-        "no_bg" : true,
         "services":[
           {
             "text": "My account",
@@ -79,7 +77,6 @@ module.exports = {
         "internal": true,
         "classes": "header--internal",
         "button": "Save and sign out",
-        "no_bg" : true,
         "services":[
           {
             "text": "My account",

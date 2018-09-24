@@ -1,8 +1,8 @@
-.accordion {
+.collapsible {
   display: block;
 }
 
-.accordion__title {
+.collapsible__title {
   background: none;
   margin: 0;
   padding: 1em 0;
@@ -13,16 +13,31 @@
   width: 100%;
   text-align: left;
   line-height: 1;
-  
+  overflow: hidden;
   .has-js & {
+    text-decoration: none;
     cursor: pointer;
     color: $color-links;
+    transition: color 300ms ease-in-out;
     &:hover {
+      text-decoration: none;
+      color: $color-links-hover;
       & > span {
         color: $color-links-hover;
       }
     }
   }
+
+  .no-js & {
+    padding-left: 0;
+    &::before,  &:hover::before {
+      background: none;
+    }
+    &--link + .collapsible__body {
+      display: none;
+    }
+  }  
+
   &-text {
     float: left;
     margin-top: 0.3rem;
@@ -35,51 +50,41 @@
   }
 
   &.is-expanded {
-    &::before {
+    &::before, &::after {
       transform: rotate(90deg);
     }
   }
 
   &-right {
     float: right;
+    margin-right: 6px;
     .no-js & {
       display: none!important;
     }
   }
 
-  span:focus {
-    outline-offset: 3px;
-    outline: 3px solid $color-focus-outline;
+  .collapsible--simple & {
+    border: none;
+    display: inline-block;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    &:focus {
+      outline-offset: 3px;
+      outline: 3px solid $color-focus-outline;
+      color: $color-links-hover;
+    } 
   }
 }
 
-.accordion__introduction {
-  p:last-child {
-    margin-bottom: 0;
-  }
-}
-
-@include bp-suffix(accordion-unhide) {
-  display: inline-block;
-}
-
-.accordion__controls {
+.collapsible__controls {
   margin: 1rem 0;    
   .no-js & {
     display: none;
   }
 }
 
-.accordion__control {
-  color: #222;
-  border: none;
-  background: none;
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0;
-}
-
-.accordion__body {
+.collapsible__body {
   opacity: 0;
   max-height: 0;
   transition: all 0;

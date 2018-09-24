@@ -1,0 +1,33 @@
+<div id="feedback-thanks" class="js-form-confirmation u-hidden venus">Thanks for your feedback.</div>
+<div class="collapsible collapsible--simple js-collapsible js-collapsible-simple">
+    <div class="js-collapsible-content">
+        <a class="collapsible__title collapsible__title--link js-collapsible-title icon--collapsible-simple venus" data-ga="click" data-ga-category="feedback" data-ga-action="Open panel" data-ga-label="Feedback" href="/feedback">Is there anything wrong with this page?</a>
+        <div class="collapsible__body mars js-collapsible-body">
+            <form id="feedback-form" method="POST" class="js-form-submitter">
+                <div class="group u-mb-m u-mt-m">
+                    <div class="u-mb-s">
+                        <label id="feedback-message-label" class="label" for="feedback-message">How can we improve this survey?</label>
+                        <textarea class="input input--textarea js-charlimit-input js-form-message" data-maxlength="2000" data-char-limit-ref="feedback-message-remaining" name="message" id="feedback-message" rows="8" cols="60" maxlength="2000"></textarea>
+                        <div id="feedback-message-remaining" class="input__limit u-mt-xs mercury">Characters remaining: <span>-</span></div>
+                    </div>
+                    <div class="u-mb-xs">
+                        <label id="feedback-name-label" class="label" for="feedback-name">
+                            <div class="label__inner">
+                                Name (optional)
+                                <br />
+                                <span class="label__description pluto">Please include your name and email address if you’re interested in taking part in further research to improve this survey</span>
+                            </div>
+                        </label>
+                        <input type="text" class="input" name="name" id="feedback-name" value=""/>
+                    </div>
+                    <div class="u-mb-s">
+                        <label id="feedback-email-label" class="label" for="feedback-email">Email address (optional)</label>
+                        <input type="text" class="input js-feedback-email" name="email" id="feedback-email" value=""/>
+                    </div>
+                </div>
+                <button class="btn u-mb-s js-form-submit js-collapsible-close u-mr-xs" type="submit" name="action[send_feedback]" data-qa="btn-feedback-submit"  data-ga="click" data-ga-category="feedback" data-ga-action="Submit" data-ga-label="Feedback submitted"> Send feedback</button>
+            </form>
+            <button class="btn--secondary btn--small js-collapsible-close u-no-js-hide" data-ga="click" data-ga-category="feedback" data-ga-action="Cancel" data-ga-label="Feedback cancelled">I don't want to provide feedback</button>
+        </div>
+    </div>
+</div>

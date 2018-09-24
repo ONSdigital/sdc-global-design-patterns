@@ -1,10 +1,14 @@
-## Definition
-Used to provide additional information, to define terminology or provide guidance to a user so they can better understand the content or task.
+## Feedback
+The feedback form provides users with a way of giving feedback about a service without leaving the current task.
+
+The form is collapsed and positioned before the footer and submits without refreshing the page. The user is notified of the successful submission of feedback.
 
 ### Usage
 Functionality is provided using the `collapsible` module and specifically the `collapsible--simple` variant. Using this provides the `js`, `css` and `aria` accessibility attributes as well as `no-js` fallback.
 
 Optionally pass event tracking `data` attributes for Google Analytics using `data-ga="click"`, `data-ga-category="accordion"`, `data-ga-action="ACTION_NAME"`, `data-ga-label="LABEL_NAME"` 
+
+The form uses the module `form-submitter.js` to handle the submission without requiring a page refresh. 
 
 ### Accessibility
 The definition is made accessible by using `aria` labels which are implemented on `domready` by javascript.
@@ -18,7 +22,7 @@ Each `collapsible__body` element is given:
 * `aria-hidden="true/false"` - If `false` a screenreader will not read out the content.
 
 ### Progressive enhancement
-When javascript is disabled the component will show all content and remove all visual cues that provide affordance that the component is clickable. The presentation is consistent with standard content blocks of headings and paragraphs. Use an appropriate heading tag (`h2`, `h3` etc) for the `accordion__title` to provide the correct scemantic hierarchy to the document with the rest of the page. 
+When javascript is disabled the form will be hidden. The `collapsible__title` should be a link to a standalone feedback page which can be used when the user does not have javascript.
 
 #### Components
 * `/components/_collapsible.scss`
