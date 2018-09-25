@@ -7,12 +7,12 @@
     <div class="fieldgroup__fields">
       <div class="field field--input field--day">
         <label class="label mercury" data-qa="label-day" for="date-range-from-day">{{day_label}}</label>
-        <input id="date-range-from-day" placeholder="DD" value="" data-qa="input-StringField" class="input input--StringField js-exclusive-group">
+        <input id="date-range-from-day" data-value="Day" placeholder="DD" value="" data-qa="input-StringField" class="input input--StringField js-exclusive-group">
       </div>
 
       <div class="field field--select field--month">
         <label class="label mercury" for="date-range-from-month" id="label-date-range-from-month" data-qa="label-month">{{month_label}}</label>
-        <select class="input input--select js-exclusive-group" id="date-range-from-month" name="date-range-from-month">
+        <select class="input input--select js-exclusive-group" data-value="month" id="date-range-from-month" name="date-range-from-month">
           {{#each months}}
             <option value="{{value}}"
               {{#if disabled}}disabled="disabled"{{/if}}
@@ -23,7 +23,7 @@
 
       <div class="field field--input field--year">
         <label class="label mercury" data-qa="label-year" for="date-range-from-year">{{year_label}}</label>
-        <input placeholder="YYYY" value="" data-qa="input-StringField" id="date-range-from-year" class="input input--StringField js-exclusive-group">
+        <input placeholder="YYYY" value="" data-qa="input-StringField" id="date-range-from-year" data-value="Year" class="input input--StringField js-exclusive-group">
       </div>
     </div>
   </div>

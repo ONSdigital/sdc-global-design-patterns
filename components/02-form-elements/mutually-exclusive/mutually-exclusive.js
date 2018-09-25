@@ -1,9 +1,9 @@
 import domready from '../../../assets/js/domready';
 
-const exclusiveWrapperClass = 'field--exclusive'
-const exclusiveGroupClass = 'js-exclusive-group';
-const checkboxClass = 'js-exclusive-checkbox';
-const voiceOverAlertClass = 'js-exclusive-alert';
+export const exclusiveWrapperClass = 'field--exclusive'
+export const exclusiveGroupClass = 'js-exclusive-group';
+export const checkboxClass = 'js-exclusive-checkbox';
+export const voiceOverAlertClass = 'js-exclusive-alert';
 
 export default function mutuallyExclusiveInputs() {
   const exclusiveWrapperElements = document.getElementsByClassName(exclusiveWrapperClass);
@@ -13,14 +13,13 @@ export default function mutuallyExclusiveInputs() {
     const voiceOverAlertElement = exclusiveWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
     
     for (let exclusiveGroupElement of exclusiveGroupElements) {
-      exclusiveGroupElement.addEventListener('click', function() {
+      exclusiveGroupElement.addEventListener('change', function() {
         voiceOverAlertElement.innerHTML = '';
         inputToggle(checkboxElement, voiceOverAlertElement, 'checkbox');
       });
     }
 
     checkboxElement.addEventListener('click', function() {
-      voiceOverAlertElement.innerHTML = '';
       for (let exclusiveGroupElement of exclusiveGroupElements) {
         const elementType = exclusiveGroupElement.type;
         inputToggle(exclusiveGroupElement, voiceOverAlertElement, elementType);
@@ -29,7 +28,9 @@ export default function mutuallyExclusiveInputs() {
   }
 }
 
-const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
+export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
+
+  let attr
   if (elType === 'checkbox' && inputEl.checked === true) {
     inputEl.checked = false;
     inputEl.parentElement.classList.remove('is-checked');
@@ -43,7 +44,13 @@ const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
     inputEl.selectedIndex = 0;
   }
 
-  voiceOverAlertEl.append(inputEl.getAttribute('value') + ' ' + voiceOverAlertEl.getAttribute('data-adjective') + '. ');
+  if (elType === 'text' || elType === 'select-one') {
+    attr = inputEl.getAttribute('data-value')
+  } else {
+    attr = inputEl.getAttribute('value')
+  }
+  
+  voiceOverAlertEl.append(attr + ' ' + voiceOverAlertEl.getAttribute('data-adjective') + '. ');
 }
 
 domready(mutuallyExclusiveInputs);

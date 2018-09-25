@@ -1,244 +1,177 @@
-import {
-  mutuallyExclusiveInputs,
+import mutuallyExclusiveInputs, {
   exclusiveWrapperClass,
   exclusiveGroupClass,
   checkboxClass,
   voiceOverAlertClass,
+  inputToggle,
 } from '02-form-elements/mutually-exclusive/mutually-exclusive';
 
-const strTemplate = `
+const strCheckboxesTemplate = `
 
 <div class="field field--checkbox field--multiplechoice ${exclusiveWrapperClass}">
   <fieldset>
     <legend class="field__legend mars u-vh">What type of central heating do you have?</legend>
     <div class="field__label venus">Select all that apply:</div>
       <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="gas" id="gas" type="checkbox">
+        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="gas" id="gas" type="checkbox">
         <label class="label label--inline venus " for="gas">Gas</label>
       </div><div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="electric" id="electric" type="checkbox">
+        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="electric" id="electric" type="checkbox">
         <label class="label label--inline venus " for="electric">Electric</label>
       </div><div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="solid-fuel" id="solid-fuel" type="checkbox">
+        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="solid-fuel" id="solid-fuel" type="checkbox">
         <label class="label label--inline venus " for="solid-fuel">Solid fuel</label>
       </div><div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="other" id="other" type="checkbox">
+        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="other" id="other" type="checkbox">
         <label class="label label--inline venus " for="other">Other</label>
       </div>
       <div class="field__label u-mt-s venus" aria-hidden="true">Or</div>
       <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="no central heating" id="none" type="checkbox">
+        <input class="input input--checkbox js-focusable ${checkboxClass}" name="heating-type" value="no central heating" id="none" type="checkbox">
         <label class="label label--inline venus " for="none">
             <span class="u-vh">Or,</span> No central heating<span class="u-vh">. Selecting this will uncheck all other checkboxes</span>
         </label>
-        <span class="js-exclusive-alert u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
+        <span class=" ${voiceOverAlertClass} u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
       </div>
   </fieldset>
-</div>
+</div>`;
 
-<div class="${classAccordion}">
-  <div class="accordion__controls">
-    <button class="${classAccordionToggleAll} btn btn--secondary btn--small accordion__control u-wa--@xs" data-ga="click" data-ga-category="Preview Survey" data-ga-action="Show all" data-close-all-label="Hide all" data-open-all-label="Show all" data-open="false" aria-hidden="true">Show all</button>
-  </div>
-  <div class="${classAccordionContent}">
+const strInputsTemplate = `
+<fieldset class="field ${exclusiveWrapperClass}">
+    <legend class="field__legend mars u-vh">When did you leave your last job?</legend>
+    <div class="field__label venus">Select a date:</div>
 
-    <h3 class="${classAccordionTitle}" data-js-accordion-event-label="First Item">
-      <span class="accordion__title-text">First Item</span>
-      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
-    </h3>
-    <div class="${classAccordionBody}">
-      First item content
+    <div class="fieldgroup fieldgroup--date" data-qa="widget-date">
+        <div class="fieldgroup__fields">
+            <div class="field field--input field--day">
+                <label class="label mercury" data-qa="label-day" for="date-range-from-day">Day</label>
+                <input id="date-range-from-day" placeholder="DD" value="" data-qa="input-StringField" class="input input--StringField ${exclusiveGroupClass}">
+            </div>
+
+            <div class="field field--select field--month">
+                <label class="label mercury" for="date-range-from-month" id="label-date-range-from-month" data-qa="label-month">Month</label>
+                <select class="input input--select ${exclusiveGroupClass}" id="date-range-from-month" name="date-range-from-month">
+            <option value=""
+              disabled="disabled"
+              selected="selected">Select month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+        </select>
+            </div>
+
+            <div class="field field--input field--year">
+                <label class="label mercury" data-qa="label-year" for="date-range-from-year">Year</label>
+                <input placeholder="YYYY" value="" data-qa="input-StringField" id="date-range-from-year" class="input input--StringField  
+                ${exclusiveGroupClass}">
+            </div>
+        </div>
     </div>
 
-    <h3 class="${classAccordionTitle}" data-js-accordion-event-label="Second Item">
-      <span class="accordion__title-text">Second Item</span>
-      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
-    </h3>
-    <dd class="${classAccordionBody}">
-      Second item content
-    </dd>
-  </div>
-</div>
-`;
+    <div class="field__label u-mt-s venus" aria-hidden="true">Or,</div>
 
-let elTemplate;
+    <div class="field field--checkbox field--multiplechoice field--exclusive">
+        <div class="field__item js-focusable-box">
+            <input class="input input--checkbox js-focusable ${checkboxClass}" name="heating-type" value="I have never had a paid job" id="none" type="checkbox">
+            <label class="label label--inline venus " for="none">
+          <span class="u-vh">Or,</span> I have never had a paid job<span class="u-vh">. Selecting this will remove any pre-selected date</span>
+      </label>
+            <span class="${voiceOverAlertClass} u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
+        </div>
+    </div>
+</fieldset>`;
 
-describe('Accordion;', function() {
-  before('Add template to DOM and stub analytics', function() {
+let elTemplate, checkboxElement, exclusiveGroupElement, voiceOverAlertElement;
+
+describe('Mutually Exclusive Checkboxes;', function() {
+
+  before('Add template to DOM', function() {
     let wrapper = document.createElement('div');
-    wrapper.innerHTML = strTemplate;
+    wrapper.innerHTML = strCheckboxesTemplate;
     elTemplate = wrapper;
     document.body.appendChild(elTemplate);
-
-    accordion((event, attr) => {
-      this.lastEvent = attr
-      this.lastEvent.name = event
-    });
+    mutuallyExclusiveInputs();
+    checkboxElement = document.getElementsByClassName(checkboxClass);
+    exclusiveGroupElement = document.getElementsByClassName(exclusiveGroupClass);
+    voiceOverAlertElement = document.getElementsByClassName(voiceOverAlertClass);
   });
 
   it('DOM should contain the template', function() {
     expect(document.body.contains(elTemplate)).to.equal(true);
   });
 
-  describe('When the accordion attaches to the DOM,', function() {
-
-    describe('Elements marked as content,', function() {
-      it('Should be assigned the "tablist" role', function() {
-        testAttributeValueEquals(classAccordionContent, 'role', 'tablist');
-      });
-
-      it('Should have an aria-multiselectable attribute set to true', function() {
-        testAttributeValueEquals(classAccordionContent, 'aria-multiselectable', 'true');
-      });
+  describe('When multiple checkboxes of the group are clicked,', function() {
+    exclusiveGroupElement = document.getElementsByClassName(exclusiveGroupClass);
+    before('Click the checkboxes', function() {
+      exclusiveGroupElement[0].click();
+      exclusiveGroupElement[1].click();
+      exclusiveGroupElement[2].click();
     });
 
-    describe('Elements marked as a title', function() {
-      it('Should be assigned the "tab" role', function() {
-        testAttributeValueEquals(classAccordionTitle, 'role', 'tab');
-      });
-
-      it('Should have an aria-expanded attribute set to false', function() {
-        testAttributeValueEquals(classAccordionTitle, 'aria-expanded', 'false');
-      });
-
-      it('Should have an aria-selected attribute set to false', function() {
-        testAttributeValueEquals(classAccordionTitle, 'aria-selected', 'false');
-      });
-    });
-
-    describe('Elements marked as a body', function() {
-      it('Should be assigned the "tabpanel" role', function() {
-        testAttributeValueEquals(classAccordionBody, 'role', 'tabpanel');
-      });
-
-      it('Should have an aria-hidden attribute set to true', function() {
-        testAttributeValueEquals(classAccordionBody, 'aria-hidden', 'true');
-      });
+    it('should update the live region', function() {
+      expect(voiceOverAlertElement[0]).should.not.be.empty;
     });
   });
 
-  describe('When the first title is clicked', function() {
-    before('Click the first title', function() {
-      this.titles = document.getElementsByClassName(classAccordionTitle);
-      this.titles[0].click();
+  describe('When the single override checkbox is clicked', function() {
+    before('Click the first checkbox', function() {
+      checkboxElement[0].click();
     });
 
-    it('should publish the open question event', function() {
-      expect(this.lastEvent.name).to.equal('send');
-      expect(this.lastEvent.eventCategory).to.equal('Preview Survey');
-      expect(this.lastEvent.eventAction).to.equal('Open question');
-      expect(this.lastEvent.eventLabel).to.equal('First Item');
-    });
-
-    it('should have an aria-expanded attribute set to true', function() {
-      expect(this.titles[0].getAttribute('aria-expanded')).to.equal('true');
-    });
-
-    it('should have an aria-selected attribute set to true', function() {
-      expect(this.titles[0].getAttribute('aria-selected')).to.equal('true');
-    });
-
-    describe('the associated body', function() {
-      before('get the associated body', function() {
-        this.body = document.getElementById(this.titles[0].getAttribute('aria-controls'));
-      });
-
-      it('should have an aria-hidden attribute set to false', function() {
-        expect(this.body.getAttribute('aria-hidden')).to.equal('false');
-      });
-
-      it('should not have the hidden class', function() {
-        expect(this.body.classList.contains(classHidden)).to.be.false;
-      });
-    });
-
-    describe('and the first title is clicked again,', () => {
-      before('Click the first title, again', function() {
-        this.titles[0].click();
-      });
-
-      it('should publish the close question event', function() {
-        expect(this.lastEvent.name).to.equal('send');
-        expect(this.lastEvent.eventCategory).to.equal('Preview Survey');
-        expect(this.lastEvent.eventAction).to.equal('Close question');
-        expect(this.lastEvent.eventLabel).to.equal('First Item');
-      });
-
-      it('should have an aria-expanded attribute set to false', function() {
-        expect(this.titles[0].getAttribute('aria-expanded')).to.equal('false');
-      });
-
-      it('should have an aria-selected attribute set to false', function() {
-        expect(this.titles[0].getAttribute('aria-selected')).to.equal('false');
-      });
-
-      describe('the associated body', function() {
-        before('get the associated body', function() {
-          this.body = document.getElementById(this.titles[0].getAttribute('aria-controls'));
-        });
-
-        it('should have an aria-hidden attribute set to true', function() {
-          expect(this.body.getAttribute('aria-hidden')).to.equal('true');
-        });
-
-        it('should have the hidden class', function() {
-          expect(this.body.classList.contains(classHidden)).to.be.false;
-        });
-      });
-    });
-  });
-
-  describe('When toggle all is clicked all items are open,', () => {
-    before("Click toggle all", function() {
-      this.openAlls = document.getElementsByClassName(classAccordionToggleAll);
-      this.openAlls[0].click();
-    });
-
-    it('All toggle all buttons data-open attribute should be true', function() {
-      for (let i=0; i < this.openAlls.length; i++) {
-        expect(this.openAlls[i].getAttribute('data-open')).to.equal('true');
-      }
-    });
-
-    it('All titles should have an aria-expanded attribute set to true', function() {
-      testAttributeValueEquals(classAccordionTitle, 'aria-expanded', 'true');
-    });
-
-    it('All titles should have an aria-selected attribute set to true', function() {
-      testAttributeValueEquals(classAccordionTitle, 'aria-selected', 'true');
-    });
-
-    it('All bodys should not have the hidden class', () => {
-      const bodys = document.getElementsByClassName(classAccordionBody);
-
-      for (let i=0; i < bodys.length; i++) {
-        expect(bodys[i].classList.contains(classHidden)).to.be.false;
-      }
-    });
-
-    it('All bodys should have an aria-hidden attribute set to false', () => {
-      testAttributeValueEquals(classAccordionBody, 'aria-hidden', 'false');
-    });
-
-    describe("and a Title is clicked", () => {
-      before("Click the first title", function() {
-        this.titles = document.getElementsByClassName(classAccordionTitle);
-        this.titles[0].click();
-      });
-
-      it('All toggle all buttons data-open attribute should be false', function() {
-        for (let i=0; i < this.openAlls.length; i++) {
-          expect(this.openAlls[i].getAttribute('data-open')).to.equal('false');
-        }
-      });
+    it('should uncheck the checkboxes in the group', function() {
+      expect(exclusiveGroupElement[0].checked).to.equal(false);
+      expect(exclusiveGroupElement[1].checked).to.equal(false);
+      expect(exclusiveGroupElement[2].checked).to.equal(false);
     });
   });
 });
 
-function testAttributeValueEquals(className, attribute, value) {
-  const elements = document.getElementsByClassName(className);
+describe('Mutually Exclusive Inputs;', function() {
 
-  for (let i=0; i < elements.length; i++) {
-    expect(elements[i].getAttribute(attribute)).to.equal(value);
-  }
-}
+  before('Add template to DOM', function() {
+    let wrapper = document.createElement('div');
+    wrapper.innerHTML = strInputsTemplate;
+    elTemplate = wrapper;
+    document.body.appendChild(elTemplate);
+  });
+
+  it('DOM should contain the template', function() {
+    expect(document.body.contains(elTemplate)).to.equal(true);
+  });
+
+  describe('When multiple fields of the group are given values,', function() {
+    exclusiveGroupElement = document.getElementsByClassName(exclusiveGroupClass);
+    before('Enter values into the fields', function() {
+      exclusiveGroupElement[4].value = '22';
+      exclusiveGroupElement[5].selectedIndex = 2;
+      exclusiveGroupElement[6].value = '1979';
+      console.log('Input values before:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].selectedIndex, exclusiveGroupElement[6].value);
+    });
+    
+    it('should update the live region', function() {
+      expect(voiceOverAlertElement[1]).should.not.be.empty;
+    });
+  });
+
+  describe('When the single override checkbox is clicked', function() {
+    before('Click the first checkbox', function() {
+      checkboxElement[1].click();
+      inputToggle(exclusiveGroupElement[4], voiceOverAlertElement[1], 'text');
+      inputToggle(exclusiveGroupElement[5], voiceOverAlertElement[1], 'select-one');
+      inputToggle(exclusiveGroupElement[6], voiceOverAlertElement[1], 'text');
+    });
+
+    it('should clear all input fields', function() {
+        expect(exclusiveGroupElement[4].value).to.be.empty;
+        expect(exclusiveGroupElement[5].selectedIndex).to.equal(0);
+        expect(exclusiveGroupElement[6].value).to.be.empty;
+        console.log('Input values after:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].value, exclusiveGroupElement[6].value);
+    }); 
+
+  });
+
+});
