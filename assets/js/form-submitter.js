@@ -37,7 +37,7 @@ class FormSubmitter {
 
   sendForm(element) {
     const endpoint = element.dataset.endpoint
-    const form = this.form.querySelector('form')
+    const form = this.form
     const formData = new FormData(form)
     formData.append('redirect', 'false')
     fetch(endpoint, {
@@ -62,7 +62,6 @@ class FormSubmitter {
 export default function formSubmitter() {
   const elForm = document.querySelector(classForm)
   const elConfirm = document.querySelector(classSubmissionConfirm)
-
   return new FormSubmitter(elForm, elConfirm)
 }
 
