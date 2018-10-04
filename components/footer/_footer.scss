@@ -17,7 +17,7 @@
   }
 
   .footer__ogl-img {
-    height: 1.85rem;
+    height: 1.333333rem;
     opacity: .75;
     margin-bottom: .2rem;
     margin-right: 0.5rem;
@@ -27,5 +27,8 @@
     float: left;
     margin-right: 2rem;
   }
-
+  .footer__poweredby-img {
+    width: 272px;
+    height: auto;
+  }
 }
