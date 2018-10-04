@@ -8,7 +8,7 @@ module.exports = {
     "label":"Save",
     "name":"save",
     "context": {
-      "button": "Save and sign out",
+      "button": "Save and sign out"
     }
   },{
     "label":"Main",

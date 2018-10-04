@@ -3,7 +3,7 @@
     <legend class="field__legend mars u-vh">{{fieldset_legend}}</legend>
     <div class="field__label venus">{{field_label}}</div>
       {{#each options}}<div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-checkbox-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+        <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
         {{>@label}}
       </div>{{/each}}
       <div class="field__label u-mt-s venus" aria-hidden="true">{{or}}</div>
@@ -12,7 +12,7 @@
         <label class="label label--inline venus " for="none">
             <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
         </label>
-        <span class="js-exclusive-checkbox-alert u-vh" role="alert" aria-live="polite" data-adjective="{{or_deselect_adjective}}"></span>
+        <span class="js-exclusive-alert u-vh" role="alert" aria-live="polite" data-adjective="{{or_deselect_adjective}}"></span>
       </div>
   </fieldset>
 </div>
