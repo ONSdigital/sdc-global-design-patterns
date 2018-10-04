@@ -1,4 +1,4 @@
-<dl class="metadata metadata__list{{#if metadatagrid}} grid grid--gutterless{{/if}}"{{#if metadata_label}} aria-label="{{metadata_label}}"{{/if}}>
+<dl class="metadata metadata__list{{#if metadatagrid}} grid grid--gutterless{{/if}}"{{#if metadata_label}} title="{{metadata_label}}" aria-label="{{metadata_label}}"{{/if}}>
 {{#if metadata_items}}
   {{#each metadata_items}}
   <dt class="metadata__term{{#if ../metadatagrid}} grid__col col-{{metadata_item_col}}@m{{/if}}{{#if ../metadata_term_class}} {{../metadata_term_class}}{{/if}}">{{metadata_item}}</dt>
@@ -7,11 +7,13 @@
   <dd class="metadata__value{{#if ../../metadatagrid}} grid__col col-{{../metadata_value_col}}@m{{/if}}{{#if ../metadata_value_class}} {{../metadata_value_class}}{{/if}}">{{{this}}}</dd>
   	{{/each}}
   {{else}}
-  <div class="{{#if ../metadatagrid}}grid__col col-{{metadata_value_col}}@m{{/if}}">
     {{#each metadata_values}}
-  <dd class="metadata__value">{{{this}}}</dd>
+{{#if @first}}
+  <dd class="metadata__value{{#if ../../metadatagrid}} grid__col col-{{../metadata_value_col}}@m{{/if}}">{{{this}}}</dd>
+{{else}}
+  <dd class="metadata__value{{#if ../../metadatagrid}} grid__col col-{{../metadata_value_col}}@m{{/if}} push-{{../metadata_item_col}}@m">{{{this}}}</dd>
+{{/if}}
     {{/each}}
-  </div>
   {{/if}}
   {{/each}}
 {{/if}}

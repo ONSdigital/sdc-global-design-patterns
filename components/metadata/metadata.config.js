@@ -37,7 +37,8 @@ module.exports = {
       'metadata_value_col': '9',
     }],
     'metadata_term_class' :'venus',
-    'metadatagrid' : true
+    'metadatagrid' : true,
+    'metadata_label': 'Item metadata'
   }
 },{
   'name': 'message',
