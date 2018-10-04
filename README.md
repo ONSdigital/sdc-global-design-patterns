@@ -1,3 +1,8 @@
+[![GitHub release](https://img.shields.io/github/release/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/releases) [![GitHub issues](https://img.shields.io/github/issues/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/issues) 
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/pulls)
+ ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Fractal](https://img.shields.io/badge/fractal-v1.7.1-%23C03982.svg)](https://github.com/frctl/fractal)
+
+
 # eQ Patterns
 
 The published output of the pattern library is available here:
@@ -41,6 +46,8 @@ When a new release is created that release version will then be available on the
 e.g. `https://cdn.ons.gov.uk/sdc/[short hash]/css/responsive.css` will be available at `https://cdn.ons.gov.uk/sdc/[release version]/css/responsive.css`
 
 #### Key files for use
-- https://cdn.ons.gov.uk/sdc/[release version - e.g. v1.5.0]/css/responsive.css
+Replace v1.5.0 for the current release version: [![GitHub release](https://img.shields.io/github/release/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/releases)
+
+- https://cdn.ons.gov.uk/sdc/v1.5.0/css/responsive.css
 - https://cdn.ons.gov.uk/sdc/v1.5.0/css/fixed.css
 - https://cdn.ons.gov.uk/sdc/v1.5.0/scripts/bundle.min.js
