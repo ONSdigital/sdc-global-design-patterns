@@ -30,7 +30,7 @@
 
   .no-js & {
     padding-left: 0;
-    &::before,  &:hover::before {
+    &::before,  &:hover::before, &::after,  &:hover::after {
       background: none;
     }
     &--link + .collapsible__body {
