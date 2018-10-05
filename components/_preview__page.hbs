@@ -7,8 +7,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="{{ path '/assets/img/eq.png'}}">
-  <title>{{ _target.title }} | {{ _config.project.title }}</title>
+  <title>{{ _target.title }} - {{ _config.project.title }}</title>
+
+  {{render '@favicons'}}
 
   <!--[if (gt IE 9) | (IEMobile)]><!-->
   <link href="{{ path '/assets/css/responsive.css' }}" rel="stylesheet">

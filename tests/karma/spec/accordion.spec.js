@@ -1,33 +1,33 @@
-import accordion, {
-  classAccordion,
-  classAccordionContent,
-  classAccordionBody,
+import collapsible, {
+  classCollapsible,
+  classCollapsibleContent,
+  classCollapsibleBody,
   classToggle,
-  classAccordionToggleAll,
-  classAccordionTitle,
+  classCollapsibleToggleAll,
+  classCollapsibleTitle,
   classHidden,
-} from 'accordion/accordion';
+} from 'collapsible/collapsible';
 
 const strTemplate = `
-<div class="${classAccordion}">
-  <div class="accordion__controls">
-    <button class="${classAccordionToggleAll} btn btn--secondary btn--small accordion__control u-wa--@xs" data-ga="click" data-ga-category="Preview Survey" data-ga-action="Show all" data-close-all-label="Hide all" data-open-all-label="Show all" data-open="false" aria-hidden="true">Show all</button>
+<div class="${classCollapsible}">
+  <div class="collapsible__controls">
+    <button class="${classCollapsibleToggleAll} btn btn--secondary btn--small collapsible__control u-wa--@xs" data-ga="click" data-ga-category="Preview Survey" data-ga-action="Show all" data-close-all-label="Hide all" data-open-all-label="Show all" data-open="false" aria-hidden="true">Show all</button>
   </div>
-  <div class="${classAccordionContent}">
+  <div class="${classCollapsibleContent}">
 
-    <h3 class="${classAccordionTitle}" data-js-accordion-event-label="First Item">
-      <span class="accordion__title-text">First Item</span>
-      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
+    <h3 class="${classCollapsibleTitle}" data-js-collapsible-event-label="First Item">
+      <span class="collapsible__title-text">First Item</span>
+      <button class="${classToggle} btn btn--secondary btn--small collapsible__title-right  u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
     </h3>
-    <div class="${classAccordionBody}">
+    <div class="${classCollapsibleBody}">
       First item content
     </div>
 
-    <h3 class="${classAccordionTitle}" data-js-accordion-event-label="Second Item">
-      <span class="accordion__title-text">Second Item</span>
-      <button class="${classToggle} btn btn--secondary btn--small accordion__title-right accordion-unhide@m u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
+    <h3 class="${classCollapsibleTitle}" data-js-collapsible-event-label="Second Item">
+      <span class="collapsible__title-text">Second Item</span>
+      <button class="${classToggle} btn btn--secondary btn--small collapsible__title-right  u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true">Show</button>
     </h3>
-    <dd class="${classAccordionBody}">
+    <dd class="${classCollapsibleBody}">
       Second item content
     </dd>
   </div>
@@ -36,14 +36,14 @@ const strTemplate = `
 
 let elTemplate;
 
-describe('Accordion;', function() {
+describe('Collapsible;', function() {
   before('Add template to DOM and stub analytics', function() {
     let wrapper = document.createElement('div');
     wrapper.innerHTML = strTemplate;
     elTemplate = wrapper;
     document.body.appendChild(elTemplate);
 
-    accordion((event, attr) => {
+    collapsible((event, attr) => {
       this.lastEvent = attr
       this.lastEvent.name = event
     });
@@ -53,46 +53,46 @@ describe('Accordion;', function() {
     expect(document.body.contains(elTemplate)).to.equal(true);
   });
 
-  describe('When the accordion attaches to the DOM,', function() {
+  describe('When the collapsible attaches to the DOM,', function() {
 
     describe('Elements marked as content,', function() {
       it('Should be assigned the "tablist" role', function() {
-        testAttributeValueEquals(classAccordionContent, 'role', 'tablist');
+        testAttributeValueEquals(classCollapsibleContent, 'role', 'tablist');
       });
 
       it('Should have an aria-multiselectable attribute set to true', function() {
-        testAttributeValueEquals(classAccordionContent, 'aria-multiselectable', 'true');
+        testAttributeValueEquals(classCollapsibleContent, 'aria-multiselectable', 'true');
       });
     });
 
     describe('Elements marked as a title', function() {
       it('Should be assigned the "tab" role', function() {
-        testAttributeValueEquals(classAccordionTitle, 'role', 'tab');
+        testAttributeValueEquals(classCollapsibleTitle, 'role', 'tab');
       });
 
       it('Should have an aria-expanded attribute set to false', function() {
-        testAttributeValueEquals(classAccordionTitle, 'aria-expanded', 'false');
+        testAttributeValueEquals(classCollapsibleTitle, 'aria-expanded', 'false');
       });
 
       it('Should have an aria-selected attribute set to false', function() {
-        testAttributeValueEquals(classAccordionTitle, 'aria-selected', 'false');
+        testAttributeValueEquals(classCollapsibleTitle, 'aria-selected', 'false');
       });
     });
 
     describe('Elements marked as a body', function() {
       it('Should be assigned the "tabpanel" role', function() {
-        testAttributeValueEquals(classAccordionBody, 'role', 'tabpanel');
+        testAttributeValueEquals(classCollapsibleBody, 'role', 'tabpanel');
       });
 
       it('Should have an aria-hidden attribute set to true', function() {
-        testAttributeValueEquals(classAccordionBody, 'aria-hidden', 'true');
+        testAttributeValueEquals(classCollapsibleBody, 'aria-hidden', 'true');
       });
     });
   });
 
   describe('When the first title is clicked', function() {
     before('Click the first title', function() {
-      this.titles = document.getElementsByClassName(classAccordionTitle);
+      this.titles = document.getElementsByClassName(classCollapsibleTitle);
       this.titles[0].click();
     });
 
@@ -163,7 +163,7 @@ describe('Accordion;', function() {
 
   describe('When toggle all is clicked all items are open,', () => {
     before("Click toggle all", function() {
-      this.openAlls = document.getElementsByClassName(classAccordionToggleAll);
+      this.openAlls = document.getElementsByClassName(classCollapsibleToggleAll);
       this.openAlls[0].click();
     });
 
@@ -174,15 +174,15 @@ describe('Accordion;', function() {
     });
 
     it('All titles should have an aria-expanded attribute set to true', function() {
-      testAttributeValueEquals(classAccordionTitle, 'aria-expanded', 'true');
+      testAttributeValueEquals(classCollapsibleTitle, 'aria-expanded', 'true');
     });
 
     it('All titles should have an aria-selected attribute set to true', function() {
-      testAttributeValueEquals(classAccordionTitle, 'aria-selected', 'true');
+      testAttributeValueEquals(classCollapsibleTitle, 'aria-selected', 'true');
     });
 
     it('All bodys should not have the hidden class', () => {
-      const bodys = document.getElementsByClassName(classAccordionBody);
+      const bodys = document.getElementsByClassName(classCollapsibleBody);
 
       for (let i=0; i < bodys.length; i++) {
         expect(bodys[i].classList.contains(classHidden)).to.be.false;
@@ -190,12 +190,12 @@ describe('Accordion;', function() {
     });
 
     it('All bodys should have an aria-hidden attribute set to false', () => {
-      testAttributeValueEquals(classAccordionBody, 'aria-hidden', 'false');
+      testAttributeValueEquals(classCollapsibleBody, 'aria-hidden', 'false');
     });
 
     describe("and a Title is clicked", () => {
       before("Click the first title", function() {
-        this.titles = document.getElementsByClassName(classAccordionTitle);
+        this.titles = document.getElementsByClassName(classCollapsibleTitle);
         this.titles[0].click();
       });
 

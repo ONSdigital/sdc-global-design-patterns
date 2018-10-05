@@ -1,37 +1,56 @@
 import domready from '../../../assets/js/domready';
 
-const checkboxWrapperClass = 'field--exclusive'
-const checkboxGroupClass = 'js-exclusive-checkbox-group';
-const checkboxClass = 'js-exclusive-checkbox';
-const voiceOverAlertClass = 'js-exclusive-checkbox-alert';
+export const exclusiveWrapperClass = 'field--exclusive'
+export const exclusiveGroupClass = 'js-exclusive-group';
+export const checkboxClass = 'js-exclusive-checkbox';
+export const voiceOverAlertClass = 'js-exclusive-alert';
 
-export default function mutuallyExclusiveCheckboxes() {
-  const checkboxWrapperElements = document.getElementsByClassName(checkboxWrapperClass);
-  for (let checkboxWrapperElement of checkboxWrapperElements) {
-    const checkboxGroupElements = checkboxWrapperElement.getElementsByClassName(checkboxGroupClass);
-    const checkboxElement = checkboxWrapperElement.getElementsByClassName(checkboxClass)[0];
-    const voiceOverAlertElement = checkboxWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
-    for (let checkboxGroupElement of checkboxGroupElements) {
-      checkboxGroupElement.addEventListener('change', function() {
+export default function mutuallyExclusiveInputs() {
+  const exclusiveWrapperElements = document.getElementsByClassName(exclusiveWrapperClass);
+  for (let exclusiveWrapperElement of exclusiveWrapperElements) {
+    const exclusiveGroupElements = exclusiveWrapperElement.getElementsByClassName(exclusiveGroupClass);
+    const checkboxElement = exclusiveWrapperElement.getElementsByClassName(checkboxClass)[0];
+    const voiceOverAlertElement = exclusiveWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
+    
+    for (let exclusiveGroupElement of exclusiveGroupElements) {
+      exclusiveGroupElement.addEventListener('change', function() {
         voiceOverAlertElement.innerHTML = '';
-        checkboxToggle(checkboxElement, voiceOverAlertElement);
+        inputToggle(checkboxElement, voiceOverAlertElement, 'checkbox');
       });
     }
-    checkboxElement.addEventListener('change', function() {
-      voiceOverAlertElement.innerHTML = '';
-      for (let checkboxGroupElement of checkboxGroupElements) {
-        checkboxToggle(checkboxGroupElement, voiceOverAlertElement);
+
+    checkboxElement.addEventListener('click', function() {
+      for (let exclusiveGroupElement of exclusiveGroupElements) {
+        const elementType = exclusiveGroupElement.type;
+        inputToggle(exclusiveGroupElement, voiceOverAlertElement, elementType);
       }
     });
   }
 }
 
-const checkboxToggle = function(checkboxEl, voiceOverAlertEl) {
-  if (checkboxEl.checked === true) {
-    checkboxEl.checked = false;
-    checkboxEl.parentElement.classList.remove('is-checked');
-    voiceOverAlertEl.append(checkboxEl.getAttribute('value') + ' ' + voiceOverAlertEl.getAttribute('data-adjective') + '. ');
+export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
+
+  let attr
+  if (elType === 'checkbox' && inputEl.checked === true) {
+    inputEl.checked = false;
+    inputEl.parentElement.classList.remove('is-checked');
   }
+
+  if (elType === 'text') {
+    inputEl.value = '';
+  }
+
+  if (elType === 'select-one') {
+    inputEl.selectedIndex = 0;
+  }
+
+  if (elType === 'text' || elType === 'select-one') {
+    attr = inputEl.getAttribute('data-value')
+  } else {
+    attr = inputEl.getAttribute('value')
+  }
+  
+  voiceOverAlertEl.append(attr + ' ' + voiceOverAlertEl.getAttribute('data-adjective') + '. ');
 }
 
-domready(mutuallyExclusiveCheckboxes);
+domready(mutuallyExclusiveInputs);
