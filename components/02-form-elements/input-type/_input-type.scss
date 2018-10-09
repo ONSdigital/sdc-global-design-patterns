@@ -65,8 +65,10 @@
     border-left: 1px solid $color-borders;
     border-radius: 0 $input-radius $input-radius 0;
     @include mq(s) {
-      right: auto;
-      left: calc(#{$input-width - ($input-type-width) * 2} - 1px);
+      &:not(.input-type__type--group) {
+        right: auto;
+        left: calc(#{$input-width - ($input-type-width) * 2} - 1px);
+      }
     }
     @include fixed {
       left: $input-width - ($input-type-width);
@@ -75,15 +77,30 @@
     }
   }
 
-  .input-type__type--time,
-  .input-type__type--period {
+  .input-type__type--wide {
     width: 3.5rem;
     @include mq(s) {
-      left: auto;
-      right: 1px;
+      &:not(.input-type__type--group) {
+        left: calc(#{$input-width - ($input-type-width) * 2} - 12px);
+      }
     }
   }
-  .input-type__type--period {
+
+  .input-type__type--x-wide {
     width: 4.3rem;
+    @include mq(s) {
+      &:not(.input-type__type--group) {
+        left: calc(#{$input-width - ($input-type-width) * 2} - 27px);
+      }
+    }
+  }
+
+  .input-type__type--wide, .input-type__type--x-wide {
+    @include mq(s) {
+      &.input-type__type--group {
+        left: auto;
+        right: 1px;
+      }
+    }
   }
 }
