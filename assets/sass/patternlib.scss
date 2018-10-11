@@ -86,6 +86,10 @@ body {
     border-radius: 3px;
     padding: 0.05rem 0.2rem;
 }
+.Prose blockquote code {
+    display: block;
+    padding: 0.5rem;
+}
 .Pen {
   font-family: $font-sans;
   .Pen-title {
