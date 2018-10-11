@@ -29,6 +29,9 @@ $width: $input-width;
     top: 1px;
     z-index: 4;
     text-decoration: none;
+    @include ie8() {
+      line-height: 1.1;
+    }
   }
 }
 
