@@ -49,7 +49,13 @@ gulp.task('fractal:start', function() {
   server.on('error', err => logger.error(err.message));
   return server.start().then(() => {
     logger.success(
-      `Fractal server is now running at ${server.urls.sync.local}`
+      `
+  |--------------------------------------------------------|
+  |                                                        |
+  | Fractal server is now running at ${server.urls.sync.local} |
+  |                                                        |
+  |--------------------------------------------------------|
+  `
     );
   });
 });
