@@ -2,7 +2,12 @@
 title: CSS Utility classes
 label: CSS / SCSS
 ---
-
+#### Contents
+- [Margins](#margins)
+- [Padding](#padding)
+- [Display](#display)
+- [Font](#font)
+- [Media queries](#media-queries)
 
 ### Margins
 
@@ -34,5 +39,30 @@ label: CSS / SCSS
 |-------|---------------|-|
 |`.u-fw-n`<br>`.u-fw-b`|Font weights|Set font weight to bold or normal|
 |`.u-tt-u`|Uppercase font|Text transform to uppercase|
-|`.u-fs-i`|Italic|Font style italic (note exceptional use cases only)|
+|`.u-fs-i`|Italic|Font style italic (Note: for exceptional use cases only)|
 |`.u-td-no`|Text decoration|Remove text-decoration|
+
+### Media queries
+
+> `@mixin mq($from: none, $to: none)`
+
+Use of media queries in component authoring.
+
+#### Example
+Some attributes applied to `nav__list` between `xs` and `s` breakpoints.
+
+><pre><code>.nav__list {
+  @include mq(xs,s) {
+    padding: 0 0 1rem 0;
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+  }
+}</code></pre>
+
+Breakpoints available are (`partials/vars/_grid.scss`):
+- **xs**: 300px
+- **s**: 500px
+- **m**: 740px
+- **l**: 980px
+- **xl**: 1300px
+- **xxl**: 1600px
