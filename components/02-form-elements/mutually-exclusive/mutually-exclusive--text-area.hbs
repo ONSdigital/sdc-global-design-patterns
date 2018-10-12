@@ -1,0 +1,24 @@
+<fieldset class="field field--exclusive">
+<div class="answer__fields js-fields">
+  {{> @label label_text="Please provide some feedback" label_for=textarea_id label_id="description-question" label_description="For example describe any difficulties you experienced in the use of this service"}}
+  <textarea class="input js-exclusive-group input--textarea{{#if charlimit}} js-charlimit-input{{/if}}" cols="60"
+            rows="8" id="{{textarea_id}}" name="{{textarea_id}}"
+            {{#if charlimit}}maxlength="{{charlimit}}"{{/if}}
+            aria-describedby="description-question" 
+            {{#if charlimit}}data-maxlength="{{charlimit}}" data-char-limit-ref="{{textarea_id}}-remaining"{{/if}}
+            ></textarea>
+  {{#if charlimit}}<div class="input__limit u-mt-xs mercury" data-qa="textarea-with-limit" id="{{textarea_id}}-remaining" aria-live="polite">You have <span>{{charlimit}}</span>.</div>{{/if}}
+</div>
+
+  <div class="field__label u-mt-s venus" aria-hidden="true">{{or}}</div>
+
+  <div class="field field--checkbox field--multiplechoice field--exclusive">
+    <div class="field__item js-focusable-box">
+      <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
+      <label class="label label--inline venus " for="none">
+          <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
+      </label>
+      <span class="js-exclusive-alert u-vh" role="alert" aria-live="polite" data-adjective="{{or_deselect_adjective}}"></span>
+    </div>
+  </div>
+</fieldset>

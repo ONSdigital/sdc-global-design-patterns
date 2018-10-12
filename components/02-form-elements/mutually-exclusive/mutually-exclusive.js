@@ -1,5 +1,5 @@
 import domready from '../../../assets/js/domready';
-
+import updateAvailableChars from '../textarea/character-limit';
 export const exclusiveWrapperClass = 'field--exclusive'
 export const exclusiveGroupClass = 'js-exclusive-group';
 export const checkboxClass = 'js-exclusive-checkbox';
@@ -29,22 +29,26 @@ export default function mutuallyExclusiveInputs() {
 }
 
 export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
-
   let attr
   if (elType === 'checkbox' && inputEl.checked === true) {
     inputEl.checked = false;
     inputEl.parentElement.classList.remove('is-checked');
   }
 
-  if (elType === 'text') {
+  if (elType === 'text' || elType === 'textarea') {
+
+    const charRef = inputEl.getAttribute('data-char-limit-ref');
     inputEl.value = '';
+    if (charRef) {  
+      updateAvailableChars(inputEl, charRef);
+    }
   }
 
   if (elType === 'select-one') {
     inputEl.selectedIndex = 0;
   }
 
-  if (elType === 'text' || elType === 'select-one') {
+  if (!elType === 'checkbox') {
     attr = inputEl.getAttribute('data-value')
   } else {
     attr = inputEl.getAttribute('value')
