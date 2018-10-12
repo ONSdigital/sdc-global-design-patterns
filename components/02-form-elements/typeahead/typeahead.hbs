@@ -1,0 +1,13 @@
+<div class="field">
+   <div class="typeahead js-typeahead">
+    {{> @label }}
+    <select class="typeahead__select js-typeahead-select input input--select{{#if select_classes}}{{select_classes}}{{/if}}" id="{{label_for}}" name="select">
+      {{#each options}}
+        <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}} data-alternatives="{{option_alternatives}}">{{option_text}}</option>
+      {{/each}}
+    </select>
+    <input class="typeahead__input js-typeahead-input input input--text" type="hidden" role="combobox" autocomplete="false" aria-owns="{{listbox_id}}" />
+    <div class="typeahead__preview js-typeahead-preview input input--text"></div>
+    <ul class="typeahead__listbox js-typeahead-listbox" role="listbox" id="{{listbox_id}}"></ul>
+  </div>
+</div>

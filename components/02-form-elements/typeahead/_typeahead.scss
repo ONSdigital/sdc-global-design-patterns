@@ -1,0 +1,89 @@
+.typeahead {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  @include mq(s) {
+    width: $input-width;
+  }
+
+  &--initialised &__select {
+    display: none;
+  }
+
+
+  &__preview {
+    position: absolute;
+    width: 100%;
+    transform: translateY(-100%);
+
+    line-height: normal;
+    color: #808080;
+
+    border-color: transparent;
+    pointer-events: none;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__preview-query {
+    color: transparent;
+  }
+
+  &__suggestion {
+    padding: $input-padding;
+    font-size: 1rem;
+  }
+
+  &__listbox {
+    position: absolute;
+    width: 100%;
+    max-height: ((($input-padding * 2) + 1rem) * 5) - .5rem - $input-padding;
+    margin: 2px 0 0;
+    padding: 0;
+    list-style: none;
+
+    border: 1px solid $color-borders;
+    border-top: 0;
+    border-bottom-left-radius: $input-radius;
+    border-bottom-right-radius: $input-radius;
+
+    overflow: auto;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__option {
+    margin: 0;
+    padding: $input-padding;
+    outline: none;
+
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-borders;
+    }
+
+    &:nth-child(2n) {
+      background: #eee;
+    }
+
+    &:not(&--no-results):hover,
+    &:not(&--no-results):nth-child(2n):hover,
+    &--focused:not(&--no-results),
+    &--focused:not(&--no-results):nth-child(2n) {
+      background: $color-blue;
+      border-color: $color-blue;
+      color: $color-white;
+    }
+
+    &--no-results {
+      cursor: not-allowed;
+      background: $color-dark-grey;
+    }
+  }
+}

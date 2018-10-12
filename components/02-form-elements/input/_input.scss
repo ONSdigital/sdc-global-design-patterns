@@ -9,8 +9,13 @@
   border-radius: $input-radius;
   width: 100%;
   transition: border-color 200ms ease-in;
+
   @include mq(s) {
     width: $input-width;
+  }
+
+  &[type=text] {
+    appearance: none;
   }
 
   &:hover {
