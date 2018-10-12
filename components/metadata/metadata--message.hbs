@@ -1,0 +1,4 @@
+<dl class="metadata metadata__list u-mb-s"{{#if metadata_label}} aria-label="({{metadata_label}})"{{/if}}>
+{{#if metadata_items}}{{#each metadata_items}}  <dt class="{{#if ../metadata_term_class}}u-vh{{/if}}">{{metadata_item}}</dt>
+{{#if metadata_value}}{{#each metadata_value}}  <dd class="metadata__value{{#if ../metadata_value_class}} {{../metadata_value_class}}{{/if}}">{{{this}}}</dd>
+{{/each}}{{/if}}{{/each}}{{/if}}</dl>
