@@ -24,11 +24,6 @@ The `<input>` element requires `input-type__input`.
 
 The `<abbr>` element which contains the unit requires the classes `input-type__type`.
 
-The default `<abbr>` width is set at `2.9rem`. There are two further width options which can be accessed using the following classes:
-
-`input-type__type--wide` - provides a width of `3.5rem` 
-
-`input-type__type--x-wide` - provides a width of `4.3rem`
 
 ### Scope
 Global
