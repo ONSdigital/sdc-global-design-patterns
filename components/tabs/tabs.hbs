@@ -1,43 +1,16 @@
-
-<section role="region" class="tabs u-mt-l" aria-label="This is an area of tabbed content">
-
+{{!-- Tabs content region --}}
+<section role="region" class="tabs u-mt-l" aria-label="{{tabs-aria-label}}">
+{{!-- Handlbars comment --}}
     <ul role="tablist" aria-label="Tabs" class="tabs__list">
-      <li id="tab1Item" class="tab__list-item"><a href="#tabId1" class="tab" role="tab" aria-selected="true" aria-controls="tabId1">First tab label</a></li><li id="tab2Item" class="tab__list-item"><a href="#tabId2" class="tab" role="tab" aria-selected="false" aria-controls="tabId2">Second tab</a></li><li id="tab3Item" class="tab__list-item"><a href="#tabId3" class="tab" role="tab" aria-selected="false" aria-controls="tabId3">Tab 3</a></li><li id="tab4Item" class="tab__list-item"><a href="#tabId4" class="tab" role="tab" aria-selected="false" aria-controls="tabId4">Fourth</a></li>
+      {{#each tabs}}<li id="tabListID{{@index}}" class="tab__list-item"><a href="#tabID{{@index}}" class="tab" role="tab" {{#if @first}}aria-selected="true" {{/if}}aria-controls="tabID{{@index}}">{{tab}}</a></li>{{/each}}
     </ul>
-
-  <section role="tabpanel" id="tabId1" aria-describedby="tab1Item" tabindex="-1" class="tabs__panel">
-    <h1 class="saturn">Tab one heading</h1>
-      <p>tabindex -1 or 0?</p>
-      <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <h2 class="venus">Internal heading</h2>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      {{> @table}}
-      {{> @paragraph}}
+{{!-- Tabbed content --}}
+{{#each tabs}}
+  <section role="tabpanel" id="tabID{{@index}}" aria-describedby="tabListID{{@index}}" {{#if @first}}{{else}}hidden="hidden" {{/if}}tabindex="-1" class="tabs__panel">
+    {{{tabContent}}}
   </section>
-
-  <section role="tabpanel" id="tabId2" aria-describedby="tab2Item" hidden="hidden" tabindex="-1" class="tabs__panel">
-    <h1 class="saturn">Second tab content heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, <a href="#">sed do eiusmod</a> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-      {{> @panel--simple-success}}
-      {{> @paragraph}}
-  </section>
-
-  <section role="tabpanel" id="tabId3" aria-describedby="tab3Item" hidden="hidden" tabindex="-1" class="tabs__panel">
-    <h1 class="saturn">Third tab content heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-  </section>
-
-  <section role="tabpanel" id="tabId4" aria-describedby="tab4Item" hidden="hidden" tabindex="-1" class="tabs__panel">
-    <h1 class="saturn">Fourth tab's content</h1>
-      {{> @feedback}}
-      <p class="u-mt-m">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-  </section>
-
+{{/each}}
+{{!-- End tabs content region--}}
 </section>
 
 <script type="text/javascript">
