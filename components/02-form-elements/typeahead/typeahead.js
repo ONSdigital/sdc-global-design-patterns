@@ -173,7 +173,7 @@ class Typeahead {
 
     this.blurTimeout = setTimeout(() => {
       this.clearPreview();
-      this.clearListbox();
+      this.clearListbox(true);
       this.input.classList.remove(classTypeaheadInputFocused);
       this.input.setAttribute('autocomplete', this.inputInitialAutocompleteSetting);
       this.blurring = false;
@@ -261,13 +261,15 @@ class Typeahead {
     this.clearPreview();
   }
 
-  clearListbox() {
+  clearListbox(preventAriaStatusUpdate) {
     console.log('clear')
     this.listbox.innerHTML = '';
     this.input.removeAttribute('aria-activedescendant');
     this.combobox.removeAttribute('aria-expanded');
 
-    this.setAriaStatus();
+    if (!preventAriaStatusUpdate) {
+      this.setAriaStatus();
+    }
   }
 
   handleResults(results) {
@@ -398,12 +400,9 @@ class Typeahead {
 
       const ariaMessage = `${this.content.aria_you_have_selected}: ${result.text}${ariaAlternativeMessage}.`;
 
-      this.setAriaStatus(ariaMessage);
-
       this.clearListbox();
       this.clearPreview();
-
-      console.log(result.text);
+      this.setAriaStatus(ariaMessage);
 
       setTimeout(() => {
         this.settingResult = false;
