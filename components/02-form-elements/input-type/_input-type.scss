@@ -1,24 +1,16 @@
+$width: $input-width;
+
 .input-type {
   display: flex;
   position: relative;
   align-items: center;
 
   .input-type__input {
-    $width: calc(#{$input-width} - #{$input-type-width});
-
     border-radius: $input-radius;
     line-height: normal;
     position: relative;
     z-index: 3;
     width: 100%;
-    padding-left: $input-type-width + 0.5rem;
-    @include mq(s) {
-      width: $width;
-    }
-    @include fixed {
-      margin-left: 2.5rem;
-      border-left: 0;
-    }
   }
 
   .input-type__type {
@@ -26,32 +18,30 @@
     background-color: $color-lighter-grey;
     border-right: 1px solid $color-borders;
     border-radius: $input-radius 0 0 $input-radius;
-    padding: $input-padding 0;
-    width: $input-type-width;
+    padding: $input-padding;
+    width: auto;
     font-weight: 600;
     font-size: 1rem;
     text-align: center;
-    line-height: normal;
+    line-height: 1.2;
     position: absolute;
-    left: 1px;
+    right: 1px;
     top: 1px;
     z-index: 4;
     text-decoration: none;
-    @include fixed {
-      left: 0;
-      width: 2.5rem;
-      height: 100%;
-      border: 1px solid $color-borders;
-    }
-    @include ie7 {
-      width: 1.15rem;
-      height: 1.15rem;
+    @include ie8() {
+      line-height: 1.1;
     }
   }
 }
 
 .input-type--percentage,
 .input-type--unit {
+  @include mq(s) {
+    &:not(.input-type--group) {
+      width: $width;
+    }
+  }
   .input-type__input {
     padding-left: 0.5rem;
     @include fixed {
@@ -64,43 +54,5 @@
     border-right: none;
     border-left: 1px solid $color-borders;
     border-radius: 0 $input-radius $input-radius 0;
-    @include mq(s) {
-      &:not(.input-type__type--group) {
-        right: auto;
-        left: calc(#{$input-width - ($input-type-width) * 2} - 1px);
-      }
-    }
-    @include fixed {
-      left: $input-width - ($input-type-width);
-      top: 0;
-      border-right: 1px solid $color-borders;
-    }
-  }
-
-  .input-type__type--wide {
-    width: 3.5rem;
-    @include mq(s) {
-      &:not(.input-type__type--group) {
-        left: calc(#{$input-width - ($input-type-width) * 2} - 12px);
-      }
-    }
-  }
-
-  .input-type__type--x-wide {
-    width: 4.3rem;
-    @include mq(s) {
-      &:not(.input-type__type--group) {
-        left: calc(#{$input-width - ($input-type-width) * 2} - 27px);
-      }
-    }
-  }
-
-  .input-type__type--wide, .input-type__type--x-wide {
-    @include mq(s) {
-      &.input-type__type--group {
-        left: auto;
-        right: 1px;
-      }
-    }
   }
 }

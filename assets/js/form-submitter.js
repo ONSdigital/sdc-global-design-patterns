@@ -1,12 +1,10 @@
-import domready from '../../assets/js/domready';
-
 export const classForm = '.js-form-submitter'
 export const classSubmissionConfirm = '.js-form-confirmation'
 export const classMessage = '.js-form-message'
 export const classSubmit = '.js-form-submit'
 export const classHidden = 'u-hidden'
 
-class FormSubmitter {
+export default class FormSubmitter {
   constructor(form, confirm) {
     // This module relies on browsers having implemented
     // the FormData Interface
@@ -58,11 +56,3 @@ class FormSubmitter {
     element.classList.remove(classHidden)
   }
 }
-
-export default function formSubmitter() {
-  const elForm = document.querySelector(classForm)
-  const elConfirm = document.querySelector(classSubmissionConfirm)
-  return new FormSubmitter(elForm, elConfirm)
-}
-
-domready(formSubmitter)

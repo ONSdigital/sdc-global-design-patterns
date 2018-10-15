@@ -20,6 +20,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import { unitTests } from './gulp/tests';
 import * as through2 from 'through2';
 import vinyl from 'vinyl';
+import open from 'open';
 
 import eslint from 'gulp-eslint';
 import gulpStylelint from 'gulp-stylelint';
@@ -211,7 +212,7 @@ const bundleScripts = watch => {
     return stream;
   };
 
-  return gulp.src(['./assets/js/polyfills.js', './assets/js/components.js'])
+  return gulp.src(['./assets/js/polyfills.js', './assets/js/api/_load.js', './assets/js/components.js'])
     .pipe(bundler())
     .on('error', function(err) {
       gutil.log(err.message);
@@ -252,10 +253,11 @@ gulp.task('scripts:watch', (done) => {
 
 function scriptsLint (watch) {
   let task = gulp.src(['./assets/**/*.js', './components/**/*.js'])
-    .pipe(eslint({
+      .pipe(eslint())
+    /*.pipe(eslint({
       fix: true
     }))
-    .pipe(eslint.format());
+    .pipe(eslint.format())*/;
 
   if (!watch) {
     task.pipe(eslint.failAfterError());
@@ -279,7 +281,7 @@ gulp.task('scripts:test:unit', function(done) {
 
 gulp.task('scripts:test:unit:watch', done => {
   unitTests(done, true, paths)
-})
+});
 
 gulp.task('scripts:test', gulp.parallel(
   'scripts:test:unit'
@@ -366,6 +368,11 @@ gulp.task('favicons:watch', function(done) {
   done();
 });
 
+gulp.task('open:browser', function(done) {
+  open('http://localhost:3000');
+  done();
+});
+
 
 gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images', 'favicons'));
 gulp.task(
@@ -383,10 +390,13 @@ gulp.task(
     'images',
     'images:watch',
     'favicons',
-    'favicons:watch')
+    'favicons:watch'
+  )
 );
+gulp.task('test', gulp.series('scripts:test'));
+gulp.task('test:watch', gulp.series('scripts:test:unit:watch'));
 gulp.task(
   'clean',
   gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean', 'favicons:clean')
 );
-gulp.task('dev', gulp.series('watch', 'fractal:start'));
+gulp.task('dev', gulp.series('watch', 'fractal:start', 'open:browser'));
