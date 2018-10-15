@@ -34,6 +34,7 @@ class Typeahead {
     this.listbox = context.querySelector(`.${classTypeaheadListbox}`);
 
     // State
+    this.listboxId = this.listbox.getAttribute('id');
     this.ctrlKey = false;
     this.deleting = false;
     this.inputId = UUID();
@@ -248,7 +249,7 @@ class Typeahead {
   }
 
   clearListbox() {
-    this.listbox.innerHTML = '';
+    // this.listbox.innerHTML = '';
   }
 
   handleResults(results) {
@@ -269,6 +270,7 @@ class Typeahead {
 
           const listElement = document.createElement('li');
           listElement.className = classTypeaheadOption;
+          listElement.setAttribute('id', `${this.listboxId}__option--${index}`);
           listElement.setAttribute('role', 'option');
           listElement.setAttribute('tabindex', '-1');
           listElement.innerHTML = innerHTML;
@@ -301,9 +303,13 @@ class Typeahead {
       this.resultOptions.forEach((option, optionIndex) => {
         if (optionIndex === index) {
           option.classList.add(classTypeaheadOptionFocused);
+          option.setAttribute('aria-selected', true);
+          this.input.setAttribute('aria-activedescendant', option.getAttribute('id'));
+
           matchOption = option;
         } else {
           option.classList.remove(classTypeaheadOptionFocused);
+          option.setAttribute('aria-selected', false);
         }
       });
 
