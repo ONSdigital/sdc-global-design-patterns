@@ -22,6 +22,7 @@
     border-color: $color-links-hover;
   }
 
+  &--focused,
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px $color-focus-outline;

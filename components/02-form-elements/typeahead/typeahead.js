@@ -5,6 +5,7 @@ import triggerChangeEvent from '../../../assets/js/trigger-change-event';
 export const classTypeahead = 'js-typeahead';
 export const classTypeaheadLabel = 'js-typeahead-label';
 export const classTypeaheadSelect = 'js-typeahead-select';
+export const classTypeaheadCombobox = 'js-typeahead-combobox';
 export const classTypeaheadInput = 'js-typeahead-input';
 export const classTypeaheadPreview = 'js-typeahead-preview';
 export const classTypeaheadListbox = 'js-typeahead-listbox';
@@ -12,6 +13,7 @@ export const classTypeaheadOption = 'typeahead__option';
 export const classTypeaheadOptionFocused = `${classTypeaheadOption}--focused`;
 export const classTypeaheadOptionNoResults = `${classTypeaheadOption}--no-results`;
 export const classTypeaheadAriaStatus = 'js-typeahead-aria-status';
+export const classTypeaheadInputFocused = 'input--focused';
 export const typeaheadMinChars = 2;
 
 const KEYCODE = {
@@ -31,12 +33,14 @@ class Typeahead {
     this.context = context;
     this.label = context.querySelector(`.${classTypeaheadLabel}`);
     this.select = context.querySelector(`.${classTypeaheadSelect}`);
+    this.combobox = context.querySelector(`.${classTypeaheadCombobox}`);
     this.input = context.querySelector(`.${classTypeaheadInput}`);
     this.preview = context.querySelector(`.${classTypeaheadPreview}`);
     this.listbox = context.querySelector(`.${classTypeaheadListbox}`);
     this.ariaStatus = context.querySelector(`.${classTypeaheadAriaStatus}`);
 
     // State
+    this.content = JSON.parse(context.getAttribute('data-content'));
     this.listboxId = this.listbox.getAttribute('id');
     this.ctrlKey = false;
     this.deleting = false;
@@ -66,6 +70,7 @@ class Typeahead {
     this.highlightedResultIndex = 0;
     this.settingResult = false;
     this.blurring = false;
+    this.blurTimeout = null;
 
     // Modify DOM
     this.context.classList.add('typeahead--initialised');
@@ -156,27 +161,23 @@ class Typeahead {
   }
 
   handleFocus() {
+    clearTimeout(this.blurTimeout);
+    this.input.classList.add(classTypeaheadInputFocused);
     this.input.setAttribute('autocomplete', false);
     this.getSuggestions();
   }
 
   handleBlur() {
+    clearTimeout(this.blurTimeout);
     this.blurring = true;
 
-    this.clearPreview();
-
-    setTimeout(this.clearListbox.bind(this));
-
-    setTimeout(() => {
+    this.blurTimeout = setTimeout(() => {
+      this.clearPreview();
+      this.clearListbox();
+      this.input.classList.remove(classTypeaheadInputFocused);
       this.input.setAttribute('autocomplete', this.inputInitialAutocompleteSetting);
-
-      if (!this.select.value && this.sanitisedQuery) {
-        // TODO: Invalid class
-        // this.input.classList.add()
-      }
-
       this.blurring = false;
-    }, 300);
+    }, 100);
   }
 
   handleMouseover() {
@@ -261,16 +262,18 @@ class Typeahead {
   }
 
   clearListbox() {
+    console.log('clear')
     this.listbox.innerHTML = '';
     this.input.removeAttribute('aria-activedescendant');
-    this.input.removeAttribute('aria-expanded');
+    this.combobox.removeAttribute('aria-expanded');
+
+    this.setAriaStatus();
   }
 
   handleResults(results) {
     if (!this.deleting || (results.length && this.deleting)) {
       if (results.length === 1 && results[0].sanitisedText === this.sanitisedQuery) {
-        this.setHighlightedResult(0);
-        this.selectResult();
+        this.selectResult(0);
       } else {
         this.resultOptions = results.map((result, index) => {
           let innerHTML = result.text;
@@ -284,7 +287,7 @@ class Typeahead {
             ariaLabel += ` (${alternativeText}).`;
           }
 
-          ariaLabel += `(${index + 1} of ${results.length})`;
+          ariaLabel += ` (${index + 1} ${this.content.x_of_x} ${results.length})`;
 
           const listElement = document.createElement('li');
           listElement.className = classTypeaheadOption;
@@ -295,7 +298,7 @@ class Typeahead {
           listElement.innerHTML = innerHTML;
 
           listElement.addEventListener('click', () => {
-            this.setHighlightedResult(index);
+            console.log('click');
             this.selectResult(index);
           });
 
@@ -305,13 +308,13 @@ class Typeahead {
         });
 
         this.setHighlightedResult(null);
-        this.input.setAttribute('aria-expanded', true);
+        this.combobox.setAttribute('aria-expanded', true);
       }
     }
 
     if (results.length === 0) {
-      this.listbox.innerHTML = `<li class="${classTypeaheadOption} ${classTypeaheadOptionNoResults}">No results found</li>`;
-      this.input.setAttribute('aria-expanded', true);
+      this.listbox.innerHTML = `<li class="${classTypeaheadOption} ${classTypeaheadOptionNoResults}">${this.content.no_results}</li>`;
+      this.combobox.setAttribute('aria-expanded', true);
     }
   }
 
@@ -350,21 +353,18 @@ class Typeahead {
 
   setAriaStatus(content) {
     if (!content) {
-      const selectedValue = this.options.find(option => option.value === this.select.value);
       const numberOfResults = this.results.length;
       const queryTooShort = this.sanitisedQuery.length < typeaheadMinChars;
       const noResults = numberOfResults === 0;
 
-      if (selectedValue) {
-        content = `You have selected: ${selectedValue.text}`;
-      } else if (queryTooShort) {
-        content = `Type in ${typeaheadMinChars} or more characters for results.`;
+      if (queryTooShort) {
+        content = this.content.aria_min_chars;
       } else if (noResults) {
-        content = `No results found for the query: "${this.query}"`;
+        content = `${this.content.aria_no_results}: "${this.query}"`;
       } else if (numberOfResults === 1) {
-        content = 'There is one result available.';
+        content = this.content.aria_one_result;
       } else {
-        content = `There are ${numberOfResults} results available.`;
+        content = this.content.aria_n_results.replace('{n}', numberOfResults);
       }
     }
 
@@ -392,16 +392,18 @@ class Typeahead {
         const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative.includes(this.sanitisedQuery));
 
         if (alternativeMatch) {
-          ariaAlternativeMessage = `, found by alternative name: ${alternativeMatch}`
+          ariaAlternativeMessage = `, ${this.content.aria_found_by_alternative_name}: ${alternativeMatch}`
         }
       }
 
-      const ariaMessage = `You have selected: ${result.text}${ariaAlternativeMessage}.`;
+      const ariaMessage = `${this.content.aria_you_have_selected}: ${result.text}${ariaAlternativeMessage}.`;
 
       this.setAriaStatus(ariaMessage);
 
       this.clearListbox();
       this.clearPreview();
+
+      console.log(result.text);
 
       setTimeout(() => {
         this.settingResult = false;
