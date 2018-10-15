@@ -11,6 +11,8 @@ export const classTypeaheadListbox = 'js-typeahead-listbox';
 export const classTypeaheadOption = 'typeahead__option';
 export const classTypeaheadOptionFocused = `${classTypeaheadOption}--focused`;
 export const classTypeaheadOptionNoResults = `${classTypeaheadOption}--no-results`;
+export const classTypeaheadAriaStatus = 'js-typeahead-aria-status';
+export const typeaheadMinChars = 2;
 
 const KEYCODE = {
   BACK_SPACE: 8,
@@ -32,6 +34,7 @@ class Typeahead {
     this.input = context.querySelector(`.${classTypeaheadInput}`);
     this.preview = context.querySelector(`.${classTypeaheadPreview}`);
     this.listbox = context.querySelector(`.${classTypeaheadListbox}`);
+    this.ariaStatus = context.querySelector(`.${classTypeaheadAriaStatus}`);
 
     // State
     this.listboxId = this.listbox.getAttribute('id');
@@ -63,6 +66,7 @@ class Typeahead {
     this.highlightedResultIndex = 0;
     this.settingResult = false;
     this.blurring = false;
+    this.ariaStatusTimeout = null;
 
     // Modify DOM
     this.context.classList.add('typeahead--initialised');
@@ -83,7 +87,7 @@ class Typeahead {
     this.listbox.addEventListener('mouseover', this.handleMouseover.bind(this));
     this.listbox.addEventListener('mouseout', this.handleMouseout.bind(this));
 
-    this.select.addEventListener('change', () => console.log(this.select.value));
+    // this.select.addEventListener('change', () => console.log(this.select.value));
   }
 
   handleKeydown(event) {
@@ -167,7 +171,7 @@ class Typeahead {
     setTimeout(() => {
       this.input.setAttribute('autocomplete', this.inputInitialAutocompleteSetting);
 
-      if (!this.input.value && this.sanitisedQuery) {
+      if (!this.select.value && this.sanitisedQuery) {
         // TODO: Invalid class
         // this.input.classList.add()
       }
@@ -193,16 +197,21 @@ class Typeahead {
   }
 
   navigateResults(direction) {
-    let index = this.highlightedResultIndex + direction;
-    const numberOfResults = this.results.length - 1;
+    let index = 0;
 
-    if (index > numberOfResults) {
-      index = 0;
-    } else if (index < 0) {
-      index = numberOfResults;
+    if (this.highlightedResultIndex !== null) {
+      index = this.highlightedResultIndex + direction;
     }
 
-    this.setHighlightedResult(index);
+    const numberOfResults = this.results.length - 1;
+
+    if (index <= numberOfResults) {
+      if (index < 0) {
+        index = null;
+      }
+
+      this.setHighlightedResult(index);
+    }
   }
 
   getSuggestions() {
@@ -213,7 +222,9 @@ class Typeahead {
         this.query = query;
         this.unsetResults();
 
-        if (query) {
+        this.setAriaStatus();
+
+        if (query.length >= typeaheadMinChars) {
           this.sanitisedQuery = query.toLowerCase().trim();
 
           const results = this.options
@@ -240,6 +251,8 @@ class Typeahead {
   }
 
   unsetResults() {
+    this.results = [];
+    this.resultOptions = [];
     this.select.value = '';
     triggerChangeEvent(this.select);
 
@@ -249,6 +262,8 @@ class Typeahead {
 
   clearListbox() {
     this.listbox.innerHTML = '';
+    this.input.removeAttribute('aria-activedescendant');
+    this.input.removeAttribute('aria-expanded');
   }
 
   handleResults(results) {
@@ -260,7 +275,7 @@ class Typeahead {
         this.resultOptions = results.map((result, index) => {
           let innerHTML = this.emboldenMatch(result.text, this.sanitisedQuery);
 
-          const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative.includes(this.sanitisedQuery));
+          const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative !== result.sanitisedText && alternative.includes(this.sanitisedQuery));
 
           if (alternativeMatch) {
             const alternativeText = result.alternatives[result.sanitisedAlternatives.indexOf(alternativeMatch)];
@@ -285,19 +300,23 @@ class Typeahead {
         });
 
         this.listbox.scrollTo(0, 0);
-        this.setHighlightedResult(0);
+        this.setHighlightedResult(null);
+        this.input.setAttribute('aria-expanded', true);
       }
     }
 
     if (results.length === 0) {
       this.listbox.innerHTML = `<li class="${classTypeaheadOption} ${classTypeaheadOptionNoResults}">No results found</li>`;
+      this.input.setAttribute('aria-expanded', true);
     }
   }
 
   setHighlightedResult(index) {
     this.highlightedResultIndex = index;
 
-    if (this.results.length) {
+    if (this.setHighlightedResult === null) {
+      this.input.removeAttribute('aria-activedescendant');
+    } else if (this.results.length) {
       let matchOption;
       this.resultOptions.forEach((option, optionIndex) => {
         if (optionIndex === index) {
@@ -308,7 +327,7 @@ class Typeahead {
           matchOption = option;
         } else {
           option.classList.remove(classTypeaheadOptionFocused);
-          option.setAttribute('aria-selected', false);
+          option.removeAttribute('aria-selected');
         }
       });
 
@@ -329,11 +348,12 @@ class Typeahead {
       }
 
       this.setPreview(index);
+      this.setAriaStatus();
     }
   }
 
   setPreview(index) {
-    const result = this.results[index];
+    const result = this.results[index || 0];
     const queryIndex = result.text.toLowerCase().indexOf(this.sanitisedQuery);
 
     if (queryIndex === 0 && this.sanitisedQuery.length !== result.text.length) {
@@ -343,27 +363,61 @@ class Typeahead {
     }
   }
 
+  setAriaStatus() {
+    clearTimeout(this.ariaStatusTimeout);
+    const numberOfResults = this.results.length;
+    const queryTooShort = this.sanitisedQuery.length < typeaheadMinChars;
+    const noResults = numberOfResults === 0;
+
+    let content = '';
+
+    if (queryTooShort) {
+      content = `Type in ${typeaheadMinChars} or more for results.`;
+    } else if (noResults) {
+      content = 'No results.';
+    } else {
+      const result = numberOfResults === 1 ? 'result' : 'results';
+      const is = numberOfResults === 1 ? 'is' : 'are';
+
+      content = `${numberOfResults} ${result} ${is} available.`
+
+      if (this.highlightedResultIndex !== null) {
+        const selectedResultText = this.results[this.highlightedResultIndex].text;
+
+        content += ` ${selectedResultText} (${this.highlightedResultIndex + 1} of ${numberOfResults}) is selected.`;
+      }
+    }
+
+    this.ariaStatus.innerHTML = content;
+
+    // this.ariaStatusTimeout = setTimeout(() => {
+    //   this.ariaStatus.innerHTML = '';
+    // }, 2000);
+  }
+
   clearPreview() {
     this.preview.value = '';
   }
 
   selectResult() {
-    this.settingResult = true;
+    if (this.results.length) {
+      this.settingResult = true;
 
-    const result = this.results[this.highlightedResultIndex];
+      const result = this.results[this.highlightedResultIndex || 0];
 
-    this.input.value = result.text;
-    this.query = result.text;
-    this.select.value = result.value;
-    triggerChangeEvent(this.select);
+      this.input.value = result.text;
+      this.query = result.text;
+      this.select.value = result.value;
+      triggerChangeEvent(this.select);
 
-    this.clearListbox();
-    this.clearPreview();
+      this.clearListbox();
+      this.clearPreview();
 
-    setTimeout(() => {
-      this.settingResult = false;
-      this.input.setAttribute('autocomplete', 'false');
-    }, 300);
+      setTimeout(() => {
+        this.settingResult = false;
+        this.input.setAttribute('autocomplete', 'false');
+      }, 300);
+    }
   }
 
   // Potentially move out as utility function
