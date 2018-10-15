@@ -66,7 +66,6 @@ class Typeahead {
     this.highlightedResultIndex = 0;
     this.settingResult = false;
     this.blurring = false;
-    this.ariaStatusTimeout = null;
 
     // Modify DOM
     this.context.classList.add('typeahead--initialised');
@@ -220,13 +219,12 @@ class Typeahead {
 
       if (query !== this.query || !this.select.value) {
         this.query = query;
-        this.unsetResults();
+        this.sanitisedQuery = query.toLowerCase().trim();
 
+        this.unsetResults();
         this.setAriaStatus();
 
         if (query.length >= typeaheadMinChars) {
-          this.sanitisedQuery = query.toLowerCase().trim();
-
           const results = this.options
             .filter(option => option.sanitisedText.includes(this.sanitisedQuery))
             .sort((a, b) => a.sanitisedText.indexOf(this.sanitisedQuery) > b.sanitisedText.indexOf(this.sanitisedQuery) ? 1 : -1);
@@ -246,6 +244,8 @@ class Typeahead {
           this.clearListbox();
           this.clearPreview();
         }
+      } else {
+        this.setAriaStatus();
       }
     }
   }
@@ -273,25 +273,30 @@ class Typeahead {
         this.selectResult();
       } else {
         this.resultOptions = results.map((result, index) => {
-          let innerHTML = this.emboldenMatch(result.text, this.sanitisedQuery);
+          let innerHTML = result.text;
+          let ariaLabel = `${result.text}.`;
 
           const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative !== result.sanitisedText && alternative.includes(this.sanitisedQuery));
 
           if (alternativeMatch) {
             const alternativeText = result.alternatives[result.sanitisedAlternatives.indexOf(alternativeMatch)];
-            innerHTML += ` <small>(${this.emboldenMatch(alternativeText, this.sanitisedQuery)})</small>`;
+            innerHTML += ` <small>(${alternativeText})</small>`;
+            ariaLabel += ` (${alternativeText}).`;
           }
+
+          ariaLabel += `(${index + 1} of ${results.length})`;
 
           const listElement = document.createElement('li');
           listElement.className = classTypeaheadOption;
           listElement.setAttribute('id', `${this.listboxId}__option--${index}`);
           listElement.setAttribute('role', 'option');
           listElement.setAttribute('tabindex', '-1');
+          listElement.setAttribute('aria-label', ariaLabel);
           listElement.innerHTML = innerHTML;
 
           listElement.addEventListener('click', () => {
             this.setHighlightedResult(index);
-            this.selectResult();
+            this.selectResult(index);
           });
 
           this.listbox.appendChild(listElement);
@@ -343,52 +348,57 @@ class Typeahead {
     }
   }
 
-  setAriaStatus() {
-    clearTimeout(this.ariaStatusTimeout);
-    const numberOfResults = this.results.length;
-    const queryTooShort = this.sanitisedQuery.length < typeaheadMinChars;
-    const noResults = numberOfResults === 0;
+  setAriaStatus(content) {
+    if (!content) {
+      const selectedValue = this.options.find(option => option.value === this.select.value);
+      const numberOfResults = this.results.length;
+      const queryTooShort = this.sanitisedQuery.length < typeaheadMinChars;
+      const noResults = numberOfResults === 0;
 
-    let content = '';
-
-    if (queryTooShort) {
-      content = `Type in ${typeaheadMinChars} or more for results.`;
-    } else if (noResults) {
-      content = 'No results.';
-    } else {
-      const result = numberOfResults === 1 ? 'result' : 'results';
-      const is = numberOfResults === 1 ? 'is' : 'are';
-
-      content = `${numberOfResults} ${result} ${is} available.`
-
-      if (this.highlightedResultIndex !== null) {
-        const selectedResultText = this.results[this.highlightedResultIndex].text;
-
-        content += ` ${selectedResultText} (${this.highlightedResultIndex + 1} of ${numberOfResults}) is selected.`;
+      if (selectedValue) {
+        content = `You have selected: ${selectedValue.text}`;
+      } else if (queryTooShort) {
+        content = `Type in ${typeaheadMinChars} or more characters for results.`;
+      } else if (noResults) {
+        content = `No results found for the query: "${this.query}"`;
+      } else if (numberOfResults === 1) {
+        content = 'There is one result available.';
+      } else {
+        content = `There are ${numberOfResults} results available.`;
       }
     }
 
     this.ariaStatus.innerHTML = content;
-
-    // this.ariaStatusTimeout = setTimeout(() => {
-    //   this.ariaStatus.innerHTML = '';
-    // }, 2000);
   }
 
   clearPreview() {
     this.preview.value = '';
   }
 
-  selectResult() {
+  selectResult(index) {
     if (this.results.length) {
       this.settingResult = true;
 
-      const result = this.results[this.highlightedResultIndex || 0];
+      const result = this.results[index || this.highlightedResultIndex || 0];
 
       this.input.value = result.text;
       this.query = result.text;
       this.select.value = result.value;
       triggerChangeEvent(this.select);
+
+      let ariaAlternativeMessage = '';
+
+      if (!result.sanitisedText.includes(this.sanitisedQuery)) {
+        const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative.includes(this.sanitisedQuery));
+
+        if (alternativeMatch) {
+          ariaAlternativeMessage = `, found by alternative name: ${alternativeMatch}`
+        }
+      }
+
+      const ariaMessage = `You have selected: ${result.text}${ariaAlternativeMessage}.`;
+
+      this.setAriaStatus(ariaMessage);
 
       this.clearListbox();
       this.clearPreview();
@@ -397,22 +407,6 @@ class Typeahead {
         this.settingResult = false;
         this.input.setAttribute('autocomplete', 'false');
       }, 300);
-    }
-  }
-
-  // Potentially move out as utility function
-  emboldenMatch(string, query) {
-    if (string.toLowerCase().includes(query)) {
-      const queryLength = query.length;
-      const matchIndex = string.toLowerCase().indexOf(query);
-      const matchEnd = matchIndex + queryLength;
-      const before = string.substr(0, matchIndex);
-      const match = string.substr(matchIndex, queryLength);
-      const after = string.substr(matchEnd, string.length - matchEnd);
-
-      return `${before}<strong>${match}</strong>${after}`;
-    } else {
-      return string;
     }
   }
 }
