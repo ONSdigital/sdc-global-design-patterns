@@ -26,7 +26,6 @@
   &__listbox {
     position: absolute;
     width: 100%;
-    max-height: ((($input-padding * 2) + 1rem) * 5) - .5rem - $input-padding;
     margin: 2px 0 0;
     padding: 0;
     list-style: none;
@@ -35,8 +34,6 @@
     border-top: 0;
     border-bottom-left-radius: $input-radius;
     border-bottom-right-radius: $input-radius;
-
-    overflow: auto;
 
     &:empty {
       display: none;

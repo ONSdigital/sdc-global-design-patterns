@@ -299,7 +299,6 @@ class Typeahead {
           return listElement;
         });
 
-        this.listbox.scrollTo(0, 0);
         this.setHighlightedResult(null);
         this.input.setAttribute('aria-expanded', true);
       }
@@ -317,35 +316,16 @@ class Typeahead {
     if (this.setHighlightedResult === null) {
       this.input.removeAttribute('aria-activedescendant');
     } else if (this.results.length) {
-      let matchOption;
       this.resultOptions.forEach((option, optionIndex) => {
         if (optionIndex === index) {
           option.classList.add(classTypeaheadOptionFocused);
           option.setAttribute('aria-selected', true);
           this.input.setAttribute('aria-activedescendant', option.getAttribute('id'));
-
-          matchOption = option;
         } else {
           option.classList.remove(classTypeaheadOptionFocused);
           option.removeAttribute('aria-selected');
         }
       });
-
-      if (matchOption) {
-        const listboxRect = this.listbox.getBoundingClientRect();
-        const listboxHeight = this.listbox.clientHeight;
-        const listboxScrollY = this.listbox.scrollTop;
-
-        const matchRect = matchOption.getBoundingClientRect();
-        const matchTop = matchRect.top - listboxRect.top;
-        const matchBottom = matchRect.bottom - listboxRect.top;
-
-        if (matchTop < 0) {
-          this.listbox.scrollTo(0, listboxScrollY + matchTop)
-        } else if (matchBottom > listboxHeight) {
-          this.listbox.scrollTo(0, listboxScrollY + (matchBottom - listboxHeight));
-        }
-      }
 
       this.setPreview(index);
       this.setAriaStatus();
