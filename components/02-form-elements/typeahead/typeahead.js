@@ -145,7 +145,6 @@ class Typeahead {
   }
 
   handleChange() {
-    console.log('change');
     setTimeout(() => {
       if (!this.blurring) {
         this.getSuggestions();
@@ -249,7 +248,7 @@ class Typeahead {
   }
 
   clearListbox() {
-    // this.listbox.innerHTML = '';
+    this.listbox.innerHTML = '';
   }
 
   handleResults(results) {
@@ -338,15 +337,14 @@ class Typeahead {
     const queryIndex = result.text.toLowerCase().indexOf(this.sanitisedQuery);
 
     if (queryIndex === 0 && this.sanitisedQuery.length !== result.text.length) {
-      this.preview.innerHTML =
-        `<span class="typeahead__preview-query">${this.query}</span>${result.text.slice(this.query.length)}`;
+      this.preview.value = `${this.query}${result.text.slice(this.query.length)}`;
     } else {
       this.clearPreview();
     }
   }
 
   clearPreview() {
-    this.preview.innerHTML = '';
+    this.preview.value = '';
   }
 
   selectResult() {

@@ -7,34 +7,20 @@
     width: $input-width;
   }
 
-  &--initialised &__select {
-    display: none;
-  }
-
-
   &__preview {
+    display: none;
     position: absolute;
     width: 100%;
-    transform: translateY(-100%);
 
     line-height: normal;
     color: #808080;
 
     border-color: transparent;
     pointer-events: none;
-
-    &:empty {
-      display: none;
-    }
   }
 
-  &__preview-query {
-    color: transparent;
-  }
-
-  &__suggestion {
-    padding: $input-padding;
-    font-size: 1rem;
+  &__input {
+    background: transparent;
   }
 
   &__listbox {
@@ -84,6 +70,16 @@
     &--no-results {
       cursor: not-allowed;
       background: $color-dark-grey;
+    }
+  }
+
+  &--initialised & {
+    &__select {
+      display: none;
+    }
+
+    &__preview {
+      display: block;
     }
   }
 }
