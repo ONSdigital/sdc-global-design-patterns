@@ -2,7 +2,7 @@
 <section role="region" class="tabs u-mt-l" aria-label="{{tabs-aria-label}}">
 {{!-- Handlbars comment --}}
     <ul role="tablist" aria-label="Tabs" class="tabs__list">
-      {{#each tabs}}<li id="tabListID{{@index}}" class="tab__list-item"><a href="#tabID{{@index}}" class="tab" role="tab" {{#if @first}}aria-selected="true" {{/if}}aria-controls="tabID{{@index}}">{{tab}}</a></li>{{/each}}
+      {{#each tabs}}<li id="tabListID{{@index}}" class="tab__list-item"><a href="#tabID{{@index}}" class="tab" role="tab" {{#if @first}}aria-selected="true" {{/if}}aria-controls="tabID{{@index}}" data-ga="click" data-ga-category="tabs" data-ga-action="tab navigation" data-ga-label="Show: {{tab}}">{{tab}}</a></li>{{/each}}
     </ul>
 {{!-- Tabbed content --}}
 {{#each tabs}}

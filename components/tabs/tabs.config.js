@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Tabs',
+  title: 'Tabs (content)',
   label: 'Tabs',
   name: 'tabs',
   status: 'wip',
