@@ -12,10 +12,9 @@ export default function mutuallyExclusiveInputs() {
     const exclusiveGroupElements = exclusiveWrapperElement.getElementsByClassName(exclusiveGroupClass);
     const checkboxElement = exclusiveWrapperElement.getElementsByClassName(checkboxClass)[0];
     const voiceOverAlertElement = exclusiveWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
-    let event;
     for (let exclusiveGroupElement of exclusiveGroupElements) {
       const elementType = exclusiveGroupElement.type;
-      elementType === 'checkbox' ? event = 'change' : event = 'keydown';
+      const event = elementType === 'checkbox' ? event = 'change' : event = 'keydown';
 
       exclusiveGroupElement.addEventListener(event, function() {
         voiceOverAlertElement.innerHTML = '';
