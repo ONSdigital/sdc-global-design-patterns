@@ -96,13 +96,6 @@ describe('Collapsible;', function() {
       this.titles[0].click();
     });
 
-    it('should publish the open question event', function() {
-      expect(this.lastEvent.name).to.equal('send');
-      expect(this.lastEvent.eventCategory).to.equal('Preview Survey');
-      expect(this.lastEvent.eventAction).to.equal('Open question');
-      expect(this.lastEvent.eventLabel).to.equal('First Item');
-    });
-
     it('should have an aria-expanded attribute set to true', function() {
       expect(this.titles[0].getAttribute('aria-expanded')).to.equal('true');
     });
@@ -128,13 +121,6 @@ describe('Collapsible;', function() {
     describe('and the first title is clicked again,', () => {
       before('Click the first title, again', function() {
         this.titles[0].click();
-      });
-
-      it('should publish the close question event', function() {
-        expect(this.lastEvent.name).to.equal('send');
-        expect(this.lastEvent.eventCategory).to.equal('Preview Survey');
-        expect(this.lastEvent.eventAction).to.equal('Close question');
-        expect(this.lastEvent.eventLabel).to.equal('First Item');
       });
 
       it('should have an aria-expanded attribute set to false', function() {
@@ -167,9 +153,9 @@ describe('Collapsible;', function() {
       this.openAlls[0].click();
     });
 
-    it('All toggle all buttons data-open attribute should be true', function() {
+    it('All toggle all buttons aria-hidden attribute should be false', function() {
       for (let i=0; i < this.openAlls.length; i++) {
-        expect(this.openAlls[i].getAttribute('data-open')).to.equal('true');
+        expect(this.openAlls[i].getAttribute('aria-hidden')).to.equal('false');
       }
     });
 
