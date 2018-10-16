@@ -36,7 +36,7 @@ $width: $input-width;
 }
 
 .input-type--percentage,
-.input-type--unit{
+.input-type--unit {
   @include mq(s) {
     &:not(.input-type--group) {
       width: calc(#{$width} - 3rem);
