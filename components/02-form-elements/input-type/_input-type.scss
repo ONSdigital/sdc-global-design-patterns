@@ -36,10 +36,10 @@ $width: $input-width;
 }
 
 .input-type--percentage,
-.input-type--unit {
+.input-type--unit{
   @include mq(s) {
     &:not(.input-type--group) {
-      width: $width;
+      width: calc(#{$width} - 3rem);
     }
   }
   .input-type__input {
@@ -54,5 +54,17 @@ $width: $input-width;
     border-right: none;
     border-left: 1px solid $color-borders;
     border-radius: 0 $input-radius $input-radius 0;
+  }
+}
+
+.input-type--currency {
+  @include mq(s) {
+    &:not(.input-type--group) {
+      width: calc(#{$width} - 3rem);
+    }
+  }
+  .input-type__type {
+    right: auto;
+    left: 1px;
   }
 }
