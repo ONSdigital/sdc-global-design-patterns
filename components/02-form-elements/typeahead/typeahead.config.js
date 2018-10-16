@@ -135,7 +135,7 @@ module.exports = {
         options: buildCountryOptions('cy', 'en-GB'),
         content: {
           x_of_x: 'of',
-          no_results: 'No results found',
+          no_results: 'Ni chanfuwyd canlyniadau',
           aria_no_results: 'No results found for the query',
           aria_you_have_selected: 'You have selected',
           aria_found_by_alternative_name: 'found by alternative name',

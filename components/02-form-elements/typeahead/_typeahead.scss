@@ -7,8 +7,11 @@
     width: $input-width;
   }
 
-  &__preview {
+  &__combobox {
     display: none;
+  }
+
+  &__preview {
     position: absolute;
     width: 100%;
 
@@ -75,7 +78,7 @@
       display: none;
     }
 
-    &__preview {
+    &__combobox {
       display: block;
     }
   }

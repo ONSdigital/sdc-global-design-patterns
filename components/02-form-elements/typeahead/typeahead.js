@@ -74,7 +74,6 @@ class Typeahead {
 
     // Modify DOM
     this.context.classList.add('typeahead--initialised');
-    this.input.setAttribute('type', 'text');
     this.input.setAttribute('id', this.inputId);
     this.label.setAttribute('for', this.inputId);
 
