@@ -1,3 +1,9 @@
-{{#if bg}} <div class="bar u-pl-m u-pt-m u-pb-m">{{/if}}
+{{#if bg}}
+<header class="header">
+    <div class="header__main u-pl-m">
+{{/if}}
     <button class="btn btn--mobile js-nav-btn {{btn-classes}}" type="button" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle main navigation" aria-haspopup="true"><span class="btn--mobile__label">{{label}}</span></button>
-{{#if bg}}</div>{{/if}}  
+{{#if bg}}
+    </div>
+</header>
+{{/if}}  
