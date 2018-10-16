@@ -94,7 +94,7 @@ function buildOptionsFromList(list) {
 module.exports = {
   title: 'Typeahead',
   default: 'country-typeahead',
-  status: 'wip',
+  status: 'prototype',
   collated: false,
   variants: [
     {

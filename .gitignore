@@ -6,5 +6,6 @@ dist
 yarn-error.log
 coverage
 env
+.vscode
 
 secrets.yml
