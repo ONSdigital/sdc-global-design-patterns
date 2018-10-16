@@ -150,9 +150,9 @@ describe('Collapsible;', function() {
       this.openAlls[0].click();
     });
 
-    it('All toggle all buttons data-open attribute should be true', function() {
+    it('All toggle all buttons aria-hidden attribute should be false', function() {
       for (let i=0; i < this.openAlls.length; i++) {
-        expect(this.openAlls[i].getAttribute('data-open-all-label')).to.be.a('string');
+        expect(this.openAlls[i].getAttribute('aria-hidden')).to.equal('false');
       }
     });
 
