@@ -1,5 +1,6 @@
 import { orderBy } from 'lodash';
 import { occupations } from './occupations';
+import { ethnicities } from './ethnicities';
 
 const territoriesJSON = {
   'en-GB': require('cldr-localenames-modern/main/en-GB/territories.json'),
@@ -71,7 +72,7 @@ function buildCountryOptions(primaryLanguageCode, secondaryLanguageCode) {
   return options;
 }
 
-function buildOccupationOptions() {
+function buildOptionsFromList(list) {
   const options = [];
 
   options.push({
@@ -81,9 +82,9 @@ function buildOccupationOptions() {
     disabled: 'disabled'
   });
 
-  occupations.forEach(occupation => {
+  list.forEach(item => {
     options.push({
-      option_text: occupation
+      option_text: item
     })
   });
 
@@ -156,7 +157,33 @@ module.exports = {
         instructions: 'Use up and down keys to navigate results once you\'ve typed more than two characters. Use the enter key to select a result.',
         listbox_id: 'typeahead-listbox-occupation',
         result_limit: 10,
-        options: buildOccupationOptions(),
+        options: buildOptionsFromList(occupations),
+        content: {
+          x_of_x: 'of',
+          no_results: 'No results found',
+          aria_no_results: 'No results found for the query',
+          aria_you_have_selected: 'You have selected',
+          aria_found_by_alternative_name: 'found by alternative name',
+          aria_min_chars: 'Type in 2 or more characters for results.',
+          aria_one_result: 'There is one result available.',
+          aria_n_results: 'There are {n} results available.',
+          aria_limited_results: 'Results have been limited to 10 results. Type more characters to refine your search.'
+        }
+      }
+    },
+    {
+      name: 'ethnicity-typeahead',
+      label: 'Ethnicity Typeahead',
+      context: {
+        label: 'Ethnicity Typeahead',
+        label_text: 'Type and select your ethnicity',
+        label_class: 'js-typeahead-label',
+        label_for: 'ethnicity-typeahead',
+        instructions_id: 'typeahead-instructions-ethnicity',
+        instructions: 'Use up and down keys to navigate results once you\'ve typed more than two characters. Use the enter key to select a result.',
+        listbox_id: 'typeahead-listbox-occupation',
+        result_limit: 10,
+        options: buildOptionsFromList(ethnicities),
         content: {
           x_of_x: 'of',
           no_results: 'No results found',
