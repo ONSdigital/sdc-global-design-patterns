@@ -1,4 +1,5 @@
 import { orderBy } from 'lodash';
+import { occupations } from './occupations';
 
 const territoriesJSON = {
   'en-GB': require('cldr-localenames-modern/main/en-GB/territories.json'),
@@ -70,6 +71,25 @@ function buildCountryOptions(primaryLanguageCode, secondaryLanguageCode) {
   return options;
 }
 
+function buildOccupationOptions() {
+  const options = [];
+
+  options.push({
+    option_text: 'Select an option',
+    option_value: '',
+    selected: 'selected',
+    disabled: 'disabled'
+  });
+
+  occupations.forEach(occupation => {
+    options.push({
+      option_text: occupation
+    })
+  });
+
+  return options;
+}
+
 module.exports = {
   title: 'Typeahead',
   default: 'country-typeahead',
@@ -123,6 +143,32 @@ module.exports = {
           aria_n_results: 'There are {n} results available.'
         }
       }
-    }
+    },
+    {
+      name: 'occupation-typeahead',
+      label: 'Occupation Typeahead',
+      context: {
+        label: 'Occupation Typeahead',
+        label_text: 'Type and select your job title',
+        label_class: 'js-typeahead-label',
+        label_for: 'occupation-typeahead',
+        instructions_id: 'typeahead-instructions-occupation',
+        instructions: 'Use up and down keys to navigate results once you\'ve typed more than two characters. Use the enter key to select a result.',
+        listbox_id: 'typeahead-listbox-occupation',
+        result_limit: 10,
+        options: buildOccupationOptions(),
+        content: {
+          x_of_x: 'of',
+          no_results: 'No results found',
+          aria_no_results: 'No results found for the query',
+          aria_you_have_selected: 'You have selected',
+          aria_found_by_alternative_name: 'found by alternative name',
+          aria_min_chars: 'Type in 2 or more characters for results.',
+          aria_one_result: 'There is one result available.',
+          aria_n_results: 'There are {n} results available.',
+          aria_limited_results: 'Results have been limited to 10 results. Type more characters to refine your search.'
+        }
+      }
+    },
   ]
 }

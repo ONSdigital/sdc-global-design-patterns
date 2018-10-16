@@ -41,6 +41,7 @@ class Typeahead {
 
     // State
     this.content = JSON.parse(context.getAttribute('data-content'));
+    this.resultLimit = context.hasAttribute('data-result-limit') ? parseInt(context.getAttribute('data-result-limit')) : null;
     this.listboxId = this.listbox.getAttribute('id');
     this.ctrlKey = false;
     this.deleting = false;
@@ -50,13 +51,11 @@ class Typeahead {
       .map(option => {
         const mappedOption = {
           text: option.innerText,
-          value: option.getAttribute('value'),
-          alternatives: option
-            .getAttribute('data-alternatives')
-            .split(',')
+          value: option.hasAttribute('value') ? option.getAttribute('value') : option.innerText,
+          alternatives: (option.getAttribute('data-alternatives') || '').split(',')
         }
 
-        mappedOption.sanitisedText = mappedOption.text.toLowerCase();
+        mappedOption.sanitisedText = mappedOption.text.toLowerCase().replace(/\s\s+/g, ' ').trim();
         mappedOption.sanitisedAlternatives = mappedOption.alternatives.map(alternative => alternative.toLowerCase());
 
         return mappedOption;
@@ -67,6 +66,7 @@ class Typeahead {
     this.previousQuery = '';
     this.results = [];
     this.resultOptions = [];
+    this.foundResults = 0;
     this.highlightedResultIndex = 0;
     this.settingResult = false;
     this.blurring = false;
@@ -220,7 +220,7 @@ class Typeahead {
 
       if (query !== this.query || !this.select.value) {
         this.query = query;
-        this.sanitisedQuery = query.toLowerCase().trim();
+        this.sanitisedQuery = query.toLowerCase().replace(/\s\s+/g, ' ');
 
         this.unsetResults();
         this.setAriaStatus();
@@ -239,6 +239,12 @@ class Typeahead {
 
           // Combine arrays and remove duplicates
           this.results = Array.from(new Set([...results, ...resultsFromAlternatives]));
+
+          this.foundResults = this.results.length;
+
+          if (this.resultLimit) {
+            this.results = this.results.slice(0, this.resultLimit);
+          }
 
           this.handleResults(this.results);
         } else {
@@ -262,7 +268,6 @@ class Typeahead {
   }
 
   clearListbox(preventAriaStatusUpdate) {
-    console.log('clear')
     this.listbox.innerHTML = '';
     this.input.removeAttribute('aria-activedescendant');
     this.combobox.removeAttribute('aria-expanded');
@@ -300,7 +305,6 @@ class Typeahead {
           listElement.innerHTML = innerHTML;
 
           listElement.addEventListener('click', () => {
-            console.log('click');
             this.selectResult(index);
           });
 
@@ -367,10 +371,16 @@ class Typeahead {
         content = this.content.aria_one_result;
       } else {
         content = this.content.aria_n_results.replace('{n}', numberOfResults);
+
+        if (this.resultLimit && this.foundResults > this.resultLimit) {
+          content += ` ${this.content.aria_limited_results}`;
+        }
       }
     }
 
     this.ariaStatus.innerHTML = content;
+
+    console.log(content);
   }
 
   clearPreview() {

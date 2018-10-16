@@ -1,9 +1,9 @@
 <div class="field">
-   <div class="typeahead js-typeahead" data-content="{{json content}}">
+   <div class="typeahead js-typeahead" data-content="{{json content}}" data-result-limit="{{result_limit}}">
     {{> @label }}
     <select class="typeahead__select js-typeahead-select input input--select{{#if select_classes}}{{select_classes}}{{/if}}" id="{{label_for}}" name="select">
       {{#each options}}
-        <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}} data-alternatives="{{option_alternatives}}">{{option_text}}</option>
+        <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}{{#if option_alternatives}}data-alternatives=" {{option_alternatives}}"{{/if}}>{{option_text}}</option>
       {{/each}}
     </select>
     <div class="js-typeahead-combobox" role="combobox" aria-owns="{{listbox_id}}" aria-haspopup="listbox">
