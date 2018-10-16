@@ -2,7 +2,7 @@ module.exports = {
   'title': 'Status',
   'default': 'success',
   'collated': true,
-  'status': 'wip',
+  'status': 'ready',
   'variants': [{
     'name': 'success',
     'label': 'Success',

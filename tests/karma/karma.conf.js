@@ -14,12 +14,17 @@ module.exports = function(config) {
     frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai'],
 
     files: [
+      './assets/js/api/_load.js',
+      './assets/js/**/*.spec.js',
+      './components/**/*.spec.js',
       testDir + '/spec/**/*.js'
     ],
 
     preprocessors: {
+      './assets/js/api/_load.js': ['browserify'],
       'tests/karma/spec/**/*.js': ['browserify'],
-      '*.js': ['coverage']
+      './components/**/*.spec.js': ['browserify'],
+      './assets/js/**/*.spec.js': ['browserify'],
     },
 
     plugins: [
@@ -40,10 +45,10 @@ module.exports = function(config) {
 
     reporters: ['mocha', 'progress', 'coverage'],
 
-    browsers: ['ChromeHeadlessNoSandbox'],
+    browsers: ['Chrome', 'HeadlessChrome'],
 
     customLaunchers: {
-      ChromeHeadlessNoSandbox: {
+      HeadlessChrome: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       }
@@ -64,6 +69,6 @@ module.exports = function(config) {
     },
 
     colors: true,
-    logLevel: config.LOG_INFO
+    logLevel: config.LOG_DEBUG
   })
 }

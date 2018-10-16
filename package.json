@@ -10,6 +10,7 @@
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
     "test": "gulp scripts:test",
+    "test:watch": "gulp test:watch",
     "deploy": "gulp && yarn build && gh-pages -d dist"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.26.0",
+    "chai-spies": "^1.0.0",
     "faker": "^3.1.0",
     "global": "^4.3.2",
     "gulp-babel": "^7.0.1",
@@ -42,6 +44,8 @@
     "gulp-tap": "^0.1.3",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
+    "karma-chai-spies": "^0.1.4",
+    "open": "^0.0.5",
     "postcss": "^6.0.22",
     "postcss-pseudoelements": "^5.0.0",
     "request-promise": "^2.0.1",
