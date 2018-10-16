@@ -1,20 +1,15 @@
 .badge {
   display: inline-block;
   vertical-align: middle;
-  padding: 0 0.8rem;
-  font-size: 0.85rem;
+  padding: 0 0.4rem;
+  font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.8;
-  border-radius: 2px;
   text-transform: uppercase;
   color: $color-white;
+  letter-spacing: 0.05rem;
 }
 
-.badge--amber {
-  background-color: $color-amber;
-}
-
-.badge--blue {
-  color: white;
-  background-color: rgb(12, 96, 162);
+.badge--black {
+  background-color: $color-almost-black;
 }

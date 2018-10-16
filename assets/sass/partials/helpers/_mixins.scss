@@ -156,7 +156,8 @@
       padding: auto;
     }
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: "";
       display: inline-block;
       height: $width;
@@ -190,8 +191,8 @@
 
     @if ($hoverIconName) {
       &::after {
-        @include icon($hoverIconName);
         opacity: 0;
+        @include icon($hoverIconName);
       }
       &:hover,
       &:focus {
