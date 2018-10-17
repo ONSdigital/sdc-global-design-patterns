@@ -28,6 +28,7 @@
     }
   }
   .nav__item--completed {
+
     &::before {
       z-index: 2;
       content: "";
@@ -152,9 +153,7 @@
   border-bottom: 1px solid $color-grey;
   .nav__item {
     padding: 0 .667rem .3rem;
-    &:first-child {
-      padding-left: 0;
-    }
+
     @include mq(xs,s) {
       margin: 0;
     }
