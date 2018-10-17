@@ -16,7 +16,7 @@
     width: 100%;
 
     line-height: normal;
-    color: #808080;
+    color: $color-grey;
 
     border-color: transparent;
     pointer-events: none;
@@ -55,7 +55,7 @@
     }
 
     &:nth-child(2n) {
-      background: #eee;
+      background: $color-mid-grey;
     }
 
     &:not(&--no-results):hover,
@@ -69,7 +69,7 @@
 
     &--no-results {
       cursor: not-allowed;
-      background: $color-dark-grey;
+      background: $color-mid-grey;
     }
   }
 
