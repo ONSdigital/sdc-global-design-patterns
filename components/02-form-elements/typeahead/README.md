@@ -38,7 +38,6 @@ The typeahead is made accessible by using aria labels.
 
 The typeahead input and suggestions are wrapped in an element with these attributes:
 * `role="combobox"` - lets the user know this is an edit control with an associated listbox.
-* `aria-owns="{{listbox_id}}"` - lets the user know which listbox the combobox controls.
 * `aria-haspopup="listbox"` - lets the user know that the listbox will popup.
 
 

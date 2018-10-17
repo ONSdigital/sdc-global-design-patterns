@@ -3,10 +3,10 @@
     {{> @label }}
     <select class="typeahead__select js-typeahead-select input input--select{{#if select_classes}}{{select_classes}}{{/if}}" id="{{label_for}}" name="select">
       {{#each options}}
-        <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}{{#if option_alternatives}}data-alternatives=" {{option_alternatives}}"{{/if}}>{{option_text}}</option>
+        <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}{{#if option_alternatives}} data-alternatives="{{option_alternatives}}"{{/if}}>{{option_text}}</option>
       {{/each}}
     </select>
-    <div class="typeahead__combobox js-typeahead-combobox" role="combobox" aria-owns="{{listbox_id}}" aria-haspopup="listbox">
+    <div class="typeahead__combobox js-typeahead-combobox" role="combobox" aria-haspopup="listbox" aria-expanded="false">
       <input class="typeahead__preview js-typeahead-preview input input--text" readonly="true" aria-hidden="true" tabindex="-1" />
       <input class="typeahead__input js-typeahead-input input input--text" type="text" autocomplete="false" aria-autocomplete="list" aria-controls="{{listbox_id}}" aria-describedby="{{instructions_id}}" />
       <div class="u-vh" id="{{instructions_id}}">{{instructions}}</div>
