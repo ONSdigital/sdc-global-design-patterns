@@ -27,7 +27,7 @@ function buildCountryOptions(primaryLanguageCode, secondaryLanguageCode) {
   let options = [];
 
   for (const key in primaryLanguageTerritories) {
-    if (primaryLanguageTerritories.hasOwnProperty(key) && isNaN(parseInt(key))) {
+    if (primaryLanguageTerritories.hasOwnProperty(key) && isNaN(parseInt(key)) && !key.includes('-alt-')) {
       const option = {
         option_text: primaryLanguageTerritories[key],
         option_value: key,
@@ -53,6 +53,21 @@ function buildCountryOptions(primaryLanguageCode, secondaryLanguageCode) {
       }
 
       options.push(option);
+    }
+  }
+
+  for (const key in primaryLanguageTerritories) {
+    if (primaryLanguageTerritories.hasOwnProperty(key) && isNaN(parseInt(key)) && key.includes('-alt-')) {
+      const nonAltKey = key.split('-alt-')[0];
+      const option = options.find(option => option.option_value === nonAltKey);
+
+      if (option) {
+        option.option_alternatives.push(primaryLanguageTerritories[key]);
+
+        if (secondaryLanguageCode) {
+          option.option_alternatives = [...option.option_alternatives, ...territoriesJSON[secondaryLanguageCode].main[secondaryLanguageCode].localeDisplayNames.territories[key]];
+        }
+      }
     }
   }
 
