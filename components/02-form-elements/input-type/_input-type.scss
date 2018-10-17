@@ -44,6 +44,7 @@ $width: $input-width;
   }
   .input-type__input {
     padding-left: 0.5rem;
+    padding-right: 4rem;
     @include fixed {
       margin-left: 0;
     }
@@ -63,8 +64,12 @@ $width: $input-width;
       width: calc(#{$width} - 3rem);
     }
   }
+  .input-type__input {
+    padding-left: 3.6rem;
+  }
   .input-type__type {
     right: auto;
     left: 1px;
+    width: 3rem;
   }
 }
