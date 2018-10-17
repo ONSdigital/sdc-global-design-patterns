@@ -170,6 +170,13 @@ class Typeahead {
     clearTimeout(this.blurTimeout);
     this.blurring = true;
 
+    const exactMatch = this.results.find(result => result.sanitisedText === this.sanitisedQuery);
+
+    if (exactMatch) {
+      this.select.value = exactMatch.value;
+      triggerChangeEvent(this.select);
+    }
+
     this.blurTimeout = setTimeout(() => {
       this.clearPreview();
       this.clearListbox(true);
@@ -378,8 +385,6 @@ class Typeahead {
     }
 
     this.ariaStatus.innerHTML = content;
-
-    console.log(content);
   }
 
   clearPreview() {
