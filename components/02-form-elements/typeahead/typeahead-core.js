@@ -1,3 +1,5 @@
+import { sanitiseTypeaheadText } from './typeahead-helpers';
+
 const classTypeaheadCombobox = 'js-typeahead-combobox';
 const classTypeaheadInput = 'js-typeahead-input';
 const classTypeaheadPreview = 'js-typeahead-preview';
@@ -21,7 +23,7 @@ const KEYCODE = {
 }
 
 export default class Typeahead {
-  constructor({ context, suggestionFunction, onSelect, onUnsetResult, minChars, resultLimit }) {
+  constructor({ context, suggestionFunction, onSelect, onUnsetResult, minChars, resultLimit, sanitisedQueryReplaceChars }) {
     // DOM Elements
     this.context = context;
     this.combobox = context.querySelector(`.${classTypeaheadCombobox}`);
@@ -41,6 +43,7 @@ export default class Typeahead {
     this.inputInitialAutocompleteSetting = this.input.getAttribute('autocomplete') || 'false';
     this.minChars = minChars || 2;
     this.resultLimit = resultLimit || null;
+    this.sanitisedQueryReplaceChars = sanitisedQueryReplaceChars || [];
 
     // State
     this.ctrlKey = false;
@@ -204,7 +207,7 @@ export default class Typeahead {
 
       if (query !== this.query || !this.resultSelected) {
         this.query = query;
-        this.sanitisedQuery = query.toLowerCase().replace(/\s\s+/g, ' ');
+        this.sanitisedQuery = sanitiseTypeaheadText(query, this.sanitisedQueryReplaceChars, false)
 
         this.unsetResults();
         this.setAriaStatus();
@@ -218,6 +221,14 @@ export default class Typeahead {
             } else {
               this.results = results;
             }
+
+            this.results.forEach(result => {
+              result.sanitisedText = sanitiseTypeaheadText(result.text, this.sanitisedQueryReplaceChars);
+
+              if (result.alternatives) {
+                result.sanitisedAlternatives = result.alternatives.map(alternative => sanitiseTypeaheadText(alternative, this.sanitisedQueryReplaceChars));
+              }
+            });
 
             this.numberOfResults = Math.max(this.results.length - 1, 0);
 
@@ -262,12 +273,14 @@ export default class Typeahead {
           let innerHTML = result.text;
           let ariaLabel = `${result.text}.`;
 
-          const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative !== result.sanitisedText && alternative.includes(this.sanitisedQuery));
+          if (typeof result.sanitisedAlternatives === Array) {
+            const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative !== result.sanitisedText && alternative.includes(this.sanitisedQuery));
 
-          if (alternativeMatch) {
-            const alternativeText = result.alternatives[result.sanitisedAlternatives.indexOf(alternativeMatch)];
-            innerHTML += ` <small>(${alternativeText})</small>`;
-            ariaLabel += ` (${alternativeText}).`;
+            if (alternativeMatch) {
+              const alternativeText = result.alternatives[result.sanitisedAlternatives.indexOf(alternativeMatch)];
+              innerHTML += ` <small>(${alternativeText})</small>`;
+              ariaLabel += ` (${alternativeText}).`;
+            }
           }
 
           ariaLabel += ` (${index + 1} ${this.content.x_of_x} ${this.results.length})`;

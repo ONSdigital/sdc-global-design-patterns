@@ -2,6 +2,7 @@ const UUID = require('uuid/v4');
 import domready from '../../../assets/js/domready';
 import triggerChangeEvent from '../../../assets/js/trigger-change-event';
 import Typeahead from './typeahead-core';
+import { sanitiseTypeaheadText } from './typeahead-helpers';
 
 export const classTypeahead = 'js-typeahead';
 export const classTypeaheadSelect = 'js-typeahead-select';
@@ -22,8 +23,8 @@ class SelectTypeahead {
           alternatives: (option.getAttribute('data-alternatives') || '').split(',')
         }
 
-        mappedOption.sanitisedText = mappedOption.text.toLowerCase().replace(/\s\s+/g, ' ').trim();
-        mappedOption.sanitisedAlternatives = mappedOption.alternatives.map(alternative => alternative.toLowerCase());
+        mappedOption.sanitisedText = sanitiseTypeaheadText(mappedOption.text)
+        mappedOption.sanitisedAlternatives = mappedOption.alternatives.map(alternative => sanitiseTypeaheadText(alternative));
 
         return mappedOption;
       })
