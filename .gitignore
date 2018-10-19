@@ -2,10 +2,12 @@ node_modules
 public
 !public/.gitkeep
 .idea
+.vscode
+.github
 dist
-yarn-error.log
+*.log
+*.tmp
 coverage
 env
-.vscode
 
 secrets.yml

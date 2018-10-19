@@ -12,7 +12,7 @@ The component enhances a select dropdown. It will ignore any options where the v
 
 When the JavaScript loads it will hide the select and show a text input. It will also change the for attribute on the label to match the id of the text input. When the user selects a value it will update the value of the select and fire an onchange event on the select. If the user types an exact match for a value (case insensitive) it will automatically select this value.
 
-Alternatives can by added as a coma separated list. When a user selects an option via an alternative the matched alternative will be shown in brackets next to the suggestion, however the main text and value will still be used (i.e. User searches _Wales_ - Suggestion will be _United Kingdom (Wales)_ - Selection will change input value to _United Kingdom_ and select value to _GB_).
+Alternatives can by added as a comma separated list. When a user selects an option via an alternative the matched alternative will be shown in brackets next to the suggestion, however the main text and value will still be used (i.e. User searches _Wales_ - Suggestion will be _United Kingdom (Wales)_ - Selection will change input value to _United Kingdom_ and select value to _GB_).
 
 ### Limiting Displayed Results
 For some use cases it might be a better experience to limit the number of suggested results. This can be done by adding a `data-result-limit` attribute with a numeric value to the component.
