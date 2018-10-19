@@ -84,7 +84,9 @@ class Address {
   }
 
   onAddressSelect(value) {
+    return new Promise((resolve, reject) => {
 
+    });
   }
 
   onUnsetAddress() {

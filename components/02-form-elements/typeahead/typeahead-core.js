@@ -384,7 +384,10 @@ export default class Typeahead {
       this.query = result.text;
       this.resultSelected = true;
 
-      this.onSelect(result);
+      this.onSelect(result).then(() => {
+        this.settingResult = false;
+        this.input.setAttribute('autocomplete', 'false');
+      });
 
       let ariaAlternativeMessage = '';
 
@@ -401,11 +404,6 @@ export default class Typeahead {
       this.clearListbox();
       this.clearPreview();
       this.setAriaStatus(ariaMessage);
-
-      setTimeout(() => {
-        this.settingResult = false;
-        this.input.setAttribute('autocomplete', 'false');
-      }, 300);
     }
   }
 }

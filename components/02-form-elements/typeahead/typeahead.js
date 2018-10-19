@@ -66,8 +66,11 @@ class SelectTypeahead {
   }
 
   selectResult(result) {
-    this.select.value = result.value;
-    triggerChangeEvent(this.select);
+    return new Promise(resolve => {
+      this.select.value = result.value;
+      triggerChangeEvent(this.select);
+      resolve();
+    });
   }
 }
 
