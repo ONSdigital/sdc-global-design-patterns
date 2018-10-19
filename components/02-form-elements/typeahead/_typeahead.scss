@@ -1,11 +1,6 @@
 .typeahead {
   display: inline-block;
   position: relative;
-  width: 100%;
-
-  @include mq(s) {
-    width: $input-width;
-  }
 
   &__combobox {
     display: none;

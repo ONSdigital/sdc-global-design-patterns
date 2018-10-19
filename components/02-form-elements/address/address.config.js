@@ -14,7 +14,8 @@ module.exports = {
         aria_found_by_alternative_name: 'found by alternative name',
         aria_min_chars: 'Type in 2 or more characters for results.',
         aria_one_result: 'There is one result available.',
-        aria_n_results: 'There are {n} results available.'
+        aria_n_results: 'There are {n} results available.',
+        aria_limited_results: 'Results have been limited to 10 results. Type more characters to refine your search.'
       }
     }
   }

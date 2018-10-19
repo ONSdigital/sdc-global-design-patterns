@@ -3,6 +3,7 @@ import { orderBy } from 'lodash';
 
 import domready from '../../../assets/js/domready';
 import Typeahead from '../typeahead/typeahead-core';
+import { sanitiseTypeaheadText } from '../typeahead/typeahead-helpers';
 
 const classAddress = 'js-address';
 const classSearchButton = 'js-address-search-btn';
@@ -10,6 +11,7 @@ const classManualButton = 'js-address-manual-btn';
 const classTypeahead = 'js-address-typeahead';
 
 const lookupURL = 'https://preprod-address-lookup-api.eq.ons.digital/address_api/';
+const addressReplaceChars = [','];
 
 class Address {
   constructor(context) {
@@ -22,6 +24,7 @@ class Address {
     this.manualMode = true;
     this.currentQuery = null;
     this.xhr = null;
+    this.currentResults = [];
 
     // Initialise typeahead
     this.typeahead = new Typeahead({
@@ -29,7 +32,7 @@ class Address {
       suggestionFunction: this.suggestAddresses.bind(this),
       onSelect: this.onAddressSelect.bind(this),
       onUnsetResult: this.onUnsetAddress.bind(this),
-      sanitisedQueryReplaceChars: [','],
+      sanitisedQueryReplaceChars: addressReplaceChars,
       resultLimit: 10
     });
 
@@ -51,30 +54,47 @@ class Address {
   }
 
   suggestAddresses(query) {
+    query = query.trim();
     return new Promise((resolve, reject) => {
-      if (this.currentQuery !== query) {
+      if (this.currentQuery === query && this.currentQuery.length) {
+        resolve(this.currentResults);
+      } else {
         this.currentQuery = query;
+        this.currentResults = [];
 
         if (this.xhr && this.xhr.status !== 'DONE') {
           this.xhr.abort();
         }
 
         this.xhr = new XMLHttpRequest();
+        this.reject = reject;
 
         // this.xhr.open('GET', lookupURL);
         this.xhr.open('GET', `${lookupURL}?q=${encodeURIComponent(query)}`);
         this.xhr.setRequestHeader('Content-Type', 'application/json;');
 
         this.xhr.onload = () => {
-          const mappedResults = JSON.parse(this.xhr.responseText).addresses.map((address, index) => {
-            return {
-              value: index,
-              text: address,
-              querySimilarity: compareTwoStrings(query, address)
-            }
-          });
+          const mappedResults = JSON.parse(this.xhr.responseText).addresses
+            .map((address, index) => {
+              const sanitisedText = sanitiseTypeaheadText(address, addressReplaceChars);
+              let queryIndex = sanitisedText.indexOf(query);
 
-          resolve(orderBy(mappedResults, ['querySimilarity'], ['desc']));
+              if (queryIndex < 0) {
+                queryIndex = 9999;
+              }
+
+              return {
+                value: index,
+                text: address,
+                sanitisedText,
+                querySimilarity: compareTwoStrings(sanitisedText, query),
+                queryIndex
+              }
+            });
+
+          this.currentResults = orderBy(mappedResults, ['queryIndex', 'querySimilarity'], ['asc', 'desc']);
+
+          resolve(this.currentResults);
         };
 
         // this.xhr.send(JSON.stringify({ q: encodeURIComponent(query) }));

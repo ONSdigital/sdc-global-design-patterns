@@ -51,7 +51,6 @@
     "request-promise": "^2.0.1",
     "string-similarity": "^2.0.0",
     "through2": "^2.0.3",
-    "uuid": "^3.3.2",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

@@ -1,4 +1,3 @@
-const UUID = require('uuid/v4');
 import domready from '../../../assets/js/domready';
 import triggerChangeEvent from '../../../assets/js/trigger-change-event';
 import Typeahead from './typeahead-core';
@@ -41,7 +40,7 @@ class SelectTypeahead {
   }
 
   getSuggestions(query) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       let results = this.options
       .filter(option => option.sanitisedText.includes(query))
       .sort((a, b) => a.sanitisedText.indexOf(query) > b.sanitisedText.indexOf(query) ? 1 : -1);

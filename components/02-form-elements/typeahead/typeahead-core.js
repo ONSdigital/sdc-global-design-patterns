@@ -1,4 +1,7 @@
+import { throttle } from 'lodash';
+
 import { sanitiseTypeaheadText } from './typeahead-helpers';
+import { emboldenMatch } from '../../../assets/js/embolden-match';
 
 const classTypeaheadCombobox = 'js-typeahead-combobox';
 const classTypeaheadInput = 'js-typeahead-input';
@@ -64,6 +67,9 @@ export default class Typeahead {
     // Modify DOM
     this.context.classList.add('typeahead--initialised');
     this.bindEventListeners();
+
+    // Debounced functions
+    this.throttledGetSuggestions = throttle(this.getSuggestions.bind(this), 300);
   }
 
   bindEventListeners() {
@@ -119,17 +125,6 @@ export default class Typeahead {
       case KEYCODE.RIGHT: {
         break;
       }
-      case KEYCODE.BACK_SPACE:
-      case KEYCODE.DELETE: {
-        this.deleting = true;
-        this.getSuggestions();
-        break;
-      }
-      default: {
-        if (!this.ctrlKey) {
-          this.getSuggestions();
-        }
-      }
     }
 
     this.ctrlKey = false;
@@ -138,7 +133,7 @@ export default class Typeahead {
   handleChange() {
     setTimeout(() => {
       if (!this.blurring) {
-        this.getSuggestions();
+        this.throttledGetSuggestions();
       }
     }, 10);
   }
@@ -147,7 +142,7 @@ export default class Typeahead {
     clearTimeout(this.blurTimeout);
     this.input.classList.add(classTypeaheadInputFocused);
     this.input.setAttribute('autocomplete', false);
-    this.getSuggestions();
+    this.throttledGetSuggestions();
   }
 
   handleBlur() {
@@ -213,7 +208,7 @@ export default class Typeahead {
         this.setAriaStatus();
 
         if (query.length >= this.minChars) {
-          this.suggestionFunction(query).then(results => {
+          this.suggestionFunction(this.sanitisedQuery).then(results => {
             this.foundResults = results.length;
 
             if (this.resultLimit) {
@@ -223,15 +218,17 @@ export default class Typeahead {
             }
 
             this.results.forEach(result => {
-              result.sanitisedText = sanitiseTypeaheadText(result.text, this.sanitisedQueryReplaceChars);
+              if (!result.sanitisedText) {
+                result.sanitisedText = sanitiseTypeaheadText(result.text, this.sanitisedQueryReplaceChars);
+              }
 
-              if (result.alternatives) {
+              if (result.alternatives && !result.sanitisedAlternatives) {
                 result.sanitisedAlternatives = result.alternatives.map(alternative => sanitiseTypeaheadText(alternative, this.sanitisedQueryReplaceChars));
               }
             });
 
-            this.numberOfResults = Math.max(this.results.length - 1, 0);
-
+            this.numberOfResults = Math.max(this.results.length, 0);
+            this.clearListbox(true);
             this.handleResults(this.results);
           });
         } else {
@@ -270,7 +267,7 @@ export default class Typeahead {
         this.selectResult(0);
       } else {
         this.resultOptions = this.results.map((result, index) => {
-          let innerHTML = result.text;
+          let innerHTML = emboldenMatch(result.text, this.query);
           let ariaLabel = `${result.text}.`;
 
           if (typeof result.sanitisedAlternatives === Array) {
@@ -278,7 +275,7 @@ export default class Typeahead {
 
             if (alternativeMatch) {
               const alternativeText = result.alternatives[result.sanitisedAlternatives.indexOf(alternativeMatch)];
-              innerHTML += ` <small>(${alternativeText})</small>`;
+              innerHTML += ` <small>(${emboldenMatch(alternativeText, this.query)})</small>`;
               ariaLabel += ` (${alternativeText}).`;
             }
           }
@@ -337,9 +334,9 @@ export default class Typeahead {
 
   setPreview(index) {
     const result = this.results[index || 0];
-    const queryIndex = result.text.toLowerCase().indexOf(this.sanitisedQuery);
+    const queryIndex = result.text.toLowerCase().indexOf(this.query);
 
-    if (queryIndex === 0 && this.sanitisedQuery.length !== result.text.length) {
+    if (queryIndex === 0 && this.query.length !== result.text.length) {
       this.preview.value = `${this.query}${result.text.slice(this.query.length)}`;
     } else {
       this.clearPreview();
