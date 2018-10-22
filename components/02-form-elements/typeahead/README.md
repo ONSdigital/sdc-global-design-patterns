@@ -22,7 +22,6 @@ Some of the messaging and content is dynamic and can be provided as a JSON/JS ob
 
 | Key                              | Description                                                                                                          | Example                    |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| `x_of_x`                         | The word that sits between the current result number and the total number of results.                                | `of`                       |
 | `no_results`                     | Message for when no results are found.                                                                               | `Ni chanfuwyd canlyniadau` |
 | `aria_no_results`                | The aria message that will be read by VoiceOver when no results are found, followed by the query the user inputted.  | `No results for the query` |
 | `aria_you_have_selected`         | The aria message that will be read by VoiceOver when the user selects a result, followed by the value they selected. | `You have selected`        |

@@ -269,7 +269,7 @@ export default class Typeahead {
       } else {
         this.resultOptions = this.results.map((result, index) => {
           let innerHTML = emboldenMatch(result.text, this.query);
-          let ariaLabel = `${result.text}`;
+          let ariaLabel = result.text;
 
           if (Array.isArray(result.sanitisedAlternatives)) {
             const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative !== result.sanitisedText && alternative.includes(this.sanitisedQuery));
@@ -280,8 +280,6 @@ export default class Typeahead {
               ariaLabel += `, (${alternativeText})`;
             }
           }
-
-          // ariaLabel += ` (${index + 1} ${this.content.x_of_x} ${this.results.length})`;
 
           const listElement = document.createElement('li');
           listElement.className = classTypeaheadOption;
