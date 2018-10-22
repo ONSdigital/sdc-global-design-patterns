@@ -12,6 +12,7 @@ const classTypeaheadAriaStatus = 'js-typeahead-aria-status';
 const classTypeaheadOption = 'typeahead__option';
 const classTypeaheadOptionFocused = `${classTypeaheadOption}--focused`;
 const classTypeaheadOptionNoResults = `${classTypeaheadOption}--no-results`;
+const classTypeaheadOptionMoreResults = `${classTypeaheadOption}--more-results`;
 const classTypeaheadInputFocused = 'input--focused';
 
 const KEYCODE = {
@@ -299,6 +300,15 @@ export default class Typeahead {
           return listElement;
         });
 
+        if (this.numberOfResults < this.foundResults) {
+          const listElement = document.createElement('li');
+          listElement.className = `${classTypeaheadOption} ${classTypeaheadOptionMoreResults} pluto`;
+          listElement.setAttribute('tabindex', '-1');
+          listElement.setAttribute('aria-hidden', 'true');
+          listElement.innerHTML = this.content.more_results;
+          this.listbox.appendChild(listElement);
+        }
+
         this.setHighlightedResult(null);
         this.combobox.setAttribute('aria-expanded', true);
       }
@@ -345,18 +355,17 @@ export default class Typeahead {
 
   setAriaStatus(content) {
     if (!content) {
-      const numberOfResults = this.results.length;
       const queryTooShort = this.sanitisedQuery.length < this.minChars;
-      const noResults = numberOfResults === 0;
+      const noResults = this.numberOfResults === 0;
 
       if (queryTooShort) {
         content = this.content.aria_min_chars;
       } else if (noResults) {
         content = `${this.content.aria_no_results}: "${this.query}"`;
-      } else if (numberOfResults === 1) {
+      } else if (this.numberOfResults === 1) {
         content = this.content.aria_one_result;
       } else {
-        content = this.content.aria_n_results.replace('{n}', numberOfResults);
+        content = this.content.aria_n_results.replace('{n}', this.numberOfResults);
 
         if (this.resultLimit && this.foundResults > this.resultLimit) {
           content += ` ${this.content.aria_limited_results}`;
