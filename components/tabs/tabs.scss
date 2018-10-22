@@ -98,8 +98,10 @@
   }
 
   &:focus {
-    outline: 2px solid $color-focus-outline;
+    // outline: 2px solid $color-focus-outline;
+    box-shadow: 0 0 0 2px $color-focus-outline;
     outline-offset: 0;
+    outline: 0;
   }
 
   .no-js & {
