@@ -12,6 +12,7 @@ export const classTypeaheadListbox = 'js-typeahead-listbox';
 export const classTypeaheadOption = 'typeahead__option';
 export const classTypeaheadOptionFocused = `${classTypeaheadOption}--focused`;
 export const classTypeaheadOptionNoResults = `${classTypeaheadOption}--no-results`;
+export const classTypeaheadOptionMoreResults = `${classTypeaheadOption}--more-results`;
 export const classTypeaheadAriaStatus = 'js-typeahead-aria-status';
 export const classTypeaheadInputFocused = 'input--focused';
 export const typeaheadMinChars = 2;
@@ -66,7 +67,7 @@ class Typeahead {
     this.previousQuery = '';
     this.results = [];
     this.resultOptions = [];
-    this.foundResults = 0;
+    this.numberOfResults = 0;
     this.highlightedResultIndex = 0;
     this.settingResult = false;
     this.blurring = false;
@@ -183,7 +184,7 @@ class Typeahead {
       this.input.classList.remove(classTypeaheadInputFocused);
       this.input.setAttribute('autocomplete', this.inputInitialAutocompleteSetting);
       this.blurring = false;
-    }, 100);
+    }, 350);
   }
 
   handleMouseover() {
@@ -252,6 +253,8 @@ class Typeahead {
             this.results = this.results.slice(0, this.resultLimit);
           }
 
+          this.numberOfResults = this.results.length;
+
           this.handleResults(this.results);
         } else {
           this.clearListbox();
@@ -319,6 +322,17 @@ class Typeahead {
           return listElement;
         });
 
+        if (this.numberOfResults < this.foundResults) {
+          const listElement = document.createElement('li');
+          listElement.className = `${classTypeaheadOption} ${classTypeaheadOptionMoreResults} pluto`;
+          listElement.setAttribute('tabindex', '-1');
+          listElement.setAttribute('aria-hidden', 'true');
+
+          listElement.innerHTML = this.content.more_results;
+
+          this.listbox.appendChild(listElement);
+        }
+
         this.setHighlightedResult(null);
         this.combobox.setAttribute('aria-expanded', true);
       }
@@ -365,18 +379,17 @@ class Typeahead {
 
   setAriaStatus(content) {
     if (!content) {
-      const numberOfResults = this.results.length;
       const queryTooShort = this.sanitisedQuery.length < typeaheadMinChars;
-      const noResults = numberOfResults === 0;
+      const noResults = this.numberOfResults === 0;
 
       if (queryTooShort) {
         content = this.content.aria_min_chars;
       } else if (noResults) {
         content = `${this.content.aria_no_results}: "${this.query}"`;
-      } else if (numberOfResults === 1) {
+      } else if (this.numberOfResults === 1) {
         content = this.content.aria_one_result;
       } else {
-        content = this.content.aria_n_results.replace('{n}', numberOfResults);
+        content = this.content.aria_n_results.replace('{n}', this.numberOfResults);
 
         if (this.resultLimit && this.foundResults > this.resultLimit) {
           content += ` ${this.content.aria_limited_results}`;

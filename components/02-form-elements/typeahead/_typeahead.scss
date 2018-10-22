@@ -57,8 +57,8 @@
       background: $color-mid-grey;
     }
 
-    &:not(&--no-results):hover,
-    &:not(&--no-results):nth-child(2n):hover,
+    &:not(&--no-results, &--more-results):hover,
+    &:not(&--no-results, &--more-results):nth-child(2n):hover,
     &--focused:not(&--no-results),
     &--focused:not(&--no-results):nth-child(2n) {
       background: $color-blue;
@@ -69,6 +69,13 @@
     &--no-results {
       cursor: not-allowed;
       background: $color-mid-grey;
+    }
+
+    &--more-results {
+      cursor: not-allowed;
+      background: $color-secondary;
+      color: $color-white;
+      // font-weight: 700;
     }
   }
 
