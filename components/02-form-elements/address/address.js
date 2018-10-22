@@ -2,10 +2,16 @@ import { compareTwoStrings } from 'string-similarity';
 import { orderBy } from 'lodash';
 
 import domready from '../../../assets/js/domready';
+import triggerChange from '../../../assets/js/trigger-change-event';
 import Typeahead from '../typeahead/typeahead-core';
 import { sanitiseTypeaheadText } from '../typeahead/typeahead-helpers';
 
 const classAddress = 'js-address';
+const classLine1 = 'js-address-line-1';
+const classLine2 = 'js-address-line-2';
+const classTown = 'js-address-town';
+const classCounty = 'js-address-county';
+const classPostcode = 'js-address-postcode';
 const classSearchButton = 'js-address-search-btn';
 const classManualButton = 'js-address-manual-btn';
 const classTypeahead = 'js-address-typeahead';
@@ -17,6 +23,12 @@ class Address {
   constructor(context) {
     // DOM Elements
     this.context = context;
+    this.line1 = context.querySelector(`.${classLine1}`);
+    this.line2 = context.querySelector(`.${classLine2}`);
+    this.town = context.querySelector(`.${classTown}`);
+    this.county = context.querySelector(`.${classCounty}`);
+    this.postcode = context.querySelector(`.${classPostcode}`);
+    this.manualInputs = [this.line1, this.line2, this.town, this.county, this.postcode];
     this.searchButton = context.querySelector(`.${classSearchButton}`);
     this.manualButton = context.querySelector(`.${classManualButton}`);
 
@@ -43,11 +55,19 @@ class Address {
     this.toggleMode();
   }
 
-  toggleMode() {
+  toggleMode(clearInputs = true) {
     if (this.manualMode) {
       this.context.classList.add('address-input--search');
+
+      if (clearInputs) {
+        this.typeahead.unsetResults();
+      }
     } else {
       this.context.classList.remove('address-input--search');
+
+      if (clearInputs) {
+        this.typeahead.unsetResults();
+      }
     }
 
     this.manualMode = !this.manualMode;
@@ -84,7 +104,7 @@ class Address {
               }
 
               return {
-                value: index,
+                value: address,
                 text: address,
                 sanitisedText,
                 querySimilarity: compareTwoStrings(sanitisedText, query),
@@ -103,14 +123,58 @@ class Address {
     });
   }
 
-  onAddressSelect(value) {
+  onAddressSelect(result) {
     return new Promise((resolve, reject) => {
+      const addressParts = result.value.split(', ');
 
+      this.clearManualInputs(false);
+
+      switch (addressParts.length) {
+        case 3: {
+          this.line1.value = addressParts[0];
+          this.town.value = addressParts[1];
+          this.postcode.value = addressParts[2];
+          break;
+        }
+        case 4: {
+          this.line1.value = addressParts[0];
+          this.line2.value = addressParts[1];
+          this.town.value = addressParts[2];
+          this.postcode.value = addressParts[3];
+          break;
+        }
+        case 5: {
+          this.line1.value = `${addressParts[0]}, ${addressParts[1]}`;
+          this.line2.value = addressParts[2];
+          this.town.value = addressParts[3];
+          this.postcode.value = addressParts[4];
+          break;
+        }
+      }
+
+      this.triggerManualInputsChanges();
+      this.toggleMode(false);
+
+      resolve();
     });
   }
 
-  onUnsetAddress() {
+  clearManualInputs(triggerChange = true) {
+    this.manualInputs.forEach(input => {
+      input.value = '';
+    });
 
+    if (triggerChange) {
+      this.triggerManualInputsChanges();
+    }
+  }
+
+  triggerManualInputsChanges() {
+    this.manualInputs.forEach(triggerChange);
+  }
+
+  onUnsetAddress() {
+    this.clearManualInputs();
   }
 }
 

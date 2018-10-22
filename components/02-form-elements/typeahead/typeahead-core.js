@@ -149,7 +149,7 @@ export default class Typeahead {
     clearTimeout(this.blurTimeout);
     this.blurring = true;
 
-    const exactMatchIndex = this.results.indexOf(result => result.sanitisedText === this.sanitisedQuery);
+    const exactMatchIndex = this.results.map(result => result.sanitisedText).indexOf(this.sanitisedQuery);
 
     if (exactMatchIndex !== -1) {
       this.selectResult(exactMatchIndex);
