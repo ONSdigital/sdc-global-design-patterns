@@ -11,7 +11,7 @@ By adding the following to elements&hellip;
   - attaches the Google Analytics **click** 'event' to this element.
   - also available as events:
     - `error` checks for the error attribute on load and tracks the event if found.
-    For example when an error panel is displayed to the user the following can be added to the error [panel](panel):
+    For example when an error panel is displayed to the user the following can be added to the error [panel](/components/detail/panel):
     > `data-ga="error" data-ga-category="error" data-ga-action="error-validation" data-ga-label="error_type = email validation failure"`
     - `visible` checks every 2 seconds for the visible attribute and tracks the event each time it is found.
 2. `data-ga-category="accordion"`
