@@ -125,7 +125,6 @@ module.exports = {
         listbox_id: 'typeahead-listbox-country-en-GB',
         options: buildCountryOptions('en-GB'),
         content: {
-          x_of_x: 'of',
           no_results: 'No results found',
           aria_no_results: 'No results found for the query',
           aria_you_have_selected: 'You have selected',
@@ -149,7 +148,6 @@ module.exports = {
         listbox_id: 'typeahead-listbox-country-cy',
         options: buildCountryOptions('cy', 'en-GB'),
         content: {
-          x_of_x: 'of',
           no_results: 'Ni chanfuwyd canlyniadau',
           aria_no_results: 'No results found for the query',
           aria_you_have_selected: 'You have selected',
@@ -174,7 +172,6 @@ module.exports = {
         result_limit: 10,
         options: buildOptionsFromList(occupations),
         content: {
-          x_of_x: 'of',
           no_results: 'No results found',
           aria_no_results: 'No results found for the query',
           aria_you_have_selected: 'You have selected',
@@ -201,7 +198,6 @@ module.exports = {
         result_limit: 10,
         options: buildOptionsFromList(ethnicities),
         content: {
-          x_of_x: 'of',
           no_results: 'No results found',
           aria_no_results: 'No results found for the query',
           aria_you_have_selected: 'You have selected',

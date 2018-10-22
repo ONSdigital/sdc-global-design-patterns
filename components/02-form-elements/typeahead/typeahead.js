@@ -293,17 +293,15 @@ class Typeahead {
       } else {
         this.resultOptions = results.map((result, index) => {
           let innerHTML = result.text;
-          let ariaLabel = `${result.text}.`;
+          let ariaLabel = result.text;
 
           const alternativeMatch = result.sanitisedAlternatives.find(alternative => alternative !== result.sanitisedText && alternative.includes(this.sanitisedQuery));
 
           if (alternativeMatch) {
             const alternativeText = result.alternatives[result.sanitisedAlternatives.indexOf(alternativeMatch)];
             innerHTML += ` <small>(${alternativeText})</small>`;
-            ariaLabel += ` (${alternativeText}).`;
+            ariaLabel += `, (${alternativeText})`;
           }
-
-          ariaLabel += ` (${index + 1} ${this.content.x_of_x} ${results.length})`;
 
           const listElement = document.createElement('li');
           listElement.className = classTypeaheadOption;
