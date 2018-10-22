@@ -20,7 +20,7 @@
   @include mq(m) {
     &:not([class*=field__item--width-]) {
       width: auto;
-      min-width: 20rem;
+      min-width: $input-width;
     }
   }
 
