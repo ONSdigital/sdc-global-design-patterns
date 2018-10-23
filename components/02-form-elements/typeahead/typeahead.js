@@ -15,6 +15,7 @@ export const classTypeaheadOptionNoResults = `${classTypeaheadOption}--no-result
 export const classTypeaheadOptionMoreResults = `${classTypeaheadOption}--more-results`;
 export const classTypeaheadAriaStatus = 'js-typeahead-aria-status';
 export const classTypeaheadComboboxFocused = 'typeahead__combobox--focused';
+export const classTypeaheadHasResults = 'typeahead--has-results';
 export const typeaheadMinChars = 2;
 
 const KEYCODE = {
@@ -280,6 +281,7 @@ class Typeahead {
     this.listbox.innerHTML = '';
     this.input.removeAttribute('aria-activedescendant');
     this.combobox.removeAttribute('aria-expanded');
+    this.context.classList.remove(classTypeaheadHasResults);
 
     if (!preventAriaStatusUpdate) {
       this.setAriaStatus();
@@ -333,12 +335,14 @@ class Typeahead {
 
         this.setHighlightedResult(null);
         this.combobox.setAttribute('aria-expanded', true);
+        this.context.classList.add(classTypeaheadHasResults);
       }
     }
 
     if (results.length === 0) {
       this.listbox.innerHTML = `<li class="${classTypeaheadOption} ${classTypeaheadOptionNoResults}">${this.content.no_results}</li>`;
       this.combobox.setAttribute('aria-expanded', true);
+      this.context.classList.add(classTypeaheadHasResults);
     }
   }
 
