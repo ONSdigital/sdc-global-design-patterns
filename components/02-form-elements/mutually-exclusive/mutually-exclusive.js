@@ -13,8 +13,6 @@ export default function mutuallyExclusiveInputs() {
     const checkboxElement = exclusiveWrapperElement.getElementsByClassName(checkboxClass)[0];
     const voiceOverAlertElement = exclusiveWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
     for (let exclusiveGroupElement of exclusiveGroupElements) {
-      const elementType = exclusiveGroupElement.type;
-
       exclusiveGroupElement.addEventListener('input', function() {
         voiceOverAlertElement.innerHTML = '';
         inputToggle(checkboxElement, voiceOverAlertElement, 'checkbox');
