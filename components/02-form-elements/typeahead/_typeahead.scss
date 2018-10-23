@@ -4,6 +4,12 @@
 
   &__combobox {
     display: none;
+
+    border-radius: $input-radius;
+
+    &--focused {
+      box-shadow: 0 0 0 3px $color-focus-outline;
+    }
   }
 
   &__preview {
@@ -19,11 +25,15 @@
 
   &__input {
     background: transparent;
+
+    &:focus {
+      box-shadow: none;
+    }
   }
 
   &__listbox {
     width: 100%;
-    margin: 2px 0 0;
+    margin: 0;
     padding: 0;
     list-style: none;
 
@@ -45,31 +55,20 @@
     cursor: pointer;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $color-borders;
-    }
-
-    &:nth-child(2n) {
-      background: $color-mid-grey;
+      border-bottom: 1px solid $color-mid-grey;
     }
 
     &:not(&--no-results, &--more-results):hover,
-    &:not(&--no-results, &--more-results):nth-child(2n):hover,
-    &--focused:not(&--no-results),
-    &--focused:not(&--no-results):nth-child(2n) {
+    &--focused:not(&--no-results) {
       background: $color-blue;
       border-color: $color-blue;
       color: $color-white;
     }
 
-    &--no-results {
-      cursor: not-allowed;
-      background: $color-mid-grey;
-    }
-
+    &--no-results,
     &--more-results {
       cursor: not-allowed;
-      background: $color-secondary;
-      color: $color-white;
+      background: $color-mid-grey;
     }
   }
 

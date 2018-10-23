@@ -13,7 +13,7 @@ const classTypeaheadOption = 'typeahead__option';
 const classTypeaheadOptionFocused = `${classTypeaheadOption}--focused`;
 const classTypeaheadOptionNoResults = `${classTypeaheadOption}--no-results`;
 const classTypeaheadOptionMoreResults = `${classTypeaheadOption}--more-results`;
-const classTypeaheadInputFocused = 'input--focused';
+const classTypeaheadComboboxFocused = 'typeahead__combobox--focused';
 
 const KEYCODE = {
   BACK_SPACE: 8,
@@ -141,7 +141,7 @@ export default class Typeahead {
 
   handleFocus() {
     clearTimeout(this.blurTimeout);
-    this.input.classList.add(classTypeaheadInputFocused);
+    this.combobox.classList.add(classTypeaheadComboboxFocused);
     this.input.setAttribute('autocomplete', false);
     this.throttledGetSuggestions();
   }
@@ -159,7 +159,7 @@ export default class Typeahead {
     this.blurTimeout = setTimeout(() => {
       this.clearPreview();
       this.clearListbox(true);
-      this.input.classList.remove(classTypeaheadInputFocused);
+      this.combobox.classList.remove(classTypeaheadComboboxFocused);
       this.input.setAttribute('autocomplete', this.inputInitialAutocompleteSetting);
       this.blurring = false;
     }, 100);
