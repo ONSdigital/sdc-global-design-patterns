@@ -34,13 +34,16 @@ export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
   if (elType === 'checkbox' && inputEl.checked === true) {
     inputEl.checked = false;
     inputEl.parentElement.classList.remove('is-checked');
+
   } else if (elType === 'text' || elType === 'textarea') {
     const charRef = document.querySelector(`#${inputEl.getAttribute(attrCharLimitRef)}`)
     attr = inputEl.getAttribute('data-value')
     inputEl.value = '';
+
     if (charRef) {  
       updateAvailableChars(inputEl, charRef);
     }
+    
   } else if (elType === 'select-one') {
     inputEl.selectedIndex = 0;
     attr = inputEl.getAttribute('data-value')
