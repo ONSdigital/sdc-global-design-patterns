@@ -14,9 +14,8 @@ export default function mutuallyExclusiveInputs() {
     const voiceOverAlertElement = exclusiveWrapperElement.getElementsByClassName(voiceOverAlertClass)[0];
     for (let exclusiveGroupElement of exclusiveGroupElements) {
       const elementType = exclusiveGroupElement.type;
-      let event = elementType === 'checkbox' ? event = 'change' : event = 'keydown';
 
-      exclusiveGroupElement.addEventListener(event, function() {
+      exclusiveGroupElement.addEventListener('input', function() {
         voiceOverAlertElement.innerHTML = '';
         inputToggle(checkboxElement, voiceOverAlertElement, 'checkbox');
       });
@@ -37,18 +36,14 @@ export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
   if (elType === 'checkbox' && inputEl.checked === true) {
     inputEl.checked = false;
     inputEl.parentElement.classList.remove('is-checked');
-  }
-
-  if (elType === 'text' || elType === 'textarea') {
+  } else if (elType === 'text' || elType === 'textarea') {
     const charRef = document.querySelector(`#${inputEl.getAttribute(attrCharLimitRef)}`)
     attr = inputEl.getAttribute('data-value')
     inputEl.value = '';
     if (charRef) {  
       updateAvailableChars(inputEl, charRef);
     }
-  }
-
-  if (elType === 'select-one') {
+  } else if (elType === 'select-one') {
     inputEl.selectedIndex = 0;
     attr = inputEl.getAttribute('data-value')
   }
