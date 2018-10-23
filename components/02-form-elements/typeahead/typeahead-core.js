@@ -136,7 +136,7 @@ export default class Typeahead {
       if (!this.blurring) {
         this.throttledGetSuggestions();
       }
-    }, 10);
+    }, 350);
   }
 
   handleFocus() {
