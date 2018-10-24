@@ -91,7 +91,7 @@ class Address {
 
         // this.xhr.open('GET', lookupURL);
         this.xhr.open('GET', `${lookupURL}?q=${encodeURIComponent(query)}`);
-        this.xhr.setRequestHeader('Content-Type', 'application/json;');
+        this.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         this.xhr.onload = () => {
           const mappedResults = JSON.parse(this.xhr.responseText).addresses
