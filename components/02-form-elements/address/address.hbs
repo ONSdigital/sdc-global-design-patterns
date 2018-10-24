@@ -36,10 +36,10 @@
   <div class="address-input__search">
     <div class="field__item field__item--width-30">
       <div class="address-input__typeahead typeahead js-address-typeahead" data-content="{{json typeahead.content}}">
-        <label class="label venus" for="address-typeahead">Please type in your address below</label>
+        <label class="label venus" for="address-typeahead">Please enter your address</label>
         <div class="typeahead__combobox js-typeahead-combobox" role="combobox" aria-haspopup="listbox" aria-expanded="false">
           <input class="typeahead__preview js-typeahead-preview input input--text input--width-30" readonly="true" aria-hidden="true" tabindex="-1" />
-          <input id="address-typeahead" class="typeahead__input js-typeahead-input input input--text input--width-30" name="address-typeahead" type="text" autocomplete="false" aria-autocomplete="list" aria-controls="{{typeahead.listbox_id}}" aria-describedby="{{typeahead.instructions_id}}" />
+          <input id="address-typeahead" class="typeahead__input js-typeahead-input input input--text input--width-30" name="address-typeahead" type="text" autocomplete="new-address" aria-autocomplete="list" aria-controls="{{typeahead.listbox_id}}" aria-describedby="{{typeahead.instructions_id}}" />
           <div class="u-vh" id="{{typeahead_instructions_id}}">{{typeahead.instructions}}</div>
           <ul class="typeahead__listbox js-typeahead-listbox" role="listbox" id="{{typeahead.listbox_id}}"></ul>
           <div class="u-vh js-typeahead-aria-status" aria-live="polite" role="status"></div>
@@ -48,7 +48,6 @@
     </div>
 
     <div class="field__item">
-      Or
       <button class="btn btn--secondary btn--small js-address-manual-btn" type="button">Manually enter address</button>
     </div>
   </div>

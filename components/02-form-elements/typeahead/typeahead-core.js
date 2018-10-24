@@ -45,7 +45,6 @@ export default class Typeahead {
     // Settings
     this.content = JSON.parse(context.getAttribute('data-content'));
     this.listboxId = this.listbox.getAttribute('id');
-    this.inputInitialAutocompleteSetting = this.input.getAttribute('autocomplete') || 'false';
     this.minChars = minChars || 2;
     this.resultLimit = resultLimit || null;
     this.sanitisedQueryReplaceChars = sanitisedQueryReplaceChars || [];
@@ -143,7 +142,6 @@ export default class Typeahead {
   handleFocus() {
     clearTimeout(this.blurTimeout);
     this.combobox.classList.add(classTypeaheadComboboxFocused);
-    this.input.setAttribute('autocomplete', false);
     this.throttledGetSuggestions();
   }
 
@@ -161,7 +159,6 @@ export default class Typeahead {
       this.clearPreview();
       this.clearListbox(true);
       this.combobox.classList.remove(classTypeaheadComboboxFocused);
-      this.input.setAttribute('autocomplete', this.inputInitialAutocompleteSetting);
       this.blurring = false;
     }, 100);
   }
@@ -394,7 +391,7 @@ export default class Typeahead {
 
       this.onSelect(result).then(() => {
         this.settingResult = false;
-        this.input.setAttribute('autocomplete', 'false');
+        // this.input.setAttribute('autocomplete', 'false');
       });
 
       let ariaAlternativeMessage = '';
