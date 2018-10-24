@@ -1,19 +1,20 @@
 {{!-- Tabs content region --}}
-<section role="region" class="tabs u-mt-l" aria-label="{{tabs-aria-label}}">
+<section role="region" class="tabs u-mt-l u-mb-l">
+  <h2 class="tabs__title neptune">{{tabs-title}}</h2>
 {{!-- Handlbars comment --}}
     <ul role="tablist" aria-label="Tabs" class="tabs__list">
-      {{#each tabs}}<li id="tabListID{{@index}}" class="tab__list-item"><a href="#tabID{{@index}}" class="tab" role="tab" {{#if @first}}aria-selected="true" {{/if}}aria-controls="tabID{{@index}}" data-ga="click" data-ga-category="tabs" data-ga-action="tab navigation" data-ga-label="Show: {{tab}}">{{tab}}</a></li>{{/each}}
+      {{#each tabs}}<li id="tabListID{{@index}}" class="tabs__list-item"><a href="#tabID{{@index}}" class="tab{{#if @first}} tabs__tab--selected{{/if}}" role="tab" {{#if @first}}aria-selected="true" {{/if}}aria-controls="tabID{{@index}}" data-ga="click" data-ga-category="tabs" data-ga-action="tab navigation" data-ga-label="Show: {{tab}}">{{tab}}</a></li>{{/each}}
     </ul>
 {{!-- Tabbed content --}}
 {{#each tabs}}
-  <section role="tabpanel" id="tabID{{@index}}" aria-describedby="tabListID{{@index}}" {{#if @first}}{{else}}hidden="hidden" {{/if}}tabindex="-1" class="tabs__panel">
+  <section role="tabpanel" id="tabID{{@index}}" class="tabs__panel{{#if @first}}{{else}} tabs__panel--hidden{{/if}}">
     {{{tabContent}}}
   </section>
 {{/each}}
 {{!-- End tabs content region--}}
 </section>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 /*
 * REQUIRED:
@@ -234,4 +235,4 @@
   };
 }());
 
-</script>
+</script> -->

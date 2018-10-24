@@ -4,7 +4,7 @@ module.exports = {
   name: 'tabs',
   status: 'wip',
   context: {
-    'tabs-aria-label':'This is the tabs region',
+    'tabs-title':'This is the tabs region',
     'tabs':[
     {
       'tab': 'UKIS',

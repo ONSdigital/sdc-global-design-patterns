@@ -6,10 +6,17 @@
       content: attr(aria-label);
       font-weight: 700;
       font-size: 1.222222rem; // Neptune equivalent scale
-      }
     }
-
   }
+
+}
+
+  .tabs__title {
+    .has-js & {
+      display: none;
+    }
+  }
+
 // Tabs - list
   .tabs__list {
     margin: 0;
@@ -21,21 +28,22 @@
       margin: 0 0 1rem 0;
       padding-left: 0;
     }
+    &-item {
+      list-style: none;
+      display: inline;
+      margin: 0;
+      box-sizing: border-box;
+
+      .no-js & { // No-js display styling as table of contents
+        list-style: none;
+        display: list-item;
+        margin-bottom: 0.3rem;
+      }
+
+    } // /tab__list-item
+
   }
 
-  .tab__list-item {
-    list-style: none;
-    display: inline;
-    margin: 0;
-    box-sizing: border-box;
-
-    .no-js & { // No-js display styling as table of contents
-      list-style: none;
-      display: list-item;
-      margin-bottom: 0.3rem;
-    }
-
-  } // /tab__list-item
 
   .tab {
     .has-js & {
@@ -110,4 +118,8 @@
     }
   }
 
+  &--hidden {
+    /*Hidden tab class*/
+    display: none;
+  }
 } // /tabs__panel
