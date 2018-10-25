@@ -1,32 +1,27 @@
 .table {
+  width: 100%;
+  margin-bottom: 1rem;
 
-}
-caption {
-  text-align: left;
-}
-.table__dense {
-  font-size: 81.25%;
-
-.table--header--cell {
-    padding: 0.5rem 0 0.25rem 1rem;
-    @include nth-element(1, 0);
+  &--dense {
+    font-size: 81.25%;
   }
-}
 
-.table--row {
-  border-bottom: 1px solid $color-grey;
-}
+  .table__caption {
+    text-align: left;
+    font-weight: bold;
+  }
 
-.table--header--cell {
-  padding: 0.5rem 0 0.5rem 1rem;
-  border-bottom: 2px solid $color-very-dark-grey;
-  @include nth-element(1, 0);
-}
-.table--cell__numeric {
-  text-align: right;
-}
-
-.table--cell {
+  .table__header, .table__cell {
     padding: 0.5rem 0 0.5rem 1rem;
+    border-bottom: 2px solid $color-very-dark-grey;
     @include nth-element(1, 0);
+    text-align: left;
+    &--numeric {
+      text-align: right;
+    }
+  }
+
+  .table__cell, .table__header--row {
+    border-bottom: 1px solid $color-grey;
+  }
 }

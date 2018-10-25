@@ -1,0 +1,27 @@
+<table class="table">{{#if caption}}{{!Only display caption if supplied in context}}
+  <caption class="table__caption">{{caption}}</caption>{{/if}}{{!End caption if}}
+  <thead class="table__head">
+    <tr class="table__row">
+        <td class="table__header"></td>
+        <th scope="col" class="table__header">Column A</th>
+        <th scope="col" class="table__header">Column B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table__row">
+      <th scope="row" class="table__header table__header--row">Row 1</td>
+      <td class="table__cell">Cell A1</td>
+      <td class="table__cell">Cell B1</td>
+    </tr>
+    <tr class="table__row">
+      <th scope="row" class="table__header table__header--row">Row 2</td>
+      <td class="table__cell">Cell A2</td>
+      <td class="table__cell">Cell B2</td>
+    </tr>
+    <tr class="table__row">
+      <th scope="row" class="table__header table__header--row">Row 3</td>
+      <td class="table__cell">Cell A3</td>
+      <td class="table__cell">Cell B3</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,42 +1,43 @@
 <table class="table{{table-class}}">{{#if caption}}{{!Only display caption if supplied in context}}
-  <caption class="table--caption">{{caption}}</caption>{{/if}}{{!End caption if}}
-  <thead class="table--head">
-    <th scope="col" class="table--header--cell">Column A</th>
-    <th scope="col" class="table--header--cell">Column B</th>
+  <caption class="table__caption">{{caption}}</caption>{{/if}}{{!End caption if}}
+  <thead class="table__head">
+    <th scope="col" class="table__header">Column A</th>
+    <th scope="col" class="table__header">Column B</th>
+    <th scope="col" class="table__header">Column C</th>
     {{#if datadense}}{{!Add the following columns for the data dense view}}
-    <th scope="col" class="table--header--cell">Column C</th>
-    <th scope="col" class="table--header--cell">Column D</th>
-    <th scope="col" class="table--header--cell">Column E</th>
-    {{/if}}
+    <th scope="col" class="table__header">Column D</th>
+    <th scope="col" class="table__header">Column E</th>
+    {{/if}} 
   </thead>
   <tbody>
-    <tr class="table--row">
-      <td class="table--cell">Cell A1</td>
-      <td class="table--cell">Cell B1</td>
+    <tr class="table__row">
+      <td class="table__cell">Cell A1</td>
+      <td class="table__cell">Cell B1</td>
+      <td class="table__cell">Cell C1</td>
       {{#if datadense}}{{!Add the following columns for the data dense view}}
-      <td class="table--cell">Cell C1</td>
-      <td class="table--cell">Cell D1</td>
-      <td class="table--cell">Cell E1</td>
+      <td class="table__cell">Cell D1</td>
+      <td class="table__cell">Cell E1</td>
       {{/if}}
     </tr>
-    <tr class="table--row">
-      <td class="table--cell">Cell A2</td>
-      <td class="table--cell">Cell B2</td>
+    <tr class="table__row">
+      <td class="table__cell">Cell A2</td>
+      <td class="table__cell">Cell B2</td>
+      <td class="table__cell">Cell C2</td>
       {{#if datadense}}{{!Add the following columns for the data dense view}}
-      <td class="table--cell">Cell C2</td>
-      <td class="table--cell">Cell D2</td>
-      <td class="table--cell">Cell E2</td>
+      <td class="table__cell">Cell D2</td>
+      <td class="table__cell">Cell E2</td>
       {{/if}}
     </tr>
   </tbody>{{#if tfoot}}{{! Only display if tfoot is set to true}}
-  <tfoot class="table--foot">
-    <tr class="table--row">
-      <td class="table--cell pluto">Summary of column - sub-total of column contents?</td>
-      <td class="table--cell pluto">Column summary</td>
+  <tfoot class="table__foot">
+    <tr class="table__row">
+      <td class="table__cell pluto">Column summary</td>
+      <td class="table__cell pluto">Column summary</td>
+      <td class="table__cell pluto">Column summary</td>
       {{#if datadense}}{{!Add the following columns for the data dense view}}
-      <td class="table--cell pluto">Lorem ipsum contentit</td>
-      <td class="table--cell pluto">Lorem ipsum contentit</td>
-      <td class="table--cell pluto">Lorem ipsum contentit</td>
+      <td class="table__cell pluto">Lorem ipsum contentit</td>
+      <td class="table__cell pluto">Lorem ipsum contentit</td>
+      <td class="table__cell pluto">Lorem ipsum contentit</td>
       {{/if}}
     </tr>
   </tfoot>{{/if}}{{! End tfoot if}}
