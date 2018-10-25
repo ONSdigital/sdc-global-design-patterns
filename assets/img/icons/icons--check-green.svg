@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="16px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
     <title>icons--check-green</title>
     <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icons--check-green" fill="#0F8243">
-            <polygon id="Shape" points="8.523501 13.9325092 6.48846436 16 0 9.2907326 2.14228015 7.114288 6.50916174 11.6297749 17.8786797 0 20 2.19794911 8.5257568 13.9348465"></polygon>
-        </g>
+    <g id="icons--check-green" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10.523501,17.9325092 L8.48846436,20 L2,13.2907326 L4.14228015,11.114288 L8.50916174,15.6297749 L19.8786797,4 L22,6.19794911 L10.5257568,17.9348465 L10.523501,17.9325092 Z" id="Shape" fill="#0F8243"></path>
     </g>
 </svg>
