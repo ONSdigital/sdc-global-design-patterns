@@ -1,4 +1,4 @@
-import { compareTwoStrings } from 'string-similarity';
+import { dice } from 'dice-coefficient';
 import { orderBy } from 'lodash';
 
 import domready from '../../../assets/js/domready';
@@ -116,7 +116,7 @@ class Address {
               indexingTime += (performance.now() - indexStart);
 
               const compareStart = performance.now();
-              const querySimilarity = compareTwoStrings(sanitisedText, query);
+              const querySimilarity = dice(sanitisedText, query);
               comparingTime += (performance.now() - compareStart);
 
               return {

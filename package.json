@@ -28,6 +28,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.26.0",
     "chai-spies": "^1.0.0",
+    "dice-coefficient": "^1.0.2",
     "faker": "^3.1.0",
     "global": "^4.3.2",
     "gulp-babel": "^7.0.1",
@@ -50,7 +51,6 @@
     "postcss": "^6.0.22",
     "postcss-pseudoelements": "^5.0.0",
     "request-promise": "^2.0.1",
-    "string-similarity": "^2.0.0",
     "through2": "^2.0.3",
     "whatwg-fetch": "3.0.0"
   },

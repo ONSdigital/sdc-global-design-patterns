@@ -1,5 +1,6 @@
 module.exports = {
   title: 'Address',
+  name: 'address-typeahead',
   status: 'prototype',
   context: {
     typeahead: {

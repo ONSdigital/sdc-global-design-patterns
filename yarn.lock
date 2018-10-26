@@ -3304,6 +3304,13 @@ di@^0.0.1:
   resolved "https://registry.yarnpkg.com/di/-/di-0.0.1.tgz#806649326ceaa7caa3306d75d985ea2748ba913c"
   integrity sha1-gGZJMmzqp8qjMG112YXqJ0i6kTw=
 
+dice-coefficient@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/dice-coefficient/-/dice-coefficient-1.0.2.tgz#985ca8632dd4ccace45887e92c247cfbf1abb8c2"
+  integrity sha1-mFyoYy3UzKzkWIfpLCR8+/GruMI=
+  dependencies:
+    n-gram "^1.0.0"
+
 diff@3.5.0, diff@^3.1.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
@@ -7275,6 +7282,11 @@ mute-stream@0.0.6:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.6.tgz#48962b19e169fd1dfc240b3f1e7317627bbc47db"
   integrity sha1-SJYrGeFp/R38JAs/HnMXYnu8R9s=
 
+n-gram@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/n-gram/-/n-gram-1.1.0.tgz#c07fb7d6d59aa42d10fbf680fc4c46a30766c1ee"
+  integrity sha512-S5dWZFQxmEVf7cfyxK9sVyvB0mmTxgL6z9Ww77q20oG8fidOgkwZqsgj7+4DkZVqxdE/Y+0KLU55yw08ssKqkA==
+
 nan@^2.0.5, nan@^2.3.2, nan@^2.9.2:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
@@ -10177,11 +10189,6 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
-
-string-similarity@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-2.0.0.tgz#c16d8fc7e7c8dce706742c87adc482dbdb7030bb"
-  integrity sha512-62FBZrVXV5cI23bQ9L49Y4d9u9yaH61JhAwLyUFUzQbHDjdihxdfCwIherg+vylR/s4ucCddK8iKSEO7kinffQ==
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
