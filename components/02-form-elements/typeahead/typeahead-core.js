@@ -132,11 +132,10 @@ export default class Typeahead {
   }
 
   handleChange() {
-    setTimeout(() => {
-      if (!this.blurring) {
-        this.throttledGetSuggestions();
-      }
-    }, 350);
+    this.clearPreview();
+    if (!this.blurring) {
+      this.throttledGetSuggestions();
+    }
   }
 
   handleFocus() {
@@ -200,14 +199,16 @@ export default class Typeahead {
       const query = this.input.value;
 
       if (query !== this.query || !this.resultSelected) {
-        this.query = query;
-        this.sanitisedQuery = sanitiseTypeaheadText(query, this.sanitisedQueryReplaceChars, false)
-
         this.unsetResults();
         this.setAriaStatus();
 
+        this.query = query;
+        this.sanitisedQuery = sanitiseTypeaheadText(query, this.sanitisedQueryReplaceChars, false)
+
         if (query.length >= this.minChars) {
+          let sanitiseStart;
           this.suggestionFunction(this.sanitisedQuery).then(results => {
+            sanitiseStart = performance.now();
             this.foundResults = results.length;
 
             if (this.resultLimit) {
@@ -226,8 +227,9 @@ export default class Typeahead {
               }
             });
 
+            console.log(`Sanitise took: ${performance.now() - sanitiseStart}ms`);
+
             this.numberOfResults = Math.max(this.results.length, 0);
-            this.clearListbox(true);
             this.handleResults(this.results);
           });
         } else {
@@ -246,7 +248,6 @@ export default class Typeahead {
     this.resultSelected = false;
 
     this.onUnsetResult();
-    this.clearListbox();
     this.clearPreview();
   }
 
@@ -264,8 +265,12 @@ export default class Typeahead {
   handleResults() {
     if (!this.deleting || (this.numberOfResults && this.deleting)) {
       if (this.numberOfResults.length === 1 && this.results[0].sanitisedText === this.sanitisedQuery) {
+        this.clearListbox(true);
         this.selectResult(0);
       } else {
+        const buildResultsStart = performance.now();
+
+        this.listbox.innerHTML = '';
         this.resultOptions = this.results.map((result, index) => {
           let innerHTML = emboldenMatch(result.text, this.query);
           let ariaLabel = result.text;
@@ -309,6 +314,8 @@ export default class Typeahead {
         this.setHighlightedResult(null);
         this.combobox.setAttribute('aria-expanded', true);
         this.context.classList.add(classTypeaheadHasResults);
+
+        console.log(`Rendering results took: ${performance.now() - buildResultsStart}ms`);
       }
     }
 
@@ -317,6 +324,8 @@ export default class Typeahead {
       this.combobox.setAttribute('aria-expanded', true);
       this.context.classList.add(classTypeaheadHasResults);
     }
+
+    console.log('===================================================');
   }
 
   setHighlightedResult(index) {

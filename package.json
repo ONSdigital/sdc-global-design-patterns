@@ -19,6 +19,7 @@
     "@frctl/mandelbrot": "^1.0.0",
     "@frctl/nunjucks": "^1.0.0",
     "a11y-dialog": "^4.0.1",
+    "abortcontroller-polyfill": "^1.1.9",
     "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -51,7 +52,7 @@
     "request-promise": "^2.0.1",
     "string-similarity": "^2.0.0",
     "through2": "^2.0.3",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",

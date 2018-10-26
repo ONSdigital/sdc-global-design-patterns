@@ -3,6 +3,7 @@ import { orderBy } from 'lodash';
 
 import domready from '../../../assets/js/domready';
 import triggerChange from '../../../assets/js/trigger-change-event';
+import { Fetch } from '../../../assets/js/fetch';
 import Typeahead from '../typeahead/typeahead-core';
 import { sanitiseTypeaheadText } from '../typeahead/typeahead-helpers';
 
@@ -35,7 +36,7 @@ class Address {
     // State
     this.manualMode = true;
     this.currentQuery = null;
-    this.xhr = null;
+    this.fetch = null;
     this.currentResults = [];
 
     // Initialise typeahead
@@ -45,7 +46,8 @@ class Address {
       onSelect: this.onAddressSelect.bind(this),
       onUnsetResult: this.onUnsetAddress.bind(this),
       sanitisedQueryReplaceChars: addressReplaceChars,
-      resultLimit: 10
+      resultLimit: 10,
+      minChars: 5
     });
 
     // Bind Event Listeners
@@ -79,46 +81,66 @@ class Address {
       if (this.currentQuery === query && this.currentQuery.length) {
         resolve(this.currentResults);
       } else {
+        const requestStart = performance.now();
         this.currentQuery = query;
         this.currentResults = [];
 
-        if (this.xhr && this.xhr.status !== 'DONE') {
-          this.xhr.abort();
+        if (this.fetch && this.fetch.status !== 'DONE') {
+          this.fetch.abort();
         }
 
-        this.xhr = new XMLHttpRequest();
         this.reject = reject;
 
-        // this.xhr.open('GET', lookupURL);
-        this.xhr.open('GET', `${lookupURL}?q=${encodeURIComponent(query)}`);
-        this.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        this.fetch = new Fetch(`${lookupURL}?q=${encodeURIComponent(query)}`, { cache: 'force-cache' });
 
-        this.xhr.onload = () => {
-          const mappedResults = JSON.parse(this.xhr.responseText).addresses
-            .map((address, index) => {
+        this.fetch.send().then(response => {
+          const jsonStart = performance.now();
+
+          console.log(`Request took: ${jsonStart - requestStart}ms`);
+          response.json().then(data => {
+            const mapStart = performance.now();
+            console.log(`JSON parse took: ${mapStart - jsonStart}ms`);
+
+            let indexingTime = 0;
+            let comparingTime = 0;
+
+            const mappedResults = data.addresses.map((address, index) => {
               const sanitisedText = sanitiseTypeaheadText(address, addressReplaceChars);
+              const indexStart = performance.now();
               let queryIndex = sanitisedText.indexOf(query);
 
               if (queryIndex < 0) {
                 queryIndex = 9999;
               }
 
+              indexingTime += (performance.now() - indexStart);
+
+              const compareStart = performance.now();
+              const querySimilarity = compareTwoStrings(sanitisedText, query);
+              comparingTime += (performance.now() - compareStart);
+
               return {
                 value: address,
                 text: address,
                 sanitisedText,
-                querySimilarity: compareTwoStrings(sanitisedText, query),
+                querySimilarity,
                 queryIndex
               }
             });
 
-          this.currentResults = orderBy(mappedResults, ['queryIndex', 'querySimilarity'], ['asc', 'desc']);
+            const sortStart = performance.now();
+            console.log(`Getting query indexes took: ${indexingTime}ms`);
+            console.log(`Getting dice coefficient string comparisons took ${comparingTime}ms`);
+            console.log(`Map took: ${sortStart - mapStart}ms (including query indexes and dice coefficient string comparison)`);
 
-          resolve(this.currentResults);
-        };
+            this.currentResults = orderBy(mappedResults, ['queryIndex', 'querySimilarity'], ['asc', 'desc']);
 
-        // this.xhr.send(JSON.stringify({ q: encodeURIComponent(query) }));
-        this.xhr.send();
+            const finish = performance.now();
+            console.log(`Sort took: ${finish - sortStart}ms`);
+
+            resolve(this.currentResults);
+          }).catch(console.log);
+        }).catch(console.log);
       }
     });
   }
