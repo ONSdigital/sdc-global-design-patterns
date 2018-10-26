@@ -78,7 +78,7 @@ class Address {
   suggestAddresses(query) {
     query = query.trim();
     return new Promise((resolve, reject) => {
-      if (this.currentQuery === query && this.currentQuery.length) {
+      if (this.currentQuery === query && this.currentQuery.length && this.currentResults.length) {
         resolve(this.currentResults);
       } else {
         this.currentQuery = query;
@@ -94,7 +94,7 @@ class Address {
 
         this.fetch.send().then(response => {
           response.json().then(data => {
-            const mappedResults = data.addresses.map((address, index) => {
+            const mappedResults = data.addresses.map(address => {
               const sanitisedText = sanitiseTypeaheadText(address, addressReplaceChars);
               let queryIndex = sanitisedText.indexOf(query);
 
@@ -123,7 +123,7 @@ class Address {
   }
 
   onAddressSelect(result) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       const addressParts = result.value.split(', ');
 
       this.clearManualInputs(false);
