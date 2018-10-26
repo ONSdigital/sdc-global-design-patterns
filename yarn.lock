@@ -3305,9 +3305,9 @@ di@^0.0.1:
   integrity sha1-gGZJMmzqp8qjMG112YXqJ0i6kTw=
 
 dice-coefficient@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/dice-coefficient/-/dice-coefficient-1.0.2.tgz#985ca8632dd4ccace45887e92c247cfbf1abb8c2"
-  integrity sha1-mFyoYy3UzKzkWIfpLCR8+/GruMI=
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/dice-coefficient/-/dice-coefficient-1.0.3.tgz#d49a2742c554f789696111a0b9d398fc705c14fc"
+  integrity sha512-Ub1z+1ZP69yc9fRQEu1y7WE6QglUVPDaIbI0NxgpcE+rxuyJYx115LyN8gS1DO0su3QO1nql7DLlq6jAahcDbQ==
   dependencies:
     n-gram "^1.0.0"
 

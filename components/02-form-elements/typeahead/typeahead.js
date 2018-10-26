@@ -1,10 +1,15 @@
+import { orderBy } from 'lodash';
 import domready from '../../../assets/js/domready';
 import triggerChangeEvent from '../../../assets/js/trigger-change-event';
 import Typeahead from './typeahead-core';
 import { sanitiseTypeaheadText } from './typeahead-helpers';
+const dice = require('dice-coefficient');
 
-export const classTypeahead = 'js-typeahead';
-export const classTypeaheadSelect = 'js-typeahead-select';
+const classTypeahead = 'js-typeahead';
+const classTypeaheadSelect = 'js-typeahead-select';
+
+const fuzzyMinDistance = 0.65;
+const noExactMatchIndex = 99999;
 
 class SelectTypeahead {
   constructor(context) {
@@ -29,6 +34,11 @@ class SelectTypeahead {
       })
       .filter(option => option.value);
 
+    if (this.context.getAttribute('data-prevent-fuzzy') !== 'true') {
+      this.fuzzyMatch = true;
+      this.longestOption = this.options.map(option => option.text.length).sort((a, b) => b - a)[0];
+    }
+
     // Initialise typeahead
     this.typeahead = new Typeahead({
       context,
@@ -41,19 +51,100 @@ class SelectTypeahead {
 
   getSuggestions(query) {
     return new Promise(resolve => {
-      let results = this.options
-      .filter(option => option.sanitisedText.includes(query))
-      .sort((a, b) => a.sanitisedText.indexOf(query) > b.sanitisedText.indexOf(query) ? 1 : -1);
+      let results;
+      let resultsFromAlternatives;
 
-      const resultsFromAlternatives = this.options
-        .filter(option => !!option.sanitisedAlternatives.find(alternative => alternative.includes(query)))
-        .sort((a, b) => {
-          const getIndex = (item) => item.sanitisedAlternatives.find(alternative => alternative.includes(query)).indexOf(query);
-          getIndex(a) > getIndex(b) ? 1 : -1
+      const searchStart = performance.now();
+
+      // Filter results
+      if (this.fuzzyMatch) {
+        results = this.options.filter(option => {
+          option.dice = dice(option.sanitisedText, query);
+          return option.dice >= fuzzyMinDistance || option.sanitisedText.includes(query);
         });
 
+        resultsFromAlternatives = this.options.filter(option => {
+          if (results.includes(option)) {
+            return false;
+          }
+
+          let score;
+          const match = option.sanitisedAlternatives.find(alternative => {
+            score = dice(alternative, query);
+            return score >= fuzzyMinDistance;
+          }) || option.sanitisedAlternatives.find(alternative => alternative.includes(query));
+
+          if (match) {
+            option.dice = score;
+            return true;
+          }
+
+          return false;
+        });
+      } else {
+        results = this.options
+          .filter(option => option.sanitisedText.includes(query));
+
+        resultsFromAlternatives = this.options.filter(option =>
+          !results.includes(option) &&
+          !!option.sanitisedAlternatives.find(alternative => alternative.includes(query))
+        );
+      }
+
+      const indexStart = performance.now();
+      console.log(`Filtering took ${indexStart - searchStart}ms`);
+
+      // Assign query indexes
+      results.forEach(result => {
+        const queryIndex = result.sanitisedText.indexOf(query);
+
+        if (queryIndex < 0) {
+          result.queryIndex = noExactMatchIndex;
+        } else {
+          result.queryIndex = queryIndex;
+        }
+      });
+
+      resultsFromAlternatives.forEach(result => {
+        const matchedAlternative = result.sanitisedAlternatives.find(alternative => alternative.includes(query));
+
+        if (matchedAlternative) {
+          const queryIndex = matchedAlternative.indexOf(query);
+
+          if (queryIndex < 0) {
+            result.queryIndex = noExactMatchIndex;
+          } else {
+            result.queryIndex = queryIndex;
+          }
+        } else {
+          result.queryIndex = noExactMatchIndex;
+        }
+      });
+
+      const sortStart = performance.now();
+
+      console.log(`Indexes took ${sortStart - indexStart}ms`);
+
+      // Sort arrays
+      if (this.fuzzyMatch) {
+        results = orderBy(results, ['queryIndex', 'dice'], ['asc', 'desc']);
+        resultsFromAlternatives = orderBy(resultsFromAlternatives, ['queryIndex', 'dice'], ['asc', 'desc']);
+      } else {
+        results = orderBy(results, ['queryIndex'], ['asc']);
+        resultsFromAlternatives = orderBy(resultsFromAlternatives, ['queryIndex'], ['asc']);
+      }
+
+      const uniqueStart = performance.now();
+      console.log(`Sort took ${uniqueStart - sortStart}ms`);
+      results.forEach(result => { delete result.dice; delete result.queryIndex });
       // Combine arrays and remove duplicates
       results = Array.from(new Set([...results, ...resultsFromAlternatives]));
+
+      const finish = performance.now();
+
+      console.log(`Unique took ${finish - uniqueStart}ms`);
+
+      console.log(`Search took ${finish - searchStart}ms`);
 
       resolve(results);
     });

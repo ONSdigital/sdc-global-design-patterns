@@ -209,6 +209,6 @@ module.exports = {
           more_results: 'Continue typing to refine results'
         }
       }
-    },
+    }
   ]
 }

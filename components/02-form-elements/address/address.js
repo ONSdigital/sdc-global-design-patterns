@@ -1,4 +1,3 @@
-import { dice } from 'dice-coefficient';
 import { orderBy } from 'lodash';
 
 import domready from '../../../assets/js/domready';
@@ -6,6 +5,7 @@ import triggerChange from '../../../assets/js/trigger-change-event';
 import { Fetch } from '../../../assets/js/fetch';
 import Typeahead from '../typeahead/typeahead-core';
 import { sanitiseTypeaheadText } from '../typeahead/typeahead-helpers';
+const dice = require('dice-coefficient');
 
 const classAddress = 'js-address';
 const classLine1 = 'js-address-line-1';

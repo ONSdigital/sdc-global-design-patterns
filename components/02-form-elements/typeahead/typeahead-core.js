@@ -185,7 +185,7 @@ export default class Typeahead {
       index = this.highlightedResultIndex + direction;
     }
 
-    if (index <= this.numberOfResults) {
+    if (index < this.numberOfResults) {
       if (index < 0) {
         index = null;
       }
@@ -203,7 +203,7 @@ export default class Typeahead {
         this.setAriaStatus();
 
         this.query = query;
-        this.sanitisedQuery = sanitiseTypeaheadText(query, this.sanitisedQueryReplaceChars, false)
+        this.sanitisedQuery = sanitiseTypeaheadText(query, this.sanitisedQueryReplaceChars);
 
         if (query.length >= this.minChars) {
           let sanitiseStart;

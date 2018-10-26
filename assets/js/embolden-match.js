@@ -1,5 +1,5 @@
 export function emboldenMatch(string, query, tag = 'em') {
-  query = query.toLowerCase();
+  query = query.toLowerCase().trim();
 
   if (string.toLowerCase().includes(query)) {
     const queryLength = query.length;
