@@ -1,13 +1,15 @@
 
 <section role="region" class="tabs u-mt-l" aria-label="This is an area of tabbed content">
 
-    <ul role="tablist" aria-label="Tabs" class="tabs__list">
-      <li id="tab1Item" class="tab__list-item"><a href="#tabId1" class="tab" role="tab" aria-selected="true" aria-controls="tabId1">First tab label</a></li><li id="tab2Item" class="tab__list-item"><a href="#tabId2" class="tab" role="tab" aria-selected="false" aria-controls="tabId2">Second tab</a></li><li id="tab3Item" class="tab__list-item"><a href="#tabId3" class="tab" role="tab" aria-selected="false" aria-controls="tabId3">Tab 3</a></li><li id="tab4Item" class="tab__list-item"><a href="#tabId4" class="tab" role="tab" aria-selected="false" aria-controls="tabId4">Fourth</a></li>
+    <ul class="tabs__list">
+      <li id="tab1Item" class="tab__list-item"><a href="#tabId1" class="tab">First tab label</a></li>
+      <li id="tab2Item" class="tab__list-item"><a href="#tabId2" class="tab">Second tab</a></li>
+      <li id="tab3Item" class="tab__list-item"><a href="#tabId3" class="tab">Tab 3</a></li>
+      <li id="tab4Item" class="tab__list-item"><a href="#tabId4" class="tab">Fourth</a></li>
     </ul>
 
-  <section role="tabpanel" id="tabId1" aria-describedby="tab1Item" tabindex="-1" class="tabs__panel">
+  <section id="tabId1" class="tabs__panel">
     <h1 class="saturn">Tab one heading</h1>
-      <p>tabindex -1 or 0?</p>
       <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <h2 class="venus">Internal heading</h2>
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -15,7 +17,7 @@
       {{> @paragraph}}
   </section>
 
-  <section role="tabpanel" id="tabId2" aria-describedby="tab2Item" hidden="hidden" tabindex="-1" class="tabs__panel">
+  <section id="tabId2" class="tabs__panel">
     <h1 class="saturn">Second tab content heading</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, <a href="#">sed do eiusmod</a> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
@@ -23,14 +25,14 @@
       {{> @paragraph}}
   </section>
 
-  <section role="tabpanel" id="tabId3" aria-describedby="tab3Item" hidden="hidden" tabindex="-1" class="tabs__panel">
+  <section id="tabId3" class="tabs__panel">
     <h1 class="saturn">Third tab content heading</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
       <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
   </section>
 
-  <section role="tabpanel" id="tabId4" aria-describedby="tab4Item" hidden="hidden" tabindex="-1" class="tabs__panel">
+  <section id="tabId4" class="tabs__panel">
     <h1 class="saturn">Fourth tab's content</h1>
       {{> @feedback}}
       <p class="u-mt-m">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -39,257 +41,3 @@
   </section>
 
 </section>
-
-<script type="text/javascript">
-
-/*
-* REQUIRED:
-    * On load - swap to the target tab if URL #tabId is supplied
-    * Check if tabs exist before any listeners
-*/
-
-/*
-*   This content is licensed according to the W3C Software License at
-*   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-*/
-(function () {
-  var tablist = document.querySelectorAll('[role="tablist"]')[0];
-  var tabs;
-  var panels;
-
-  generateArrays();
-
-  function generateArrays () {
-    tabs = document.querySelectorAll('[role="tab"]');
-    panels = document.querySelectorAll('[role="tabpanel"]');
-  };
-
-  // For easy reference
-  var keys = {
-    end: 35,
-    home: 36,
-    left: 37,
-    up: 38,
-    right: 39,
-    down: 40,
-    delete: 46,
-    enter: 13,
-    space: 32
-  };
-
-  // Add or substract depending on key pressed
-  var direction = {
-    37: -1,
-    38: -1,
-    39: 1,
-    40: 1
-  };
-
-  // Bind listeners
-  for (i = 0; i < tabs.length; ++i) {
-    addListeners(i);
-  };
-
-  function addListeners (index) {
-    tabs[index].addEventListener('click', clickEventListener);
-    tabs[index].addEventListener('keydown', keydownEventListener);
-    tabs[index].addEventListener('keyup', keyupEventListener);
-
-    // Build an array with all tabs (<button>s) in it
-    tabs[index].index = index;
-  };
-
-  // When a tab is clicked, activateTab is fired to activate it
-  function clickEventListener (event) {
-    var tab = event.target;
-    activateTab(tab, false);
-  };
-
-  // Handle keydown on tabs
-  function keydownEventListener (event) {
-    var key = event.keyCode;
-
-    switch (key) {
-      case keys.end:
-        event.preventDefault();
-        // Activate last tab
-        focusLastTab();
-        break;
-      case keys.home:
-        event.preventDefault();
-        // Activate first tab
-        focusFirstTab();
-        break;
-
-      // Up and down are in keydown
-      // because we need to prevent page scroll >:)
-      case keys.up:
-      case keys.down:
-        determineOrientation(event);
-        break;
-    };
-  };
-
-  // Handle keyup on tabs
-  function keyupEventListener (event) {
-    var key = event.keyCode;
-
-    switch (key) {
-      case keys.left:
-      case keys.right:
-        determineOrientation(event);
-        break;
-      case keys.delete:
-        determineDeletable(event);
-        break;
-      case keys.enter:
-      case keys.space:
-        activateTab(event.target);
-        break;
-    };
-  };
-
-  // When a tablist’s aria-orientation is set to vertical,
-  // only up and down arrow should function.
-  // In all other cases only left and right arrow function.
-  function determineOrientation (event) {
-    var key = event.keyCode;
-    var vertical = tablist.getAttribute('aria-orientation') == 'vertical';
-    var proceed = false;
-
-    if (vertical) {
-      if (key === keys.up || key === keys.down) {
-        event.preventDefault();
-        proceed = true;
-      };
-    }
-    else {
-      if (key === keys.left || key === keys.right) {
-        proceed = true;
-      };
-    };
-
-    if (proceed) {
-      switchTabOnArrowPress(event);
-    };
-  };
-
-  // Either focus the next, previous, first, or last tab
-  // depening on key pressed
-  function switchTabOnArrowPress (event) {
-    var pressed = event.keyCode;
-
-    if (direction[pressed]) {
-      var target = event.target;
-      if (target.index !== undefined) {
-        if (tabs[target.index + direction[pressed]]) {
-          tabs[target.index + direction[pressed]].focus();
-        }
-        else if (pressed === keys.left || pressed === keys.up) {
-          focusLastTab();
-        }
-        else if (pressed === keys.right || pressed == keys.down) {
-          focusFirstTab();
-        };
-      };
-    };
-  };
-
-  // Activates any given tab panel
-  function activateTab (tab, setFocus) {
-    setFocus = setFocus || true;
-    // Deactivate all other tabs
-    deactivateTabs();
-
-    // Remove tabindex attribute
-    tab.removeAttribute('tabindex');
-
-    // Set the tab as selected
-    tab.setAttribute('aria-selected', 'true');
-
-    // Get the value of aria-controls (which is an ID)
-    var controls = tab.getAttribute('aria-controls');
-
-    // Remove hidden attribute from tab panel to make it visible
-    document.getElementById(controls).removeAttribute('hidden');
-
-    // Set focus when required
-    if (setFocus) {
-      tab.focus();
-    };
-  };
-
-  // Deactivate all tabs and tab panels
-  function deactivateTabs () {
-    for (t = 0; t < tabs.length; t++) {
-      tabs[t].setAttribute('tabindex', '-1');
-      tabs[t].setAttribute('aria-selected', 'false');
-    };
-
-    for (p = 0; p < panels.length; p++) {
-      panels[p].setAttribute('hidden', 'hidden');
-    };
-  };
-
-  // Make a guess
-  function focusFirstTab () {
-    tabs[0].focus();
-  };
-
-  // Make a guess
-  function focusLastTab () {
-    tabs[tabs.length - 1].focus();
-  };
-
-  // Detect if a tab is deletable
-  function determineDeletable (event) {
-    target = event.target;
-
-    if (target.getAttribute('data-deletable') !== null) {
-      // Delete target tab
-      deleteTab(event, target);
-
-      // Update arrays related to tabs widget
-      generateArrays();
-
-      // Activate the closest tab to the one that was just deleted
-      if (target.index - 1 < 0) {
-        activateTab(tabs[0]);
-      }
-      else {
-        activateTab(tabs[target.index - 1]);
-      };
-    };
-  };
-
-  // Deletes a tab and its panel
-  function deleteTab (event) {
-    var target = event.target;
-    var panel = document.getElementById(target.getAttribute('aria-controls'));
-
-    target.parentElement.removeChild(target);
-    panel.parentElement.removeChild(panel);
-  };
-
-  // Determine whether there should be a delay
-  // when user navigates with the arrow keys
-  function determineDelay () {
-    var hasDelay = tablist.hasAttribute('data-delay');
-    var delay = 0;
-
-    if (hasDelay) {
-      var delayValue = tablist.getAttribute('data-delay');
-      if (delayValue) {
-        delay = delayValue;
-      }
-      else {
-        // If no value is specified, default to 300ms
-        delay = 300;
-      };
-    };
-
-    return delay;
-  };
-}());
-
-</script>

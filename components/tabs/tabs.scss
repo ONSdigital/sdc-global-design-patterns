@@ -6,39 +6,39 @@
       content: attr(aria-label);
       font-weight: 700;
       font-size: 1.222222rem; // Neptune equivalent scale
-      }
     }
-
   }
+}
+
 // Tabs - list
-  .tabs__list {
-    margin: 0;
-    overflow: visible;
-    border-bottom: 1px solid $color-borders;
+.tabs__list {
+  margin: 0;
+  overflow: visible;
+  border-bottom: 1px solid $color-borders;
 
-    .no-js & {
-      border-bottom: none;
-      margin: 0 0 1rem 0;
-      padding-left: 0;
-    }
+  .no-js &, &--list {
+    border-bottom: none;
+    margin: 0 0 1rem 0;
+    padding-left: 0;
+  }
+}
+
+.tab__list-item {
+  list-style: none;
+  display: inline;
+  margin: 0;
+  box-sizing: border-box;
+
+  .no-js &, &--list { // No-js & mobile display styling as table of contents
+    list-style: none;
+    display: list-item;
+    margin-bottom: 0.3rem;
   }
 
-  .tab__list-item {
-    list-style: none;
-    display: inline;
-    margin: 0;
-    box-sizing: border-box;
+} 
 
-    .no-js & { // No-js display styling as table of contents
-      list-style: none;
-      display: list-item;
-      margin-bottom: 0.3rem;
-    }
-
-  } // /tab__list-item
-
-  .tab {
-    .has-js & {
+.tab:not(.tab--list) {
+  .has-js & {
     position: relative;
     margin: 0 0.5rem 0 0;
     padding: 0.5rem 1rem;
@@ -76,36 +76,20 @@
         bottom: -3px;
         right: 0;
         left: 0;
-        height: .35rem;
+        height: .35rem; 
         background: $color-white;
         box-shadow: none;
         content: '';
       }
-
     }
   }
-
-} // /tab
+}
 
 // Tabs - Panels
-  .tabs__panel {
-    margin-bottom: 1rem;
-
-    .has-js & {
-    position: relative;
-    z-index: 2;
-    padding: 1rem 0;
+.tabs__panel {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  &--hidden {
+    display: none;
   }
-
-  &:focus {
-    outline: 2px solid $color-focus-outline;
-    outline-offset: 0;
-  }
-
-  .no-js & {
-    &[hidden] {
-      display: block !important; // Enforce display of tab panels when no-js
-    }
-  }
-
-} // /tabs__panel
+}
