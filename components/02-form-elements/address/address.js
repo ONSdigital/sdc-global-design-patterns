@@ -81,7 +81,6 @@ class Address {
       if (this.currentQuery === query && this.currentQuery.length) {
         resolve(this.currentResults);
       } else {
-        const requestStart = performance.now();
         this.currentQuery = query;
         this.currentResults = [];
 
@@ -94,30 +93,16 @@ class Address {
         this.fetch = new Fetch(`${lookupURL}?q=${encodeURIComponent(query)}`, { cache: 'force-cache' });
 
         this.fetch.send().then(response => {
-          const jsonStart = performance.now();
-
-          console.log(`Request took: ${jsonStart - requestStart}ms`);
           response.json().then(data => {
-            const mapStart = performance.now();
-            console.log(`JSON parse took: ${mapStart - jsonStart}ms`);
-
-            let indexingTime = 0;
-            let comparingTime = 0;
-
             const mappedResults = data.addresses.map((address, index) => {
               const sanitisedText = sanitiseTypeaheadText(address, addressReplaceChars);
-              const indexStart = performance.now();
               let queryIndex = sanitisedText.indexOf(query);
 
               if (queryIndex < 0) {
                 queryIndex = 9999;
               }
 
-              indexingTime += (performance.now() - indexStart);
-
-              const compareStart = performance.now();
               const querySimilarity = dice(sanitisedText, query);
-              comparingTime += (performance.now() - compareStart);
 
               return {
                 value: address,
@@ -128,15 +113,7 @@ class Address {
               }
             });
 
-            const sortStart = performance.now();
-            console.log(`Getting query indexes took: ${indexingTime}ms`);
-            console.log(`Getting dice coefficient string comparisons took ${comparingTime}ms`);
-            console.log(`Map took: ${sortStart - mapStart}ms (including query indexes and dice coefficient string comparison)`);
-
             this.currentResults = orderBy(mappedResults, ['queryIndex', 'querySimilarity'], ['asc', 'desc']);
-
-            const finish = performance.now();
-            console.log(`Sort took: ${finish - sortStart}ms`);
 
             resolve(this.currentResults);
           }).catch(console.log);

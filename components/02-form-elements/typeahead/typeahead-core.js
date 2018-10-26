@@ -206,9 +206,7 @@ export default class Typeahead {
         this.sanitisedQuery = sanitiseTypeaheadText(query, this.sanitisedQueryReplaceChars);
 
         if (query.length >= this.minChars) {
-          let sanitiseStart;
           this.suggestionFunction(this.sanitisedQuery).then(results => {
-            sanitiseStart = performance.now();
             this.foundResults = results.length;
 
             if (this.resultLimit) {
@@ -226,8 +224,6 @@ export default class Typeahead {
                 result.sanitisedAlternatives = result.alternatives.map(alternative => sanitiseTypeaheadText(alternative, this.sanitisedQueryReplaceChars));
               }
             });
-
-            console.log(`Sanitise took: ${performance.now() - sanitiseStart}ms`);
 
             this.numberOfResults = Math.max(this.results.length, 0);
             this.handleResults(this.results);
@@ -268,8 +264,6 @@ export default class Typeahead {
         this.clearListbox(true);
         this.selectResult(0);
       } else {
-        const buildResultsStart = performance.now();
-
         this.listbox.innerHTML = '';
         this.resultOptions = this.results.map((result, index) => {
           let innerHTML = emboldenMatch(result.text, this.query);
@@ -314,8 +308,6 @@ export default class Typeahead {
         this.setHighlightedResult(null);
         this.combobox.setAttribute('aria-expanded', true);
         this.context.classList.add(classTypeaheadHasResults);
-
-        console.log(`Rendering results took: ${performance.now() - buildResultsStart}ms`);
       }
     }
 
@@ -324,8 +316,6 @@ export default class Typeahead {
       this.combobox.setAttribute('aria-expanded', true);
       this.context.classList.add(classTypeaheadHasResults);
     }
-
-    console.log('===================================================');
   }
 
   setHighlightedResult(index) {

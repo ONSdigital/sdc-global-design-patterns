@@ -54,8 +54,6 @@ class SelectTypeahead {
       let results;
       let resultsFromAlternatives;
 
-      const searchStart = performance.now();
-
       // Filter results
       if (this.fuzzyMatch) {
         results = this.options.filter(option => {
@@ -91,9 +89,6 @@ class SelectTypeahead {
         );
       }
 
-      const indexStart = performance.now();
-      console.log(`Filtering took ${indexStart - searchStart}ms`);
-
       // Assign query indexes
       results.forEach(result => {
         const queryIndex = result.sanitisedText.indexOf(query);
@@ -121,10 +116,6 @@ class SelectTypeahead {
         }
       });
 
-      const sortStart = performance.now();
-
-      console.log(`Indexes took ${sortStart - indexStart}ms`);
-
       // Sort arrays
       if (this.fuzzyMatch) {
         results = orderBy(results, ['queryIndex', 'dice'], ['asc', 'desc']);
@@ -134,17 +125,9 @@ class SelectTypeahead {
         resultsFromAlternatives = orderBy(resultsFromAlternatives, ['queryIndex'], ['asc']);
       }
 
-      const uniqueStart = performance.now();
-      console.log(`Sort took ${uniqueStart - sortStart}ms`);
       results.forEach(result => { delete result.dice; delete result.queryIndex });
       // Combine arrays and remove duplicates
       results = Array.from(new Set([...results, ...resultsFromAlternatives]));
-
-      const finish = performance.now();
-
-      console.log(`Unique took ${finish - uniqueStart}ms`);
-
-      console.log(`Search took ${finish - searchStart}ms`);
 
       resolve(results);
     });
