@@ -1,4 +1,7 @@
-// Tabs
+// Tabs component JS
+
+// The tab js is based on the GDS tabs component(https://design-system.service.gov.uk/components/tabs/) 
+// https://github.com/alphagov/govuk-frontend/blob/master/src/components/tabs/tabs.js
 
 import {forEach} from 'lodash'
 import domready from '../../assets/js/domready';
@@ -31,8 +34,12 @@ class Tabs {
         }
     }
 
+    // Set up checks for responsive functionality
+    // The tabs will display as tabs for >40rem viewports
+    // Tabs will display as a TOC list and show full content for <40rem viewports 
+    // Aria tags are added only for >40rem viewports
     setupViewportChecks() {
-        this.viewport = window.matchMedia('(min-width: 40.0625em)')
+        this.viewport = window.matchMedia('(min-width: 40rem)')
         this.viewport.addListener(this.checkViewport.bind(this))
         this.checkViewport()
     }
@@ -107,6 +114,7 @@ class Tabs {
         window.removeEventListener('hashchange', component.boundOnHashChange, true)
     }
 
+    // Handle haschange so that the browser can cycle through the tab history
     onHashChange() {
         const hash = window.location.hash
         const tabWithHash = this.getTab(hash)
@@ -140,6 +148,7 @@ class Tabs {
         return this.component.querySelector('.tab[href="' + hash + '"]')
     }
 
+    // Set aria tags
     setAttributes(tab) {
         const panelId = this.getHref(tab).slice(1)
         tab.setAttribute('id', 'tab_' + panelId)
@@ -153,6 +162,7 @@ class Tabs {
         panel.classList.add(this.jsHiddenClass)
     }
 
+    // Remove aria tags for TOC view
     unsetAttributes(tab) {
         tab.removeAttribute('id')
         tab.removeAttribute('role')
@@ -187,44 +197,31 @@ class Tabs {
         switch (e.keyCode) {
             case this.keys.left:
             case this.keys.up:
-                this.activatePreviousTab()
+                this.focusPreviousTab()
                 e.preventDefault()
             break
             case this.keys.right:
             case this.keys.down:
-                this.activateNextTab()
+                this.focusNextTab()
                 e.preventDefault()
             break
         }
     }
 
-    activateNextTab() {
-        const currentTab = this.getCurrentTab()
-        const nextTabListItem = currentTab.parentNode.nextElementSibling
-        let nextTab = null
+    focusNextTab() {
+        const focusedTab = this.getFocusedTab()
+        const nextTabListItem = focusedTab.parentNode.nextElementSibling
         if (nextTabListItem) {
-            nextTab = nextTabListItem.firstElementChild
-        }
-        if (nextTab) {
-            this.hideTab(currentTab)
-            this.showTab(nextTab)
-            nextTab.focus()
-            this.createHash(nextTab)
+            nextTabListItem.firstElementChild.focus()
         }
     }
 
-    activatePreviousTab() {
-        const currentTab = this.getCurrentTab()
-        const previousTabListItem = currentTab.parentNode.previousElementSibling
-        let previousTab = null
+    focusPreviousTab() {
+        const focusedTab = this.getFocusedTab()
+        const previousTabListItem = focusedTab.parentNode.previousElementSibling
         if (previousTabListItem) {
-            previousTab = previousTabListItem.firstElementChild
-        }
-        if (previousTab) {
-            this.hideTab(currentTab)
-            this.showTab(previousTab)
-            previousTab.focus()
-            this.createHash(previousTab)
+            previousTabListItem.firstElementChild.focus()
+
         }
     }
 
@@ -253,6 +250,10 @@ class Tabs {
         tab.setAttribute('aria-selected', 'true')
         tab.classList.add('tab--selected')
         tab.setAttribute('tabindex', '0')
+    }
+
+    getFocusedTab() {
+        return document.activeElement
     }
 
     getCurrentTab() {
