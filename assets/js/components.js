@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import './focus-styles';
 import './dialog';
 import './submitter';
-//import './form-submitter.js';
+// import './form-submitter.js';
 import '../../components/02-form-elements/textarea/character-limit.js';
 import '../../components/02-form-elements/input/input--password';
 //import '../../components/timeout/timeout.js';

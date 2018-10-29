@@ -31,7 +31,6 @@ export default class SessionTimeoutUI {
     this.saveBtn = scopeEl.querySelector('.js-timeout-save');
 
     this.continueRetryCount = this.continueRetryLimit = continueRetryLimit;
-
     this.animation = animation;
     this.continueSuccessCallback = continueSuccessCallback;
 
@@ -57,8 +56,8 @@ export default class SessionTimeoutUI {
     }
 
     fetchModule.fetch(SessionTimeoutUI.sessionContinueUrl)
-      .then(this.continueSuccess)
-      .catch(this.continueFail);
+      .then(this.continueSuccess.bind(this))
+      .catch(this.continueFail.bind(this));
   }
 
   continueSuccess () {
