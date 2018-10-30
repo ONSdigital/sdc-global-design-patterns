@@ -11,7 +11,8 @@
     "prestart": "npm i",
     "start": "npm i && gulp dev",
     "test": "gulp scripts:test",
-    "test:watch": "gulp test:watch"
+    "test:watch": "gulp test:watch",
+    "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {
     "a11y-dialog": "^4.0.1",
@@ -79,6 +80,7 @@
     "karma-spec-reporter": "0.0.32",
     "lodash": "^4.17.4",
     "mocha": "^5.0.1",
+    "npm-check": "^5.9.0",
     "opn": "^5.4.0",
     "pixrem": "^3.0.2",
     "postcss-inline-block": "^1.0.0",
