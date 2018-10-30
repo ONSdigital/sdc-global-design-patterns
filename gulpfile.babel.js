@@ -17,7 +17,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import { unitTests } from './gulp/tests';
 import * as through2 from 'through2';
 import vinyl from 'vinyl';
-import open from 'open';
+import opn from 'opn';
 
 import eslint from 'gulp-eslint';
 import gulpStylelint from 'gulp-stylelint';
@@ -354,7 +354,7 @@ gulp.task('favicons:copy', function() {
   return gulp.src('assets/favicons/**/*').pipe(gulp.dest('public/assets/favicons'));
 });
 
-gulp.task('favicons:clean', function (done) {
+gulp.task('favicons:clean', function(done) {
   return del(['public/assets/favicons'], done);
 });
 
@@ -366,12 +366,12 @@ gulp.task('favicons:watch', function(done) {
 });
 
 gulp.task('open:browser', function(done) {
-  open('http://localhost:3000');
+  opn('http://localhost:3000');
   done();
 });
 
-
 gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images', 'favicons'));
+
 gulp.task(
   'watch',
   gulp.parallel(
