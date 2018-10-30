@@ -11,6 +11,13 @@ module.exports = {
       "title": "Standard title header",
     },
   },{
+    "name": "standard-cy",
+    "label": "Header - standard external (Welsh)",
+    "context": {
+      "title": "Gwasanaeth Cymraeg",
+      "cy": true
+    },
+  },{
     "name": "standard-internal",
     "label": "Header - standard internal",
     "context": {
@@ -19,12 +26,21 @@ module.exports = {
       "internal": true
     },
   },{
-    "name": "hero-internal",
+    "name": "hero",
     "label": "Header - hero",
     "context": {
       "title": "Hero title header",
       "classes": "header--hero",
       "description": "This is the description or tagline",
+    },
+  },{
+    "name": "hero-cy",
+    "label": "Header - hero (Welsh)",
+    "context": {
+      "title": "Pennyn Arwr",
+      "classes": "header--hero",
+      "description": "Dyma’r disgrifiad o’r wasanaeth",
+      "cy": true
     },
   },{
     "name": "thin-internal",

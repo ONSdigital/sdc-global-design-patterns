@@ -72,6 +72,7 @@ body {
 }
 .Prose tr {
   border-bottom: 1px solid #eee;
+  vertical-align: top;
 }
 .Prose tr:last-of-type {
   border-bottom: none;
@@ -79,6 +80,19 @@ body {
 .Prose img {
   margin: 1rem 0;
   width: 100%;
+}
+.Prose code {
+    background-color: rgba(83, 83, 99, 0.075);
+    border: 1px solid #ff149373;
+    border-radius: 3px;
+    padding: 0.05rem 0.2rem;
+}
+.Prose blockquote code {
+    display: block;
+    padding: 0.5rem;
+}
+.Prose table code {
+  white-space: nowrap;
 }
 .Pen {
   font-family: $font-sans;
