@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icons--chevron-right</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="icons--chevron-right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M17.9973337,12 L18,12.0026926 L8.10050506,22 L5.97918472,19.8577198 L13.7600256,12 L5.97918472,4.14228015 L8.10050506,2 L18,11.9973074 L17.9973337,12 Z" id="Shape" fill="#4263C2"></path>
-    </g>
-</svg>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M18 12L8.1 22l-2.12-2.14L13.76 12 5.98 4.14 8.1 2 18 12z" fill="#4263C2" fill-rule="evenodd"/></svg>

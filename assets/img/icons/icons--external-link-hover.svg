@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
-    <title>icons--external-link</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="icons--external-link" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M2,2 L2,22.0708008 L22.0708008,22.0708008 L22.0708008,17.0529475 L19.5621802,17.0529475 L19.5621802,19.5615681 L4.5092327,19.5615681 L4.5092327,4.50862054 L7.01785323,4.50862054 L7.01785323,2 L2,2 Z M12.0350943,2 L15.7986373,5.76354297 L9.52647377,12.0357065 L12.0350943,14.544327 L18.3072578,8.2721635 L22.0708008,12.0357065 L22.0708008,2.00061216 L12.0357065,2.00061216 L12.0350943,2 Z" id="Shape" fill="#033E58" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M2 2v20.07h20.07v-5.02h-2.5v2.51H4.5V4.51H7V2H2zm10.04 0l3.76 3.76-6.27 6.28 2.5 2.5 6.28-6.27 3.76 3.77V2H12.04z" fill="#033E58" fill-rule="nonzero"/></svg>

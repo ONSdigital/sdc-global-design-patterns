@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
-    <title>icons--check</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="icons--check" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M10.523501,17.9325092 L8.48846436,20 L2,13.2907326 L4.14228015,11.114288 L8.50916174,15.6297749 L19.8786797,4 L22,6.19794911 L10.5257568,17.9348465 L10.523501,17.9325092 Z" id="Shape" fill="#033E58"></path>
-    </g>
-</svg>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.52 17.93L8.5 20 2 13.3l2.14-2.19 4.37 4.52L19.88 4 22 6.2 10.53 17.93z" fill="#033E58" fill-rule="evenodd"/></svg>
