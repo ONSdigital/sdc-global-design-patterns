@@ -70,7 +70,7 @@
     "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-standard": "^2.0.1",
     "gh-pages": "^1.0.0",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "4.0.0",
     "gulp-eslint": "^3.0.1",
     "gulp-sass": "^2.2.0",
     "gulp-sass-glob": "^1.0.5",
