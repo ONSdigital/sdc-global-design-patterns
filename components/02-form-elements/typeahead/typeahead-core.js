@@ -159,7 +159,7 @@ export default class Typeahead {
       this.clearListbox(true);
       this.combobox.classList.remove(classTypeaheadComboboxFocused);
       this.blurring = false;
-    }, 100);
+    }, 300);
   }
 
   handleMouseover() {
