@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@frctl/handlebars": "^1.0.0",
-    "@frctl/mandelbrot": "^1.0.0",
     "a11y-dialog": "^4.0.1",
     "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.0",
@@ -48,6 +47,7 @@
   },
   "devDependencies": {
     "@frctl/fractal": "^1.1.7",
+    "@frctl/mandelbrot": "^1.2.0",
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-lodash": "^3.2.11",
