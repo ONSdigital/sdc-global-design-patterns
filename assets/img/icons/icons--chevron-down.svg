@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
-    <title>icons--chevron-down-thin</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="icons--chevron-down-thin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M11.9908447,14.8288895 L20.5701875,6.34314575 L22,7.75735931 L11.9913122,17.6568542 L1.98168945,7.75735931 L3.411502,6.34314575 L11.9908447,14.8288895 Z" id="Shape" fill="#4A4A4A"></path>
-    </g>
-</svg>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 14.83l8.57-8.49L22 7.76l-10 9.9-10.02-9.9 1.43-1.42L12 14.83z" fill="#4A4A4A" fill-rule="evenodd"/></svg>
