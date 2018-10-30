@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/releases) [![GitHub issues](https://img.shields.io/github/issues/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/issues) 
+[![GitHub release](https://img.shields.io/github/release/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/releases) [![GitHub issues](https://img.shields.io/github/issues/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/pulls)
  ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Fractal](https://img.shields.io/badge/fractal-v1.1.7-%23C03982.svg)](https://github.com/frctl/fractal)
 
@@ -14,13 +14,12 @@ https://sdc-global-design-patterns.netlify.com/
 - get familiar with Fractal http://fractal.build/guide
 - nodejs
 - Set up a new environment for this project with [nodeenv](https://github.com/ekalinin/nodeenv)
-- Yarn `npm install yarn --global`
-- Gulp `yarn global add gulp-cli`
+- Gulp `npm i -g gulp-cli`
 
 ## Getting started
 
-1. Install dependencies with `yarn`
-2. Run with browsersync `yarn start`
+1. Install dependencies with `npm i`
+2. Run with browsersync `npm run start`
 
 ## Pull requests
 

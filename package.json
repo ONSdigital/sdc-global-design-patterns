@@ -5,13 +5,13 @@
   "author": "Hamish Taplin <hello@hamishtaplin.com>",
   "license": "MIT",
   "scripts": {
-    "prestart": "yarn",
-    "build": "yarn prestart && yarn compile_assets && gulp scripts:lint && gulp fractal:build",
+    "prestart": "npm i",
+    "build": "npm run prestart && npm run compile_assets && gulp scripts:lint && gulp fractal:build",
     "compile_assets": "gulp",
-    "start": "yarn && gulp dev",
+    "start": "npm i && gulp dev",
     "test": "gulp scripts:test",
     "test:watch": "gulp test:watch",
-    "deploy": "gulp && yarn build && gh-pages -d dist"
+    "deploy": "gulp && npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@frctl/fractal": "^1.0.0",
