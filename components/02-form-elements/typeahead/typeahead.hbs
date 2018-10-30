@@ -1,4 +1,4 @@
-<div class="typeahead js-typeahead field__item" data-content="{{json content}}"{{#if result_limit}} data-result-limit="{{result_limit}}"{{/if}}{{#if prevent_fuzzy_match}} data-prevent-fuzzy="true"{{/if}}>
+<div class="typeahead js-typeahead" data-content="{{json content}}"{{#if result_limit}} data-result-limit="{{result_limit}}"{{/if}}{{#if prevent_fuzzy_match}} data-prevent-fuzzy="true"{{/if}}>
   {{> @label }}
   <select class="typeahead__select js-typeahead-select input input--select{{#if select_classes}}{{select_classes}}{{/if}}" id="{{label_for}}" name="select">
     {{#each options}}

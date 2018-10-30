@@ -33,6 +33,13 @@
 
   &__listbox {
     width: 100%;
+
+    &:not(&--full-width) {
+      @include mq(s) {
+        width: $input-width;
+      }
+    }
+
     margin: 0;
     padding: 0;
     list-style: none;
