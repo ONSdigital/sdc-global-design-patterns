@@ -25,6 +25,22 @@ module.exports = {
         "link_url": "/cookies-privacy"
       }],
     },
+  },{
+    "name": "transactional-cy",
+    "label": "Transactional (Welsh)",
+    "status": "ready",
+    "context": {
+      "links":[
+      {
+        "link_text": "Cysylltu â ni",
+        "link_url": "/contact-us"
+      },
+      {
+        "link_text": "Cwcis a phreifatrwydd",
+        "link_url": "/cookies-privacy"
+      }],
+      "cy": true
+    },
   }, {
     "name": "internal-service",
     "label": "Internal service",

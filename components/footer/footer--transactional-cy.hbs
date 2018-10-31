@@ -1,0 +1,16 @@
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="grid">
+      <div class="grid__col col-12@m">
+        <ul class="list list--bare">
+{{#each links}}<li><a href="{{link_url}}" class="footer__link footer__link--inline" target="_blank">{{link_text}}</a></li>{{/each}}
+        </ul>
+      </div>
+      <div class="grid__col col-12@m">
+        <div class="footer__license footer__license--border">
+          <img alt="OGL" class="footer__ogl-img" src="{{path '/assets/img/UKOpenGovernmentLicence-grey.svg'}}"> Mae’r holl gynnwys ar gael o dan y <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" class="footer__link">Drwydded Llywodraeth Leol v3.0</a>, oni bai y nodir fel arall
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
