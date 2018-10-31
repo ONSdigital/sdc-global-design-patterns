@@ -70,5 +70,17 @@ module.exports = {
       'or_deselect_adjective': 'deselected',
       'or_deselect_message': 'Selecting this will remove any pre-selected date'
     }
+  },{
+    'name': 'text-area',
+    'label': 'Text Area',
+    'context': {
+      'textarea_id': 'mutually-exclusive-textarea',
+      'charlimit': '200',
+      'or': 'Or',
+      'or_option_text':'I do not want to provide feedback',
+      'or_option_value':'I do not want to provide feedback',
+      'or_deselect_adjective': 'deselected',
+      'or_deselect_message': 'Selecting this will clear the text area'
+    }
   }]
 };

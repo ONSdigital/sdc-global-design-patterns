@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/releases) [![GitHub issues](https://img.shields.io/github/issues/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/issues) 
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/sdc-global-design-patterns.svg)](https://github.com/ONSdigital/sdc-global-design-patterns/pulls)
- ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Fractal](https://img.shields.io/badge/fractal-v1.7.1-%23C03982.svg)](https://github.com/frctl/fractal)
+ ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Fractal](https://img.shields.io/badge/fractal-v1.1.7-%23C03982.svg)](https://github.com/frctl/fractal)
 
 
 # eQ Patterns

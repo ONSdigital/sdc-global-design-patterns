@@ -9,8 +9,8 @@ const classLimitedInput = 'js-charlimit-input'
 const attrCharLimitRef = 'data-char-limit-ref'
 const charactersRemainingSuffix = " characters remaining"
 
-domready(() => {
-  const updateAvailableChars = (element, remainingCharElement) => {
+
+export default function updateAvailableChars(element, remainingCharElement){
     /**
      * data-maxlength is used to store the originclassCharactersRemainingal value of maxlength
      * before we mess with it when newlines are added to the input
@@ -64,5 +64,4 @@ domready(() => {
     return (aString.match(/\n/g) || []).length
   }
 
-  initialise()
-})
+  domready(initialise);

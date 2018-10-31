@@ -43,10 +43,7 @@ describe('Collapsible;', function() {
     elTemplate = wrapper;
     document.body.appendChild(elTemplate);
 
-    collapsible((event, attr) => {
-      this.lastEvent = attr
-      this.lastEvent.name = event
-    });
+    collapsible();
   });
 
   it('DOM should contain the template', function() {

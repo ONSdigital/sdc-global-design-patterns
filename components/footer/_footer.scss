@@ -1,3 +1,7 @@
+.pre-footer {
+  border-top: 1px $color-mid-grey solid;
+  padding: .7rem 0;
+}
 .footer {
   padding: 2rem 0;
   padding-bottom : 4rem;
@@ -17,7 +21,7 @@
   }
 
   .footer__ogl-img {
-    height: 1.85rem;
+    height: 1.333333rem;
     opacity: .75;
     margin-bottom: .2rem;
     margin-right: 0.5rem;
@@ -26,6 +30,11 @@
   .footer__link--inline {
     float: left;
     margin-right: 2rem;
+  }
+
+  .footer__poweredby-img {
+    width: 272px;
+    height: auto;
   }
 
 }

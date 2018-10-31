@@ -1,0 +1,15 @@
+/* _message-list */
+.message-list {
+  padding-left: 0;
+  
+  &__item {
+    list-style: none;
+
+    .message__subject {
+      margin: 0;
+    }
+
+  }
+
+}
+/* /_message-list */

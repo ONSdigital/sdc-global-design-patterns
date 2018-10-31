@@ -1,0 +1,19 @@
+<li class="message-list__item" aria-labelledby="messageSubjectID">
+  <div class="message message--{{message_variant}}">
+    <h3 class="message__subject message__subject--unread" id="messageSubjectID">
+      <a href="#" class="venus">{{message_subject}}</a>{{#if message_status}}<span class="status--info u-ml-xs pluto">(New)</span>{{/if}}
+    </h3>
+    <div class="metadata metadata--message">
+      <dl class="metadata__list u-mb-s" aria-label="Message information">
+        <dt class="metadata__term u-vh">From:</dt>
+        <dd class="metadata__value venus">{{#if message_internal}}ONS Business Surveys Team{{else}}Jacky Turner{{/if}}</dd>
+        <dt class="metadata__term u-vh">Sent:</dt>
+        <dd class="metadata__value metadata__value--datetime pluto">{{message_datetime}}</dd>
+      </dl>
+    </div>
+    <div class="message__body" aria-label="Message preview">
+      {{{message_body}}}
+    </div>
+    <div class="message-list__item-link u-vh"><a href="#">Read the message: {{message_subject}}</span></a></div>
+  </div>
+</li>

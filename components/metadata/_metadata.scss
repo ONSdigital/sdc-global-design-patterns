@@ -1,0 +1,27 @@
+/* _metadata */
+.metadata {
+
+ dd {
+   margin-left: 0; /* As normalize adds a 40px left margin */
+ }
+ &__value,
+ &__term {
+   margin: 0 0 0.3rem;
+ }
+
+ &__list {
+   margin: 0;
+ }
+
+}
+
+
+.metadata__value {
+
+  /* date & time variant modifier */
+  &--datetime {
+    color: $color-very-dark-grey;
+  }
+
+}
+/* /_metadata */
