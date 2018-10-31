@@ -283,3 +283,6 @@ if (window.Element && !Element.prototype.closest) {
     });
   });
 })([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+
+import 'core-js/fn/array/find';
+import 'core-js/fn/array/from';
