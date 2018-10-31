@@ -11,7 +11,7 @@ module.exports = function(config) {
       }
     },
 
-    frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai'],
+    frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai', 'viewport'],
 
     files: [
       testDir + '/spec/**/*.js'
@@ -29,7 +29,8 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-chai-sinon',
       'karma-chai',
-      'karma-coverage'
+      'karma-coverage',
+      'karma-viewport'
     ],
 
     browserify: {
@@ -58,12 +59,13 @@ module.exports = function(config) {
       ]
     },
 
-
     mochaReporter: {
       output: 'full'
     },
 
     colors: true,
-    logLevel: config.LOG_INFO
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    usePolling: true,
   })
 }

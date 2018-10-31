@@ -1,43 +1,15 @@
 
-<section role="region" class="tabs u-mt-l" aria-label="This is an area of tabbed content">
+<section role="region" class="tabs u-mt-l">
+  <h2 class="tabs__title neptune u-vh">{{tabs_contents_title}}</h2>
 
-    <ul class="tabs__list">
-      <li id="tab1Item" class="tab__list-item"><a href="#tabId1" class="tab">First tab label</a></li>
-      <li id="tab2Item" class="tab__list-item"><a href="#tabId2" class="tab">Second tab</a></li>
-      <li id="tab3Item" class="tab__list-item"><a href="#tabId3" class="tab">Tab 3</a></li>
-      <li id="tab4Item" class="tab__list-item"><a href="#tabId4" class="tab">Fourth</a></li>
-    </ul>
-
-  <section id="tabId1" class="tabs__panel">
-    <h1 class="saturn">Tab one heading</h1>
-      <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <h2 class="venus">Internal heading</h2>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      {{> @table}}
-      {{> @paragraph}}
-  </section>
-
-  <section id="tabId2" class="tabs__panel">
-    <h1 class="saturn">Second tab content heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, <a href="#">sed do eiusmod</a> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-      {{> @panel--simple-success}}
-      {{> @paragraph}}
-  </section>
-
-  <section id="tabId3" class="tabs__panel">
-    <h1 class="saturn">Third tab content heading</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-  </section>
-
-  <section id="tabId4" class="tabs__panel">
-    <h1 class="saturn">Fourth tab's content</h1>
-      {{> @feedback}}
-      <p class="u-mt-m">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-  </section>
-
+  <ul class="tabs__list">
+      {{#each tabs}}
+          <li id="tabId{{@index}}Item" class="tab__list-item"><a href="#tabId{{@index}}" class="tab" data=ga="click" data-ga-category="tabs" data-ga-action="Show: {{tab}}" data-ga-label="Show: {{tab}}">{{tab}}</a></li>
+      {{/each}}    
+  </ul>
+  {{#each tabs}}
+    <section id="tabId{{@index}}" class="tabs__panel">
+      {{{tabContent}}}
+    </section>
+  {{/each}} 
 </section>

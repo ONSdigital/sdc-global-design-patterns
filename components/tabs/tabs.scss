@@ -1,12 +1,13 @@
 .tabs {
   margin-bottom: 1rem;
+}
 
-  .no-js & { // No js display the aria-label from the tab region as content
-    &:before {
-      content: attr(aria-label);
-      font-weight: 700;
-      font-size: 1.222222rem; // Neptune equivalent scale
-    }
+.tabs__title {
+  .no-js & { // We visually hide the title with u-vh and need to undo with no-js
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0 0 1rem;
   }
 }
 

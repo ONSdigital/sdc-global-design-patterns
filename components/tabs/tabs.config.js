@@ -4,7 +4,7 @@ module.exports = {
   name: 'tabs',
   status: 'wip',
   context: {
-    'tabs-title':'This is the tabs region',
+    'tabs_contents_title':'This is the tabs region',
     'tabs':[
     {
       'tab': 'UKIS',

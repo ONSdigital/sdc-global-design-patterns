@@ -6,10 +6,10 @@
 import {forEach} from 'lodash'
 import domready from '../../assets/js/domready';
 
-const classTabs = 'tabs'
-const classTab = 'tab'
-const classTabList = 'tabs__list'
-const classTabListItems = 'tab__list-item'
+export const classTabs = 'tabs'
+export const classTab = 'tab'
+export const classTabList = 'tabs__list'
+export const classTabListItems = 'tab__list-item'
 
 class Tabs {
     constructor() {
@@ -26,7 +26,6 @@ class Tabs {
     init(component) {
         this.component = component
         this.tabs = component.getElementsByClassName(classTab)
-
         if (typeof window.matchMedia === 'function') {
             this.setupViewportChecks()
         } else {
@@ -168,6 +167,7 @@ class Tabs {
         tab.removeAttribute('role')
         tab.removeAttribute('aria-controls')
         tab.removeAttribute('tabindex')
+        tab.removeAttribute('aria-selected')
 
         const panel = this.getPanel(tab)
         panel.removeAttribute('role')
