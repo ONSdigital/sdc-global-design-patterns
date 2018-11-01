@@ -5,12 +5,14 @@
   display: block;
   color: inherit;
   font-size: 1rem;
-  border: 1px solid $color-borders;
+  border: $input-border-width solid $color-borders;
   border-radius: $input-radius;
   width: 100%;
   transition: border-color 200ms ease-in;
   @include mq(s) {
-    width: $input-width;
+    &:not([class*=input--w]) {
+      width: $input-width;
+    }
   }
 
   &:hover {
@@ -25,6 +27,8 @@
     }
   }
 }
+
+@include input-width('input--w{x}');
 
 .input__helper {
   font-size: 0.8rem;
@@ -128,11 +132,11 @@
 }
 
 .input--limit-reached {
-  border: 1px solid $color-red;
+  border: $input-border-width solid $color-red;
 
   &:focus {
     outline: none;
-    border: 1px solid $color-red;
+    border: $input-border-width solid $color-red;
     box-shadow: 0 0 0 1px $color-red;
     @include fixed() {
       outline: 2px solid $color-red;

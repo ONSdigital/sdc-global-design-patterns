@@ -1,3 +1,17 @@
 $input-radius: 3px;
 $input-padding: 0.6rem;
 $input-width: 19.5rem;
+$input-border-width: 1px;
+$input-widths: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50;
+
+@mixin input-width($className) {
+  @each $width in $input-widths {
+    .#{str-replace($className, '{x}', $width)} {
+      width: 100%;
+      // Widest character (capital W) is 1.0065rem wide
+      // Space between characters is 0.029rem wide
+      // Extra pixel is to prevent clipping when the cursor is visible
+      max-width: calc(#{($input-padding * 2) + (1.0065rem * $width) + (0.029rem * ($width - 1))} + #{($input-border-width * 2) + 1px});
+    }
+  }
+}
