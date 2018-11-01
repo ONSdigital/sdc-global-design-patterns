@@ -16,6 +16,7 @@
     border-bottom: 2px solid $color-very-dark-grey;
     @include nth-element(1, 0);
     text-align: left;
+    vertical-align: top;
     &--numeric {
       text-align: right;
     }
@@ -23,5 +24,52 @@
 
   .table__cell, .table__header--row {
     border-bottom: 1px solid $color-grey;
+  }
+
+  &--responsive {
+    @include mq(xs,s) {
+      .table__header {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+      .table__body .table__row {
+        display: block;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid $color-very-dark-grey;
+      }
+
+      .table__cell {
+        text-align: right;
+        display: block;
+        padding-left: 0;
+        &:last-child {
+          border:none;
+        }
+        &::before {
+          content: attr(data-th);
+          float: left;
+          font-weight: bold;  
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.table-scrollable {
+  width: 100%;
+  overflow: visible;
+  overflow-x: scroll;
+  .table__header, .table__cell {
+    @include mq(xs,m) {
+      white-space: nowrap;
+    }
   }
 }

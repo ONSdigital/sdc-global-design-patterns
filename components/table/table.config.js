@@ -1,6 +1,7 @@
 module.exports = {
   title: "Table",
-  collated: true, // Pulls all variants into one summary
+  collated: false, // Pulls all variants into one summary
+  preview: "@preview__full-width",
   status: "wip",
   "variants": [
     {
@@ -12,11 +13,34 @@ module.exports = {
     },
     {
       "name": "data-dense",
-      "label": "Compact table for data heavy applications.",
+      "label": "Compact table",
       "context": {
         "table-class": " table--dense",
-        "caption": "Use this table variant for for data heavy applications",
+        "caption": "Use this table variant for data heavy applications",
         "datadense": "true"
+      }
+    },
+    {
+      "name": "responsive",
+      "label": "Responsive table",
+      "context": {
+        "table-class": " table--responsive",
+        "caption": "Use this table variant when stacked rows are suitable for mobile views"
+      }
+    },
+    {
+      "name": "responsive-example",
+      "label": "Responsive table examples",
+      "context": {
+        "table-class": " table--responsive",
+        "caption": "Use this table variant when stacked rows are suitable for mobile views"
+      }
+    },
+    {
+      "name": "scrollable",
+      "label": "Scrollable table",
+      "context": {
+        "caption": "Table will scroll when the viewport is smaller than the table width"
       }
     },
     {
