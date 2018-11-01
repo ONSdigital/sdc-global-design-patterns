@@ -53,9 +53,9 @@ class Tabs {
 
     makeTabs() {
         let component = this.component
-        let tabs = this.tabs
+        let tabs = [...this.tabs]
         let tabList = component.getElementsByClassName(classTabList)
-        let tabListItems = component.getElementsByClassName(classTabListItems)
+        let tabListItems = [...component.getElementsByClassName(classTabListItems)]
 
         if (!tabs || !tabList || !tabListItems) {
             return
@@ -64,12 +64,12 @@ class Tabs {
         tabList[0].setAttribute('role', 'tablist')
         tabList[0].classList.remove(this.jsTabListAsListClass)
 
-        forEach(tabListItems, (item) => {
+        tabListItems.forEach(item => {
             item.setAttribute('role', 'presentation') 
             item.classList.remove(this.jsTabItemAsListClass)
         })      
 
-        forEach(tabs, (tab) => {
+        tabs.forEach(tab => {
             this.setAttributes(tab)
             tab.classList.remove(this.jsTabAsListClass)
     
@@ -87,9 +87,9 @@ class Tabs {
 
     makeList() {
         let component = this.component
-        let tabs = this.tabs
+        let tabs = [...this.tabs]
         let tabList = component.getElementsByClassName(classTabList)
-        let tabListItems = component.getElementsByClassName(classTabListItems)
+        let tabListItems = [...component.getElementsByClassName(classTabListItems)]
 
         if (!tabs || !tabList || !tabListItems) {
             return
@@ -98,12 +98,12 @@ class Tabs {
         tabList[0].removeAttribute('role')
         tabList[0].classList.add(this.jsTabListAsListClass)
         
-        forEach(tabListItems, (item) => {
+        tabListItems.forEach(item => {
             item.removeAttribute('role', 'presentation') 
             item.classList.add(this.jsTabItemAsListClass)
         })      
 
-        forEach(tabs, (tab) => {   
+        tabs.forEach(tab => {  
             tab.removeEventListener('click', this.boundTabClick, true)
             tab.removeEventListener('keydown', this.boundTabKeydown, true)
             tab.classList.add(this.jsTabAsListClass)
@@ -268,8 +268,8 @@ class Tabs {
 }
 
 export default function tabs() {
-    const tabsComponent = document.getElementsByClassName(classTabs)
-    forEach(tabsComponent, component => new Tabs().init(component))
+    const tabsComponent = [...document.getElementsByClassName(classTabs)]
+    tabsComponent.forEach(component => new Tabs().init(component))
 }
 
 domready(tabs)
