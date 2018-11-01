@@ -67,6 +67,11 @@
   width: 100%;
   overflow: visible;
   overflow-x: scroll;
+  &--on {
+    .table__header, .table__cell {
+      white-space: nowrap;
+    }
+  }
   .table__header, .table__cell {
     @include mq(xs,m) {
       white-space: nowrap;
