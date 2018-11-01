@@ -18,10 +18,14 @@
   width: 100%;
   display: inline-block;
   @include mq(m) {
-    width: auto;
-    min-width: 20rem;
+    &:not([class*=field__item--w]) {
+      width: auto;
+      min-width: 20rem;
+    }
   }
 }
+
+@include input-width('field__item--w{x}');
 
 .field:not(.field--cols) {
   .field__item:last-of-type {
@@ -71,7 +75,7 @@ input:checked ~ .field__other {
     &.has-focus, &.has-focus.is-checked {
       border-color: $color-links-hover;
       box-shadow: 0 0 0 3px $color-focus-outline;
-    }    
+    }
     &.has-focus.has-child-focus, &.has-focus.has-child-focus.is-checked {
       box-shadow: none;
     }
