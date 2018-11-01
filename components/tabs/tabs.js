@@ -3,7 +3,6 @@
 // The tab js is based on the GDS tabs component(https://design-system.service.gov.uk/components/tabs/) 
 // https://github.com/alphagov/govuk-frontend/blob/master/src/components/tabs/tabs.js
 
-import {forEach} from 'lodash'
 import domready from '../../assets/js/domready';
 
 export const classTabs = 'tabs'
