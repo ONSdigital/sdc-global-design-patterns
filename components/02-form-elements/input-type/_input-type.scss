@@ -1,75 +1,71 @@
-$width: $input-width;
 
 .input-type {
-  display: flex;
+  display: inline-flex;
   position: relative;
-  align-items: center;
 
-  .input-type__input {
-    border-radius: $input-radius;
-    line-height: normal;
+  // Double ampersand is needed to solve specificity issues
+  & &__input {
+    z-index: 1;
     position: relative;
-    z-index: 3;
-    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+    }
   }
 
-  .input-type__type {
-    display: inline-block;
+  &__type[title] {
+    display: block;
     background-color: $color-lighter-grey;
-    border-right: 1px solid $color-borders;
-    border-radius: $input-radius 0 0 $input-radius;
+    border: 1px solid $color-borders;
+
     padding: $input-padding;
-    width: auto;
     font-weight: 600;
     font-size: 1rem;
     text-align: center;
     line-height: normal;
-    position: absolute;
-    right: 1px;
-    top: 1px;
-    z-index: 4;
     text-decoration: none;
+    white-space: nowrap;
+
     @include ie8() {
       line-height: 1.1;
     }
   }
-}
 
-.input-type--percentage,
-.input-type--unit {
-  @include mq(s) {
-    &:not(.input-type--group) {
-      width: calc(#{$width} - 3rem);
-    }
+  &__input:focus + &__type[title]:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: $input-radius;
+    box-shadow: 0 0 0 3px $color-focus-outline;
   }
-  .input-type__input {
-    padding-left: 0.5rem;
-    padding-right: 4rem;
-    @include fixed {
-      margin-left: 0;
-    }
-  }
-  .input-type__type {
-    left: auto;
-    right: 1px;
-    border-right: none;
-    border-left: 1px solid $color-borders;
-    border-radius: 0 $input-radius $input-radius 0;
-  }
-}
 
-.input-type--currency {
-  @include mq(s) {
-    &:not(.input-type--group) {
-      width: calc(#{$width} - 3rem);
+  &:not(&--prefix) & {
+    &__type[title] {
+      border-left: none;
+      border-radius: 0 $input-radius $input-radius 0;
+    }
+
+    &__input {
+      border-radius: $input-radius 0 0 $input-radius;
     }
   }
-  .input-type__input {
-    padding-left: 3.6rem;
+
+  &--prefix {
+    flex-direction: row-reverse;
   }
-  .input-type__type {
-    right: auto;
-    left: 1px;
-    width: 3rem;
+
+  &--prefix & {
+    &__type[title] {
+      border-right: none;
+      border-radius: $input-radius 0 0 $input-radius;
+    }
+
+    &__input {
+      border-radius: 0 $input-radius $input-radius 0;
+    }
   }
 }

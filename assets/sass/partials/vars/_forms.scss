@@ -10,11 +10,11 @@ $num-max-width: 0.54rem;
 // Not the width of a space, the width of the space between characters with no spaces between
 $char-space-width: 0.029rem;
 
-@mixin input-width($className) {
+@mixin input-width($className, $char-width: $char-max-width) {
   @each $width in $input-widths {
     .#{str-replace($className, '{x}', $width)} {
       width: 100%;
-      max-width: input-width-calc($width);
+      max-width: input-width-calc($width, $char-width);
     }
   }
 }

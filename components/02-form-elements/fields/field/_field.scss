@@ -128,38 +128,6 @@ input:checked ~ .field__other {
   }
 }
 
-// TODO: Investigate changing to only use inline
-%abstract-fieldgroup-inline {
-  .fieldgroup__title {
-    font-weight: 700;
-    display: inline-block;
-    width: 100%;
-    margin: 0 0 0.5rem;
-  }
-
-  .fieldgroup__fields {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-  }
-}
-
-
-.fieldgroup--duration {
-  @extend %abstract-fieldgroup-inline;
-
-  .field {
-    position: relative;
-    margin: 0 0.5rem 0 0;
-    flex: 1 1 0;
-    clear: right;
-    max-width: 8.5rem;
-    @include mq(s) {
-      margin-right: 1rem;
-    }
-  }
-}
-// END TODO
 .field--toggle {
   position: relative;
   margin-bottom: 0.5em;

@@ -121,8 +121,11 @@ const hbs = handlebarsAdapter({
     },
     concatStr: function() {
       return [...arguments].slice(0, -1).join('');
-    }
-  }
+    },
+    or: function() {
+      return [...arguments].slice(0, -1).find(option => !(option === null || option === undefined || option === ''));
+    },
+  },
 });
 
 fractal.components.engine(hbs);

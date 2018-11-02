@@ -11,7 +11,7 @@
   transition: border-color 200ms ease-in;
   @include mq(s) {
     &--text {
-      &:not([class*=input--w-]) {
+      &:not([class*=input--w-]):not([class*=input--wn-]) {
         width: $input-width;
       }
     }
@@ -24,23 +24,18 @@
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px $color-focus-outline;
+
     @include fixed() {
       outline: 3px solid $color-focus-outline;
     }
   }
 }
 
+// Text input widths
 @include input-width('input--w-{x}');
 
-.input--day,
-.input--month {
-  width: input-width-calc(2, $num-max-width);
-}
-
-.input--year {
-  width: input-width-calc(4, $num-max-width);
-}
-
+// Numerical input widths
+@include input-width('input--wn-{x}', $num-max-width);
 
 .input__helper {
   font-size: 0.8rem;
@@ -153,10 +148,6 @@
       outline: 2px solid $color-red;
     }
   }
-}
-
-.input--with-unit {
-  padding-right: 4rem;
 }
 
 .no-js {
