@@ -61,28 +61,10 @@ input:checked ~ .field__other {
     border: 1px solid #999;
     border-radius: 0.2rem;
     cursor: pointer;
-    overflow: hidden;
     position: relative;
     transition: background-color 200ms ease-in, color 200ms ease-in, border-color 200ms ease-in;
     &:hover {
       border-color: $color-links-hover;
-      box-shadow: none;
-    }
-    &.is-checked {
-      color: $color-text;
-      border-color: $color-links-hover;
-      box-shadow: 0 0 0 1px $color-links-hover;
-      &:hover {
-        border-color: $color-text;
-        background-color: #eee;
-        box-shadow: 0 0 0 1px $color-text;
-      }
-    }
-    &.has-focus, &.has-focus.is-checked {
-      border-color: $color-links-hover;
-      box-shadow: 0 0 0 3px $color-focus-outline;
-    }
-    &.has-focus.has-child-focus, &.has-focus.has-child-focus.is-checked {
       box-shadow: none;
     }
   }
@@ -135,8 +117,6 @@ input:checked ~ .field__other {
       width: 100%;
     }
   }
-
-
 }
 
 .field--toggle {

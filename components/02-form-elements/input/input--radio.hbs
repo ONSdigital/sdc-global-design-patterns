@@ -2,8 +2,8 @@
   <fieldset>
     <legend class="field__legend mars ">{{legend}}</legend>
       {{#each options}}
-      <div class="field__item js-focusable-box">
-        <input class="input input--radio js-focusable" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
+      <div class="field__item">
+        <input class="input input--radio" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
         {{>@label}}
       </div>
       {{/each}}

@@ -12,22 +12,22 @@ const strCheckboxesTemplate = `
   <fieldset>
     <legend class="field__legend mars u-vh">What type of central heating do you have?</legend>
     <div class="field__label venus">Select all that apply:</div>
-      <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="gas" id="gas" type="checkbox">
+      <div class="field__item">
+        <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="gas" id="gas" type="checkbox">
         <label class="label label--inline venus " for="gas">Gas</label>
-      </div><div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="electric" id="electric" type="checkbox">
+      </div><div class="field__item">
+        <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="electric" id="electric" type="checkbox">
         <label class="label label--inline venus " for="electric">Electric</label>
-      </div><div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="solid-fuel" id="solid-fuel" type="checkbox">
+      </div><div class="field__item">
+        <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="solid-fuel" id="solid-fuel" type="checkbox">
         <label class="label label--inline venus " for="solid-fuel">Solid fuel</label>
-      </div><div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable ${exclusiveGroupClass}" name="heating-type" value="other" id="other" type="checkbox">
+      </div><div class="field__item">
+        <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="other" id="other" type="checkbox">
         <label class="label label--inline venus " for="other">Other</label>
       </div>
       <div class="field__label u-mt-s venus" aria-hidden="true">Or</div>
-      <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable ${checkboxClass}" name="heating-type" value="no central heating" id="none" type="checkbox">
+      <div class="field__item">
+        <input class="input input--checkbox ${checkboxClass}" name="heating-type" value="no central heating" id="none" type="checkbox">
         <label class="label label--inline venus " for="none">
             <span class="u-vh">Or,</span> No central heating<span class="u-vh">. Selecting this will uncheck all other checkboxes</span>
         </label>
@@ -66,7 +66,7 @@ const strInputsTemplate = `
 
             <div class="field field--input field--year">
                 <label class="label mercury" data-qa="label-year" for="date-range-from-year">Year</label>
-                <input placeholder="YYYY" value="" data-qa="input-StringField" id="date-range-from-year" class="input input--StringField  
+                <input placeholder="YYYY" value="" data-qa="input-StringField" id="date-range-from-year" class="input input--StringField
                 ${exclusiveGroupClass}">
             </div>
         </div>
@@ -75,8 +75,8 @@ const strInputsTemplate = `
     <div class="field__label u-mt-s venus" aria-hidden="true">Or,</div>
 
     <div class="field field--checkbox field--multiplechoice field--exclusive">
-        <div class="field__item js-focusable-box">
-            <input class="input input--checkbox js-focusable ${checkboxClass}" name="heating-type" value="I have never had a paid job" id="none" type="checkbox">
+        <div class="field__item">
+            <input class="input input--checkbox ${checkboxClass}" name="heating-type" value="I have never had a paid job" id="none" type="checkbox">
             <label class="label label--inline venus " for="none">
           <span class="u-vh">Or,</span> I have never had a paid job<span class="u-vh">. Selecting this will remove any pre-selected date</span>
       </label>
@@ -151,7 +151,7 @@ describe('Mutually Exclusive Inputs;', function() {
       exclusiveGroupElement[6].value = '1979';
       console.log('Input values before:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].selectedIndex, exclusiveGroupElement[6].value);
     });
-    
+
     it('should update the live region', function() {
       expect(voiceOverAlertElement[1]).should.not.be.empty;
     });
@@ -170,7 +170,7 @@ describe('Mutually Exclusive Inputs;', function() {
         expect(exclusiveGroupElement[5].selectedIndex).to.equal(0);
         expect(exclusiveGroupElement[6].value).to.be.empty;
         console.log('Input values after:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].value, exclusiveGroupElement[6].value);
-    }); 
+    });
 
   });
 

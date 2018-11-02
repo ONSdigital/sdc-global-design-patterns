@@ -82,10 +82,12 @@
   top: 0.75rem;
   left: 0.6rem;
   transition: background-color 200ms ease-in, color 200ms ease-in;
+
   &:focus, &:checked {
     border-color: $color-links-hover;
     outline: none;
   }
+
   @include mq(m) {
     top: 0.85rem;
   }
@@ -96,6 +98,26 @@
     &:focus {
       outline: 2px solid $color-focus;
     }
+  }
+
+  ~ .label:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: $input-radius;
+  }
+
+  &:checked ~ .label:before {
+    box-shadow: 0 0 0 2px $color-links-hover;
+  }
+
+  &:focus ~ .label:before {
+    border-color: $color-links-hover;
+    box-shadow: 0 0 0 3px $color-focus-outline;
   }
 }
 
