@@ -37,6 +37,7 @@ input {
   display: none;
 }
 
+input[type=text],
 input[type="number"] {
-  -moz-appearance: textfield;
+  appearance: none;
 }

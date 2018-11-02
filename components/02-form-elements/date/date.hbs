@@ -1,35 +1,27 @@
 <div class="answer answer--date">
   <div class="answer__fields js-fields">
-    <fieldset class="fieldgroup fieldgroup--date" data-qa="widget-date">
+    <fieldset class="fieldgroup fieldgroup--inline" data-qa="widget-date"{{#if description}} aria-describedby="{{concatStr id '-description'}}"{{/if}} role="group">
       {{#if legend}}
       <legend class="fieldgroup__title venus">{{legend}}</legend>
       {{/if}}
 
+      {{#if description}}
+      <div id="{{concatStr id '-description'}}" class="field__description mercury u-fw-n">{{description}}</div>
+      {{/if}}
       <div class="fieldgroup__fields">
-        <div class="field field--input field--day">
-          <label class="label mercury"
-                 data-qa="label-day">{{dayLabel}}</label>
-          <input placeholder="DD" value=""
-                 data-qa="input-StringField" class="input input--StringField ">
+        <div class="field field--input">
+          <label class="label mercury" for="{{concatStr id '-day'}}" data-qa="label-day">{{dayLabel}}</label>
+          <input type="number" id="{{concatStr id '-day'}}" data-qa="input-StringField" class="input input--day input--StringField" pattern="\d*" min="1" max="31">
         </div>
 
-        <div class="field field--select field--month">
-          <label class="label mercury" for="date-range-from-month" id="label-date-range-from-month"
-                 data-qa="label-month">{{monthLabel}}</label>
-          <select class="input input--select" id="date-range-from-month" name="date-range-from-month">
-            {{#each months}}
-              <option value="{{value}}"
-                {{#if disabled}}disabled="disabled"{{/if}}
-                {{#if selected}}selected="selected"{{/if}}>{{label}}</option>
-            {{/each}}
-          </select>
+        <div class="field field--select">
+          <label class="label mercury" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
+          <input type="number" id="{{concatStr id '-month'}}" data-qa="input-StringField" class="input input--month input--StringField" pattern="\d*" min="1" max="12">
         </div>
 
-        <div class="field field--input field--year">
-          <label class="label mercury"
-                 data-qa="label-year">{{yearLabel}}</label>
-          <input placeholder="YYYY" value=""
-                 data-qa="input-StringField" class="input input--StringField ">
+        <div class="field field--input">
+          <label class="label mercury" for="{{concatStr id '-year'}}" data-qa="label-year">{{yearLabel}}</label>
+          <input type="number" id="{{concatStr id '-year'}}" data-qa="input-StringField" class="input input--year input--StringField" pattern="\d*" min="1000" max="3000">
         </div>
       </div>
     </fieldset>

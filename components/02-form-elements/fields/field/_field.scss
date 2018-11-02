@@ -12,20 +12,26 @@
   margin-bottom: 0.5rem;
 }
 
+.field__description {
+  margin-bottom: 0.5em;
+  color: $color-very-dark-grey;
+}
+
 .field__item {
   margin: 0 0.5rem 0.5rem 0;
   position: relative;
   width: 100%;
   display: inline-block;
+
   @include mq(m) {
-    &:not([class*=field__item--w]) {
+    &:not([class*=field__item--w-]) {
       width: auto;
       min-width: 20rem;
     }
   }
 }
 
-@include input-width('field__item--w{x}');
+@include input-width('field__item--w-{x}');
 
 .field:not(.field--cols) {
   .field__item:last-of-type {
@@ -103,6 +109,26 @@ input:checked ~ .field__other {
   display: block;
 }
 
+.fieldgroup--inline {
+  .fieldgroup__title {
+    font-weight: 700;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 0.5rem;
+  }
+
+  .fieldgroup__fields {
+    display: flex;
+    width: 100%;
+  }
+
+  .field {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+  }
+}
+
+// TODO: Investigate changing to only use inline
 %abstract-fieldgroup-inline {
   .fieldgroup__title {
     font-weight: 700;
@@ -118,59 +144,6 @@ input:checked ~ .field__other {
   }
 }
 
-.fieldgroup--date {
-  @extend %abstract-fieldgroup-inline;
-
-  .field {
-    margin: 0 0.5rem 0 0;
-    flex: 1 1 0;
-    clear: right;
-
-    @include mq(s) {
-      margin-right: 1rem;
-    }
-
-    @include fixed {
-      display: block;
-      float: left;
-      width: 100%;
-      margin-right: 1rem;
-    }
-
-    @include ie7() {
-      input {
-        width: 80%;
-      }
-    }
-  }
-
-  .field--day {
-    max-width: 6rem;
-    @include fixed {
-      width: 6rem;
-    }
-  }
-
-  .field--month {
-    flex: 2;
-    max-width: 15rem;
-    @include fixed {
-      width: 15rem;
-    }
-  }
-
-  .field--year {
-    margin-right: 0;
-    max-width: 6rem;
-    @include fixed {
-      width: 6rem;
-    }
-  }
-
-  .input {
-    width: 100%;
-  }
-}
 
 .fieldgroup--duration {
   @extend %abstract-fieldgroup-inline;
@@ -186,7 +159,7 @@ input:checked ~ .field__other {
     }
   }
 }
-
+// END TODO
 .field--toggle {
   position: relative;
   margin-bottom: 0.5em;

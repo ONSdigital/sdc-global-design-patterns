@@ -1,66 +1,96 @@
 module.exports = {
   title: 'Date',
-  label: 'Date',
-  name: 'date',
+  default: 'date',
   collated: true,
   status: 'ready',
-  context: {
-    dayLabel: 'Day',
-    monthLabel: 'Month',
-    yearLabel: 'Year',
-    months: [{
-        label: 'Select month',
-        selected: true,
-        disabled: true,
-        value: ''
+  preview: '@preview__container',
+  variants: [
+    {
+      name: 'date',
+      label: 'Date',
+      context: {
+        id: 'date-en-gb',
+        legend: 'Please enter a date',
+        description: 'For example, 31 3 1980',
+        dayLabel: 'Day',
+        monthLabel: 'Month',
+        yearLabel: 'Year',
       },
-      {
-        label: 'January',
-        value: '1'
+    },
+    {
+      name: 'date-cy',
+      label: 'Date (Welsh)',
+      context: {
+        id: 'date-cy',
+        legend: 'Rhowch ddyddiad',
+        description: 'Er enghraifft, 31 3 1980',
+        dayLabel: 'Dydd',
+        monthLabel: 'Mis',
+        yearLabel: 'Blwyddyn',
       },
-      {
-        label: 'February',
-        value: '2'
+    },
+    {
+      name: 'date-gd',
+      label: 'Date (Scottish)',
+      context: {
+        id: 'date-dg',
+        legend: 'Cuir a-steach ceann-là',
+        description: 'Mar eisimpleir, 31 3 1980',
+        dayLabel: 'Latha',
+        monthLabel: 'Mìos',
+        yearLabel: 'Bliadhna',
       },
-      {
-        label: 'March',
-        value: '3'
+    },
+    {
+      name: 'date-ga',
+      label: 'Date (Irish)',
+      context: {
+        id: 'date-ga',
+        legend: 'Iontráil dáta',
+        description: 'Mar shampla, 31 3 1980',
+        dayLabel: 'Lá',
+        monthLabel: 'Mí',
+        yearLabel: 'Bliain',
       },
-      {
-        label: 'April',
-        value: '4'
+    },
+    {
+      name: 'date-pl',
+      label: 'Date (Polish)',
+      context: {
+        id: 'date-pl',
+        legend: 'Proszę podać datę',
+        description: 'Na przykład, 31 3 1980',
+        dayLabel: 'Dzień',
+        monthLabel: 'Miesiąc',
+        yearLabel: 'Rok',
       },
-      {
-        label: 'May',
-        value: '5'
+    },
+    {
+      name: 'date-of-birth',
+      label: 'Date of birth',
+      context: {
+        id: 'date-of birth',
+        legend: 'Please enter your date of birth',
+        description: 'For example, 31 3 1980',
+        dayLabel: 'Day',
+        dayName: 'dob-day',
+        monthLabel: 'Month',
+        monthName: 'dob-month',
+        yearLabel: 'Year',
+        yearName: 'dob-year',
       },
-      {
-        label: 'June',
-        value: '6'
+    },
+    {
+      name: 'range',
+      label: 'Date Range',
+      context: {
+        id: 'date-range',
+        dayLabel: 'Day',
+        monthLabel: 'Month',
+        yearLabel: 'Year',
+        periodFrom: 'Period from',
+        periodTo: 'Period to',
       },
-      {
-        label: 'July',
-        value: '7'
-      },
-      {
-        label: 'August',
-        value: '8'
-      },
-      {
-        label: 'September',
-        value: '9'
-      },
-      {
-        label: 'October',
-        value: '10'
-      },
-      {
-        label: 'November',
-        value: '11'
-      },
-      {
-        label: 'December',
-        value: '12'
-      }]
-  }
+    },
+  ],
 }

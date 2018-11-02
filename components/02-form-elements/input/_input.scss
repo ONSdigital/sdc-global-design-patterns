@@ -10,8 +10,10 @@
   width: 100%;
   transition: border-color 200ms ease-in;
   @include mq(s) {
-    &:not([class*=input--w]) {
-      width: $input-width;
+    &--text {
+      &:not([class*=input--w-]) {
+        width: $input-width;
+      }
     }
   }
 
@@ -28,7 +30,17 @@
   }
 }
 
-@include input-width('input--w{x}');
+@include input-width('input--w-{x}');
+
+.input--day,
+.input--month {
+  width: input-width-calc(2, $num-max-width);
+}
+
+.input--year {
+  width: input-width-calc(4, $num-max-width);
+}
+
 
 .input__helper {
   font-size: 0.8rem;
@@ -41,7 +53,6 @@
   padding: $input-padding 2rem $input-padding 0.5rem;
   background: $color-white url("#{$static}/img/icons/icons--chevron-down.svg") no-repeat center right 10px;
   background-size: 1rem;
-  line-height: 1.25rem;
 
   &::-ms-expand {
     display: none;

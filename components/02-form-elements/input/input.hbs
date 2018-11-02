@@ -5,8 +5,8 @@
 
 {{#each widths}}
   <div class="field u-mb-m">
-    <label class="label venus" for="input--w{{this}}">{{concatStr ../width_label this}}</label>
-    <input class="input input--text input--w{{this}}" type="text" id="input--w{{this}}" value="{{ repeatString this 'W' }}" />
+    <label class="label venus" for="input--w-{{this}}">{{concatStr ../width_label this}}</label>
+    <input class="input input--text input--w-{{this}}" type="text" id="input--w-{{this}}" value="{{ repeatString this 'W' }}" />
   </div>
 
 {{/each}}
