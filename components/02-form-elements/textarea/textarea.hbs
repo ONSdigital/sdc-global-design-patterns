@@ -6,5 +6,8 @@
             aria-describedby="description-question" 
             {{#if charlimit}}data-maxlength="{{charlimit}}" data-char-limit-ref="{{textarea_id}}-remaining"{{/if}}
             ></textarea>
-  {{#if charlimit}}<div class="input__limit u-mt-xs mercury" data-qa="textarea-with-limit" id="{{textarea_id}}-remaining" aria-live="polite">You have <span>{{charlimit}}</span>.</div>{{/if}}
+  {{#if charlimit}}<div class="input__limit u-mt-xs mercury" data-qa="textarea-with-limit" id="{{textarea_id}}-remaining" aria-live="polite"
+    data-charcount-singular="You have {x} character remaining"
+    data-charcount-plural="You have {x} characters remaining">
+    You have {{charlimit}} characters remaining.</div>{{/if}}
 </div>
