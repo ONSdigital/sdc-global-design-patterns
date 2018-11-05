@@ -11,7 +11,7 @@
       <div class="fieldgroup__fields">
         <div class="field field--input">
           <label class="label mercury" for="{{concatStr id '-day'}}" data-qa="label-day">{{dayLabel}}</label>
-          <input type="number" id="{{concatStr id '-day'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="\d*" min="1" max="31">
+          <input type="number" id="{{concatStr id '-day'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="[0-9]*" min="1" max="31">
         </div>
 
         {{#if firstOption}}
@@ -27,12 +27,12 @@
         {{else}}
            <div class="field field--input">
             <label class="label mercury" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
-            <input type="number" id="{{concatStr id '-month'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="\d*" min="1" max="12">
+            <input type="number" id="{{concatStr id '-month'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="[0-9]*" min="1" max="12">
           </div>
         {{/if}}
         <div class="field field--input">
           <label class="label mercury" for="{{concatStr id '-year'}}" data-qa="label-year">{{yearLabel}}</label>
-          <input type="number" id="{{concatStr id '-year'}}" data-qa="input-StringField" class="input input--w-4 input--StringField" pattern="\d*" min="1000" max="3000">
+          <input type="number" id="{{concatStr id '-year'}}" data-qa="input-StringField" class="input input--w-4 input--StringField" pattern="[0-9]*" min="1000" max="3000">
         </div>
       </div>
     </fieldset>
