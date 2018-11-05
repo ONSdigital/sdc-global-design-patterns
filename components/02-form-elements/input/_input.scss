@@ -34,8 +34,8 @@
 // Text input widths
 @include input-width('input--w-{x}');
 
-// Numerical input widths
-@include input-width('input--wn-{x}', $num-max-width);
+// // Numerical input widths
+// @include input-width('input--wn-{x}', $num-max-width);
 
 .input--postcode {
   width: 100%;
