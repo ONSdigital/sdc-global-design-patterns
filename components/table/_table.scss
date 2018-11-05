@@ -78,3 +78,39 @@
     }
   }
 }
+
+.table--sortable {
+  .table__sort-button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0 1.1rem 0 0;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 2px;
+      width: 12px;
+      height: 18px;
+      background-size: 100%;
+      background-image: url("#{$static}/img/icons/icons--sort-sprite.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+    
+    &:focus {
+      outline-offset: 3px;
+      outline: 3px solid $color-focus-outline;
+    }
+  }
+
+  [aria-sort="ascending"] .table__sort-button::before {
+    background-position: 0 -43px;
+  }
+
+  [aria-sort="descending"] .table__sort-button::before {
+    background-position: 0 -22px;
+  }
+}

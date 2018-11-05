@@ -1,3 +1,4 @@
+
 function SortableTable(table) {
 
     var table = table;
@@ -29,6 +30,7 @@ function SortableTable(table) {
       var button = document.createElement('button')
       button.setAttribute('type', 'button')
       button.setAttribute('data-index', i)
+      button.setAttribute('class', 'table__sort-button')
       button.textContent = text
       button.addEventListener('click', sortButtonClicked)
       heading.textContent = '';
@@ -48,9 +50,7 @@ function SortableTable(table) {
       }
   
       var tBodies = table.querySelectorAll('tbody')
-  
-      sortTBodies(tBodies, columnNumber, newSortDirection)
-  
+        
       for (var i = tBodies.length - 1; i >= 0; i--) {
   
         var rows = getTableRowsArray(tBodies[i])
@@ -65,49 +65,6 @@ function SortableTable(table) {
   
     }
   
-    function sortTBodies(tBodies, columnNumber, sortDirection) {
-  
-      var tBodiesAsArray = []
-  
-      for (var i = 0; i < tBodies.length; i++) {
-        tBodiesAsArray.push(tBodies[i])
-      };
-  
-      var newTbodies = tBodiesAsArray.sort(function(tBodyA, tBodyB) {
-  
-        var tBodyAHeaderRow = tBodyA.querySelector('th[scope="rowgroup"]')
-  
-        var tBodyBHeaderRow = tBodyB.querySelector('th[scope="rowgroup"]')
-  
-  
-        if (tBodyAHeaderRow && tBodyBHeaderRow) {
-          tBodyAHeaderRow = tBodyAHeaderRow.parentElement
-          tBodyBHeaderRow = tBodyBHeaderRow.parentElement
-  
-          var tBodyACell = tBodyAHeaderRow.querySelectorAll('td, th')[columnNumber]
-          var tBodyBCell = tBodyBHeaderRow.querySelectorAll('td, th')[columnNumber]
-  
-          var tBodyAValue = getCellValue(tBodyACell)
-          var tBodyBValue = getCellValue(tBodyBCell)
-  
-          return compareValues(tBodyAValue, tBodyBValue, sortDirection)
-  
-        } else {
-  
-          console.log('no way to compare tbodies')
-          return 0
-        }
-  
-  
-      });
-  
-      for (var i = 0; i < newTbodies.length; i++) {
-        table.append(newTbodies[i])
-      };
-  
-  
-  
-    }
   
     function getTableRowsArray(tbody) {
       var rows = [];
@@ -202,29 +159,6 @@ function SortableTable(table) {
     };
   
   
-    function compareValues(valueA, valueB, sortDirection) {
-  
-      if (sortDirection === 'ascending') {
-        if (valueA < valueB) {
-          return -1;
-        }
-        if (valueA > valueB) {
-          return 1;
-        }
-        return 0;
-      } else {
-        if (valueB < valueA) {
-          return -1;
-        }
-        if (valueB > valueA) {
-          return 1;
-        }
-        return 0;
-      }
-  
-    }
-  
-  
     function createStatusBox() {
   
       status = document.createElement('div')
@@ -237,3 +171,10 @@ function SortableTable(table) {
     };
   
   };
+
+
+  var tables = document.getElementsByTagName('TABLE')
+
+  for (var i = 0; i < tables.length; i++) {
+    new SortableTable(tables[i])
+  }
