@@ -86,14 +86,16 @@
     box-shadow: none;
     padding: 0 1.1rem 0 0;
     position: relative;
+    line-height: 1rem;
+    overflow: visible;
 
     &::before {
       content: '';
       position: absolute;
       right: 0;
-      top: 2px;
+      top: 0;
       width: 12px;
-      height: 19px;
+      height: 21px;
       background-size: 100%;
       background-image: url("#{$static}/img/icons/icons--sort-sprite.svg");
       background-repeat: no-repeat;
