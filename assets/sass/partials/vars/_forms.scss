@@ -17,6 +17,10 @@ $nbsp-width: 0.256rem;
     .#{str-replace($className, '{x}', $width)} {
       width: 100%;
       max-width: input-width-calc($width, $char-width);
+
+      .fieldgroup--inline & {
+        width: input-width-calc($width, $char-width);
+      }
     }
   }
 }

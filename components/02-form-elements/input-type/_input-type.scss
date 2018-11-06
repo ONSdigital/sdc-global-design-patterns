@@ -6,6 +6,7 @@
   // Double ampersand is needed to solve specificity issues
   & &__input {
     z-index: 1;
+    flex: 1 0 auto;
     position: relative;
 
     &:focus {
@@ -14,11 +15,12 @@
   }
 
   &__type[title] {
+    flex: 1 0 auto;
     display: block;
     background-color: $color-lighter-grey;
     border: 1px solid $color-borders;
 
-    padding: $input-padding;
+    padding: $input-padding $input-padding * 2;
     font-weight: 600;
     font-size: 1rem;
     text-align: center;
@@ -50,6 +52,7 @@
     }
 
     &__input {
+      text-align: right;
       border-radius: $input-radius 0 0 $input-radius;
     }
   }

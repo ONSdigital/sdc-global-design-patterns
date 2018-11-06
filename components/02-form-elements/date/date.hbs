@@ -14,11 +14,11 @@
           <input type="number" id="{{concatStr id '-day'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="[0-9]*" min="1" max="31">
         </div>
 
-        {{#if firstOption}}
+        {{#if months}}
           <div class="field field--select">
             <label class="label mercury" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
             <select class="input input--select">
-              <option selected disabled>{{firstOption}}</option>
+              <option selected disabled value="">{{firstOption}}</option>
               {{#each months}}
                 <option value="{{math @index '+' 1}}">{{this}}</option>
               {{/each}}

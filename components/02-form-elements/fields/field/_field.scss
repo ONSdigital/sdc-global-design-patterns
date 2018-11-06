@@ -91,14 +91,14 @@ input:checked ~ .field__other {
   display: block;
 
   &--inline {
-    margin: 0 0 -.5rem;
+    margin: 0 0 $input-padding * -2;
 
     .field {
       flex: 0 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      margin: 0 1rem .5rem 0;
+      margin: 0 $input-padding * 2 $input-padding * 2 0;
     }
   }
 
