@@ -76,6 +76,7 @@
     "gh-pages": "^1.0.0",
     "gulp": "^4.0",
     "gulp-eslint": "^3.0.1",
+    "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.0.5",
     "gulp-stylelint": "^8.0.0",
     "gulp-util": "^3.0.8",
