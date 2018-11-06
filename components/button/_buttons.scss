@@ -26,7 +26,9 @@
   background-color: $color-primary;
   color: $color-white;
   border: 1px solid $color-primary;
-  padding: $input-padding 1rem;
+  padding: .75rem 1rem;
+
+
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
@@ -53,6 +55,11 @@
     width: auto;
   }
 }
+
+.btn--inline {
+  padding: $input-padding 1rem;
+}
+
 
 .btn--secondary {
   @include btn-override(
