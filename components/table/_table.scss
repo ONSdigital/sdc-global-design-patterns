@@ -97,7 +97,7 @@
       background-size: 100%;
       background-image: url("#{$static}/img/icons/icons--sort-sprite.svg");
       background-repeat: no-repeat;
-      background-position: 0 1px;
+      background-position: 0 0;
     }
     
     &:focus {
@@ -107,10 +107,10 @@
   }
 
   [aria-sort="ascending"] .table__sort-button::before {
-    background-position: 0 -39px;
+    background-position: 0 -43px;
   }
 
   [aria-sort="descending"] .table__sort-button::before {
-    background-position: 0 -19px;
+    background-position: 0 -22px;
   }
 }
