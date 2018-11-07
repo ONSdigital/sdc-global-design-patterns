@@ -33,10 +33,6 @@ module.exports = {
         </ul>
         <p class="mars">All information you provide is strictly confidential.</p>
         <p><a href="https://www.ons.gov.uk/surveys/informationforbusinesses/businesssurveys/quarterlybusinesssurvey">More information on the Vacancy Survey</a> can be found on the ONS website.`
-    },
-    {
-      'tab': 'The other tab',
-      'tabContent' : `<p class="mars">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>`
     }],
   }
 }
