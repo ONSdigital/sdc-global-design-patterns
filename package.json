@@ -2,12 +2,12 @@
   "name": "eq-patterns",
   "version": "1.0.0",
   "description": "Pattern library for eQ Survey Runner",
-  "license": "MIT",
-  "author": "Hamish Taplin <hello@hamishtaplin.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/ONSdigital/sdc-global-design-patterns.git"
   },
+  "license": "MIT",
+  "author": "Hamish Taplin <hello@hamishtaplin.com>",
   "scripts": {
     "build": "yarn prestart && yarn compile_assets && gulp scripts:lint && gulp fractal:build",
     "compile_assets": "gulp",
@@ -20,7 +20,6 @@
   "dependencies": {
     "a11y-dialog": "^4.0.1",
     "ie9-oninput-polyfill": "^1.1.1",
-    "through2": "^2.0.3",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
@@ -97,6 +96,7 @@
     "sinon-chai": "^3.2.0",
     "stylelint": "^9.7.1",
     "stylelint-config-standard": "^18.2.0",
+    "through2": "^2.0.3",
     "watchify": "^3.11.0"
   }
 }
