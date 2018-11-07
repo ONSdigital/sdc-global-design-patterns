@@ -11,7 +11,7 @@
   transition: border-color 200ms ease-in;
   @include mq(s) {
     &--text {
-      &:not([class*=input--w-]):not([class*=input--wn-]) {
+      &:not([class*=input--w-]) {
         width: $input-width;
       }
     }
