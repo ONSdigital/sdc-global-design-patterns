@@ -1,16 +1,16 @@
 ---
 title: Development
-label: npm & Gulp etc.
+label: yarn & Gulp etc.
 ---
 
-### npm & Gulp
+### yarn & Gulp
 
 Commands available in the CLI.
 
-- `npm run start` - start local instance of the fractal build
-- `npm run compile_assets` - compiles all local assets, .js and .css
+- `yarn start` - start local instance of the fractal build
+- `yarn compile_assets` - compiles all local assets, .js and .css
 - `gulp test` - runs all karma tests (contained at: /tests/karma/spec/) and outputs results in CLI
   - Documentation on how karma tests are implemented in the pattern library and [writing tests](./writing-karma-tests).
 
 #### Other
-- `npm cache clean` - Running this command will clear the global cache. It will be populated again the next time `npm i` is run.
+- `yarn cache clean` - Running this command will clear the global cache. It will be populated again the next time `yarn` is run.

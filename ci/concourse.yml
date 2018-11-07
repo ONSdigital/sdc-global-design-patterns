@@ -44,8 +44,8 @@ jobs:
         - -exc
         - |
           cd sdc-global-design-patterns
-          npm i
-          npm run compile_assets
+          yarn
+          yarn compile_assets
 
           design_patterns_tag=$(git rev-parse --short HEAD)
           mkdir ../public/$design_patterns_tag
