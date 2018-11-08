@@ -2,49 +2,49 @@ $base: 18px;
 $base-lg: 18px;
 
 $type_matrix: (
-  jupiter:
+  u-fs-xl:
   (
     small: 28px,
     large: 36px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  saturn:
+  u-fs-l:
   (
     small: 24px,
     large: 28px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  neptune:
+  u-fs-m:
   (
     small: 20px,
     large: 22px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  venus:
+  u-fs-r--b:
   (
     small: $base,
     large: $base-lg,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  mars:
+  u-fs-r:
   (
     small: $base,
     large: $base-lg,
     weight: $font-weight-regular,
     line-height: 1.4
   ),
-  mercury:
+  u-fs-s--b:
   (
     small: 14px,
     large: 14px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  pluto:
+  u-fs-s:
   (
     small: 14px,
     large: 14px,

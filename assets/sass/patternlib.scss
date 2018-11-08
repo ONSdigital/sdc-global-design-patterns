@@ -291,7 +291,7 @@ h3 {
   border-bottom: 1px solid #eee;
 }
 // eQ Typography samples
-.jupiter {
+.u-fs-xl {
   font-family: $font-sans;
   font-weight: 900; // Lato Black is 900 // Bold is 700 // Regular is 400
   color: $color-text;
@@ -304,8 +304,8 @@ h3 {
     font-size: 36pt;
     line-height: 1.2;
   }
-} // Jupiter
-.saturn {
+} // u-fs-xl
+.u-fs-l {
   font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
@@ -316,8 +316,8 @@ h3 {
   &.vp600 {
     font-size: 28pt;
   }
-} // Saturn
-.neptune {
+} // u-fs-l
+.u-fs-m {
   font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
@@ -330,8 +330,8 @@ h3 {
   &.vp600 {
     font-size: 22pt;
   }
-} // Neptune
-.venus {
+} // u-fs-m
+.u-fs-r--b {
   font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
@@ -343,7 +343,7 @@ h3 {
     font-size: 18pt;
   }
 }
-.mars {
+.u-fs-r {
   font-family: $font-sans;
   font-weight: 400;
   color: $color-text;
@@ -354,8 +354,8 @@ h3 {
   &.vp600 {
     font-size: 18pt;
   }
-} // Mars
-.mercury {
+} // u-fs-r
+.u-fs-s--b {
   font-family: $font-sans;
   font-weight: 700;
   color: $color-text;
@@ -364,8 +364,8 @@ h3 {
   &vp.600 {
     font-size: 14pt;
   }
-} // Mercury
-.pluto {
+} // u-fs-s--b
+.u-fs-s {
   font-family: $font-sans;
   font-weight: 400;
   color: $color-text;

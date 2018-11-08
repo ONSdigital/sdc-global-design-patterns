@@ -2,19 +2,19 @@
   <div class="answer__fields js-fields">
     <fieldset class="fieldgroup fieldgroup--date" data-qa="widget-date">
       {{#if legend}}
-      <legend class="fieldgroup__title venus">{{legend}}</legend>
+      <legend class="fieldgroup__title u-fs-r--b">{{legend}}</legend>
       {{/if}}
 
       <div class="fieldgroup__fields">
         <div class="field field--input field--day">
-          <label class="label mercury"
+          <label class="label u-fs-s--b"
                  data-qa="label-day">{{dayLabel}}</label>
           <input placeholder="DD" value=""
                  data-qa="input-StringField" class="input input--StringField ">
         </div>
 
         <div class="field field--select field--month">
-          <label class="label mercury" for="date-range-from-month" id="label-date-range-from-month"
+          <label class="label u-fs-s--b" for="date-range-from-month" id="label-date-range-from-month"
                  data-qa="label-month">{{monthLabel}}</label>
           <select class="input input--select" id="date-range-from-month" name="date-range-from-month">
             {{#each months}}
@@ -26,7 +26,7 @@
         </div>
 
         <div class="field field--input field--year">
-          <label class="label mercury"
+          <label class="label u-fs-s--b"
                  data-qa="label-year">{{yearLabel}}</label>
           <input placeholder="YYYY" value=""
                  data-qa="input-StringField" class="input input--StringField ">

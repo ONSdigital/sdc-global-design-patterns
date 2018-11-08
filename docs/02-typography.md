@@ -10,23 +10,23 @@ Lato, with its broad range of weights and extensive unicode support was chosen t
 
 ## Typographic Matrix
 
-| < 740                                                       | >= 740                                                      |
-|-------------------------------------------------------------|-------------------------------------------------------------|
-| <p class="jupiter vp320">Jupiter</p>Lato Bold - 1.5rem/28px | <p class="jupiter vp600">Jupiter</p>Lato Bold - 2rem/36px   |
-| <p class="saturn vp320">Saturn</p>Lato Bold - 1.3rem/24px   | <p class="saturn vp600">Saturn</p>Lato Bold - 1.5rem/28px   |
-| <p class="neptune vp320">Neptune</p>Lato Bold - 1.1rem/20px | <p class="neptune vp600">Neptune</p>Lato Bold - 1.2rem/22px |
-| <p class="venus vp320">Venus</p>Lato Bold - 1rem/18px       | <p class="venus vp600">Venus</p>Lato Bold - 1rem/18px       |
-| <p class="mars vp320">Mars</p>Lato Regular - 1rem/18px      | <p class="mars vp600">Mars</p>Lato Regular - 1rem/18px      |
-| <p class="mercury vp320">Mercury</p>Lato Bold - 0.7rem/14px | <p class="mercury vp600">Mercury</p>Lato Bold - 0.7rem/14px |
-| <p class="pluto vp320">Pluto</p>Lato Regular - 0.7rem/14px  | <p class="pluto vp600">Pluto</p>Lato Regular - 0.7rem/14px  |
+| < 740                                                           | >= 740                                                          |
+|-----------------------------------------------------------------|-----------------------------------------------------------------|
+| <p class="u-fs-xl vp320">u-fs-xl</p>Lato Bold - 1.5rem/28px     | <p class="u-fs-xl vp600">u-fs-xl</p>Lato Bold - 2rem/36px       |
+| <p class="u-fs-l vp320">u-fs-l</p>Lato Bold - 1.3rem/24px       | <p class="u-fs-l vp600">u-fs-l</p>Lato Bold - 1.5rem/28px       |
+| <p class="u-fs-m vp320">u-fs-m</p>Lato Bold - 1.1rem/20px       | <p class="u-fs-m vp600">u-fs-m</p>Lato Bold - 1.2rem/22px       |
+| <p class="u-fs-r--b vp320">u-fs-r--b</p>Lato Bold - 1rem/18px   | <p class="u-fs-r--b vp600">u-fs-r--b</p>Lato Bold - 1rem/18px   |
+| <p class="u-fs-r vp320">u-fs-r</p>Lato Regular - 1rem/18px      | <p class="u-fs-r vp600">u-fs-r</p>Lato Regular - 1rem/18px      |
+| <p class="u-fs-s--b vp320">u-fs-s--b</p>Lato Bold - 0.7rem/14px | <p class="u-fs-s--b vp600">u-fs-s--b</p>Lato Bold - 0.7rem/14px |
+| <p class="u-fs-s vp320">u-fs-s</p>Lato Regular - 0.7rem/14px    | <p class="u-fs-s vp600">u-fs-s</p>Lato Regular - 0.7rem/14px    |
 
 ## Typographic Hierarchy
 The typographic hierarchy provides a logical visual guide to the structural hierarchy of a group.
 
 ### Typographic weights
 
-<p class="eq-font-lato saturn">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
-<p class="eq-font-lato mars">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
+<p class="eq-font-lato u-fs-l">Lato Bold<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
+<p class="eq-font-lato u-fs-r">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
 
 #### Font weights
 * Bold: 700

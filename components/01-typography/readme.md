@@ -1,9 +1,9 @@
 ## Rationale
 
 ### General
-All typographic elements are controlled via css classes. By default, headings have all their font-sizes reset to `1rem`, with the typographic hierarchy enforced by the 'type scale': `jupiter`, `saturn`, `neptune`, `venus` and `mars`. This follows the principle of separating presentation from structure.
+All typographic elements are controlled via css classes. By default, headings have all their font-sizes reset to `1rem`, with the typographic hierarchy enforced by the 'type scale': `u-fs-xl`, `u-fs-l`, `u-fs-m`, `u-fs-r--b` and `u-fs-r`. This follows the principle of separating presentation from structure.
 
-To apply a size to an element add the appropriate type scale class e.g. `<h2 class="saturn">A heading</h2>`
+To apply a size to an element add the appropriate type scale class e.g. `<h2 class="u-fs-l">A heading</h2>`
 
 For further information on typography, fonts, sizes and weights, visit the [typography docs](/docs/typography).
 

@@ -6,12 +6,6 @@ $sizes: (
   l: 1.5rem
 );
 
-@each $key, $value in $sizes {
-  @include bp-suffix(u-fs-#{$key}) {
-    font-size: #{$value};
-  }
-}
-
 .u-fw-b {
   font-weight: 700;
 }
