@@ -299,7 +299,7 @@ h3 {
     font-weight: map-get($props, weight);
     line-height: map-get($props, line-height);
 
-    &.vp600 {
+    &.vp740 {
       font-size: rems(map-get($props, large), $base-lg);
     }
   }

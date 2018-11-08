@@ -12,13 +12,13 @@ Lato, with its broad range of weights and extensive unicode support was chosen t
 
 | < 740                                                           | >= 740                                                          |
 |-----------------------------------------------------------------|-----------------------------------------------------------------|
-| <p class="u-fs-xl vp320">u-fs-xl</p>Lato Bold - 1.5rem/28px     | <p class="u-fs-xl vp600">u-fs-xl</p>Lato Bold - 2rem/36px       |
-| <p class="u-fs-l vp320">u-fs-l</p>Lato Bold - 1.3rem/24px       | <p class="u-fs-l vp600">u-fs-l</p>Lato Bold - 1.5rem/28px       |
-| <p class="u-fs-m vp320">u-fs-m</p>Lato Bold - 1.1rem/20px       | <p class="u-fs-m vp600">u-fs-m</p>Lato Bold - 1.2rem/22px       |
-| <p class="u-fs-r--b vp320">u-fs-r--b</p>Lato Bold - 1rem/18px   | <p class="u-fs-r--b vp600">u-fs-r--b</p>Lato Bold - 1rem/18px   |
-| <p class="u-fs-r vp320">u-fs-r</p>Lato Regular - 1rem/18px      | <p class="u-fs-r vp600">u-fs-r</p>Lato Regular - 1rem/18px      |
-| <p class="u-fs-s--b vp320">u-fs-s--b</p>Lato Bold - 0.7rem/14px | <p class="u-fs-s--b vp600">u-fs-s--b</p>Lato Bold - 0.7rem/14px |
-| <p class="u-fs-s vp320">u-fs-s</p>Lato Regular - 0.7rem/14px    | <p class="u-fs-s vp600">u-fs-s</p>Lato Regular - 0.7rem/14px    |
+| <p class="u-fs-xl vp320">u-fs-xl</p>Lato Bold - 1.5rem/28px     | <p class="u-fs-xl vp740">u-fs-xl</p>Lato Bold - 2rem/36px       |
+| <p class="u-fs-l vp320">u-fs-l</p>Lato Bold - 1.3rem/24px       | <p class="u-fs-l vp740">u-fs-l</p>Lato Bold - 1.5rem/28px       |
+| <p class="u-fs-m vp320">u-fs-m</p>Lato Bold - 1.1rem/20px       | <p class="u-fs-m vp740">u-fs-m</p>Lato Bold - 1.2rem/22px       |
+| <p class="u-fs-r--b vp320">u-fs-r--b</p>Lato Bold - 1rem/18px   | <p class="u-fs-r--b vp740">u-fs-r--b</p>Lato Bold - 1rem/18px   |
+| <p class="u-fs-r vp320">u-fs-r</p>Lato Regular - 1rem/18px      | <p class="u-fs-r vp740">u-fs-r</p>Lato Regular - 1rem/18px      |
+| <p class="u-fs-s--b vp320">u-fs-s--b</p>Lato Bold - 0.7rem/14px | <p class="u-fs-s--b vp740">u-fs-s--b</p>Lato Bold - 0.7rem/14px |
+| <p class="u-fs-s vp320">u-fs-s</p>Lato Regular - 0.7rem/14px    | <p class="u-fs-s vp740">u-fs-s</p>Lato Regular - 0.7rem/14px    |
 
 ## Typographic Hierarchy
 The typographic hierarchy provides a logical visual guide to the structural hierarchy of a group.
