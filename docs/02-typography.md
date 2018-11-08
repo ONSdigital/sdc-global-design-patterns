@@ -29,7 +29,7 @@ The typographic hierarchy provides a logical visual guide to the structural hier
 <p class="eq-font-lato u-fs-r">Lato Regular<br/>abcdefghijklmnopqrstuvwxyz<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>1234567890 £$%-\_+()!@;:,.?[]{}<>/<br/>Accented Welsh - &acirc;&ecirc;&iacute;&icirc;&ocirc;&ucirc;&wcirc;&ycirc; &Acirc;&Ecirc;&Iacute;&Icirc;&Ocirc;&Ucirc;&Wcirc;&Ycirc;</p>
 
 #### Font weights
-* Bold: 700
+* <strong>Bold: 700</strong>
 * Regular: 400
 
 ### Line Heights and Letter Spacing

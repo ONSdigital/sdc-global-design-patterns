@@ -3,6 +3,7 @@ $responsive: true;
 @import "partials/helpers/**/*.scss";
 @import "partials/vars/*.scss";
 @import "partials/objects/type-scale";
+@import "partials/base/fonts";
 
 //eq-patternlib.scss
 // Vars
@@ -291,16 +292,16 @@ h3 {
   background-color: $color-white;
   border-bottom: 1px solid #eee;
 }
-// eQ Typography samples
 
+// eQ Typography samples
 @each $name, $props in $type_matrix {
   .#{$name} {
-    font-size: rems(map-get($props, small), $base);
+    font-size: map-get($props, small);
     font-weight: map-get($props, weight);
     line-height: map-get($props, line-height);
 
     &.vp740 {
-      font-size: rems(map-get($props, large), $base-lg);
+      font-size: map-get($props, large);
     }
   }
 }
