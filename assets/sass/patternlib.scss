@@ -2,6 +2,7 @@ $responsive: true;
 
 @import "partials/helpers/**/*.scss";
 @import "partials/vars/*.scss";
+@import "partials/objects/type-scale";
 
 //eq-patternlib.scss
 // Vars
@@ -291,87 +292,15 @@ h3 {
   border-bottom: 1px solid #eee;
 }
 // eQ Typography samples
-.u-fs-xl {
-  font-family: $font-sans;
-  font-weight: 900; // Lato Black is 900 // Bold is 700 // Regular is 400
-  color: $color-text;
-  &.vp320,
-  &.vp599 {
-    font-size: 28pt;
-    line-height: 1.2;
-  }
-  &.vp600 {
-    font-size: 36pt;
-    line-height: 1.2;
-  }
-} // u-fs-xl
-.u-fs-l {
-  font-family: $font-sans;
-  font-weight: 700;
-  color: $color-text;
-  &.vp320,
-  &.vp599 {
-    font-size: 24pt;
-  }
-  &.vp600 {
-    font-size: 28pt;
-  }
-} // u-fs-l
-.u-fs-m {
-  font-family: $font-sans;
-  font-weight: 700;
-  color: $color-text;
-  &.vp320 {
-    font-size: 18pt;
-  }
-  &.vp599 {
-    font-size: 20pt;
-  }
-  &.vp600 {
-    font-size: 22pt;
-  }
-} // u-fs-m
-.u-fs-r--b {
-  font-family: $font-sans;
-  font-weight: 700;
-  color: $color-text;
-  &.vp320,
-  &.vp599 {
-    font-size: 16pt;
-  }
-  &.vp600 {
-    font-size: 18pt;
-  }
-}
-.u-fs-r {
-  font-family: $font-sans;
-  font-weight: 400;
-  color: $color-text;
-  &.vp320,
-  &.vp599 {
-    font-size: 16pt;
-  }
-  &.vp600 {
-    font-size: 18pt;
-  }
-} // u-fs-r
-.u-fs-s--b {
-  font-family: $font-sans;
-  font-weight: 700;
-  color: $color-text;
-  &.vp320,
-  &.vp599,
-  &vp.600 {
-    font-size: 14pt;
-  }
-} // u-fs-s--b
-.u-fs-s {
-  font-family: $font-sans;
-  font-weight: 400;
-  color: $color-text;
-  &.vp320,
-  &.vp599,
-  &vp.600 {
-    font-size: 14pt;
+
+@each $name, $props in $type_matrix {
+  .#{$name} {
+    font-size: rems(map-get($props, small), $base);
+    font-weight: map-get($props, weight);
+    line-height: map-get($props, line-height);
+
+    &.vp600 {
+      font-size: rems(map-get($props, large), $base-lg);
+    }
   }
 }
