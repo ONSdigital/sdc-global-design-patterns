@@ -1,4 +1,4 @@
-$base: 16px;
+$base: 18px;
 $base-lg: 18px;
 
 $type_matrix: (
@@ -11,19 +11,25 @@ $type_matrix: (
   ),
   saturn:
   (
-    small: 22px,
+    small: 24px,
     large: 28px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
   neptune:
   (
-    small: 18px,
+    small: 20px,
     large: 22px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  venus: (small: 16px, large: 18px, weight: $font-weight-bold, line-height: 1.4),
+  venus:
+  (
+    small: $base,
+    large: $base-lg,
+    weight: $font-weight-bold,
+    line-height: 1.4
+  ),
   mars:
   (
     small: $base,
