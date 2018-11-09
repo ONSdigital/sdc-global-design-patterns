@@ -94,6 +94,7 @@
     "mocha": "^5.0.1",
     "pixrem": "^3.0.2",
     "postcss-inline-block": "^1.0.0",
+    "postcss-mq-optimize": "^0.0.0",
     "postcss-reporter": "^3.0.0",
     "prettier": "^1.10.2",
     "rollup-plugin-babel": "^3.0.2",

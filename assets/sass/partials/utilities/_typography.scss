@@ -1,11 +1,29 @@
+@mixin font-size($props, $base) {
+  font-size: rems(map-get($props, small), $base);
+  font-weight: map-get($props, weight);
+  line-height: map-get($props, line-height);
+
+  @include mq(m) {
+    font-size: rems(map-get($props, large), $base-lg);
+  }
+}
+
 @each $name, $props in $type_matrix {
   .#{$name} {
-    font-size: rems(map-get($props, small), $base);
-    font-weight: map-get($props, weight);
-    line-height: map-get($props, line-height);
+   @include font-size($props, $base);
+  }
+}
 
-    @include mq(m) {
-      font-size: rems(map-get($props, large), $base-lg);
+@each $breakpoint, $size in $grid-bp {
+  @each $name, $props in $type_matrix {
+    .#{$name}--\@#{$breakpoint} {
+      @if $breakpoint == 'xs' {
+        @include font-size($props, $base);
+      } @else {
+        @include mq($breakpoint) {
+          @include font-size($props, $base);
+        }
+      }
     }
   }
 }
