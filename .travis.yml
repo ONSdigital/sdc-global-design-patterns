@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "10.13.0"
+before_script:
+  - npm install -g gulp-cli
+cache: yarn
+addons:
+  browserstack:
+    username: "eq.team@ons.gov.uk"
+    access_key:
+      secure: "0U3w7j1FML8dv4Ky04ovft4wwhxGDl/0OcE4KG2ItvHuvVrb2gzmO6TXIhhphljjHY8reFU6Ui7GZowOBluKAmI254wqw64M0HhBioZCgW37eojyQEuLmvaavYfvnTApxDrVomPZRjwGkpJxC1VIX/xs1Tl8Ehl9CXYVo1S3w6QLT83hSkMv4iz8RX07Xm6rIRCKNslvRO3Z4SZBZkV4Atgc2d3EZQyNCA/g00WnKPASIO0MXc8rGujPotSOUoDy5a53DcQjQyX4/SP/KWLKg+Jli7RLY0NdP3TmpwM0Nv/ARIx855QZN38Ni/4ptWRhONhGxZ4IzFLe1MWeSypLRjZIRna7vJM2p1ECI3CXj1Al8jN+KHIAf6MszRLHP/B0+sZF1VzQoLeaaEaNlhpg2GqaAvXMjPIS5z9ZbdbAGu2tHcqBk7QtJhhHn42hS/nSpNSDYFvATTTQjPVKIhTKtv9xXDWEuhYMSMxZdhTrfIHWRIqZqLHxgKHYGShf/qweZhXDBN8lI9U/9Rc1l334L7gmbuu3MNGrfLMUcWl1MrQFV+76BJQBZ/0pouQmrJmY+eQTruf2Cw/RzXBuWk3zr1O250pPppbjzRgp6UPU9+1esiB+817V9wik27KBLTbaisWBYfCtz3fPIUQVLJVYEGTC4WbyLXIvdc8TsRia7C4="
