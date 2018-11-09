@@ -2,10 +2,6 @@
   width: 100%;
   margin-bottom: 1rem;
 
-  &--dense {
-    font-size: 81.25%;
-  }
-
   .table__caption {
     text-align: left;
     font-weight: bold;
@@ -24,6 +20,12 @@
 
   .table__cell, .table__header--row {
     border-bottom: 1px solid $color-grey;
+  }
+
+  &--dense {
+    .table__head, .table__body, .table__foot {
+      font-size: 81.25%;
+    }
   }
 
   &--responsive {
@@ -88,8 +90,18 @@
     position: relative;
     line-height: 1rem;
     overflow: visible;
-    font-weight: bold;
-
+    color: $color-links;
+    text-decoration: underline;
+    &:hover {
+      color: $color-links-hover;
+    }
+    
+    &:focus {
+      outline-offset: 3px;
+      outline: 3px solid $color-focus-outline;
+      color: $color-links-hover;
+    }
+    
     &::before {
       content: '';
       position: absolute;
@@ -102,11 +114,7 @@
       background-repeat: no-repeat;
       background-position: 0 0;
     }
-    
-    &:focus {
-      outline-offset: 3px;
-      outline: 3px solid $color-focus-outline;
-    }
+
   }
 
   [aria-sort="ascending"] .table__sort-button::before {
