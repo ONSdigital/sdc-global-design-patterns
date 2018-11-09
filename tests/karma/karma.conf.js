@@ -28,6 +28,7 @@ module.exports = function(config) {
     },
 
     plugins: [
+      'karma-browserstack-launcher',
       'karma-chrome-launcher',
       'karma-mocha-reporter',
       'karma-browserify',
@@ -43,14 +44,27 @@ module.exports = function(config) {
       paths: ['./node_modules', './assets/js/', 'components/']
     },
 
-    reporters: ['mocha', 'progress', 'coverage'],
+    reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
 
-    browsers: ['Chrome', 'HeadlessChrome'],
+    browsers: ['Chrome', 'HeadlessChrome', 'bs_firefox_mac', 'bs_iphone5'],
 
     customLaunchers: {
       HeadlessChrome: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox']
+      },
+      bs_firefox_mac: {
+        base: 'BrowserStack',
+        browser: 'firefox',
+        browser_version: '21.0',
+        os: 'OS X',
+        os_version: 'Mountain Lion'
+      },
+      bs_iphone5: {
+        base: 'BrowserStack',
+        device: 'iPhone 5',
+        os: 'ios',
+        os_version: '6.0'
       }
     },
 
