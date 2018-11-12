@@ -24,7 +24,7 @@ module.exports = function(config) {
     preprocessors: {
       './assets/js/polyfills.js': ['browserify'],
       './assets/js/api/_load.js': ['browserify'],
-      'tests/karma/spec/**/*.js': ['browserify'],
+      './tests/karma/spec/**/*.js': ['browserify'],
       './components/**/*.spec.js': ['browserify'],
       './assets/js/**/*.spec.js': ['browserify'],
     },
@@ -43,7 +43,7 @@ module.exports = function(config) {
     browserify: {
       debug: true,
       transform: ['babelify'],
-      paths: ['./node_modules', './assets/js/', 'components/']
+      paths: ['./node_modules', './assets/js/', './components/']
     },
 
     reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
@@ -52,7 +52,7 @@ module.exports = function(config) {
       'Chrome',
       'HeadlessChrome',
       //'bs_firefox_mac',
-      //'bs_iphone5',
+      'bs_iphone5',
       'bs_window_10_IE_11'
     ],
 

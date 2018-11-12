@@ -28,12 +28,12 @@ const strTemplate = `<div class="panel panel--error">
       </div>
   </div>
   <div class="panel__body">
-    <div class="field">
+    <div class="field" id="ea08f977-33a8-4933-ad7b-c497997107cf">
       <label class="label " for="ea08f977-33a8-4933-ad7b-c497997107cf" id="label-ea08f977-33a8-4933-ad7b-c497997107cf">
         <span class="label__inner venus">Total retail turnover</span>
       </label>
       <div class="input-type input-type--currency" data-type="£">
-        <input class="input input--currency" id="ea08f977-33a8-4933-ad7b-c497997107cf" name="ea08f977-33a8-4933-ad7b-c497997107cf" type="text">
+        <input class="input input--currency" name="ea08f977-33a8-4933-ad7b-c497997107cf" type="text">
       </div>
     </div>
   </div>
@@ -48,7 +48,8 @@ describe('In page link', () => {
     elTemplate = wrapper;
     elDetails = elTemplate.getElementsByClassName(classDetails)[0];
     document.body.appendChild(elTemplate);
-  })
+    inPageLink();
+  });
 
   it('DOM should contain the template', () => {
     expect(document.body.contains(elTemplate)).to.equal(true);
@@ -57,6 +58,7 @@ describe('In page link', () => {
   it('Input should recieve focus after in page link is clicked', () => {
     const elTrigger = elTemplate.parentElement.getElementsByClassName(classTrigger)[0];
     elTrigger.click();
+
     expect(document.activeElement.classList.contains('input')).to.equal(true);
   })
 })
