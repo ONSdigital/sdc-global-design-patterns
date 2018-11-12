@@ -1,5 +1,5 @@
 module.exports = function(config) {
-  var testDir = 'tests/karma'
+  var testDir = 'tests/karma';
 
   config.set({
 
@@ -14,6 +14,7 @@ module.exports = function(config) {
     frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai'],
 
     files: [
+      './assets/js/polyfills.js',
       './assets/js/api/_load.js',
       './assets/js/**/*.spec.js',
       './components/**/*.spec.js',
@@ -21,6 +22,7 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
+      './assets/js/polyfills.js': ['browserify'],
       './assets/js/api/_load.js': ['browserify'],
       'tests/karma/spec/**/*.js': ['browserify'],
       './components/**/*.spec.js': ['browserify'],
@@ -46,7 +48,21 @@ module.exports = function(config) {
 
     reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
 
-    browsers: ['Chrome', 'HeadlessChrome', 'bs_firefox_mac', 'bs_iphone5'],
+    browsers: [
+      'Chrome',
+      'HeadlessChrome',
+      //'bs_firefox_mac',
+      //'bs_iphone5',
+      'bs_window_10_IE_11'
+    ],
+
+    browserStack: {
+      startTunnel: 'true',
+      build: 'Karma unit tests',
+      name: 'Karma',
+      project: 'ONS - sdc-global-design-patterns',
+      forcelocal: true
+    },
 
     customLaunchers: {
       HeadlessChrome: {
@@ -56,15 +72,22 @@ module.exports = function(config) {
       bs_firefox_mac: {
         base: 'BrowserStack',
         browser: 'firefox',
-        browser_version: '21.0',
+        browser_version: '63.0',
         os: 'OS X',
-        os_version: 'Mountain Lion'
+        os_version: 'Sierra'
       },
       bs_iphone5: {
         base: 'BrowserStack',
         device: 'iPhone 5',
         os: 'ios',
         os_version: '6.0'
+      },
+      bs_window_10_IE_11: {
+        base: 'BrowserStack',
+        os: 'Windows',
+        os_version: '10',
+        browser: 'IE',
+        browser_version: '11',
       }
     },
 
