@@ -109,7 +109,6 @@ gulp.task('css:process', function() {
           pixrem({ replace: false }),
           inlineblock(),
           pseudoelements(),
-          // mqpacker({ sort: false }),
           mqoptimize()
           // reporter({ clearMessages: true })
         ])
