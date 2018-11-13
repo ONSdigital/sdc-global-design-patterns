@@ -2,9 +2,9 @@ export default function () {
 
   return {
     browsers: [
-      //'Chrome',
+      'Chrome',
       'Firefox',
-      //'HeadlessChrome'
+      'HeadlessChrome'
     ],
 
     customLaunchers: {

@@ -11,6 +11,8 @@ const {
   browsers: browserstackBrowsers
 } = browserstackLaunchersConfig();
 
+const isRunningOnTravis = process.env['RUNNING_ON_TRAVIS'];
+
 module.exports = function(config) {
   var testDir = 'tests/karma';
 
@@ -63,8 +65,7 @@ module.exports = function(config) {
     reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
 
     browsers: [
-      ...localBrowsers,
-      ...browserstackBrowsers
+      ...(isRunningOnTravis ? browserstackBrowsers : localBrowsers)
     ],
 
     browserStack: {
@@ -75,8 +76,7 @@ module.exports = function(config) {
     },
 
     customLaunchers: {
-      ...localLaunchers,
-      ...browserstackLaunchers
+      ...(isRunningOnTravis ? browserstackLaunchers : localLaunchers)
     },
 
     coverageReporter: {
