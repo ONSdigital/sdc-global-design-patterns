@@ -18,6 +18,13 @@ module.exports = {
       "cy": true
     },
   },{
+    "name": "standard-beta",
+    "label": "Header - standard with beta bar",
+    "context": {
+      "title": "Standard title header with beta bar",
+      "beta": true
+    },
+  },{
     "name": "standard-internal",
     "label": "Header - standard internal",
     "context": {

@@ -1,4 +1,7 @@
 <header class="header {{classes}}">
+    {{#if beta}}
+    {{> @beta-bar }}
+    {{/if}}
     <div class="header__top" role="banner">
         <div class="container">
             <div class="grid grid--gutterless">
