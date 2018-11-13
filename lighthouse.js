@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const chromeLauncher = require('chrome-launcher');
+const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 const ReportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
 const cheerio = require('cheerio');
@@ -12,6 +12,8 @@ const distDir = path.join(__dirname, '/dist');
 const previewDir = `${distDir}/components/preview`;
 const reportDir = `${distDir}/components/report`;
 const detailDir = `${distDir}/components/detail`;
+
+process.setMaxListeners(Infinity);
 
 const start = Date.now();
 
@@ -46,11 +48,10 @@ function launchChrome(previewFiles) {
       // Start chrome instances
       console.log(`Booting ${numberOfChromeInstances} Chrome instances`)
       for (let i = 0; i < numberOfChromeInstances; i++) {
-        await chromeLauncher.launch({
-          chromeFlags: ['--headless', '--no-sandbox']
-        }).then(chrome => chromeInstances.push({
+        await puppeteer.launch().then(chrome => chromeInstances.push({
           available: true,
-          chrome
+          chrome,
+          port: (new URL(chrome.wsEndpoint())).port
         }));
       }
 
@@ -63,7 +64,7 @@ function launchChrome(previewFiles) {
           chromeInstance.available = false;
 
           const flags = {
-            port: chromeInstance.chrome.port,
+            port: chromeInstance.port,
             onlyCategories: ['accessibility']
           };
 
@@ -128,7 +129,7 @@ function launchChrome(previewFiles) {
     const shutDownPromises = [];
 
     while (index < numberOfChromeInstances) {
-      shutDownPromises.push(chromeInstances[index].chrome.kill());
+      shutDownPromises.push(chromeInstances[index].chrome.close());
       index++;
     }
 
