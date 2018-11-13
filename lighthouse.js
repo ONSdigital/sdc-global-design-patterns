@@ -73,7 +73,7 @@ function launchChrome(previewFiles) {
 
           const result = lighthouse(`http://localhost:${port}/components/preview/${file}`, flags).then(async (result) => {
             chromeInstance.available = true;
-            const html = ReportGenerator.generateReport(result.lhr, 'html');
+            const html = ReportGenerator.generateReport(result.lhr, 'html').replace('.lh-header-sticky {', '.lh-header-sticky {\n  display: none;');
 
             fs.writeFileSync(`${reportDir}/${file}`, html, error => {
               if (error) {
