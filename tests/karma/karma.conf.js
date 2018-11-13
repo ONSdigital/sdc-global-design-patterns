@@ -1,3 +1,16 @@
+import localLauncherConfig from './karma.conf.local-launchers';
+import browserstackLaunchersConfig from './karma.conf.browserstack-launchers';
+
+const {
+  customLaunchers: localLaunchers,
+  browsers: localBrowsers
+} = localLauncherConfig();
+
+const {
+  customLaunchers: browserstackLaunchers,
+  browsers: browserstackBrowsers
+} = browserstackLaunchersConfig();
+
 module.exports = function(config) {
   var testDir = 'tests/karma';
 
@@ -49,11 +62,8 @@ module.exports = function(config) {
     reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
 
     browsers: [
-      'Chrome',
-      'HeadlessChrome',
-      //'bs_firefox_mac',
-      'bs_iphone5',
-      'bs_window_10_IE_11'
+      //...localBrowsers,
+      ...browserstackBrowsers
     ],
 
     browserStack: {
@@ -65,30 +75,8 @@ module.exports = function(config) {
     },
 
     customLaunchers: {
-      HeadlessChrome: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
-      },
-      bs_firefox_mac: {
-        base: 'BrowserStack',
-        browser: 'firefox',
-        browser_version: '63.0',
-        os: 'OS X',
-        os_version: 'Sierra'
-      },
-      bs_iphone5: {
-        base: 'BrowserStack',
-        device: 'iPhone 5',
-        os: 'ios',
-        os_version: '6.0'
-      },
-      bs_window_10_IE_11: {
-        base: 'BrowserStack',
-        os: 'Windows',
-        os_version: '10',
-        browser: 'IE',
-        browser_version: '11',
-      }
+      ...localLaunchers,
+      ...browserstackLaunchers
     },
 
     coverageReporter: {
@@ -100,12 +88,11 @@ module.exports = function(config) {
       ]
     },
 
-
     mochaReporter: {
       output: 'full'
     },
 
     colors: true,
     logLevel: config.LOG_DEBUG
-  })
-}
+  });
+};
