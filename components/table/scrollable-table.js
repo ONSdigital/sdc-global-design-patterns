@@ -83,7 +83,6 @@ class TableScroll {
         return {
             left: rect.left + window.scrollX
         }
-
     }
 }
 
