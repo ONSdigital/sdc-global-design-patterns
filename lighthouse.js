@@ -13,6 +13,8 @@ const previewDir = `${distDir}/components/preview`;
 const reportDir = `${distDir}/components/report`;
 const detailDir = `${distDir}/components/detail`;
 
+const start = Date.now();
+
 // Boot Express server
 const app = express();
 app.set('port', port);
@@ -53,6 +55,7 @@ function launchChrome(previewFiles) {
       }
 
       let index = 0;
+      let numberAudited = 0;
 
       async function next() {
         if (index < numberOfPreviews) {
@@ -99,13 +102,13 @@ function launchChrome(previewFiles) {
                 }
               });
             });
-
+            numberAudited++;
             next();
           });
 
           index++;
           return result;
-        } else {
+        } else if (numberAudited === numberOfPreviews) {
           resolve();
         }
       }
@@ -118,8 +121,24 @@ function launchChrome(previewFiles) {
     })();
   }).then(async () => {
     server.close();
+
     console.log('Finished auditing');
-    process.exit();
+    console.log('Shutting down chrome instances');
+    let index = 0;
+    const shutDownPromises = [];
+
+    while (index < numberOfChromeInstances) {
+      shutDownPromises.push(chromeInstances[index].chrome.kill());
+      index++;
+    }
+
+    Promise.all(shutDownPromises).then(() => {
+      const elapsedSeconds = (Date.now() - start) / 1000;
+      const elapsedMins = Math.floor(elapsedSeconds / 60);
+      const remainderSeconds = Math.round(elapsedSeconds - (elapsedMins * 60));
+      console.log(`Lighthouse audits took ${elapsedMins}min ${remainderSeconds}secs`);
+      process.exit();
+    });
   });
 }
 

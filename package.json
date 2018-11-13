@@ -11,7 +11,7 @@
     "start": "yarn && gulp dev",
     "test": "gulp scripts:test",
     "test:watch": "gulp test:watch",
-    "test:a11y": "yarn build && node lighthouse.js",
+    "test:a11y": "yarn build",
     "deploy": "gulp && yarn build && gh-pages -d dist"
   },
   "dependencies": {
