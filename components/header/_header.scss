@@ -14,14 +14,15 @@
     line-height: 1rem;
   }
 
-  &--internal {
-    .header__top {
+  &--internal & {
+    &__top {
       background: $color-secondary;
     }
   }
 
   &__logo {
     height: 1.333rem;
+
     &--print {
       display: none;
     }
@@ -52,8 +53,6 @@
 
     color: $color-white;
     margin: 0;
-
-
 
     &--nav-adj {
       @include mq(s) {
