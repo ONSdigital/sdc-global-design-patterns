@@ -1,6 +1,7 @@
 {{#each table_block}}
 {{#if scrollable}}
-<div class="table-scrollable">
+<div class="table-scrollable table-scrollable--on">
+  <div class="table-scrollable__content">
 {{/if}}
 <table class="table{{table_class}}"  {{#if sortable}}data-aria-sort="Sort by" data-aria-asc="ascending" data-aria-desc="descending"{{/if}}>
   {{#if caption}}
@@ -31,6 +32,7 @@
   {{/if}}
 </table>
 {{#if scrollable}}
+</div>
 </div>
 {{/if}}
 <div class="u-mb-xl"></div>

@@ -66,17 +66,53 @@
 }
 
 .table-scrollable {
-  width: 100%;
-  overflow: visible;
-  overflow-x: scroll;
+  position: relative;
+  ::-webkit-scrollbar {
+    height: 7px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: $color-dark-grey; 
+  }
+
   &--on {
     .table__header, .table__cell {
       white-space: nowrap;
     }
   }
-  .table__header, .table__cell {
-    @include mq(xs,m) {
-      white-space: nowrap;
+  &__content {
+    width: 100%;
+    overflow: visible;
+    overflow-x: scroll;
+
+
+    .table__header, .table__cell {
+      @include mq(xs,m) {
+        white-space: nowrap;
+      }
+    }
+    .right-shadow, .left-shadow {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 5px;
+      z-index: 200;
+      &.with-transition {
+        transition: box-shadow 0.4s ease-out;
+      }
+    }
+    .right-shadow {
+      right: 0;
+      &.visible {
+        box-shadow: inset -1px 0 0 0 #bfc1c3, inset -5px 0 0 0 rgba(191,193,195,0.4);
+      }
+    } 
+    .left-shadow {
+      left: 0;
+      &.visible {
+        box-shadow: inset 1px 0 0 0 #bfc1c3, inset -5px 0 0 0 rgba(191,193,195,0.4);
+      }
     }
   }
 }
@@ -92,6 +128,7 @@
     overflow: visible;
     color: $color-links;
     text-decoration: underline;
+    font-weight: bold;
     &:hover {
       color: $color-links-hover;
     }
@@ -101,7 +138,7 @@
       outline: 3px solid $color-focus-outline;
       color: $color-links-hover;
     }
-    
+
     &::before {
       content: '';
       position: absolute;
