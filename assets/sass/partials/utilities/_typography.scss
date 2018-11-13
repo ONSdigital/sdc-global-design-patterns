@@ -4,7 +4,7 @@
   line-height: map-get($props, line-height);
 
   @include mq(m) {
-    font-size: rems(map-get($props, large), $base-lg);
+    font-size: rems(map-get($props, large), $base);
   }
 }
 
