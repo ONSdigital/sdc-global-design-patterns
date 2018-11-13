@@ -28,7 +28,6 @@
   border: 1px solid $color-primary;
   padding: .75rem 1rem;
 
-
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
@@ -76,6 +75,18 @@
     $color: $color-white,
     $border-color: rgba(255,255,255,0.6),
     $border-color-hover: rgba(255,255,255,1)
+  );
+
+  border-width: 2px;
+  padding: 0.5rem 1rem;
+}
+
+.btn--ghost-blue {
+  @include btn-override(
+    $bg: transparent,
+    $color: $color-blue,
+    $color-hover: darken($color-blue, 10%),
+    $border-color: $color-blue,
   );
 
   border-width: 2px;
