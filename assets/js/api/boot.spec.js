@@ -1,7 +1,7 @@
 import {subscribe} from "./_sdcModules";
 
 describe('boot (API method)', () => {
-  it('should run all module methods subscribed with a boot option', () => {
+  it('should run all module methods subscribed with a boot option', async function() {
     const method1 = chai.spy();
     const method2 = chai.spy();
 
@@ -16,9 +16,11 @@ describe('boot (API method)', () => {
       boot: true
     }]);
 
-    window.sdcAPI.boot();
+    document.addEventListener('DOMContentLoaded', function () {
+      window.sdcAPI.boot();
 
-    expect(method1).to.not.have.been.called();
-    expect(method2).to.have.been.called();
+      expect(method1).to.not.have.been.called();
+      expect(method2).to.have.been.called();
+    });
   });
 });

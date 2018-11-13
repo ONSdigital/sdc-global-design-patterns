@@ -46,6 +46,7 @@
     "gulp-util": "^3.0.8",
     "karma-browserstack-launcher": "^1.3.0",
     "karma-chai-spies": "^0.1.4",
+    "karma-firefox-launcher": "^1.1.0",
     "open": "^0.0.5",
     "postcss": "^6.0.22",
     "postcss-pseudoelements": "^5.0.0",

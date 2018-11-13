@@ -45,6 +45,7 @@ module.exports = function(config) {
     plugins: [
       'karma-browserstack-launcher',
       'karma-chrome-launcher',
+      'karma-firefox-launcher',
       'karma-mocha-reporter',
       'karma-browserify',
       'karma-mocha',
@@ -62,14 +63,13 @@ module.exports = function(config) {
     reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
 
     browsers: [
-      //...localBrowsers,
+      ...localBrowsers,
       ...browserstackBrowsers
     ],
 
     browserStack: {
       startTunnel: 'true',
-      build: 'Karma unit tests',
-      name: 'Karma',
+      name: 'Karma unit tests',
       project: 'ONS - sdc-global-design-patterns',
       forcelocal: true
     },
