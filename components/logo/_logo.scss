@@ -1,9 +1,15 @@
 .logo {
   display: inline-block;
+
   &__img {
-    width: 272px;
+    width: 216px;
     height: auto;
+
+    @include mq(m) {
+      width: 272px;
+    }
   }
+
   @include lt-ie9() {
     float: left;
     display: block;
