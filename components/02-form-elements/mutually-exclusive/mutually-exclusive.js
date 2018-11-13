@@ -30,25 +30,24 @@ export default function mutuallyExclusiveInputs() {
 
 export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
   let attr = inputEl.getAttribute('value')
-  
+
   if (elType === 'checkbox' && inputEl.checked === true) {
     inputEl.checked = false;
-    inputEl.parentElement.classList.remove('is-checked');
 
   } else if (elType === 'text' || elType === 'textarea') {
     const charRef = document.querySelector(`#${inputEl.getAttribute(attrCharLimitRef)}`)
     attr = inputEl.getAttribute('data-value')
     inputEl.value = '';
 
-    if (charRef) {  
+    if (charRef) {
       updateAvailableChars(inputEl, charRef);
     }
-    
+
   } else if (elType === 'select-one') {
     inputEl.selectedIndex = 0;
     attr = inputEl.getAttribute('data-value')
   }
-  
+
   voiceOverAlertEl.append(attr + ' ' + voiceOverAlertEl.getAttribute('data-adjective') + '. ');
 }
 

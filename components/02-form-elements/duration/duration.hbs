@@ -1,90 +1,44 @@
-<fieldset class="fieldgroup fieldgroup--duration">
+<fieldset class="fieldgroup fieldgroup--inline">
 
   <legend id="duration-label" class="fieldgroup__title u-fs-r--b">{{label_time}}</legend>
 
   <div class="fieldgroup__fields">
     <div class="field">
-      <div class="input-type input-type--unit input-type--group">
+      <div class="input-type">
         <input data-qa="input-number"
-               id="{{label_time}}1"
-               class="input input--number input--with-unit input--block"
-               name="{{label_time}}1"
-               value=""
+               id="{{id}}1"
+               class="input {{ concatStr 'input--w-' unit1Length }} input-type__input"
+               name="{{id}}1"
                pattern="[0-9]*"
-               aria-labelledby="duration-label {{label_time}}-type1" />
-        <abbr title="{{unit1Title}}" class="input-type__type" id="{{label_time}}-type1">{{unit1}}</abbr>
+               type="number"
+               aria-labelledby="duration-label {{id}}-type1" />
+        <abbr title="{{or unit1Title unit1 }}" class="input-type__type" id="{{id}}-type1">{{unit1}}</abbr>
       </div>
     </div>
 
     <div class="field">
-      <div class="input-type input-type--unit input-type--group">
+      <div class="input-type">
         <input data-qa="input-number"
-               id="{{label_time}}2"
-               class="input input--number input--with-unit input--block"
-               name="{{label_time}}2"
-               value=""
+               id="{{id}}2"
+               class="input {{ concatStr 'input--w-' unit2Length }} input-type__input"
+               name="{{id}}2"
                pattern="[0-9]*"
-               aria-labelledby="duration-label {{label_time}}-type2" />
-        <abbr title="{{unit2Title}}" class="input-type__type" id="{{label_time}}-type2">{{unit2}}</abbr>
+               type="number"
+               aria-labelledby="duration-label {{id}}-type2" />
+        <abbr title="{{or unit2Title unit2 }}" class="input-type__type" id="{{id}}-type2">{{unit2}}</abbr>
       </div>
     </div>
 
     <div class="field">
-      <div class="input-type input-type--unit input-type--group">
+      <div class="input-type">
         <input data-qa="input-number"
-               id="{{label_time}}3"
-               class="input input--number input--with-unit input--block"
-               name="{{label_time}}3"
-               value=""
+               id="{{id}}3"
+               class="input {{ concatStr 'input--w-' unit3Length }} input-type__input"
+               name="{{id}}3"
                pattern="[0-9]*"
-               aria-labelledby="duration-label {{label_time}}-type3" />
-        <abbr title="{{unit3Title}}" class="input-type__type" id="{{label_time}}-type3">{{unit3}}</abbr>
-      </div>
-    </div>
-  </div>
-</fieldset>
-
-<fieldset class="fieldgroup fieldgroup--duration u-mt-l">
-
-  <legend id="duration-label" class="fieldgroup__title u-fs-r--b">{{label_period}}</legend>
-
-  <div class="fieldgroup__fields">
-    <div class="field">
-      <div class="input-type input-type--unit input-type--group">
-        <input data-qa="input-number"
-               id="{{label_period}}4"
-               class="input input--number input--with-unit input--block"
-               name="{{label_period}}4"
-               value=""
-               pattern="[0-9]*"
-               aria-labelledby="duration-label {{label_period}}-type4" />
-        <abbr title="{{unit4Title}}" class="input-type__type input-type__type--group input-type__type--x-wide" id="{{label_period}}-type4">{{unit4}}</abbr>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="input-type input-type--unit input-type--group">
-        <input data-qa="input-number"
-               id="{{label_period}}5"
-               class="input input--number input--with-unit input--block"
-               name="{{label_period}}5"
-               value=""
-               pattern="[0-9]*"
-               aria-labelledby="duration-label {{label_period}}-type5" />
-        <abbr title="{{unit5Title}}" class="input-type__type" id="{{label_period}}-type5">{{unit5}}</abbr>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="input-type input-type--unit input-type--group">
-        <input data-qa="input-number"
-               id="{{label_period}}6"
-               class="input input--number input--with-unit input--block"
-               name="{{label_period}}6"
-               value=""
-               pattern="[0-9]*"
-               aria-labelledby="duration-label {{label_period}}-type6" />
-        <abbr title="{{unit6Title}}" class="input-type__type" id="{{label_period}}-type6">{{unit6}}</abbr>
+               type="number"
+               aria-labelledby="duration-label {{id}}-type3" />
+        <abbr title="{{or unit3Title unit3 }}" class="input-type__type" id="{{id}}-type3">{{unit3}}</abbr>
       </div>
     </div>
   </div>

@@ -2,8 +2,8 @@
   <fieldset>
     <legend class="field__legend u-fs-r">Select all that apply</legend>
       {{#each options}}
-      <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+      <div class="field__item">
+        <input class="input input--checkbox" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="checkbox">
         {{>@label}}
       </div>
       {{/each}}

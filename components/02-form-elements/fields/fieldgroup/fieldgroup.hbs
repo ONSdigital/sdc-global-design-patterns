@@ -1,34 +1,23 @@
-<fieldset class="fieldgroup fieldgroup--date" data-qa="widget-date">
-    <legend class="fieldgroup__title u-fs-r--b">Date</legend>
-    <div class="fieldgroup__fields">
-        <div class="field field--input field--day">
-            <label class="label u-fs-s--b" for="input-date-range-from-day" id="label-date-range-from-day">Day</label>
-            <input class="input input--StringField " value="" placeholder="DD" id="input-date-range-from-day" name="date-range-from-day">
-        </div>
-
-        <div class="field field--select field--month">
-            <label class="label u-fs-s--b" for="input-date-range-from-month" id="label-date-range-from-month">Month</label>
-            <select class="input input--select" id="input-date-range-from-month" name="date-range-from-month">
-              <option disabled="disabled" value="" selected="selected">Select month</option>
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select>
-        </div>
-
-        <div class="field field--input field--year">
-            <label class="label u-fs-s--b" for="input-date-range-from-year" id="label-date-range-from-year">Year</label>
-            <input data-qa="input-StringField" class="input input--StringField " value="" placeholder="YYYY" id="input-date-range-from-year" name="date-range-from-year">
-        </div>
+<fieldset class="fieldgroup fieldgroup--inline">
+  <legend class="fieldgroup__title u-fs-r--b">Search</legend>
+  <div class="fieldgroup__fields">
+    <div class="field field--input">
+      <label class="label u-fs-s--b" for="business-name">Business name</label>
+      <input class="input" id="business-name" name="business-name">
     </div>
 
+    <div class="field field--input">
+      <label class="label u-fs-s--b" for="reference-number">Reference number</label>
+      <input type="number" pattern="[0-9]*" class="input input-wn-8" id="reference-number" name="reference-number">
+    </div>
+
+    <div class="field field--input">
+      <label class="label u-fs-s--b" for="postcode">Postcode</label>
+      <input class="input input--postcode" id="postcode" name="postcode">
+    </div>
+
+    <div class="field field--input">
+      <button class="btn btn--inline" type="submit">Search</button>
+    </div>
+  </div>
 </fieldset>

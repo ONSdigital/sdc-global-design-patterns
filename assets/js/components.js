@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-import './focus-styles';
+// import './focus-styles';
 import './dialog';
 import './submitter';
 // import './form-submitter.js';

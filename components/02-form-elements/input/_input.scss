@@ -5,12 +5,16 @@
   display: block;
   color: inherit;
   font-size: 1rem;
-  border: 1px solid $color-borders;
+  border: $input-border-width solid $color-borders;
   border-radius: $input-radius;
   width: 100%;
   transition: border-color 200ms ease-in;
   @include mq(s) {
-    width: $input-width;
+    &--text {
+      &:not([class*=input--w-]) {
+        width: $input-width;
+      }
+    }
   }
 
   &:hover {
@@ -20,10 +24,19 @@
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px $color-focus-outline;
+
     @include fixed() {
       outline: 3px solid $color-focus-outline;
     }
   }
+}
+
+// Text input widths
+@include input-width('input--w-{x}');
+
+.input--postcode {
+  width: 100%;
+  max-width: input-width-calc($chars: 5, $num-chars: 2, $spaces: 1);
 }
 
 .input__helper {
@@ -37,7 +50,6 @@
   padding: $input-padding 2rem $input-padding 0.5rem;
   background: $color-white url("#{$static}/img/icons/icons--chevron-down.svg") no-repeat center right 10px;
   background-size: 1rem;
-  line-height: 1.25rem;
 
   &::-ms-expand {
     display: none;
@@ -67,10 +79,12 @@
   top: 0.75rem;
   left: 0.6rem;
   transition: background-color 200ms ease-in, color 200ms ease-in;
+
   &:focus, &:checked {
     border-color: $color-links-hover;
     outline: none;
   }
+
   @include mq(m) {
     top: 0.85rem;
   }
@@ -81,6 +95,26 @@
     &:focus {
       outline: 2px solid $color-focus;
     }
+  }
+
+  ~ .label:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: $input-radius;
+  }
+
+  &:checked ~ .label:before {
+    box-shadow: 0 0 0 2px $color-links-hover;
+  }
+
+  &:focus ~ .label:before {
+    border-color: $color-links-hover;
+    box-shadow: 0 0 0 3px $color-focus-outline;
   }
 }
 
@@ -128,20 +162,16 @@
 }
 
 .input--limit-reached {
-  border: 1px solid $color-red;
+  border: $input-border-width solid $color-red;
 
   &:focus {
     outline: none;
-    border: 1px solid $color-red;
+    border: $input-border-width solid $color-red;
     box-shadow: 0 0 0 1px $color-red;
     @include fixed() {
       outline: 2px solid $color-red;
     }
   }
-}
-
-.input--with-unit {
-  padding-right: 4rem;
 }
 
 .no-js {

@@ -2,7 +2,7 @@
 <fieldset class="field field--exclusive">
   <legend class="field__legend u-fs-r u-vh">{{fieldset_legend}}</legend>
   <div class="field__label u-fs-r--b">{{field_label}}</div>
-  
+
   <div class="fieldgroup fieldgroup--date" data-qa="widget-date">
     <div class="fieldgroup__fields">
       <div class="field field--input field--day">
@@ -31,8 +31,8 @@
   <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">{{or}},</div>
 
   <div class="field field--checkbox field--multiplechoice field--exclusive">
-    <div class="field__item js-focusable-box">
-      <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
+    <div class="field__item">
+      <input class="input input--checkbox js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
       <label class="label label--inline u-fs-r--b " for="none">
           <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
       </label>
