@@ -6,7 +6,7 @@
   // Double ampersand is needed to solve specificity issues
   & &__input {
     z-index: 1;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     position: relative;
 
     &:focus {
@@ -57,18 +57,18 @@
     }
   }
 
-  &--prefix {
-    flex-direction: row-reverse;
-  }
-
   &--prefix & {
     &__type[title] {
       border-right: none;
       border-radius: $input-radius 0 0 $input-radius;
+      order: 0;
     }
 
     &__input {
       border-radius: 0 $input-radius $input-radius 0;
+      order: 1;
     }
   }
 }
+
+@include input-width('input-type--w-{x}');
