@@ -70,12 +70,10 @@
   ::-webkit-scrollbar {
     height: 7px;
   }
-  
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
     background: $color-dark-grey; 
   }
-
   &--on {
     .table__header, .table__cell {
       white-space: nowrap;
@@ -85,8 +83,6 @@
     width: 100%;
     overflow: visible;
     overflow-x: scroll;
-
-
     .table__header, .table__cell {
       @include mq(xs,m) {
         white-space: nowrap;

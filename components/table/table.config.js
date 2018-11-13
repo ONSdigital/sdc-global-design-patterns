@@ -354,7 +354,7 @@ module.exports = {
         table_block: [
           {
             scrollable: true,
-            caption: "A scrollable table under a medium viewport width",
+            caption: "A scrollable table",
             th: [
               { 
                 value: "ID"
