@@ -1,2 +1,2 @@
 /assets/fonts/*
-	X-Frame-Options: allow-from http://localhost:4000 *--eq-prototypes.netlify.com
+	Access-Control-Allow-Origin: http://localhost:4000
