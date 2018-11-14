@@ -367,12 +367,16 @@ gulp.task('favicons:watch', function(done) {
   done();
 });
 
+gulp.task('headers:copy', function() {
+  return gulp.src('_headers').pipe(gulp.dest('public/'));
+});
+
 gulp.task('open:browser', function(done) {
   opn('http://localhost:3000');
   done();
 });
 
-gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images', 'favicons'));
+gulp.task('default', gulp.parallel('styles:lint', 'css', 'scripts:lint', 'scripts', 'fonts', 'images', 'favicons', 'headers:copy'));
 
 gulp.task(
   'watch',
@@ -399,3 +403,4 @@ gulp.task(
   gulp.parallel('css:clean', 'scripts:clean', 'fonts:clean', 'images:clean', 'favicons:clean')
 );
 gulp.task('dev', gulp.series('watch', 'fractal:start', 'open:browser'));
+
