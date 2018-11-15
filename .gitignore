@@ -5,5 +5,7 @@ public
 dist
 yarn-error.log
 coverage
+.DS_Store
+*.tmp
 
 secrets.yml
