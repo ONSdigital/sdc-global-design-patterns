@@ -9,7 +9,7 @@
   "license": "MIT",
   "author": "Hamish Taplin <hello@hamishtaplin.com>",
   "scripts": {
-    "prestart": "yarn",
+    "prestart": "yarn --force",
     "build": "yarn prestart && yarn compile_assets && gulp scripts:lint && gulp fractal:build && node lighthouse.js",
     "compile_assets": "gulp",
     "start": "yarn && gulp dev",
