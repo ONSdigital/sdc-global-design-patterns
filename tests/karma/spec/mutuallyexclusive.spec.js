@@ -14,21 +14,21 @@ const strCheckboxesTemplate = `
     <div class="field__label u-fs-r--b">Select all that apply:</div>
       <div class="field__item">
         <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="gas" id="gas" type="checkbox">
-        <label class="label label--inline u-fs-r--b " for="gas">Gas</label>
+        <label class="label label--inline u-fs-r" for="gas">Gas</label>
       </div><div class="field__item">
         <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="electric" id="electric" type="checkbox">
-        <label class="label label--inline u-fs-r--b " for="electric">Electric</label>
+        <label class="label label--inline u-fs-r" for="electric">Electric</label>
       </div><div class="field__item">
         <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="solid-fuel" id="solid-fuel" type="checkbox">
-        <label class="label label--inline u-fs-r--b " for="solid-fuel">Solid fuel</label>
+        <label class="label label--inline u-fs-r" for="solid-fuel">Solid fuel</label>
       </div><div class="field__item">
         <input class="input input--checkbox ${exclusiveGroupClass}" name="heating-type" value="other" id="other" type="checkbox">
-        <label class="label label--inline u-fs-r--b " for="other">Other</label>
+        <label class="label label--inline u-fs-r" for="other">Other</label>
       </div>
       <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">Or</div>
       <div class="field__item">
         <input class="input input--checkbox ${checkboxClass}" name="heating-type" value="no central heating" id="none" type="checkbox">
-        <label class="label label--inline u-fs-r--b " for="none">
+        <label class="label label--inline u-fs-r" for="none">
             <span class="u-vh">Or,</span> No central heating<span class="u-vh">. Selecting this will uncheck all other checkboxes</span>
         </label>
         <span class=" ${voiceOverAlertClass} u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
@@ -77,7 +77,7 @@ const strInputsTemplate = `
     <div class="field field--checkbox field--multiplechoice field--exclusive">
         <div class="field__item">
             <input class="input input--checkbox ${checkboxClass}" name="heating-type" value="I have never had a paid job" id="none" type="checkbox">
-            <label class="label label--inline u-fs-r--b " for="none">
+            <label class="label label--inline u-fs-r" for="none">
           <span class="u-vh">Or,</span> I have never had a paid job<span class="u-vh">. Selecting this will remove any pre-selected date</span>
       </label>
             <span class="${voiceOverAlertClass} u-vh" role="alert" aria-live="polite" data-adjective="deselected"></span>
