@@ -3,7 +3,7 @@
 ### General
 All typographic elements are controlled via css classes. By default, headings have all their font-sizes reset to `1rem`, with the typographic hierarchy enforced by the 'type scale': `u-fs-xl`, `u-fs-l`, `u-fs-m`, `u-fs-r--b` and `u-fs-r`. This follows the principle of separating presentation from structure.
 
-Font sizes can be triggered also at certain breakpoints. Just suffix any font size class with `--@{breakpoint}`, e.g. `u-fs-m--@l`
+Font sizes can be triggered also at certain breakpoints. Just suffix any font size class with `@{breakpoint}`, e.g. `u-fs-l@l`
 
 To apply a size to an element add the appropriate type scale class e.g. `<h2 class="u-fs-l">A heading</h2>`
 

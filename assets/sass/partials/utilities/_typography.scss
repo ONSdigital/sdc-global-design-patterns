@@ -9,22 +9,8 @@
 }
 
 @each $name, $props in $type_matrix {
-  .#{$name} {
-   @include font-size($props, $base);
-  }
-}
-
-@each $breakpoint, $size in $grid-bp {
-  @each $name, $props in $type_matrix {
-    .#{$name}--\@#{$breakpoint} {
-      @if $breakpoint == 'xs' {
-        @include font-size($props, $base);
-      } @else {
-        @include mq($breakpoint) {
-          @include font-size($props, $base);
-        }
-      }
-    }
+  @include bp-suffix($name) {
+    @include font-size($props, $base);
   }
 }
 
