@@ -8,6 +8,12 @@
   }
 }
 
+@each $name, $props in $type_matrix {
+  .#{$name} {
+    @include font-size($props, $base);
+  }
+}
+
 @each $breakpoint, $size in $grid-bp {
   @each $name, $props in $type_matrix {
     @include mq($breakpoint) {
