@@ -24,6 +24,6 @@
 }
 
 // Set an element's width to be auto at specified breakpoint
-@include bp-suffix('u-wa--') {
+@include bp-suffix(u-wa--) {
   width: auto;
 }

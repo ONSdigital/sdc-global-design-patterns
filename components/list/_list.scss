@@ -45,3 +45,15 @@
     color: $color-red;
   }
 }
+
+$list-item-inline-spacing-horizontal: 1rem;
+$list-item-inline-spacing-vertical: 0.5rem;
+
+@include bp-suffix(list--inline) {
+  margin: ($list-item-inline-spacing-vertical / -2) ($list-item-inline-spacing-horizontal / -2);
+
+  .list__item {
+    display: inline-block;
+    margin: ($list-item-inline-spacing-vertical / 2) ($list-item-inline-spacing-horizontal / 2)
+  }
+}
