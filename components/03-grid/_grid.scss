@@ -83,13 +83,33 @@
 .grid--flex {
   flex-flow: row wrap;
   display: flex;
-  .grid__col {
-    display: flex;
-  }
+
   &.grid--center {
     justify-content: center;
   }
+
+  &.grid--between {
+    justify-content: space-between;
+  }
+
+  &.grid--no-wrap {
+    flex-wrap: nowrap;
+  }
+
+  &.grid--vertical-center {
+    align-items: center;
+  }
+
+
+  .grid__col {
+    display: flex;
+
+    &--no-shrink {
+      flex-shrink: 0;
+    }
+  }
 }
+
 
 @include bp-suffix(grid--bordered, false) {
   margin-left: 0;
@@ -124,6 +144,10 @@
   .grid--float & {
     float: left;
     display: block;
+  }
+
+  &--auto {
+    width: auto;
   }
 }
 
