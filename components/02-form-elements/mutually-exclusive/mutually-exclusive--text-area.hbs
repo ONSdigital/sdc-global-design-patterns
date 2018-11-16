@@ -4,7 +4,7 @@
   <textarea class="input js-exclusive-group input--textarea{{#if charlimit}} js-charlimit-input{{/if}}" cols="60"
             rows="8" id="{{textarea_id}}" name="{{textarea_id}}"
             {{#if charlimit}}maxlength="{{charlimit}}"{{/if}}
-            aria-describedby="description-question" 
+            aria-describedby="description-question"
             {{#if charlimit}}data-maxlength="{{charlimit}}" data-value="Feedback" data-char-limit-ref="{{textarea_id}}-remaining"{{/if}}
             ></textarea>
   {{#if charlimit}}<div class="input__limit u-mt-xs u-fs-s--b" data-qa="textarea-with-limit" id="{{textarea_id}}-remaining" aria-live="polite"
@@ -18,7 +18,7 @@
   <div class="field field--checkbox field--multiplechoice field--exclusive">
     <div class="field__item js-focusable-box">
       <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
-      <label class="label label--inline u-fs-r--b " for="none">
+      <label class="label label--inline u-fs-r" for="none">
           <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
       </label>
       <span class="js-exclusive-alert u-vh" role="alert" aria-live="polite" data-adjective="{{or_deselect_adjective}}"></span>
