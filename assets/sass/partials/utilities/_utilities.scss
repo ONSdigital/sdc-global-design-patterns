@@ -25,7 +25,7 @@
 
 // Set an element's width to be auto at specified breakpoint
 @each $breakpointMin, $size in $grid-bp {
-  @media only screen and (min-width: get-bp-width($breakpointMin)) {
+  @include mq($breakpointMin) {
     .u-wa--\@#{$breakpointMin} {
       width: auto;
     }

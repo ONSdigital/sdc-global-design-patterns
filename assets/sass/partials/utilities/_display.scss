@@ -9,7 +9,7 @@
 // Hide between two breakpoints
 @each $breakpointMin, $size in $grid-bp {
   @each $breakpointMax, $size in $grid-bp {
-    @media only screen and (min-width: get-bp-width($breakpointMin)) and (max-width: get-bp-width($breakpointMax)) {
+    @include mq($breakpointMin, $breakpointMax) {
       .u-d-no--\@#{$breakpointMin}\@#{$breakpointMax} {
         display: none !important;
       }
@@ -19,7 +19,7 @@
 
 // Hide from single breakpoint
 @each $breakpointMin, $size in $grid-bp {
-  @media only screen and (min-width: get-bp-width($breakpointMin)) {
+  @include mq($breakpointMin) {
     .u-d-no--\@#{$breakpointMin} {
       display: none !important;
     }
