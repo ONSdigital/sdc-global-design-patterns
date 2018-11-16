@@ -81,9 +81,9 @@
     }
   }
 
-  @each $breakpoint, $size in $breakpoints {
-    @include mq($breakpoint) {
-      .#{$class}\@#{$breakpoint} {
+  @each $breakpointMin, $size in $breakpoints {
+    @include mq($breakpointMin) {
+      .#{$class}\@#{$breakpointMin} {
         @content;
       }
     }
@@ -91,7 +91,7 @@
     @if $createBetweenBreakpoints {
       @each $breakpointMax, $size in $grid-bp {
         @include mq($breakpointMin, $breakpointMax) {
-          .#{$className}\@#{$breakpointMin}\@#{$breakpointMax} {
+          .#{$class}\@#{$breakpointMin}\@#{$breakpointMax} {
             @content;
           }
         }
