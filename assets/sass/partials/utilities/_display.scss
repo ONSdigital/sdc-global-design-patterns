@@ -6,6 +6,6 @@
   display: block;
 }
 
-@include bp-suffix('u-d-no--', $createBetweens: true) {
+@include bp-suffix('u-d-no--', $createBetweenBreakpoints: true) {
   display: none !important;
 }
