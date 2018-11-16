@@ -1,5 +1,4 @@
 $base: 18px;
-$base-lg: 18px;
 
 $type_matrix: (
   u-fs-xl:
@@ -26,14 +25,14 @@ $type_matrix: (
   u-fs-r--b:
   (
     small: $base,
-    large: $base-lg,
+    large: $base,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
   u-fs-r:
   (
     small: $base,
-    large: $base-lg,
+    large: $base,
     weight: $font-weight-regular,
     line-height: 1.4
   ),

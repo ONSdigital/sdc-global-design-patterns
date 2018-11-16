@@ -8,7 +8,10 @@
   }
 
   @if $responsive {
-    @if $from == none or $from <= nth(nth($grid-bp, 1), 2) {
+    @if ($from == none or $from <= nth(nth($grid-bp, 1), 2)) and $to = none {
+      @content;
+    }
+    @else if $from == none or $from <= nth(nth($grid-bp, 1), 2) {
       @media only screen and (max-width: $to) {
         @content;
       }
