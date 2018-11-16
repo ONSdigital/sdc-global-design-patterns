@@ -24,10 +24,6 @@
 }
 
 // Set an element's width to be auto at specified breakpoint
-@each $breakpointMin, $size in $grid-bp {
-  @include mq($breakpointMin) {
-    .u-wa--\@#{$breakpointMin} {
-      width: auto;
-    }
-  }
+@include bp-suffix('u-wa--') {
+  width: auto;
 }

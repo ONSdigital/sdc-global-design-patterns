@@ -6,22 +6,6 @@
   display: block;
 }
 
-// Hide between two breakpoints
-@each $breakpointMin, $size in $grid-bp {
-  @each $breakpointMax, $size in $grid-bp {
-    @include mq($breakpointMin, $breakpointMax) {
-      .u-d-no--\@#{$breakpointMin}\@#{$breakpointMax} {
-        display: none !important;
-      }
-    }
-  }
-}
-
-// Hide from single breakpoint
-@each $breakpointMin, $size in $grid-bp {
-  @include mq($breakpointMin) {
-    .u-d-no--\@#{$breakpointMin} {
-      display: none !important;
-    }
-  }
+@include bp-suffix('u-d-no--', $createBetweens: true) {
+  display: none !important;
 }
