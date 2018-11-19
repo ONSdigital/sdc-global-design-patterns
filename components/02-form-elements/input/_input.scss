@@ -9,16 +9,14 @@
   border-radius: $input-radius;
   width: 100%;
   transition: border-color 200ms ease-in;
+  appearance: none;
+
   @include mq(s) {
     &--text {
       &:not([class*=input--w-]) {
         width: $input-width;
       }
     }
-  }
-
-  &--text {
-    appearance: none;
   }
 
   &:hover {
@@ -50,7 +48,6 @@
 }
 
 .input--select {
-  appearance: none;
   padding: $input-padding 2rem $input-padding 0.5rem;
   background: $color-white url("#{$static}/img/icons/icons--chevron-down.svg") no-repeat center right 10px;
   background-size: 1rem;
@@ -72,7 +69,6 @@
 .input--checkbox {
   width: 20px;
   height: 20px;
-  appearance: none;
   border: 2px solid #9b9b9b;
   padding: 0.5rem;
   font-size: 1rem;
