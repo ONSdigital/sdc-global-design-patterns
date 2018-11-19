@@ -28,29 +28,30 @@ class Collapsible {
     this.openItems = 0
   }
 
-  registerDom(rootEl) {
-    rootEl.classList.add(classHasJs)
-    const content = rootEl.getElementsByClassName(classCollapsibleContent)[0]
+  registerDom(component) {
+    this.component = component
+    this.component.classList.add(classHasJs)
+    const content = this.component.getElementsByClassName(classCollapsibleContent)[0]
 
-    rootEl.classList.contains(classCollapsibleSimple) ? this.multi = false : this.multi = true
+    this.component.classList.contains(classCollapsibleSimple) ? this.multi = false : this.multi = true
     
     this.titles = forEach(
-      rootEl.getElementsByClassName(classCollapsibleTitle),
+      this.component.getElementsByClassName(classCollapsibleTitle),
       (el, index) => { this.registerTitle(el, index) }
     )
 
     this.bodys = forEach(
-      rootEl.getElementsByClassName(classCollapsibleBody),
+      this.component.getElementsByClassName(classCollapsibleBody),
       (el, index) => { this.registerBody(el, index) }
     )
 
     this.toggleAllTrigger = forEach(
-      rootEl.getElementsByClassName(classCollapsibleToggleAll),
+      this.component.getElementsByClassName(classCollapsibleToggleAll),
       el => { this.registerToggleAll(el) }
     )
 
     this.closeTrigger = forEach(
-      rootEl.getElementsByClassName(classClose),
+      this.component.getElementsByClassName(classClose),
       el => { this.registerClose(el) }
     )
 
@@ -63,8 +64,8 @@ class Collapsible {
   }
 
   registerTitle(element, index) {
-    // Better screen reader interaction
-    element.setAttribute('id', 'collapsible-title-' + index)
+    const componentId = this.component.getAttribute('id')
+    element.setAttribute('id', componentId + '-collapsible-title-' + index)
     element.setAttribute(attrControls, 'collapsible-body-' + index)
     element.setAttribute(attrExpanded, 'false')
     element.setAttribute(attrSelected, 'false')
@@ -98,8 +99,8 @@ class Collapsible {
   }
 
   registerBody(element, index) {
-    // Better screen reader interaction
-    element.setAttribute('id', 'collapsible-body-' + index)
+    const componentId = this.component.getAttribute('id')
+    element.setAttribute('id', componentId + '-collapsible-body-' + index)
     element.setAttribute('aria-labelledby', 'collapsible-title-' + index)
     element.setAttribute(attrHidden, 'true')
 
@@ -228,7 +229,10 @@ class Collapsible {
 export default function collapsible() {
   const elCollapsible = document.getElementsByClassName(classCollapsible)
 
-  forEach(elCollapsible, element => new Collapsible().registerDom(element))
+  forEach(elCollapsible, (element, index) => {
+    element.setAttribute('id', 'collapsible-' + index)
+    new Collapsible().registerDom(element)
+  })
 }
 
 domready(collapsible)
