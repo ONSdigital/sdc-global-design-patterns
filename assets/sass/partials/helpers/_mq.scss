@@ -8,7 +8,7 @@
   }
 
   @if $responsive {
-    @if ($from == none or $from <= nth(nth($grid-bp, 1), 2)) and $to = none {
+    @if ($from == none or $from <= nth(nth($grid-bp, 1), 2)) and $to == none {
       @content;
     }
     @else if $from == none or $from <= nth(nth($grid-bp, 1), 2) {
