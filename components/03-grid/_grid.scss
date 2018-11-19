@@ -102,7 +102,9 @@
 
 
   .grid__col {
-    display: flex;
+    &--flex {
+      display: flex;
+    }
 
     &--no-shrink {
       flex-shrink: 0;

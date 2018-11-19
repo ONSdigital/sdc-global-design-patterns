@@ -9,6 +9,7 @@ module.exports = {
     "label": "Header - standard external",
     "context": {
       "title": "Standard title header",
+      "button": "Save and complete later"
     },
   },{
     "name": "standard-cy",

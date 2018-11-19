@@ -118,20 +118,20 @@
 
 .nav--main {
   .nav__list {
-    @include mq(xs,s) {
+    @include mq(xs,m) {
       padding: 0 0 1rem 0;
       opacity: 1;
       transition: opacity 300ms ease-in-out;
     }
   }
   .nav__item {
-    @include mq(xs,s) {
+    @include mq(xs,m) {
       display: block;
       text-align: left;
       padding: .5rem .5rem 0 0;
       margin: 0;
     }
-    @include mq(s) {
+    @include mq(m) {
       padding: 0 0 .3rem;
       margin: 0 0 0 1rem;
       &--active {
@@ -140,7 +140,7 @@
     }
   }
   .nav__link {
-    @include mq(xs,s) {
+    @include mq(xs,m) {
       font-size: 1.2rem;
       display: block;
       text-align: left;
@@ -153,7 +153,7 @@
   .nav__item {
     padding: 0 .667rem .3rem;
 
-    @include mq(xs,s) {
+    @include mq(xs,m) {
       margin: 0;
     }
     &--current, &--current:first-child {
@@ -165,7 +165,7 @@
 
 .has-js {
   .nav--h-m { // h-m - hide mobile
-    @include mq(xs,s) {
+    @include mq(xs,m) {
       display: none;
       .nav__list {
         opacity: 0;
