@@ -14,3 +14,4 @@ __Ben Armstrong__, User Experience (UX) Designer,<br/>Office for National Statis
 * __Will Richards__ ([twitter](https://twitter.com/madebymoon)) / ([GitHub](https://github.com/madebymoon))
 * __Hamish Taplin__ ([twitter](https://twitter.com/hamishtaplin)) / ([GitHub](https://github.com/hamishtaplin))
 * __Rhodri Griffith__ (<rhodri.griffith@ons.gov.uk>) / ([twitter](https://twitter.com/RhodGriffith)) / ([GitHub](https://github.com/RhodGriffith))
+* __Shane Edwards__ ([GitHub](https://github.com/saedwards))
