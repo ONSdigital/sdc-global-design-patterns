@@ -97,17 +97,6 @@
   }
 }
 
-.grid__col {
-  flex: 0 0 auto;
-
-  // Fixes text overflow issues
-  min-width: 0;
-}
-
-.grid__col--flex {
-  display: flex;
-}
-
 @include bp-suffix(grid--no-wrap) {
   flex-wrap: nowrap;
 }
@@ -133,6 +122,10 @@
   vertical-align: top;
   box-sizing: border-box;
   background-clip: content-box;
+  flex: 0 0 auto;
+  // Fixes text overflow issues
+  min-width: 0;
+
   @if $grid-use-letter-spacing-hack {
     letter-spacing: normal;
     word-spacing: normal;
@@ -150,6 +143,10 @@
   .grid--flex & {
     width: auto;
   }
+}
+
+.grid__col--flex {
+  display: flex;
 }
 
 @for $column from 1 through $grid-cols {
