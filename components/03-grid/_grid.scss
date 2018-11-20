@@ -92,26 +92,23 @@
     justify-content: space-between;
   }
 
-  &.grid--no-wrap {
-    flex-wrap: nowrap;
-  }
-
   &.grid--vertical-center {
     align-items: center;
   }
 
-
   .grid__col {
+    flex: 0 0 auto;
+    overflow: hidden;
+
     &--flex {
       display: flex;
-    }
-
-    &--no-shrink {
-      flex-shrink: 0;
     }
   }
 }
 
+@include bp-suffix(grid--no-wrap) {
+  flex-wrap: nowrap;
+}
 
 @include bp-suffix(grid--bordered, false) {
   margin-left: 0;
@@ -147,35 +144,55 @@
     float: left;
     display: block;
   }
+}
 
-  &--auto {
-    width: auto;
+@for $column from 1 through $grid-cols {
+  $width: percentage($column / $grid-cols);
+
+  @include bp-suffix(col-#{$column}) {
+    width: $width;
+
+    .grid--flex & {
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+  }
+
+  @include bp-suffix(push-#{$column}) {
+    position: relative;
+    left: $width;
+  }
+
+  @include bp-suffix(pull-#{$column}) {
+    position: relative;
+    left: 0 - $width;
   }
 }
 
-@each $breakpoint, $size in $grid-bp {
-  @for $column from 1 through $grid-cols {
-    $width: percentage($column / $grid-cols);
+@include bp-suffix(col-auto) {
+  width: auto;
 
-    @include mq($breakpoint) {
-      .col-#{$column}\@#{$breakpoint} {
-        width: $width;
-        .grid--flex & {
-          flex: 0 0 $width;
-          max-width: $width;
-        }
-      }
+  .grid--flex & {
+    flex-basis: auto;
+    max-width: auto;
+  }
+}
 
-      .push-#{$column}\@#{$breakpoint} {
-        position: relative;
-        left: $width;
-      }
+.grid--flex {
+  @include bp-suffix(col-shrink) {
+    flex-shrink: 1;
+  }
 
-      .pull-#{$column}\@#{$breakpoint} {
-        position: relative;
-        left: 0 - $width;
-      }
-    }
+  @include bp-suffix(col-no-shrink) {
+    flex-shrink: 0;
+  }
+
+  @include bp-suffix(col-grow) {
+    flex-grow: 1;
+  }
+
+  @include bp-suffix(col-no-grow) {
+    flex-grow: 0;
   }
 }
 

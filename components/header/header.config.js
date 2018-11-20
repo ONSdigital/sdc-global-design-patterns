@@ -22,8 +22,9 @@ module.exports = {
     "name": "standard-beta",
     "label": "Header - standard with beta bar",
     "context": {
-      "title": "Standard title header with beta bar",
-      "beta": true
+      "title": "Standard title header with beta bar and button",
+      "beta": true,
+      "button": "Save and complete later"
     },
   },{
     "name": "standard-internal",

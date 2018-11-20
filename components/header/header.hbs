@@ -5,7 +5,7 @@
     <div class="header__top" role="banner">
         <div class="container">
             <div class="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap">
-                <div class="grid__col grid__col--auto">
+                <div class="grid__col col-auto">
                     <div class="logo">
                         <img src="{{path '/assets/img/ons-logo-black-{{#if cy}}cy{{else}}en{{/if}}.svg'}}" alt="{{#if cy}}Logo Swyddfa Ystadegau Gwladol{{else}}Office for National Statistics logo{{/if}}" class="logo__img header__logo--print">
                         <a href="#1">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 {{#if services}}
-                <div class="grid__col grid__col--auto grid__col--no-shrink u-d-no--@xs@m">
+                <div class="grid__col col-auto col-no-shrink u-d-no--@xs@m">
                     <nav class="nav nav--horizontal {{#if internal}}nav--light{{/if}} u-d-no--@xs@m u-fr" aria-label="Site services menu">
                         <ul class="nav__list" role="menubar" aria-label="Site services menu">
                             {{#each services}}
@@ -30,14 +30,14 @@
     <div class="header__main {{#if nav}}header__main--border{{/if}}">
         <div class="container">
             <div class="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap">
-                <div class="grid__col grid__col--auto">
+                <div class="grid__col col-auto col-shrink">
                     <h1 class="header__title">{{title}}</h1>
                     {{#if description}}
                     <p class="header__desc">{{description}}</p>
                     {{/if}}
                 </div>
                 {{#if (or button nav)}}
-                <div class="grid__col grid__col--auto grid__col--no-shrink">
+                <div class="grid__col col-auto col-no-shrink">
                   {{#if button}}
                     {{> @button  btn-classes="btn--ghost u-ml-s u-d-no--@xs@m" label=button}}
                   {{/if }}
