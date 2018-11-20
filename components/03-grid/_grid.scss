@@ -98,7 +98,8 @@
 
   .grid__col {
     flex: 0 0 auto;
-    overflow: hidden;
+    // Fixes text overflow issues
+    min-width: 0;
 
     &--flex {
       display: flex;
@@ -144,6 +145,10 @@
     float: left;
     display: block;
   }
+
+  .grid--flex & {
+    width: auto;
+  }
 }
 
 @for $column from 1 through $grid-cols {
@@ -174,7 +179,7 @@
 
   .grid--flex & {
     flex-basis: auto;
-    max-width: auto;
+    max-width: 100%;
   }
 }
 
