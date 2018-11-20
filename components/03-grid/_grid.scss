@@ -95,16 +95,17 @@
   &.grid--vertical-center {
     align-items: center;
   }
+}
 
-  .grid__col {
-    flex: 0 0 auto;
-    // Fixes text overflow issues
-    min-width: 0;
+.grid__col {
+  flex: 0 0 auto;
 
-    &--flex {
-      display: flex;
-    }
-  }
+  // Fixes text overflow issues
+  min-width: 0;
+}
+
+.grid__col--flex {
+  display: flex;
 }
 
 @include bp-suffix(grid--no-wrap) {
@@ -156,11 +157,8 @@
 
   @include bp-suffix(col-#{$column}) {
     width: $width;
-
-    .grid--flex & {
-      flex: 0 0 $width;
-      max-width: $width;
-    }
+    flex-basis: $width;
+    max-width: $width;
   }
 
   @include bp-suffix(push-#{$column}) {
@@ -183,23 +181,22 @@
   }
 }
 
-.grid--flex {
-  @include bp-suffix(col-shrink) {
-    flex-shrink: 1;
-  }
-
-  @include bp-suffix(col-no-shrink) {
-    flex-shrink: 0;
-  }
-
-  @include bp-suffix(col-grow) {
-    flex-grow: 1;
-  }
-
-  @include bp-suffix(col-no-grow) {
-    flex-grow: 0;
-  }
+@include bp-suffix(u-flex-shrink) {
+  flex-shrink: 1;
 }
+
+@include bp-suffix(u-flex-no-shrink) {
+  flex-shrink: 0;
+}
+
+@include bp-suffix(u-flex-grow) {
+  flex-grow: 1;
+}
+
+@include bp-suffix(u-flex-no-grow) {
+  flex-grow: 0;
+}
+
 
 @include bp-suffix("nopull-", false) {
   left: 0;

@@ -2,11 +2,6 @@
   padding: 0.5rem 0;
   background: $color-lighter-grey;
 
-  &__inner {
-    display: flex;
-    align-items: center;
-  }
-
   &__badge {
     margin: 0 0.5rem 0 0;
     padding: 0.4rem;
@@ -17,11 +12,5 @@
 
     background: $color-almost-black;
     color: $color-white;
-
-  }
-
-  &__desc {
-    margin: 0;
-    line-height: 0.8rem;
   }
 }
