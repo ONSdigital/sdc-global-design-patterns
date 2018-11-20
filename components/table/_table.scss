@@ -22,6 +22,12 @@
     border-bottom: 1px solid $color-grey;
   }
 
+  .table__body .table__row:last-child {
+    .table__cell, .table__header--row {
+      border: none;
+    }
+  }
+
   &--dense {
     .table__head, .table__body, .table__foot {
       font-size: 81.25%;
@@ -83,6 +89,10 @@
     width: 100%;
     overflow: visible;
     overflow-x: scroll;
+    &:focus {
+      outline: 3px solid $color-focus-outline;
+      outline-offset: 3px;
+    }
     .table__header, .table__cell {
       @include mq(xs,m) {
         white-space: nowrap;
