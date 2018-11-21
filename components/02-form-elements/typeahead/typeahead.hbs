@@ -5,11 +5,24 @@
       <option{{#if option_value}} value="{{option_value}}"{{/if}}{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}{{#if option_alternatives}} data-alternatives="{{option_alternatives}}"{{/if}}>{{option_text}}</option>
     {{/each}}
   </select>
-  <div class="typeahead__combobox js-typeahead-combobox" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+  <div class="typeahead__combobox js-typeahead-combobox" role="combobox" aria-expanded="false">
+    <div class="u-vh js-typeahead-aria-status" aria-live="polite" role="status" tabindex="-1"></div>
     <input class="typeahead__preview js-typeahead-preview input input--text" readonly="true" aria-hidden="true" tabindex="-1" />
-    <input id="{{input_id}}" class="typeahead__input js-typeahead-input input input--text" type="text" autocomplete="false" aria-autocomplete="list" aria-controls="{{listbox_id}}" aria-describedby="{{instructions_id}}" />
-    <div class="u-vh" id="{{instructions_id}}">{{instructions}}</div>
-    <ul class="typeahead__listbox js-typeahead-listbox" role="listbox" id="{{listbox_id}}"></ul>
-    <div class="u-vh js-typeahead-aria-status" aria-live="polite" role="status"></div>
+    <input
+      id="{{input_id}}"
+      class="typeahead__input js-typeahead-input input input--text"
+      type="text"
+      autocomplete="false"
+      role="textbox"
+      aria-autocomplete="list"
+      aria-controls="{{listbox_id}}"
+      aria-describedby="{{instructions_id}}"
+    />
+    <ul
+      id="{{listbox_id}}"
+      class="typeahead__listbox js-typeahead-listbox"
+      role="listbox"
+    ></ul>
+    <div class="u-vh" id="{{instructions_id}}" tabindex="-1">{{instructions}}</div>
   </div>
 </div>

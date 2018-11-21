@@ -234,8 +234,6 @@ export default class Typeahead {
           this.clearListbox();
           this.clearPreview();
         }
-      } else {
-        this.setAriaStatus();
       }
     }
   }
