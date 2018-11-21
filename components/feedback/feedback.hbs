@@ -14,7 +14,9 @@
                             <div class="u-mb-s">
                                 <label id="feedback-message-label" class="label" for="feedback-message">How can we improve this survey?</label>
                                 <textarea class="input input--textarea js-charlimit-input js-form-message" data-maxlength="2000" data-char-limit-ref="feedback-message-remaining" name="message" id="feedback-message" rows="8" cols="60" maxlength="2000"></textarea>
-                                <div id="feedback-message-remaining" class="input__limit u-mt-xs mercury">Characters remaining: <span>-</span></div>
+                                <div id="feedback-message-remaining" class="input__limit u-mt-xs mercury"
+                                   data-charcount-singular="You have {x} character remaining"
+                                   data-charcount-plural="You have {x} characters remaining">You have 2000 characters remaining</div>
                             </div>
                             <div class="u-mb-xs">
                                 <label id="feedback-name-label" class="label" for="feedback-name">
