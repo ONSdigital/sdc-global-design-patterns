@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import './focus-styles';
 import './dialog';
 import './submitter';

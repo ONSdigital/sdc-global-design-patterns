@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 /*
  * classList.js: Cross-browser full element.classList implementation.
  * 1.1.20150312

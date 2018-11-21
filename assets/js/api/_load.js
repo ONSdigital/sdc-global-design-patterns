@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import {subscribe} from './_sdcModules';
 import CountdownAnimation from '../../../components/countdown/countdown';
 import FormSubmitter from '../form-submitter';
