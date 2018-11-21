@@ -122,6 +122,7 @@ module.exports = {
         label_for: 'typeahead-country-en-GB',
         instructions_id: 'typeahead-instructions-country-en-GB',
         instructions: 'Use up and down keys to navigate country results once you\'ve typed more than two characters. Use the enter key to select a result.',
+        input_id: 'typeahead-input-country-en-GB',
         listbox_id: 'typeahead-listbox-country-en-GB',
         options: buildCountryOptions('en-GB'),
         content: {
@@ -145,6 +146,7 @@ module.exports = {
         label_for: 'typeahead-country-cy',
         instructions_id: 'typeahead-instructions-country-cy',
         instructions: 'Use up and down keys to navigate country results once you\'ve typed more than two characters. Use the enter key to select a result.',
+        input_id: 'typeahead-input-country-cy',
         listbox_id: 'typeahead-listbox-country-cy',
         options: buildCountryOptions('cy', 'en-GB'),
         content: {
@@ -168,6 +170,7 @@ module.exports = {
         label_for: 'occupation-typeahead',
         instructions_id: 'typeahead-instructions-occupation',
         instructions: 'Use up and down keys to navigate results once you\'ve typed more than two characters. Use the enter key to select a result.',
+        input_id: 'typeahead-input-occupation',
         listbox_id: 'typeahead-listbox-occupation',
         result_limit: 10,
         options: buildOptionsFromList(occupations),
@@ -194,7 +197,8 @@ module.exports = {
         label_for: 'ethnicity-typeahead',
         instructions_id: 'typeahead-instructions-ethnicity',
         instructions: 'Use up and down keys to navigate results once you\'ve typed more than two characters. Use the enter key to select a result.',
-        listbox_id: 'typeahead-listbox-occupation',
+        input_id: 'typeahead-input-ethnicity',
+        listbox_id: 'typeahead-listbox-ethnicity',
         result_limit: 10,
         options: buildOptionsFromList(ethnicities),
         content: {

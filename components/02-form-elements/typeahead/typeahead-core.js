@@ -4,6 +4,7 @@ import { sanitiseTypeaheadText } from './typeahead-helpers';
 import { emboldenMatch } from '../../../assets/js/embolden-match';
 
 const classTypeaheadCombobox = 'js-typeahead-combobox';
+const classTypeaheadLabel = 'js-typeahead-label';
 const classTypeaheadInput = 'js-typeahead-input';
 const classTypeaheadPreview = 'js-typeahead-preview';
 const classTypeaheadListbox = 'js-typeahead-listbox';
@@ -32,6 +33,7 @@ export default class Typeahead {
     // DOM Elements
     this.context = context;
     this.combobox = context.querySelector(`.${classTypeaheadCombobox}`);
+    this.label = context.querySelector(`.${classTypeaheadLabel}`);
     this.input = context.querySelector(`.${classTypeaheadInput}`);
     this.preview = context.querySelector(`.${classTypeaheadPreview}`);
     this.listbox = context.querySelector(`.${classTypeaheadListbox}`);
@@ -66,6 +68,7 @@ export default class Typeahead {
     this.blurTimeout = null;
 
     // Modify DOM
+    this.label.setAttribute('for', this.input.getAttribute('id'));
     this.context.classList.add('typeahead--initialised');
     this.bindEventListeners();
 

@@ -7,7 +7,7 @@
   </select>
   <div class="typeahead__combobox js-typeahead-combobox" role="combobox" aria-haspopup="listbox" aria-expanded="false">
     <input class="typeahead__preview js-typeahead-preview input input--text" readonly="true" aria-hidden="true" tabindex="-1" />
-    <input class="typeahead__input js-typeahead-input input input--text" type="text" autocomplete="false" aria-autocomplete="list" aria-controls="{{listbox_id}}" aria-describedby="{{instructions_id}}" />
+    <input id="{{input_id}}" class="typeahead__input js-typeahead-input input input--text" type="text" autocomplete="false" aria-autocomplete="list" aria-controls="{{listbox_id}}" aria-describedby="{{instructions_id}}" />
     <div class="u-vh" id="{{instructions_id}}">{{instructions}}</div>
     <ul class="typeahead__listbox js-typeahead-listbox" role="listbox" id="{{listbox_id}}"></ul>
     <div class="u-vh js-typeahead-aria-status" aria-live="polite" role="status"></div>
