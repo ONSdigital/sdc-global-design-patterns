@@ -159,7 +159,6 @@ export default class Typeahead {
 
     this.blurTimeout = setTimeout(() => {
       this.clearPreview();
-      // this.clearListbox(true);
       this.combobox.classList.remove(classTypeaheadComboboxFocused);
       this.blurring = false;
     }, 300);
@@ -345,7 +344,7 @@ export default class Typeahead {
 
   setPreview(index) {
     const result = this.results[index || 0];
-    const queryIndex = result.text.toLowerCase().indexOf(this.query);
+    const queryIndex = result.text.toLowerCase().indexOf(this.query.toLowerCase());
 
     if (queryIndex === 0 && this.query.length !== result.text.length) {
       this.preview.value = `${this.query}${result.text.slice(this.query.length)}`;
