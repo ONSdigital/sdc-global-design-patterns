@@ -28,6 +28,11 @@
     }
   }
 
+  .table__foot .table__cell {
+    border-top: 1px solid $color-grey;
+    border-bottom: none;
+  }
+
   &--dense {
     .table__head, .table__body, .table__foot {
       font-size: 81.25%;
