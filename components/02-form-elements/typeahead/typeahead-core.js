@@ -159,7 +159,7 @@ export default class Typeahead {
 
     this.blurTimeout = setTimeout(() => {
       this.clearPreview();
-      this.clearListbox(true);
+      // this.clearListbox(true);
       this.combobox.classList.remove(classTypeaheadComboboxFocused);
       this.blurring = false;
     }, 300);
