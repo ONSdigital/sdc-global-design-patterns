@@ -13,6 +13,7 @@ const classLine2 = 'js-address-line-2';
 const classTown = 'js-address-town';
 const classCounty = 'js-address-county';
 const classPostcode = 'js-address-postcode';
+const classSearchButtonContainer = 'js-address-search-btn-container';
 const classSearchButton = 'js-address-search-btn';
 const classManualButton = 'js-address-manual-btn';
 const classTypeahead = 'js-address-typeahead';
@@ -30,6 +31,7 @@ class Address {
     this.county = context.querySelector(`.${classCounty}`);
     this.postcode = context.querySelector(`.${classPostcode}`);
     this.manualInputs = [this.line1, this.line2, this.town, this.county, this.postcode];
+    this.searchButtonContainer = context.querySelector(`.${classSearchButtonContainer}`);
     this.searchButton = context.querySelector(`.${classSearchButton}`);
     this.manualButton = context.querySelector(`.${classManualButton}`);
 
@@ -49,6 +51,8 @@ class Address {
       resultLimit: 10,
       minChars: 5
     });
+
+    this.searchButtonContainer.classList.remove('u-d-no');
 
     // Bind Event Listeners
     this.searchButton.addEventListener('click', this.toggleMode.bind(this));
