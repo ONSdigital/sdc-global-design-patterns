@@ -9,27 +9,31 @@ export const classTabs = 'tabs'
 export const classTab = 'tab'
 export const classTabList = 'tabs__list'
 export const classTabListItems = 'tab__list-item'
+export const classTabsPanel = 'tabs__panel'
 
 class Tabs {
-    constructor() {
-      this.keys = { left: 37, right: 39, up: 38, down: 40 }
+    constructor(component) {
+      this.keys = { left: 37, right: 39, spacebar: 32 }
       this.boundTabClick = this.onTabClick.bind(this)  
       this.boundTabKeydown = this.onTabKeydown.bind(this)
 
+      this.component = component
+      this.tabs = [...component.getElementsByClassName(classTab)]
+      this.tabList = component.getElementsByClassName(classTabList)
+      this.tabListItems = [...component.getElementsByClassName(classTabListItems)]
+      this.tabPanels = [...component.getElementsByClassName(classTabsPanel)]
+      
       this.jsHiddenClass = 'tabs__panel--hidden'
       this.jsTabListAsListClass = 'tabs__list--list'
       this.jsTabItemAsListClass = 'tab__list-item--list'
       this.jsTabAsListClass = 'tab--list'
-    }
+      
+      if (typeof window.matchMedia === 'function') {
+          this.setupViewportChecks()
+      } else {
+          this.makeTabs()
+      }
 
-    init(component) {
-        this.component = component
-        this.tabs = component.getElementsByClassName(classTab)
-        if (typeof window.matchMedia === 'function') {
-            this.setupViewportChecks()
-        } else {
-            this.makeTabs()
-        }
     }
 
     // Set up checks for responsive functionality
@@ -51,24 +55,23 @@ class Tabs {
     }
 
     makeTabs() {
-        let component = this.component
-        let tabs = [...this.tabs]
-        let tabList = component.getElementsByClassName(classTabList)
-        let tabListItems = [...component.getElementsByClassName(classTabListItems)]
-
-        if (!tabs || !tabList || !tabListItems) {
+        if (!this.tabs || !this.tabList || !this.tabListItems) {
             return
         }
 
-        tabList[0].setAttribute('role', 'tablist')
-        tabList[0].classList.remove(this.jsTabListAsListClass)
+        this.tabList[0].setAttribute('role', 'tablist')
+        this.tabList[0].classList.remove(this.jsTabListAsListClass)
 
-        tabListItems.forEach(item => {
+        this.tabPanels.forEach(panel => {
+            panel.setAttribute('tabindex', '0') 
+        })      
+
+        this.tabListItems.forEach(item => {
             item.setAttribute('role', 'presentation') 
             item.classList.remove(this.jsTabItemAsListClass)
         })      
 
-        tabs.forEach(tab => {
+        this.tabs.forEach(tab => {
             this.setAttributes(tab)
             tab.classList.remove(this.jsTabAsListClass)
     
@@ -80,36 +83,35 @@ class Tabs {
         const activeTab = this.getTab(window.location.hash) || this.tabs[0]
         this.showTab(activeTab)
 
-        component.boundOnHashChange = this.onHashChange.bind(this)
-        window.addEventListener('hashchange', component.boundOnHashChange, true)
+        this.component.boundOnHashChange = this.onHashChange.bind(this)
+        window.addEventListener('hashchange', this.component.boundOnHashChange, true)
     }
 
     makeList() {
-        let component = this.component
-        let tabs = [...this.tabs]
-        let tabList = component.getElementsByClassName(classTabList)
-        let tabListItems = [...component.getElementsByClassName(classTabListItems)]
-
-        if (!tabs || !tabList || !tabListItems) {
+        if (!this.tabs || !this.tabList || !this.tabListItems) {
             return
         }
 
-        tabList[0].removeAttribute('role')
-        tabList[0].classList.add(this.jsTabListAsListClass)
-        
-        tabListItems.forEach(item => {
+        this.tabList[0].removeAttribute('role')
+        this.tabList[0].classList.add(this.jsTabListAsListClass)
+
+        this.tabPanels.forEach(panel => {
+            panel.removeAttribute('tabindex', '0') 
+        })   
+
+        this.tabListItems.forEach(item => {
             item.removeAttribute('role', 'presentation') 
             item.classList.add(this.jsTabItemAsListClass)
         })      
 
-        tabs.forEach(tab => {  
+        this.tabs.forEach(tab => {  
             tab.removeEventListener('click', this.boundTabClick, true)
             tab.removeEventListener('keydown', this.boundTabKeydown, true)
             tab.classList.add(this.jsTabAsListClass)
             this.unsetAttributes(tab)
         })
 
-        window.removeEventListener('hashchange', component.boundOnHashChange, true)
+        window.removeEventListener('hashchange', this.component.boundOnHashChange, true)
     }
 
     // Handle haschange so that the browser can cycle through the tab history
@@ -195,14 +197,15 @@ class Tabs {
     onTabKeydown(e) {
         switch (e.keyCode) {
             case this.keys.left:
-            case this.keys.up:
                 this.focusPreviousTab()
                 e.preventDefault()
             break
             case this.keys.right:
-            case this.keys.down:
                 this.focusNextTab()
                 e.preventDefault()
+            break
+            case this.keys.spacebar:
+                this.onTabClick(e)
             break
         }
     }
@@ -268,7 +271,7 @@ class Tabs {
 
 export default function tabs() {
     const tabsComponent = [...document.getElementsByClassName(classTabs)]
-    tabsComponent.forEach(component => new Tabs().init(component))
+    tabsComponent.forEach(component => new Tabs(component))
 }
 
 domready(tabs)

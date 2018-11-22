@@ -88,7 +88,12 @@
 .tabs__panel {
   margin-bottom: 1rem;
   padding-top: 1rem;
+  position: relative;
+  z-index: 10;
   &--hidden {
     display: none;
+  }
+  &:focus {
+    outline: 3px solid $color-focus-outline;
   }
 }
