@@ -61,6 +61,7 @@ domready(() => {
       focusChild.closest(`.${focusableBoxClass}`).classList.remove(hasChildFocus);
     }
   }
+  
   for (let checkedElement of checkedElements) {
     checkedElement.addEventListener('focus', setFocused);
     checkedElement.addEventListener('blur', unsetFocused);
