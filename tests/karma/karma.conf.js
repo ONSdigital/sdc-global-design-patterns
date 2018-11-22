@@ -1,5 +1,20 @@
+import localLauncherConfig from './karma.conf.local-launchers';
+import browserstackLaunchersConfig from './karma.conf.browserstack-launchers';
+
+const {
+  customLaunchers: localLaunchers,
+  browsers: localBrowsers
+} = localLauncherConfig();
+
+const {
+  customLaunchers: browserstackLaunchers,
+  browsers: browserstackBrowsers
+} = browserstackLaunchersConfig();
+
+const isRunningOnTravis = process.env['RUNNING_ON_TRAVIS'];
+
 module.exports = function(config) {
-  var testDir = 'tests/karma'
+  var testDir = 'tests/karma';
 
   config.set({
 
@@ -14,6 +29,7 @@ module.exports = function(config) {
     frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai', 'viewport'],
 
     files: [
+      './assets/js/polyfills.js',
       './assets/js/api/_load.js',
       './assets/js/**/*.spec.js',
       './components/**/*.spec.js',
@@ -21,14 +37,17 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
+      './assets/js/polyfills.js': ['browserify'],
       './assets/js/api/_load.js': ['browserify'],
-      'tests/karma/spec/**/*.js': ['browserify'],
+      './tests/karma/spec/**/*.js': ['browserify'],
       './components/**/*.spec.js': ['browserify'],
       './assets/js/**/*.spec.js': ['browserify'],
     },
 
     plugins: [
+      'karma-browserstack-launcher',
       'karma-chrome-launcher',
+      'karma-firefox-launcher',
       'karma-mocha-reporter',
       'karma-browserify',
       'karma-mocha',
@@ -41,18 +60,24 @@ module.exports = function(config) {
     browserify: {
       debug: true,
       transform: ['babelify'],
-      paths: ['./node_modules', './assets/js/', 'components/']
+      paths: ['./node_modules', './assets/js/', './components/']
     },
 
-    reporters: ['mocha', 'progress', 'coverage'],
+    reporters: ['mocha', 'progress', 'coverage', 'BrowserStack'],
 
-    browsers: ['Chrome', 'HeadlessChrome'],
+    browsers: [
+      ...(isRunningOnTravis ? browserstackBrowsers : localBrowsers)
+    ],
+
+    browserStack: {
+      startTunnel: 'true',
+      name: 'Karma unit tests',
+      project: 'ONS - sdc-global-design-patterns',
+      forcelocal: true
+    },
 
     customLaunchers: {
-      HeadlessChrome: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
-      }
+      ...(isRunningOnTravis ? browserstackLaunchers : localLaunchers)
     },
 
     coverageReporter: {
@@ -70,5 +95,5 @@ module.exports = function(config) {
 
     colors: true,
     logLevel: config.LOG_DEBUG
-  })
-}
+  });
+};
