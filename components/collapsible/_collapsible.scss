@@ -36,7 +36,7 @@
     &--link + .collapsible__body {
       display: none;
     }
-  }  
+  }
 
   &-text {
     float: left;
@@ -73,7 +73,40 @@
       outline-offset: 3px;
       outline: 3px solid $color-focus-outline;
       color: $color-links-hover;
-    } 
+    }
+  }
+}
+
+.collapsible--contained {
+  .collapsible__title {
+    border: 1px solid $color-borders;
+    margin-top: .5rem;
+    padding-right: 1rem;
+    padding-left: 2.5rem;
+    &:hover {
+      background-color: $color-block-hover;
+      .btn {
+        background-color: darken($color-light-grey, 10%);
+        border-color: darken($color-light-grey, 10%);
+      }
+    }
+    &.is-expanded {
+      border-bottom: none;
+    }
+  }
+  .icon--collapsible {
+    &:after, &:before {
+      left: .9rem;
+    }
+  }
+  .collapsible__body {
+    &.is-expanded {
+      border: 1px solid $color-borders;
+      border-top: none;
+      padding-top: .5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 }
 

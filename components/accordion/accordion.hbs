@@ -1,4 +1,4 @@
-<div class="collapsible js-collapsible">
+<div class="collapsible{{collapsible_class}} js-collapsible">
   {{#if show_all}}
   <div class="collapsible__controls">
     <button class="btn btn--secondary btn--small js-collapsible-toggle-all u-wa--@xs" data-close-all-label="Hide all" data-open-all-label="Show all" aria-hidden="true" data-ga="click" data-ga-category="accordion" data-ga-action="Toggle all panels" data-ga-label="Show all">Show all</button>
@@ -6,29 +6,64 @@
   {{/if}}
   <div class="js-collapsible-content">
     <h3 class="collapsible__title js-collapsible-title icon--collapsible" data-ga="click" data-ga-category="accordion" data-ga-action="Open panel" data-ga-label="Total retail turnover">
+      {{#if complex}}
+      <span class="collapsible__title-text">Reporting unit</span>
+      {{else}}
       <span class="collapsible__title-text">Total retail turnover</span>
+      {{/if}}
       <button class="btn btn--secondary btn--small collapsible__title-right u-d-no--@xs@s js-collapsible-toggle u-wa--@xs" data-close-label="Hide" data-open-label="Show" aria-hidden="true" data-ga="click" data-ga-category="accordion" data-ga-action="Open panel" data-ga-label="Total retail turnover">Show</button>
     </h3>
     <div class="collapsible__body mars js-collapsible-body">
-      <div class="u-mb-s">
-        <div class="u-mb-s">Include:</div>
-        <ul>
-          <li>VAT</li>
-          <li>internet sales</li>
-          <li>retail sales from outlets in Great Britain to <a href="#">customers abroad</a></li>
-        </ul>
-      </div>
-      <div class="u-mb-s">
-        <div class="u-mb-s">Exclude:</div>
-        <ul>
-          <li>revenue from mobile phone network commission and top-up</li>
-          <li>sales from catering facilities used by customers</li>
-          <li>lottery sales and commission from lottery sales</li>
-          <li>sales of car accessories and motor vehicles</li>
-          <li>NHS receipts</li>
-          <li>automotive fuel</li>
-        </ul>
-      </div>
+    {{#if complex}}
+    <table class="table">
+      <thead class="table--head">
+        <th scope="col" class="table--header--cell">Reference</th>
+        <th scope="col" class="table--header--cell">Business name</th>
+        <th scope="col" class="table--header--cell">Trading as</th>
+        <th scope="col" class="table--header--cell">SIC</th>
+        <th scope="col" class="table--header--cell">Postcode</th>
+        <th scope="col" class="table--header--cell">Status</th>
+      </thead>
+      <tbody>
+        <tr class="table--row">
+          <td class="table--cell">012345678A</td>
+          <td class="table--cell">Bolts &amp; Ratchets UK Limited</td>
+          <td class="table--cell">Bolts &amp; Ratchets</td>
+          <td class="table--cell">40123</td>
+          <td class="table--cell">W11 1EY</td>
+          <td class="table--cell">Live</td>
+        </tr>
+        <tr class="table--row">
+          <td class="table--cell">012345678A</td>
+          <td class="table--cell">City Plumbing Incorporated</td>
+          <td class="table--cell">City Plumbing</td>
+          <td class="table--cell">50123</td>
+          <td class="table--cell">Cell D2</td>
+          <td class="table--cell">Live</td>
+        </tr>
+      </tbody>
+    </table>
+    {{else}}
+    <div class="u-mb-s">
+      <div class="u-mb-s">Include:</div>
+      <ul>
+        <li>VAT</li>
+        <li>internet sales</li>
+        <li>retail sales from outlets in Great Britain to <a href="#">customers abroad</a></li>
+      </ul>
+    </div>
+    <div class="u-mb-s">
+      <div class="u-mb-s">Exclude:</div>
+      <ul>
+        <li>revenue from mobile phone network commission and top-up</li>
+        <li>sales from catering facilities used by customers</li>
+        <li>lottery sales and commission from lottery sales</li>
+        <li>sales of car accessories and motor vehicles</li>
+        <li>NHS receipts</li>
+        <li>automotive fuel</li>
+      </ul>
+    </div>
+    {{/if}}
     </div>
 
     <h3 class="collapsible__title venus js-collapsible-title icon--collapsible"  data-ga="click" data-ga-category="accordion" data-ga-action="Open panel" data-ga-label="Food sales">
