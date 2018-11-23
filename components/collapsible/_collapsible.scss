@@ -41,8 +41,10 @@
   &-text {
     float: left;
     margin-top: 0.3rem;
-    max-width: 73%;
     line-height: 1.3rem;
+    @include mq(s) {
+      max-width: 73%;
+    }
   }
 
   &:focus {
