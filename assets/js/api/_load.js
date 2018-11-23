@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import {subscribe} from './_sdcModules';
 import CountdownAnimation from '../../../components/countdown/countdown';
 import FormSubmitter from '../form-submitter';
@@ -6,9 +5,10 @@ import SessionTimeoutUI from '../../../components/timeout/timeout';
 import LoaderBtn from '../loader-btn';
 import dialog from '../dialog';
 import fetch from '../fetch';
-import {getTimeNow} from '../utils';
+import {getTimeNow, matchMedia} from '../utils';
 import domready from '../domready';
 import formSubmitterDOM from '../form-submitter.dom';
+import Tabs from '../../../components/tabs/tabs';
 import timeoutDOM from '../../../components/timeout/timeout.dom';
 
 /**
@@ -24,9 +24,12 @@ subscribe('fetch', [{               method: fetch,                  methodName: 
 subscribe('form-submitter', [{      method: FormSubmitter,          methodName: 'FormSubmitter' }]);
 subscribe('form-submitter.dom', [{  method: formSubmitterDOM,       methodName: 'formSubmitterDOM', boot: true }]);
 subscribe('loader-btn', [{          method: LoaderBtn,              methodName: 'LoaderBtn' }]);
+subscribe('tabs', [{                method: Tabs,                   methodName: 'Tabs' }]);
 subscribe('timeout', [{             method: SessionTimeoutUI,       methodName: 'SessionTimeoutUI' }]);
 subscribe('timeout.dom', [{         method: timeoutDOM,             methodName: 'timeoutDOM', boot: true }]);
-subscribe('utils', [{               method: getTimeNow,             methodName: 'getTimeNow' }]);
+
+subscribe('utils', [              { method: getTimeNow,             methodName: 'getTimeNow' },
+                                  { method: matchMedia,             methodName: 'matchMedia' }]);
 
 /**
  * Should eventually be called by each application
