@@ -149,23 +149,50 @@
   display: flex;
 }
 
-@for $column from 1 through $grid-cols {
-  $width: percentage($column / $grid-cols);
+@each $breakpointMin, $size in $grid-bp {
+  @for $column from 1 through $grid-cols {
+    $width: percentage($column / $grid-cols);
 
-  @include bp-suffix(col-#{$column}) {
-    width: $width;
-    flex-basis: $width;
-    max-width: $width;
+    @include mq($breakpointMin) {
+      .col-#{$column}\@#{$breakpointMin} {
+        width: $width;
+        flex-basis: $width;
+        max-width: $width;
+      }
+
+      .push-#{$column}\@#{$breakpointMin} {
+        position: relative;
+        left: $width;
+      }
+
+      .pull-#{$column}\@#{$breakpointMin} {
+        position: relative;
+        left: -$width;
+      }
+    }
   }
 
-  @include bp-suffix(push-#{$column}) {
-    position: relative;
-    left: $width;
-  }
+  @each $breakpointMax, $size in $grid-bp {
+    @for $column from 1 through $grid-cols {
+      $width: percentage($column / $grid-cols);
+      @include mq($breakpointMin, $breakpointMax) {
+        .col-#{$column}\@#{$breakpointMin}\@#{$breakpointMax} {
+          width: $width;
+          flex-basis: $width;
+          max-width: $width;
+        }
 
-  @include bp-suffix(pull-#{$column}) {
-    position: relative;
-    left: 0 - $width;
+        .push-#{$column}\@#{$breakpointMin}\@#{$breakpointMax} {
+          position: relative;
+          left: $width;
+        }
+
+        .pull-#{$column}\@#{$breakpointMin}\@#{$breakpointMax} {
+          position: relative;
+          left: -$width;
+        }
+      }
+    }
   }
 }
 
@@ -193,7 +220,6 @@
 @include bp-suffix(u-flex-no-grow) {
   flex-grow: 0;
 }
-
 
 @include bp-suffix("nopull-", false) {
   left: 0;
