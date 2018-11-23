@@ -4,12 +4,15 @@
 // https://github.com/alphagov/govuk-frontend/blob/master/src/components/tabs/tabs.js
 
 import domready from '../../assets/js/domready';
+import {get} from "../../assets/js/api/_sdcModules";
 
 export const classTabs = 'tabs'
 export const classTab = 'tab'
 export const classTabList = 'tabs__list'
 export const classTabListItems = 'tab__list-item'
 export const classTabsPanel = 'tabs__panel'
+
+const utilsModule = get('utils');
 
 class Tabs {
     constructor(component) {
@@ -27,13 +30,12 @@ class Tabs {
       this.jsTabListAsListClass = 'tabs__list--list'
       this.jsTabItemAsListClass = 'tab__list-item--list'
       this.jsTabAsListClass = 'tab--list'
-      
-      if (typeof window.matchMedia === 'function') {
+
+      if (utilsModule.matchMedia.hasMatchMedia()) {
           this.setupViewportChecks()
       } else {
           this.makeTabs()
       }
-
     }
 
     // Set up checks for responsive functionality
@@ -41,7 +43,7 @@ class Tabs {
     // Tabs will display as a TOC list and show full content for <40rem viewports 
     // Aria tags are added only for >40rem viewports
     setupViewportChecks() {
-        this.viewport = window.matchMedia('(min-width: 40rem)')
+        this.viewport = utilsModule.matchMedia('(min-width: 40rem)')
         this.viewport.addListener(this.checkViewport.bind(this))
         this.checkViewport()
     }
