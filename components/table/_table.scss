@@ -22,11 +22,12 @@
     border-bottom: 1px solid $color-grey;
   }
 
-  .table__body .table__row:last-child {
+  &:not(.table--responsive) .table__body .table__row:last-child {
     .table__cell, .table__header--row {
       border: none;
     }
   }
+
 
   .table__foot .table__cell {
     border-top: 1px solid $color-grey;
@@ -42,14 +43,7 @@
   &--responsive {
     @include mq(xs,s) {
       .table__header {
-        border: none;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
+        display: none;
       }
 
       .table__body .table__row {

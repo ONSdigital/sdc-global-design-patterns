@@ -3,29 +3,31 @@
 <div class="table-scrollable table-scrollable--on">
   <div class="table-scrollable__content" tabindex="0" role="region" aria-label="{{caption}}. There are 7 columns in this table. Some of the table may be off screen. Scroll or drag horizontally to bring into view.">
 {{/if}}
-<table class="table{{table_class}}"  {{#if sortable}}data-aria-sort="Sort by" data-aria-asc="ascending" data-aria-desc="descending"{{/if}}>
+<table role="table" class="table{{table_class}}"  {{#if sortable}}data-aria-sort="Sort by" data-aria-asc="ascending" data-aria-desc="descending"{{/if}}>
   {{#if caption}}
   <caption class="table__caption">{{caption}}</caption>
   {{/if}}
   <thead class="table__head">
-    {{#each th}}
-    <th scope="col" class="table__header{{class}}"{{#if aria_sort}} aria-sort="{{aria_sort}}"{{/if}}>{{value}}</th>
-    {{/each}}
+    <tr class="table__row" role="row">
+      {{#each th}}
+      <th scope="col" role="columnheader" class="table__header{{class}}"{{#if aria_sort}} aria-sort="{{aria_sort}}"{{/if}}>{{value}}</th>
+      {{/each}}
+    </tr>
   </thead>
   <tbody class="table__body">
     {{#each tr}}
-    <tr class="table__row">
+    <tr class="table__row" role="row">
       {{#each td}}
-      <td class="table__cell{{class}}"{{#if data}} data-th="{{data}}"{{/if}} {{#if data_sort}} data-sort-value="{{data_sort}}"{{/if}}>{{{value}}}</td>
+      <td role="cell" class="table__cell{{class}}"{{#if data}} data-th="{{data}}"{{/if}} {{#if data_sort}} data-sort-value="{{data_sort}}"{{/if}}>{{{value}}}</td>
       {{/each}}
     </tr>
     {{/each}}
   </tbody>
   {{#if tfoot}}
   <tfoot class="table__foot">
-    <tr class="table__row">
+    <tr class="table__row" role="row">
       {{#each tfoot}}
-      <td class="table__cell pluto">{{value}}</td>
+      <td role="cell" class="table__cell pluto">{{value}}</td>
       {{/each}}
     </tr>
   </tfoot>
