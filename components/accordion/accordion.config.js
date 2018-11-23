@@ -14,11 +14,24 @@ module.exports = {
       'show_all': true
     }
   }, {
-    'label':'Accordion contained',
-    'name':'accordion-contained',
+    'label':'Accordion (panels)',
+    'name':'accordion-panels',
     'context': {
-      'collapsible_class':' collapsible--contained',
-      'complex': true
+      'complex': true,
+      'contained_accordion': [
+        {
+          accordion_heading: "066 Sand&Gravel for 49900000118",
+          caption: "Surveys"
+        },
+        {
+          accordion_heading: "073 BLOCKS for 49900000118",
+          caption: "Surveys"
+        },
+        {
+          accordion_heading: "074 BRICKS for 49900000118",
+          caption: "Surveys"
+        }
+      ]
     }
   }]
 };
