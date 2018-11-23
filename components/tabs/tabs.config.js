@@ -2,7 +2,7 @@ module.exports = {
   title: 'Tabs (content)',
   label: 'Tabs',
   name: 'tabs',
-  status: 'wip',
+  status: 'ready',
   context: {
     'tabs_contents_title':'This is the tabs region',
     'tabs':[
