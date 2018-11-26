@@ -66,7 +66,7 @@ class Collapsible {
   registerTitle(element, index) {
     const componentId = this.component.getAttribute('id')
     element.setAttribute('id', componentId + '-collapsible-title-' + index)
-    element.setAttribute(attrControls, 'collapsible-body-' + index)
+    element.setAttribute(attrControls, componentId + '-collapsible-body-' + index)
     element.setAttribute(attrExpanded, 'false')
     element.setAttribute(attrSelected, 'false')
 
