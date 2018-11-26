@@ -14,8 +14,8 @@
                     </div>
                 </div>
                 {{#if services}}
-                <div class="grid__col col-auto u-flex-no-shrink u-d-no--@xs@m">
-                    <nav class="nav nav--horizontal {{#if internal}}nav--light{{/if}} u-d-no--@xs@m u-fr" aria-label="Site services menu">
+                <div class="grid__col col-auto u-flex-no-shrink u-d-no@xs@m">
+                    <nav class="nav nav--horizontal {{#if internal}}nav--light{{/if}} u-d-no@xs@m u-fr" aria-label="Site services menu">
                         <ul class="nav__list" role="menubar" aria-label="Site services menu">
                             {{#each services}}
                             <li class="nav__item" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
@@ -39,10 +39,10 @@
                 {{#if (or button nav)}}
                 <div class="grid__col col-auto u-flex-no-shrink">
                   {{#if button}}
-                    {{> @button  btn-classes="btn--ghost u-ml-s u-d-no--@xs@m" label=button}}
+                    {{> @button  btn-classes="btn--ghost u-ml-s u-d-no@xs@m" label=button}}
                   {{/if }}
                   {{#if nav}}
-                    {{> @button--mobile btn-classes='u-fr u-d-no--@m'}}
+                    {{> @button--mobile btn-classes='u-fr u-d-no@m'}}
                   {{/if}}
                 </div>
                 {{/if}}
@@ -58,10 +58,10 @@
                     <li class="nav__item {{classes}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link">{{text}}</a></li>
                     {{/each}}
                     {{#each services}}
-                    <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no--@m" role="menuitem"><a href="{{link}}" class="nav__link print__hidden">{{text}}</a></li>
+                    <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no@m" role="menuitem"><a href="{{link}}" class="nav__link print__hidden">{{text}}</a></li>
                     {{/each}}
                     {{#if button}}
-                    <li class="nav__item u-d-no--@m" role="menuitem">{{> @button btn-classes='btn--ghost print__hidden' label=button}}</li>
+                    <li class="nav__item u-d-no@m" role="menuitem">{{> @button btn-classes='btn--ghost print__hidden' label=button}}</li>
                     {{/if}}
                 </ul>
             </nav>
