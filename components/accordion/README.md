@@ -28,7 +28,7 @@ Each `collapsible__title` element is given:
 Each `collapsible__body` element is given:
 * `aria-labelledby="TITLE_ID"` - Indicates the associated title with the current content.
 * `aria-hidden="true/false"` - If `false` a screenreader will not read out the content.
-* `role="tabpanel"` - Indicates that the element is a content panel with associates `tab`.
+* `role="tabpanel"` - Indicates that the element is a content panel with associated `tab`.
 
 ### Progressive enhancement
 When javascript is disabled the component will show all content and remove all visual cues that provide affordance that the component is clickable. The presentation is consistent with standard content blocks of headings and paragraphs. Use an appropriate heading tag (`h2`, `h3` etc) for the `accordion__title` to provide the correct scemantic hierarchy to the document with the rest of the page. 
