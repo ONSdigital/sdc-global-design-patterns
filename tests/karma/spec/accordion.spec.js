@@ -152,12 +152,6 @@ describe('Collapsible;', function() {
       this.openAlls[0].click();
     });
 
-    it('All toggle all buttons aria-hidden attribute should be false', function() {
-      for (let i=0; i < this.openAlls.length; i++) {
-        expect(this.openAlls[i].getAttribute('aria-hidden')).to.equal('false');
-      }
-    });
-
     it('All titles should have an aria-expanded attribute set to true', function() {
       testAttributeValueEquals(classCollapsibleTitle, 'aria-expanded', 'true');
     });

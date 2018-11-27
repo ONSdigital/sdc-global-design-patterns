@@ -26,7 +26,7 @@ module.exports = function(config) {
       }
     },
 
-    frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai'],
+    frameworks: ['browserify', 'mocha', 'chai-sinon', 'chai', 'viewport'],
 
     files: [
       './assets/js/polyfills.js',
@@ -53,7 +53,8 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-chai-sinon',
       'karma-chai',
-      'karma-coverage'
+      'karma-coverage',
+      'karma-viewport'
     ],
 
     browserify: {
