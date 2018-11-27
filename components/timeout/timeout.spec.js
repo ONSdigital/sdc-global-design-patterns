@@ -203,8 +203,8 @@ function createDOMFragment() {
       <div class="dialog__body" role="dialog" aria-labelledby="dialog-title">
         <div role="document">
     
-          <div class="mars u-mb-s">Title</div>
-          <h1 class="saturn dialog__title" id="dialog-title" tabindex="0">Your session is about to expire</h1>
+          <div class="u-fs-r u-mb-s">Title</div>
+          <h1 class="u-fs-l dialog__title" id="dialog-title" tabindex="0">Your session is about to expire</h1>
     
           <form class="" action="/" method="post">
             <button class="btn js-timeout-continue u-mb-s" type="button" data-loading-msg="Continuing&hellip;">Continue survey</button>

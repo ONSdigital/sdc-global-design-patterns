@@ -1,6 +1,6 @@
 <div class="field field--radio field--multiplechoice">
   <fieldset>
-    <legend class="field__legend mars ">{{legend}}</legend>
+    <legend class="field__legend u-fs-r ">{{legend}}</legend>
 {{#each options}}<div class="field__item js-focusable-box">
       <input class="input input--radio js-focusable" name="radio-answer" value="{{option_value}}" id="{{label_for}}" type="radio">
       {{>@label}}
@@ -9,7 +9,7 @@
       <input class="input input--radio js-focusable" name="radio-answer" value="Other" id="radio-answer-other" type="radio" data-qa="has-other-option">
       {{>@label label_for="radio-answer-other" label_text="Other" label_id="label-radio-answer-other" label_description="Any other topping." }}
       <div class="field__other">
-        {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="mercury" }}
+        {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="u-fs-s--b" }}
         <input  class="input input__text js-focusable" id="other-answer" name="other-answer" type="text" data-qa="other-option">
       </div>
     </div>
