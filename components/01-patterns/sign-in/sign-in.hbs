@@ -1,0 +1,17 @@
+<section>
+  <form id="form-sign-in" action="sign-in--step-2" class="form">
+    <p class="mars u-mt-xs">New to this service?
+       <a href="sign-in--create-account">Create an account</a></p>
+    <h1 class="saturn">Sign in</h1>
+    <div class="field">
+      {{> @label label_text="Email address" label_for="inputEmail"}}
+      <input id="inputEmail" class="input input--text input-type__input" required="" type="email">
+    </div>
+    <br>
+    <div class="field">
+      {{> @input--password}}
+    </div>
+    <p class="u-mt-xs"><a href="sign-in--forgot-password">Forgot password?</a></p>
+    {{> @button label="Sign in"}}
+  </form>
+</section>

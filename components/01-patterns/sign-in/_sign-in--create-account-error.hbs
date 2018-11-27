@@ -1,0 +1,28 @@
+<!-- <div role="main" id="main" class="page__main"> -->
+  <div class="panel panel--error u-mb-s" data-qa="error">
+    <div class="panel__header">
+      <h1 class="panel__title venus">Enrolment code not valid</h1>
+    </div>
+    <div class="panel__body" data-qa="error-body">
+      <p class="mars"><a href="#enrolment_code">Please re-enter the code and try again</a></p>
+    </div>
+  </div>
+
+  <section>
+    <form id="form-activation-code" action="enrolment-code-error-2.html" class="form">
+      <h1 class="saturn">Create an account</h1>
+      <div class="panel panel--simple panel--error u-mb-m">
+        <p class="error-message">
+          Please enter a valid enrolment code
+        </p>
+        <div class="field">
+          {{> @label label_text="Enrolement code" label_for="enrolment_code" label_description="You’ll find this in the letter we sent you"}}
+          <input class="input input--text input-type__input" required="" type="text" id="enrolment_code">
+        </div>
+
+      </div>
+      {{> @button label="Continue" btn-classes="u-mt-s"}}
+    </form>
+    <p>Already have an account? <a href="sign-in">sign in here</a></p>
+  </section>
+<!-- </div> -->
