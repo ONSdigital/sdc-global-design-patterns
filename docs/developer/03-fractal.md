@@ -1,9 +1,9 @@
 ---
 title: Development
-label: Yarn & Gulp etc.
+label: yarn & Gulp etc.
 ---
 
-### Yarn & Gulp
+### yarn & Gulp
 
 Commands available in the CLI.
 
@@ -13,4 +13,4 @@ Commands available in the CLI.
   - Documentation on how karma tests are implemented in the pattern library and [writing tests](./writing-karma-tests).
 
 #### Other
-- `yarn cache clean` - Running this command will clear the global cache. It will be populated again the next time `yarn` or `yarn install` is run.
+- `yarn cache clean` - Running this command will clear the global cache. It will be populated again the next time `yarn` is run.

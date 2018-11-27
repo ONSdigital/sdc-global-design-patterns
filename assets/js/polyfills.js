@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 /*
  * classList.js: Cross-browser full element.classList implementation.
  * 1.1.20150312
@@ -283,3 +285,6 @@ if (window.Element && !Element.prototype.closest) {
     });
   });
 })([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+
+import 'core-js/fn/array/find';
+import 'core-js/fn/array/from';
