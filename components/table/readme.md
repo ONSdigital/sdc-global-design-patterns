@@ -1,24 +1,41 @@
-<h3>Rationale</h3>
+## Table
 
-* We use the table element to present tabular data in two dimensions.
+We use the table element to present tabular data in two dimensions.
 
-* Users may need to sort the rows of data based on values in a particular column.
+### Usage
+
+The 'basic table' is the default style for a table. There are variations available, added via `class` modifiers which can improve the usability
+of the `table` element.
+
+#### Data heavy table 
+- **Class** - `table--dense`
+- **Output** - This reduces the `font-size` to compact the table for basic tables which have many rows but only a few columns.
+---
+#### Numeric table 
+- **Class** - `table__header--numeric` + `table__cell--numeric`
+- **Output** - This aligns the content to the right for tables with all numeric values for best practice.
+---
+#### Responsive table 
+- **Class** - `table--responsive`
+- **Output** - Stacks the rows on viewports that are `500px` and lower. Displays the corresponding header value with each cell.
+---
+#### Scrollable table 
+- **Class** - `table--scrollable` `table-scrollable--on`
+- **Output** - Creates a scrollable full width table on viewports that are `740px` and lower. Optionally allows for the table to be set at 100% on all viewports.
+---
+#### Sortable table 
+- **Class** - `table--sortable` 
+- **Output** - Applies JS enhancement to allow each column to be sorted. By default it will sort alphabetically, an optional `data-sort-value=foo` can be added to each `td` to control it's position for sorting.
+---
 
 
-<h3>Research</h3>
+### Accessibility
 
-* Any research undertaken related to this item - documented outcomes
+A `table` marked up correctly shouldn't require any specific `aria` labelling. Responsive tables can cause issues for screen readers depending on how they are implemented. 
 
+To assist screen readers we have implemented the following `aria` labels.
+- `table` element - `role="table"`
+- `tr` element - `role="row"`
+- `th` element - `role="columnheader"`
+- `td` element - `role="cell"`
 
-<h3>Usage</h3>
-
-* Where and how to use the table element.
-
-<h4>Example 1:</h4>
-
-<figure>
-<img width="1020" alt="Screenshot of a data table" src="https://user-images.githubusercontent.com/837696/27185471-54453668-51dd-11e7-8c21-d034dbbd2f7e.png">
-<figcaption>A table containing a list of secure messages</figcaption>
-</figure>
-
-This is a work in progress. The subject as a link isn't part of the pattern.
