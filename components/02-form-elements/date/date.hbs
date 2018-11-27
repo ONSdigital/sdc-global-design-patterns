@@ -2,21 +2,21 @@
   <div class="answer__fields js-fields">
     <fieldset class="fieldgroup fieldgroup--inline" data-qa="widget-date"{{#if description}} aria-describedby="{{concatStr id '-description'}}"{{/if}} role="group">
       {{#if legend}}
-      <legend class="fieldgroup__title venus">{{legend}}</legend>
+      <legend class="fieldgroup__title u-fs-r--b">{{legend}}</legend>
       {{/if}}
 
       {{#if description}}
-      <div id="{{concatStr id '-description'}}" class="field__description mercury u-fw-n">{{description}}</div>
+      <div id="{{concatStr id '-description'}}" class="field__description u-fs-s--b u-fw-n">{{description}}</div>
       {{/if}}
       <div class="fieldgroup__fields">
         <div class="field field--input">
-          <label class="label mars" for="{{concatStr id '-day'}}" data-qa="label-day">{{dayLabel}}</label>
+          <label class="label u-fs-r" for="{{concatStr id '-day'}}" data-qa="label-day">{{dayLabel}}</label>
           <input type="number" id="{{concatStr id '-day'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="[0-9]*" min="1" max="31">
         </div>
 
         {{#if months}}
           <div class="field field--select">
-            <label class="label mars" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
+            <label class="label u-fs-r" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
             <select class="input input--select">
               <option selected disabled value="">{{firstOption}}</option>
               {{#each months}}
@@ -26,12 +26,12 @@
           </div>
         {{else}}
            <div class="field field--input">
-            <label class="label mars" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
+            <label class="label u-fs-r" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
             <input type="number" id="{{concatStr id '-month'}}" data-qa="input-StringField" class="input input--w-2 input--StringField" pattern="[0-9]*" min="1" max="12">
           </div>
         {{/if}}
         <div class="field field--input">
-          <label class="label mars" for="{{concatStr id '-year'}}" data-qa="label-year">{{yearLabel}}</label>
+          <label class="label u-fs-r" for="{{concatStr id '-year'}}" data-qa="label-year">{{yearLabel}}</label>
           <input type="number" id="{{concatStr id '-year'}}" data-qa="input-StringField" class="input input--w-4 input--StringField" pattern="[0-9]*" min="1000" max="3000">
         </div>
       </div>

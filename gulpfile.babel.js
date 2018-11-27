@@ -7,6 +7,7 @@ import del from 'del';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import pseudoelements from 'postcss-pseudoelements';
+import mqoptimize from 'postcss-mq-optimize';
 import pixrem from 'pixrem';
 import inlineblock from 'postcss-inline-block';
 import gutil from 'gulp-util';
@@ -104,7 +105,8 @@ gulp.task('css:process', function() {
           }),
           pixrem({ replace: false }),
           inlineblock(),
-          pseudoelements()
+          pseudoelements(),
+          mqoptimize()
           // reporter({ clearMessages: true })
         ])
       )
