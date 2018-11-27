@@ -33,7 +33,7 @@ export default function timeoutDOM() {
     if (countDown < 1) {
       window.clearInterval(timeoutInterval);
 
-      fetch(SessionTimeoutUI.expireSessionUrl, { method: 'POST' })
+      fetch(SessionTimeoutUI.expireSessionUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' } })
         .then(() => {
           window.location = SessionTimeoutUI.sessionExpiredUrl;
         });
