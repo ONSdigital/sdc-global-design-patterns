@@ -12,21 +12,18 @@
           {{question_title}}
         </h1>
 
-        <h3 class="question__subtitle mars">question_subtitle</h3>
+        <h3 class="question__subtitle mars">{{question_subtitle}}</h3>
 
         <div class="question__description mars" id="description-question.id">
-          question.description
+          {{question_description}}
         </div>
 
         <div class="collapsible collapsible--simple js-collapsible js-collapsible-simple u-mt-s u-mb-s">
           <div class="js-collapsible-content">
-            <h3 class="collapsible__title js-collapsible-title icon--collapsible-simple venus" data-definition-title-index="loop.index" data-ga="click" data-ga-category="Question definition" data-ga-action="Open panel" data-ga-label=" definition.title ">definition.title</h3>
+            <h3 class="collapsible__title js-collapsible-title icon--collapsible-simple venus" data-definition-title-index="loop.index" data-ga="click" data-ga-category="Question definition" data-ga-action="Open panel" data-ga-label=" definition.title ">{{definition_title}}</h3>
             <div class="collapsible__body js-collapsible-body" data-definition-content-index="loop.index">
-              <strong class="u-mb-s">item.title</strong>
-              <p>item.description</p>
-              <ul class="mars">
-                  <li>list_item</li>
-              </ul>
+              <strong class="u-mb-s">{{definition_description_title}}</strong>
+              <p>{{definition_description}}</p>
               <button class="btn--secondary btn--small js-collapsible-close u-no-js-hide" data-definition-hide-button-index="loop.index" data-ga="click" data-ga-category="Question definition" data-ga-action="Close panel" data-ga-label=" definition.title ">Hide this</button>
             </div>
           </div>
@@ -34,11 +31,8 @@
 
         <aside class="question__guidance">
           <div class="panel panel--simple panel--info" id="question-guidance-question.id">
-            <strong class="u-mb-s">item.title</strong>
-            <p>item.description</p>
-            <ul class="mars">
-                <li>list_item</li>
-            </ul>
+            <strong class="u-mb-s">{{question_guidance_title}}</strong>
+            <p>{{question_guidance}}</p>
           </div>
         </aside>
 

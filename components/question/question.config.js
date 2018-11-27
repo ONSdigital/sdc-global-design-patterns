@@ -7,10 +7,14 @@ module.exports = {
       name: 'default',
       label: 'Single',
       context: {
-        section_title: 'Section title',
+        section_title: 'Household energy supply',
         question_id: 'central-heating-question',
         question_number: '1',
-        question_title: 'What type of central heating does this house have?',
+        question_title: 'What type of central heating does this household have?',
+        question_description: 'This any central heating supply connected to the single household at the given address.',
+        definition_title: 'What is central heating?',
+        definition_description: 'Central heating is a central system that generates heat for multiple rooms.',
+        question_guidance: 'Select all that apply, whether or not you use it.',
         fieldset_legend: 'What type of central heating do you have?',
         field_label: 'Select all that apply:',
         or: 'Or',
@@ -28,7 +32,7 @@ module.exports = {
     },
     {
       name: "repeating",
-      label: "Repeating", 
+      label: "Repeating",
       context: {
         question_class: "question--repeatinganswer",
       }
