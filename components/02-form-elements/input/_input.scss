@@ -13,7 +13,7 @@
   @include mq(s) {
     &--text,
     &--select {
-      &:not([class*=input--w-]) {
+      &:not(.input--block):not([class*=input--w-]) {
         width: $input-width;
       }
     }
