@@ -137,7 +137,7 @@ module.exports = {
         months: [
           'styczeń',
           'luty',
-          'Marsz',
+          'u-fs-rz',
           'kwiecień',
           'Może',
           'czerwiec',
