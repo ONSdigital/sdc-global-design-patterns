@@ -1,7 +1,7 @@
 module.exports = {
-  'title': 'Question',
+  title: 'Question',
   collated: false, // Pulls all variants into one summary
-  'status': 'wip',
+  status: 'wip',
   variants: [
     {
       name: 'default',
@@ -31,10 +31,57 @@ module.exports = {
       }
     },
     {
-      name: "repeating",
-      label: "Repeating",
+      name: 'repeating',
+      label: 'Repeating',
       context: {
-        question_class: "question--repeatinganswer",
+        repeating_answer: true,
+        section_title: 'Occupants',
+        question_id: 'number-of-occupants-question',
+        question_class: 'question--repeatinganswer',
+        question_number: '2',
+        question_title: 'Who usually lives here?',
+        question_description: 'Add everyone who permanently lives at the property.',
+        question_guidance_title: 'Include:',
+        question_guidance_list: [
+          {item: 'Yourself, if this is your permanent or family home'},
+          {item: 'Family members including partners, children and babies born on or before 9 April 2017'},
+          {item: 'Students and/or school children who live away from home during term time'},
+          {item: 'Housemates, tenants or lodgers'}
+        ],
+        name_form: [
+          {
+            answer_field: [
+              {
+                answer_id: 'household-0-first-name',
+                label: 'Textfield',
+                label_text: 'First name',
+                label_for: 'household-0-first-name'
+              },
+              {
+                answer_id: 'household-0-first-name',
+                label: 'Textfield',
+                label_text: 'First name',
+                label_for: 'household-0-first-name'
+              }
+            ]
+          },
+          {
+            answer_field: [
+              {
+                answer_id: 'household-0-first-name',
+                label: 'Textfield',
+                label_text: 'First name',
+                label_for: 'household-0-first-name'
+              },
+              {
+                answer_id: 'household-0-first-name',
+                label: 'Textfield',
+                label_text: 'First name',
+                label_for: 'household-0-first-name'
+              }
+            ]
+          }
+        ]
       }
     }
   ]
