@@ -1,44 +1,49 @@
-$base: 16px;
-$base-lg: 18px;
+$base: 18px;
 
 $type_matrix: (
-  jupiter:
+  u-fs-xl:
   (
     small: 28px,
     large: 36px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  saturn:
+  u-fs-l:
   (
-    small: 22px,
+    small: 24px,
     large: 28px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  neptune:
+  u-fs-m:
   (
-    small: 18px,
+    small: 20px,
     large: 22px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  venus: (small: 16px, large: 18px, weight: $font-weight-bold, line-height: 1.4),
-  mars:
+  u-fs-r--b:
   (
     small: $base,
-    large: $base-lg,
+    large: $base,
+    weight: $font-weight-bold,
+    line-height: 1.4
+  ),
+  u-fs-r:
+  (
+    small: $base,
+    large: $base,
     weight: $font-weight-regular,
     line-height: 1.4
   ),
-  mercury:
+  u-fs-s--b:
   (
     small: 14px,
     large: 14px,
     weight: $font-weight-bold,
     line-height: 1.4
   ),
-  pluto:
+  u-fs-s:
   (
     small: 14px,
     large: 14px,
@@ -46,14 +51,3 @@ $type_matrix: (
     line-height: 1.4
   )
 );
-
-@each $name, $props in $type_matrix {
-  .#{$name} {
-    font-size: rems(map-get($props, small), $base);
-    font-weight: map-get($props, weight);
-    line-height: map-get($props, line-height);
-    @include mq(m) {
-      font-size: rems(map-get($props, large), $base-lg);
-    }
-  }
-}

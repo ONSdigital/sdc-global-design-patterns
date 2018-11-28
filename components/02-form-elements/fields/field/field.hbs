@@ -2,14 +2,14 @@
   <div class="field field--checkbox field--multiplechoice">
     <fieldset>
         {{#if legend}}
-          <legend class="field__legend mars">{{legend}}</legend>
+          <legend class="field__legend u-fs-r">{{legend}}</legend>
         {{/if}}
         {{#if select_all}}
-          <div class="field__label mars" id="select-all">Select all that apply</div>
+          <div class="field__label u-fs-r" id="select-all">Select all that apply</div>
         {{/if}}
         {{#each options}}
-        <div class="field__item js-focusable-box">
-          <input class="input input--{{type}} js-focusable" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="{{type}}" aria-describedby="select-all">
+        <div class="field__item">
+          <input class="input input--{{type}}" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="{{type}}" aria-describedby="select-all">
           {{>@label}}
         </div>
         {{/each}}
