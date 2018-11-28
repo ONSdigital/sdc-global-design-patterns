@@ -1,66 +1,166 @@
 module.exports = {
   title: 'Date',
-  label: 'Date',
-  name: 'date',
+  default: 'date',
   collated: true,
   status: 'ready',
-  context: {
-    dayLabel: 'Day',
-    monthLabel: 'Month',
-    yearLabel: 'Year',
-    months: [{
-        label: 'Select month',
-        selected: true,
-        disabled: true,
-        value: ''
+  preview: '@preview__container',
+  variants: [
+    {
+      name: 'date',
+      label: 'Date',
+      context: {
+        id: 'date-en-gb',
+        legend: 'Please enter a date',
+        dayLabel: 'Day',
+        monthLabel: 'Month',
+        yearLabel: 'Year',
+        firstOption: 'Select month',
+        months: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
       },
-      {
-        label: 'January',
-        value: '1'
+    },
+    {
+      name: 'date-numerical',
+      label: 'Date Numerical',
+      context: {
+        id: 'date-of-birth',
+        legend: 'Please enter your date of birth',
+        description: 'For example, 31 3 1980',
+        dayLabel: 'Day',
+        dayName: 'dob-day',
+        monthLabel: 'Month',
+        monthName: 'dob-month',
+        yearLabel: 'Year',
+        yearName: 'dob-year',
       },
-      {
-        label: 'February',
-        value: '2'
+    },
+    {
+      name: 'date-cy',
+      label: 'Date (Welsh)',
+      context: {
+        id: 'date-cy',
+        legend: 'Rhowch ddyddiad',
+        dayLabel: 'Dydd',
+        monthLabel: 'Mis',
+        yearLabel: 'Blwyddyn',
+        firstOption: 'Dewiswch mis',
+        months: [
+          'Ionawr',
+          'Chwefror',
+          'Mawrth',
+          'Ebrill',
+          'Mai',
+          'Mehefin',
+          'Gorffennaf',
+          'Awst',
+          'Medi',
+          'Hydref',
+          'Tachwedd',
+          'Rhagfyr',
+        ],
       },
-      {
-        label: 'March',
-        value: '3'
+    },
+    {
+      name: 'date-gd',
+      label: 'Date (Scottish)',
+      context: {
+        id: 'date-dg',
+        legend: 'Cuir a-steach ceann-là',
+        dayLabel: 'Latha',
+        monthLabel: 'Mìos',
+        yearLabel: 'Bliadhna',
+        firstOption: 'Tagh mhìos',
+        months: [
+          'Am Faoilleach',
+          'An Gearran',
+          'Am Màrt',
+          `A 'Ghiblean`,
+          `A 'Chèitean`,
+          'An t-Ògmhios',
+          'An t-Iuchar',
+          'An Lùnastal',
+          'An t-Sultain',
+          'An Dàmhair',
+          'An t-Samhain',
+          'An Dùbhlachd',
+        ],
       },
-      {
-        label: 'April',
-        value: '4'
+    },
+    {
+      name: 'date-ga',
+      label: 'Date (Irish)',
+      context: {
+        id: 'date-ga',
+        legend: 'Iontráil dáta',
+        dayLabel: 'Lá',
+        monthLabel: 'Mí',
+        yearLabel: 'Bliain',
+        firstOption: 'Roghnaigh mí',
+        months: [
+          'Eanáir',
+          'Feabhra',
+          'Márta',
+          'Aibreán',
+          'Bealtaine',
+          'Meitheamh',
+          'Iúil',
+          'Lúnasa',
+          'Meán Fómhair',
+          'Deireadh Fómhair',
+          'Samhain',
+          'Nollaig',
+        ],
       },
-      {
-        label: 'May',
-        value: '5'
+    },
+    {
+      name: 'date-pl',
+      label: 'Date (Polish)',
+      context: {
+        id: 'date-pl',
+        legend: 'Proszę podać datę',
+        dayLabel: 'Dzień',
+        monthLabel: 'Miesiąc',
+        yearLabel: 'Rok',
+        firstOption: 'Wybierz miesiąc',
+        months: [
+          'styczeń',
+          'luty',
+          'u-fs-rz',
+          'kwiecień',
+          'Może',
+          'czerwiec',
+          'lipiec',
+          'sierpień',
+          'wrzesień',
+          'październik',
+          'listopad',
+          'grudzień',
+        ],
       },
-      {
-        label: 'June',
-        value: '6'
+    },
+    {
+      name: 'range',
+      label: 'Date Range',
+      context: {
+        id: 'date-range',
+        dayLabel: 'Day',
+        monthLabel: 'Month',
+        yearLabel: 'Year',
+        periodFrom: 'Period from',
+        periodTo: 'Period to',
       },
-      {
-        label: 'July',
-        value: '7'
-      },
-      {
-        label: 'August',
-        value: '8'
-      },
-      {
-        label: 'September',
-        value: '9'
-      },
-      {
-        label: 'October',
-        value: '10'
-      },
-      {
-        label: 'November',
-        value: '11'
-      },
-      {
-        label: 'December',
-        value: '12'
-      }]
-  }
+    },
+  ],
 }

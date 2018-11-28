@@ -3,14 +3,14 @@
   <legend class="field__legend u-fs-r u-vh">{{fieldset_legend}}</legend>
   <div class="field__label u-fs-r--b">{{field_label}}</div>
 
-  <div class="fieldgroup fieldgroup--date" data-qa="widget-date">
+  <div class="fieldgroup fieldgroup--inline" data-qa="widget-date">
     <div class="fieldgroup__fields">
-      <div class="field field--input field--day">
+      <div class="field field--input">
         <label class="label u-fs-s--b" data-qa="label-day" for="date-range-from-day">{{day_label}}</label>
-        <input id="date-range-from-day" data-value="Day" placeholder="DD" value="" data-qa="input-StringField" class="input input--StringField js-exclusive-group">
+        <input type="number" pattern="[0-9]*" min="1" max="31" id="date-range-from-day" data-value="Day" data-qa="input-StringField" class="input input--w-2 input--StringField js-exclusive-group">
       </div>
 
-      <div class="field field--select field--month">
+      <div class="field field--select">
         <label class="label u-fs-s--b" for="date-range-from-month" id="label-date-range-from-month" data-qa="label-month">{{month_label}}</label>
         <select class="input input--select js-exclusive-group" data-value="month" id="date-range-from-month" name="date-range-from-month">
           {{#each months}}
@@ -21,18 +21,17 @@
         </select>
       </div>
 
-      <div class="field field--input field--year">
+      <div class="field field--input">
         <label class="label u-fs-s--b" data-qa="label-year" for="date-range-from-year">{{year_label}}</label>
-        <input placeholder="YYYY" value="" data-qa="input-StringField" id="date-range-from-year" data-value="Year" class="input input--StringField js-exclusive-group">
+        <input type="number" pattern="[0-9]*" min="1000" max="3000"  data-qa="input-StringField" id="date-range-from-year" data-value="Year" class="input input--w-4 input--StringField js-exclusive-group">
       </div>
     </div>
   </div>
-
-  <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">{{or}},</div>
+  <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">Or,</div>
 
   <div class="field field--checkbox field--multiplechoice field--exclusive">
-    <div class="field__item js-focusable-box">
-      <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
+    <div class="field__item">
+      <input class="input input--checkbox js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
       <label class="label label--inline u-fs-r" for="none">
           <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
       </label>
