@@ -99,6 +99,14 @@ const hbs = handlebarsAdapter({
 
       return out;
     },
+    repeatString: function(times, string) {
+      let result = '';
+      for (let i = 0; i < times; i++) {
+        result += string;
+      }
+
+      return result;
+    },
     math: function(lvalue, operator, rvalue, options) {
       lvalue = parseFloat(lvalue);
       rvalue = parseFloat(rvalue);
@@ -110,8 +118,14 @@ const hbs = handlebarsAdapter({
         '/': lvalue / rvalue,
         '%': lvalue % rvalue
       }[operator];
-    }
-  }
+    },
+    concatStr: function() {
+      return [...arguments].slice(0, -1).join('');
+    },
+    or: function() {
+      return [...arguments].slice(0, -1).find(option => !(option === null || option === undefined || option === ''));
+    },
+  },
 });
 
 fractal.components.engine(hbs);

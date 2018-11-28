@@ -1,9 +1,9 @@
 <div class="message{{#if message_variant}} message--{{message_variant}}{{/if}}" id="messageID{{#if message_variant}}{{message_variant}}{{/if}}">
     <dl class="metadata metadata__list metadata--message u-mb-s">
       <dt class="metadata__term u-vh">From:</dt>
-      <dd class="metadata__value venus">{{#if message_internal}}ONS Business Surveys Team{{else}}Jacky Turner{{/if}}</dd>
+      <dd class="metadata__value u-fs-r--b">{{#if message_internal}}ONS Business Surveys Team{{else}}Jacky Turner{{/if}}</dd>
       <dt class="metadata__term u-vh">Sent:</dt>
-      <dd class="metadata__value metadata__value--datetime pluto">{{message_datetime}}</dd>
+      <dd class="metadata__value metadata__value--datetime u-fs-s">{{message_datetime}}</dd>
     </dl>
   <div class="message__body">
     {{{message_body}}}

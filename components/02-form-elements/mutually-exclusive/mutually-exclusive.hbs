@@ -1,15 +1,15 @@
 <div class="field field--checkbox field--multiplechoice field--exclusive">
   <fieldset>
-    <legend class="field__legend mars u-vh">{{fieldset_legend}}</legend>
-    <div class="field__label venus">{{field_label}}</div>
-      {{#each options}}<div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+    <legend class="field__legend u-fs-r u-vh">{{fieldset_legend}}</legend>
+    <div class="field__label u-fs-r--b">{{field_label}}</div>
+      {{#each options}}<div class="field__item">
+        <input class="input input--checkbox js-exclusive-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
         {{>@label}}
       </div>{{/each}}
-      <div class="field__label u-mt-s venus" aria-hidden="true">{{or}}</div>
-      <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
-        <label class="label label--inline venus " for="none">
+      <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">{{or}}</div>
+      <div class="field__item">
+        <input class="input input--checkbox js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
+        <label class="label label--inline u-fs-r " for="none">
             <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
         </label>
         <span class="js-exclusive-alert u-vh" role="alert" aria-live="polite" data-adjective="{{or_deselect_adjective}}"></span>
