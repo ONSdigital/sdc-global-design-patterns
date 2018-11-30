@@ -5,11 +5,11 @@
   <ul class="tabs__list">
       {{#each tabs}}
           <li id="tabId{{@index}}Item" class="tab__list-item"><a href="#tabId{{@index}}" class="tab" data=ga="click" data-ga-category="tabs" data-ga-action="Show: {{tab}}" data-ga-label="Show: {{tab}}">{{tab}}</a></li>
-      {{/each}}    
+      {{/each}}
   </ul>
   {{#each tabs}}
     <section id="tabId{{@index}}" class="tabs__panel">
       {{{tabContent}}}
     </section>
-  {{/each}} 
+  {{/each}}
 </section>
