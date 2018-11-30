@@ -90,6 +90,7 @@ describe('Collapsible;', function() {
   describe('When the first title is clicked', function() {
     before('Click the first title', function() {
       this.titles = document.getElementsByClassName(classCollapsibleTitle);
+      this.titleAttr = this.titles[0].getAttribute('aria-controls');
       this.titles[0].click();
     });
 
@@ -103,7 +104,7 @@ describe('Collapsible;', function() {
 
     describe('the associated body', function() {
       before('get the associated body', function() {
-        this.body = document.getElementById(this.titles[0].getAttribute('aria-controls'));
+        this.body = document.getElementById(this.titleAttr);
       });
 
       it('should have an aria-hidden attribute set to false', function() {
@@ -130,7 +131,7 @@ describe('Collapsible;', function() {
 
       describe('the associated body', function() {
         before('get the associated body', function() {
-          this.body = document.getElementById(this.titles[0].getAttribute('aria-controls'));
+          this.body = document.getElementById(this.titleAttr);
         });
 
         it('should have an aria-hidden attribute set to true', function() {
