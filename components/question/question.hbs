@@ -74,19 +74,19 @@
         </div>
         {{else}}
         <div class="question__answers u-mb-s">
-          {{#each name_form}}
-          <div class="question__answer u-mb-no u-mt-m js-household-person" data-remove="Remove" data-index="{{loop.index}}">
-            <h3 class="neptune">Person {{math @index "+" 1}} <span class="js-household-loopindex">{{ loop.index }}</span>
+          {{#each name_form as |item index|}}
+          <div class="question__answer u-mb-no u-mt-m js-household-person" data-remove="Remove" data-index="{{@index}}">
+            <h3 class="neptune">Person <span class="js-household-loopindex">{{math @index "+" 1}}</span>
               {{#if @first}}
                 <small><span class="js-household-action"> (You)</span></small>
               {{else}}
-                <button class="btn btn--secondary btn--small u-wa--@xs u-mb-no u-fr js-btn-remove" name="action[remove_answer]" value="{{ loop.index0 }}" type="submit">Remove
-                  <span class="u-vh">Person </span>
+                <button class="btn btn--secondary btn--small u-wa--@xs u-mb-no u-fr js-btn-remove" name="action[remove_answer]" value="{{ @index }}" type="submit">Remove
+                  <span class="u-vh">Person {{@index}}</span>
                 </button>
               {{/if}}
             </h3>
             <fieldset class="question__fieldset">
-              <legend class="question__legend u-vh">Person <span class="js-household-loopindex">{{ loop.index }}</span></legend>
+              <legend class="question__legend u-vh">Person <span class="js-household-loopindex">{{@index}}</span></legend>
               {{#each answer_field}}
               <div class="answer answer--textfield" id="container-{{answer_id}}">
                 <div class="answer__fields js-fields">

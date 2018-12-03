@@ -60,24 +60,8 @@ module.exports = {
               {
                 answer_id: 'household-0-first-name',
                 label: 'Textfield',
-                label_text: 'First name',
-                label_for: 'household-0-first-name'
-              }
-            ]
-          },
-          {
-            answer_field: [
-              {
-                answer_id: 'household-0-first-name',
-                label: 'Textfield',
-                label_text: 'First name',
-                label_for: 'household-0-first-name'
-              },
-              {
-                answer_id: 'household-0-first-name',
-                label: 'Textfield',
-                label_text: 'First name',
-                label_for: 'household-0-first-name'
+                label_text: 'Last name',
+                label_for: 'household-0-last-name'
               }
             ]
           }
