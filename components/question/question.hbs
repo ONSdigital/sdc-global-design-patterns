@@ -75,8 +75,8 @@
         {{else}}
         <div class="question__answers u-mb-s">
           {{#each name_form as |item index|}}
-          <div class="question__answer u-mb-no u-mt-m js-household-person" data-remove="Remove" data-index="{{@index}}">
-            <h3 class="neptune">Person <span class="js-household-loopindex">{{math @index "+" 1}}</span>
+          <div class="question__answer u-mb-no u-mt-m js-household-person" data-remove="Remove" data-index="{{ math @index "+" 1 }}">
+            <h3 class="neptune">Person <span class="js-household-loopindex">{{ math @index "+" 1 }}</span>
               {{#if @first}}
                 <small><span class="js-household-action"> (You)</span></small>
               {{else}}
@@ -96,7 +96,7 @@
                       {{#if label_id}}id="{{label_id}}"{{/if}}>{{label_text}}{{#if label_description}}
                       <br/><span class="label__description pluto">{{label_description}}</span>
                       {{/if}}</label>
-                    <input class="input input--text" type="text" id="text-input" />
+                    <input name="{{inpt_name}}" value="" class="input input--text" type="text" id="{{input_id}}" data-qa="input-text" />
                   </div>
                 </div>
               </div>
