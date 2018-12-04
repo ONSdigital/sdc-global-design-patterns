@@ -35,11 +35,13 @@
           <div class="panel panel--simple panel--info" id="question-guidance-question.id">
             <strong class="u-mb-s">{{question_guidance_title}}</strong>
             <p>{{question_guidance}}</p>
+            {{#if question_guidance_list}}
             <ul>
-            {{#each question_guidance_list}}
+              {{#each question_guidance_list}}
               <li>{{item}}</li>
-            {{/each}}
+              {{/each}}
             </ul>
+            {{/if}}
           </div>
         </aside>
 

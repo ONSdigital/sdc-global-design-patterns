@@ -11,7 +11,7 @@ module.exports = {
         question_id: 'central-heating-question',
         question_number: '1',
         question_title: 'What type of central heating does this household have?',
-        question_description: 'This any central heating supply connected to the single household at the given address.',
+        question_description: 'This is any central heating supply connected to the single household at the given address.',
         definition_title: 'What is central heating?',
         definition_description: 'Central heating is a central system that generates heat for multiple rooms.',
         question_guidance: 'Select all that apply, whether or not you use it.',
