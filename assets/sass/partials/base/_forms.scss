@@ -37,6 +37,13 @@ input {
   display: none;
 }
 
+input[type=text],
 input[type="number"] {
-  -moz-appearance: textfield;
+  appearance: none;
+}
+
+select {
+  option[disabled][value=""] {
+    display: none;
+  }
 }

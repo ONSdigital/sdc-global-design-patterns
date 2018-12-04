@@ -51,9 +51,8 @@ At a minimum we test in, and support, the browsers in the following table as [de
 
 | Operating system | Browser | Support |
 |------------------|---------|---------|
-| **Windows**      |Internet Explorer 8-10 | functional |
-|  | Internet Explorer 11 | compliant |
-|  | Edge (latest versions) | functional |
+| **Windows**      |Internet Explorer 11 | compliant |
+|  | Edge (latest versions) | compliant |
 |  | Google Chrome (latest versions) | compliant |
 |  | Mozilla Firefox (latest versions) | compliant |
 | **macOS** | Safari 9+ | compliant |
@@ -63,6 +62,8 @@ At a minimum we test in, and support, the browsers in the following table as [de
 |  | Google Chrome (latest versions) | compliant |
 | **Android** | Google Chrome (latest versions) | compliant |
 |  | Samsung Internet (latest versions) | compliant |
+
+‘Latest versions’ refers to the latest stable version and the version immediately before that.
 
 ## Pattern library status labels
 | Status | Label |

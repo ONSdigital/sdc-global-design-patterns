@@ -63,20 +63,20 @@
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Group" transform="translate(0.000000, -8.000000)">
-            <text id="Jupiter-(h1)" fill="#1A1918" font-family="Lato-Black, Lato" font-size="36" font-weight="700">
-                <tspan x="0.7086" y="36.5687099">Jupiter (h1)</tspan>
+            <text id="u-fs-xl-(h1)" fill="#1A1918" font-family="Lato-Black, Lato" font-size="36" font-weight="700">
+                <tspan x="0.7086" y="36.5687099">u-fs-xl (h1)</tspan>
             </text>
             <text id="Lato-Black,-2rem-/-3" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="59.3516366">Lato Black, 2rem / 36px</tspan>
             </text>
-            <text id="Saturn-(h2)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="28" font-weight="normal">
-                <tspan x="0.7086" y="99.3516854">Saturn (h2)</tspan>
+            <text id="u-fs-l-(h2)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="28" font-weight="normal">
+                <tspan x="0.7086" y="99.3516854">u-fs-l (h2)</tspan>
             </text>
             <text id="Lato-Bold,-1.5rem-/" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="120.551637">Lato Bold, 1.5rem / 28px</tspan>
             </text>
-            <text id="Neptune-(h3)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="22" font-weight="normal">
-                <tspan x="0.7086" y="161.751667">Neptune (h3)</tspan>
+            <text id="u-fs-m-(h3)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="22" font-weight="normal">
+                <tspan x="0.7086" y="161.751667">u-fs-m (h3)</tspan>
             </text>
             <text id="Lato-Bold,-1.5rem-/" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="181.751637">Lato Bold, 1.5rem / 22px</tspan>
@@ -90,8 +90,8 @@
             <text id="Lato-Bold,-1rem-/-18" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="242.951637">Lato Bold, 1rem / 18px</tspan>
             </text>
-            <text id="Mars-(body)" fill="#1A1918" font-family="Lato-Bold, Lato" font-size="18" font-weight="bold">
-                <tspan x="0.7086" y="284.951655">Mars (body)</tspan>
+            <text id="u-fs-r-(body)" fill="#1A1918" font-family="Lato-Bold, Lato" font-size="18" font-weight="bold">
+                <tspan x="0.7086" y="284.951655">u-fs-r (body)</tspan>
             </text>
             <text id="Lato-Regula" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="304.151637">Lato Regula</tspan>
@@ -102,14 +102,14 @@
             <text id=",-1rem-/-18px" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="67.2306" y="304.151637">, 1rem / 18px</tspan>
             </text>
-            <text id="Mercury-(hint)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="14" font-weight="normal">
-                <tspan x="0.7086" y="333.751643">Mercury (hint)</tspan>
+            <text id="u-fs-s--b-(hint)" fill="#1A1918" font-family="Lato-Regular, Lato" font-size="14" font-weight="normal">
+                <tspan x="0.7086" y="333.751643">u-fs-s--b (hint)</tspan>
             </text>
             <text id="Lato-Bold,-0.7rem-/" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="352.151637">Lato Bold, 0.7rem / 14px</tspan>
             </text>
-            <text id="Pluto-(hint)" fill="#1A1918" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold">
-                <tspan x="0.7086" y="381.751643">Pluto (hint)</tspan>
+            <text id="u-fs-s-(hint)" fill="#1A1918" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold">
+                <tspan x="0.7086" y="381.751643">u-fs-s (hint)</tspan>
             </text>
             <text id="Lato-Regula" fill="#565A57" font-family="Lato-Bold, Lato" font-size="12" font-weight="bold">
                 <tspan x="0.7086" y="400.151637">Lato Regula</tspan>

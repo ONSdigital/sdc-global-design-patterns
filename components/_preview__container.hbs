@@ -37,33 +37,10 @@
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="page__content">
-      {{{ yield }}}
-      {{> @header-navigation button="Save and sign out"}}
-        <div class="page__container container">
-          <div class="grid grid--reverse">
-            <div class="grid__col col-4@m">
-              {{render '@vertical-navigation' }}
-            </div>
-            <div class="grid__col col-7@m pull-1@m">
-              <main role="main" id="main" class="page__main">
-              <div class="group u-mb-l">
-                <div class="question">
-                  <h1 class="question__title u-fs-l">What was the percentage increase in total turnover?</h1>
-                    {{> @label label_text="Percentage increase in turnover" label_description="Enter a value to one decimal place"}}
-                    {{render '@input--percentage'}}
-                </div>
-            </div>
-          {{> @button label="Save and continue"}}
-          </main>
-            </div>
-          </div>
-
-        </div>
-
+<div style="padding-top:1rem" >
+  <div class="page__container container">
+    {{{ yield }}}
   </div>
-  {{> @footer}}
 </div>
 <script src="{{ path '/assets/scripts/bundle.js' }}" charset="utf-8"></script>
 </body>

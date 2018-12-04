@@ -36,7 +36,7 @@ module.exports = {
       'metadata_values': ['Jacky Turner','Louise Goodland'],
       'metadata_value_col': '9',
     }],
-    'metadata_term_class' :'venus',
+    'metadata_term_class' :'u-fs-r--b',
     'metadatagrid' : true,
     'metadata_label': 'Item metadata'
   }
@@ -48,12 +48,12 @@ module.exports = {
   {
     'metadata_item': 'From:',
     'metadata_value': ['Jacky Turner'],
-    'metadata_value_class': 'venus',
+    'metadata_value_class': 'u-fs-r--b',
   },
   {
     'metadata_item': 'Sent:',
     'metadata_value': ['Fri 30 Jun 2017 at 11:47'],
-    'metadata_value_class': 'metadata__value--datetime pluto',
+    'metadata_value_class': 'metadata__value--datetime u-fs-s',
   }],
   'metadata_label': 'Message metadata',
   'metadata_term_class' :'u-vh',

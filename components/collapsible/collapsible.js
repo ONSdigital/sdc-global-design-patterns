@@ -66,7 +66,7 @@ class Collapsible {
   registerTitle(element, index) {
     const componentId = this.component.getAttribute('id')
     element.setAttribute('id', componentId + '-collapsible-title-' + index)
-    element.setAttribute(attrControls, 'collapsible-body-' + index)
+    element.setAttribute(attrControls, componentId + '-collapsible-body-' + index)
     element.setAttribute(attrExpanded, 'false')
     element.setAttribute(attrSelected, 'false')
 
@@ -112,7 +112,7 @@ class Collapsible {
   registerToggleAll(toggleAllEl) {
     toggleAllEl.addEventListener('click', e => {
       e.preventDefault()
-      if (toggleAllEl.getAttribute(attrHidden) === 'true'){
+      if (this.openItems / this.titles.length < 1){
         forEach(this.titles, el => { this.open(el) })
         toggleAllEl.setAttribute(attrHidden, 'false')
       } else {

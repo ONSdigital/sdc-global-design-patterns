@@ -28,8 +28,18 @@
       <td class="table__cell pluto">{{value}}</td>
       {{/each}}
     </tr>
-  </tfoot>
-  {{/if}}
+  </tbody>{{#if tfoot}}{{! Only display if tfoot is set to true}}
+  <tfoot class="table--foot">
+    <tr class="table--row">
+      <td class="table--cell u-fs-s">Summary of column - sub-total of column contents?</td>
+      <td class="table--cell u-fs-s">Column summary</td>
+      {{#if datadense}}{{!Add the following columns for the data dense view}}
+      <td class="table--cell u-fs-s">Lorem ipsum contentit</td>
+      <td class="table--cell u-fs-s">Lorem ipsum contentit</td>
+      <td class="table--cell u-fs-s">Lorem ipsum contentit</td>
+      {{/if}}
+    </tr>
+  </tfoot>{{/if}}{{! End tfoot if}}
 </table>
 {{#if scrollable}}
 </div>

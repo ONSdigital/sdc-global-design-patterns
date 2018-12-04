@@ -6,11 +6,14 @@ module.exports = {
   'variants': [{
     'name': 'text',
     'label': 'Text',
+    'preview': '@preview__container',
     'context': {
       'label': 'Textfield',
       'label_text': 'Enter some text',
       'label_for': 'text-input',
-      'label_inline': false
+      'label_inline': false,
+      'widths': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40],
+      'width_label': 'Input width '
     }
   }, {
     'name': 'checkbox',

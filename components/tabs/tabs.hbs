@@ -1,15 +1,15 @@
 
 <section role="region" class="tabs u-mt-l">
-  <h2 class="tabs__title neptune u-vh">{{tabs_contents_title}}</h2>
+  <h2 class="tabs__title u-fs-m u-vh">{{tabs_contents_title}}</h2>
 
   <ul class="tabs__list">
       {{#each tabs}}
           <li id="tabId{{@index}}Item" class="tab__list-item"><a href="#tabId{{@index}}" class="tab" data=ga="click" data-ga-category="tabs" data-ga-action="Show: {{tab}}" data-ga-label="Show: {{tab}}">{{tab}}</a></li>
-      {{/each}}    
+      {{/each}}
   </ul>
   {{#each tabs}}
     <section id="tabId{{@index}}" class="tabs__panel">
       {{{tabContent}}}
     </section>
-  {{/each}} 
+  {{/each}}
 </section>

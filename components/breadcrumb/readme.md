@@ -11,12 +11,12 @@ A breadcrumb trail consists of a list of links to the parent pages of the curren
 #### Implementation
 When implementing breadcrumbs ensure that the output is inline with **no** whitespace.
 
-    <li class="breadcrumb__item"><a href="#Another thing" class="breadcrumb__link pluto">Another thing</a></li><li class...
+    <li class="breadcrumb__item"><a href="#Another thing" class="breadcrumb__link u-fs-s">Another thing</a></li><li class...
 
 **Not**
 
     <li class="breadcrumb__item">
-      <a href="#Another thing" class="breadcrumb__link pluto">Another thing</a>
+      <a href="#Another thing" class="breadcrumb__link u-fs-s">Another thing</a>
     </li>
 
 ### Research

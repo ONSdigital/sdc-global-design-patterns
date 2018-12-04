@@ -1,7 +1,7 @@
 <div class="field">
   {{> @label}}
-  <div class="input-type input-type--unit">
-    <input data-qa="input-number" id="{{label}}" class="input input--number input--with-unit input-type__input" name="{{label}}" value="" pattern="[0-9]*">
+  <div class="input-type">
+    <input data-qa="input-number" id="{{label}}" class="input input-type__input" name="{{label}}" type="number" pattern="[0-9]*">
     <abbr title="{{label}}" class="input-type__type" id="{{label}}-type">{{unit}}</abbr>
   </div>
 </div>
