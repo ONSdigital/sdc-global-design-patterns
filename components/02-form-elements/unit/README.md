@@ -18,9 +18,9 @@ Unit is the localized symbol for each unit.
 
 ### Usage
 
-A `<div>` with the classes `input-type input-type--unit` is required to wrap the `<input>` and `<abbr>` elements.  
+A `<div>` with the classes `input-type` is required to wrap the `<input>` and `<abbr>` elements.
 
-The `<input>` element requires `input-type__input`. 
+The `<input>` element requires `input-type__input`.
 
 The `<abbr>` element which contains the unit requires the classes `input-type__type`.
 

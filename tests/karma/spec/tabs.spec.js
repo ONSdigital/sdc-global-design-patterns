@@ -9,7 +9,7 @@ import {matchMediaMobileMock, matchMediaDesktopMock} from '../stubs/utils.stub.s
 const sleepfor = require('sleepfor');
 const strTemplate = `
     <section role="region" class="${classTabs} u-mt-l">
-        <h2 class="tabs__title neptune u-vh">The tab component</h2>
+        <h2 class="tabs__title u-fs-m u-vh">The tab component</h2>
         <ul class="${classTabList}">
             <li id="tab1Item" class="${classTabListItems}"><a href="#tabId1" class="${classTab}">First tab label</a></li>
             <li id="tab2Item" class="${classTabListItems}"><a href="#tabId2" class="${classTab}">Second tab</a></li>
@@ -17,15 +17,15 @@ const strTemplate = `
         </ul>
 
         <section id="tabId1" class="tabs__panel">
-            <h1 class="saturn">Tab one heading</h1>
+            <h1 class="u-fs-l">Tab one heading</h1>
             <p>Lorem ipsum dolor sit amet.</p>
         </section>
         <section id="tabId2" class="tabs__panel">
-            <h1 class="saturn">Tab two heading</h1>
+            <h1 class="u-fs-l">Tab two heading</h1>
             <p>Lorem ipsum dolor sit amet.</p>
         </section>
         <section id="tabId3" class="tabs__panel">
-            <h1 class="saturn">Tab three heading</h1>
+            <h1 class="u-fs-l">Tab three heading</h1>
             <p>Lorem ipsum dolor sit amet.</p>
         </section>
     </section>

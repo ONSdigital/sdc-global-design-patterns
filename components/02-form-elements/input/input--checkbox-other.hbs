@@ -1,20 +1,20 @@
 <div class="field field--checkbox field--multiplechoice">
   <fieldset>
-    <legend class="field__legend mars">{{legend}}</legend>
+    <legend class="field__legend u-fs-r">{{legend}}</legend>
       {{#each options}}
-      <div class="field__item js-focusable-box">
-        <input class="input input--checkbox js-focusable" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="checkbox">
+      <div class="field__item">
+        <input class="input input--checkbox" name="checkbox-answer" value="{{option_value}}" id="{{label_for}}" type="checkbox">
         {{>@label}}
       </div>
       {{/each}}
-      <div class="field__item js-focusable-box">
-        <input id="checkbox-mandatory-answer-1" name="checkbox-answer" value="Other" data-qa="has-other-option" type="checkbox" class="input input--checkbox js-focusable ">
-        <label id="label-checkbox-mandatory-answer-1" class="label label--inline venus" for="checkbox-mandatory-answer-1">Other<br>
-          <span class="label__description label__inner pluto">An answer is required.</span>
+      <div class="field__item">
+        <input id="checkbox-mandatory-answer-1" name="checkbox-answer" value="Other" data-qa="has-other-option" type="checkbox" class="input input--checkbox ">
+        <label id="label-checkbox-mandatory-answer-1" class="label label--inline u-fs-r" for="checkbox-mandatory-answer-1">Other<br>
+          <span class="label__description label__inner u-fs-s">An answer is required.</span>
         </label>
         <div class="field__other">
-          {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="mercury" }}
-          <input id="other-answer" name="other-answer-mandatory" data-qa="other-option" type="text" class="input js-focusable">
+          {{>@label label_for="other-answer" label_inline="" label_text="Please specify other" label_id="label-checkbox-other-input" label_class="u-fs-s--b" }}
+          <input id="other-answer" name="other-answer-mandatory" data-qa="other-option" type="text" class="input">
         </div>
       </div>
     </fieldset>
