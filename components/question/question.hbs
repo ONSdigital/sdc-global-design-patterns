@@ -3,25 +3,25 @@
   <div class="group" id="current_location.group_id">
     <div class="block" id="current_location.block_id">
 
-      <p class="block__title neptune" data-qa="block-title">{{section_title}}</p>
+      <p class="block__title u-fs-m" data-qa="block-title">{{section_title}}</p>
 
       <div class="question {{question_class}}" id="{{question_id}}">
 
-        <h1 class="question__title saturn" data-qa="question-title">
+        <h1 class="question__title u-fs-l" data-qa="question-title">
           <span class="question__number">{{question_number}}. </span>
           {{question_title}}
         </h1>
 
-        <h3 class="question__subtitle mars">{{question_subtitle}}</h3>
+        <h3 class="question__subtitle u-fs-r">{{question_subtitle}}</h3>
 
-        <div class="question__description mars" id="description-question.id">
+        <div class="question__description u-fs-r" id="description-question.id">
           {{question_description}}
         </div>
 
         {{#if definition_description}}
         <div class="collapsible collapsible--simple js-collapsible js-collapsible-simple u-mt-s u-mb-s">
           <div class="js-collapsible-content">
-            <h3 class="collapsible__title js-collapsible-title icon--collapsible-simple venus" data-definition-title-index="loop.index" data-ga="click" data-ga-category="Question definition" data-ga-action="Open panel" data-ga-label=" definition.title ">{{definition_title}}</h3>
+            <h3 class="collapsible__title js-collapsible-title icon--collapsible-simple u-fs-r--b" data-definition-title-index="loop.index" data-ga="click" data-ga-category="Question definition" data-ga-action="Open panel" data-ga-label=" definition.title ">{{definition_title}}</h3>
             <div class="collapsible__body js-collapsible-body" data-definition-content-index="loop.index">
               <strong class="u-mb-s">{{definition_description_title}}</strong>
               <p>{{definition_description}}</p>
@@ -50,18 +50,18 @@
               <div class="answer__fields js-fields">
                 <div class="field field--checkbox field--multiplechoice field--exclusive">
                   <fieldset>
-                    <legend class="field__legend mars u-vh">{{fieldset_legend}}</legend>
-                    <div class="field__label venus">{{field_label}}</div>
+                    <legend class="field__legend u-fs-r u-vh">{{fieldset_legend}}</legend>
+                    <div class="field__label u-fs-r--b">{{field_label}}</div>
                     {{#each options}}
                     <div class="field__item js-focusable-box">
                       <input class="input input--checkbox js-focusable js-exclusive-group" name="heating-type" value="{{option_value}}" id="{{label_for}}" type="checkbox">
                       {{>@label}}
                     </div>
                     {{/each}}
-                    <div class="field__label u-mt-s venus" aria-hidden="true">{{or}}</div>
+                    <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">{{or}}</div>
                     <div class="field__item js-focusable-box">
                       <input class="input input--checkbox js-focusable js-exclusive-checkbox" name="heating-type" value="{{or_option_value}}" id="none" type="checkbox">
-                      <label class="label label--inline venus " for="none">
+                      <label class="label label--inline u-fs-r--b " for="none">
                           <span class="u-vh">{{or}},</span> {{or_option_text}}<span class="u-vh">. {{or_deselect_message}}</span>
                       </label>
                       <span class="js-exclusive-alert u-vh" role="alert" aria-live="polite" data-adjective="{{or_deselect_adjective}}"></span>
@@ -76,7 +76,7 @@
         <div class="question__answers u-mb-s">
           {{#each name_form as |item index|}}
           <div class="question__answer u-mb-no u-mt-m js-household-person" data-remove="Remove" data-index="{{ math @index "+" 1 }}">
-            <h3 class="neptune">Person <span class="js-household-loopindex">{{ math @index "+" 1 }}</span>
+            <h3 class="u-fs-m">Person <span class="js-household-loopindex">{{ math @index "+" 1 }}</span>
               {{#if @first}}
                 <small><span class="js-household-action"> (You)</span></small>
               {{else}}
@@ -91,10 +91,10 @@
               <div class="answer answer--textfield" id="container-{{answer_id}}">
                 <div class="answer__fields js-fields">
                   <div class="field">
-                    <label class="label venus"
+                    <label class="label u-fs-r--b"
                       {{#if label_for}}for="{{label_for}}"{{/if}}
                       {{#if label_id}}id="{{label_id}}"{{/if}}>{{label_text}}{{#if label_description}}
-                      <br/><span class="label__description pluto">{{label_description}}</span>
+                      <br/><span class="label__description u-fs-s">{{label_description}}</span>
                       {{/if}}</label>
                     <input name="{{inpt_name}}" value="" class="input input--text" type="text" id="{{input_id}}" data-qa="input-text" />
                   </div>
