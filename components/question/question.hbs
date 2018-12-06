@@ -82,13 +82,13 @@
               {{#if @first}}
                 <small><span class="js-household-action"> (You)</span></small>
               {{else}}
-                <button class="btn btn--secondary btn--small u-wa--@xs u-mb-no u-fr js-btn-remove" name="action[remove_answer]" value="{{ @index }}" type="submit">Remove
-                  <span class="u-vh">Person {{@index}}</span>
+                <button class="btn btn--secondary btn--small u-wa--@xs u-mb-no u-fr js-btn-remove" name="action[remove_answer]" value="{{ math @index "+" 1 }}" type="submit">Remove
+                <span class="u-vh">Person {{ math @index "+" 1 }}</span>
                 </button>
               {{/if}}
             </h3>
             <fieldset class="question__fieldset">
-              <legend class="question__legend u-vh">Person <span class="js-household-loopindex">{{@index}}</span></legend>
+              <legend class="question__legend u-vh">Person <span class="js-household-loopindex">{{ math @index "+" 1 }}</span></legend>
               {{#each answer_field}}
               <div class="answer answer--textfield" id="container-{{answer_id}}">
                 <div class="answer__fields js-fields">
