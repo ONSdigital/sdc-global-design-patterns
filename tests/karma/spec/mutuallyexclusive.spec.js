@@ -107,7 +107,7 @@ const strInputsTemplate = `
     </div>
 </fieldset>`;
 
-let elTemplate, checkboxElement, exclusiveGroupElement, voiceOverAlertElement, inputElements;
+let elTemplate, checkboxElement, exclusiveGroupElement, voiceOverAlertElement, inputElements, checkboxValue;
 
 describe('Mutually Exclusive Checkboxes;', function() {
 
@@ -128,7 +128,10 @@ describe('Mutually Exclusive Checkboxes;', function() {
 
   describe('When multiple checkboxes of the group are clicked,', function() {
     exclusiveGroupElement = document.getElementsByClassName(exclusiveGroupClass);
+
+
     before('Click the checkboxes', function() {
+      checkboxValue = checkboxElement[0].value;
       exclusiveGroupElement[0].click();
       exclusiveGroupElement[1].click();
       exclusiveGroupElement[2].click();
@@ -136,6 +139,10 @@ describe('Mutually Exclusive Checkboxes;', function() {
 
     it('should update the live region', function() {
       expect(voiceOverAlertElement[0]).should.not.be.empty;
+    });
+
+    it ('should maintain the value of the checkbox element', function() {
+      expect(checkboxElement[0].value).to.equal(checkboxValue);
     });
   });
 

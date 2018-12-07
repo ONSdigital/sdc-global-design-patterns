@@ -40,8 +40,11 @@ export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
     attr = inputEl.getAttribute('data-value')
   } else {
     const charRef = document.querySelector(`#${inputEl.getAttribute(attrCharLimitRef)}`)
-    attr = inputEl.getAttribute('data-value')
-    inputEl.value = '';
+    attr = inputEl.getAttribute('data-value');
+
+    if (elType !== 'checkbox') {
+      inputEl.value = '';
+    }
 
     if (charRef) {
       updateAvailableChars(inputEl, charRef);
