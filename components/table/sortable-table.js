@@ -32,7 +32,7 @@ class TableSort {
   createHeadingButtons(heading, i) {
     const text = heading.textContent;
     const button = document.createElement('button')
-    
+    button.setAttribute('aria-label', this.table.getAttribute('data-aria-sort') + ' ' + text)
     button.setAttribute('type', 'button')
     button.setAttribute('data-index', i)
     button.setAttribute('class', 'table__sort-button')
