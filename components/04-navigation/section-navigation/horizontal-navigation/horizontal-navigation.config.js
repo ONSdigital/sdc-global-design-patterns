@@ -8,7 +8,7 @@ module.exports = {
     "name":"horizontal",
     "context": {
         "label":"Nav Section (horizontal)",
-        "nav-wrapper-classes":"nav nav--horizontal nav--sub nav--dark",
+        "nav-wrapper-classes":"nav nav--inline nav--page nav--dark",
         "nav-inner-classes": "nav__list",
         "nav-items": [
           {

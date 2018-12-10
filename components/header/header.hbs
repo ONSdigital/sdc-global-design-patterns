@@ -15,7 +15,7 @@
                 </div>
                 {{#if services}}
                 <div class="grid__col col-auto u-flex-no-shrink u-d-no@xs@m">
-                    <nav class="nav nav--horizontal {{#if internal}}nav--light{{/if}} u-d-no@xs@m u-fr" aria-label="Site services menu">
+                    <nav class="nav nav--inline {{#if internal}}nav--light{{/if}} u-d-no@xs@m u-fr" aria-label="Site services menu">
                         <ul class="nav__list" role="menubar" aria-label="Site services menu">
                             {{#each services}}
                             <li class="nav__item" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
@@ -39,10 +39,10 @@
                 {{#if (or button nav)}}
                 <div class="grid__col col-auto u-flex-no-shrink">
                   {{#if button}}
-                    {{> @button  btn-classes="btn--ghost u-ml-s u-d-no@xs@m" label=button}}
+                    {{> @button btn-classes="btn--ghost u-ml-s u-d-no@xs@m" label=button}}
                   {{/if }}
                   {{#if nav}}
-                    {{> @button--mobile btn-classes='u-fr u-d-no@m'}}
+                    {{> @button--mobile label="Menu"}}
                   {{/if}}
                 </div>
                 {{/if}}
@@ -51,17 +51,25 @@
     </div>
     {{#if nav}}
     <div class="header__nav">
-        <div class="container">
-            <nav class="nav nav--horizontal nav--light nav--main nav--h-m js-main-nav" aria-label="Main menu" {{#unless main}}aria-hidden="true"{{/unless}} id="main-nav">
+        <div class="container container--gutterless@xs@m">
+            <nav class="nav nav--inline nav--light nav--header nav--h-m js-main-nav" aria-label="Main menu" id="main-nav">
                 <ul class="nav__list" aria-label="Navigation menu" role="menubar">
                     {{#each main}}
-                    <li class="nav__item {{classes}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                    <li class="nav__item {{classes}} {{#if childItems}}nav__item--hasChildList{{/if}}" role="menuitem" {{#if aria-current}}aria-current="page"{{/if}}><a href="{{link}}" class="nav__link {{#if childItems}}js-toggle-childList{{/if}}">{{text}}</a>
+                        {{#if childItems}}
+                            <ul class="nav__list nav__list--childList nav--h-m u-d-no@m">
+                                {{#each childItems}}
+                                    <li class="nav__item" role="menuitem"><a href="{{link}}" class="nav__link">{{text}}</a></li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
                     {{/each}}
                     {{#each services}}
                     <li class="nav__item {{#if @first}}nav__item--secondary{{/if}} u-d-no@m" role="menuitem"><a href="{{link}}" class="nav__link print__hidden">{{text}}</a></li>
                     {{/each}}
                     {{#if button}}
-                    <li class="nav__item u-d-no@m" role="menuitem">{{> @button btn-classes='btn--ghost print__hidden' label=button}}</li>
+                    <li class="nav__item nav__item--button u-d-no@m" role="menuitem">{{> @button btn-classes='btn--ghost print__hidden' label=button}}</li>
                     {{/if}}
                 </ul>
             </nav>

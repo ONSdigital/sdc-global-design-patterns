@@ -3,44 +3,103 @@ import domready from '../../assets/js/domready'
 const attrExpanded = 'aria-expanded'
 const attrHidden = 'aria-hidden'
 const hideClass = 'nav--h-m'
-const activeClass = 'active'
+const openClass = 'open'
 
-let navVisible = false
+const toggleMainBtn = document.getElementsByClassName('js-toggle-main')[0]
+const mainNavList = document.getElementsByClassName('js-main-nav')[0]
+const toggleChildrenBtn = [...document.getElementsByClassName('js-toggle-childList')]
 
-export default class Nav {
+class NavToggle {
     constructor(toggle, nav) {
         this.toggle = toggle
         this.nav = nav
+        this.toggleNavBinding = this.toggleNav.bind(this)
     }
 
-    toggleNav() {
-        navVisible ? this.closeNav() : this.openNav()
+    registerEvents(){
+        this.toggle.addEventListener('click', this.toggleNavBinding, true)
     }
 
-    openNav() {
-        this.toggle.classList.add(activeClass)
-        this.toggle.setAttribute(attrExpanded, 'true')
-        this.nav.setAttribute(attrHidden, 'false')
-        this.nav.classList.remove(hideClass)
-        navVisible = true
+    unregisterEvents(){
+        this.toggle.removeEventListener('click', this.toggleNavBinding, true)
     }
 
-    closeNav() {
-        this.toggle.classList.remove(activeClass)
-        this.toggle.setAttribute(attrExpanded, 'false')
-        this.nav.setAttribute(attrHidden, 'true')
-        this.nav.classList.add(hideClass) 
-        navVisible = false
+    setupViewportChecks() {
+        this.viewport = window.matchMedia('(max-width: 46.3rem)')
+        this.viewport.addListener(this.checkViewport.bind(this))
+        this.checkViewport()
+    }
+
+    checkViewport() {
+        if (this.viewport.matches) {
+            this.registerEvents()
+            this.setAttributes()
+        } else {
+            this.unregisterEvents()
+            this.unsetAttributes()
+        }    
+    }
+
+    toggleNav(e) {
+        e.preventDefault()
+        const isHidden = this.nav.getAttribute(attrHidden)
+        isHidden === 'false' ? this.closeNav(this.toggle, this.nav) : this.openNav(this.toggle, this.nav)
+    }
+
+    openNav(toggleEl, navEl) {
+        this.closeAllChildNavItems()
+        toggleEl.parentNode.classList.add(openClass)
+        toggleEl.setAttribute(attrExpanded, 'true')
+        navEl.setAttribute(attrHidden, 'false')
+        navEl.classList.remove(hideClass)
+    }
+
+    closeNav(toggleEl, navEl) {
+        toggleEl.parentNode.classList.remove(openClass)
+        toggleEl.setAttribute(attrExpanded, 'false')
+        navEl.setAttribute(attrHidden, 'true')
+        navEl.classList.add(hideClass)
+    }
+
+    closeAllChildNavItems() {
+        toggleChildrenBtn.forEach(btn => {
+            const childNavList = btn.nextElementSibling
+            this.closeNav(btn, childNavList)
+        })
+    }
+
+    setAttributes() {
+        this.nav.setAttribute('id', this.getHref(this.toggle))
+        this.nav.setAttribute('role', 'tabpanel')
+        this.toggle.setAttribute('role', 'tab')
+        this.toggle.setAttribute('aria-controls', this.nav.id)
+    }
+
+    unsetAttributes() {
+        this.nav.removeAttribute('id', this.getHref(this.toggle))
+        this.toggle.removeAttribute('role', 'tab')
+        this.toggle.removeAttribute('aria-controls', this.nav.id)
+        this.nav.removeAttribute('role', 'tabpanel')
+    }
+
+    getHref(el) {
+        const href = el.getAttribute('href')
+        return href
     }
 }
 
-domready(() => {
-    const toggle = document.querySelector('.js-nav-btn')
-    const nav = document.querySelector('.js-main-nav')
+export default function mobileNav() {
 
-    if (!toggle || !nav) return false
-
-    const mainNav = new Nav(toggle,nav)
+    if (!mainNavList) return
     
-    toggle.addEventListener('click', e => mainNav.toggleNav(e))
-})
+    new NavToggle(toggleMainBtn, mainNavList).registerEvents()
+
+    if (!toggleChildrenBtn) return
+
+    toggleChildrenBtn.forEach(btn => {
+        const childNavList = btn.nextElementSibling
+        new NavToggle(btn, childNavList).setupViewportChecks()
+    })
+}
+
+domready(mobileNav)

@@ -264,7 +264,7 @@ class Tabs {
         return this.component.querySelector('.tab--selected')
     }
 
-    getHref = function (tab) {
+    getHref(tab) {
         const href = tab.getAttribute('href')
         const hash = href.slice(href.indexOf('#'), href.length)
         return hash

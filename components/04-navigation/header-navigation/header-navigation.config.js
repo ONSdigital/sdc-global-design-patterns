@@ -16,14 +16,43 @@ module.exports = {
     "context": {
         "main":[
           {
-            "text": "Surveys",
+            "text": "Home",
             "link": "#1",
             "classes": "nav__item--active",
             "aria-current": true
           },
           {
-            "text": "Messages",
+            "text": "Search",
             "link": "#1"
+          },
+          {
+            "text": "Record management",
+            "link": "records",
+            "childItems": [
+              {
+                "text": "Search for a record",
+                "link": "#1"
+              },
+              {
+                "text": "Create a new record",
+                "link": "#1"
+              }            
+            ]
+          },
+          {
+            "text": "Sampling",
+            "link": "sampling",
+            "childItems": [
+              {
+                "text": "Sampling 1",
+                "link": "#1"
+              },
+              {
+                "text": "Sampling 2",
+                "link": "#1"
+              }            
+            ]
+
           }
         ],
       }

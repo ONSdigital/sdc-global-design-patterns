@@ -1,6 +1,6 @@
 // The @include create-icon @mixin is located in the 'partials/helpers/_mixins.scss' file
 @include create-icon($iconName:check); // Example for the pattern library
-@include create-icon($iconName:print-link, $hoverIconName:print-hover, $position:right, $btn:true); // Example for the pattern library
+@include create-icon($iconName:print-link, $hoverIconName:print-hover, $position:right, $btn:true, $top: 0.7rem); // Example for the pattern library
 @include create-icon($iconName:person, $width:1rem, $top:4px); // Example for the pattern library
 
 @include create-icon($iconName:external-link, $hoverIconName:external-link-hover, $width:.9rem, $top: 3px, $position:right); // Used in eq-runner to handle external link
