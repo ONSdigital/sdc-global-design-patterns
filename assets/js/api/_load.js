@@ -9,6 +9,7 @@ import {getTimeNow, matchMedia} from '../utils';
 import domready from '../domready';
 import formSubmitterDOM from '../form-submitter.dom';
 import Tabs from '../../../components/tabs/tabs';
+import NavToggle from '../../../components/04-navigation/main-nav';
 import timeoutDOM from '../../../components/timeout/timeout.dom';
 
 /**
@@ -25,6 +26,7 @@ subscribe('form-submitter', [{      method: FormSubmitter,          methodName: 
 subscribe('form-submitter.dom', [{  method: formSubmitterDOM,       methodName: 'formSubmitterDOM', boot: true }]);
 subscribe('loader-btn', [{          method: LoaderBtn,              methodName: 'LoaderBtn' }]);
 subscribe('tabs', [{                method: Tabs,                   methodName: 'Tabs' }]);
+subscribe('mobileNav', [{                method: NavToggle,                   methodName: 'NavToggle' }]);
 subscribe('timeout', [{             method: SessionTimeoutUI,       methodName: 'SessionTimeoutUI' }]);
 subscribe('timeout.dom', [{         method: timeoutDOM,             methodName: 'timeoutDOM', boot: true }]);
 

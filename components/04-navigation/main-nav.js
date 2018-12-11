@@ -1,19 +1,19 @@
 import domready from '../../assets/js/domready'
+import {get} from "../../assets/js/api/_sdcModules";
 
-const attrExpanded = 'aria-expanded'
-const attrHidden = 'aria-hidden'
-const hideClass = 'nav--h-m'
-const openClass = 'open'
+export const attrExpanded = 'aria-expanded'
+export const attrHidden = 'aria-hidden'
+export const hideClass = 'nav--h-m'
+export const openClass = 'open'
 
-const toggleMainBtn = document.getElementsByClassName('js-toggle-main')[0]
-const mainNavList = document.getElementsByClassName('js-main-nav')[0]
-const toggleChildrenBtn = [...document.getElementsByClassName('js-toggle-childList')]
+const utilsModule = get('utils');
 
 class NavToggle {
     constructor(toggle, nav) {
         this.toggle = toggle
         this.nav = nav
         this.toggleNavBinding = this.toggleNav.bind(this)
+        
     }
 
     registerEvents(){
@@ -25,7 +25,7 @@ class NavToggle {
     }
 
     setupViewportChecks() {
-        this.viewport = window.matchMedia('(max-width: 46.3rem)')
+        this.viewport = utilsModule.matchMedia('(max-width: 46.3rem)')
         this.viewport.addListener(this.checkViewport.bind(this))
         this.checkViewport()
     }
@@ -62,6 +62,7 @@ class NavToggle {
     }
 
     closeAllChildNavItems() {
+        const toggleChildrenBtn = [...document.getElementsByClassName('js-toggle-childList')]
         toggleChildrenBtn.forEach(btn => {
             const childNavList = btn.nextElementSibling
             this.closeNav(btn, childNavList)
@@ -89,7 +90,10 @@ class NavToggle {
 }
 
 export default function mobileNav() {
-
+    const toggleMainBtn = document.getElementsByClassName('js-toggle-main')[0]
+    const mainNavList = document.getElementsByClassName('js-main-nav')[0]
+    const toggleChildrenBtn = [...document.getElementsByClassName('js-toggle-childList')]
+    
     if (!mainNavList) return
     
     new NavToggle(toggleMainBtn, mainNavList).registerEvents()
