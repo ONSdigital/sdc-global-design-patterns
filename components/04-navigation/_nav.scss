@@ -70,7 +70,7 @@
   .nav--inline & {
     font-size: 1rem;
     display: inline-block;
-    margin: 0 0 0 .8rem;
+    margin: 0 0 0 1rem;
     position: relative;
     text-align: center;
     &:first-child {
@@ -126,17 +126,9 @@
     @include mq(m) {
       padding: 0 0 .3rem;
       margin: 0 0 0 1rem;
-      &--active {
+      &--active, &:hover {
         border-bottom: 4px solid $color-white;
       }
-    }
-  }
-
-  .nav--page & {
-    padding: 0 .667rem .3rem;
-    &--current, &--current:first-child {
-      border-bottom: 4px solid $color-secondary;
-      padding-left: .667rem;
     }
   }
 
@@ -161,6 +153,19 @@
     }
   }
 
+  .nav--page & {
+    text-decoration: none;
+    padding: 0 0 .3rem;
+    &:hover, &--current{
+      color: $color-links-hover;
+      border-bottom: 4px solid $color-secondary;
+    }
+  }
+
+  .nav__item--active &, &--current {
+    font-weight: bold;
+  }
+
   .nav--progress & {
     @include mq(m) {
       font-size: 1rem;
@@ -179,6 +184,11 @@
       text-align: left;
       margin: 0 .35rem;
       padding: 0 .65rem;
+    }
+    @include mq(m) {
+      &:hover, &:focus {
+        color: $color-white;
+      }
     }
   }
 
@@ -211,17 +221,6 @@
   .open > & {
     @include mq(xs,m) {
       margin-bottom: .3rem;
-      font-weight: bold;
-    }
-  }
-
-  .nav__item--active & {
-    .nav--light & {
-      &:hover, &:focus {
-        color: $color-white;
-      }
-    }
-    .nav--inline & {
       font-weight: bold;
     }
   }
