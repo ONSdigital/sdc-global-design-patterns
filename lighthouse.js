@@ -125,7 +125,6 @@ function launchChrome(previewFiles) {
 
     console.log('Finished auditing');
     console.log('Shutting down chrome instances');
-
     let index = 0;
     const shutDownPromises = [];
 
