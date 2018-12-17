@@ -35,19 +35,20 @@ export const inputToggle = function(inputEl, voiceOverAlertEl, elType) {
 
   if (elType === 'checkbox' && inputEl.checked === true) {
     inputEl.checked = false;
-
-  } else if (elType === 'text' || elType === 'textarea') {
-    const charRef = document.querySelector(`#${inputEl.getAttribute(attrCharLimitRef)}`)
+  } else if (elType === 'select-one') {
+    inputEl.selectedIndex = 0;
     attr = inputEl.getAttribute('data-value')
-    inputEl.value = '';
+  } else {
+    const charRef = document.querySelector(`#${inputEl.getAttribute(attrCharLimitRef)}`)
+    attr = inputEl.getAttribute('data-value');
+
+    if (elType !== 'checkbox') {
+      inputEl.value = '';
+    }
 
     if (charRef) {
       updateAvailableChars(inputEl, charRef);
     }
-
-  } else if (elType === 'select-one') {
-    inputEl.selectedIndex = 0;
-    attr = inputEl.getAttribute('data-value')
   }
 
   voiceOverAlertEl.append(attr + ' ' + voiceOverAlertEl.getAttribute('data-adjective') + '. ');
