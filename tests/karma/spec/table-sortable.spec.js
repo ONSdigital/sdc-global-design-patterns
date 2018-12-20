@@ -156,10 +156,10 @@ describe('Sortable table;', function() {
                 originalValues.reverse();
 
                 const trs = this.tbody[0].querySelectorAll('tr');
-                trs.forEach(tr => {
-                    const tdVal = tr.childNodes[1].textContent;
+                for (var i = 0; i < trs.length; i++) {
+                    const tdVal = trs[i].childNodes[1].textContent;
                     sortedValues.push(tdVal);
-                });
+                }
 
                 expect(originalValues.join()).to.equal(sortedValues.join());
             });
@@ -186,10 +186,10 @@ describe('Sortable table;', function() {
                 originalValues.reverse();
 
                 const trs = this.tbody[0].querySelectorAll('tr');
-                trs.forEach(tr => {
-                    const tdVal = tr.childNodes[1].textContent;
+                for (var i = 0; i < trs.length; i++) {
+                    const tdVal = trs[i].childNodes[1].textContent;
                     sortedValues.push(tdVal);
-                });
+                }
 
                 expect(originalValues.join()).to.equal(sortedValues.join());
             });
