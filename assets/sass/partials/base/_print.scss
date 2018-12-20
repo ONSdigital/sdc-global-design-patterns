@@ -18,6 +18,12 @@
     }
   }
 
+  .page {
+    // Setting overflow-x and min-height to auto prevents iOS from splitting elements across pages when printing.
+    overflow-x: auto;
+    min-height: auto;
+  }
+
   .page__container {
     transform: none !important;
   }

@@ -99,6 +99,10 @@ input:checked ~ .field__other {
       flex-direction: column;
       justify-content: flex-end;
       margin: 0 $input-padding * 2 $input-padding * 2 0;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 
@@ -115,6 +119,20 @@ input:checked ~ .field__other {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
+    }
+  }
+
+  // TEMPORARY: Remove once runner has been refactored to use numeric month field
+
+  &--date {
+    .field--select {
+      flex-shrink: 1;
+    }
+  }
+
+  &--date & {
+    &__fields {
+      flex-wrap: nowrap;
     }
   }
 }

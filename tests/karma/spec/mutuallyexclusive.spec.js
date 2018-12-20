@@ -6,6 +6,7 @@ import mutuallyExclusiveInputs, {
   inputToggle,
 } from '02-form-elements/mutually-exclusive/mutually-exclusive';
 
+
 const strCheckboxesTemplate = `
 
 <div class="field field--checkbox field--multiplechoice ${exclusiveWrapperClass}">
@@ -35,6 +36,25 @@ const strCheckboxesTemplate = `
       </div>
   </fieldset>
 </div>`;
+
+const inputTypes = [
+  { type: 'email', value: 'test@test.com' },
+  { type: 'number', value: '123' },
+  { type: 'password', value: 'password' },
+  { type: 'tel', value: '01234 56789' },
+  { type: 'text', value: 'yes' },
+  { type: 'url', value: 'www.test.com' },
+];
+
+let inputRows = '';
+
+inputTypes.forEach(inputType => {
+  inputRows +=
+  `<div class="field">
+    <label class="label u-fs-s--b" for="input-${inputType.type}">${inputType.type}</label>
+    <input type="${inputType.type}" id="input-${inputType.type}" class="input ${exclusiveGroupClass}">
+  </div>`
+});
 
 const strInputsTemplate = `
 <fieldset class="field ${exclusiveWrapperClass}">
@@ -72,6 +92,8 @@ const strInputsTemplate = `
         </div>
     </div>
 
+    ${inputRows}
+
     <div class="field__label u-mt-s u-fs-r--b" aria-hidden="true">Or,</div>
 
     <div class="field field--checkbox field--multiplechoice field--exclusive">
@@ -85,7 +107,7 @@ const strInputsTemplate = `
     </div>
 </fieldset>`;
 
-let elTemplate, checkboxElement, exclusiveGroupElement, voiceOverAlertElement;
+let elTemplate, checkboxElement, exclusiveGroupElement, voiceOverAlertElement, inputElements, checkboxValue;
 
 describe('Mutually Exclusive Checkboxes;', function() {
 
@@ -106,7 +128,10 @@ describe('Mutually Exclusive Checkboxes;', function() {
 
   describe('When multiple checkboxes of the group are clicked,', function() {
     exclusiveGroupElement = document.getElementsByClassName(exclusiveGroupClass);
+
+
     before('Click the checkboxes', function() {
+      checkboxValue = checkboxElement[0].value;
       exclusiveGroupElement[0].click();
       exclusiveGroupElement[1].click();
       exclusiveGroupElement[2].click();
@@ -114,6 +139,10 @@ describe('Mutually Exclusive Checkboxes;', function() {
 
     it('should update the live region', function() {
       expect(voiceOverAlertElement[0]).should.not.be.empty;
+    });
+
+    it ('should maintain the value of the checkbox element', function() {
+      expect(checkboxElement[0].value).to.equal(checkboxValue);
     });
   });
 
@@ -149,7 +178,17 @@ describe('Mutually Exclusive Inputs;', function() {
       exclusiveGroupElement[4].value = '22';
       exclusiveGroupElement[5].selectedIndex = 2;
       exclusiveGroupElement[6].value = '1979';
-      console.log('Input values before:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].selectedIndex, exclusiveGroupElement[6].value);
+
+      const inputValues = [];
+
+      inputElements = inputTypes.map(inputType => {
+        const element = document.getElementById(`input-${inputType.type}`);
+        element.value = inputType.value;
+        inputValues.push(inputType.value);
+        return element;
+      });
+
+      console.log('Input values before:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].selectedIndex, exclusiveGroupElement[6].value, ...inputValues);
     });
 
     it('should update the live region', function() {
@@ -163,13 +202,22 @@ describe('Mutually Exclusive Inputs;', function() {
       inputToggle(exclusiveGroupElement[4], voiceOverAlertElement[1], 'text');
       inputToggle(exclusiveGroupElement[5], voiceOverAlertElement[1], 'select-one');
       inputToggle(exclusiveGroupElement[6], voiceOverAlertElement[1], 'text');
+
+      inputElements.forEach((element, index) => inputToggle(element, voiceOverAlertElement[1], inputTypes[index].type))
     });
 
     it('should clear all input fields', function() {
-        expect(exclusiveGroupElement[4].value).to.be.empty;
-        expect(exclusiveGroupElement[5].selectedIndex).to.equal(0);
-        expect(exclusiveGroupElement[6].value).to.be.empty;
-        console.log('Input values after:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].value, exclusiveGroupElement[6].value);
+      const inputValues = inputElements.map(element => element.value);
+
+      console.log('Input values after:', exclusiveGroupElement[4].value, exclusiveGroupElement[5].value, exclusiveGroupElement[6].value, ...inputValues);
+
+      expect(exclusiveGroupElement[4].value).to.be.empty;
+      expect(exclusiveGroupElement[5].selectedIndex).to.equal(0);
+      expect(exclusiveGroupElement[6].value).to.be.empty;
+
+      inputElements.forEach(element => {
+        expect(element.value).to.be.empty
+      });
     });
 
   });

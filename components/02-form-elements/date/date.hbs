@@ -1,6 +1,6 @@
 <div class="answer answer--date">
   <div class="answer__fields js-fields">
-    <fieldset class="fieldgroup fieldgroup--inline" data-qa="widget-date"{{#if description}} aria-describedby="{{concatStr id '-description'}}"{{/if}} role="group">
+    <fieldset class="fieldgroup fieldgroup--inline fieldgroup--date" data-qa="widget-date"{{#if description}} aria-describedby="{{concatStr id '-description'}}"{{/if}} role="group">
       {{#if legend}}
       <legend class="fieldgroup__title u-fs-r--b">{{legend}}</legend>
       {{/if}}
@@ -17,7 +17,7 @@
         {{#if months}}
           <div class="field field--select">
             <label class="label u-fs-r" for="{{concatStr id '-month'}}" data-qa="label-month">{{monthLabel}}</label>
-            <select class="input input--select">
+            <select class="input input--select input--w-auto">
               <option selected disabled value="">{{firstOption}}</option>
               {{#each months}}
                 <option value="{{math @index '+' 1}}">{{this}}</option>
