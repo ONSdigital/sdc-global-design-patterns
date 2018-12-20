@@ -68,7 +68,7 @@ const strTemplate = `
 </table>
 `;
 
-let elTemplate, originalRows = [], sortedRows = [];
+let elTemplate, originalValues = [], sortedValues = [];
 
 describe('Sortable table;', function() {
     before('Add template to DOM', function() {           
@@ -79,13 +79,13 @@ describe('Sortable table;', function() {
      
         this.table = document.getElementsByClassName(classTableSortable)
         this.sortableHeadings = [...document.querySelectorAll(jsSortableHeadings)];
-        this.tbody = document.getElementsByClassName(classTableBody)[0];
+        
+        this.tbody = this.table[0].getElementsByClassName(classTableBody);
+        this.trs = this.tbody[0].querySelectorAll('tr');
 
-        const trs = [...this.tbody.querySelectorAll('tr')];
-
-        trs.forEach(tr => {
+        this.trs.forEach(tr => {
           const tdVal = tr.childNodes[1].textContent;
-          originalRows.push(tdVal);
+          originalValues.push(tdVal);
         })
 
         tableSorter();
@@ -153,22 +153,21 @@ describe('Sortable table;', function() {
             });
 
             it('should sort the column into descending order', function() {
-                const trs = [...this.tbody.querySelectorAll('tr')];
-                originalRows.reverse();
+                originalValues.reverse();
 
+                const trs = this.tbody[0].querySelectorAll('tr');
                 trs.forEach(tr => {
                     const tdVal = tr.childNodes[1].textContent;
-                    sortedRows.push(tdVal);
+                    sortedValues.push(tdVal);
                 });
 
-                expect(originalRows.join()).to.equal(sortedRows.join());
+                expect(originalValues.join()).to.equal(sortedValues.join());
             });
 
             it('should update the aria-live status', function() {
                 const status = document.getElementsByClassName('sortable-table-status')[0].textContent;
                 const headingText = this.sortableHeadings[0].textContent;
                 expect(status).to.equal('Sort by ' + headingText + ' (descending)');
-
             });
         });
 
@@ -182,18 +181,17 @@ describe('Sortable table;', function() {
                 expect(th.getAttribute('aria-sort')).to.equal('ascending');
             });
 
-            it('should sort the column into ascending order', function() {
-                const trs = [...this.tbody.querySelectorAll('tr')];
-                
-                sortedRows = [];
-                originalRows.reverse();
+            it('should sort the column into ascending order', function() {                
+                sortedValues = [];
+                originalValues.reverse();
 
+                const trs = this.tbody[0].querySelectorAll('tr');
                 trs.forEach(tr => {
                     const tdVal = tr.childNodes[1].textContent;
-                    sortedRows.push(tdVal);
+                    sortedValues.push(tdVal);
                 });
 
-                expect(originalRows.join()).to.equal(sortedRows.join());
+                expect(originalValues.join()).to.equal(sortedValues.join());
             });
         });
     });

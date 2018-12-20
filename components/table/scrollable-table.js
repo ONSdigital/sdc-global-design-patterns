@@ -20,7 +20,6 @@ class TableScroll {
     tableSizeCheck(){
         this.tableWidth = this.tableEl[0].offsetWidth
         this.tableContainerWidth = this.tableScroll[0].offsetWidth
-
         if (this.tableWidth > this.tableContainerWidth && this.activeTable === false) {
             this.activeTable = true,
             this.insertShadows(),
@@ -52,29 +51,27 @@ class TableScroll {
     }
 
     removeShadows() {
-        const rightShadow = this.tableScroll[0].getElementsByClassName('right-shadow')
-        const leftShadow = this.tableScroll[0].getElementsByClassName('left-shadow')
-
-        this.tableScroll[0].removeChild(rightShadow[0]),
-        this.tableScroll[0].removeChild(leftShadow[0])
+        const rightShadow = this.tableScroll[0].querySelector('.right-shadow')
+        const leftShadow = this.tableScroll[0].querySelector('.left-shadow')
+        this.tableScroll[0].removeChild(rightShadow),
+        this.tableScroll[0].removeChild(leftShadow)
     }
 
     toggleShadows() {
-        const rightShadow = this.tableScroll[0].getElementsByClassName('right-shadow')
-        const leftShadow = this.tableScroll[0].getElementsByClassName('left-shadow')
+        const rightShadow = this.tableScroll[0].querySelector('.right-shadow')
+        const leftShadow = this.tableScroll[0].querySelector('.left-shadow')
         const tableScrollPos = this.getOffset(this.tableScroll[0]).left
         const tablePos = this.getOffset(this.tableEl[0]).left
 
         this.tableWidth = this.tableEl[0].offsetWidth
         this.tableContainerWidth = this.tableScroll[0].offsetWidth
+        tablePos === tableScrollPos ? leftShadow.classList.remove('visible') : leftShadow.classList.add('visible');
 
-        tablePos === tableScrollPos ? leftShadow[0].classList.remove('visible') : leftShadow[0].classList.add('visible');
-
-        -tableScrollPos === this.tableContainerWidth - this.tableWidth - tablePos ? rightShadow[0].classList.remove('visible') : rightShadow[0].classList.add('visible');
+        -tableScrollPos === this.tableContainerWidth - this.tableWidth - tablePos ? rightShadow.classList.remove('visible') : rightShadow.classList.add('visible');
 
         setTimeout(function() {
-            return leftShadow[0].classList.add('with-transition'),
-                   rightShadow[0].classList.add('with-transition')
+            return leftShadow.classList.add('with-transition'),
+                   rightShadow.classList.add('with-transition')
         }, 200)
     }
     
