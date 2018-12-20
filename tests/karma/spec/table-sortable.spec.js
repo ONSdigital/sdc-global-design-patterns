@@ -7,7 +7,7 @@ import tableSorter, {
 const strTemplate = `
 <table class="table ${classTableSortable}" data-aria-sort="Sort by" data-aria-asc="ascending" data-aria-desc="descending">
     <caption class="table__caption">Javascript enhanced sortable table</caption>
-    <thead class="table__head">
+    <thead class="table__head"> 
         <tr class="table__row">
             <th scope="col" class="table__header" aria-sort="none">ID</th>
             <th scope="col" class="table__header" aria-sort="none">Title</th>
@@ -83,10 +83,10 @@ describe('Sortable table;', function() {
         this.tbody = this.table[0].getElementsByClassName(classTableBody);
         this.trs = this.tbody[0].querySelectorAll('tr');
 
-        this.trs.forEach(tr => {
-          const tdVal = tr.childNodes[1].textContent;
+        for (var i = 0; i < this.trs.length; i++) {
+          const tdVal = this.trs[i].childNodes[1].textContent;
           originalValues.push(tdVal);
-        })
+        }
 
         tableSorter();
     });
