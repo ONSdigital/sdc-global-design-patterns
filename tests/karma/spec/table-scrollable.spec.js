@@ -115,7 +115,6 @@ describe('Scrollable table;', function() {
 
             });
         });
-
     });
 });
 

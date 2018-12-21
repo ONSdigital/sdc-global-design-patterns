@@ -45,9 +45,8 @@ class TableScroll {
 
         rightShadowEl.className = 'right-shadow visible'
         leftShadowEl.className = 'left-shadow'
-
-        this.tableScroll[0].append(rightShadowEl),
-        this.tableScroll[0].prepend(leftShadowEl)
+        this.tableScroll[0].appendChild(rightShadowEl),
+        this.tableScroll[0].insertBefore(leftShadowEl, this.tableScroll[0].firstChild)
     }
 
     removeShadows() {
