@@ -1,4 +1,4 @@
-import {replace, reset, noop} from '../../../assets/js/api/_sdcModules';
+import {replace, reset} from '../../../assets/js/api/_sdcModules';
 import tabs, {
     classTabs,
     classTab,
@@ -6,7 +6,7 @@ import tabs, {
     classTabListItems,
 } from 'tabs/tabs';
 import {matchMediaMobileMock, matchMediaDesktopMock} from '../stubs/utils.stub.spec';
-const sleepfor = require('sleepfor');
+
 const strTemplate = `
     <section role="region" class="${classTabs} u-mt-l">
         <h2 class="tabs__title u-fs-m u-vh">The tab component</h2>
