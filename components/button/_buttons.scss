@@ -28,7 +28,6 @@
   border: 1px solid $color-primary;
   padding: .75rem 1rem;
 
-
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
@@ -36,6 +35,7 @@
   display: inline-block;
   text-rendering: optimizeLegibility;
   text-decoration: none;
+  text-align: center;
   width: 100%;
   transition: background-color 200ms ease-in, color 200ms ease-in, border 200ms ease-in;
 
@@ -76,6 +76,18 @@
     $color: $color-white,
     $border-color: rgba(255,255,255,0.6),
     $border-color-hover: rgba(255,255,255,1)
+  );
+
+  border-width: 2px;
+  padding: 0.5rem 1rem;
+}
+
+.btn--ghost-blue {
+  @include btn-override(
+    $bg: transparent,
+    $color: $color-blue,
+    $color-hover: darken($color-blue, 10%),
+    $border-color: $color-blue,
   );
 
   border-width: 2px;
@@ -137,65 +149,34 @@
 }
 
 .btn--mobile {
+  @extend .btn--ghost;
+  @extend .btn--small;
+  $size: .6rem;
   position: relative;
-  overflow: hidden;
-  margin: 3px 0 0;
-  padding: 0;
-  width: 28px;
-  height: 28px;
-  text-indent: -9999px;
-  background: transparent;
-  border: transparent;
-  border-radius: 0;
-  &:focus, &:hover {
-    background-color: transparent;
-    border-color: transparent;
-  }
-  &__label {
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    display: block;
+  padding-right: $size * 2.5;
+
+  &::before {
+    content: "";
+    background: url("#{$static}/img/icons/icons--chevron-down-white.svg") no-repeat center center;
+    height: $size;
+    width: $size;
     position: absolute;
     top: 12px;
-    left: 0px;
-    right: 0px;
-    height: 3px;
-    background-color: $color-white;
-    &::before, &::after{
-      position: absolute;
-      display: block;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: $color-white;
-      content: "";
-      transition-duration: 0.3s,0.3s;
-      transition-delay: 0.3s,0;
-    }
+    right: 8px;
+    background-size: $size $size;
+  }
+  
+  &[aria-expanded="true"] {
     &::before {
-      transition-property: top,transform;
-      top: -8px;
-    }
-    &::after {
-      transition-property: bottom,transform;
-      bottom: -8px;
+      transform: rotate(180deg);
     }
   }
-  &.active {
-    .btn--mobile__label {
-      background-color: transparent;
-      &::before {
-        top: 0;
-        transform: rotate(45deg);
-      }
-      &::after {
-        bottom: 0;
-        transform: rotate(-45deg);
-      }
-    }
-  }
-}
 
-.no-js .btn--mobile {
-  display: none;
+  @include mq(m) {
+    display: none;
+  }
+
+  .no-js & {
+    display: none;
+  }
 }

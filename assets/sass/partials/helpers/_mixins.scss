@@ -126,7 +126,7 @@
   background-repeat: no-repeat;
 }
 
-@mixin create-icon ($iconName, $className: null, $hoverIconName: null, $width: 1.3rem, $top: 2px, $position: left, $btn: false) {
+@mixin create-icon ($iconName, $className: null, $hoverIconName: null, $width: 1.3rem, $top: 2px, $position: left, $btn: false, $right: 0.7rem) {
   $name: $iconName;
 
   @if ($className != null) {
@@ -152,10 +152,6 @@
       }
     }
 
-    @include ie8() {
-      padding: auto;
-    }
-
     &::before,
     &::after {
       content: "";
@@ -170,18 +166,14 @@
       transition: opacity 200ms ease-in-out, transform 300ms ease-in-out;
       background-position: 0 0;
 
-      @include ie8() {
-        display: none;
-      }
-
       @if ($btn == true) {
-        top: 0.7rem;
-        left: $width - 0.5rem;
+        top: $top;
+        left: $width - $right;
       }
 
       @if ($position == "right") {
         left: auto;
-        right: $width - 0.7rem;
+        right: $width - $right;
       }
     }
 

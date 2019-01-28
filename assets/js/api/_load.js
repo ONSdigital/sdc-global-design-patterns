@@ -1,14 +1,13 @@
 import {subscribe} from './_sdcModules';
 import CountdownAnimation from '../../../components/countdown/countdown';
-import FormSubmitter from '../form-submitter';
 import SessionTimeoutUI from '../../../components/timeout/timeout';
 import LoaderBtn from '../loader-btn';
 import dialog from '../dialog';
 import fetch from '../fetch';
 import {getTimeNow, matchMedia} from '../utils';
 import domready from '../domready';
-import formSubmitterDOM from '../form-submitter.dom';
 import Tabs from '../../../components/tabs/tabs';
+import NavToggle from '../../../components/04-navigation/main-nav';
 import timeoutDOM from '../../../components/timeout/timeout.dom';
 
 /**
@@ -21,10 +20,9 @@ subscribe('countdown', [{           method: CountdownAnimation,     methodName: 
 subscribe('dialog', [{              method: dialog,                 methodName: 'dialog' }]);
 subscribe('domready', [{            method: domready,               methodName: 'domready' }]);
 subscribe('fetch', [{               method: fetch,                  methodName: 'fetch' }]);
-subscribe('form-submitter', [{      method: FormSubmitter,          methodName: 'FormSubmitter' }]);
-subscribe('form-submitter.dom', [{  method: formSubmitterDOM,       methodName: 'formSubmitterDOM', boot: true }]);
 subscribe('loader-btn', [{          method: LoaderBtn,              methodName: 'LoaderBtn' }]);
 subscribe('tabs', [{                method: Tabs,                   methodName: 'Tabs' }]);
+subscribe('mobileNav', [{                method: NavToggle,                   methodName: 'NavToggle' }]);
 subscribe('timeout', [{             method: SessionTimeoutUI,       methodName: 'SessionTimeoutUI' }]);
 subscribe('timeout.dom', [{         method: timeoutDOM,             methodName: 'timeoutDOM', boot: true }]);
 

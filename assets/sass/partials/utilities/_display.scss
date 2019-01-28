@@ -1,27 +1,7 @@
-.u-d-no {
-  display: none;
+@include bp-suffix('u-d-no', $createBetweenBreakpoints: true) {
+  display: none !important;
 }
 
-.u-d-b {
-  display: block;
-}
-
-// Hide between two breakpoints
-@each $breakpointMin, $size in $grid-bp {
-  @each $breakpointMax, $size in $grid-bp {
-    @media only screen and (min-width: get-bp-width($breakpointMin)) and (max-width: get-bp-width($breakpointMax)) {
-      .u-d-no--\@#{$breakpointMin}\@#{$breakpointMax} {
-        display: none !important;
-      }
-    }
-  }
-}
-
-// Hide from single breakpoint
-@each $breakpointMin, $size in $grid-bp {
-  @media only screen and (min-width: get-bp-width($breakpointMin)) {
-    .u-d-no--\@#{$breakpointMin} {
-      display: none !important;
-    }
-  }
+@include bp-suffix('u-d-b', $createBetweenBreakpoints: true) {
+  display: block !important;
 }

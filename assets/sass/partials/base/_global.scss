@@ -1,7 +1,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 html {

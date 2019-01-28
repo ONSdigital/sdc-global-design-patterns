@@ -83,12 +83,22 @@
 .grid--flex {
   flex-flow: row wrap;
   display: flex;
-  .grid__col {
-    display: flex;
-  }
+
   &.grid--center {
     justify-content: center;
   }
+
+  &.grid--between {
+    justify-content: space-between;
+  }
+
+  &.grid--vertical-center {
+    align-items: center;
+  }
+}
+
+@include bp-suffix(grid--no-wrap) {
+  flex-wrap: nowrap;
 }
 
 @include bp-suffix(grid--bordered, false) {
@@ -112,6 +122,10 @@
   vertical-align: top;
   box-sizing: border-box;
   background-clip: content-box;
+  flex: 0 0 auto;
+  // Fixes text overflow issues
+  min-width: 0;
+
   @if $grid-use-letter-spacing-hack {
     letter-spacing: normal;
     word-spacing: normal;
@@ -125,32 +139,86 @@
     float: left;
     display: block;
   }
+
+  .grid--flex & {
+    width: auto;
+  }
 }
 
-@each $breakpoint, $size in $grid-bp {
+.grid__col--flex {
+  display: flex;
+}
+
+@each $breakpointMin, $size in $grid-bp {
   @for $column from 1 through $grid-cols {
     $width: percentage($column / $grid-cols);
 
-    @include mq($breakpoint) {
-      .col-#{$column}\@#{$breakpoint} {
+    @include mq($breakpointMin) {
+      .col-#{$column}\@#{$breakpointMin} {
         width: $width;
-        .grid--flex & {
-          flex: 0 0 $width;
-          max-width: $width;
-        }
+        flex-basis: $width;
+        max-width: $width;
       }
 
-      .push-#{$column}\@#{$breakpoint} {
+      .push-#{$column}\@#{$breakpointMin} {
         position: relative;
         left: $width;
       }
 
-      .pull-#{$column}\@#{$breakpoint} {
+      .pull-#{$column}\@#{$breakpointMin} {
         position: relative;
-        left: 0 - $width;
+        left: -$width;
       }
     }
   }
+
+  @each $breakpointMax, $size in $grid-bp {
+    @for $column from 1 through $grid-cols {
+      $width: percentage($column / $grid-cols);
+      @include mq($breakpointMin, $breakpointMax) {
+        .col-#{$column}\@#{$breakpointMin}\@#{$breakpointMax} {
+          width: $width;
+          flex-basis: $width;
+          max-width: $width;
+        }
+
+        .push-#{$column}\@#{$breakpointMin}\@#{$breakpointMax} {
+          position: relative;
+          left: $width;
+        }
+
+        .pull-#{$column}\@#{$breakpointMin}\@#{$breakpointMax} {
+          position: relative;
+          left: -$width;
+        }
+      }
+    }
+  }
+}
+
+@include bp-suffix(col-auto) {
+  width: auto;
+
+  .grid--flex & {
+    flex-basis: auto;
+    max-width: 100%;
+  }
+}
+
+@include bp-suffix(u-flex-shrink) {
+  flex-shrink: 1;
+}
+
+@include bp-suffix(u-flex-no-shrink) {
+  flex-shrink: 0;
+}
+
+@include bp-suffix(u-flex-grow) {
+  flex-grow: 1;
+}
+
+@include bp-suffix(u-flex-no-grow) {
+  flex-grow: 0;
 }
 
 @include bp-suffix("nopull-", false) {
