@@ -9,6 +9,7 @@ module.exports = {
     "label": "Header - standard external",
     "context": {
       "title": "Standard title header",
+      "button": "Save and complete later"
     },
   },{
     "name": "standard-cy",
@@ -16,6 +17,14 @@ module.exports = {
     "context": {
       "title": "Gwasanaeth Cymraeg",
       "cy": true
+    },
+  },{
+    "name": "standard-beta",
+    "label": "Header - standard with beta bar",
+    "context": {
+      "title": "Standard title header with beta bar and button",
+      "beta": true,
+      "button": "Save and complete later"
     },
   },{
     "name": "standard-internal",

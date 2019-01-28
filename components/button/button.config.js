@@ -36,11 +36,11 @@ module.exports = {
     'context': {
       'btns' : [
         {
-          'label': 'Continue'    
+          'label': 'Continue'
         },
         {
           'btn-classes': 'btn--secondary',
-          'label': 'Cancel'    
+          'label': 'Cancel'
         },
       ],
     },
@@ -50,6 +50,13 @@ module.exports = {
     'context': {
       'btn-classes': 'btn--ghost',
       'label': 'Save and sign out'
+    },
+  },{
+    'name': 'footer',
+    'label': 'Ghost blue',
+    'context': {
+      'btn-classes': 'btn--ghost-blue',
+      'label': 'Save and complete later'
     },
   },{
     'name': 'loader',

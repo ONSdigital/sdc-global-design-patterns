@@ -43,6 +43,7 @@ class Tabs {
     // Tabs will display as a TOC list and show full content for <40rem viewports 
     // Aria tags are added only for >40rem viewports
     setupViewportChecks() {
+        console.log(utilsModule)
         this.viewport = utilsModule.matchMedia('(min-width: 40rem)')
         this.viewport.addListener(this.checkViewport.bind(this))
         this.checkViewport()
@@ -264,7 +265,7 @@ class Tabs {
         return this.component.querySelector('.tab--selected')
     }
 
-    getHref = function (tab) {
+    getHref(tab) {
         const href = tab.getAttribute('href')
         const hash = href.slice(href.indexOf('#'), href.length)
         return hash

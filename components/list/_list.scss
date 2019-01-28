@@ -22,6 +22,7 @@
   list-style-type: none;
   padding: 0;
   margin: 1rem auto;
+
   .list__item {
     border: 1px solid #ccc;
     display: inline-block;
@@ -42,5 +43,17 @@
 .list--errors {
   .list__item {
     color: $color-red;
+  }
+}
+
+$list-item-inline-spacing-horizontal: 1rem;
+$list-item-inline-spacing-vertical: 0.5rem;
+
+@include bp-suffix(list--inline) {
+  margin: ($list-item-inline-spacing-vertical / -2) ($list-item-inline-spacing-horizontal / -2);
+
+  .list__item {
+    display: inline-block;
+    margin: ($list-item-inline-spacing-vertical / 2) ($list-item-inline-spacing-horizontal / 2)
   }
 }

@@ -2,8 +2,8 @@
   <div class="container">
     <ul class="{{nav-inner-classes}}" aria-label="Section navigation menu">
       {{#each nav-items}}
-        <li class="nav__item u-fs-s {{item_class}}">
-          <a class="nav__link" href="{{item_url}}" {{#if current}}aria-current="location"{{/if}} role="menuitem">{{item}}</a>
+        <li class="nav__item u-fs-s">
+          <a class="nav__link {{item_class}}" href="{{item_url}}" {{#if current}}aria-current="location"{{/if}} role="menuitem">{{item}}</a>
         </li>
       {{/each}}
     </ul>

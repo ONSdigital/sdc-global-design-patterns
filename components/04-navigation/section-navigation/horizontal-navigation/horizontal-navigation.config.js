@@ -8,13 +8,13 @@ module.exports = {
     "name":"horizontal",
     "context": {
         "label":"Nav Section (horizontal)",
-        "nav-wrapper-classes":"nav nav--horizontal nav--sub nav--dark",
+        "nav-wrapper-classes":"nav nav--inline nav--page",
         "nav-inner-classes": "nav__list",
         "nav-items": [
           {
             "item": "Section 1",
             "item_url": "#item1",
-            "item_class": "nav__item--current",
+            "item_class": "nav__link--current",
             "current": true
           },
           {

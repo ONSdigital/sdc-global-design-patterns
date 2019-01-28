@@ -1,16 +1,16 @@
 module.exports = {
-  "title": "Vertical navigation",
-  "default": "vertical",
+  "title": "Progress navigation",
+  "default": "progress",
   "status": "wip",
   "preview": "@preview__menu",
   "collated": false,
   "variants": [{
-    "label":"Vertical navigation",
-    "name":"vertical",
+    "label":"Progress navigation",
+    "name":"progress",
     "context": {
-        "label":"Nav Section (vertical)",
+        "label":"Nav Section (progress)",
         "nav-title": "Nav Section",
-        "nav-wrapper-classes":"nav nav--sections nav--vertical js-nav page__nav",
+        "nav-wrapper-classes":"nav nav--sections nav--progress js-nav page__nav",
         "nav-inner-classes": "nav__list js-nav-list",
         "nav-items": [
           {

@@ -15,19 +15,19 @@ Provides a button so that the user can sign out of the service. The button will 
 ## Implementation
 
 ### Main navigation
-This component needs to be added before the closing `</header>` of the main header component. The html for this component starts with `<div class="header__nav">`. 
+This component needs to be added before the closing `</header>` of the main header component. The html for this component starts with `<div class="header__nav">`.
 
 ### Secondary navigation
 This component needs to be added within the `<div class="header__top">` and should be placed within a grid controlled div `grid__col col-6@s` next to the logo.
 
 ### Save
-Use a button component with the class `btn--ghost` and place within a grid controlled div `u-fr u-d-no--@xs@s` next to the `header__title` parent `grid__col`. 
+Use a button component with the class `btn--ghost` and place within a grid controlled div `u-fr u-d-no@xs@s` next to the `header__title` parent `grid__col`.
 
 ## Mobile
 
-The navigation system for viewports under `500px` collapses and is toggled via a menu icon. If you're using any of the 3 navigation types you will need to add the **main navigation** element `<div class="header__nav">` to your page. If you're using secondary or save navigation types then duplicate the links and add them with `nav__list` with the class `nav__item u-d-no--@s` of the `<div class="header__nav">`. The `u-d-n--xx` class will control when the element is shown or hidden between different breakpoints. 
+The navigation system for viewports under `500px` collapses and is toggled via a menu icon. If you're using any of the 3 navigation types you will need to add the **main navigation** element `<div class="header__nav">` to your page. If you're using secondary or save navigation types then duplicate the links and add them with `nav__list` with the class `nav__item u-d-no@s` of the `<div class="header__nav">`. The `u-d-n--xx` class will control when the element is shown or hidden between different breakpoints.
 
-In addition you will need to add the button toggle to show and hide the navigation menu. Add a button component with classes `btn--mobile u-fr u-d-no--@s` and place next to the `header__title` parent `grid__col`. Javascript handles the menu functionality.
+In addition you will need to add the button toggle to show and hide the navigation menu. Add a button component with classes `btn--mobile u-fr u-d-no@s` and place next to the `header__title` parent `grid__col`. Javascript handles the menu functionality.
 
 ## Research
 Based upon [W3 principles](https://w3c.github.io/aria-practices/#menu)
