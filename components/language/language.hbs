@@ -1,1 +1,12 @@
-<a href="{{lang_link}}" data-ga="click" data-ga-category="language" data-ga-action="Language toggle" data-ga-label="{{lang_link_text}}">{{lang_link_text}}</a>
+
+<div class="language-switcher u-d-no@xs@s js-language-switcher" lang="{{ currentLanguageCode }}">
+  <a class="js-language-switcher-link" href="#">{{ chooseLanguage }}</a>
+  <button type="button" class="u-d-no language-switcher__button js-language-switcher-button" aria-label="{{ buttonAriaLabel }}">{{ currentLanguage }}</button>
+  <ul id="language-switcher-items" class="u-d-no language-switcher__items js-language-switcher-items">
+    {{#each items}}
+      <li class="language-switcher__item">
+        <a href="#" class="language-switcher__language js-language-switcher-item" lang="{{ lang }}" tabindex="-1">{{ text }}</a>
+      </li>
+    {{/each}}
+  </ul>
+</div>

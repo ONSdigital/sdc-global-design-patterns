@@ -8,3 +8,4 @@ import '../../components/04-navigation/section-nav.js';
 import '../../components/02-form-elements/mutually-exclusive/mutually-exclusive.js';
 import '../../components/table/sortable-table.js';
 import '../../components/table/scrollable-table.js';
+import '../../components/language/language';
