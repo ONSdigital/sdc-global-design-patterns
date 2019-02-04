@@ -1,7 +1,6 @@
 import { throttle } from 'throttle-typescript';
-import domready from '../../assets/js/domready';
-
-class LanguageSelector {
+import domReady from '../../assets/js/domready';
+export class LanguageSelector {
   constructor(context) {
     this.context = context;
     this.link = context.querySelector('.js-language-switcher-link');
@@ -48,9 +47,11 @@ class LanguageSelector {
 }
 
 export default function languageSelector() {
-  const languageSelectors = [...document.querySelectorAll('.js-language-switcher')];
+  const context = document.querySelector('.js-language-switcher');
 
-  languageSelectors.forEach(selector => new LanguageSelector(selector));
+  if (context) {
+    return new LanguageSelector(context);
+  }
 }
 
-domready(languageSelector);
+domReady(languageSelector);

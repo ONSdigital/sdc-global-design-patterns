@@ -1,6 +1,6 @@
-$language-switcher-button-height: 2rem;
-$language-switcher-button-padding-y: .35rem;
-$language-switcher-button-padding-x: .5rem;
+$language-switcher-button-height: 36px;
+$language-switcher-button-padding-y: 0.5rem;
+$language-switcher-button-padding-x: 0.5rem;
 $language-switcher-chevron-size: 15px;
 
 .language-switcher {
@@ -11,16 +11,19 @@ $language-switcher-chevron-size: 15px;
   &__button {
     position: relative;
     padding: $language-switcher-button-padding-y $language-switcher-button-padding-x;
-    min-height: $language-switcher-button-height;
     min-width: 8rem;
+    min-height: $language-switcher-button-height;
+    border: $input-border-width solid $color-borders;
     border-radius: 3px;
-    border: 1px solid $color-borders;
     background: transparent;
+    line-height: 1;
     text-align: left;
 
+    transition: border-color 0.2s ease-in-out;
+
     &:focus {
-      outline-offset: 3px;
       outline: 3px solid $color-focus-outline;
+      outline-offset: 3px;
     }
 
     &:after {
@@ -36,17 +39,23 @@ $language-switcher-chevron-size: 15px;
       height: $language-switcher-chevron-size;
 
       background: {
-        image: url(#{$static}/img/icons/icons--chevron-down-blue.svg);
+        position: center;
+        image: url(#{$static}/img/icons/icons--chevron-down.svg);
         size: $language-switcher-chevron-size;
         repeat: no-repeat;
-        position: center;
       }
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $color-links-hover;
     }
   }
 
   &--open &__button {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-color: $color-links-hover;
 
     &:after {
       transform: translateY(-50%) rotate(180deg);
@@ -57,12 +66,12 @@ $language-switcher-chevron-size: 15px;
     z-index: 10;
     position: relative;
     padding: 0;
-    border: 1px solid $color-borders;
-    border-top: none;
+    list-style: none;
+    border: $input-border-width solid $color-links-hover;
+    border-top: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     background: $color-white;
-    list-style: none;
     opacity: 0;
     pointer-events: none;
   }
@@ -76,12 +85,23 @@ $language-switcher-chevron-size: 15px;
     margin: 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $color-borders;
+      border-bottom: $input-border-width solid $color-links-hover;
     }
   }
 
   &__language {
     display: block;
     padding: $language-switcher-button-padding-y $language-switcher-button-padding-x;
+  }
+}
+
+.language-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: inline-block;
+    margin: 0 0 0 0.5rem;
   }
 }

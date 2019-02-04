@@ -116,7 +116,7 @@ const hbs = handlebarsAdapter({
         '-': lvalue - rvalue,
         '*': lvalue * rvalue,
         '/': lvalue / rvalue,
-        '%': lvalue % rvalue
+        '%': lvalue % rvalue,
       }[operator];
     },
     concatStr: function() {
@@ -124,6 +124,10 @@ const hbs = handlebarsAdapter({
     },
     or: function() {
       return [...arguments].slice(0, -1).find(option => !(option === null || option === undefined || option === ''));
+    },
+    ifConditional: function(a, operator, b, options) {
+      // eslint-disable-next-line no-eval
+      return eval(`${a} ${operator} ${b}`) ? options.fn(this) : options.inverse(this);
     },
   },
 });
