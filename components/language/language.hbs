@@ -1,1 +1,30 @@
-<a href="{{lang_link}}" data-ga="click" data-ga-category="language" data-ga-action="Language toggle" data-ga-label="{{lang_link_text}}">{{lang_link_text}}</a>
+{{#ifConditional languages.length '<=' '3'}}
+  <ul class="language-links u-d-no@xs@s">
+    {{#each languages}}
+      {{#unless current}}
+          <li class="language-links__item">
+            <a href="{{ url }}" lang="{{ ISOCode }}">{{ text }}</a>
+          </li>
+      {{/unless}}
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="language-switcher u-d-no@xs@s js-language-switcher" lang="{{ currentLanguage.ISOCode }}">
+    <a class="js-language-switcher-link" href="#">{{ currentLanguage.chooseLanguage }}</a>
+    <button type="button" class="u-d-no language-switcher__button js-language-switcher-button" aria-label="{{ currentLanguage.buttonAriaLabel }}">{{ currentLanguage.text }}</button>
+    <ul id="language-switcher-items" class="u-d-no language-switcher__items js-language-switcher-items">
+      {{#each languages}}
+        {{#unless current}}
+          <li class="language-switcher__item">
+            <a href="{{ url }}" class="language-switcher__language js-language-switcher-item" lang="{{ ISOCode }}" tabindex="-1">{{ text }}</a>
+          </li>
+        {{/unless}}
+      {{/each}}
+      {{#ifConditional currentLanguage.allLanguages '&&' allLanguagesUrl}}
+        <li class="language-switcher__item">
+            <a href="{{ allLanguagesUrl }}" class="language-switcher__language js-language-switcher-item" lang="{{ currentLanguage.ISOCode }}" tabindex="-1">{{ currentLanguage.allLanguages }}</a>
+          </li>
+      {{/ifConditional}}
+    </ul>
+  </div>
+{{/ifConditional}}
