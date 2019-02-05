@@ -7,5 +7,6 @@ yarn-error.log
 coverage
 .DS_Store
 *.tmp
+.vscode/
 
 secrets.yml
