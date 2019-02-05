@@ -6,123 +6,123 @@ module.exports = {
   'variants': [{
     'name': 'centimetres',
     'context': {
-      'label': 'Centimetres',
+      'title': 'Centimetres',
       'unit': ' cm',
-      'label_for' : 'Centimetres',
-      'label_text' : 'Length in centimetres',
-      'label_description' : 'For example enter 1250 for 12.5m'
+      'label_for': 'Centimetres',
+      'label_text': 'Length in centimetres',
+      'label_description': 'For example enter 1250 for 12.5m',
     },
   }, {
     'name': 'metres',
     'context': {
-      'label': 'Metres',
+      'title': 'Metres',
       'unit': ' m',
-      'label_for' : 'Metres',
-      'label_text' : 'Length in metres'
+      'label_for': 'Metres',
+      'label_text': 'Length in metres',
     },
   }, {
     'name': 'kilometres',
     'context': {
-      'label': 'Kilometres',
+      'title': 'Kilometres',
       'unit': ' km',
-      'label_for' : 'Kilometres',
-      'label_text' : 'Distance in kilometres'
+      'label_for': 'Kilometres',
+      'label_text': 'Distance in kilometres',
     },
   }, {
     'name': 'miles',
     'context': {
-      'label': 'Miles',
+      'title': 'Miles',
       'unit': ' mi',
-      'label_for' : 'Miles',
-      'label_text' : 'Distance in miles'
+      'label_for': 'Miles',
+      'label_text': 'Distance in miles',
     },
   }, {
     'name': 'square-centimetres',
     'context': {
-      'label': 'Square-centimetres',
+      'title': 'Square-centimetres',
       'unit': ' cm²',
-      'label_for' : 'Square-centimetres',
-      'label_text' : 'Area in square centimetres'
+      'label_for': 'Square-centimetres',
+      'label_text': 'Area in square centimetres',
     },
   }, {
     'name': 'square-metres',
     'context': {
-      'label': 'Square-metres',
+      'title': 'Square-metres',
       'unit': ' m²',
-      'label_for' : 'Square-metres',
-      'label_text' : 'Area in square metres'
+      'label_for': 'Square-metres',
+      'label_text': 'Area in square metres',
     },
   }, {
     'name': 'square-kilometres',
     'context': {
-      'label': 'Square-kilometres',
+      'title': 'Square-kilometres',
       'unit': ' km²',
-      'label_for' : 'Square-kilometres',
-      'label_text' : 'Area in square kilometres'
+      'label_for': 'Square-kilometres',
+      'label_text': 'Area in square kilometres',
     },
   }, {
     'name': 'square-miles',
     'context': {
-      'label': 'Square-miles',
+      'title': 'Square-miles',
       'unit': ' sq mi',
-      'label_for' : 'Square-miles',
-      'label_text' : 'Area in square miles'
+      'label_for': 'Square-miles',
+      'label_text': 'Area in square miles',
     },
   }, {
     'name': 'acres',
     'context': {
-      'label': 'Acres',
+      'title': 'Acres',
       'unit': ' ac',
-      'label_for' : 'Acres',
-      'label_text' : 'Arable land in acres'
+      'label_for': 'Acres',
+      'label_text': 'Arable land in acres',
     },
   }, {
     'name': 'hectares',
     'context': {
-      'label': 'Hectares',
+      'title': 'Hectares',
       'unit': ' ha',
-      'label_for' : 'Hectares',
-      'label_text' : 'Area in hectares'
+      'label_for': 'Hectares',
+      'label_text': 'Area in hectares',
     },
   }, {
     'name': 'cubic-centimetres',
     'context': {
-      'label': 'Cubic-centimetres',
+      'title': 'Cubic-centimetres',
       'unit': ' cm³',
-      'label_for' : 'Cubic-centimetres',
-      'label_text' : 'Volume in cubic centimetres'
+      'label_for': 'Cubic-centimetres',
+      'label_text': 'Volume in cubic centimetres',
     },
   }, {
     'name': 'cubic-metres',
     'context': {
-      'label': 'Cubic-metres',
+      'title': 'Cubic-metres',
       'unit': ' m³',
-      'label_for' : 'Cubic-metres',
-      'label_text' : 'Volume in cubic metres'
+      'label_for': 'Cubic-metres',
+      'label_text': 'Volume in cubic metres',
     },
   }, {
     'name': 'litres',
     'context': {
-      'label': 'Litres',
+      'title': 'Litres',
       'unit': ' l',
-      'label_for' : 'Litres',
-      'label_text' : 'Volume in litres'
+      'label_for': 'Litres',
+      'label_text': 'Volume in litres',
     },
   }, {
     'name': 'hectolitres',
     'context': {
-      'label': 'Hectolitres',
+      'title': 'Hectolitres',
       'unit': ' hl',
-      'label_for' : 'Hectolitres',
-      'label_text' : 'Volume in hectolitres'
+      'label_for': 'Hectolitres',
+      'label_text': 'Volume in hectolitres',
     },
   }, {
     'name': 'megalitres',
     'context': {
-      'label': 'Megalitres',
+      'title': 'Megalitres',
       'unit': ' Ml',
-      'label_for' : 'Megalitres',
-      'label_text' : 'Volume in megalitres'
+      'label_for': 'Megalitres',
+      'label_text': 'Volume in megalitres',
     },
-  }]
+  }],
 }
