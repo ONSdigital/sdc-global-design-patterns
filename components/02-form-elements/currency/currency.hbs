@@ -1,4 +1,7 @@
-<div class="input-type input-type--prefix">
-  <input class="input input--w-5 input-type__input" name="answer" id="answer" type="number" pattern="[0-9]*" data-qa="input-text">
-  <abbr title="{{label}}" class="input-type__type" id="answer-type">{{currency}}</abbr>
+<div class="field">
+  {{> @label}}
+  <div class="input-type input-type--prefix">
+    <input class="input input--w-5 input-type__input" name="answer" id="{{label_for}}" type="number" pattern="[0-9]*" title="{{title}}" data-qa="input-text">
+    <abbr aria-hidden="true" title="{{title}}" class="input-type__type" id="answer-type">{{currency}}</abbr>
+  </div>
 </div>

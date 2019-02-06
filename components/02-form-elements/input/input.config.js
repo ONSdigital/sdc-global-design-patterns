@@ -13,19 +13,19 @@ module.exports = {
       'label_for': 'text-input',
       'label_inline': false,
       'widths': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40],
-      'width_label': 'Input width '
-    }
+      'width_label': 'Input width ',
+    },
   }, {
     'name': 'checkbox',
     'context': {
       'label_text': 'Bacon',
       'label_for': 'checkbox',
       'label_inline': true,
-      'checkbox_legend':'Select all that apply',
+      'checkbox_legend': 'Select all that apply',
       'options': [
-        {'option_text':'Bacon', 'option_value': 'bacon', 'label_for':'bacon', 'label_text':'Bacon', 'label_inline':true},
-        {'option_text':'Olives', 'option_value': 'olives', 'label_for':'olives', 'label_text':'Olives', 'label_inline':true},
-      ]
+        {'option_text': 'Bacon', 'option_value': 'bacon', 'label_for': 'bacon', 'label_text': 'Bacon', 'label_inline': true},
+        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true},
+      ],
     },
   }, {
     'name': 'checkbox-other',
@@ -35,11 +35,11 @@ module.exports = {
       'label_text': 'Bacon',
       'label_for': 'checkbox',
       'label_inline': true,
-      'checkbox_legend':'Select all that apply',
+      'checkbox_legend': 'Select all that apply',
       'options': [
-        {'option_text':'Bacon', 'option_value': 'bacon', 'label_for':'bacon', 'label_text':'Bacon', 'label_inline':true},
-        {'option_text':'Olives', 'option_value': 'olives', 'label_for':'olives', 'label_text':'Olives', 'label_inline':true},
-      ]
+        {'option_text': 'Bacon', 'option_value': 'bacon', 'label_for': 'bacon', 'label_text': 'Bacon', 'label_inline': true},
+        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true},
+      ],
     },
   }, {
     'name': 'radio',
@@ -51,9 +51,9 @@ module.exports = {
       'legend': 'Select your favourite topping',
       'options': [
         {'option_text': 'Bacon', 'option_value': 'bacon', 'label_for': 'bacon', 'label_text': 'Bacon', 'label_inline': true},
-        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true}
-      ]
-    }
+        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true},
+      ],
+    },
   }, {
     'name': 'radio-other',
     'label': 'Radio (other)',
@@ -65,22 +65,24 @@ module.exports = {
       'legend': 'Select your favourite topping',
       'options': [
         {'option_text': 'Bacon', 'option_value': 'bacon', 'label_for': 'bacon', 'label_text': 'Bacon', 'label_inline': true},
-        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true}
-      ]
-    }
+        {'option_text': 'Olives', 'option_value': 'olives', 'label_for': 'olives', 'label_text': 'Olives', 'label_inline': true},
+      ],
+    },
   }, {
     'name': 'percentage',
     'status': 'ready',
     'context': {
-      'label': 'Percentage',
-      'label_text': '%'
-    }
+      'title': 'Percentage',
+      'label_text': 'Percentage of sales',
+      'label_for': 'percentage',
+      'abbr': '%',
+    },
   }, {
     'name': 'password',
     'status': 'ready',
     'context': {
       'label': 'Password',
-      'label_text': 'Enter password'
-    }
-  }]
+      'label_text': 'Enter password',
+    },
+  }],
 };

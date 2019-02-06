@@ -1,4 +1,7 @@
-<div class="input-type">
-  <input class="input input--w-3 input-type__input" data-qa="input-number" pattern="[0-9]*" id="answer" name="answer" type="number">
-  <abbr title="{{label}}" class="input-type__type" id="answer-type">{{label_text}}</abbr>
+<div class="field">
+  {{> @label}}
+  <div class="input-type">
+    <input class="input input--w-3 input-type__input" data-qa="input-number" pattern="[0-9]*" id="{{label_for}}" title="{{title}}" name="answer" type="number">
+    <abbr aria-hidden="true" title="{{title}}" class="input-type__type" id="answer-type">{{abbr}}</abbr>
+  </div>
 </div>

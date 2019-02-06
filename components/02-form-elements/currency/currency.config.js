@@ -6,25 +6,33 @@ module.exports = {
   'variants': [{
     'name': 'pounds',
     'context': {
-      'label': 'Pounds (GBP)',
+      'title': 'Pounds (GBP)',
+      'label_text': 'Please enter your earnings',
+      'label_for': 'gbp',
       'currency': '£'
     },
   }, {
     'name': 'euros',
     'context': {
-      'label': 'Euros (EUR)',
+      'title': 'Euros (EUR)',
+      'label_text': 'Please enter your earnings',
+      'label_for': 'eur',
       'currency': '€'
     },
   }, {
     'name': 'dollars-us',
     'context': {
-      'label': 'US Dollars (USD)',
+      'title': 'US Dollars (USD)',
+      'label_text': 'Please enter your earnings',
+      'label_for': 'usd',
       'currency': 'US$'
     },
   }, {
     'name': 'yen-japanese',
     'context': {
-      'label': 'Japanese Yen (JPY)',
+      'title': 'Japanese Yen (JPY)',
+      'label_text': 'Please enter your earnings',
+      'label_for': 'jpy',
       'currency': 'JP¥'
     },
   }]
